@@ -1,0 +1,7 @@
+[tools]
+python = "latest"
+uv = "latest"
+
+[settings]
+# only source an existing .venv
+python.uv_venv_auto = "source"
