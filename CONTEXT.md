@@ -23,8 +23,30 @@ _Avoid_: type, class (reserved for conjugacy class)
 
 **Double group**:
 The group of order 2|G| obtained by lifting a point group G to SU(2), so that
-a rotation by 2π is a distinct element from the identity. Written G†.
+a rotation by 2π is a distinct element from the identity. Written G†. Built
+from the abstract group as a central extension; the inversion lifts
+trivially.
 _Avoid_: spin group, spinor group
+
+**Full turn**:
+The central element Ē of a double group covering the identity: the rotation
+by 2π. Its canonical label is `~E`.
+_Avoid_: bar-E as a concept name, minus identity, −E
+
+**Section**:
+The choice, for every element g of a point group, of one of its two
+preimages in the double group, written s(g). The factor system is entirely
+determined by the section; the canonical section takes the positive
+preimage (rotation angle in (−π, π], binary-rotation axis in the positive
+hemisphere).
+_Avoid_: lift (for the choice itself), gauge, sign convention
+
+**Lifted element** and **Barred element**:
+For an element g, the lifted element is s(g) and the barred element is
+Ē·s(g), written ḡ and labelled with the prefix `~`. Which of the two
+preimages is barred is a labelling matter and may be swapped per element by
+a label convention.
+_Avoid_: tilde element, extra element, doubled element
 
 **Abstract group**:
 The group isomorphic to a point group, defined without any coordinate system
@@ -66,7 +88,8 @@ _Avoid_: multiplication table, product table, group table
 **Factor system**:
 The function ω(g, h) on pairs of elements that measures the failure of a
 projective representation to be a true representation. In this project ω is
-always the spin factor system, taking values ±1, induced by the double group.
+always the spin factor system, taking values ±1, induced by the double group
+through the section: s(g) s(h) = ω(g, h) s(gh).
 _Avoid_: factor table (as a concept; it is the *table* of the factor system),
 cocycle, multiplier, Schur multiplier
 
@@ -82,9 +105,10 @@ factor system.
 _Avoid_: vector representation, true representation, linear representation
 
 **Irrep**:
-An irreducible representation, ordinary or projective, of a point group. Each
-irrep has a Mulliken symbol as its name and may carry a Bethe symbol as an
-alias.
+An irreducible representation over the complex numbers, ordinary or
+projective, of a point group. Each irrep has a Mulliken symbol as its name
+and may carry a Bethe symbol as an alias. Complex-conjugate one-dimensional
+irreps are distinct irreps, never merged into a real pair.
 _Avoid_: irreducible rep, species
 
 **Character table**:
@@ -98,8 +122,28 @@ _Avoid_: representation matrices (without naming the convention)
 
 **Conjugacy class**:
 A set of elements conjugate to one another within the group. Characters are
-constant on a conjugacy class.
+constant on a conjugacy class. Classes are ordered and represented by their
+first member in the canonical element order.
 _Avoid_: class (alone, when ambiguous)
+
+**Class label**:
+The name of a conjugacy class: its size followed by the reduced canonical
+label of its representative (`2C3`, `3sigma_v`, `6C2'`, `4C3^-1`), and for
+double groups `2~C3` or `C2+~C2`.
+_Avoid_: class symbol, class header
+
+**Representative**:
+The first member of a conjugacy class in the canonical element order; for
+a class of the double group, the lifted or barred image of the
+representative of the class it covers.
+_Avoid_: class leader, generator (of a class)
+
+**Regular class**:
+A conjugacy class of a point group whose preimage in the double group is
+two classes (it **splits**) rather than one (it is **merged**). Projective
+characters can be non-zero only on regular classes, and the number of
+regular classes equals the number of projective irreps.
+_Avoid_: ω-regular (as the term itself), spinor class, good class
 
 **Frobenius–Schur indicator**:
 The value +1, 0 or −1 attached to an irrep stating whether it is real,
@@ -108,35 +152,118 @@ _Avoid_: reality, realness type
 
 ### Conventions
 
+**Canonical label**:
+The convention-free, ASCII label of an element (`C6^1`, `C2'(2)`, `S4^-1`,
+`sigma_d(1)`, `C3^-1(4)`), derived by a fixed formula from the abstract group
+alone and present in every output.
+_Avoid_: default label, internal name, structural label
+
+**Reference label**:
+The name a reference work (Altmann & Herzig, Bradley & Cracknell, Bilbao)
+gives an element, produced from the canonical label by a label convention and
+emitted only when that convention is selected.
+_Avoid_: display label, alias, literature label
+
 **Label convention**:
-A named, selectable rule that assigns a geometric label to every element of an
-abstract group (e.g. which generator is called `C3+`, which reflection is
-`sigma_v(1)`). A label convention implies an orientation of the group in
-space, but the tool itself never fixes coordinates.
+A named, selectable set of rewrite rules and per-group overrides that turns
+canonical labels into the reference labels of one reference work. A label
+convention implies an orientation of the group in space, but the tool itself
+never fixes coordinates.
 _Avoid_: setting convention, orientation, standard setting, naming scheme
 
 **Basis convention**:
-The rule fixing the basis in which irrep matrices are written, selectable on
-the command line. Irrep matrices are only defined up to unitary equivalence,
-so a table is meaningless without naming its basis convention.
+A named, selectable data file (rules for the axial families, generator
+matrices for the polyhedral families) that fixes the basis in which irrep
+matrices are written, as one reference work writes them. Irrep matrices are
+only defined up to unitary equivalence, so a table is meaningless without
+naming its basis convention.
 _Avoid_: phase convention, gauge
 
+**Canonical basis**:
+The convention-free basis of every irrep, used by default: the principal
+element is diagonal with its eigenvalue exponents descending, the remaining
+phases fixed by formula for the axial families and by shipped data for the
+polyhedral families.
+_Avoid_: default basis, standard basis, natural basis
+
+**Spinor map**:
+The one fixed homomorphism from unit quaternions to SU(2) that turns a
+lifted rotation into its two-by-two matrix, with the positive exponent first
+on the principal axis.
+_Avoid_: SU(2) representation (ambiguous), Cayley–Klein parameters
+
 **Mulliken symbol**:
-The name of an irrep in the A/B/E/T (and G/H for the icosahedral groups)
-notation, extended to arbitrary axis order (E_k for ordinary, E_{k/2} for
-projective irreps).
+The name of an irrep in the A/B/E/T/G/H/I notation, extended to arbitrary
+axis order (`E_k` for ordinary, `E_{k/2}` for projective irreps). Like
+element labels it has two layers: the **canonical Mulliken symbol**, an
+ASCII name derived by fixed rules from characters on the principal and
+secondary elements and always present, and the **reference irrep label**,
+the spelling a reference work uses, produced by a label convention.
+_Avoid_: species, symmetry type, F (for three-dimensional irreps)
 
 **Bethe symbol**:
-The Γ_i name of an irrep, kept only as an alias of the Mulliken symbol.
+The Γ_i name of an irrep in the numbering of Koster, Dimmock, Wheeler and
+Statz, kept only as an alias of the Mulliken symbol and present only for the
+32 crystallographic point groups and their double groups.
+_Avoid_: Koster symbol, BSW symbol, Γ number as an ordering key
+
+**Principal element**:
+The element `(1, 0)` of the rotation group `R` of an axial group, with its
+parity: `C_n` for most families, `S_2n` for `S2n` and `Dnd` with even `n`,
+`S_n^-1` for `Cnh` and `Dnh` with odd `n`. Its order `N` and its characters
+decide A versus B, the E subscript `k`, and the projective subscript `k/2`.
+_Avoid_: principal axis (a geometric notion), generator (ambiguous)
+
+**Secondary element**:
+The element `(0, 1)` of a dihedral rotation group `R = D_N`: `C2'(1)` in the
+`Dn`, `Dnh`, `Dnd` families and `sigma_v(1)` in `Cnv`. The sign of its
+character decides the subscript 1 or 2 of an A or B irrep.
+_Avoid_: secondary axis (a geometric notion)
+
+**Partner**:
+The other member of a pair of complex-conjugate one-dimensional irreps (the
+`1E`/`2E` split). Both members are separate irreps in every table; `1E`
+carries the positive exponent on the principal element.
+_Avoid_: real E, degenerate pair, physically irreducible representation
+
+### Output
+
+**Document**:
+The single output of one invocation of a table subcommand: the tables for
+one point group, under one set of options, with one metadata block and one
+field. Deterministic: the same arguments and tool version give the same
+bytes.
+_Avoid_: file (it may go to standard output), result, dump
+
+**Table**:
+One named array inside a document: the element list, the Cayley table, the
+factor table, the character table or the irrep matrix table. `all` is the
+union of the five.
+_Avoid_: section, sheet
 
 ### Number representation
 
+**Field**:
+The cyclotomic field `Q(ζ_M)` in which every value of a document lives,
+declared once per document.
+_Avoid_: number field (unqualified), domain
+
+**Conductor**:
+The integer `M` naming a document's field, fixed per group and basis
+convention as the smallest `M` that contains every irrep matrix entry.
+_Avoid_: field order, root order
+
 **Exact value**:
-A number written as an element of a cyclotomic field (a symbolic expression
-such as `exp(2*pi*I/3)`), never rounded.
-_Avoid_: symbolic value, analytic value
+A number written as its rational coefficient vector over the power basis of
+the document's field, never rounded.
+_Avoid_: symbolic value, analytic value, coefficient list
 
 **Numeric value**:
-The double-precision complex approximation of an exact value, emitted next to
-it for consumers that cannot evaluate exact values.
+The correctly rounded double-precision complex approximation `[re, im]` of an
+exact value, emitted next to it for consumers that cannot use exact values.
 _Avoid_: float, approximate value
+
+**Pretty value**:
+A simplified human-readable string form of an exact value (`"-1 - zeta"`),
+optional, never used for comparison or reconstruction.
+_Avoid_: symbolic string, display value

@@ -39,8 +39,8 @@ from __future__ import annotations
 
 import sys
 from collections import Counter
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable
 
 # --------------------------------------------------------------------------
 # Rotation groups R (abstract, exact)
@@ -379,9 +379,200 @@ def selfcheck():
     print(f"\n{len(KNOWN) - bad}/{len(KNOWN)} groups match (order, #classes).")
 
 
-if __name__ == "__main__":
+if __name__ == "__main__" and not (len(sys.argv) > 1 and sys.argv[1] == "labels"):
     if len(sys.argv) > 1:
         for s in sys.argv[1:]:
             show(s)
     else:
         selfcheck()
+
+
+# ==========================================================================
+# Canonical labels (wayfinder ticket #3) - convention-free, derived from
+# (r, parity), the family, the group type and H.  Grammar (ASCII only):
+#   E | i | C2 | C{m}^{j} | C2'(k) | C2''(k) | C{m}^{j}(k) | C2(k) | C2'(k)
+#   | sigma_h | sigma_h(k) | sigma_v(k) | sigma_d(k) | sigma(k)
+#   | S{m}^{j} | S{m}^{j}(k)
+# j is a signed integer with |j| <= m/2, coprime to m; k is a 1-based index.
+# ==========================================================================
+
+from fractions import Fraction
+
+
+def _reduced(turn: Fraction):
+    """turn in (0,1) -> (m, j) with |j| <= m/2, sign + for j <= m/2."""
+    m, j = turn.denominator, turn.numerator
+    if 2 * j > m:
+        j -= m
+    return m, j
+
+
+def _rot(turn: Fraction, suffix=""):
+    m, j = _reduced(turn)
+    if m == 2:
+        return "C2" + suffix
+    return f"C{m}^{j}{suffix}"
+
+
+def _srot(turn: Fraction, suffix=""):
+    """Improper element whose rotation image is a turn by `turn`:
+    it is i * C(turn) = sigma_h * C(turn + 1/2)."""
+    g = (turn + Fraction(1, 2)) % 1
+    if g == 0:
+        return "sigma_h" + suffix
+    if g == Fraction(1, 2):
+        return "i" + suffix
+    m, j = _reduced(g)
+    return f"S{m}^{j}{suffix}"
+
+
+def _family(G: PointGroup):
+    fam, n = parse(G.symbol)
+    return fam, n
+
+
+def axial_labels(G: PointGroup):
+    fam, n = _family(G)
+    R = G.rotation_group
+    N = int(R.name[1:])  # order parameter of R (C_N or D_N)
+    step = N // n if fam != "S" else 1  # type III axial groups: R = C2n/D2n -> step 2
+    if fam == "S":
+        m = n // 2
+        step = 1 if m % 2 else 2
+        nprime = m
+    else:
+        nprime = n
+    labels = {}
+    for g in G.elements:
+        r, p = g
+        k, s = (r, 0) if isinstance(r, int) else r
+        turn = Fraction(k, N)
+        if p == +1 and s == 0:
+            labels[g] = "E" if k == 0 else _rot(turn)
+        elif p == +1 and s == 1:
+            kp = k // step  # index of the C2' direction within D_{n'}
+            if nprime % 2:
+                labels[g] = f"C2'({kp + 1})"
+            else:
+                labels[g] = f"C2'({kp // 2 + 1})" if kp % 2 == 0 else f"C2''({(kp - 1) // 2 + 1})"
+        elif p == -1 and s == 0:
+            labels[g] = _srot(turn)
+        else:  # vertical plane: i * C2 about direction k (units pi/N)
+            if fam == "Cv":
+                if n % 2:
+                    labels[g] = f"sigma_v({k + 1})"
+                else:
+                    labels[g] = f"sigma_v({k // 2 + 1})" if k % 2 == 0 else f"sigma_d({(k - 1) // 2 + 1})"
+            elif fam == "Dh":
+                # plane perpendicular to direction k contains direction k + N/2
+                d = (k + N // 2) % N
+                dp = d // step
+                if nprime % 2:
+                    labels[g] = f"sigma_v({dp + 1})"
+                else:
+                    labels[g] = f"sigma_v({dp // 2 + 1})" if dp % 2 == 0 else f"sigma_d({(dp - 1) // 2 + 1})"
+            elif fam == "Dd":
+                if n % 2:  # centro, R = Dn, N odd: plane contains no axis
+                    labels[g] = f"sigma_d({k + 1})"
+                else:  # twisted, R = D2n, k odd
+                    labels[g] = f"sigma_d({(k - 1) // 2 + 1})"
+            else:
+                raise AssertionError(fam)
+    return labels
+
+
+def polyhedral_labels(G: PointGroup):
+    fam, _ = _family(G)
+    R = G.rotation_group
+    els = R.elements
+    ident = els[0]
+
+    def order(p):
+        n, q = 1, p
+        while q != ident:
+            q = R.mul(q, p)
+            n += 1
+        return n
+
+    def cyclic(p):
+        out, q = [ident], p
+        while q != ident:
+            out.append(q)
+            q = R.mul(q, p)
+        return out
+
+    # axis of r = maximal cyclic subgroup containing r
+    axis_of = {}
+    for r in els[1:]:
+        best = None
+        for g in els[1:]:
+            if r in cyclic(g) and (best is None or order(g) > order(best)):
+                best = g
+        axis_of[r] = frozenset(cyclic(best))
+    # index axes by (max order) in order of first appearance
+    axes = {}
+    for r in els[1:]:
+        ax = axis_of[r]
+        if ax not in axes:
+            same = [a for a in axes if max(order(x) for x in a) == max(order(x) for x in ax)]
+            axes[ax] = len(same) + 1
+    # positive generator of each axis: smallest canonical index among max-order elements
+    gen = {}
+    for ax in axes:
+        o = max(order(x) for x in ax)
+        gen[ax] = min((x for x in ax if order(x) == o), key=els.index)
+    has_c2_on_higher = any(order(r) == 2 and max(order(x) for x in axis_of[r]) > 2 for r in els[1:])
+
+    def rot_label(r):
+        ax = axis_of[r]
+        o = max(order(x) for x in ax)
+        powers = cyclic(gen[ax])
+        j = powers.index(r)
+        turn = Fraction(j, o)
+        idx = axes[ax]
+        prime = "'" if (order(r) == 2 and o == 2 and has_c2_on_higher) else ""
+        m, jj = _reduced(turn)
+        if m == 2:
+            return f"C2{prime}({idx})", turn, idx, prime
+        return f"C{m}^{jj}({idx})", turn, idx, prime
+
+    labels = {}
+    for g in G.elements:
+        r, p = g
+        if p == +1:
+            labels[g] = "E" if r == ident else rot_label(r)[0]
+        elif r == ident:
+            labels[g] = "i"
+        else:
+            _lab, turn, idx, prime = rot_label(r)
+            if order(r) == 2:
+                if fam == "Th":
+                    labels[g] = f"sigma_h({idx})"
+                elif fam == "Oh":
+                    labels[g] = f"sigma_d({idx})" if prime else f"sigma_h({idx})"
+                elif fam == "Td":
+                    labels[g] = f"sigma_d({idx})"
+                elif fam == "Ih":
+                    labels[g] = f"sigma({idx})"
+            else:
+                labels[g] = _srot(turn, f"({idx})")
+    return labels
+
+
+def canonical_labels(G: PointGroup):
+    return polyhedral_labels(G) if G.rotation_group.name in ("T", "O", "I") else axial_labels(G)
+
+
+def show_labels(symbol):
+    G = point_group(symbol)
+    labels = canonical_labels(G)
+    print(f"== {symbol}  (R = {G.rotation_group.name}, {G.kind})")
+    print("   elements:", " ".join(labels[g] for g in G.elements))
+    cls = conjugacy_classes(G)
+    print("   classes :", "  ".join(f"{len(c)}x[{', '.join(labels[g] for g in c)}]" for c in cls))
+    assert len(set(labels.values())) == G.order, "labels not unique"
+
+
+if __name__ == "__main__" and len(sys.argv) > 1 and sys.argv[1] == "labels":
+    for s in sys.argv[2:]:
+        show_labels(s)
