@@ -13,12 +13,17 @@ header.
   Tables*, 2nd ed. (Wien: Clarendon/Oxford; reprinted). Element labels,
   multiplication tables with tilde marks, character tables and irrep
   matrices, transcribed by hand, table and page cited per file.
-- **Bilbao**: Bilbao Crystallographic Server, point-group and
-  double-point-group tables (M. I. Aroyo et al., *Z. Kristallogr.* 221
-  (2006) 15–27; *Acta Cryst.* A62 (2006) 115–128). Character tables of the
-  32 crystallographic point groups, fetched once by `bilbao/fetch.py`, page
-  URL cited per file. The server asks that its use be cited; users of this
-  repository who republish the data should keep this citation.
+- **Bilbao**: Bilbao Crystallographic Server (`https://www.cryst.ehu.eus`),
+  programs *Point Group Tables* (POINT) and *REPRESENTATIONS DPG*. Character
+  tables of the 32 crystallographic point groups and of their double groups,
+  fetched once by `bilbao/fetch.py` (September 2026), page URL cited per
+  file. The server's pages are published under CC BY-NC-SA 4.0 and the
+  server asks to be cited: generically M. I. Aroyo et al., *Bulg. Chem.
+  Commun.* 43 (2011) 183–197; *Z. Kristallogr.* 221 (2006) 15–27; *Acta
+  Cryst.* A62 (2006) 115–128; for POINT the *Acta Cryst.* A62 paper; for
+  REPRESENTATIONS DPG L. Elcoro et al., *J. Appl. Cryst.* 50 (2017)
+  1457–1477. Users of this repository who republish the data should keep
+  these citations.
 - **Koster**: G. F. Koster, J. O. Dimmock, R. G. Wheeler and H. Statz,
   *Properties of the Thirty-Two Point Groups* (MIT Press, 1963). Bethe
   symbols `Γ_i` with identifying characters.

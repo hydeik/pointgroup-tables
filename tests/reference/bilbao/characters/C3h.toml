@@ -1,0 +1,93 @@
+# Bilbao Crystallographic Server, Point Group Tables (POINT): character table of C3h (-6)
+# Format: tests/reference/bilbao/characters/README.md
+# Written by tests/reference/bilbao/fetch.py from the server's HTML; the tests read this file only.
+
+group = "C3h"
+table = "https://www.cryst.ehu.eus/cgi-bin/rep/programs/sam/point.py?sg=174&num=22"
+status = "done"
+source = "Bilbao Crystallographic Server, Point Group Tables (POINT): M. I. Aroyo, A. Kirov, C. Capillas, J. M. Perez-Mato and H. Wondratschek, Acta Cryst. A62 (2006) 115-128"
+fetched = "2026-09-10"
+double = false
+hermann_mauguin = "-6"
+notes = ""
+conductor = 3          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+server_w = "exp(2 pi i / 3)"    # the page's definition of w in `server_values`
+
+[[classes]]
+label = "1"
+size = 1
+order = 1
+parity = 1
+
+[[classes]]
+label = "3+"
+size = 1
+order = 3
+parity = 1
+
+[[classes]]
+label = "3-"
+size = 1
+order = 3
+parity = 1
+
+[[classes]]
+label = "m"
+size = 1
+order = 2
+parity = -1
+
+[[classes]]
+label = "-6-"
+size = 1
+order = 6
+parity = -1
+
+[[classes]]
+label = "-6+"
+size = 1
+order = 6
+parity = -1
+
+[[irreps]]
+label = "A'"
+bethe = "Gamma1"
+projective = false
+server_values = ["1", "1", "1", "1", "1", "1"]
+characters = ["1", "1", "1", "1", "1", "1"]
+
+[[irreps]]
+label = "A''"
+bethe = "Gamma4"
+projective = false
+server_values = ["1", "1", "1", "-1", "-1", "-1"]
+characters = ["1", "1", "1", "-1", "-1", "-1"]
+
+[[irreps]]
+label = "2E'"
+bethe = "Gamma2"
+projective = false
+server_values = ["1", "w", "w^2", "1", "w", "w^2"]
+characters = ["1", "zeta", "zeta^2", "1", "zeta", "zeta^2"]
+
+[[irreps]]
+label = "1E'"
+bethe = "Gamma3"
+projective = false
+server_values = ["1", "w^2", "w", "1", "w^2", "w"]
+characters = ["1", "zeta^2", "zeta", "1", "zeta^2", "zeta"]
+
+[[irreps]]
+label = "2E''"
+bethe = "Gamma5"
+projective = false
+server_values = ["1", "w", "w^2", "-1", "-w", "-w^2"]
+characters = ["1", "zeta", "zeta^2", "-1", "-zeta", "-zeta^2"]
+
+[[irreps]]
+label = "1E''"
+bethe = "Gamma6"
+projective = false
+server_values = ["1", "w^2", "w", "-1", "-w^2", "-w"]
+characters = ["1", "zeta^2", "zeta", "-1", "-zeta^2", "-zeta"]
+

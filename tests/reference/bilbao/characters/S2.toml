@@ -1,0 +1,40 @@
+# Bilbao Crystallographic Server, Point Group Tables (POINT): character table of S2 (-1)
+# Format: tests/reference/bilbao/characters/README.md
+# Written by tests/reference/bilbao/fetch.py from the server's HTML; the tests read this file only.
+
+group = "S2"
+table = "https://www.cryst.ehu.eus/cgi-bin/rep/programs/sam/point.py?sg=2&num=2"
+status = "done"
+source = "Bilbao Crystallographic Server, Point Group Tables (POINT): M. I. Aroyo, A. Kirov, C. Capillas, J. M. Perez-Mato and H. Wondratschek, Acta Cryst. A62 (2006) 115-128"
+fetched = "2026-09-10"
+double = false
+hermann_mauguin = "-1"
+notes = ""
+conductor = 1          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "1"
+size = 1
+order = 1
+parity = 1
+
+[[classes]]
+label = "-1"
+size = 1
+order = 2
+parity = -1
+
+[[irreps]]
+label = "Ag"
+bethe = "Gamma1+"
+projective = false
+server_values = ["1", "1"]
+characters = ["1", "1"]
+
+[[irreps]]
+label = "Au"
+bethe = "Gamma1-"
+projective = false
+server_values = ["1", "-1"]
+characters = ["1", "-1"]
+

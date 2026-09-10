@@ -283,7 +283,8 @@ tests/reference/
     matrices/<group>.toml            # generator matrices (polyhedral groups, axial samples)
   bilbao/
     fetch.py                         # the script that produced the files; run once, not by the tests
-    characters/<group>.toml
+    characters/<group>.toml          # the Point Group Tables page: classes of G, ordinary irreps
+    characters/<group>-double.toml   # the REPRESENTATIONS DPG page: classes of G† listed element by element, every irrep
   koster/
     bethe/<group>.toml               # Γ_i per canonical symbol with identifying characters
 ```
@@ -343,7 +344,17 @@ instance: the projective rows of the Altmann & Herzig `D5h` table print the
 A Bilbao file is produced by `fetch.py` from the server's HTML and is then
 authoritative: the tests read the TOML, never the network, and a change in
 the server's pages is not a change in the data. The script stays in the
-repository as the record of provenance.
+repository as the record of provenance. The server keeps its character
+tables on two pages per group, so each group has a twin: `<group>.toml`
+(`double = false`) from the Point Group Tables page, and
+`<group>-double.toml` (`double = true`) from the REPRESENTATIONS DPG page,
+whose classes are those of `G†` and carry the server's list of operations
+(`elements`) and the kind of operations they hold (`barred`); its irreps
+carry the server's three labels and its reality. The structural comparison
+of `G†` (`tools/bilbao_characters.py check`, the prototype of `REF-2`) may
+pair a lifted class of the server with a barred canonical class, since the
+server's spinor convention differs from the canonical section
+(`tests/reference/bilbao/characters/README.md`).
 
 ### Redistribution
 

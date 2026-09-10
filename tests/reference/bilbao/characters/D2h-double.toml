@@ -1,0 +1,184 @@
+# Bilbao Crystallographic Server, REPRESENTATIONS DPG: character table of the double group of D2h (mmm)
+# Format: tests/reference/bilbao/characters/README.md
+# Written by tests/reference/bilbao/fetch.py from the server's HTML; the tests read this file only.
+
+group = "D2h"
+table = "https://www.cryst.ehu.eus/cgi-bin/cryst/programs/representations_out.pl?tipogrupo=dbg&pointspace=point&num=47&super=8"
+status = "done"
+source = "Bilbao Crystallographic Server, REPRESENTATIONS DPG: L. Elcoro, B. Bradlyn, Z. Wang, M. G. Vergniory, J. Cano, C. Felser, B. A. Bernevig, D. Orobengoa, G. de la Flor and M. I. Aroyo, J. Appl. Cryst. 50 (2017) 1457-1477"
+fetched = "2026-09-10"
+double = true
+hermann_mauguin = "mmm"
+notes = ""
+conductor = 1          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "C1"
+elements = ["1"]
+size = 1
+order = 1
+parity = 1
+barred = "none"
+
+[[classes]]
+label = "C2"
+elements = ["2_001", "d2_001"]
+size = 2
+order = 4
+parity = 1
+barred = "mixed"
+
+[[classes]]
+label = "C3"
+elements = ["2_010", "d2_010"]
+size = 2
+order = 4
+parity = 1
+barred = "mixed"
+
+[[classes]]
+label = "C4"
+elements = ["2_100", "d2_100"]
+size = 2
+order = 4
+parity = 1
+barred = "mixed"
+
+[[classes]]
+label = "C5"
+elements = ["d1"]
+size = 1
+order = 2
+parity = 1
+barred = "all"
+
+[[classes]]
+label = "C6"
+elements = ["-1"]
+size = 1
+order = 2
+parity = -1
+barred = "none"
+
+[[classes]]
+label = "C7"
+elements = ["m_001", "dm_001"]
+size = 2
+order = 4
+parity = -1
+barred = "mixed"
+
+[[classes]]
+label = "C8"
+elements = ["m_010", "dm_010"]
+size = 2
+order = 4
+parity = -1
+barred = "mixed"
+
+[[classes]]
+label = "C9"
+elements = ["m_100", "dm_100"]
+size = 2
+order = 4
+parity = -1
+barred = "mixed"
+
+[[classes]]
+label = "C10"
+elements = ["d-1"]
+size = 1
+order = 2
+parity = -1
+barred = "all"
+
+[[irreps]]
+label = "Ag"
+bethe = "Gamma1+"
+cdml = "Gamma1+"
+projective = false
+reality = 1
+server_values = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
+characters = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
+
+[[irreps]]
+label = "Au"
+bethe = "Gamma1-"
+cdml = "Gamma1-"
+projective = false
+reality = 1
+server_values = ["1", "1", "1", "1", "1", "-1", "-1", "-1", "-1", "-1"]
+characters = ["1", "1", "1", "1", "1", "-1", "-1", "-1", "-1", "-1"]
+
+[[irreps]]
+label = "B1g"
+bethe = "Gamma3+"
+cdml = "Gamma2+"
+projective = false
+reality = 1
+server_values = ["1", "1", "-1", "-1", "1", "1", "1", "-1", "-1", "1"]
+characters = ["1", "1", "-1", "-1", "1", "1", "1", "-1", "-1", "1"]
+
+[[irreps]]
+label = "B1u"
+bethe = "Gamma3-"
+cdml = "Gamma2-"
+projective = false
+reality = 1
+server_values = ["1", "1", "-1", "-1", "1", "-1", "-1", "1", "1", "-1"]
+characters = ["1", "1", "-1", "-1", "1", "-1", "-1", "1", "1", "-1"]
+
+[[irreps]]
+label = "B3g"
+bethe = "Gamma4+"
+cdml = "Gamma3+"
+projective = false
+reality = 1
+server_values = ["1", "-1", "-1", "1", "1", "1", "-1", "-1", "1", "1"]
+characters = ["1", "-1", "-1", "1", "1", "1", "-1", "-1", "1", "1"]
+
+[[irreps]]
+label = "B3u"
+bethe = "Gamma4-"
+cdml = "Gamma3-"
+projective = false
+reality = 1
+server_values = ["1", "-1", "-1", "1", "1", "-1", "1", "1", "-1", "-1"]
+characters = ["1", "-1", "-1", "1", "1", "-1", "1", "1", "-1", "-1"]
+
+[[irreps]]
+label = "B2g"
+bethe = "Gamma2+"
+cdml = "Gamma4+"
+projective = false
+reality = 1
+server_values = ["1", "-1", "1", "-1", "1", "1", "-1", "1", "-1", "1"]
+characters = ["1", "-1", "1", "-1", "1", "1", "-1", "1", "-1", "1"]
+
+[[irreps]]
+label = "B2u"
+bethe = "Gamma2-"
+cdml = "Gamma4-"
+projective = false
+reality = 1
+server_values = ["1", "-1", "1", "-1", "1", "-1", "1", "-1", "1", "-1"]
+characters = ["1", "-1", "1", "-1", "1", "-1", "1", "-1", "1", "-1"]
+
+[[irreps]]
+label = "~Eg"
+bethe = "Gamma5+"
+cdml = "~Gamma5"
+projective = true
+reality = -1
+server_values = ["2", "0", "0", "0", "-2", "2", "0", "0", "0", "-2"]
+characters = ["2", "0", "0", "0", "-2", "2", "0", "0", "0", "-2"]
+
+[[irreps]]
+label = "~Eu"
+bethe = "Gamma5-"
+cdml = "~Gamma6"
+projective = true
+reality = -1
+server_values = ["2", "0", "0", "0", "-2", "-2", "0", "0", "0", "2"]
+characters = ["2", "0", "0", "0", "-2", "-2", "0", "0", "0", "2"]
+

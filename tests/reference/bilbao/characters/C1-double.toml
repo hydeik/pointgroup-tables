@@ -1,0 +1,48 @@
+# Bilbao Crystallographic Server, REPRESENTATIONS DPG: character table of the double group of C1 (1)
+# Format: tests/reference/bilbao/characters/README.md
+# Written by tests/reference/bilbao/fetch.py from the server's HTML; the tests read this file only.
+
+group = "C1"
+table = "https://www.cryst.ehu.eus/cgi-bin/cryst/programs/representations_out.pl?tipogrupo=dbg&pointspace=point&num=1&super=1"
+status = "done"
+source = "Bilbao Crystallographic Server, REPRESENTATIONS DPG: L. Elcoro, B. Bradlyn, Z. Wang, M. G. Vergniory, J. Cano, C. Felser, B. A. Bernevig, D. Orobengoa, G. de la Flor and M. I. Aroyo, J. Appl. Cryst. 50 (2017) 1457-1477"
+fetched = "2026-09-10"
+double = true
+hermann_mauguin = "1"
+notes = ""
+conductor = 1          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "C1"
+elements = ["1"]
+size = 1
+order = 1
+parity = 1
+barred = "none"
+
+[[classes]]
+label = "C2"
+elements = ["d1"]
+size = 1
+order = 2
+parity = 1
+barred = "all"
+
+[[irreps]]
+label = "A"
+bethe = "Gamma1"
+cdml = "Gamma1"
+projective = false
+reality = 1
+server_values = ["1", "1"]
+characters = ["1", "1"]
+
+[[irreps]]
+label = "~A"
+bethe = "Gamma2"
+cdml = "~Gamma2"
+projective = true
+reality = 1
+server_values = ["1", "-1"]
+characters = ["1", "-1"]
+

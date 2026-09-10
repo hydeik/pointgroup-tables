@@ -1,0 +1,218 @@
+# Bilbao Crystallographic Server, REPRESENTATIONS DPG: character table of the double group of C6 (6)
+# Format: tests/reference/bilbao/characters/README.md
+# Written by tests/reference/bilbao/fetch.py from the server's HTML; the tests read this file only.
+
+group = "C6"
+table = "https://www.cryst.ehu.eus/cgi-bin/cryst/programs/representations_out.pl?tipogrupo=dbg&pointspace=point&num=168&super=21"
+status = "done"
+source = "Bilbao Crystallographic Server, REPRESENTATIONS DPG: L. Elcoro, B. Bradlyn, Z. Wang, M. G. Vergniory, J. Cano, C. Felser, B. A. Bernevig, D. Orobengoa, G. de la Flor and M. I. Aroyo, J. Appl. Cryst. 50 (2017) 1457-1477"
+fetched = "2026-09-10"
+double = true
+hermann_mauguin = "6"
+notes = ""
+conductor = 12          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "C1"
+elements = ["1"]
+size = 1
+order = 1
+parity = 1
+barred = "none"
+
+[[classes]]
+label = "C2"
+elements = ["3+_001"]
+size = 1
+order = 6
+parity = 1
+barred = "none"
+
+[[classes]]
+label = "C3"
+elements = ["3-_001"]
+size = 1
+order = 6
+parity = 1
+barred = "none"
+
+[[classes]]
+label = "C4"
+elements = ["2_001"]
+size = 1
+order = 4
+parity = 1
+barred = "none"
+
+[[classes]]
+label = "C5"
+elements = ["6-_001"]
+size = 1
+order = 12
+parity = 1
+barred = "none"
+
+[[classes]]
+label = "C6"
+elements = ["6+_001"]
+size = 1
+order = 12
+parity = 1
+barred = "none"
+
+[[classes]]
+label = "C7"
+elements = ["d1"]
+size = 1
+order = 2
+parity = 1
+barred = "all"
+
+[[classes]]
+label = "C8"
+elements = ["d3+_001"]
+size = 1
+order = 3
+parity = 1
+barred = "all"
+
+[[classes]]
+label = "C9"
+elements = ["d3-_001"]
+size = 1
+order = 3
+parity = 1
+barred = "all"
+
+[[classes]]
+label = "C10"
+elements = ["d2_001"]
+size = 1
+order = 4
+parity = 1
+barred = "all"
+
+[[classes]]
+label = "C11"
+elements = ["d6-_001"]
+size = 1
+order = 12
+parity = 1
+barred = "all"
+
+[[classes]]
+label = "C12"
+elements = ["d6+_001"]
+size = 1
+order = 12
+parity = 1
+barred = "all"
+
+[[irreps]]
+label = "A"
+bethe = "Gamma1"
+cdml = "Gamma1"
+projective = false
+reality = 1
+server_values = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
+characters = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
+
+[[irreps]]
+label = "B"
+bethe = "Gamma4"
+cdml = "Gamma2"
+projective = false
+reality = 1
+server_values = ["1", "1", "1", "-1", "-1", "-1", "1", "1", "1", "-1", "-1", "-1"]
+characters = ["1", "1", "1", "-1", "-1", "-1", "1", "1", "1", "-1", "-1", "-1"]
+
+[[irreps]]
+label = "2E1"
+bethe = "Gamma5"
+cdml = "Gamma3"
+projective = false
+reality = 0
+server_values = ["1", "-(1-i*sqrt3)/2", "-(1+i*sqrt3)/2", "1", "-(1-i*sqrt3)/2", "-(1+i*sqrt3)/2", "1", "-(1-i*sqrt3)/2", "-(1+i*sqrt3)/2", "1", "-(1-i*sqrt3)/2", "-(1+i*sqrt3)/2"]
+characters = ["1", "zeta^4", "zeta^8", "1", "zeta^4", "zeta^8", "1", "zeta^4", "zeta^8", "1", "zeta^4", "zeta^8"]
+
+[[irreps]]
+label = "2E2"
+bethe = "Gamma2"
+cdml = "Gamma4"
+projective = false
+reality = 0
+server_values = ["1", "-(1-i*sqrt3)/2", "-(1+i*sqrt3)/2", "-1", "(1-i*sqrt3)/2", "(1+i*sqrt3)/2", "1", "-(1-i*sqrt3)/2", "-(1+i*sqrt3)/2", "-1", "(1-i*sqrt3)/2", "(1+i*sqrt3)/2"]
+characters = ["1", "zeta^4", "zeta^8", "-1", "zeta^10", "zeta^2", "1", "zeta^4", "zeta^8", "-1", "zeta^10", "zeta^2"]
+
+[[irreps]]
+label = "1E1"
+bethe = "Gamma6"
+cdml = "Gamma5"
+projective = false
+reality = 0
+server_values = ["1", "-(1+i*sqrt3)/2", "-(1-i*sqrt3)/2", "1", "-(1+i*sqrt3)/2", "-(1-i*sqrt3)/2", "1", "-(1+i*sqrt3)/2", "-(1-i*sqrt3)/2", "1", "-(1+i*sqrt3)/2", "-(1-i*sqrt3)/2"]
+characters = ["1", "zeta^8", "zeta^4", "1", "zeta^8", "zeta^4", "1", "zeta^8", "zeta^4", "1", "zeta^8", "zeta^4"]
+
+[[irreps]]
+label = "1E2"
+bethe = "Gamma3"
+cdml = "Gamma6"
+projective = false
+reality = 0
+server_values = ["1", "-(1+i*sqrt3)/2", "-(1-i*sqrt3)/2", "-1", "(1+i*sqrt3)/2", "(1-i*sqrt3)/2", "1", "-(1+i*sqrt3)/2", "-(1-i*sqrt3)/2", "-1", "(1+i*sqrt3)/2", "(1-i*sqrt3)/2"]
+characters = ["1", "zeta^8", "zeta^4", "-1", "zeta^2", "zeta^10", "1", "zeta^8", "zeta^4", "-1", "zeta^2", "zeta^10"]
+
+[[irreps]]
+label = "2~E1"
+bethe = "Gamma12"
+cdml = "~Gamma7"
+projective = true
+reality = 0
+server_values = ["1", "-1", "-1", "-i", "i", "-i", "-1", "1", "1", "i", "-i", "i"]
+characters = ["1", "-1", "-1", "zeta^9", "zeta^3", "zeta^9", "-1", "1", "1", "zeta^3", "zeta^9", "zeta^3"]
+
+[[irreps]]
+label = "1~E1"
+bethe = "Gamma11"
+cdml = "~Gamma8"
+projective = true
+reality = 0
+server_values = ["1", "-1", "-1", "i", "-i", "i", "-1", "1", "1", "-i", "i", "-i"]
+characters = ["1", "-1", "-1", "zeta^3", "zeta^9", "zeta^3", "-1", "1", "1", "zeta^9", "zeta^3", "zeta^9"]
+
+[[irreps]]
+label = "2~E2"
+bethe = "Gamma9"
+cdml = "~Gamma9"
+projective = true
+reality = 0
+server_values = ["1", "(1-i*sqrt3)/2", "(1+i*sqrt3)/2", "-i", "-(i+sqrt3)/2", "(i-sqrt3)/2", "-1", "-(1-i*sqrt3)/2", "-(1+i*sqrt3)/2", "i", "(i+sqrt3)/2", "-(i-sqrt3)/2"]
+characters = ["1", "zeta^10", "zeta^2", "zeta^9", "zeta^7", "zeta^5", "-1", "zeta^4", "zeta^8", "zeta^3", "zeta", "zeta^11"]
+
+[[irreps]]
+label = "1~E3"
+bethe = "Gamma7"
+cdml = "~Gamma10"
+projective = true
+reality = 0
+server_values = ["1", "(1-i*sqrt3)/2", "(1+i*sqrt3)/2", "i", "(i+sqrt3)/2", "-(i-sqrt3)/2", "-1", "-(1-i*sqrt3)/2", "-(1+i*sqrt3)/2", "-i", "-(i+sqrt3)/2", "(i-sqrt3)/2"]
+characters = ["1", "zeta^10", "zeta^2", "zeta^3", "zeta", "zeta^11", "-1", "zeta^4", "zeta^8", "zeta^9", "zeta^7", "zeta^5"]
+
+[[irreps]]
+label = "2~E3"
+bethe = "Gamma8"
+cdml = "~Gamma11"
+projective = true
+reality = 0
+server_values = ["1", "(1+i*sqrt3)/2", "(1-i*sqrt3)/2", "-i", "-(i-sqrt3)/2", "(i+sqrt3)/2", "-1", "-(1+i*sqrt3)/2", "-(1-i*sqrt3)/2", "i", "(i-sqrt3)/2", "-(i+sqrt3)/2"]
+characters = ["1", "zeta^2", "zeta^10", "zeta^9", "zeta^11", "zeta", "-1", "zeta^8", "zeta^4", "zeta^3", "zeta^5", "zeta^7"]
+
+[[irreps]]
+label = "1~E2"
+bethe = "Gamma10"
+cdml = "~Gamma12"
+projective = true
+reality = 0
+server_values = ["1", "(1+i*sqrt3)/2", "(1-i*sqrt3)/2", "i", "(i-sqrt3)/2", "-(i+sqrt3)/2", "-1", "-(1+i*sqrt3)/2", "-(1-i*sqrt3)/2", "-i", "-(i-sqrt3)/2", "(i+sqrt3)/2"]
+characters = ["1", "zeta^2", "zeta^10", "zeta^3", "zeta^5", "zeta^7", "-1", "zeta^8", "zeta^4", "zeta^9", "zeta^11", "zeta"]
+

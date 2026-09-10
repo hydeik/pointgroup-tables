@@ -1,0 +1,133 @@
+# Bilbao Crystallographic Server, REPRESENTATIONS DPG: character table of the double group of C4v (4mm)
+# Format: tests/reference/bilbao/characters/README.md
+# Written by tests/reference/bilbao/fetch.py from the server's HTML; the tests read this file only.
+
+group = "C4v"
+table = "https://www.cryst.ehu.eus/cgi-bin/cryst/programs/representations_out.pl?tipogrupo=dbg&pointspace=point&num=99&super=13"
+status = "done"
+source = "Bilbao Crystallographic Server, REPRESENTATIONS DPG: L. Elcoro, B. Bradlyn, Z. Wang, M. G. Vergniory, J. Cano, C. Felser, B. A. Bernevig, D. Orobengoa, G. de la Flor and M. I. Aroyo, J. Appl. Cryst. 50 (2017) 1457-1477"
+fetched = "2026-09-10"
+double = true
+hermann_mauguin = "4mm"
+notes = ""
+conductor = 8          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "C1"
+elements = ["1"]
+size = 1
+order = 1
+parity = 1
+barred = "none"
+
+[[classes]]
+label = "C2"
+elements = ["2_001", "d2_001"]
+size = 2
+order = 4
+parity = 1
+barred = "mixed"
+
+[[classes]]
+label = "C3"
+elements = ["4+_001", "4-_001"]
+size = 2
+order = 8
+parity = 1
+barred = "none"
+
+[[classes]]
+label = "C4"
+elements = ["m_010", "m_100", "dm_010", "dm_100"]
+size = 4
+order = 4
+parity = -1
+barred = "mixed"
+
+[[classes]]
+label = "C5"
+elements = ["m_110", "m_1-10", "dm_110", "dm_1-10"]
+size = 4
+order = 4
+parity = -1
+barred = "mixed"
+
+[[classes]]
+label = "C6"
+elements = ["d1"]
+size = 1
+order = 2
+parity = 1
+barred = "all"
+
+[[classes]]
+label = "C7"
+elements = ["d4+_001", "d4-_001"]
+size = 2
+order = 8
+parity = 1
+barred = "all"
+
+[[irreps]]
+label = "A1"
+bethe = "Gamma1"
+cdml = "Gamma1"
+projective = false
+reality = 1
+server_values = ["1", "1", "1", "1", "1", "1", "1"]
+characters = ["1", "1", "1", "1", "1", "1", "1"]
+
+[[irreps]]
+label = "B1"
+bethe = "Gamma3"
+cdml = "Gamma2"
+projective = false
+reality = 1
+server_values = ["1", "1", "-1", "1", "-1", "1", "-1"]
+characters = ["1", "1", "-1", "1", "-1", "1", "-1"]
+
+[[irreps]]
+label = "B2"
+bethe = "Gamma4"
+cdml = "Gamma3"
+projective = false
+reality = 1
+server_values = ["1", "1", "-1", "-1", "1", "1", "-1"]
+characters = ["1", "1", "-1", "-1", "1", "1", "-1"]
+
+[[irreps]]
+label = "A2"
+bethe = "Gamma2"
+cdml = "Gamma4"
+projective = false
+reality = 1
+server_values = ["1", "1", "1", "-1", "-1", "1", "1"]
+characters = ["1", "1", "1", "-1", "-1", "1", "1"]
+
+[[irreps]]
+label = "E"
+bethe = "Gamma5"
+cdml = "Gamma5"
+projective = false
+reality = 1
+server_values = ["2", "-2", "0", "0", "0", "2", "0"]
+characters = ["2", "-2", "0", "0", "0", "2", "0"]
+
+[[irreps]]
+label = "~E2"
+bethe = "Gamma7"
+cdml = "~Gamma6"
+projective = true
+reality = -1
+server_values = ["2", "0", "-sqrt2", "0", "0", "-2", "sqrt2"]
+characters = ["2", "0", "-sqrt2", "0", "0", "-2", "sqrt2"]
+
+[[irreps]]
+label = "~E1"
+bethe = "Gamma6"
+cdml = "~Gamma7"
+projective = true
+reality = -1
+server_values = ["2", "0", "sqrt2", "0", "0", "-2", "-sqrt2"]
+characters = ["2", "0", "sqrt2", "0", "0", "-2", "-sqrt2"]
+

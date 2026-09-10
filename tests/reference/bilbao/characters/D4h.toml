@@ -1,0 +1,144 @@
+# Bilbao Crystallographic Server, Point Group Tables (POINT): character table of D4h (4/mmm)
+# Format: tests/reference/bilbao/characters/README.md
+# Written by tests/reference/bilbao/fetch.py from the server's HTML; the tests read this file only.
+
+group = "D4h"
+table = "https://www.cryst.ehu.eus/cgi-bin/rep/programs/sam/point.py?sg=123&num=15"
+status = "done"
+source = "Bilbao Crystallographic Server, Point Group Tables (POINT): M. I. Aroyo, A. Kirov, C. Capillas, J. M. Perez-Mato and H. Wondratschek, Acta Cryst. A62 (2006) 115-128"
+fetched = "2026-09-10"
+double = false
+hermann_mauguin = "4/mmm"
+notes = ""
+conductor = 1          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "1"
+size = 1
+order = 1
+parity = 1
+
+[[classes]]
+label = "2"
+size = 1
+order = 2
+parity = 1
+
+[[classes]]
+label = "4"
+size = 2
+order = 4
+parity = 1
+
+[[classes]]
+label = "2_100"
+size = 2
+order = 2
+parity = 1
+
+[[classes]]
+label = "2_1-10"
+size = 2
+order = 2
+parity = 1
+
+[[classes]]
+label = "-1"
+size = 1
+order = 2
+parity = -1
+
+[[classes]]
+label = "m_z"
+size = 1
+order = 2
+parity = -1
+
+[[classes]]
+label = "-4"
+size = 2
+order = 4
+parity = -1
+
+[[classes]]
+label = "m_100"
+size = 2
+order = 2
+parity = -1
+
+[[classes]]
+label = "m_1-10"
+size = 2
+order = 2
+parity = -1
+
+[[irreps]]
+label = "A1g"
+bethe = "Gamma1+"
+projective = false
+server_values = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
+characters = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
+
+[[irreps]]
+label = "A2g"
+bethe = "Gamma2+"
+projective = false
+server_values = ["1", "1", "1", "-1", "-1", "1", "1", "1", "-1", "-1"]
+characters = ["1", "1", "1", "-1", "-1", "1", "1", "1", "-1", "-1"]
+
+[[irreps]]
+label = "B1g"
+bethe = "Gamma3+"
+projective = false
+server_values = ["1", "1", "-1", "1", "-1", "1", "1", "-1", "1", "-1"]
+characters = ["1", "1", "-1", "1", "-1", "1", "1", "-1", "1", "-1"]
+
+[[irreps]]
+label = "B2g"
+bethe = "Gamma4+"
+projective = false
+server_values = ["1", "1", "-1", "-1", "1", "1", "1", "-1", "-1", "1"]
+characters = ["1", "1", "-1", "-1", "1", "1", "1", "-1", "-1", "1"]
+
+[[irreps]]
+label = "Eg"
+bethe = "Gamma5+"
+projective = false
+server_values = ["2", "-2", "0", "0", "0", "2", "-2", "0", "0", "0"]
+characters = ["2", "-2", "0", "0", "0", "2", "-2", "0", "0", "0"]
+
+[[irreps]]
+label = "A1u"
+bethe = "Gamma1-"
+projective = false
+server_values = ["1", "1", "1", "1", "1", "-1", "-1", "-1", "-1", "-1"]
+characters = ["1", "1", "1", "1", "1", "-1", "-1", "-1", "-1", "-1"]
+
+[[irreps]]
+label = "A2u"
+bethe = "Gamma2-"
+projective = false
+server_values = ["1", "1", "1", "-1", "-1", "-1", "-1", "-1", "1", "1"]
+characters = ["1", "1", "1", "-1", "-1", "-1", "-1", "-1", "1", "1"]
+
+[[irreps]]
+label = "B1u"
+bethe = "Gamma3-"
+projective = false
+server_values = ["1", "1", "-1", "1", "-1", "-1", "-1", "1", "-1", "1"]
+characters = ["1", "1", "-1", "1", "-1", "-1", "-1", "1", "-1", "1"]
+
+[[irreps]]
+label = "B2u"
+bethe = "Gamma4-"
+projective = false
+server_values = ["1", "1", "-1", "-1", "1", "-1", "-1", "1", "1", "-1"]
+characters = ["1", "1", "-1", "-1", "1", "-1", "-1", "1", "1", "-1"]
+
+[[irreps]]
+label = "Eu"
+bethe = "Gamma5-"
+projective = false
+server_values = ["2", "-2", "0", "0", "0", "-2", "2", "0", "0", "0"]
+characters = ["2", "-2", "0", "0", "0", "-2", "2", "0", "0", "0"]
+

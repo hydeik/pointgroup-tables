@@ -1,0 +1,66 @@
+# Bilbao Crystallographic Server, Point Group Tables (POINT): character table of D2 (222)
+# Format: tests/reference/bilbao/characters/README.md
+# Written by tests/reference/bilbao/fetch.py from the server's HTML; the tests read this file only.
+
+group = "D2"
+table = "https://www.cryst.ehu.eus/cgi-bin/rep/programs/sam/point.py?sg=16&num=6"
+status = "done"
+source = "Bilbao Crystallographic Server, Point Group Tables (POINT): M. I. Aroyo, A. Kirov, C. Capillas, J. M. Perez-Mato and H. Wondratschek, Acta Cryst. A62 (2006) 115-128"
+fetched = "2026-09-10"
+double = false
+hermann_mauguin = "222"
+notes = ""
+conductor = 1          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "1"
+size = 1
+order = 1
+parity = 1
+
+[[classes]]
+label = "2_z"
+size = 1
+order = 2
+parity = 1
+
+[[classes]]
+label = "2_y"
+size = 1
+order = 2
+parity = 1
+
+[[classes]]
+label = "2_x"
+size = 1
+order = 2
+parity = 1
+
+[[irreps]]
+label = "A"
+bethe = "Gamma1"
+projective = false
+server_values = ["1", "1", "1", "1"]
+characters = ["1", "1", "1", "1"]
+
+[[irreps]]
+label = "B1"
+bethe = "Gamma3"
+projective = false
+server_values = ["1", "1", "-1", "-1"]
+characters = ["1", "1", "-1", "-1"]
+
+[[irreps]]
+label = "B2"
+bethe = "Gamma2"
+projective = false
+server_values = ["1", "-1", "1", "-1"]
+characters = ["1", "-1", "1", "-1"]
+
+[[irreps]]
+label = "B3"
+bethe = "Gamma4"
+projective = false
+server_values = ["1", "-1", "-1", "1"]
+characters = ["1", "-1", "-1", "1"]
+
