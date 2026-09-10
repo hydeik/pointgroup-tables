@@ -144,7 +144,7 @@ Properties an implementation must verify for every group (all exact):
 
 - `ω(E, g) = ω(g, E) = 1` (the section is normalised);
 - the cocycle condition `ω(g, h) ω(gh, k) = ω(g, hk) ω(h, k)` for all
-  triples (exhaustively for `|G| ≤ 48`, sampled beyond);
+  triples, exhaustively for every group tested ([Verification](./verification.md#exhaustive-never-sampled));
 - `ω(g, g⁻¹) = ω(g⁻¹, g)`;
 - the group axioms on the Cayley table of `G†`;
 - `ω(g, h) = ω(r, r')` depends only on the rotation parts, and for a

@@ -121,7 +121,7 @@ conjugacy classes, label conventions) build on `R`, the type and `H`.
 An implementation must pass, for every group it constructs:
 
 - the group axioms on the Cayley table: closure, identity, inverses, and
-  associativity (exhaustively for `|G| ≤ 48`, sampled beyond);
+  associativity, exhaustively for every group tested ([Verification](./verification.md#exhaustive-never-sampled));
 - agreement of `(order, number of conjugacy classes, histogram of element
   orders)` with a checked-in table of known values; the seed is the 43 groups
   in the prototype (`C1` ... `Ih`, including `C5v`, `C7v`, `D7h`, `D8d`,

@@ -247,6 +247,54 @@ irrep (index, label or symbol, and the decomposed fields a consumer would
 otherwise parse from the label). Tables refer to records by index only.
 _Avoid_: entry, row (for a record), header (for an irrep record)
 
+### Verification
+
+**Self-consistency check**:
+An exact property of the tables of one group that holds by mathematics
+alone (group axioms, cocycle condition, orthogonality, unitarity, trace
+equals character). Proves that a table is correct, not that it follows any
+reference.
+_Avoid_: sanity check, self-test, assertion
+
+**Reference comparison**:
+A test of the tables of one group against a transcribed reference work.
+Proves that names, class memberships, factor-system signs and bases agree
+with the literature. Comes in two modes: **structural comparison**, which
+matches classes by their invariants (size, parity, element order) and
+irreps by their characters without using any label, and **labelled
+comparison**, which matches rows and columns by the labels of a label
+convention.
+_Avoid_: validation (ambiguous), cross-check
+
+**Reference data**:
+A transcription of a reference work (character table, element labels,
+multiplication table, irrep matrices, Bethe symbols) kept as test data with
+its source cited; never shipped, and distinct from the convention data
+derived from it.
+_Avoid_: fixtures (for these files), ground truth
+
+**Check ledger**:
+The single table in the verification chapter that lists every check with
+an identifier (`AG-1`, `CH-5`, `REF-3`, ...), its oracle, the groups it runs
+on and whether the self-check flag runs it.
+_Avoid_: test plan, test matrix
+
+**Self-check**:
+The optional run of the self-consistency checks on the document a single
+invocation is about to emit, selected with `--verify`; a failure reports
+every failing check by its ledger identifier and emits nothing.
+_Avoid_: verification mode, validation flag
+
+**Golden document**:
+A checked-in document for a fixed group, subcommand and format that the
+tool must reproduce byte for byte; the regression and determinism oracle.
+_Avoid_: snapshot, fixture
+
+**Mutation test**:
+A test that corrupts one entry of a document model on purpose and requires
+the named checks to fail; the proof that the checks detect what they claim.
+_Avoid_: negative test, fault injection
+
 ### Number representation
 
 **Field**:

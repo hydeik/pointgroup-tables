@@ -87,9 +87,16 @@ metadata, even where they do not change the table):
 | `--values <set>` | comma-separated subset of `exact`, `numeric`, `both`, `pretty` ([Values](./values.md)) | `both` |
 | `--label-convention <name>` | a shipped label convention | none (canonical labels only) |
 | `--basis-convention <name>` | `canonical` or a shipped basis convention | `canonical` |
+| `--verify` | flag: run the self-consistency checks of [Verification](./verification.md#where-checks-run) on the document before emitting it | off |
 
 The output format is never inferred from the file name: `-o table.yaml`
 without `--format yaml` writes JSON. An existing output file is overwritten.
+
+`--verify` changes nothing in a passing document (the same bytes are
+emitted); when a check fails it reports every failing check and exits with
+code `1` without writing a document. It runs only self-consistency checks,
+never a reference comparison, and is a usage error on the utility
+subcommands. Its cost grows as `|G†|²` and reaches minutes for large `n`.
 
 Specific to some subcommands (a usage error elsewhere):
 
@@ -184,6 +191,16 @@ hint: run 'pointgroup-tables list conventions' for the shipped conventions
 Usage errors (code `2`) use the argument parser's usual usage line followed
 by the same `pointgroup-tables: error: ...` line.
 
+A `--verify` failure (code `1`) reports every failing check after the error
+line, one line per check, prefixed with `verify:` and the check identifier
+of the [verification ledger](./verification.md#check-ledger):
+
+```
+pointgroup-tables: error: verification of 'D3' failed (2 checks)
+verify: CH-1: rows 1 and 2 are not orthogonal: <D(1), D(2)> = 6
+verify: MX-3: D(C3^1) of irrep 2 is not unitary
+```
+
 ## Examples
 
 ```
@@ -211,3 +228,7 @@ An implementation must pass:
   byte-identical output, for every subcommand and format;
 - `all` equals the union of the five single-table documents under the same
   options, table by table.
+- `--verify` on a passing group emits the same bytes as without it; on
+  `list` and `schema` it gives `2`; on a document with an injected failing
+  check it gives `1`, an empty document stream, and one `verify:` line per
+  failing check ([Verification](./verification.md), `CLI-3`).
