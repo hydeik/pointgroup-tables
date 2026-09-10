@@ -16,7 +16,7 @@ C6 rotations of (1 0 0). Improper operations are i times the proper operation wi
 parameters (marker i implicit). Labels transliterated per README.md.
 """
 # [map] is derived from these anchors; the checker fixes eps = +1 on them
-anchors = ["E", "C2", "sigma_x"]
+anchors = ["E", "C2", "sigma_y"]
 
 [book]
 elements = ["E", "C2", "sigma_x", "sigma_y"]
@@ -34,8 +34,8 @@ irreps = ["A1", "A2", "B1", "B2", "E1/2"]
 [map]
 "E" = "E"
 "C2" = "C2"
-"sigma_x" = "sigma_v(1)"
-"sigma_y" = "sigma_d(1)"
+"sigma_x" = "sigma_d(1)"
+"sigma_y" = "sigma_v(1)"
 
 # reconstructed from the parameters; '~' marks a product the book prints with a tilde
 [multiplication]

@@ -290,11 +290,11 @@ The label convention file gains an `[irreps]` table:
 
 ```toml
 [irreps]
-component_style = "superscript"     # 1E -> ^1E ; "prefix" keeps 1E
-fraction_style = "subscript"        # E1/2 -> E_{1/2}
-prime_style = "ascii"               # A1' stays A1' ; "unicode" gives A1′
-letters = { }                       # ordinary irreps: canonical -> reference letter, e.g. { T = "F" }
-projective_letters = { G = "F" }    # projective irreps only: G3/2 -> F3/2
+component_style = "prefix"          # 1E stays 1E ; "superscript" gives ^1E
+fraction_style = "plain"            # E1/2 stays E1/2 ; "subscript" gives E_{1/2}
+projective_parity_separator = ","   # E1/2g -> E1/2,g ; "" keeps E1/2g (ordinary A1g is never separated)
+letters = { G = "F" }               # ordinary irreps: canonical -> reference letter
+projective_letters = { G = "F", B = "A" }   # projective irreps only: G3/2 -> F3/2, B3/2 -> A3/2
 
 [irreps.overrides.T]                # per-group explicit map, canonical -> reference
 "1E3/2" = "1F3/2"
@@ -304,14 +304,22 @@ projective_letters = { G = "F" }    # projective irreps only: G3/2 -> F3/2
 Rules rewrite the spelling; `letters` and `projective_letters` rename a
 letter for every group; overrides handle a reference that swaps the members
 of a pair, keeps a parent letter for a split pair, or names an irrep
-irregularly. The Altmann & Herzig table ships from the start with
-`projective_letters = { G = "F" }` and the `T`, `Th` overrides above
-(`1F3/2`, `2F3/2`, with `g`/`u` in `Th`), both confirmed against the book.
-Its remaining content (the book's `1E`/`2E` assignments, its spelling of
-`A1/2` and `B3/2`, and the `I5/2` of `Ih`) is filled by the same
-transcription work that fills the element overrides
-([Transcribe Altmann & Herzig element labels](https://github.com/hydeik/pointgroup-tables/issues/13)),
-which must record the irrep symbol row of every transcribed table.
+irregularly. The Altmann & Herzig table above is the one the transcription
+of the irrep symbol rows fixed
+([Altmann & Herzig label-convention rules and overrides](https://github.com/hydeik/pointgroup-tables/issues/14)):
+the book writes every four-dimensional irrep as `F` (`F` of `I`, `F3/2`,
+`F3/2,g`), the real one-dimensional projective irreps of `C3` and `S6` as
+`A3/2` (`A3/2,g`, `A3/2,u`), the projective `g`/`u` after a comma
+(`E1/2,g`, `1E1/2,u`), and the pair of `T` / `Th` as `1F3/2`, `2F3/2`
+(`1F3/2,g`, ... in `Th`); `A1/2`, `A'`, `1E1/2`, `E1/2`, `I5/2` and every
+ordinary symbol are spelled as the canonical rules do. Whether the book
+assigns `1E` / `2E`, `B1` / `B2` and `T1` / `T2` as the canonical rules do
+is a matter of characters, not spelling: it is checked by `REF-5` against
+the transcribed character tables
+([Transcribe Altmann & Herzig character tables and sample axial irrep matrices](https://github.com/hydeik/pointgroup-tables/issues/19)),
+and any disagreement becomes an `[irreps.overrides]` entry. `C2v` and `C6v`
+were settled ahead of that by the element isomorphism of the label
+convention ([Label conventions](./label-conventions.md#the-altmann--herzig-convention)).
 
 ## Verification
 

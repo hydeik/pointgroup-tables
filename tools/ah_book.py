@@ -816,7 +816,7 @@ ANCHORS = {
     "Ci": "E=E i=i",
     "Cs": "E=E sigma_h=sigma_h",
     "D2": "E=E C2z=C2 C2x=C2'(1)",
-    "C2v": "E=E C2=C2 sigma_x=sigma_v(1)",
+    "C2v": "E=E C2=C2 sigma_y=sigma_v(1)",  # letter-preserving: the book's B1 is symmetric under sigma_y
     "C2h": "E=E C2=C2 i=i",
     "D2h": "E=E C2z=C2 C2x=C2'(1) i=i",
     "C4": "E=E C4+=C4^1",
@@ -831,7 +831,7 @@ ANCHORS = {
     "S6": "E=E C3+=C3^1 i=i",
     "D3": "E=E C3+=C3^1 C2'1=C2'(1)",
     "D6": "E=E C6+=C6^1 C2'1=C2'(1)",
-    "C6v": "E=E C6+=C6^1 sigma_d1=sigma_v(1)",
+    "C6v": "E=E C6+=C6^1 sigma_v1=sigma_v(1)",  # letter-preserving: the book's B1 is symmetric under sigma_v
     "C3h": "E=E S3-=S3^-1",
     "C6h": "E=E C6+=C6^1 i=i",
     "D3d": "E=E C3+=C3^1 C2'1=C2'(1) i=i",

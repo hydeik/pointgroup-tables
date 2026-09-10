@@ -195,13 +195,20 @@ convention is selected, every table is emitted in the reference section:
   `ε(g) χ(g)`; ordinary irreps are unchanged.
 
 `ω_ref` differs from `ω` by a coboundary, so nothing about the irreps changes
-except these signs. Version 1 ships no `barred` table; the Altmann & Herzig
-one is filled from the transcription task
-[Transcribe Altmann & Herzig element labels](https://github.com/hydeik/pointgroup-tables/issues/13),
-which also records the book's tilde assignments and multiplication tables.
-Whether Altmann & Herzig order the positive hemisphere `z`-first or `x`-first
-only affects binary rotations of the polyhedral groups and is settled by the
-same transcription.
+except these signs. For the axial groups the set of swapped elements is not
+listed but derived from the convention's `[secondary]` direction table: the
+reference's pole of every secondary axis and plane is known from that
+table, and the element is swapped exactly when that pole is the antipode of
+the pole of the canonical lift
+([Label conventions](./label-conventions.md#reference-section)). The
+explicit `[barred.<group>]` tables cover the polyhedral groups. Altmann &
+Herzig use no hemisphere rule at all: their poles follow their Rule 1 (the
+poles of a class are images of one another under the group), so their
+section differs from ours on binary rotations and planes only, as
+recorded by the transcription task
+[Transcribe Altmann & Herzig element labels](https://github.com/hydeik/pointgroup-tables/issues/13)
+(`D3`: `C2'(2)`, `C2'(3)`; `O`: `C2'(1)`, `C2'(3)`, `C2'(5)`; `T`, `Th`:
+none).
 
 ## Verification data
 

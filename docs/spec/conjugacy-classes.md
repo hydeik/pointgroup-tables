@@ -162,10 +162,15 @@ from the **reference label of the representative** by the same reduction
 (axis index removed, exponent sign removed when the class contains the
 inverse), so with `exponent_style = "plusminus"` the `Th` classes read
 `4C3+`, `4C3-`, `4S6-`, `4S6+` and the `D6h` class `{C3+, C3-}` reads
-`2C3`. A convention may add `[classes.overrides.<group>]` mapping canonical
-class labels to the reference's spelling where the reference is irregular;
-the convention cannot change the class order or membership except through
-its `barred` table.
+`2C3`. Precisely: a class of one element is labelled by the reference label
+of that element (`C2x`, `sigma_y` in `D2h`); a larger class by its size and
+the reduced *canonical* label of its representative spelled by the
+convention's `exponent_style` (`3C2` for `C2x, C2y, C2z` of `O`, `3sigma_h`
+in `Oh`, `15sigma` in `Ih`, `4C3+` in `Th`). A convention may add
+`[classes.overrides.<group>]` mapping canonical class labels to the
+reference's spelling where the reference is irregular (Altmann & Herzig
+need none); the convention cannot change the class order or membership
+except through its `barred` table.
 
 ## Verification
 

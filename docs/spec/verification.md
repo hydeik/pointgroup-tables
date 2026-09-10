@@ -268,7 +268,10 @@ Reference data is **test data** and lives under `tests/reference/`, never
 in the package. Data the tool ships (label and basis conventions, the
 Koster table) lives under `src/pointgroup_tables/data/conventions/` and is
 derived from the transcriptions, not identical to them: a convention is
-rules plus overrides, a transcription is the book as printed.
+rules plus overrides, a transcription is the book as printed. The
+`altmann-herzig` label convention is written by
+`tools/ah_convention.py generate` and checked against every transcription
+by `tools/ah_convention.py check` (the prototype of `REF-6`).
 
 ```
 tests/reference/

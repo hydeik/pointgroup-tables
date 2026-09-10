@@ -133,50 +133,163 @@ Key order and presence rules are fixed in
 
 ## Label conventions (reference labels)
 
-One TOML file per convention, shipped with the package. The default is the
-canonical labelling itself (no file).
+One TOML file per convention, shipped with the package as
+`src/pointgroup_tables/data/conventions/labels/<name>.toml` (the namespace
+of the [basis conventions](./basis-conventions.md) is `.../conventions/basis/`).
+The default is the canonical labelling itself (no file). A convention is
+applied to the canonical label of every element by the rules below; a
+per-group `overrides` entry wins over every rule.
 
 ```toml
 name = "altmann-herzig"
 source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed."
-exponent_style = "plusminus"      # C3^1 -> C3+, C3^-1 -> C3-, C8^3 -> C8^3+
-sigma_spelling = { sigma_h = "sigma_h", sigma_v = "sigma_v", sigma_d = "sigma_d" }
-
-[rules]                           # applied to every group
-swap_primes = false               # C2' <-> C2'' and sigma_v <-> sigma_d (even n)
-axis_index_shift = 0              # rotate secondary-axis numbering
-
-[overrides.D4h]                   # per-group explicit map, canonical -> reference
-"sigma_v(1)" = "sigma_x"
-
+exponent_style = "plusminus"      # C3^1 -> C3+, C3^-1 -> C3-, C8^3 -> C8^3+, S10^-3 -> S10^3-
 barred_format = "~{label}"        # how the reference spells a barred element; "{label}~" for a suffix
 
-[barred.D3h]                      # per-group: elements whose reference lift is our barred element
-swapped = ["C2'(2)", "C2'(3)"]
+[secondary]                       # the reference's numbering of the secondary directions of D_Nh
+"6" = { primed = [0, 4, 8], double_primed = [3, 7, 11] }
+
+[overrides.D2h]                   # per-group explicit map, canonical -> reference
+"C2'(1)" = "C2x"
+
+[barred.O]                        # per-group: elements whose reference lift is our barred element
+swapped = ["C2'(1)", "C2'(3)", "C2'(5)"]
+
+[irreps]                          # reference irrep symbols, see Irrep labels
+letters = { G = "F" }
 ```
 
 The rule vocabulary of version 1 is exactly `exponent_style`,
-`sigma_spelling`, `swap_primes` and `axis_index_shift`; anything a reference
-does that these cannot express goes in `overrides`. A group without an
-override table still receives rule-based reference labels. `barred_format`
-and the `barred` tables concern the double group: they rename the bar and
-swap the section for the listed elements, which changes the factor table and
-the signs of the projective irreps as described in
-[Double groups](./double-groups.md). Version 1 ships no `barred` table.
+`barred_format`, the `[secondary]` table, `[overrides]`, `[barred]`, the
+`[irreps]` table of [Irrep labels](./irrep-labels.md#reference-irrep-labels-in-a-label-convention)
+and the `[classes.overrides]` table of
+[Conjugacy classes](./conjugacy-classes.md#reference-class-labels). The rules
+`swap_primes`, `axis_index_shift` and `sigma_spelling` foreseen when this
+framework was designed are needed by no group of Altmann & Herzig and are
+not part of the vocabulary. A group without an override table still
+receives rule-based reference labels.
 
-## Command line and metadata
+### Principal elements
 
-- `--label-convention <name>` selects a convention (independent of
-  `--basis-convention`, which selects the basis of irrep matrices).
-- Output metadata records `label_convention = { name, source }` when one is
-  selected.
+`exponent_style = "plusminus"` rewrites `C{m}^{j}` and `S{m}^{j}` as
+`C{m}+` / `C{m}-` when `|j| = 1` and as `C{m}^{|j|}+` / `C{m}^{|j|}-`
+otherwise; `E`, `i`, `C2`, `sigma_h` and the `~` prefix are unchanged.
+`"canonical"` keeps the canonical spelling.
+
+### Secondary elements: the master group and its direction table
+
+Every axial group with `R = D_N` sits inside its **master group** `D_Mh`,
+`M = N` for even `N` and `M = 2N` for odd `N`, whose secondary directions
+are `0 … M−1` in units of `π/M`; direction `k` of `G` (units `π/N`) is
+direction `k·M/N` of the master. A reference numbers the master's
+directions once, in `[secondary."M"]`: `primed` lists the poles of its
+`C2'1, C2'2, …` and `double_primed` those of `C2''1, C2''2, …`, as integers
+in units of `180/M` degrees (`0 ≤ pole < 2M`; the direction is the pole
+modulo `M`). The reference label of a secondary element of `G` in direction
+`k` is
+
+- for a proper element `(k, 1, +1)`: the master's label of that direction,
+  `C2'{i}` or `C2''{i}` with letter and index from the table entry (so the
+  four secondary axes of `D4d`, canonical `C2'(1)`, `C2'(2)`, `C2''(1)`,
+  `C2''(2)`, are `C2'1 … C2'4` of `D8h`);
+- for a plane `(k, 1, −1)`: the canonical letter (`sigma_v` or `sigma_d`)
+  with the index `i` of the master's secondary axis in direction `k`, the
+  pole of the plane (Altmann & Herzig write every improper operation as
+  `i` times the proper operation with the same parameters).
+
+**The twist.** In `Cnv` with `n ≡ 2 (mod 4)` canonical direction `0`
+corresponds to the master's direction `M/2` (the direction of `C2''1`),
+i.e. direction `k` of `G` is looked up as `k + N/2`. The reference's
+`sigma_v` planes of these groups contain the master's `C2'` axes, whereas
+the canonical `sigma_v(1)` is perpendicular to direction `0`; the twist
+keeps the letters of the two layers equal and, with it, rule 5 of
+[Irrep labels](./irrep-labels.md) (`B1` symmetric under `sigma_v`) agrees
+with the reference without an irrep override
+([ADR-0007](../adr/0007-abstract-element-identification.md)).
+
+**Coverage.** A group whose master `M` has no `[secondary]` entry receives
+the spelling rules only and keeps the canonical indices; the spec of each
+convention states its range. The `elements` table is unchanged either way;
+nothing in the metadata records it (see the map's fog).
+
+### Reference section
+
+For the axial groups the barred assignment of the reference follows from
+the same table. Our lift of the secondary element in direction `k` has its
+pole at `180·k/N` degrees when `2k ≤ N` and at `180·(k−N)/N` otherwise
+(the positive hemisphere of [Double groups](./double-groups.md), rotated by
+`90°` under the twist); the reference's pole is the table entry. When the
+two are antipodal the element is **swapped**: its reference lift is our
+barred element. The `[barred.<group>]` tables list the remaining cases
+explicitly (the polyhedral groups, whose poles the table does not cover).
+
+### Polyhedral groups
+
+The correspondence between canonical axis numbers and a reference's axis
+names is a table, not a rule: `[overrides.<group>]` holds the complete map
+of `T`, `Th`, `Td`, `O`, `Oh`, `I`, `Ih`.
+
+## The Altmann & Herzig convention
+
+Decided in wayfinder ticket
+[Altmann & Herzig label-convention rules and overrides](https://github.com/hydeik/pointgroup-tables/issues/14)
+from the transcriptions of
+[Transcribe Altmann & Herzig element labels](https://github.com/hydeik/pointgroup-tables/issues/13).
+The file `src/pointgroup_tables/data/conventions/labels/altmann-herzig.toml`
+is generated by `tools/ah_convention.py generate` and never edited by hand.
+
+- `exponent_style = "plusminus"`, `barred_format = "~{label}"`.
+- `[secondary]` has the entries `M = 2, 4, …, 20`: `M ≤ 10` from the
+  parameter tables of `D2h`, `D4h`, `D6h`, `D8h`, `D10h` (T 31.1 … T 39.1),
+  `M = 12 … 20` from those of `D6d`, `D7h`, `D8d`, `D9h`, `D10d` (T 45.1,
+  T 36.1, T 47.1, T 38.1, T 49.1), whose `C2'` and `sigma_v` / `sigma_d`
+  rows are the `C2'` and `C2''` directions of `D_Mh`. The book's numbering
+  is not a formula but its Rule 2 (subgroup consistency): `D9h` numbers the
+  three axes of `D3h` first, `D8h` the two of `D4h` first, `D6d` its `C2'`
+  as `C2'1 … C2'3, C2''1 … C2''3` of `D6h`. The book tabulates every axial
+  family up to `n = 10`, so these entries cover its whole range; `n ≥ 11`
+  is outside the book and gets canonical indices.
+- `[overrides]`: the Cartesian names of `D2` (`C2z`, `C2x`, `C2y`), `D2h`
+  (plus `sigma_z`, `sigma_x`, `sigma_y`) and `C2v` (`sigma_x`, `sigma_y`),
+  and the complete maps of the seven polyhedral groups. `C2h`, `C2`, `Cs`,
+  `Ci` need none.
+- `[barred]`: `Td`, `O`, `Oh`, `I`, `Ih` (`T`, `Th` agree with the canonical
+  section); the axial lists are derived.
+- `[irreps]` as in [Irrep labels](./irrep-labels.md#reference-irrep-labels-in-a-label-convention);
+  no `[classes.overrides]`.
+
+**Element isomorphism.** The book's tables and the canonical labels are
+matched by an isomorphism of abstract groups fixed by anchors (`E`, the
+principal rotation, the first secondary element, `i`). For `C2v` and
+`C6v` the anchor is the letter-preserving one (`sigma_y = sigma_v(1)`,
+`sigma_v1 = sigma_v(1)`), not the geometric one (`sigma_x`, `sigma_d1`):
+the book's `B1` of `C2v` is symmetric under `sigma_y` (T 50.4) and that of
+`C6v` under `sigma_v` (Table 17.6), so only this choice lets rule 5 of the
+irrep labels reproduce the book's symbols; it costs one extra swapped lift
+in each group. For the polyhedral groups the anchors of the transcription
+(`C4z+ = C4^1(1)`, `C3,1+ = C3^1(1)`, `C5,1+ = C5^1(1)`, second generator by
+search) are kept: `T` and `Th` match the canonical senses and section
+exactly, and for `O` / `I` no inner automorphism removes the sign
+disagreements (best: 4 of 8 in `O`, 14 of 30 in `I`), which are the
+book's axis orientations and pure data.
+
+**Verification** (`REF-6`, `REF-4` of [Verification](./verification.md)):
+`uv run python tools/ah_convention.py check` applies the rules and the
+data to the canonical labels of every transcribed group and compares with
+the book's labels element by element, and compares the derived swapped
+list of every axial group with the list the transcription checker solves
+from the book's tilde marks. Result at the time of the decision: all 33
+axial files and both `C3v` settings reproduce with zero mismatches, the
+derived swapped lists equal the solved ones in every group, and the
+polyhedral tables reproduce by construction. The entries `M = 12 … 20`
+have no transcribed group behind them and are checked only against the
+printed parameter tables.
 
 ## Version 1 scope
 
-The spec ships the canonical rules and the convention framework. The
-Altmann & Herzig convention starts with rules only and an empty override
-table; filling it is the task
-[Transcribe Altmann & Herzig element labels](https://github.com/hydeik/pointgroup-tables/issues/13)
-followed by
-[Altmann & Herzig label-convention rules and overrides](https://github.com/hydeik/pointgroup-tables/issues/14).
+The spec ships the canonical rules, the convention framework and the
+complete Altmann & Herzig convention for elements. The book's `1E` / `2E`,
+`B1` / `B2` and `T1` / `T2` assignments beyond `C2v` and `C6v` are checked
+by `REF-5` once the character tables are transcribed
+([Transcribe Altmann & Herzig character tables and sample axial irrep matrices](https://github.com/hydeik/pointgroup-tables/issues/19)).
 Bradley & Cracknell and Bilbao conventions are not yet specified.

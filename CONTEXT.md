@@ -171,6 +171,14 @@ convention implies an orientation of the group in space, but the tool itself
 never fixes coordinates.
 _Avoid_: setting convention, orientation, standard setting, naming scheme
 
+**Master group**:
+The dihedral group `D_Mh` (`M` even) that contains an axial point group and
+whose secondary directions a reference work numbers once; the reference's
+labels of every axial group restrict from its master (Altmann & Herzig's
+Rule 2). A label convention's direction table is keyed by the master's
+`M`.
+_Avoid_: parent group, supergroup, holohedry
+
 **Basis convention**:
 A named, selectable data file (rules for the axial families, generator
 matrices for the polyhedral families) that fixes the basis in which irrep

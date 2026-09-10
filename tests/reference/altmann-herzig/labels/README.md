@@ -96,6 +96,10 @@ Parameter tokens: `0`, `1`, `1/2`, `sqrt3/2`, `1/sqrt2`, `1/sqrt3`, `c8`
   `(-1/2, sqrt3/2, 0)` and `C2'3` pole `(-1/2, -sqrt3/2, 0)`). There is no
   positive-hemisphere rule; the tilde assignment therefore differs from
   the canonical section on the elements the checker lists as `swapped`.
+- **Anchors.** The `[map]` of `C2v` and `C6v` uses the letter-preserving
+  anchors `sigma_y = sigma_v(1)` and `sigma_v1 = sigma_v(1)`, not the
+  geometric `sigma_x` / `sigma_d1`, so that the book's `B1` is the canonical
+  `B1` (ADR-0007, `docs/spec/label-conventions.md`).
 - **Settings.** `C3v` has two settings: A (`sigma_v1` with pole `(0 1 0)`,
   the `sigma_v` planes of `D6h`, used inside `D3h`) and B (`sigma_v1` with
   pole `(1 0 0)`, the `sigma_d` planes of `D6h`, used inside `D3d`).
