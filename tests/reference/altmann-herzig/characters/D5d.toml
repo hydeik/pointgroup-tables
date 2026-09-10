@@ -1,0 +1,172 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): character table of D5d
+# Format: tests/reference/altmann-herzig/characters/README.md
+# Parsed from the OCR text of the typeset table by tools/ah_characters.py; verify against the print.
+
+group = "D5d"
+table = "T 44.4, p. 383"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the OCR text of the PDF; verify against the print"
+notes = ""
+conductor = 20          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "E"
+size = 1
+order = 1
+parity = 1
+
+[[classes]]
+label = "2C5"
+size = 2
+order = 5
+parity = 1
+
+[[classes]]
+label = "2C5^2"
+size = 2
+order = 5
+parity = 1
+
+[[classes]]
+label = "5C2'"
+size = 5
+order = 2
+parity = 1
+
+[[classes]]
+label = "i"
+size = 1
+order = 2
+parity = -1
+
+[[classes]]
+label = "2S10^3"
+size = 2
+order = 10
+parity = -1
+
+[[classes]]
+label = "2S10"
+size = 2
+order = 10
+parity = -1
+
+[[classes]]
+label = "5sigma_d"
+size = 5
+order = 2
+parity = -1
+
+[[irreps]]
+label = "A1g"
+projective = false
+book_values = ["1", "1", "1", "1", "1", "1", "1", "1"]
+characters = ["1", "1", "1", "1", "1", "1", "1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "A2g"
+projective = false
+book_values = ["1", "1", "1", "-1", "1", "1", "1", "-1"]
+characters = ["1", "1", "1", "-1", "1", "1", "1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "E1g"
+projective = false
+book_values = ["2", "2c5^2", "2c5^4", "0", "2", "2c5^2", "2c5^4", "0"]
+characters = ["2", "-1 + phi", "-phi", "0", "2", "-1 + phi", "-phi", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E2g"
+projective = false
+book_values = ["2", "2c5^4", "2c5^2", "0", "2", "2c5^4", "2c5^2", "0"]
+characters = ["2", "-phi", "-1 + phi", "0", "2", "-phi", "-1 + phi", "0"]
+tau = "a"
+
+[[irreps]]
+label = "A1u"
+projective = false
+book_values = ["1", "1", "1", "1", "-1", "-1", "-1", "-1"]
+characters = ["1", "1", "1", "1", "-1", "-1", "-1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "A2u"
+projective = false
+book_values = ["1", "1", "1", "-1", "-1", "-1", "-1", "1"]
+characters = ["1", "1", "1", "-1", "-1", "-1", "-1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "E1u"
+projective = false
+book_values = ["2", "2c5^2", "2c5^4", "0", "-2", "-2c5^2", "-2c5^4", "0"]
+characters = ["2", "-1 + phi", "-phi", "0", "-2", "1 - phi", "phi", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E2u"
+projective = false
+book_values = ["2", "2c5^4", "2c5^2", "0", "-2", "-2c5^4", "-2c5^2", "0"]
+characters = ["2", "-phi", "-1 + phi", "0", "-2", "phi", "1 - phi", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E1/2,g"
+projective = true
+book_values = ["2", "-2c5^4", "2c5^2", "0", "2", "-2c5^4", "2c5^2", "0"]
+characters = ["2", "phi", "-1 + phi", "0", "2", "phi", "-1 + phi", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E3/2,g"
+projective = true
+book_values = ["2", "-2c5^2", "2c5^4", "0", "2", "-2c5^2", "2c5^4", "0"]
+characters = ["2", "1 - phi", "-phi", "0", "2", "1 - phi", "-phi", "0"]
+tau = "c"
+
+[[irreps]]
+label = "1E5/2,g"
+projective = true
+book_values = ["1", "-1", "1", "i", "1", "-1", "1", "i"]
+characters = ["1", "-1", "1", "zeta^5", "1", "-1", "1", "zeta^5"]
+tau = "b"
+
+[[irreps]]
+label = "2E5/2,g"
+projective = true
+book_values = ["1", "-1", "1", "-i", "1", "-1", "1", "-i"]
+characters = ["1", "-1", "1", "zeta^15", "1", "-1", "1", "zeta^15"]
+tau = "b"
+
+[[irreps]]
+label = "E1/2,u"
+projective = true
+book_values = ["2", "-2c5^4", "2c5^2", "0", "-2", "2c5^4", "-2c5^2", "0"]
+characters = ["2", "phi", "-1 + phi", "0", "-2", "-phi", "1 - phi", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E3/2,u"
+projective = true
+book_values = ["2", "-2c5^2", "2c5^4", "0", "-2", "2c5^2", "-2c5^4", "0"]
+characters = ["2", "1 - phi", "-phi", "0", "-2", "-1 + phi", "phi", "0"]
+tau = "c"
+
+[[irreps]]
+label = "1E5/2,u"
+projective = true
+book_values = ["1", "-1", "1", "i", "-1", "1", "-1", "-i"]
+characters = ["1", "-1", "1", "zeta^5", "-1", "1", "-1", "zeta^15"]
+tau = "b"
+
+[[irreps]]
+label = "2E5/2,u"
+projective = true
+book_values = ["1", "-1", "1", "-i", "-1", "1", "-1", "i"]
+characters = ["1", "-1", "1", "zeta^15", "-1", "1", "-1", "zeta^5"]
+tau = "b"
+

@@ -1,0 +1,98 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): character table of O
+# Format: tests/reference/altmann-herzig/characters/README.md
+# Read from the page image by tools/ah_characters.py; verify against the print.
+
+group = "O"
+table = "T 69.4, p. 580"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"
+notes = ""
+conductor = 8          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "E"
+size = 1
+order = 1
+parity = 1
+
+[[classes]]
+label = "3C2"
+size = 3
+order = 2
+parity = 1
+
+[[classes]]
+label = "8C3"
+size = 8
+order = 3
+parity = 1
+
+[[classes]]
+label = "6C4"
+size = 6
+order = 4
+parity = 1
+
+[[classes]]
+label = "6C2'"
+size = 6
+order = 2
+parity = 1
+
+[[irreps]]
+label = "A1"
+projective = false
+book_values = ["1", "1", "1", "1", "1"]
+characters = ["1", "1", "1", "1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "A2"
+projective = false
+book_values = ["1", "1", "1", "-1", "-1"]
+characters = ["1", "1", "1", "-1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "E"
+projective = false
+book_values = ["2", "2", "-1", "0", "0"]
+characters = ["2", "2", "-1", "0", "0"]
+tau = "a"
+
+[[irreps]]
+label = "T1"
+projective = false
+book_values = ["3", "-1", "0", "1", "-1"]
+characters = ["3", "-1", "0", "1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "T2"
+projective = false
+book_values = ["3", "-1", "0", "-1", "1"]
+characters = ["3", "-1", "0", "-1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "E1/2"
+projective = true
+book_values = ["2", "0", "1", "sqrt2", "0"]
+characters = ["2", "0", "1", "sqrt2", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E5/2"
+projective = true
+book_values = ["2", "0", "1", "-sqrt2", "0"]
+characters = ["2", "0", "1", "-sqrt2", "0"]
+tau = "c"
+
+[[irreps]]
+label = "F3/2"
+projective = true
+book_values = ["4", "0", "-1", "0", "0"]
+characters = ["4", "0", "-1", "0", "0"]
+tau = "c"
+

@@ -326,6 +326,16 @@ characters = ["2", "-1", "0"]
 bethe = "Gamma3"        # optional
 ```
 
+A reference can disagree with itself (a printed table at odds with the
+work's own parameter tables or master tables). Such a case is recorded in
+the file as a `[known_discrepancy]` table stating the correction and its
+evidence, never by silently transcribing the corrected value: `book_values`
+stay as printed. The structural comparison (`REF-1`, `REF-2`) reports the
+file as matching only after applying the documented correction, and the
+resolution of the transcription ticket lists every such case. First
+instance: the projective rows of the Altmann & Herzig `D5h` table print the
+`2S5` and `2S5^2` entries interchanged.
+
 A Bilbao file is produced by `fetch.py` from the server's HTML and is then
 authoritative: the tests read the TOML, never the network, and a change in
 the server's pages is not a change in the data. The script stays in the

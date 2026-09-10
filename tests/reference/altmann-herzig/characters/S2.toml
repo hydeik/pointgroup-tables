@@ -1,0 +1,52 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): character table of Ci
+# Format: tests/reference/altmann-herzig/characters/README.md
+# Read from the page image by tools/ah_characters.py; verify against the print.
+
+group = "S2"
+table = "T 11.4, p. 138"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"
+notes = ""
+conductor = 1          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "E"
+size = 1
+order = 1
+parity = 1
+
+[[classes]]
+label = "i"
+size = 1
+order = 2
+parity = -1
+
+[[irreps]]
+label = "Ag"
+projective = false
+book_values = ["1", "1"]
+characters = ["1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "Au"
+projective = false
+book_values = ["1", "-1"]
+characters = ["1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "A1/2,g"
+projective = true
+book_values = ["1", "1"]
+characters = ["1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "A1/2,u"
+projective = true
+book_values = ["1", "-1"]
+characters = ["1", "-1"]
+tau = "a"
+

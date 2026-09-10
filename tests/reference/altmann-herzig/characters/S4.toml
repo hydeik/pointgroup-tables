@@ -1,0 +1,93 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): character table of S4
+# Format: tests/reference/altmann-herzig/characters/README.md
+# Read from the page image by tools/ah_characters.py; verify against the print.
+
+group = "S4"
+table = "T 13.4, p. 144"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"
+notes = ""
+conductor = 8          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+book_epsilon = "exp(2 pi i / 8)"
+
+[[classes]]
+label = "E"
+size = 1
+order = 1
+parity = 1
+
+[[classes]]
+label = "S4-"
+size = 1
+order = 4
+parity = -1
+
+[[classes]]
+label = "C2"
+size = 1
+order = 2
+parity = 1
+
+[[classes]]
+label = "S4+"
+size = 1
+order = 4
+parity = -1
+
+[[irreps]]
+label = "A"
+projective = false
+book_values = ["1", "1", "1", "1"]
+characters = ["1", "1", "1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "B"
+projective = false
+book_values = ["1", "-1", "1", "-1"]
+characters = ["1", "-1", "1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "1E"
+projective = false
+book_values = ["1", "-i", "-1", "i"]
+characters = ["1", "zeta^6", "-1", "zeta^2"]
+tau = "b"
+
+[[irreps]]
+label = "2E"
+projective = false
+book_values = ["1", "i", "-1", "-i"]
+characters = ["1", "zeta^2", "-1", "zeta^6"]
+tau = "b"
+
+[[irreps]]
+label = "1E1/2"
+projective = true
+book_values = ["1", "e*", "-i", "e"]
+characters = ["1", "zeta^7", "zeta^6", "zeta"]
+tau = "b"
+
+[[irreps]]
+label = "2E1/2"
+projective = true
+book_values = ["1", "e", "i", "e*"]
+characters = ["1", "zeta", "zeta^2", "zeta^7"]
+tau = "b"
+
+[[irreps]]
+label = "1E3/2"
+projective = true
+book_values = ["1", "-e*", "-i", "-e"]
+characters = ["1", "zeta^3", "zeta^6", "zeta^5"]
+tau = "b"
+
+[[irreps]]
+label = "2E3/2"
+projective = true
+book_values = ["1", "-e", "i", "-e*"]
+characters = ["1", "zeta^5", "zeta^2", "zeta^3"]
+tau = "b"
+

@@ -1,0 +1,74 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): matrix representations of D3h (generators)
+# Format: tests/reference/altmann-herzig/matrices/README.md
+# Read from the page image by tools/ah_characters.py; verify against the print.
+
+group = "D3h"
+table = "T 32.7, p. 252"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"
+notes = ""
+conductor = 12
+book_epsilon = "exp(2 pi i / 3)"
+elements = ["C3+", "C2'1", "sigma_h"]   # book labels of the generators
+
+[irreps."E'"]
+book_values = [
+  [["e*", "0"], ["0", "e"]],
+  [["0", "-1"], ["-1", "0"]],
+  [["1", "0"], ["0", "1"]],
+]
+matrices = [
+  [["zeta^8", "0"], ["0", "zeta^4"]],
+  [["0", "-1"], ["-1", "0"]],
+  [["1", "0"], ["0", "1"]],
+]
+
+[irreps."E''"]
+book_values = [
+  [["e*", "0"], ["0", "e"]],
+  [["0", "-1"], ["-1", "0"]],
+  [["-1", "0"], ["0", "-1"]],
+]
+matrices = [
+  [["zeta^8", "0"], ["0", "zeta^4"]],
+  [["0", "-1"], ["-1", "0"]],
+  [["-1", "0"], ["0", "-1"]],
+]
+
+[irreps."E1/2"]
+book_values = [
+  [["-e", "0"], ["0", "-e*"]],
+  [["0", "-i"], ["-i", "0"]],
+  [["-i", "0"], ["0", "i"]],
+]
+matrices = [
+  [["zeta^10", "0"], ["0", "zeta^2"]],
+  [["0", "zeta^9"], ["zeta^9", "0"]],
+  [["zeta^9", "0"], ["0", "zeta^3"]],
+]
+
+[irreps."E3/2"]
+book_values = [
+  [["-1", "0"], ["0", "-1"]],
+  [["0", "i"], ["i", "0"]],
+  [["i", "0"], ["0", "-i"]],
+]
+matrices = [
+  [["-1", "0"], ["0", "-1"]],
+  [["0", "zeta^3"], ["zeta^3", "0"]],
+  [["zeta^3", "0"], ["0", "zeta^9"]],
+]
+
+[irreps."E5/2"]
+book_values = [
+  [["-e", "0"], ["0", "-e*"]],
+  [["0", "-i"], ["-i", "0"]],
+  [["i", "0"], ["0", "-i"]],
+]
+matrices = [
+  [["zeta^10", "0"], ["0", "zeta^2"]],
+  [["0", "zeta^9"], ["zeta^9", "0"]],
+  [["zeta^3", "0"], ["0", "zeta^9"]],
+]
+

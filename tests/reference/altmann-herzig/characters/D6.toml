@@ -1,0 +1,111 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): character table of D6
+# Format: tests/reference/altmann-herzig/characters/README.md
+# Read from the page image by tools/ah_characters.py; verify against the print.
+
+group = "D6"
+table = "T 26.4, p. 207"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"
+notes = ""
+conductor = 12          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "E"
+size = 1
+order = 1
+parity = 1
+
+[[classes]]
+label = "2C6"
+size = 2
+order = 6
+parity = 1
+
+[[classes]]
+label = "2C3"
+size = 2
+order = 3
+parity = 1
+
+[[classes]]
+label = "C2"
+size = 1
+order = 2
+parity = 1
+
+[[classes]]
+label = "3C2'"
+size = 3
+order = 2
+parity = 1
+
+[[classes]]
+label = "3C2''"
+size = 3
+order = 2
+parity = 1
+
+[[irreps]]
+label = "A1"
+projective = false
+book_values = ["1", "1", "1", "1", "1", "1"]
+characters = ["1", "1", "1", "1", "1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "A2"
+projective = false
+book_values = ["1", "1", "1", "1", "-1", "-1"]
+characters = ["1", "1", "1", "1", "-1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "B1"
+projective = false
+book_values = ["1", "-1", "1", "-1", "1", "-1"]
+characters = ["1", "-1", "1", "-1", "1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "B2"
+projective = false
+book_values = ["1", "-1", "1", "-1", "-1", "1"]
+characters = ["1", "-1", "1", "-1", "-1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "E1"
+projective = false
+book_values = ["2", "1", "-1", "-2", "0", "0"]
+characters = ["2", "1", "-1", "-2", "0", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E2"
+projective = false
+book_values = ["2", "-1", "-1", "2", "0", "0"]
+characters = ["2", "-1", "-1", "2", "0", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E1/2"
+projective = true
+book_values = ["2", "sqrt3", "1", "0", "0", "0"]
+characters = ["2", "sqrt3", "1", "0", "0", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E3/2"
+projective = true
+book_values = ["2", "0", "-2", "0", "0", "0"]
+characters = ["2", "0", "-2", "0", "0", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E5/2"
+projective = true
+book_values = ["2", "-sqrt3", "1", "0", "0", "0"]
+characters = ["2", "-sqrt3", "1", "0", "0", "0"]
+tau = "c"
+

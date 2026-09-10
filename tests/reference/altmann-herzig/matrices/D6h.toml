@@ -1,0 +1,134 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): matrix representations of D6h (generators)
+# Format: tests/reference/altmann-herzig/matrices/README.md
+# Read from the page image by tools/ah_characters.py; verify against the print.
+
+group = "D6h"
+table = "T 35.7, pp. 279-280"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"
+notes = ""
+conductor = 12
+book_epsilon = "exp(2 pi i / 3)"
+elements = ["C6+", "C2'1", "i"]   # book labels of the generators
+
+[irreps."E1g"]
+book_values = [
+  [["-e", "0"], ["0", "-e*"]],
+  [["0", "-1"], ["-1", "0"]],
+  [["1", "0"], ["0", "1"]],
+]
+matrices = [
+  [["zeta^10", "0"], ["0", "zeta^2"]],
+  [["0", "-1"], ["-1", "0"]],
+  [["1", "0"], ["0", "1"]],
+]
+
+[irreps."E2g"]
+book_values = [
+  [["e", "0"], ["0", "e*"]],
+  [["0", "-1"], ["-1", "0"]],
+  [["1", "0"], ["0", "1"]],
+]
+matrices = [
+  [["zeta^4", "0"], ["0", "zeta^8"]],
+  [["0", "-1"], ["-1", "0"]],
+  [["1", "0"], ["0", "1"]],
+]
+
+[irreps."E1u"]
+book_values = [
+  [["-e", "0"], ["0", "-e*"]],
+  [["0", "-1"], ["-1", "0"]],
+  [["-1", "0"], ["0", "-1"]],
+]
+matrices = [
+  [["zeta^10", "0"], ["0", "zeta^2"]],
+  [["0", "-1"], ["-1", "0"]],
+  [["-1", "0"], ["0", "-1"]],
+]
+
+[irreps."E2u"]
+book_values = [
+  [["e", "0"], ["0", "e*"]],
+  [["0", "-1"], ["-1", "0"]],
+  [["-1", "0"], ["0", "-1"]],
+]
+matrices = [
+  [["zeta^4", "0"], ["0", "zeta^8"]],
+  [["0", "-1"], ["-1", "0"]],
+  [["-1", "0"], ["0", "-1"]],
+]
+
+[irreps."E1/2,g"]
+book_values = [
+  [["ie*", "0"], ["0", "-ie"]],
+  [["0", "-i"], ["-i", "0"]],
+  [["1", "0"], ["0", "1"]],
+]
+matrices = [
+  [["zeta^11", "0"], ["0", "zeta"]],
+  [["0", "zeta^9"], ["zeta^9", "0"]],
+  [["1", "0"], ["0", "1"]],
+]
+
+[irreps."E3/2,g"]
+book_values = [
+  [["-i", "0"], ["0", "i"]],
+  [["0", "i"], ["i", "0"]],
+  [["1", "0"], ["0", "1"]],
+]
+matrices = [
+  [["zeta^9", "0"], ["0", "zeta^3"]],
+  [["0", "zeta^3"], ["zeta^3", "0"]],
+  [["1", "0"], ["0", "1"]],
+]
+
+[irreps."E5/2,g"]
+book_values = [
+  [["-ie*", "0"], ["0", "ie"]],
+  [["0", "-i"], ["-i", "0"]],
+  [["1", "0"], ["0", "1"]],
+]
+matrices = [
+  [["zeta^5", "0"], ["0", "zeta^7"]],
+  [["0", "zeta^9"], ["zeta^9", "0"]],
+  [["1", "0"], ["0", "1"]],
+]
+
+[irreps."E1/2,u"]
+book_values = [
+  [["ie*", "0"], ["0", "-ie"]],
+  [["0", "-i"], ["-i", "0"]],
+  [["-1", "0"], ["0", "-1"]],
+]
+matrices = [
+  [["zeta^11", "0"], ["0", "zeta"]],
+  [["0", "zeta^9"], ["zeta^9", "0"]],
+  [["-1", "0"], ["0", "-1"]],
+]
+
+[irreps."E3/2,u"]
+book_values = [
+  [["-i", "0"], ["0", "i"]],
+  [["0", "i"], ["i", "0"]],
+  [["-1", "0"], ["0", "-1"]],
+]
+matrices = [
+  [["zeta^9", "0"], ["0", "zeta^3"]],
+  [["0", "zeta^3"], ["zeta^3", "0"]],
+  [["-1", "0"], ["0", "-1"]],
+]
+
+[irreps."E5/2,u"]
+book_values = [
+  [["-ie*", "0"], ["0", "ie"]],
+  [["0", "-i"], ["-i", "0"]],
+  [["-1", "0"], ["0", "-1"]],
+]
+matrices = [
+  [["zeta^5", "0"], ["0", "zeta^7"]],
+  [["0", "zeta^9"], ["zeta^9", "0"]],
+  [["-1", "0"], ["0", "-1"]],
+]
+

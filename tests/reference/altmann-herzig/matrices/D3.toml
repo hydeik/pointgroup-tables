@@ -1,0 +1,34 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): matrix representations of D3 (generators)
+# Format: tests/reference/altmann-herzig/matrices/README.md
+# Read from the page image by tools/ah_characters.py; verify against the print.
+
+group = "D3"
+table = "T 23.7, p. 197"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"
+notes = ""
+conductor = 12
+book_epsilon = "exp(2 pi i / 3)"
+elements = ["C3+", "C2'1"]   # book labels of the generators
+
+[irreps."E"]
+book_values = [
+  [["e*", "0"], ["0", "e"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+matrices = [
+  [["zeta^8", "0"], ["0", "zeta^4"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+
+[irreps."E1/2"]
+book_values = [
+  [["-e", "0"], ["0", "-e*"]],
+  [["0", "-i"], ["-i", "0"]],
+]
+matrices = [
+  [["zeta^10", "0"], ["0", "zeta^2"]],
+  [["0", "zeta^9"], ["zeta^9", "0"]],
+]
+

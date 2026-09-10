@@ -1,0 +1,71 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): character table of C2v
+# Format: tests/reference/altmann-herzig/characters/README.md
+# Read from the page image by tools/ah_characters.py; verify against the print.
+
+group = "C2v"
+table = "T 50.4, p. 482"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"
+notes = ""
+conductor = 1          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "E"
+size = 1
+order = 1
+parity = 1
+
+[[classes]]
+label = "C2"
+size = 1
+order = 2
+parity = 1
+
+[[classes]]
+label = "sigmax"
+size = 1
+order = 2
+parity = -1
+
+[[classes]]
+label = "sigmay"
+size = 1
+order = 2
+parity = -1
+
+[[irreps]]
+label = "A1"
+projective = false
+book_values = ["1", "1", "1", "1"]
+characters = ["1", "1", "1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "A2"
+projective = false
+book_values = ["1", "1", "-1", "-1"]
+characters = ["1", "1", "-1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "B1"
+projective = false
+book_values = ["1", "-1", "-1", "1"]
+characters = ["1", "-1", "-1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "B2"
+projective = false
+book_values = ["1", "-1", "1", "-1"]
+characters = ["1", "-1", "1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "E1/2"
+projective = true
+book_values = ["2", "0", "0", "0"]
+characters = ["2", "0", "0", "0"]
+tau = "c"
+
