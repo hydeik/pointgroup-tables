@@ -225,7 +225,9 @@ matrices = [ ... ]
   one for the projective two-dimensional irreps, applied for every `n` and
   `k` as `D_ref = U† D_can U`. Basis-order reversal, complex conjugation of
   the `E_k` block and phase changes are all of this form. A rule depending
-  on `n` or `k` is out of the version 1 vocabulary.
+  on `n` or `k` is out of the version 1 vocabulary. A convention **without
+  an `[axial]` table** does not cover the axial families: an axial group
+  under it is the uncovered-group error (exit code 4).
 - **Polyhedral data**, keyed by `R†` (`2T`, `2O`, `2I`), shared by every
   group with that rotation group exactly as for the canonical data. A
   convention may give **any generating set** of `R`, named by canonical
@@ -303,10 +305,26 @@ Exactly, for every group and every basis convention:
 The canonical convention ships in full: the axial rule plus the frozen
 polyhedral data of
 [Canonical polyhedral bases: generator matrices for every irrep of 2T, 2O, 2I](https://github.com/hydeik/pointgroup-tables/issues/16).
-The Altmann & Herzig convention is filled by the task
-[Transcribe Altmann & Herzig irrep matrices for the polyhedral groups](https://github.com/hydeik/pointgroup-tables/issues/17)
-and the decision
-[Altmann & Herzig basis-convention data](https://github.com/hydeik/pointgroup-tables/issues/18).
+The Altmann & Herzig convention
+(`src/pointgroup_tables/data/conventions/basis/altmann-herzig.toml`,
+generated and verified by `tools/ah_basis.py`) ships the **polyhedral data
+only**: the book's generator matrices of `2T` (`C3^1(1)`, `C2(1)`,
+conductor 24), `2O` (`C4^1(1)`, `~C2'(1)`, conductor 24; the book's
+untilded `C2'd` is the barred lift of the canonical `C2'(1)`, so the
+generator carries the `~` prefix and the book's matrix is kept verbatim)
+and `2I` (`C5^1(1)`, `C3^1(7)`, `C2(4)`, conductor 120), irreps keyed by
+their canonical symbols (`G3/2` for the book's `F3/2`, `G` for its `F`,
+`1E3/2`/`2E3/2` for `1F3/2`/`2F3/2`), the two misprints of T 74.7b
+corrected. It has no `[axial]` table: on the transcribed samples the book's
+axial bases are not a constant transform of the canonical ones (the
+principal element's eigenvalue order and the secondary element's sign vary
+with `k` and with the anchored plane), so the axial coverage is the open
+decision
+[Altmann & Herzig axial basis convention: explicit data or a rule in n and k](https://github.com/hydeik/pointgroup-tables/issues/21).
+Decided in
+[Altmann & Herzig basis-convention data](https://github.com/hydeik/pointgroup-tables/issues/18)
+on the transcription of
+[Transcribe Altmann & Herzig irrep matrices for the polyhedral groups](https://github.com/hydeik/pointgroup-tables/issues/17).
 The task transcribed the book's matrices of `T` (T 70.7), `O` (T 69.7) and
 `I` (T 74.7a/b) into `tests/reference/altmann-herzig/matrices/` as exact
 entries in `Q(ζ_24)`, `Q(ζ_24)` and `Q(ζ_120)`, verified against the book's

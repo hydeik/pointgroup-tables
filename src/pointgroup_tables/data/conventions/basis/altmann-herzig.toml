@@ -1,0 +1,320 @@
+# Altmann & Herzig basis convention: the book's polyhedral irrep matrices as generator
+# images (docs/spec/basis-conventions.md). Generated and verified by tools/ah_basis.py from
+# tests/reference/altmann-herzig/matrices/{T,O,I}.toml (ticket #17, including the two
+# corrected misprints of T 74.7b recorded there as [[known_discrepancy]]) and the element
+# maps of tests/reference/altmann-herzig/labels/ (ticket #13). Decided in ticket #18.
+#
+# The axial families are not covered (no [axial] table): the book's axial bases are not a
+# constant transform of the canonical ones, see the ticket.
+
+name = "altmann-herzig"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+
+[polyhedral.2T]  # T 70.7, p. 592
+conductor = 24
+generators = ["C3^1(1)", "C2(1)"]  # the book's C3,1+, C2x; ~ marks a generator whose book lift is the barred one
+
+[polyhedral.2T.irreps.T]
+matrices = [
+  [
+    ["0", "0", "-i"],
+    ["-i", "0", "0"],
+    ["0", "-1", "0"],
+  ],
+  [
+    ["-1", "0", "0"],
+    ["0", "-1", "0"],
+    ["0", "0", "1"],
+  ],
+]
+
+[polyhedral.2T.irreps."E1/2"]
+matrices = [
+  [
+    ["-sqrt2*zeta^9/2", "-sqrt2*zeta^3/2"],
+    ["-sqrt2*zeta^9/2", "sqrt2*zeta^3/2"],
+  ],
+  [
+    ["0", "-i"],
+    ["-i", "0"],
+  ],
+]
+
+[polyhedral.2T.irreps."1E3/2"]  # the book's 1F3/2
+matrices = [
+  [
+    ["sqrt2*zeta^5/2", "-sqrt2*zeta^11/2"],
+    ["sqrt2*zeta^5/2", "sqrt2*zeta^11/2"],
+  ],
+  [
+    ["0", "-i"],
+    ["-i", "0"],
+  ],
+]
+
+[polyhedral.2T.irreps."2E3/2"]  # the book's 2F3/2
+matrices = [
+  [
+    ["-sqrt2*zeta/2", "sqrt2*zeta^7/2"],
+    ["-sqrt2*zeta/2", "-sqrt2*zeta^7/2"],
+  ],
+  [
+    ["0", "-i"],
+    ["-i", "0"],
+  ],
+]
+
+[polyhedral.2O]  # T 69.7, pp. 582-584
+conductor = 24
+generators = ["C4^1(1)", "~C2'(1)"]  # the book's C4z+, C2'd; ~ marks a generator whose book lift is the barred one
+
+[polyhedral.2O.irreps.E]
+matrices = [
+  [
+    ["0", "1"],
+    ["1", "0"],
+  ],
+  [
+    ["0", "-zeta^4"],
+    ["zeta^8", "0"],
+  ],
+]
+
+[polyhedral.2O.irreps.T1]
+matrices = [
+  [
+    ["0", "0", "-i"],
+    ["0", "1", "0"],
+    ["-i", "0", "0"],
+  ],
+  [
+    ["0", "i", "0"],
+    ["-i", "0", "0"],
+    ["0", "0", "-1"],
+  ],
+]
+
+[polyhedral.2O.irreps.T2]
+matrices = [
+  [
+    ["0", "0", "i"],
+    ["0", "-1", "0"],
+    ["i", "0", "0"],
+  ],
+  [
+    ["0", "-i", "0"],
+    ["i", "0", "0"],
+    ["0", "0", "1"],
+  ],
+]
+
+[polyhedral.2O.irreps."E1/2"]
+matrices = [
+  [
+    ["-zeta^9", "0"],
+    ["0", "zeta^3"],
+  ],
+  [
+    ["sqrt2*i/2", "sqrt2/2"],
+    ["-sqrt2/2", "-sqrt2*i/2"],
+  ],
+]
+
+[polyhedral.2O.irreps."E5/2"]
+matrices = [
+  [
+    ["zeta^9", "0"],
+    ["0", "-zeta^3"],
+  ],
+  [
+    ["-sqrt2*i/2", "-sqrt2/2"],
+    ["sqrt2/2", "sqrt2*i/2"],
+  ],
+]
+
+[polyhedral.2O.irreps."G3/2"]  # the book's F3/2
+matrices = [
+  [
+    ["0", "0", "-zeta^9", "0"],
+    ["0", "0", "0", "zeta^3"],
+    ["-zeta^9", "0", "0", "0"],
+    ["0", "zeta^3", "0", "0"],
+  ],
+  [
+    ["0", "0", "-sqrt2*zeta^10/2", "-sqrt2*zeta^4/2"],
+    ["0", "0", "sqrt2*zeta^4/2", "sqrt2*zeta^10/2"],
+    ["-sqrt2*zeta^2/2", "sqrt2*zeta^8/2", "0", "0"],
+    ["-sqrt2*zeta^8/2", "sqrt2*zeta^2/2", "0", "0"],
+  ],
+]
+
+[polyhedral.2I]  # T 74.7a, p. 654 (words) and T 74.7b, p. 655 (generator matrices)
+conductor = 120
+generators = ["C5^1(1)", "C3^1(7)", "C2(4)"]  # the book's C5,1+, C3,1+, C2a; ~ marks a generator whose book lift is the barred one
+
+[polyhedral.2I.irreps.T1]
+matrices = [
+  [
+    ["(-1 + sqrt5)/4", "-i/2", "i*(-1 - sqrt5)/4"],
+    ["-i/2", "(1 + sqrt5)/4", "(1 - sqrt5)/4"],
+    ["i*(-1 - sqrt5)/4", "(1 - sqrt5)/4", "1/2"],
+  ],
+  [
+    ["0", "0", "-i"],
+    ["-i", "0", "0"],
+    ["0", "-1", "0"],
+  ],
+  [
+    ["-1", "0", "0"],
+    ["0", "-1", "0"],
+    ["0", "0", "1"],
+  ],
+]
+
+[polyhedral.2I.irreps.T2]
+matrices = [
+  [
+    ["(-1 - sqrt5)/4", "-i/2", "i*(-1 + sqrt5)/4"],
+    ["-i/2", "(1 - sqrt5)/4", "(1 + sqrt5)/4"],
+    ["i*(-1 + sqrt5)/4", "(1 + sqrt5)/4", "1/2"],
+  ],
+  [
+    ["0", "0", "-i"],
+    ["-i", "0", "0"],
+    ["0", "-1", "0"],
+  ],
+  [
+    ["-1", "0", "0"],
+    ["0", "-1", "0"],
+    ["0", "0", "1"],
+  ],
+]
+
+[polyhedral.2I.irreps.G]  # the book's F
+matrices = [
+  [
+    ["-1/4", "-sqrt5/4", "-sqrt5*i/4", "-sqrt5*i/4"],
+    ["-sqrt5/4", "-1/4", "3*i/4", "-i/4"],
+    ["-sqrt5*i/4", "3*i/4", "1/4", "1/4"],
+    ["-sqrt5*i/4", "-i/4", "1/4", "-3/4"],
+  ],
+  [
+    ["1", "0", "0", "0"],
+    ["0", "0", "0", "-i"],
+    ["0", "-i", "0", "0"],
+    ["0", "0", "-1", "0"],
+  ],
+  [
+    ["1", "0", "0", "0"],
+    ["0", "-1", "0", "0"],
+    ["0", "0", "-1", "0"],
+    ["0", "0", "0", "1"],
+  ],
+]
+
+[polyhedral.2I.irreps.H]
+matrices = [
+  [
+    ["0", "(1 + 3*sqrt5)/16 + i*(sqrt3 - sqrt3*sqrt5)/16", "-sqrt2*sqrt3/8 - i*sqrt2*sqrt5/8", "(-3*sqrt2 - sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 - sqrt2*sqrt3*sqrt5)/16", "(3*sqrt2 - sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 + sqrt2*sqrt3*sqrt5)/16"],
+    ["(1 + 3*sqrt5)/16 + i*(-sqrt3 + sqrt3*sqrt5)/16", "0", "-sqrt2*sqrt3/8 + i*sqrt2*sqrt5/8", "(3*sqrt2 + sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 - sqrt2*sqrt3*sqrt5)/16", "(-3*sqrt2 + sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 + sqrt2*sqrt3*sqrt5)/16"],
+    ["-sqrt2*sqrt3/8 + i*sqrt2*sqrt5/8", "-sqrt2*sqrt3/8 - i*sqrt2*sqrt5/8", "1/2", "0", "i/2"],
+    ["(3*sqrt2 + sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 - sqrt2*sqrt3*sqrt5)/16", "(-3*sqrt2 - sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 - sqrt2*sqrt3*sqrt5)/16", "0", "-1/2", "-1/2"],
+    ["(-3*sqrt2 + sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 + sqrt2*sqrt3*sqrt5)/16", "(3*sqrt2 - sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 + sqrt2*sqrt3*sqrt5)/16", "i/2", "-1/2", "0"],
+  ],
+  [
+    ["zeta^40", "0", "0", "0", "0"],
+    ["0", "-zeta^20", "0", "0", "0"],
+    ["0", "0", "0", "0", "-i"],
+    ["0", "0", "-i", "0", "0"],
+    ["0", "0", "0", "-1", "0"],
+  ],
+  [
+    ["1", "0", "0", "0", "0"],
+    ["0", "1", "0", "0", "0"],
+    ["0", "0", "-1", "0", "0"],
+    ["0", "0", "0", "-1", "0"],
+    ["0", "0", "0", "0", "1"],
+  ],
+]
+
+[polyhedral.2I.irreps."E1/2"]
+matrices = [
+  [
+    ["(1 + sqrt5)/4 - i*1/2", "i*(1 - sqrt5)/4"],
+    ["i*(1 - sqrt5)/4", "(1 + sqrt5)/4 + i*1/2"],
+  ],
+  [
+    ["-sqrt2*zeta^45/2", "-sqrt2*zeta^15/2"],
+    ["-sqrt2*zeta^45/2", "sqrt2*zeta^15/2"],
+  ],
+  [
+    ["0", "-i"],
+    ["-i", "0"],
+  ],
+]
+
+[polyhedral.2I.irreps."E7/2"]
+matrices = [
+  [
+    ["(1 - sqrt5)/4 - i*1/2", "i*(1 + sqrt5)/4"],
+    ["i*(1 + sqrt5)/4", "(1 - sqrt5)/4 + i*1/2"],
+  ],
+  [
+    ["-sqrt2*zeta^45/2", "-sqrt2*zeta^15/2"],
+    ["-sqrt2*zeta^45/2", "sqrt2*zeta^15/2"],
+  ],
+  [
+    ["0", "-i"],
+    ["-i", "0"],
+  ],
+]
+
+[polyhedral.2I.irreps."G3/2"]  # the book's F3/2
+matrices = [
+  [
+    ["sqrt2*zeta^15/4", "i*(1 + sqrt3)/4", "(3 - 3*sqrt3 + sqrt5 + sqrt3*sqrt5)/16 + i*(-3 - sqrt3 - 3*sqrt5 + sqrt3*sqrt5)/16", "sqrt3/8 + i*sqrt5/8"],
+    ["i*(1 - sqrt3)/4", "-sqrt2*zeta^45/4", "sqrt3/8 + i*sqrt5/8", "(3 + 3*sqrt3 + sqrt5 - sqrt3*sqrt5)/16 + i*(3 - sqrt3 + 3*sqrt5 + sqrt3*sqrt5)/16"],
+    ["(3 + 3*sqrt3 + sqrt5 - sqrt3*sqrt5)/16 + i*(-3 + sqrt3 - 3*sqrt5 - sqrt3*sqrt5)/16", "-sqrt3/8 + i*sqrt5/8", "sqrt2*zeta^15/4", "i*(1 - sqrt3)/4"],
+    ["-sqrt3/8 + i*sqrt5/8", "(3 - 3*sqrt3 + sqrt5 + sqrt3*sqrt5)/16 + i*(3 + sqrt3 + 3*sqrt5 - sqrt3*sqrt5)/16", "i*(1 + sqrt3)/4", "-sqrt2*zeta^45/4"],
+  ],
+  [
+    ["-sqrt2*zeta^5/2", "sqrt2*zeta^35/2", "0", "0"],
+    ["-sqrt2*zeta^5/2", "-sqrt2*zeta^35/2", "0", "0"],
+    ["0", "0", "sqrt2*zeta^25/2", "-sqrt2*zeta^55/2"],
+    ["0", "0", "sqrt2*zeta^25/2", "sqrt2*zeta^55/2"],
+  ],
+  [
+    ["0", "-i", "0", "0"],
+    ["-i", "0", "0", "0"],
+    ["0", "0", "0", "-i"],
+    ["0", "0", "-i", "0"],
+  ],
+]
+
+[polyhedral.2I.irreps."I5/2"]
+matrices = [
+  [
+    ["-1/6 + i*1/3", "-i/6", "(-15*sqrt2 + 5*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 - 5*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "(-15*sqrt2 + 5*sqrt2*sqrt3 - 3*sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 + 15*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "(-15*sqrt2 - 5*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 + 5*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96", "(-15*sqrt2 - 5*sqrt2*sqrt3 - 3*sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 - 15*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96"],
+    ["-i/6", "-1/6 - i*1/3", "(15*sqrt2 + 5*sqrt2*sqrt3 + 3*sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 - 15*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96", "(-15*sqrt2 - 5*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(15*sqrt2 - 5*sqrt2*sqrt3 - sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "(15*sqrt2 - 5*sqrt2*sqrt3 + 3*sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 + 15*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "(-15*sqrt2 + 5*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(15*sqrt2 + 5*sqrt2*sqrt3 - sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96"],
+    ["(-15*sqrt2 - 5*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 + 5*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96", "(15*sqrt2 - 5*sqrt2*sqrt3 + 3*sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 + 15*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "-sqrt2*zeta^15/6", "i*(-1 - sqrt3)/6", "(-28 - 7*sqrt3 - 6*sqrt5 - sqrt3*sqrt5)/96 + i*(-7 - 14*sqrt3 + 3*sqrt5 + 4*sqrt3*sqrt5)/96", "(-7*sqrt3 + 5*sqrt3*sqrt5)/96 + i*(35 + 3*sqrt5)/96"],
+    ["(-15*sqrt2 - 5*sqrt2*sqrt3 - 3*sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 - 15*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96", "(-15*sqrt2 + 5*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(15*sqrt2 + 5*sqrt2*sqrt3 - sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96", "i*(-1 + sqrt3)/6", "sqrt2*zeta^45/6", "(-7*sqrt3 + 5*sqrt3*sqrt5)/96 + i*(35 + 3*sqrt5)/96", "(-28 + 7*sqrt3 - 6*sqrt5 + sqrt3*sqrt5)/96 + i*(7 - 14*sqrt3 - 3*sqrt5 + 4*sqrt3*sqrt5)/96"],
+    ["(-15*sqrt2 + 5*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 - 5*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "(15*sqrt2 + 5*sqrt2*sqrt3 + 3*sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 - 15*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96", "(-28 + 7*sqrt3 - 6*sqrt5 + sqrt3*sqrt5)/96 + i*(-7 + 14*sqrt3 + 3*sqrt5 - 4*sqrt3*sqrt5)/96", "(7*sqrt3 - 5*sqrt3*sqrt5)/96 + i*(35 + 3*sqrt5)/96", "-sqrt2*zeta^15/6", "i*(-1 + sqrt3)/6"],
+    ["(-15*sqrt2 + 5*sqrt2*sqrt3 - 3*sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 + 15*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "(-15*sqrt2 - 5*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(15*sqrt2 - 5*sqrt2*sqrt3 - sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "(7*sqrt3 - 5*sqrt3*sqrt5)/96 + i*(35 + 3*sqrt5)/96", "(-28 - 7*sqrt3 - 6*sqrt5 - sqrt3*sqrt5)/96 + i*(7 + 14*sqrt3 - 3*sqrt5 - 4*sqrt3*sqrt5)/96", "i*(-1 - sqrt3)/6", "sqrt2*zeta^45/6"],
+  ],
+  [
+    ["-sqrt2*zeta^45/2", "-sqrt2*zeta^15/2", "0", "0", "0", "0"],
+    ["-sqrt2*zeta^45/2", "sqrt2*zeta^15/2", "0", "0", "0", "0"],
+    ["0", "0", "-sqrt2*zeta^5/2", "sqrt2*zeta^35/2", "0", "0"],
+    ["0", "0", "-sqrt2*zeta^5/2", "-sqrt2*zeta^35/2", "0", "0"],
+    ["0", "0", "0", "0", "sqrt2*zeta^25/2", "-sqrt2*zeta^55/2"],
+    ["0", "0", "0", "0", "sqrt2*zeta^25/2", "sqrt2*zeta^55/2"],
+  ],
+  [
+    ["0", "-i", "0", "0", "0", "0"],
+    ["-i", "0", "0", "0", "0", "0"],
+    ["0", "0", "0", "-i", "0", "0"],
+    ["0", "0", "-i", "0", "0", "0"],
+    ["0", "0", "0", "0", "0", "-i"],
+    ["0", "0", "0", "0", "-i", "0"],
+  ],
+]

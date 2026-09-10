@@ -184,7 +184,10 @@ A named, selectable data file (rules for the axial families, generator
 matrices for the polyhedral families) that fixes the basis in which irrep
 matrices are written, as one reference work writes them. Irrep matrices are
 only defined up to unitary equivalence, so a table is meaningless without
-naming its basis convention.
+naming its basis convention. A convention declares its coverage and may
+cover only some families (Altmann & Herzig: the polyhedral families); a
+group outside it is an error, never a silent fallback to the canonical
+basis.
 _Avoid_: phase convention, gauge
 
 **Canonical basis**:
