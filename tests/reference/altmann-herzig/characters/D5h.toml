@@ -10,7 +10,7 @@ transcribed_by = "agent (Claude) from the OCR text of the PDF; verify against th
 notes = ""
 conductor = 20          # field of the `characters` values; zeta = exp(2 pi i / conductor)
 
-[known_discrepancy]
+[[known_discrepancy]]
 swap_projective = ["2S5", "2S5^2"]
 note = "The projective rows (E1/2 ... E9/2) of T 34.4 carry the values of the 2S5 and 2S5^2 columns interchanged: by the book's own parameters (T 39.1: S5+ has phi = 3pi/5, S5^2+ has phi = pi/5) the spin-1/2 character of S5 is 2cos(3pi/10) = 2c10^3, and the master table T 39.4 (D10h) prints E1/2,g = 2c10^3 on 2S5 and 2c10 on 2S5^2, whereas T 34.4 prints 2c10 on 2S5 and 2c10^3 on 2S5^2. The ordinary rows are consistent with the header. With the two columns interchanged in the projective rows the table matches the computed one."
 

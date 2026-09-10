@@ -49,7 +49,7 @@ comparison therefore matches projective rows up to one sign per class.
 
 ## Known discrepancy
 
-`D5h.toml` carries a `[known_discrepancy]` table: the projective rows of
+`D5h.toml` carries a `[[known_discrepancy]]` entry: the projective rows of
 T 34.4 print the `2S5` and `2S5^2` entries interchanged relative to the
 book's own parameter table T 39.1 and to the master table T 39.4 (`D10h`),
 see the `note`. The checker applies the documented correction and reports

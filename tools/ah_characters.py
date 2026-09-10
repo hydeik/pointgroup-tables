@@ -958,7 +958,7 @@ def write_characters(group, book, typeset):
     if group in DISCREPANCIES:
         d = DISCREPANCIES[group]
         lines.append("")
-        lines.append("[known_discrepancy]")
+        lines.append("[[known_discrepancy]]")
         lines.append(
             f"swap_projective = [{toml_str(d['swap_projective'][0])}, {toml_str(d['swap_projective'][1])}]"
         )
@@ -1188,11 +1188,13 @@ def check(groups):
                 )
         lines, ok = structural_match(symbol, book, comp)
         if not ok and "known_discrepancy" in data:
-            fixed = apply_discrepancy(book, data["known_discrepancy"])
+            fixed = book
+            for disc in data["known_discrepancy"]:
+                fixed = apply_discrepancy(fixed, disc)
             lines2, ok2 = structural_match(symbol, fixed, comp)
             lines = [
                 "  documented discrepancy: "
-                + data["known_discrepancy"]["note"][:120]
+                + data["known_discrepancy"][0]["note"][:120]
                 + "...",
                 f"  after the documented correction: {'match' if ok2 else 'STILL NO MATCH'}",
             ] + lines2
