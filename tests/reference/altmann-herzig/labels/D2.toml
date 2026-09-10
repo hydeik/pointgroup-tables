@@ -1,0 +1,37 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): element labels of D2
+# Format: tests/reference/altmann-herzig/labels/README.md
+#
+# Canonical elements of D2 (order 4), in canonical order:
+#   E C2 C2'(1) C2''(1)
+# Conjugacy classes (canonical):
+#   1x[E]
+#   1x[C2]
+#   1x[C2'(1)]
+#   1x[C2''(1)]
+# The map below must send every book label onto exactly one of these.
+
+group = "D2"
+table = ""          # the book's table number and page, e.g. "T 15.1, p. 123"
+status = "todo"     # todo | partial | done
+notes = ""          # anything that could not be read unambiguously
+
+[book]
+# Every element label of the book's table for this group, in the book's
+# order, transliterated to ASCII (README: C3+, C2'1, sigma_v1, S6-, ~C3+ ...).
+elements = []
+# The book's identification of the operation (axis or plane), where stated,
+# keyed by the book label, e.g. "C2'1" = "C2 about x".
+operations = {}
+# The book's irrep symbol row, in the book's order, as printed (ASCII).
+irreps = []
+
+[map]
+# book label -> canonical label. Fill the ones the book's axis statements
+# make certain (E, the principal rotation, the first secondary axis, i,
+# sigma_h); the checker derives the rest from the multiplication table.
+
+[multiplication]
+# Optional (priority groups: C2v, D3, D4, D3h, T, O). One row per book element, in the
+# order of book.elements, each entry a book label with a leading "~" where the
+# book prints a tilde on the product.
+rows = []

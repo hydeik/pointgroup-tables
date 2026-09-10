@@ -24,3 +24,6 @@ dev = [
     "ruff>=0.16.5",
     "ty>=0.0.77",
 ]
+
+[tool.ty.environment]
+extra-paths = ["prototypes"]
