@@ -329,10 +329,14 @@ bethe = "Gamma3"        # optional
 A reference can disagree with itself (a printed table at odds with the
 work's own parameter tables or master tables). Such a case is recorded in
 the file as a `[[known_discrepancy]]` array of tables, one entry per
-disagreement stating the correction and its evidence, never by silently transcribing the corrected value: `book_values`
-stay as printed. The structural comparison (`REF-1`, `REF-2`) reports the
-file as matching only after applying the documented correction, and the
-resolution of the transcription ticket lists every such case. First
+disagreement stating the correction and its evidence, never by silently
+transcribing a corrected value: either the values stay as printed and the
+entry gives the correction (the character tables), or the values are
+corrected and the entry keeps the printed value (the matrix tables); in
+both cases the entry names the affected entries. The structural comparison
+(`REF-1`, `REF-2`) reports a file of the first kind as matching only after
+applying the documented correction, and the resolution of the
+transcription ticket lists every such case. First
 instance: the projective rows of the Altmann & Herzig `D5h` table print the
 `2S5` and `2S5^2` entries interchanged.
 
