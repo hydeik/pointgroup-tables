@@ -123,8 +123,13 @@ not parse the label:
 | `power` | `j`, absent for order ≤ 2 |
 | `axis_class` | `principal`, `secondary`, `secondary_double_prime`, `polyhedral`, or absent |
 | `axis_index` | `k`, absent when the label has none |
+| `inverse` | index of the inverse element |
+| `class` | index of the conjugacy class containing the element ([Conjugacy classes](./conjugacy-classes.md#class-records)) |
 | `barred` | `true` or `false`; double-group tables only |
 | `base_index` | index of the point-group element this element covers; double-group tables only |
+
+Key order and presence rules are fixed in
+[Output schema](./output-schema.md#the-elements-table).
 
 ## Label conventions (reference labels)
 

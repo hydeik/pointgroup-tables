@@ -1,0 +1,5 @@
+# Only the small C3v samples are committed; regenerate the rest with
+#   uv run python prototypes/output_schema_prototype.py samples
+*
+!.gitignore
+!C3v_*.json

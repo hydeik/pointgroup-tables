@@ -236,10 +236,16 @@ bytes.
 _Avoid_: file (it may go to standard output), result, dump
 
 **Table**:
-One named array inside a document: the element list, the Cayley table, the
+One named object inside a document: the element list, the Cayley table, the
 factor table, the character table or the irrep matrix table. `all` is the
-union of the five.
+union of the five; the element list is present in every document.
 _Avoid_: section, sheet
+
+**Record**:
+The structured object emitted for one element, one conjugacy class or one
+irrep (index, label or symbol, and the decomposed fields a consumer would
+otherwise parse from the label). Tables refer to records by index only.
+_Avoid_: entry, row (for a record), header (for an irrep record)
 
 ### Number representation
 

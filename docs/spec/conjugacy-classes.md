@@ -149,9 +149,11 @@ its columns belong to:
 With `all` the table has one row per ordinary and projective irrep and one
 column per class of `G†`; an ordinary irrep repeats its value on the barred
 class of a split pair, a projective irrep negates it. This is the layout of
-the double-group tables of Altmann & Herzig. Whether the class list is
-repeated inside the `characters` table or only referenced by index is
-decided by the output-schema chapter.
+the double-group tables of Altmann & Herzig. The `characters` table
+carries the class records of its `class_group` as its column headers
+([Output schema](./output-schema.md#the-characters-table)); when they are
+classes of `G†` in a document whose `elements` table is that of `G`, an
+element index `i ≥ |G|` names the barred element of `i − |G|`.
 
 ## Reference class labels
 

@@ -71,8 +71,9 @@ fixed by [Abstract groups](./abstract-groups.md#exposed-structure).
 
 `all` is exactly the union of the other five documents' tables under the
 same options, with one shared metadata block; it adds nothing and reorders
-nothing. Whether a single-table document also embeds the element list its
-indices refer to is decided by the output-schema chapter.
+nothing. Every single-table document also embeds the element list its
+indices refer to ([Output schema](./output-schema.md#principles)), so
+`tables` always begins with `"elements"`.
 
 ## Options
 
@@ -117,7 +118,7 @@ document carries:
 | `schema_version` | integer, `1` for this specification |
 | `generator` | `{ name = "pointgroup-tables", version = <tool version> }` |
 | `group` | `symbol`, `input_symbol`, `family`, `n` (absent for polyhedral groups), `order`, `type`, `rotation_group` ([Abstract groups](./abstract-groups.md#exposed-structure)) |
-| `tables` | the names of the tables the document holds, in the order above (`["elements"]`, `["elements", "cayley", "factor", "characters", "matrices"]`, ...) |
+| `tables` | the names of the tables the document holds, in the order above (`["elements"]`, `["elements", "characters"]`, `["elements", "cayley", "factor", "characters", "matrices"]`, ...) |
 | `double` | `true` when `--double-group` applied, else `false` |
 | `irreps` | the `--irreps` value; present only when the document holds a character or matrix table |
 | `values` | the set of value forms present, as requested by `--values` |
@@ -125,8 +126,8 @@ document carries:
 | `label_convention` | `{ name, source }`; present only when one is selected |
 | `basis_convention` | `{ name, source }`; `{ name = "canonical" }` by default |
 
-The exact placement of these keys, and the layout of every table, belong to
-the output-schema chapter.
+The exact placement of these keys, and the layout of every table, are fixed
+in [Output schema](./output-schema.md).
 
 ## Utility subcommands
 
