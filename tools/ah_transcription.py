@@ -28,18 +28,47 @@ from collections import deque
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "prototypes"))  # ty resolves these via tool.ty.environment.extra-paths
-import abstract_group_prototype as ag  # noqa: E402
-import double_group_prototype as dg  # noqa: E402
+sys.path.insert(
+    0, str(ROOT / "prototypes")
+)  # ty resolves these via tool.ty.environment.extra-paths
+import abstract_group_prototype as ag
+import double_group_prototype as dg
 
 LABELS_DIR = ROOT / "tests" / "reference" / "altmann-herzig" / "labels"
 
 CRYSTALLOGRAPHIC = [
-    "C1", "Ci", "Cs", "C2", "C2h", "C2v", "D2", "D2h",
-    "C3", "S6", "C3v", "D3", "D3d", "C3h", "D3h",
-    "C4", "S4", "C4h", "C4v", "D4", "D2d", "D4h",
-    "C6", "C6h", "C6v", "D6", "D6h",
-    "T", "Th", "Td", "O", "Oh",
+    "C1",
+    "Ci",
+    "Cs",
+    "C2",
+    "C2h",
+    "C2v",
+    "D2",
+    "D2h",
+    "C3",
+    "S6",
+    "C3v",
+    "D3",
+    "D3d",
+    "C3h",
+    "D3h",
+    "C4",
+    "S4",
+    "C4h",
+    "C4v",
+    "D4",
+    "D2d",
+    "D4h",
+    "C6",
+    "C6h",
+    "C6v",
+    "D6",
+    "D6h",
+    "T",
+    "Th",
+    "Td",
+    "O",
+    "Oh",
 ]
 EXTRA = ["I", "Ih", "C5v", "D5h", "D5d", "S8", "D4d"]
 GROUPS = CRYSTALLOGRAPHIC + EXTRA
@@ -75,7 +104,7 @@ class Group:
 # templates
 # --------------------------------------------------------------------------
 
-TEMPLATE = '''\
+TEMPLATE = """\
 # Altmann & Herzig, Point-Group Theory Tables (2nd ed.): element labels of {symbol}
 # Format: tests/reference/altmann-herzig/labels/README.md
 #
@@ -110,7 +139,7 @@ irreps = []
 # order of book.elements, each entry a book label with a leading "~" where the
 # book prints a tilde on the product.
 rows = []
-'''
+"""
 
 
 def write_templates(only=None):
@@ -121,9 +150,7 @@ def write_templates(only=None):
         path = LABELS_DIR / f"{grp.symbol}.toml"
         if path.exists():
             continue
-        classes = "\n".join(
-            f"#   {len(c)}x[{', '.join(c)}]" for c in grp.classes
-        )
+        classes = "\n".join(f"#   {len(c)}x[{', '.join(c)}]" for c in grp.classes)
         path.write_text(
             TEMPLATE.format(
                 symbol=grp.symbol,
@@ -206,7 +233,9 @@ def check_file(path):
         if b not in elements:
             rep.error(f"map names book label {b!r}, which is not in book.elements")
         if c not in grp.index:
-            rep.error(f"map sends {b!r} to {c!r}, which is not a canonical label of {grp.symbol}")
+            rep.error(
+                f"map sends {b!r} to {c!r}, which is not a canonical label of {grp.symbol}"
+            )
     targets = list(mapping.values())
     if len(set(targets)) != len(targets):
         dup = sorted({t for t in targets if targets.count(t) > 1})
@@ -221,8 +250,12 @@ def check_file(path):
     elif not rows:
         unmapped = [e for e in elements if e not in mapping]
         if unmapped:
-            rep.warn(f"{len(unmapped)} book labels unmapped and no multiplication table to derive them")
-    if status == "done" and (rep.errors or [e for e in elements if e not in mapping] and not rows):
+            rep.warn(
+                f"{len(unmapped)} book labels unmapped and no multiplication table to derive them"
+            )
+    if status == "done" and (
+        rep.errors or [e for e in elements if e not in mapping] and not rows
+    ):
         rep.error("status is done but the file is incomplete")
     return rep
 
@@ -246,12 +279,16 @@ def check_multiplication(grp, elements, mapping, rows, rep):
             tilde[i][j] = t
     for i in range(n):
         if len(set(prod[i])) != n or len({prod[k][i] for k in range(n)}) != n:
-            rep.error(f"multiplication table is not a Latin square at row/column {i} ({elements[i]})")
+            rep.error(
+                f"multiplication table is not a Latin square at row/column {i} ({elements[i]})"
+            )
             return
     # derive the isomorphism from the anchors in [map] by closure
     iso = {pos[b]: grp.index[c] for b, c in mapping.items()}
     if not iso:
-        rep.error("no anchors in [map]; give at least E, the principal rotation and one secondary element")
+        rep.error(
+            "no anchors in [map]; give at least E, the principal rotation and one secondary element"
+        )
         return
     queue = deque(iso)
     known = set(iso)
@@ -283,14 +320,24 @@ def check_multiplication(grp, elements, mapping, rows, rep):
         missing = [elements[i] for i in range(n) if i not in iso]
         rep.warn(f"anchors do not generate the group; still unmapped: {missing}")
     else:
-        derived = {elements[i]: grp.elements[iso[i]] for i in range(n) if elements[i] not in mapping}
+        derived = {
+            elements[i]: grp.elements[iso[i]]
+            for i in range(n)
+            if elements[i] not in mapping
+        }
         if derived:
             rep.info("derived map (add to [map]):")
             for b, c in derived.items():
                 rep.info(f'  "{b}" = "{c}"')
         # tilde marks versus our factor system: omega_book = eps(g) eps(h) eps(gh) omega,
         # solve eps with eps = +1 on the anchors (canonical section as reference)
-        r = [[(-1 if tilde[x][y] else 1) * grp.omega_at(iso[x], iso[y]) for y in range(n)] for x in range(n)]
+        r = [
+            [
+                (-1 if tilde[x][y] else 1) * grp.omega_at(iso[x], iso[y])
+                for y in range(n)
+            ]
+            for x in range(n)
+        ]
         eps = {pos[b]: 1 for b in mapping}
         queue = deque(eps)
         consistent = True
@@ -311,12 +358,18 @@ def check_multiplication(grp, elements, mapping, rows, rep):
                     break
         total = sum(1 for x in range(n) for y in range(n) if tilde[x][y])
         if not consistent:
-            rep.error("the book's tilde marks do not differ from the canonical factor system by a "
-                      "coboundary: a transcription error, or the anchors are wrong")
+            rep.error(
+                "the book's tilde marks do not differ from the canonical factor system by a "
+                "coboundary: a transcription error, or the anchors are wrong"
+            )
             return
-        swapped = sorted((elements[i] for i, e in eps.items() if e == -1), key=elements.index)
-        rep.info(f"tilde marks: {total} in the book; the book's section differs from the canonical one "
-                 f"on {len(swapped)} element(s) (anchors fixed at +1)")
+        swapped = sorted(
+            (elements[i] for i, e in eps.items() if e == -1), key=elements.index
+        )
+        rep.info(
+            f"tilde marks: {total} in the book; the book's section differs from the canonical one "
+            f"on {len(swapped)} element(s) (anchors fixed at +1)"
+        )
         if swapped:
             canon = [grp.elements[iso[pos[b]]] for b in swapped]
             rep.info(f"  [barred.{grp.symbol}] swapped = {canon!r}")
@@ -328,7 +381,10 @@ def main(argv):
         return 2
     if argv[0] == "templates":
         written = write_templates(argv[1:] or None)
-        print(f"wrote {len(written)} template(s)" + (": " + " ".join(written) if written else ""))
+        print(
+            f"wrote {len(written)} template(s)"
+            + (": " + " ".join(written) if written else "")
+        )
         return 0
     names = argv[1:] or sorted(p.stem for p in LABELS_DIR.glob("*.toml"))
     failed = 0

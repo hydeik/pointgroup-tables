@@ -37,8 +37,8 @@ from fractions import Fraction as Fr
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import abstract_group_prototype as ag  # noqa: E402
-import double_group_prototype as dg  # noqa: E402
+import abstract_group_prototype as ag
+import double_group_prototype as dg
 
 PROTOTYPE_VERSION = "0.0.0-prototype"
 
@@ -116,7 +116,8 @@ class Field:
         assert self.conductor % 5 == 0
         z = self.conductor // 5
         return self.add(
-            self.sub(self.zeta(z), self.zeta(2 * z)), self.sub(self.zeta(4 * z), self.zeta(3 * z))
+            self.sub(self.zeta(z), self.zeta(2 * z)),
+            self.sub(self.zeta(4 * z), self.zeta(3 * z)),
         )
 
     def phi(self):
@@ -193,10 +194,7 @@ class Field:
 def mat_mul(F, A, B):
     n, m, p = len(A), len(B), len(B[0])
     return [
-        [
-            _sum(F, (F.mul(A[i][k], B[k][j]) for k in range(m)))
-            for j in range(p)
-        ]
+        [_sum(F, (F.mul(A[i][k], B[k][j]) for k in range(m))) for j in range(p)]
         for i in range(n)
     ]
 
@@ -263,18 +261,26 @@ def element_record(index, label, parity, polyhedral):
         rec.update(kind="inversion", order=2)
     elif g["C2"]:
         rec.update(kind="rotation", order=2)
-        axis_class, axis_index = ("polyhedral", g["C2k"]) if g["C2k"] else ("principal", None)
+        axis_class, axis_index = (
+            ("polyhedral", g["C2k"]) if g["C2k"] else ("principal", None)
+        )
     elif g["primes"] is not None:
         rec.update(kind="rotation", order=2)
         axis_class = "secondary" if g["primes"] == "'" else "secondary_double_prime"
         axis_index = g["seck"]
     elif g["CS"]:
-        rec.update(kind="rotation" if g["CS"] == "C" else "rotoreflection", order=int(g["m"]))
+        rec.update(
+            kind="rotation" if g["CS"] == "C" else "rotoreflection", order=int(g["m"])
+        )
         rec["power"] = int(g["j"])
-        axis_class, axis_index = ("polyhedral", g["k"]) if g["k"] else ("principal", None)
+        axis_class, axis_index = (
+            ("polyhedral", g["k"]) if g["k"] else ("principal", None)
+        )
     elif label.startswith("sigma_h"):
         rec.update(kind="reflection", order=2)
-        axis_class, axis_index = ("polyhedral", g["hk"]) if g["hk"] else ("principal", None)
+        axis_class, axis_index = (
+            ("polyhedral", g["hk"]) if g["hk"] else ("principal", None)
+        )
     elif g["vd"]:
         rec.update(kind="reflection", order=2)
         # illustrative: the plane is indexed by the secondary axis it contains
@@ -337,7 +343,15 @@ def class_label(size, rep_label, has_inverse):
 # Group context: everything the documents draw on
 # --------------------------------------------------------------------------
 
-FAMILY_NAMES = {"C": "Cn", "Cv": "Cnv", "Ch": "Cnh", "S": "S2n", "D": "Dn", "Dh": "Dnh", "Dd": "Dnd"}
+FAMILY_NAMES = {
+    "C": "Cn",
+    "Cv": "Cnv",
+    "Ch": "Cnh",
+    "S": "S2n",
+    "D": "Dn",
+    "Dh": "Dnh",
+    "Dd": "Dnd",
+}
 CONDUCTOR = {"T": 12, "O": 8, "I": 20}
 
 
@@ -477,11 +491,23 @@ class Context:
 
 
 class Irrep:
-    def __init__(self, symbol, projective, chars, matrices=None, letter=None, subscript=None,
-                 suffix=None, component=None, partner_symbol=None):
+    def __init__(
+        self,
+        symbol,
+        projective,
+        chars,
+        matrices=None,
+        letter=None,
+        subscript=None,
+        suffix=None,
+        component=None,
+        partner_symbol=None,
+    ):
         self.symbol = symbol
         self.projective = projective
-        self.chars = chars  # character on every element of G (lifted through the section)
+        self.chars = (
+            chars  # character on every element of G (lifted through the section)
+        )
         self.matrices = matrices  # per element of G, or None (polyhedral prototype)
         self.letter = letter
         self.subscript = subscript
@@ -497,8 +523,13 @@ class Irrep:
         return int(self.chars[0][0])
 
     def record(self):
-        rec = {"index": self.index, "symbol": self.symbol, "dimension": self.dimension,
-               "projective": self.projective, "letter": self.letter}
+        rec = {
+            "index": self.index,
+            "symbol": self.symbol,
+            "dimension": self.dimension,
+            "projective": self.projective,
+            "letter": self.letter,
+        }
         if self.component is not None:
             rec["component"] = self.component
             rec["partner"] = self.partner
@@ -521,7 +552,9 @@ def _symbol_parts(symbol):
 
 def make_irrep(ctx, symbol, projective, chars, matrices=None, partner_symbol=None):
     comp, letter, sub, suf = _symbol_parts(symbol)
-    return Irrep(symbol, projective, chars, matrices, letter, sub, suf, comp, partner_symbol)
+    return Irrep(
+        symbol, projective, chars, matrices, letter, sub, suf, comp, partner_symbol
+    )
 
 
 LETTER_RANK = {L: k for k, L in enumerate("ABETGHI")}
@@ -536,7 +569,13 @@ def order_key(ir):
         subv = int(sub.split("/")[0]) / 2
     else:
         subv = float(sub)
-    return (ir.projective, SUFFIX_RANK[ir.suffix], LETTER_RANK[ir.letter], subv, ir.component or 0)
+    return (
+        ir.projective,
+        SUFFIX_RANK[ir.suffix],
+        LETTER_RANK[ir.letter],
+        subv,
+        ir.component or 0,
+    )
 
 
 def with_parity(ctx, on_R, suffix_sign):
@@ -563,6 +602,7 @@ def dihedral_irreps(ctx):
         def D(r):
             k, s = r
             return mat_mul(F, mat_power(F, Da, k), mat_power(F, Db, s))
+
         if lifted:
             return lambda r: D(ctx.D.cover.section(r))
         return D
@@ -596,7 +636,9 @@ def dihedral_irreps(ctx):
             partner = None
             if symbol.startswith(("1", "2")):
                 partner = ("2" if symbol[0] == "1" else "1") + symbol[1:] + suffix
-            out.append(make_irrep(ctx, symbol + suffix, projective, chars, mats, partner))
+            out.append(
+                make_irrep(ctx, symbol + suffix, projective, chars, mats, partner)
+            )
     return out
 
 
@@ -613,9 +655,14 @@ def polyhedral_irreps(ctx):
         return F.add(F.rational(a), F.scale(alpha, b))
 
     def U(w, deg):  # Chebyshev U_deg(w): character of D^(deg/2) at cos(theta/2) = w
-        coeffs = {1: [(2, 1)], 2: [(4, 2), (-1, 0)], 3: [(8, 3), (-4, 1)],
-                  4: [(16, 4), (-12, 2), (1, 0)], 5: [(32, 5), (-32, 3), (6, 1)],
-                  6: [(64, 6), (-80, 4), (24, 2), (-1, 0)]}[deg]
+        coeffs = {
+            1: [(2, 1)],
+            2: [(4, 2), (-1, 0)],
+            3: [(8, 3), (-4, 1)],
+            4: [(16, 4), (-12, 2), (1, 0)],
+            5: [(32, 5), (-32, 3), (6, 1)],
+            6: [(64, 6), (-80, 4), (24, 2), (-1, 0)],
+        }[deg]
         return _sum(F, (F.scale(F.power(w, e), c) for c, e in coeffs))
 
     def perm_sign(p):
@@ -633,39 +680,64 @@ def polyhedral_irreps(ctx):
 
     reps = []  # (symbol, projective, function r -> character)
     if kind == "O":
-        A2 = lambda r: F.rational(perm_sign(r))  # noqa: E731
-        T1 = lambda r: U(w_of(r), 2)  # noqa: E731
-        T2 = lambda r: F.mul(A2(r), T1(r))  # noqa: E731
-        E = lambda r: F.sub(F.sub(F.sub(F.mul(T1(r), T1(r)), F.rational(1)), T1(r)), T2(r))  # noqa: E731
-        reps += [("A1", False, lambda r: F.rational(1)), ("A2", False, A2), ("E", False, E),
-                 ("T1", False, T1), ("T2", False, T2)]
-        E12 = lambda r: U(w_of(r), 1)  # noqa: E731
-        reps += [("E1/2", True, E12), ("E5/2", True, lambda r: F.mul(A2(r), E12(r))),
-                 ("G3/2", True, lambda r: U(w_of(r), 3))]
+        A2 = lambda r: F.rational(perm_sign(r))
+        T1 = lambda r: U(w_of(r), 2)
+        T2 = lambda r: F.mul(A2(r), T1(r))
+        E = lambda r: F.sub(
+            F.sub(F.sub(F.mul(T1(r), T1(r)), F.rational(1)), T1(r)), T2(r)
+        )
+        reps += [
+            ("A1", False, lambda r: F.rational(1)),
+            ("A2", False, A2),
+            ("E", False, E),
+            ("T1", False, T1),
+            ("T2", False, T2),
+        ]
+        E12 = lambda r: U(w_of(r), 1)
+        reps += [
+            ("E1/2", True, E12),
+            ("E5/2", True, lambda r: F.mul(A2(r), E12(r))),
+            ("G3/2", True, lambda r: U(w_of(r), 3)),
+        ]
     else:
-        T1 = lambda r: U(w_of(r), 2)  # noqa: E731
-        T2 = lambda r: U(w_of(r, True), 2)  # noqa: E731
-        reps += [("A", False, lambda r: F.rational(1)), ("T1", False, T1), ("T2", False, T2),
-                 ("G", False, lambda r: F.sub(U(w_of(r), 6), T2(r))),
-                 ("H", False, lambda r: U(w_of(r), 4))]
-        reps += [("E1/2", True, lambda r: U(w_of(r), 1)), ("E7/2", True, lambda r: U(w_of(r, True), 1)),
-                 ("G3/2", True, lambda r: U(w_of(r), 3)), ("I5/2", True, lambda r: U(w_of(r), 5))]
+        T1 = lambda r: U(w_of(r), 2)
+        T2 = lambda r: U(w_of(r, True), 2)
+        reps += [
+            ("A", False, lambda r: F.rational(1)),
+            ("T1", False, T1),
+            ("T2", False, T2),
+            ("G", False, lambda r: F.sub(U(w_of(r), 6), T2(r))),
+            ("H", False, lambda r: U(w_of(r), 4)),
+        ]
+        reps += [
+            ("E1/2", True, lambda r: U(w_of(r), 1)),
+            ("E7/2", True, lambda r: U(w_of(r, True), 1)),
+            ("G3/2", True, lambda r: U(w_of(r), 3)),
+            ("I5/2", True, lambda r: U(w_of(r), 5)),
+        ]
 
     suffixes = [("", 1)] if ctx.G.kind != "centro" else [("g", 1), ("u", -1)]
     out = []
     for symbol, projective, chi in reps:
         for suffix, sign in suffixes:
-            chars = [chi(r) if (p == 1 or sign == 1) else F.neg(chi(r)) for (r, p) in ctx.G.elements]
+            chars = [
+                chi(r) if (p == 1 or sign == 1) else F.neg(chi(r))
+                for (r, p) in ctx.G.elements
+            ]
             out.append(make_irrep(ctx, symbol + suffix, projective, chars))
     return out
 
 
 def build_irreps(ctx):
     if ctx.polyhedral:
-        assert ctx.R.name in ("O", "I"), "prototype covers O, Oh, I, Ih among the polyhedral groups"
+        assert ctx.R.name in ("O", "I"), (
+            "prototype covers O, Oh, I, Ih among the polyhedral groups"
+        )
         irreps = polyhedral_irreps(ctx)
     else:
-        assert ctx.R.name.startswith("D"), "prototype covers the dihedral-based axial families"
+        assert ctx.R.name.startswith("D"), (
+            "prototype covers the dihedral-based axial families"
+        )
         irreps = dihedral_irreps(ctx)
     irreps.sort(key=order_key)
     by_symbol = {}
@@ -685,7 +757,10 @@ def build_irreps(ctx):
                 term = F.neg(term)
             total = F.add(total, term)
         total = F.scale(total, Fr(1, ctx.N))
-        assert all(c == 0 for c in total[1:]) and total[0].denominator == 1, (ir.symbol, total)
+        assert all(c == 0 for c in total[1:]) and total[0].denominator == 1, (
+            ir.symbol,
+            total,
+        )
         ir.frobenius_schur = int(total[0])
     return irreps
 
@@ -700,8 +775,11 @@ def character_on(ctx, ir, double_index):
 
 
 def select_irreps(ctx, which):
-    return [ir for ir in ctx.irreps
-            if which == "all" or (which == "projective") == ir.projective]
+    return [
+        ir
+        for ir in ctx.irreps
+        if which == "all" or (which == "projective") == ir.projective
+    ]
 
 
 # --------------------------------------------------------------------------
@@ -730,8 +808,10 @@ def elements_table(ctx, double):
 
 
 def cayley_table(ctx, double):
-    return {"group": "G_double" if double else "G",
-            "table": ctx.double_table if double else ctx.table}
+    return {
+        "group": "G_double" if double else "G",
+        "table": ctx.double_table if double else ctx.table,
+    }
 
 
 def factor_table(ctx):
@@ -745,9 +825,14 @@ def characters_table(ctx, which, forms):
         class_group, classes = "G", ctx.classes
     else:
         class_group, classes = "G_double", ctx.double_classes
-    rows = [[character_on(ctx, ir, c["representative"]) for c in classes] for ir in irreps]
-    table = {"class_group": class_group, "irreps": [ir.record() for ir in irreps],
-             "classes": classes}
+    rows = [
+        [character_on(ctx, ir, c["representative"]) for c in classes] for ir in irreps
+    ]
+    table = {
+        "class_group": class_group,
+        "irreps": [ir.record() for ir in irreps],
+        "classes": classes,
+    }
     if "exact" in forms:
         table["exact"] = [[F.exact(x) for x in row] for row in rows]
     if "numeric" in forms:
@@ -761,7 +846,9 @@ def matrices_table(ctx, which, forms):
     for ir in select_irreps(ctx, which):
         rec = ir.record()
         if ir.matrices is None:
-            raise SystemExit(f"prototype: no irrep matrices for {ctx.symbol} yet (ticket #16)")
+            raise SystemExit(
+                f"prototype: no irrep matrices for {ctx.symbol} yet (ticket #16)"
+            )
         if "exact" in forms:
             rec["exact"] = [mat_exact(F, A) for A in ir.matrices]
         if "numeric" in forms:
@@ -849,7 +936,7 @@ def selfcheck(symbols=("C3v", "D6h", "Oh", "Ih")):
         irreps = ctx.irreps
         for proj in (False, True):
             block = [ir for ir in irreps if ir.projective == proj]
-            assert sum(ir.dimension ** 2 for ir in block) == ctx.N, (symbol, proj)
+            assert sum(ir.dimension**2 for ir in block) == ctx.N, (symbol, proj)
         # orthogonality over G-dagger (all irreps are irreps of G-dagger)
         classes = ctx.double_classes
         for a in irreps:
@@ -875,8 +962,10 @@ def selfcheck(symbols=("C3v", "D6h", "Oh", "Ih")):
         nreg = sum(1 for c in ctx.classes if c["regular"])
         nproj = sum(1 for ir in irreps if ir.projective)
         assert nreg == nproj, (symbol, nreg, nproj)
-        print(f"{symbol:4s} ok: |G|={ctx.N:3d} classes G/G†={len(ctx.classes)}/{len(classes)} "
-              f"irreps={' '.join(ir.symbol for ir in irreps)}")
+        print(
+            f"{symbol:4s} ok: |G|={ctx.N:3d} classes G/G†={len(ctx.classes)}/{len(classes)} "
+            f"irreps={' '.join(ir.symbol for ir in irreps)}"
+        )
 
 
 # --------------------------------------------------------------------------
@@ -912,8 +1001,13 @@ def write_samples(out_dir):
     for sub, group, opts in SAMPLES:
         ctx = contexts.setdefault(group, Context(group))
         tables = opts.get("tables", TABLE_ORDER if sub == "all" else [sub])
-        doc = document(ctx, tables, opts.get("double", False), opts.get("irreps", "all"),
-                       opts.get("values", "both"))
+        doc = document(
+            ctx,
+            tables,
+            opts.get("double", False),
+            opts.get("irreps", "all"),
+            opts.get("values", "both"),
+        )
         name = f"{group}_{sub}"
         if opts.get("double"):
             name += "_double"
