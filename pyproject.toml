@@ -26,4 +26,4 @@ dev = [
 ]
 
 [tool.ty.environment]
-extra-paths = ["prototypes"]
+extra-paths = ["prototypes", "tools"]

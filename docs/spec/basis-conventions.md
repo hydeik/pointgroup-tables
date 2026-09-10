@@ -65,13 +65,24 @@ section for projective irreps:
    `(−N/2, N/2]` for an ordinary irrep (`ζ = ζ_N`) and in `(−N, N]` for a
    projective irrep (`ζ = ζ_2N`), `N` the order of `c`.
 
-For every irrep of every point group these eigenvalues are pairwise distinct
-(checked for all polyhedral irreps, e.g. `H` of `I` on `C5`:
-`1, ζ_5^{±1}, ζ_5^{±2}`; `I5/2` of `I†` on `s(C5)`: `ζ_20^{±1, ±3, ±5}`), so
-rules 1 and 2 fix the basis up to one phase per basis vector. The first basis
-vector of a two-dimensional axial `E_k` therefore transforms as the
-component-`1` member `1E_k` of the corresponding pair, and subduction to the
-cyclic subgroup `⟨c⟩` is read off the diagonal.
+With one exception these eigenvalues are pairwise distinct (checked for all
+polyhedral irreps, e.g. `H` of `I` on `C5`: `1, ζ_5^{±1}, ζ_5^{±2}`; `G3/2`
+of `I†` on `s(C5)`: `ζ_10^{±1}, ζ_10^{±3}`), so rules 1 and 2 fix the basis
+up to one phase per basis vector. The first basis vector of a
+two-dimensional axial `E_k` therefore transforms as the component-`1` member
+`1E_k` of the corresponding pair, and subduction to the cyclic subgroup `⟨c⟩`
+is read off the diagonal.
+
+The exception is `I5/2` of `I†`, the restriction of the SU(2) irrep
+`D^{5/2}`: on `s(C5)` (angle `2π/5`) the weights `m = ±5/2` both give
+`e^{±iπ} = −1`, so its eigenvalues are `ζ_10^{±1}, ζ_10^{±3}` and `−1`
+twice. There rule 2 is read with the **weights** in place of the reduced
+exponents: the basis is the product basis of `E1/2 ⊗ T2` (both in their
+canonical bases, [below](#canonical-basis-polyhedral-families)), each product
+vector carrying the exponent `e_{E1/2} + e_{T2}` (the `T2` exponent counted
+in `ζ_10` units), which gives the six distinct weights `5, 3, 1, −1, −3, −5`
+and orders the two `−1` vectors as `5` before `−5`. No further phase choice
+arises, since the factors are already fixed.
 
 The remaining phases are fixed differently in the two kinds of family.
 
@@ -123,15 +134,52 @@ in every irrep of `R†` of dimension `≥ 2`, and the conductor of `R†`. The
 construction and verification of this data is the prototype ticket
 [Canonical polyhedral bases: generator matrices for every irrep of 2T, 2O, 2I](https://github.com/hydeik/pointgroup-tables/issues/16).
 
-The reference constructions the prototype starts from (all exact):
+The prototype froze the data as follows (all exact; `Q(ζ_M)` with
+rational coefficients over the power basis). Every irrep starts from a
+**source representation**, is cut down to its isotypic block by the central
+projector `(d/|R†|) Σ_q χ(q)* D(q)` where the source is reducible, and is
+then expressed in the eigenbasis of `D(s(c))` inside that block, the
+eigenvectors taken in descending exponent order. That fixes each basis
+vector up to a scalar `s_i`; with `s_1 = 1` the remaining scalars must
+satisfy `|s_i|² = h_1 / h_i`, `h_i` the squared norm of the `i`-th
+eigenvector, and are the solution `s_i = x + iy` with `x, y` in the real
+subfield of the smallest cyclotomic field that has one (smallest
+coefficients first, real and positive preferred). The sources:
 
-- `E1/2` of `R†`: `U† ψ(q) U` with `U` the unitary diagonalising `ψ(s(c))`;
-- the three-dimensional irrep with `χ(c) = 1 + 2 cos(2π/N)` (`T` of `T`,
-  `T1` of `O`, `T1` of `I`): the rotation matrix of the quaternion,
-  conjugated into the eigenbasis of `c`;
-- `T2` of `O`: `A2 ⊗ T1` (sign of the permutation); `T2` of `I`: the
-  Galois conjugate `√5 ↦ −√5` of `T1`;
-- everything else: irreducible blocks of tensor products of the above.
+| `R†` | Irrep | Source | Conductor |
+| ---- | ----- | ------ | --------: |
+| `2T` | `E1/2` | the spinor map `ψ(q)` | 12 |
+| | `T` | the rotation matrix of `q` | 12 (`Q(ζ_3)` suffices) |
+| | `1E3/2`, `2E3/2` | blocks of `E1/2 ⊗ T` | 12 |
+| `2O` | `E1/2` | `ψ(q)` | 8 |
+| | `T1` | the rotation matrix of `q` | 8 |
+| | `T2` | `A2 ⊗ T1` | 8 |
+| | `E5/2` | `A2 ⊗ E1/2` | 8 |
+| | `E` | block of `T1 ⊗ T1` | 8 (`(√2 + i)/3` normalises; `Q(i)` does not suffice) |
+| | `G3/2` | `E1/2 ⊗ E` (irreducible; product basis reordered) | 8 |
+| `2I` | `E1/2` | `ψ(q)` | 20 |
+| | `E7/2` | the Galois conjugate `√5 ↦ −√5` (`ζ_20 ↦ ζ_20^{13}`) of `E1/2` | 20 |
+| | `T1` | the rotation matrix of `q` | 20 |
+| | `T2` | the Galois conjugate of `T1` | 20 |
+| | `H` | block of `T1 ⊗ T1` | 20 |
+| | `G` | block of `T1 ⊗ T2` | 20 |
+| | `G3/2` | block of `E1/2 ⊗ T1` | 20 |
+| | `I5/2` | `E1/2 ⊗ T2` in the product basis, columns by weight (see the exception above) | 20 |
+
+The **canonical conductors** are therefore `12` for `2T`, `8` for `2O` and
+`20` for `2I`: the field of `E1/2` already holds every higher irrep, so a
+document of a polyhedral group never leaves `Q(ζ_12)`, `Q(ζ_8)`, `Q(ζ_20)`.
+The frozen file is
+`src/pointgroup_tables/data/conventions/basis/canonical.toml`, written and
+round-trip-checked by `prototypes/canonical_basis_prototype.py` (closure
+from the generator pair, unitarity, traces against the Burnside characters,
+irreducibility, the diagonal-`c` rule and the exponent order, for every
+irrep); its generator pair is `q₁, q₂` of [Double groups](./double-groups.md#generators-and-the-projection-onto-t-o-i),
+named by their canonical labels (`C3^1(1), C2(1)` for `2T`;
+`C4^1(1), C2'(1)` for `2O`; `C5^1(1), C3^1(1)` for `2I`; all lifted, no
+`~`). The eigenvector scalars are part of the frozen data, not of the
+rules: regenerating the file with the prototype reproduces it exactly, but
+the rules above do not determine it without the prototype's search order.
 
 Every group whose rotation group is `R` shares the data of `R†`: type II
 groups (`Th`, `Oh`, `Ih`) use `D(i·r) = ±D(r)`, and `Td` (`R = O`, twisted)
@@ -252,8 +300,10 @@ Exactly, for every group and every basis convention:
 
 ## Version 1 scope
 
-The canonical convention ships in full once the prototype ticket freezes
-the polyhedral data. The Altmann & Herzig convention is filled by the task
+The canonical convention ships in full: the axial rule plus the frozen
+polyhedral data of
+[Canonical polyhedral bases: generator matrices for every irrep of 2T, 2O, 2I](https://github.com/hydeik/pointgroup-tables/issues/16).
+The Altmann & Herzig convention is filled by the task
 [Transcribe Altmann & Herzig irrep matrices for the polyhedral groups](https://github.com/hydeik/pointgroup-tables/issues/17)
 and the decision
 [Altmann & Herzig basis-convention data](https://github.com/hydeik/pointgroup-tables/issues/18).
