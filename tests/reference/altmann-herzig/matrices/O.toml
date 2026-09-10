@@ -1,0 +1,748 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): irrep matrices of O
+# Format: tests/reference/altmann-herzig/matrices/README.md
+# Written by tools/ah_matrices.py from the transcription it holds; every matrix is checked
+# exactly (unitarity, products against the book's factor system, traces against the
+# canonical characters) before this file is written.
+
+group = "O"
+table = "T 69.7, pp. 582-584"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from page images of the PDF; verify against the print"
+conductor = 24
+notes = """
+The book prints one matrix per operation; all of them are transcribed, in the book's
+element order, for every irrep of dimension >= 2 (one-dimensional irreps are their characters).
+576 products checked.
+book symbol -> canonical: E -> E, T1 -> T1, T2 -> T2, E1/2 -> E1/2, E5/2 -> E5/2, F3/2 -> G3/2.
+minimal conductor per irrep: E: 3, T1: 4, T2: 4, E1/2: 8, E5/2: 8, F3/2: 24.
+Entries are exact in Q(zeta_M), M = conductor, in the value grammar of
+docs/spec/basis-conventions.md; the book's symbols are listed in [book.constants].
+"""
+
+[book]
+irreps = ["E", "T1", "T2", "E1/2", "E5/2", "F3/2"]
+elements = ["E", "C2x", "C2y", "C2z", "C3,1+", "C3,2+", "C3,3+", "C3,4+", "C3,1-", "C3,2-", "C3,3-", "C3,4-", "C4x+", "C4y+", "C4z+", "C4x-", "C4y-", "C4z-", "C2'a", "C2'b", "C2'c", "C2'd", "C2'e", "C2'f"]  # book labels of the transcribed matrices
+generators = ["C4z+", "C2'd"]  # a generating set among them (book labels; canonical labels via labels/<Group>.toml)
+
+[book.constants]  # as printed in the table footnote
+"delta" = "exp(2 pi i/24)"
+"epsilon" = "exp(2 pi i/8)"
+"eta" = "exp(2 pi i/3)"
+
+[book.exact]  # the same constants in the value grammar (conjugates carry a trailing s)
+d = "zeta"
+e = "zeta^3"
+n = "zeta^8"
+
+[canonical]  # book irrep symbol -> canonical Mulliken symbol, by the traces
+"E" = "E"
+"T1" = "T1"
+"T2" = "T2"
+"E1/2" = "E1/2"
+"E5/2" = "E5/2"
+"F3/2" = "G3/2"
+
+[minimal_conductor]  # smallest Q(zeta_d) holding every printed entry of the irrep
+"E" = 3
+"T1" = 4
+"T2" = 4
+"E1/2" = 8
+"E5/2" = 8
+"F3/2" = 24
+
+[irreps."E"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # E
+    ["1", "0"],
+    ["0", "1"],
+  ],
+  [  # C2x
+    ["1", "0"],
+    ["0", "1"],
+  ],
+  [  # C2y
+    ["1", "0"],
+    ["0", "1"],
+  ],
+  [  # C2z
+    ["1", "0"],
+    ["0", "1"],
+  ],
+  [  # C3,1+
+    ["zeta^8", "0"],
+    ["0", "-zeta^4"],
+  ],
+  [  # C3,2+
+    ["zeta^8", "0"],
+    ["0", "-zeta^4"],
+  ],
+  [  # C3,3+
+    ["zeta^8", "0"],
+    ["0", "-zeta^4"],
+  ],
+  [  # C3,4+
+    ["zeta^8", "0"],
+    ["0", "-zeta^4"],
+  ],
+  [  # C3,1-
+    ["-zeta^4", "0"],
+    ["0", "zeta^8"],
+  ],
+  [  # C3,2-
+    ["-zeta^4", "0"],
+    ["0", "zeta^8"],
+  ],
+  [  # C3,3-
+    ["-zeta^4", "0"],
+    ["0", "zeta^8"],
+  ],
+  [  # C3,4-
+    ["-zeta^4", "0"],
+    ["0", "zeta^8"],
+  ],
+  [  # C4x+
+    ["0", "-zeta^4"],
+    ["zeta^8", "0"],
+  ],
+  [  # C4y+
+    ["0", "zeta^8"],
+    ["-zeta^4", "0"],
+  ],
+  [  # C4z+
+    ["0", "1"],
+    ["1", "0"],
+  ],
+  [  # C4x-
+    ["0", "-zeta^4"],
+    ["zeta^8", "0"],
+  ],
+  [  # C4y-
+    ["0", "zeta^8"],
+    ["-zeta^4", "0"],
+  ],
+  [  # C4z-
+    ["0", "1"],
+    ["1", "0"],
+  ],
+  [  # C2'a
+    ["0", "1"],
+    ["1", "0"],
+  ],
+  [  # C2'b
+    ["0", "1"],
+    ["1", "0"],
+  ],
+  [  # C2'c
+    ["0", "zeta^8"],
+    ["-zeta^4", "0"],
+  ],
+  [  # C2'd
+    ["0", "-zeta^4"],
+    ["zeta^8", "0"],
+  ],
+  [  # C2'e
+    ["0", "zeta^8"],
+    ["-zeta^4", "0"],
+  ],
+  [  # C2'f
+    ["0", "-zeta^4"],
+    ["zeta^8", "0"],
+  ],
+]
+
+[irreps."T1"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # E
+    ["1", "0", "0"],
+    ["0", "1", "0"],
+    ["0", "0", "1"],
+  ],
+  [  # C2x
+    ["-1", "0", "0"],
+    ["0", "-1", "0"],
+    ["0", "0", "1"],
+  ],
+  [  # C2y
+    ["1", "0", "0"],
+    ["0", "-1", "0"],
+    ["0", "0", "-1"],
+  ],
+  [  # C2z
+    ["-1", "0", "0"],
+    ["0", "1", "0"],
+    ["0", "0", "-1"],
+  ],
+  [  # C3,1+
+    ["0", "0", "-i"],
+    ["-i", "0", "0"],
+    ["0", "-1", "0"],
+  ],
+  [  # C3,2+
+    ["0", "0", "-i"],
+    ["i", "0", "0"],
+    ["0", "1", "0"],
+  ],
+  [  # C3,3+
+    ["0", "0", "i"],
+    ["-i", "0", "0"],
+    ["0", "1", "0"],
+  ],
+  [  # C3,4+
+    ["0", "0", "i"],
+    ["i", "0", "0"],
+    ["0", "-1", "0"],
+  ],
+  [  # C3,1-
+    ["0", "i", "0"],
+    ["0", "0", "-1"],
+    ["i", "0", "0"],
+  ],
+  [  # C3,2-
+    ["0", "-i", "0"],
+    ["0", "0", "1"],
+    ["i", "0", "0"],
+  ],
+  [  # C3,3-
+    ["0", "i", "0"],
+    ["0", "0", "1"],
+    ["-i", "0", "0"],
+  ],
+  [  # C3,4-
+    ["0", "-i", "0"],
+    ["0", "0", "-1"],
+    ["-i", "0", "0"],
+  ],
+  [  # C4x+
+    ["0", "-i", "0"],
+    ["-i", "0", "0"],
+    ["0", "0", "1"],
+  ],
+  [  # C4y+
+    ["1", "0", "0"],
+    ["0", "0", "1"],
+    ["0", "-1", "0"],
+  ],
+  [  # C4z+
+    ["0", "0", "-i"],
+    ["0", "1", "0"],
+    ["-i", "0", "0"],
+  ],
+  [  # C4x-
+    ["0", "i", "0"],
+    ["i", "0", "0"],
+    ["0", "0", "1"],
+  ],
+  [  # C4y-
+    ["1", "0", "0"],
+    ["0", "0", "-1"],
+    ["0", "1", "0"],
+  ],
+  [  # C4z-
+    ["0", "0", "i"],
+    ["0", "1", "0"],
+    ["i", "0", "0"],
+  ],
+  [  # C2'a
+    ["0", "0", "-i"],
+    ["0", "-1", "0"],
+    ["i", "0", "0"],
+  ],
+  [  # C2'b
+    ["0", "0", "i"],
+    ["0", "-1", "0"],
+    ["-i", "0", "0"],
+  ],
+  [  # C2'c
+    ["-1", "0", "0"],
+    ["0", "0", "-1"],
+    ["0", "-1", "0"],
+  ],
+  [  # C2'd
+    ["0", "i", "0"],
+    ["-i", "0", "0"],
+    ["0", "0", "-1"],
+  ],
+  [  # C2'e
+    ["-1", "0", "0"],
+    ["0", "0", "1"],
+    ["0", "1", "0"],
+  ],
+  [  # C2'f
+    ["0", "-i", "0"],
+    ["i", "0", "0"],
+    ["0", "0", "-1"],
+  ],
+]
+
+[irreps."T2"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # E
+    ["1", "0", "0"],
+    ["0", "1", "0"],
+    ["0", "0", "1"],
+  ],
+  [  # C2x
+    ["-1", "0", "0"],
+    ["0", "-1", "0"],
+    ["0", "0", "1"],
+  ],
+  [  # C2y
+    ["1", "0", "0"],
+    ["0", "-1", "0"],
+    ["0", "0", "-1"],
+  ],
+  [  # C2z
+    ["-1", "0", "0"],
+    ["0", "1", "0"],
+    ["0", "0", "-1"],
+  ],
+  [  # C3,1+
+    ["0", "0", "-i"],
+    ["-i", "0", "0"],
+    ["0", "-1", "0"],
+  ],
+  [  # C3,2+
+    ["0", "0", "-i"],
+    ["i", "0", "0"],
+    ["0", "1", "0"],
+  ],
+  [  # C3,3+
+    ["0", "0", "i"],
+    ["-i", "0", "0"],
+    ["0", "1", "0"],
+  ],
+  [  # C3,4+
+    ["0", "0", "i"],
+    ["i", "0", "0"],
+    ["0", "-1", "0"],
+  ],
+  [  # C3,1-
+    ["0", "i", "0"],
+    ["0", "0", "-1"],
+    ["i", "0", "0"],
+  ],
+  [  # C3,2-
+    ["0", "-i", "0"],
+    ["0", "0", "1"],
+    ["i", "0", "0"],
+  ],
+  [  # C3,3-
+    ["0", "i", "0"],
+    ["0", "0", "1"],
+    ["-i", "0", "0"],
+  ],
+  [  # C3,4-
+    ["0", "-i", "0"],
+    ["0", "0", "-1"],
+    ["-i", "0", "0"],
+  ],
+  [  # C4x+
+    ["0", "i", "0"],
+    ["i", "0", "0"],
+    ["0", "0", "-1"],
+  ],
+  [  # C4y+
+    ["-1", "0", "0"],
+    ["0", "0", "-1"],
+    ["0", "1", "0"],
+  ],
+  [  # C4z+
+    ["0", "0", "i"],
+    ["0", "-1", "0"],
+    ["i", "0", "0"],
+  ],
+  [  # C4x-
+    ["0", "-i", "0"],
+    ["-i", "0", "0"],
+    ["0", "0", "-1"],
+  ],
+  [  # C4y-
+    ["-1", "0", "0"],
+    ["0", "0", "1"],
+    ["0", "-1", "0"],
+  ],
+  [  # C4z-
+    ["0", "0", "-i"],
+    ["0", "-1", "0"],
+    ["-i", "0", "0"],
+  ],
+  [  # C2'a
+    ["0", "0", "i"],
+    ["0", "1", "0"],
+    ["-i", "0", "0"],
+  ],
+  [  # C2'b
+    ["0", "0", "-i"],
+    ["0", "1", "0"],
+    ["i", "0", "0"],
+  ],
+  [  # C2'c
+    ["1", "0", "0"],
+    ["0", "0", "1"],
+    ["0", "1", "0"],
+  ],
+  [  # C2'd
+    ["0", "-i", "0"],
+    ["i", "0", "0"],
+    ["0", "0", "1"],
+  ],
+  [  # C2'e
+    ["1", "0", "0"],
+    ["0", "0", "-1"],
+    ["0", "-1", "0"],
+  ],
+  [  # C2'f
+    ["0", "i", "0"],
+    ["-i", "0", "0"],
+    ["0", "0", "1"],
+  ],
+]
+
+[irreps."E1/2"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # E
+    ["1", "0"],
+    ["0", "1"],
+  ],
+  [  # C2x
+    ["0", "-i"],
+    ["-i", "0"],
+  ],
+  [  # C2y
+    ["0", "-1"],
+    ["1", "0"],
+  ],
+  [  # C2z
+    ["-i", "0"],
+    ["0", "i"],
+  ],
+  [  # C3,1+
+    ["-sqrt2*zeta^9/2", "-sqrt2*zeta^3/2"],
+    ["-sqrt2*zeta^9/2", "sqrt2*zeta^3/2"],
+  ],
+  [  # C3,2+
+    ["-sqrt2*zeta^9/2", "sqrt2*zeta^3/2"],
+    ["sqrt2*zeta^9/2", "sqrt2*zeta^3/2"],
+  ],
+  [  # C3,3+
+    ["sqrt2*zeta^3/2", "-sqrt2*zeta^9/2"],
+    ["-sqrt2*zeta^3/2", "-sqrt2*zeta^9/2"],
+  ],
+  [  # C3,4+
+    ["sqrt2*zeta^3/2", "sqrt2*zeta^9/2"],
+    ["sqrt2*zeta^3/2", "-sqrt2*zeta^9/2"],
+  ],
+  [  # C3,1-
+    ["sqrt2*zeta^3/2", "sqrt2*zeta^3/2"],
+    ["sqrt2*zeta^9/2", "-sqrt2*zeta^9/2"],
+  ],
+  [  # C3,2-
+    ["sqrt2*zeta^3/2", "-sqrt2*zeta^3/2"],
+    ["-sqrt2*zeta^9/2", "-sqrt2*zeta^9/2"],
+  ],
+  [  # C3,3-
+    ["-sqrt2*zeta^9/2", "sqrt2*zeta^9/2"],
+    ["sqrt2*zeta^3/2", "sqrt2*zeta^3/2"],
+  ],
+  [  # C3,4-
+    ["-sqrt2*zeta^9/2", "-sqrt2*zeta^9/2"],
+    ["-sqrt2*zeta^3/2", "sqrt2*zeta^3/2"],
+  ],
+  [  # C4x+
+    ["sqrt2/2", "-sqrt2*i/2"],
+    ["-sqrt2*i/2", "sqrt2/2"],
+  ],
+  [  # C4y+
+    ["sqrt2/2", "-sqrt2/2"],
+    ["sqrt2/2", "sqrt2/2"],
+  ],
+  [  # C4z+
+    ["-zeta^9", "0"],
+    ["0", "zeta^3"],
+  ],
+  [  # C4x-
+    ["sqrt2/2", "sqrt2*i/2"],
+    ["sqrt2*i/2", "sqrt2/2"],
+  ],
+  [  # C4y-
+    ["sqrt2/2", "sqrt2/2"],
+    ["-sqrt2/2", "sqrt2/2"],
+  ],
+  [  # C4z-
+    ["zeta^3", "0"],
+    ["0", "-zeta^9"],
+  ],
+  [  # C2'a
+    ["0", "-zeta^3"],
+    ["-zeta^9", "0"],
+  ],
+  [  # C2'b
+    ["0", "zeta^9"],
+    ["zeta^3", "0"],
+  ],
+  [  # C2'c
+    ["-sqrt2*i/2", "-sqrt2*i/2"],
+    ["-sqrt2*i/2", "sqrt2*i/2"],
+  ],
+  [  # C2'd
+    ["sqrt2*i/2", "sqrt2/2"],
+    ["-sqrt2/2", "-sqrt2*i/2"],
+  ],
+  [  # C2'e
+    ["sqrt2*i/2", "-sqrt2*i/2"],
+    ["-sqrt2*i/2", "-sqrt2*i/2"],
+  ],
+  [  # C2'f
+    ["-sqrt2*i/2", "sqrt2/2"],
+    ["-sqrt2/2", "sqrt2*i/2"],
+  ],
+]
+
+[irreps."E5/2"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # E
+    ["1", "0"],
+    ["0", "1"],
+  ],
+  [  # C2x
+    ["0", "-i"],
+    ["-i", "0"],
+  ],
+  [  # C2y
+    ["0", "-1"],
+    ["1", "0"],
+  ],
+  [  # C2z
+    ["-i", "0"],
+    ["0", "i"],
+  ],
+  [  # C3,1+
+    ["-sqrt2*zeta^9/2", "-sqrt2*zeta^3/2"],
+    ["-sqrt2*zeta^9/2", "sqrt2*zeta^3/2"],
+  ],
+  [  # C3,2+
+    ["-sqrt2*zeta^9/2", "sqrt2*zeta^3/2"],
+    ["sqrt2*zeta^9/2", "sqrt2*zeta^3/2"],
+  ],
+  [  # C3,3+
+    ["sqrt2*zeta^3/2", "-sqrt2*zeta^9/2"],
+    ["-sqrt2*zeta^3/2", "-sqrt2*zeta^9/2"],
+  ],
+  [  # C3,4+
+    ["sqrt2*zeta^3/2", "sqrt2*zeta^9/2"],
+    ["sqrt2*zeta^3/2", "-sqrt2*zeta^9/2"],
+  ],
+  [  # C3,1-
+    ["sqrt2*zeta^3/2", "sqrt2*zeta^3/2"],
+    ["sqrt2*zeta^9/2", "-sqrt2*zeta^9/2"],
+  ],
+  [  # C3,2-
+    ["sqrt2*zeta^3/2", "-sqrt2*zeta^3/2"],
+    ["-sqrt2*zeta^9/2", "-sqrt2*zeta^9/2"],
+  ],
+  [  # C3,3-
+    ["-sqrt2*zeta^9/2", "sqrt2*zeta^9/2"],
+    ["sqrt2*zeta^3/2", "sqrt2*zeta^3/2"],
+  ],
+  [  # C3,4-
+    ["-sqrt2*zeta^9/2", "-sqrt2*zeta^9/2"],
+    ["-sqrt2*zeta^3/2", "sqrt2*zeta^3/2"],
+  ],
+  [  # C4x+
+    ["-sqrt2/2", "sqrt2*i/2"],
+    ["sqrt2*i/2", "-sqrt2/2"],
+  ],
+  [  # C4y+
+    ["-sqrt2/2", "sqrt2/2"],
+    ["-sqrt2/2", "-sqrt2/2"],
+  ],
+  [  # C4z+
+    ["zeta^9", "0"],
+    ["0", "-zeta^3"],
+  ],
+  [  # C4x-
+    ["-sqrt2/2", "-sqrt2*i/2"],
+    ["-sqrt2*i/2", "-sqrt2/2"],
+  ],
+  [  # C4y-
+    ["-sqrt2/2", "-sqrt2/2"],
+    ["sqrt2/2", "-sqrt2/2"],
+  ],
+  [  # C4z-
+    ["-zeta^3", "0"],
+    ["0", "zeta^9"],
+  ],
+  [  # C2'a
+    ["0", "zeta^3"],
+    ["zeta^9", "0"],
+  ],
+  [  # C2'b
+    ["0", "-zeta^9"],
+    ["-zeta^3", "0"],
+  ],
+  [  # C2'c
+    ["sqrt2*i/2", "sqrt2*i/2"],
+    ["sqrt2*i/2", "-sqrt2*i/2"],
+  ],
+  [  # C2'd
+    ["-sqrt2*i/2", "-sqrt2/2"],
+    ["sqrt2/2", "sqrt2*i/2"],
+  ],
+  [  # C2'e
+    ["-sqrt2*i/2", "sqrt2*i/2"],
+    ["sqrt2*i/2", "sqrt2*i/2"],
+  ],
+  [  # C2'f
+    ["sqrt2*i/2", "-sqrt2/2"],
+    ["sqrt2/2", "-sqrt2*i/2"],
+  ],
+]
+
+[irreps."F3/2"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # E
+    ["1", "0", "0", "0"],
+    ["0", "1", "0", "0"],
+    ["0", "0", "1", "0"],
+    ["0", "0", "0", "1"],
+  ],
+  [  # C2x
+    ["0", "-i", "0", "0"],
+    ["-i", "0", "0", "0"],
+    ["0", "0", "0", "-i"],
+    ["0", "0", "-i", "0"],
+  ],
+  [  # C2y
+    ["0", "-1", "0", "0"],
+    ["1", "0", "0", "0"],
+    ["0", "0", "0", "-1"],
+    ["0", "0", "1", "0"],
+  ],
+  [  # C2z
+    ["-i", "0", "0", "0"],
+    ["0", "i", "0", "0"],
+    ["0", "0", "-i", "0"],
+    ["0", "0", "0", "i"],
+  ],
+  [  # C3,1+
+    ["sqrt2*zeta^5/2", "-sqrt2*zeta^11/2", "0", "0"],
+    ["sqrt2*zeta^5/2", "sqrt2*zeta^11/2", "0", "0"],
+    ["0", "0", "-sqrt2*zeta/2", "sqrt2*zeta^7/2"],
+    ["0", "0", "-sqrt2*zeta/2", "-sqrt2*zeta^7/2"],
+  ],
+  [  # C3,2+
+    ["sqrt2*zeta^5/2", "sqrt2*zeta^11/2", "0", "0"],
+    ["-sqrt2*zeta^5/2", "sqrt2*zeta^11/2", "0", "0"],
+    ["0", "0", "-sqrt2*zeta/2", "-sqrt2*zeta^7/2"],
+    ["0", "0", "sqrt2*zeta/2", "-sqrt2*zeta^7/2"],
+  ],
+  [  # C3,3+
+    ["sqrt2*zeta^11/2", "sqrt2*zeta^5/2", "0", "0"],
+    ["-sqrt2*zeta^11/2", "sqrt2*zeta^5/2", "0", "0"],
+    ["0", "0", "-sqrt2*zeta^7/2", "-sqrt2*zeta/2"],
+    ["0", "0", "sqrt2*zeta^7/2", "-sqrt2*zeta/2"],
+  ],
+  [  # C3,4+
+    ["sqrt2*zeta^11/2", "-sqrt2*zeta^5/2", "0", "0"],
+    ["sqrt2*zeta^11/2", "sqrt2*zeta^5/2", "0", "0"],
+    ["0", "0", "-sqrt2*zeta^7/2", "sqrt2*zeta/2"],
+    ["0", "0", "-sqrt2*zeta^7/2", "-sqrt2*zeta/2"],
+  ],
+  [  # C3,1-
+    ["-sqrt2*zeta^7/2", "-sqrt2*zeta^7/2", "0", "0"],
+    ["sqrt2*zeta/2", "-sqrt2*zeta/2", "0", "0"],
+    ["0", "0", "sqrt2*zeta^11/2", "sqrt2*zeta^11/2"],
+    ["0", "0", "-sqrt2*zeta^5/2", "sqrt2*zeta^5/2"],
+  ],
+  [  # C3,2-
+    ["-sqrt2*zeta^7/2", "sqrt2*zeta^7/2", "0", "0"],
+    ["-sqrt2*zeta/2", "-sqrt2*zeta/2", "0", "0"],
+    ["0", "0", "sqrt2*zeta^11/2", "-sqrt2*zeta^11/2"],
+    ["0", "0", "sqrt2*zeta^5/2", "sqrt2*zeta^5/2"],
+  ],
+  [  # C3,3-
+    ["-sqrt2*zeta/2", "sqrt2*zeta/2", "0", "0"],
+    ["-sqrt2*zeta^7/2", "-sqrt2*zeta^7/2", "0", "0"],
+    ["0", "0", "sqrt2*zeta^5/2", "-sqrt2*zeta^5/2"],
+    ["0", "0", "sqrt2*zeta^11/2", "sqrt2*zeta^11/2"],
+  ],
+  [  # C3,4-
+    ["-sqrt2*zeta/2", "-sqrt2*zeta/2", "0", "0"],
+    ["sqrt2*zeta^7/2", "-sqrt2*zeta^7/2", "0", "0"],
+    ["0", "0", "sqrt2*zeta^5/2", "sqrt2*zeta^5/2"],
+    ["0", "0", "-sqrt2*zeta^11/2", "sqrt2*zeta^11/2"],
+  ],
+  [  # C4x+
+    ["0", "0", "-sqrt2*zeta^4/2", "sqrt2*zeta^10/2"],
+    ["0", "0", "sqrt2*zeta^10/2", "-sqrt2*zeta^4/2"],
+    ["sqrt2*zeta^8/2", "sqrt2*zeta^2/2", "0", "0"],
+    ["sqrt2*zeta^2/2", "sqrt2*zeta^8/2", "0", "0"],
+  ],
+  [  # C4y+
+    ["0", "0", "sqrt2*zeta^8/2", "-sqrt2*zeta^8/2"],
+    ["0", "0", "sqrt2*zeta^8/2", "sqrt2*zeta^8/2"],
+    ["-sqrt2*zeta^4/2", "sqrt2*zeta^4/2", "0", "0"],
+    ["-sqrt2*zeta^4/2", "-sqrt2*zeta^4/2", "0", "0"],
+  ],
+  [  # C4z+
+    ["0", "0", "-zeta^9", "0"],
+    ["0", "0", "0", "zeta^3"],
+    ["-zeta^9", "0", "0", "0"],
+    ["0", "zeta^3", "0", "0"],
+  ],
+  [  # C4x-
+    ["0", "0", "-sqrt2*zeta^4/2", "-sqrt2*zeta^10/2"],
+    ["0", "0", "-sqrt2*zeta^10/2", "-sqrt2*zeta^4/2"],
+    ["sqrt2*zeta^8/2", "-sqrt2*zeta^2/2", "0", "0"],
+    ["-sqrt2*zeta^2/2", "sqrt2*zeta^8/2", "0", "0"],
+  ],
+  [  # C4y-
+    ["0", "0", "sqrt2*zeta^8/2", "sqrt2*zeta^8/2"],
+    ["0", "0", "-sqrt2*zeta^8/2", "sqrt2*zeta^8/2"],
+    ["-sqrt2*zeta^4/2", "-sqrt2*zeta^4/2", "0", "0"],
+    ["sqrt2*zeta^4/2", "-sqrt2*zeta^4/2", "0", "0"],
+  ],
+  [  # C4z-
+    ["0", "0", "zeta^3", "0"],
+    ["0", "0", "0", "-zeta^9"],
+    ["zeta^3", "0", "0", "0"],
+    ["0", "-zeta^9", "0", "0"],
+  ],
+  [  # C2'a
+    ["0", "0", "0", "-zeta^3"],
+    ["0", "0", "-zeta^9", "0"],
+    ["0", "-zeta^3", "0", "0"],
+    ["-zeta^9", "0", "0", "0"],
+  ],
+  [  # C2'b
+    ["0", "0", "0", "zeta^9"],
+    ["0", "0", "zeta^3", "0"],
+    ["0", "zeta^9", "0", "0"],
+    ["zeta^3", "0", "0", "0"],
+  ],
+  [  # C2'c
+    ["0", "0", "sqrt2*zeta^2/2", "sqrt2*zeta^2/2"],
+    ["0", "0", "sqrt2*zeta^2/2", "-sqrt2*zeta^2/2"],
+    ["sqrt2*zeta^10/2", "sqrt2*zeta^10/2", "0", "0"],
+    ["sqrt2*zeta^10/2", "-sqrt2*zeta^10/2", "0", "0"],
+  ],
+  [  # C2'd
+    ["0", "0", "-sqrt2*zeta^10/2", "-sqrt2*zeta^4/2"],
+    ["0", "0", "sqrt2*zeta^4/2", "sqrt2*zeta^10/2"],
+    ["-sqrt2*zeta^2/2", "sqrt2*zeta^8/2", "0", "0"],
+    ["-sqrt2*zeta^8/2", "sqrt2*zeta^2/2", "0", "0"],
+  ],
+  [  # C2'e
+    ["0", "0", "-sqrt2*zeta^2/2", "sqrt2*zeta^2/2"],
+    ["0", "0", "sqrt2*zeta^2/2", "sqrt2*zeta^2/2"],
+    ["-sqrt2*zeta^10/2", "sqrt2*zeta^10/2", "0", "0"],
+    ["sqrt2*zeta^10/2", "sqrt2*zeta^10/2", "0", "0"],
+  ],
+  [  # C2'f
+    ["0", "0", "sqrt2*zeta^10/2", "-sqrt2*zeta^4/2"],
+    ["0", "0", "sqrt2*zeta^4/2", "-sqrt2*zeta^10/2"],
+    ["sqrt2*zeta^2/2", "sqrt2*zeta^8/2", "0", "0"],
+    ["-sqrt2*zeta^8/2", "-sqrt2*zeta^2/2", "0", "0"],
+  ],
+]

@@ -307,4 +307,12 @@ The Altmann & Herzig convention is filled by the task
 [Transcribe Altmann & Herzig irrep matrices for the polyhedral groups](https://github.com/hydeik/pointgroup-tables/issues/17)
 and the decision
 [Altmann & Herzig basis-convention data](https://github.com/hydeik/pointgroup-tables/issues/18).
+The task transcribed the book's matrices of `T` (T 70.7), `O` (T 69.7) and
+`I` (T 74.7a/b) into `tests/reference/altmann-herzig/matrices/` as exact
+entries in `Q(ζ_24)`, `Q(ζ_24)` and `Q(ζ_120)`, verified against the book's
+own factor system and the canonical characters by `tools/ah_matrices.py`;
+the book's spinor matrices are those of its untilded operations, and the
+transcription records two errata of T 74.7b (the `C3,1+` matrices of `F3/2`
+and `I5/2` need `δ ↦ −δ`, the `C5,1+` matrices of the same irreps are
+printed transposed).
 Bradley & Cracknell and Bilbao basis conventions are not yet specified.

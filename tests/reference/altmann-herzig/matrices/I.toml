@@ -1,0 +1,348 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): irrep matrices of I
+# Format: tests/reference/altmann-herzig/matrices/README.md
+# Written by tools/ah_matrices.py from the transcription it holds; every matrix is checked
+# exactly (unitarity, products against the book's factor system, traces against the
+# canonical characters) before this file is written.
+
+group = "I"
+table = "T 74.7a, p. 654 (words) and T 74.7b, p. 655 (generator matrices)"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from page images of the PDF; verify against the print"
+conductor = 120
+notes = """
+The book prints matrices for three generators only (T 74.7b) and a word in those
+generators for every operation (T 74.7a, [words] below, left to right as printed);
+the matrix of an operation is the product of the generator matrices along its word.
+words of T 74.7a: 15 give the untilded operation, 45 the tilded one (E, C5,2+, C5,3+, C5,4+, C5,5+, C5,6+, C5,1-, C5,2-, C5,3-, C5,4-, C5,5-, C5,6-, C5,2^2+, C5,3^2+, C5,4^2+, C5,5^2+, C5,6^2+, C5,1^2-, C5,2^2-, C5,4^2-, C5,5^2-, C5,6^2-, C3,2+, C3,3+, C3,4+, C3,5+, C3,6+, C3,7+, C3,8+, C3,9+, C3,10+, C3,1-, C3,2-, C3,3-, C3,4-, C3,5-, C3,6-, C3,7-, C3,8-, C3,9-, C3,10-, C2b, C2c, C2h, C2i).
+180 products checked (every operation times every generator).
+book symbol -> canonical: T1 -> T1, T2 -> T2, F -> G, H -> H, E1/2 -> E1/2, E7/2 -> E7/2, F3/2 -> G3/2, I5/2 -> I5/2.
+minimal conductor per irrep: T1: 20, T2: 20, F: 20, H: 120, E1/2: 20, E7/2: 20, F3/2: 60, I5/2: 120.
+9 printed constants agree with their identified surds.
+Errata: with delta = exp(2 pi i/24) the printed C3,1+ matrices of F3/2 and I5/2 cube to +1
+on their delta blocks (a spinor C3 must cube to -1; T 70.7 prints the same blocks with the
+opposite sign), and the printed C5,1+ matrices of F3/2 and I5/2 have rows and columns
+interchanged. The [[known_discrepancy]] entries record the printed forms; the matrices below carry
+the corrections, which are the only ones that make the products along every word agree
+with the factor system and the traces with the characters.
+Entries are exact in Q(zeta_M), M = conductor, in the value grammar of
+docs/spec/basis-conventions.md; the book's symbols are listed in [book.constants].
+"""
+
+[book]
+irreps = ["T1", "T2", "F", "H", "E1/2", "E7/2", "F3/2", "I5/2"]
+elements = ["C5,1+", "C3,1+", "C2a"]  # book labels of the transcribed matrices
+generators = ["C5,1+", "C3,1+", "C2a"]  # a generating set among them (book labels; canonical labels via labels/<Group>.toml)
+
+[book.constants]  # as printed in the table footnote
+"delta" = "exp(2 pi i/24)"
+"eta" = "exp(2 pi i/8)"
+"omega" = "exp(2 pi i/3)"
+"g+-" = "(sqrt5 +- 1)/2"
+"s+-" = "(sqrt3 +- 1)/sqrt2"
+"t" = "sqrt5"
+"epsilon" = "(8 + 3 sqrt3)^(1/2) exp[i arctan{(-6416 + 13216 sqrt3 + 2352 sqrt5 - 5075 sqrt15)/13189}]"
+"zeta" = "(8 - 3 sqrt3)^(1/2) exp[i arctan{(6416 + 13216 sqrt3 - 2352 sqrt5 - 5075 sqrt15)/13189}]"
+"theta" = "sqrt5 exp[i arctan{(4 - sqrt5)/sqrt3}]"
+"lambda" = "exp(i arctan sqrt(5/3))"
+"mu" = "(4 + sqrt3)^(1/2) exp[i arctan{(84 - 16 sqrt3 + 72 sqrt5 + 5 sqrt15)/131}]"
+"nu" = "(4 - sqrt3)^(1/2) exp[i arctan{(84 + 16 sqrt3 + 72 sqrt5 - 5 sqrt15)/131}]"
+"xi" = "sqrt5 exp(i arctan 2)"
+"rho" = "sqrt7 exp[i arctan{(80 sqrt3 + 49 sqrt15)/57}]"
+"sigma" = "sqrt5 exp{i arctan(28 + 16 sqrt3 + 12 sqrt5 + 7 sqrt15)}"
+
+[book.exact]  # the same constants in the value grammar (conjugates carry a trailing s)
+d = "zeta^5"
+eta = "zeta^15"
+w = "zeta^40"
+gp = "(sqrt5 + 1)/2"
+gm = "(sqrt5 - 1)/2"
+sp = "(sqrt3 + 1)*sqrt2/2"
+sm = "(sqrt3 - 1)*sqrt2/2"
+t = "sqrt5"
+eps = "(28 + 7*sqrt3 + 6*sqrt5 + sqrt3*sqrt5)/16 + i*(7 + 14*sqrt3 - 3*sqrt5 - 4*sqrt3*sqrt5)/16"
+zet = "(28 - 7*sqrt3 + 6*sqrt5 - sqrt3*sqrt5)/16 + i*(-7 + 14*sqrt3 + 3*sqrt5 - 4*sqrt3*sqrt5)/16"
+th = "(5*sqrt3 + sqrt3*sqrt5)/8 + i*(15 - sqrt5)/8"
+l = "sqrt2*sqrt3/4 + i*sqrt2*sqrt5/4"
+mu = "(3*sqrt2 + 3*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/8 + i*(3*sqrt2 - sqrt2*sqrt3 + 3*sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/8"
+nu = "(3*sqrt2 - 3*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/8 + i*(3*sqrt2 + sqrt2*sqrt3 + 3*sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/8"
+xi = "1 + 2*i"
+rho = "(-7*sqrt3 + 5*sqrt3*sqrt5)/16 + i*(35 + 3*sqrt5)/16"
+sig = "(15*sqrt2 - 5*sqrt2*sqrt3 - sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/16 + i*(15*sqrt2 + 5*sqrt2*sqrt3 - sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/16"
+
+[[known_discrepancy]]  # a printed matrix corrected before use (docs/spec/verification.md)
+element = "C3,1+"
+irrep = "F3/2"
+fix = "negate d"
+printed = "sqrt2/2 | d -i*d 0 0; d i*d 0 0; 0 0 -i*ds -ds; 0 0 -i*ds ds"  # as printed, in the symbols of [book.exact]
+note = "With delta = exp(2 pi i/24) as printed the matrix cubes to +1 on its delta blocks; a spinor C3 must cube to -1, and T 70.7 prints the same blocks with the opposite sign. Read as -delta; with the transposed C5,1+ every product along the words of T 74.7a then agrees with the factor system and every trace with the character."
+
+[[known_discrepancy]]  # a printed matrix corrected before use (docs/spec/verification.md)
+element = "C3,1+"
+irrep = "I5/2"
+fix = "negate d"
+printed = "sqrt2/2 | etas -eta 0 0 0 0; etas eta 0 0 0 0; 0 0 d -i*d 0 0; 0 0 d i*d 0 0; 0 0 0 0 -i*ds -ds; 0 0 0 0 -i*ds ds"  # as printed, in the symbols of [book.exact]
+note = "With delta = exp(2 pi i/24) as printed the matrix cubes to +1 on its delta blocks; a spinor C3 must cube to -1, and T 70.7 prints the same blocks with the opposite sign. Read as -delta; with the transposed C5,1+ every product along the words of T 74.7a then agrees with the factor system and every trace with the character."
+
+[[known_discrepancy]]  # a printed matrix corrected before use (docs/spec/verification.md)
+element = "C5,1+"
+irrep = "F3/2"
+fix = "transpose"
+printed = "sqrt2/4 | eta -i*sm mus -ls; i*sp etas -ls nu; nus l eta i*sp; l mu -i*sm etas"  # as printed, in the symbols of [book.exact]
+note = "Printed with rows and columns interchanged: as printed no single sign, conjugation or transposition of any other entry makes the words of T 74.7a close; the transpose, with the corrected C3,1+, reproduces the factor system and the character."
+
+[[known_discrepancy]]  # a printed matrix corrected before use (docs/spec/verification.md)
+element = "C5,1+"
+irrep = "I5/2"
+fix = "transpose"
+printed = "1/6 | -xis -i -i*sigs -sp*th -sig -sm*ths; -i -xi sm*th -sigs sp*ths i*sig; -sig sp*ths -sqrt2*eta i*sqrt2*sm -zets -rhos; -sm*ths i*sig -i*sqrt2*sp -sqrt2*etas -rhos -epss; -i*sigs sm*th -eps rho -sqrt2*eta -i*sqrt2*sp; -sp*th -sigs rho -zet i*sqrt2*sm -sqrt2*etas"  # as printed, in the symbols of [book.exact]
+note = "Printed with rows and columns interchanged: as printed no single sign, conjugation or transposition of any other entry makes the words of T 74.7a close; the transpose, with the corrected C3,1+, reproduces the factor system and the character."
+
+[canonical]  # book irrep symbol -> canonical Mulliken symbol, by the traces
+"T1" = "T1"
+"T2" = "T2"
+"F" = "G"
+"H" = "H"
+"E1/2" = "E1/2"
+"E7/2" = "E7/2"
+"F3/2" = "G3/2"
+"I5/2" = "I5/2"
+
+[minimal_conductor]  # smallest Q(zeta_d) holding every printed entry of the irrep
+"T1" = 20
+"T2" = 20
+"F" = 20
+"H" = 120
+"E1/2" = 20
+"E7/2" = 20
+"F3/2" = 60
+"I5/2" = 120
+
+[words]  # T 74.7a: every operation as a product of generators, left to right
+"E" = ["C2a", "C2a"]
+"C5,1+" = ["C5,1+"]
+"C5,2+" = ["C5,1+", "C5,1+", "C2a", "C3,1+"]
+"C5,3+" = ["C5,1+", "C2a", "C3,1+", "C5,1+"]
+"C5,4+" = ["C3,1+", "C5,1+", "C2a"]
+"C5,5+" = ["C5,1+", "C2a", "C5,1+", "C2a"]
+"C5,6+" = ["C2a", "C5,1+", "C2a", "C5,1+"]
+"C5,1-" = ["C3,1+", "C5,1+", "C3,1+"]
+"C5,2-" = ["C2a", "C5,1+", "C2a"]
+"C5,3-" = ["C5,1+", "C3,1+", "C3,1+"]
+"C5,4-" = ["C2a", "C3,1+", "C5,1+"]
+"C5,5-" = ["C3,1+", "C3,1+", "C5,1+"]
+"C5,6-" = ["C5,1+", "C2a", "C3,1+"]
+"C5,1^2+" = ["C5,1+", "C5,1+"]
+"C5,2^2+" = ["C3,1+", "C2a", "C5,1+"]
+"C5,3^2+" = ["C3,1+", "C2a", "C3,1+", "C5,1+"]
+"C5,4^2+" = ["C5,1+", "C3,1+", "C2a"]
+"C5,5^2+" = ["C2a", "C3,1+", "C5,1+", "C3,1+"]
+"C5,6^2+" = ["C3,1+", "C5,1+", "C3,1+", "C2a"]
+"C5,1^2-" = ["C5,1+", "C5,1+", "C5,1+"]
+"C5,2^2-" = ["C2a", "C5,1+", "C5,1+", "C2a"]
+"C5,3^2-" = ["C3,1+", "C3,1+", "C2a", "C5,1+", "C2a"]
+"C5,4^2-" = ["C2a", "C5,1+", "C3,1+"]
+"C5,5^2-" = ["C5,1+", "C2a"]
+"C5,6^2-" = ["C2a", "C5,1+"]
+"C3,1+" = ["C3,1+"]
+"C3,2+" = ["C3,1+", "C2a"]
+"C3,3+" = ["C2a", "C3,1+", "C2a"]
+"C3,4+" = ["C2a", "C3,1+"]
+"C3,5+" = ["C5,1+", "C2a", "C5,1+"]
+"C3,6+" = ["C3,1+", "C2a", "C5,1+", "C3,1+", "C2a"]
+"C3,7+" = ["C2a", "C3,1+", "C2a", "C5,1+"]
+"C3,8+" = ["C2a", "C5,1+", "C2a", "C3,1+"]
+"C3,9+" = ["C3,1+", "C5,1+", "C2a", "C3,1+"]
+"C3,10+" = ["C3,1+", "C2a", "C5,1+", "C2a"]
+"C3,1-" = ["C3,1+", "C3,1+"]
+"C3,2-" = ["C2a", "C3,1+", "C3,1+"]
+"C3,3-" = ["C3,1+", "C2a", "C3,1+"]
+"C3,4-" = ["C3,1+", "C3,1+", "C2a"]
+"C3,5-" = ["C5,1+", "C2a", "C3,1+", "C2a"]
+"C3,6-" = ["C3,1+", "C5,1+", "C2a", "C5,1+"]
+"C3,7-" = ["C2a", "C5,1+", "C5,1+"]
+"C3,8-" = ["C3,1+", "C5,1+", "C5,1+"]
+"C3,9-" = ["C5,1+", "C5,1+", "C3,1+"]
+"C3,10-" = ["C5,1+", "C5,1+", "C2a"]
+"C2a" = ["C2a"]
+"C2b" = ["C3,1+", "C2a", "C3,1+", "C3,1+"]
+"C2c" = ["C3,1+", "C3,1+", "C2a", "C3,1+"]
+"C2d" = ["C3,1+", "C5,1+"]
+"C2e" = ["C3,1+", "C2a", "C5,1+", "C3,1+"]
+"C2f" = ["C5,1+", "C3,1+", "C2a", "C5,1+"]
+"C2g" = ["C5,1+", "C3,1+"]
+"C2h" = ["C5,1+", "C5,1+", "C3,1+", "C2a"]
+"C2i" = ["C2a", "C5,1+", "C3,1+", "C3,1+"]
+"C2j" = ["C2a", "C5,1+", "C3,1+", "C2a"]
+"C2k" = ["C5,1+", "C3,1+", "C3,1+", "C2a"]
+"C2l" = ["C2a", "C5,1+", "C5,1+", "C3,1+"]
+"C2m" = ["C2a", "C3,1+", "C5,1+", "C2a"]
+"C2n" = ["C3,1+", "C3,1+", "C2a", "C5,1+"]
+"C2o" = ["C3,1+", "C5,1+", "C2a", "C5,1+", "C2a"]
+
+[irreps."T1"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # C5,1+
+    ["(-1 + sqrt5)/4", "-i/2", "i*(-1 - sqrt5)/4"],
+    ["-i/2", "(1 + sqrt5)/4", "(1 - sqrt5)/4"],
+    ["i*(-1 - sqrt5)/4", "(1 - sqrt5)/4", "1/2"],
+  ],
+  [  # C3,1+
+    ["0", "0", "-i"],
+    ["-i", "0", "0"],
+    ["0", "-1", "0"],
+  ],
+  [  # C2a
+    ["-1", "0", "0"],
+    ["0", "-1", "0"],
+    ["0", "0", "1"],
+  ],
+]
+
+[irreps."T2"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # C5,1+
+    ["(-1 - sqrt5)/4", "-i/2", "i*(-1 + sqrt5)/4"],
+    ["-i/2", "(1 - sqrt5)/4", "(1 + sqrt5)/4"],
+    ["i*(-1 + sqrt5)/4", "(1 + sqrt5)/4", "1/2"],
+  ],
+  [  # C3,1+
+    ["0", "0", "-i"],
+    ["-i", "0", "0"],
+    ["0", "-1", "0"],
+  ],
+  [  # C2a
+    ["-1", "0", "0"],
+    ["0", "-1", "0"],
+    ["0", "0", "1"],
+  ],
+]
+
+[irreps."F"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # C5,1+
+    ["-1/4", "-sqrt5/4", "-sqrt5*i/4", "-sqrt5*i/4"],
+    ["-sqrt5/4", "-1/4", "3*i/4", "-i/4"],
+    ["-sqrt5*i/4", "3*i/4", "1/4", "1/4"],
+    ["-sqrt5*i/4", "-i/4", "1/4", "-3/4"],
+  ],
+  [  # C3,1+
+    ["1", "0", "0", "0"],
+    ["0", "0", "0", "-i"],
+    ["0", "-i", "0", "0"],
+    ["0", "0", "-1", "0"],
+  ],
+  [  # C2a
+    ["1", "0", "0", "0"],
+    ["0", "-1", "0", "0"],
+    ["0", "0", "-1", "0"],
+    ["0", "0", "0", "1"],
+  ],
+]
+
+[irreps."H"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # C5,1+
+    ["0", "(1 + 3*sqrt5)/16 + i*(sqrt3 - sqrt3*sqrt5)/16", "-sqrt2*sqrt3/8 - i*sqrt2*sqrt5/8", "(-3*sqrt2 - sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 - sqrt2*sqrt3*sqrt5)/16", "(3*sqrt2 - sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 + sqrt2*sqrt3*sqrt5)/16"],
+    ["(1 + 3*sqrt5)/16 + i*(-sqrt3 + sqrt3*sqrt5)/16", "0", "-sqrt2*sqrt3/8 + i*sqrt2*sqrt5/8", "(3*sqrt2 + sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 - sqrt2*sqrt3*sqrt5)/16", "(-3*sqrt2 + sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 + sqrt2*sqrt3*sqrt5)/16"],
+    ["-sqrt2*sqrt3/8 + i*sqrt2*sqrt5/8", "-sqrt2*sqrt3/8 - i*sqrt2*sqrt5/8", "1/2", "0", "i/2"],
+    ["(3*sqrt2 + sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 - sqrt2*sqrt3*sqrt5)/16", "(-3*sqrt2 - sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 - sqrt2*sqrt3*sqrt5)/16", "0", "-1/2", "-1/2"],
+    ["(-3*sqrt2 + sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 + sqrt2*sqrt3*sqrt5)/16", "(3*sqrt2 - sqrt2*sqrt5)/16 + i*(sqrt2*sqrt3 + sqrt2*sqrt3*sqrt5)/16", "i/2", "-1/2", "0"],
+  ],
+  [  # C3,1+
+    ["zeta^40", "0", "0", "0", "0"],
+    ["0", "-zeta^20", "0", "0", "0"],
+    ["0", "0", "0", "0", "-i"],
+    ["0", "0", "-i", "0", "0"],
+    ["0", "0", "0", "-1", "0"],
+  ],
+  [  # C2a
+    ["1", "0", "0", "0", "0"],
+    ["0", "1", "0", "0", "0"],
+    ["0", "0", "-1", "0", "0"],
+    ["0", "0", "0", "-1", "0"],
+    ["0", "0", "0", "0", "1"],
+  ],
+]
+
+[irreps."E1/2"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # C5,1+
+    ["(1 + sqrt5)/4 - i*1/2", "i*(1 - sqrt5)/4"],
+    ["i*(1 - sqrt5)/4", "(1 + sqrt5)/4 + i*1/2"],
+  ],
+  [  # C3,1+
+    ["-sqrt2*zeta^45/2", "-sqrt2*zeta^15/2"],
+    ["-sqrt2*zeta^45/2", "sqrt2*zeta^15/2"],
+  ],
+  [  # C2a
+    ["0", "-i"],
+    ["-i", "0"],
+  ],
+]
+
+[irreps."E7/2"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # C5,1+
+    ["(1 - sqrt5)/4 - i*1/2", "i*(1 + sqrt5)/4"],
+    ["i*(1 + sqrt5)/4", "(1 - sqrt5)/4 + i*1/2"],
+  ],
+  [  # C3,1+
+    ["-sqrt2*zeta^45/2", "-sqrt2*zeta^15/2"],
+    ["-sqrt2*zeta^45/2", "sqrt2*zeta^15/2"],
+  ],
+  [  # C2a
+    ["0", "-i"],
+    ["-i", "0"],
+  ],
+]
+
+[irreps."F3/2"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # C5,1+
+    ["sqrt2*zeta^15/4", "i*(1 + sqrt3)/4", "(3 - 3*sqrt3 + sqrt5 + sqrt3*sqrt5)/16 + i*(-3 - sqrt3 - 3*sqrt5 + sqrt3*sqrt5)/16", "sqrt3/8 + i*sqrt5/8"],
+    ["i*(1 - sqrt3)/4", "-sqrt2*zeta^45/4", "sqrt3/8 + i*sqrt5/8", "(3 + 3*sqrt3 + sqrt5 - sqrt3*sqrt5)/16 + i*(3 - sqrt3 + 3*sqrt5 + sqrt3*sqrt5)/16"],
+    ["(3 + 3*sqrt3 + sqrt5 - sqrt3*sqrt5)/16 + i*(-3 + sqrt3 - 3*sqrt5 - sqrt3*sqrt5)/16", "-sqrt3/8 + i*sqrt5/8", "sqrt2*zeta^15/4", "i*(1 - sqrt3)/4"],
+    ["-sqrt3/8 + i*sqrt5/8", "(3 - 3*sqrt3 + sqrt5 + sqrt3*sqrt5)/16 + i*(3 + sqrt3 + 3*sqrt5 - sqrt3*sqrt5)/16", "i*(1 + sqrt3)/4", "-sqrt2*zeta^45/4"],
+  ],
+  [  # C3,1+
+    ["-sqrt2*zeta^5/2", "sqrt2*zeta^35/2", "0", "0"],
+    ["-sqrt2*zeta^5/2", "-sqrt2*zeta^35/2", "0", "0"],
+    ["0", "0", "sqrt2*zeta^25/2", "-sqrt2*zeta^55/2"],
+    ["0", "0", "sqrt2*zeta^25/2", "sqrt2*zeta^55/2"],
+  ],
+  [  # C2a
+    ["0", "-i", "0", "0"],
+    ["-i", "0", "0", "0"],
+    ["0", "0", "0", "-i"],
+    ["0", "0", "-i", "0"],
+  ],
+]
+
+[irreps."I5/2"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # C5,1+
+    ["-1/6 + i*1/3", "-i/6", "(-15*sqrt2 + 5*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 - 5*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "(-15*sqrt2 + 5*sqrt2*sqrt3 - 3*sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 + 15*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "(-15*sqrt2 - 5*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 + 5*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96", "(-15*sqrt2 - 5*sqrt2*sqrt3 - 3*sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 - 15*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96"],
+    ["-i/6", "-1/6 - i*1/3", "(15*sqrt2 + 5*sqrt2*sqrt3 + 3*sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 - 15*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96", "(-15*sqrt2 - 5*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(15*sqrt2 - 5*sqrt2*sqrt3 - sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "(15*sqrt2 - 5*sqrt2*sqrt3 + 3*sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 + 15*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "(-15*sqrt2 + 5*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(15*sqrt2 + 5*sqrt2*sqrt3 - sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96"],
+    ["(-15*sqrt2 - 5*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 + 5*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96", "(15*sqrt2 - 5*sqrt2*sqrt3 + 3*sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 + 15*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "-sqrt2*zeta^15/6", "i*(-1 - sqrt3)/6", "(-28 - 7*sqrt3 - 6*sqrt5 - sqrt3*sqrt5)/96 + i*(-7 - 14*sqrt3 + 3*sqrt5 + 4*sqrt3*sqrt5)/96", "(-7*sqrt3 + 5*sqrt3*sqrt5)/96 + i*(35 + 3*sqrt5)/96"],
+    ["(-15*sqrt2 - 5*sqrt2*sqrt3 - 3*sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 - 15*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96", "(-15*sqrt2 + 5*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(15*sqrt2 + 5*sqrt2*sqrt3 - sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96", "i*(-1 + sqrt3)/6", "sqrt2*zeta^45/6", "(-7*sqrt3 + 5*sqrt3*sqrt5)/96 + i*(35 + 3*sqrt5)/96", "(-28 + 7*sqrt3 - 6*sqrt5 + sqrt3*sqrt5)/96 + i*(7 - 14*sqrt3 - 3*sqrt5 + 4*sqrt3*sqrt5)/96"],
+    ["(-15*sqrt2 + 5*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 - 5*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "(15*sqrt2 + 5*sqrt2*sqrt3 + 3*sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 - 15*sqrt2*sqrt3 + sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96", "(-28 + 7*sqrt3 - 6*sqrt5 + sqrt3*sqrt5)/96 + i*(-7 + 14*sqrt3 + 3*sqrt5 - 4*sqrt3*sqrt5)/96", "(7*sqrt3 - 5*sqrt3*sqrt5)/96 + i*(35 + 3*sqrt5)/96", "-sqrt2*zeta^15/6", "i*(-1 + sqrt3)/6"],
+    ["(-15*sqrt2 + 5*sqrt2*sqrt3 - 3*sqrt2*sqrt5 + sqrt2*sqrt3*sqrt5)/96 + i*(-15*sqrt2 + 15*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "(-15*sqrt2 - 5*sqrt2*sqrt3 + sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96 + i*(15*sqrt2 - 5*sqrt2*sqrt3 - sqrt2*sqrt5 - sqrt2*sqrt3*sqrt5)/96", "(7*sqrt3 - 5*sqrt3*sqrt5)/96 + i*(35 + 3*sqrt5)/96", "(-28 - 7*sqrt3 - 6*sqrt5 - sqrt3*sqrt5)/96 + i*(7 + 14*sqrt3 - 3*sqrt5 - 4*sqrt3*sqrt5)/96", "i*(-1 - sqrt3)/6", "sqrt2*zeta^45/6"],
+  ],
+  [  # C3,1+
+    ["-sqrt2*zeta^45/2", "-sqrt2*zeta^15/2", "0", "0", "0", "0"],
+    ["-sqrt2*zeta^45/2", "sqrt2*zeta^15/2", "0", "0", "0", "0"],
+    ["0", "0", "-sqrt2*zeta^5/2", "sqrt2*zeta^35/2", "0", "0"],
+    ["0", "0", "-sqrt2*zeta^5/2", "-sqrt2*zeta^35/2", "0", "0"],
+    ["0", "0", "0", "0", "sqrt2*zeta^25/2", "-sqrt2*zeta^55/2"],
+    ["0", "0", "0", "0", "sqrt2*zeta^25/2", "sqrt2*zeta^55/2"],
+  ],
+  [  # C2a
+    ["0", "-i", "0", "0", "0", "0"],
+    ["-i", "0", "0", "0", "0", "0"],
+    ["0", "0", "0", "-i", "0", "0"],
+    ["0", "0", "-i", "0", "0", "0"],
+    ["0", "0", "0", "0", "0", "-i"],
+    ["0", "0", "0", "0", "-i", "0"],
+  ],
+]

@@ -1,0 +1,266 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): irrep matrices of T
+# Format: tests/reference/altmann-herzig/matrices/README.md
+# Written by tools/ah_matrices.py from the transcription it holds; every matrix is checked
+# exactly (unitarity, products against the book's factor system, traces against the
+# canonical characters) before this file is written.
+
+group = "T"
+table = "T 70.7, p. 592"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from page images of the PDF; verify against the print"
+conductor = 24
+notes = """
+The book prints one matrix per operation; all of them are transcribed, in the book's
+element order, for every irrep of dimension >= 2 (one-dimensional irreps are their characters).
+144 products checked.
+book symbol -> canonical: T -> T, E1/2 -> E1/2, 1F3/2 -> 1E3/2, 2F3/2 -> 2E3/2.
+minimal conductor per irrep: T: 4, E1/2: 4, 1F3/2: 12, 2F3/2: 12.
+Entries are exact in Q(zeta_M), M = conductor, in the value grammar of
+docs/spec/basis-conventions.md; the book's symbols are listed in [book.constants].
+"""
+
+[book]
+irreps = ["T", "E1/2", "1F3/2", "2F3/2"]
+elements = ["E", "C2x", "C2y", "C2z", "C3,1+", "C3,2+", "C3,3+", "C3,4+", "C3,1-", "C3,2-", "C3,3-", "C3,4-"]  # book labels of the transcribed matrices
+generators = ["C3,1+", "C2x"]  # a generating set among them (book labels; canonical labels via labels/<Group>.toml)
+
+[book.constants]  # as printed in the table footnote
+"delta" = "2^(-1/2) exp(2 pi i/24)"
+"epsilon" = "2^(-1/2) exp(2 pi i/8)"
+
+[book.exact]  # the same constants in the value grammar (conjugates carry a trailing s)
+d = "sqrt2/2*zeta"
+e = "sqrt2/2*zeta^3"
+
+[canonical]  # book irrep symbol -> canonical Mulliken symbol, by the traces
+"T" = "T"
+"E1/2" = "E1/2"
+"1F3/2" = "1E3/2"
+"2F3/2" = "2E3/2"
+
+[minimal_conductor]  # smallest Q(zeta_d) holding every printed entry of the irrep
+"T" = 4
+"E1/2" = 4
+"1F3/2" = 12
+"2F3/2" = 12
+
+[irreps."T"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # E
+    ["1", "0", "0"],
+    ["0", "1", "0"],
+    ["0", "0", "1"],
+  ],
+  [  # C2x
+    ["-1", "0", "0"],
+    ["0", "-1", "0"],
+    ["0", "0", "1"],
+  ],
+  [  # C2y
+    ["1", "0", "0"],
+    ["0", "-1", "0"],
+    ["0", "0", "-1"],
+  ],
+  [  # C2z
+    ["-1", "0", "0"],
+    ["0", "1", "0"],
+    ["0", "0", "-1"],
+  ],
+  [  # C3,1+
+    ["0", "0", "-i"],
+    ["-i", "0", "0"],
+    ["0", "-1", "0"],
+  ],
+  [  # C3,2+
+    ["0", "0", "-i"],
+    ["i", "0", "0"],
+    ["0", "1", "0"],
+  ],
+  [  # C3,3+
+    ["0", "0", "i"],
+    ["-i", "0", "0"],
+    ["0", "1", "0"],
+  ],
+  [  # C3,4+
+    ["0", "0", "i"],
+    ["i", "0", "0"],
+    ["0", "-1", "0"],
+  ],
+  [  # C3,1-
+    ["0", "i", "0"],
+    ["0", "0", "-1"],
+    ["i", "0", "0"],
+  ],
+  [  # C3,2-
+    ["0", "-i", "0"],
+    ["0", "0", "1"],
+    ["i", "0", "0"],
+  ],
+  [  # C3,3-
+    ["0", "i", "0"],
+    ["0", "0", "1"],
+    ["-i", "0", "0"],
+  ],
+  [  # C3,4-
+    ["0", "-i", "0"],
+    ["0", "0", "-1"],
+    ["-i", "0", "0"],
+  ],
+]
+
+[irreps."E1/2"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # E
+    ["1", "0"],
+    ["0", "1"],
+  ],
+  [  # C2x
+    ["0", "-i"],
+    ["-i", "0"],
+  ],
+  [  # C2y
+    ["0", "-1"],
+    ["1", "0"],
+  ],
+  [  # C2z
+    ["-i", "0"],
+    ["0", "i"],
+  ],
+  [  # C3,1+
+    ["-sqrt2*zeta^9/2", "-sqrt2*zeta^3/2"],
+    ["-sqrt2*zeta^9/2", "sqrt2*zeta^3/2"],
+  ],
+  [  # C3,2+
+    ["-sqrt2*zeta^9/2", "sqrt2*zeta^3/2"],
+    ["sqrt2*zeta^9/2", "sqrt2*zeta^3/2"],
+  ],
+  [  # C3,3+
+    ["sqrt2*zeta^3/2", "-sqrt2*zeta^9/2"],
+    ["-sqrt2*zeta^3/2", "-sqrt2*zeta^9/2"],
+  ],
+  [  # C3,4+
+    ["sqrt2*zeta^3/2", "sqrt2*zeta^9/2"],
+    ["sqrt2*zeta^3/2", "-sqrt2*zeta^9/2"],
+  ],
+  [  # C3,1-
+    ["sqrt2*zeta^3/2", "sqrt2*zeta^3/2"],
+    ["sqrt2*zeta^9/2", "-sqrt2*zeta^9/2"],
+  ],
+  [  # C3,2-
+    ["sqrt2*zeta^3/2", "-sqrt2*zeta^3/2"],
+    ["-sqrt2*zeta^9/2", "-sqrt2*zeta^9/2"],
+  ],
+  [  # C3,3-
+    ["-sqrt2*zeta^9/2", "sqrt2*zeta^9/2"],
+    ["sqrt2*zeta^3/2", "sqrt2*zeta^3/2"],
+  ],
+  [  # C3,4-
+    ["-sqrt2*zeta^9/2", "-sqrt2*zeta^9/2"],
+    ["-sqrt2*zeta^3/2", "sqrt2*zeta^3/2"],
+  ],
+]
+
+[irreps."1F3/2"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # E
+    ["1", "0"],
+    ["0", "1"],
+  ],
+  [  # C2x
+    ["0", "-i"],
+    ["-i", "0"],
+  ],
+  [  # C2y
+    ["0", "-1"],
+    ["1", "0"],
+  ],
+  [  # C2z
+    ["-i", "0"],
+    ["0", "i"],
+  ],
+  [  # C3,1+
+    ["sqrt2*zeta^5/2", "-sqrt2*zeta^11/2"],
+    ["sqrt2*zeta^5/2", "sqrt2*zeta^11/2"],
+  ],
+  [  # C3,2+
+    ["sqrt2*zeta^5/2", "sqrt2*zeta^11/2"],
+    ["-sqrt2*zeta^5/2", "sqrt2*zeta^11/2"],
+  ],
+  [  # C3,3+
+    ["sqrt2*zeta^11/2", "sqrt2*zeta^5/2"],
+    ["-sqrt2*zeta^11/2", "sqrt2*zeta^5/2"],
+  ],
+  [  # C3,4+
+    ["sqrt2*zeta^11/2", "-sqrt2*zeta^5/2"],
+    ["sqrt2*zeta^11/2", "sqrt2*zeta^5/2"],
+  ],
+  [  # C3,1-
+    ["-sqrt2*zeta^7/2", "-sqrt2*zeta^7/2"],
+    ["sqrt2*zeta/2", "-sqrt2*zeta/2"],
+  ],
+  [  # C3,2-
+    ["-sqrt2*zeta^7/2", "sqrt2*zeta^7/2"],
+    ["-sqrt2*zeta/2", "-sqrt2*zeta/2"],
+  ],
+  [  # C3,3-
+    ["-sqrt2*zeta/2", "sqrt2*zeta/2"],
+    ["-sqrt2*zeta^7/2", "-sqrt2*zeta^7/2"],
+  ],
+  [  # C3,4-
+    ["-sqrt2*zeta/2", "-sqrt2*zeta/2"],
+    ["sqrt2*zeta^7/2", "-sqrt2*zeta^7/2"],
+  ],
+]
+
+[irreps."2F3/2"]
+matrices = [  # one per element of [book].elements, rows then columns
+  [  # E
+    ["1", "0"],
+    ["0", "1"],
+  ],
+  [  # C2x
+    ["0", "-i"],
+    ["-i", "0"],
+  ],
+  [  # C2y
+    ["0", "-1"],
+    ["1", "0"],
+  ],
+  [  # C2z
+    ["-i", "0"],
+    ["0", "i"],
+  ],
+  [  # C3,1+
+    ["-sqrt2*zeta/2", "sqrt2*zeta^7/2"],
+    ["-sqrt2*zeta/2", "-sqrt2*zeta^7/2"],
+  ],
+  [  # C3,2+
+    ["-sqrt2*zeta/2", "-sqrt2*zeta^7/2"],
+    ["sqrt2*zeta/2", "-sqrt2*zeta^7/2"],
+  ],
+  [  # C3,3+
+    ["-sqrt2*zeta^7/2", "-sqrt2*zeta/2"],
+    ["sqrt2*zeta^7/2", "-sqrt2*zeta/2"],
+  ],
+  [  # C3,4+
+    ["-sqrt2*zeta^7/2", "sqrt2*zeta/2"],
+    ["-sqrt2*zeta^7/2", "-sqrt2*zeta/2"],
+  ],
+  [  # C3,1-
+    ["sqrt2*zeta^11/2", "sqrt2*zeta^11/2"],
+    ["-sqrt2*zeta^5/2", "sqrt2*zeta^5/2"],
+  ],
+  [  # C3,2-
+    ["sqrt2*zeta^11/2", "-sqrt2*zeta^11/2"],
+    ["sqrt2*zeta^5/2", "sqrt2*zeta^5/2"],
+  ],
+  [  # C3,3-
+    ["sqrt2*zeta^5/2", "-sqrt2*zeta^5/2"],
+    ["sqrt2*zeta^11/2", "sqrt2*zeta^11/2"],
+  ],
+  [  # C3,4-
+    ["sqrt2*zeta^5/2", "sqrt2*zeta^5/2"],
+    ["-sqrt2*zeta^11/2", "sqrt2*zeta^11/2"],
+  ],
+]
