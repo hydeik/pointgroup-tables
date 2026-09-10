@@ -1,0 +1,77 @@
+# Koster, Dimmock, Wheeler & Statz, Properties of the Thirty-Two Point Groups (1963): Bethe symbols of C4
+# Format: tests/reference/koster/bethe/README.md
+#
+# C4: 8 irreps (4 ordinary, 4 projective), in canonical order.
+# Each entry lists the characters on the identifying elements below; for a projective
+# irrep they are the characters of the lifted elements in the canonical section.
+# Find the row with these characters in Koster's table and copy its Gamma symbol into
+# bethe ("Gamma3"; no parity sign in this group).
+
+group = "C4"
+table = ""          # Koster's table and page for this group, e.g. "Table 33, p. 62"
+status = "todo"     # todo | partial | done
+notes = ""          # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
+elements = ["C4^1"]
+
+[[irreps]]
+symbol = "A"
+dimension = 1
+projective = false
+characters = ["1"]
+bethe = ""
+
+[[irreps]]
+symbol = "B"
+dimension = 1
+projective = false
+characters = ["-1"]
+bethe = ""
+
+[[irreps]]
+symbol = "1E"
+dimension = 1
+projective = false
+characters = ["i"]
+numeric = ["+0.0000+1.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "2E"
+dimension = 1
+projective = false
+characters = ["-i"]
+numeric = ["+0.0000-1.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "1E1/2"
+dimension = 1
+projective = true
+characters = ["zeta8"]
+numeric = ["+0.7071+0.7071i"]
+bethe = ""
+
+[[irreps]]
+symbol = "2E1/2"
+dimension = 1
+projective = true
+characters = ["zeta8^7"]
+numeric = ["+0.7071-0.7071i"]
+bethe = ""
+
+[[irreps]]
+symbol = "1E3/2"
+dimension = 1
+projective = true
+characters = ["zeta8^3"]
+numeric = ["-0.7071+0.7071i"]
+bethe = ""
+
+[[irreps]]
+symbol = "2E3/2"
+dimension = 1
+projective = true
+characters = ["zeta8^5"]
+numeric = ["-0.7071-0.7071i"]
+bethe = ""
+

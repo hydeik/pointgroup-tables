@@ -1,0 +1,103 @@
+# Koster, Dimmock, Wheeler & Statz, Properties of the Thirty-Two Point Groups (1963): Bethe symbols of D3d
+# Format: tests/reference/koster/bethe/README.md
+#
+# D3d: 12 irreps (6 ordinary, 6 projective), in canonical order.
+# Each entry lists the characters on the identifying elements below; for a projective
+# irrep they are the characters of the lifted elements in the canonical section.
+# Find the row with these characters in Koster's table and copy its Gamma symbol into
+# bethe ("Gamma3", with the parity sign in this centrosymmetric group: "Gamma3+" / "Gamma3-").
+
+group = "D3d"
+table = ""          # Koster's table and page for this group, e.g. "Table 33, p. 62"
+status = "todo"     # todo | partial | done
+notes = ""          # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
+elements = ["C3^1", "C2'(1)", "i"]
+
+[[irreps]]
+symbol = "A1g"
+dimension = 1
+projective = false
+characters = ["1", "1", "1"]
+bethe = ""
+
+[[irreps]]
+symbol = "A2g"
+dimension = 1
+projective = false
+characters = ["1", "-1", "1"]
+bethe = ""
+
+[[irreps]]
+symbol = "Eg"
+dimension = 2
+projective = false
+characters = ["-1", "0", "2"]
+bethe = ""
+
+[[irreps]]
+symbol = "A1u"
+dimension = 1
+projective = false
+characters = ["1", "1", "-1"]
+bethe = ""
+
+[[irreps]]
+symbol = "A2u"
+dimension = 1
+projective = false
+characters = ["1", "-1", "-1"]
+bethe = ""
+
+[[irreps]]
+symbol = "Eu"
+dimension = 2
+projective = false
+characters = ["-1", "0", "-2"]
+bethe = ""
+
+[[irreps]]
+symbol = "E1/2g"
+dimension = 2
+projective = true
+characters = ["1", "0", "2"]
+bethe = ""
+
+[[irreps]]
+symbol = "1E3/2g"
+dimension = 1
+projective = true
+characters = ["-1", "i", "1"]
+numeric = ["-1.0000+0.0000i", "+0.0000+1.0000i", "+1.0000+0.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "2E3/2g"
+dimension = 1
+projective = true
+characters = ["-1", "-i", "1"]
+numeric = ["-1.0000+0.0000i", "+0.0000-1.0000i", "+1.0000+0.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "E1/2u"
+dimension = 2
+projective = true
+characters = ["1", "0", "-2"]
+bethe = ""
+
+[[irreps]]
+symbol = "1E3/2u"
+dimension = 1
+projective = true
+characters = ["-1", "i", "-1"]
+numeric = ["-1.0000+0.0000i", "+0.0000+1.0000i", "-1.0000+0.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "2E3/2u"
+dimension = 1
+projective = true
+characters = ["-1", "-i", "-1"]
+numeric = ["-1.0000+0.0000i", "+0.0000-1.0000i", "-1.0000+0.0000i"]
+bethe = ""
+

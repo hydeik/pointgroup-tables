@@ -1,0 +1,50 @@
+# Koster, Dimmock, Wheeler & Statz, Properties of the Thirty-Two Point Groups (1963): Bethe symbols of C2v
+# Format: tests/reference/koster/bethe/README.md
+#
+# C2v: 5 irreps (4 ordinary, 1 projective), in canonical order.
+# Each entry lists the characters on the identifying elements below; for a projective
+# irrep they are the characters of the lifted elements in the canonical section.
+# Find the row with these characters in Koster's table and copy its Gamma symbol into
+# bethe ("Gamma3"; no parity sign in this group).
+
+group = "C2v"
+table = ""          # Koster's table and page for this group, e.g. "Table 33, p. 62"
+status = "todo"     # todo | partial | done
+notes = ""          # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
+elements = ["C2", "sigma_v(1)"]
+
+[[irreps]]
+symbol = "A1"
+dimension = 1
+projective = false
+characters = ["1", "1"]
+bethe = ""
+
+[[irreps]]
+symbol = "A2"
+dimension = 1
+projective = false
+characters = ["1", "-1"]
+bethe = ""
+
+[[irreps]]
+symbol = "B1"
+dimension = 1
+projective = false
+characters = ["-1", "1"]
+bethe = ""
+
+[[irreps]]
+symbol = "B2"
+dimension = 1
+projective = false
+characters = ["-1", "-1"]
+bethe = ""
+
+[[irreps]]
+symbol = "E1/2"
+dimension = 2
+projective = true
+characters = ["0", "0"]
+bethe = ""
+

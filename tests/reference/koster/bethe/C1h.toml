@@ -1,0 +1,45 @@
+# Koster, Dimmock, Wheeler & Statz, Properties of the Thirty-Two Point Groups (1963): Bethe symbols of Cs
+# Format: tests/reference/koster/bethe/README.md
+#
+# Cs: 4 irreps (2 ordinary, 2 projective), in canonical order.
+# Each entry lists the characters on the identifying elements below; for a projective
+# irrep they are the characters of the lifted elements in the canonical section.
+# Find the row with these characters in Koster's table and copy its Gamma symbol into
+# bethe ("Gamma3"; no parity sign in this group).
+
+group = "Cs"
+table = ""          # Koster's table and page for this group, e.g. "Table 33, p. 62"
+status = "todo"     # todo | partial | done
+notes = ""          # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
+elements = ["sigma_h", "E", "sigma_h"]
+
+[[irreps]]
+symbol = "A'"
+dimension = 1
+projective = false
+characters = ["1", "1", "1"]
+bethe = ""
+
+[[irreps]]
+symbol = "A''"
+dimension = 1
+projective = false
+characters = ["-1", "1", "-1"]
+bethe = ""
+
+[[irreps]]
+symbol = "1E1/2"
+dimension = 1
+projective = true
+characters = ["i", "1", "i"]
+numeric = ["+0.0000+1.0000i", "+1.0000+0.0000i", "+0.0000+1.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "2E1/2"
+dimension = 1
+projective = true
+characters = ["-i", "1", "-i"]
+numeric = ["+0.0000-1.0000i", "+1.0000+0.0000i", "+0.0000-1.0000i"]
+bethe = ""
+

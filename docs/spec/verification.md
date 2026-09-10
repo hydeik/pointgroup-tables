@@ -282,7 +282,7 @@ tests/reference/
     fetch.py                         # the script that produced the files; run once, not by the tests
     characters/<group>.toml
   koster/
-    bethe.toml                       # Γ_i per (group, canonical symbol) with identifying characters
+    bethe/<group>.toml               # Γ_i per canonical symbol with identifying characters
 ```
 
 Every file is TOML, one per group, named by the normalised Schoenflies

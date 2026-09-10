@@ -1,0 +1,85 @@
+# Koster, Dimmock, Wheeler & Statz, Properties of the Thirty-Two Point Groups (1963): Bethe symbols of D2h
+# Format: tests/reference/koster/bethe/README.md
+#
+# D2h: 10 irreps (8 ordinary, 2 projective), in canonical order.
+# Each entry lists the characters on the identifying elements below; for a projective
+# irrep they are the characters of the lifted elements in the canonical section.
+# Find the row with these characters in Koster's table and copy its Gamma symbol into
+# bethe ("Gamma3", with the parity sign in this centrosymmetric group: "Gamma3+" / "Gamma3-").
+
+group = "D2h"
+table = ""          # Koster's table and page for this group, e.g. "Table 33, p. 62"
+status = "todo"     # todo | partial | done
+notes = ""          # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
+elements = ["C2", "C2'(1)", "C2''(1)", "i", "sigma_h"]
+
+[[irreps]]
+symbol = "Ag"
+dimension = 1
+projective = false
+characters = ["1", "1", "1", "1", "1"]
+bethe = ""
+
+[[irreps]]
+symbol = "B1g"
+dimension = 1
+projective = false
+characters = ["1", "-1", "-1", "1", "1"]
+bethe = ""
+
+[[irreps]]
+symbol = "B2g"
+dimension = 1
+projective = false
+characters = ["-1", "-1", "1", "1", "-1"]
+bethe = ""
+
+[[irreps]]
+symbol = "B3g"
+dimension = 1
+projective = false
+characters = ["-1", "1", "-1", "1", "-1"]
+bethe = ""
+
+[[irreps]]
+symbol = "Au"
+dimension = 1
+projective = false
+characters = ["1", "1", "1", "-1", "-1"]
+bethe = ""
+
+[[irreps]]
+symbol = "B1u"
+dimension = 1
+projective = false
+characters = ["1", "-1", "-1", "-1", "-1"]
+bethe = ""
+
+[[irreps]]
+symbol = "B2u"
+dimension = 1
+projective = false
+characters = ["-1", "-1", "1", "-1", "1"]
+bethe = ""
+
+[[irreps]]
+symbol = "B3u"
+dimension = 1
+projective = false
+characters = ["-1", "1", "-1", "-1", "1"]
+bethe = ""
+
+[[irreps]]
+symbol = "E1/2g"
+dimension = 2
+projective = true
+characters = ["0", "0", "0", "2", "0"]
+bethe = ""
+
+[[irreps]]
+symbol = "E1/2u"
+dimension = 2
+projective = true
+characters = ["0", "0", "0", "-2", "0"]
+bethe = ""
+

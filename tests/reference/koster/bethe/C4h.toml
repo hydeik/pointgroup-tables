@@ -1,0 +1,139 @@
+# Koster, Dimmock, Wheeler & Statz, Properties of the Thirty-Two Point Groups (1963): Bethe symbols of C4h
+# Format: tests/reference/koster/bethe/README.md
+#
+# C4h: 16 irreps (8 ordinary, 8 projective), in canonical order.
+# Each entry lists the characters on the identifying elements below; for a projective
+# irrep they are the characters of the lifted elements in the canonical section.
+# Find the row with these characters in Koster's table and copy its Gamma symbol into
+# bethe ("Gamma3", with the parity sign in this centrosymmetric group: "Gamma3+" / "Gamma3-").
+
+group = "C4h"
+table = ""          # Koster's table and page for this group, e.g. "Table 33, p. 62"
+status = "todo"     # todo | partial | done
+notes = ""          # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
+elements = ["C4^1", "i", "sigma_h"]
+
+[[irreps]]
+symbol = "Ag"
+dimension = 1
+projective = false
+characters = ["1", "1", "1"]
+bethe = ""
+
+[[irreps]]
+symbol = "Bg"
+dimension = 1
+projective = false
+characters = ["-1", "1", "1"]
+bethe = ""
+
+[[irreps]]
+symbol = "1Eg"
+dimension = 1
+projective = false
+characters = ["i", "1", "-1"]
+numeric = ["+0.0000+1.0000i", "+1.0000+0.0000i", "-1.0000+0.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "2Eg"
+dimension = 1
+projective = false
+characters = ["-i", "1", "-1"]
+numeric = ["+0.0000-1.0000i", "+1.0000+0.0000i", "-1.0000+0.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "Au"
+dimension = 1
+projective = false
+characters = ["1", "-1", "-1"]
+bethe = ""
+
+[[irreps]]
+symbol = "Bu"
+dimension = 1
+projective = false
+characters = ["-1", "-1", "-1"]
+bethe = ""
+
+[[irreps]]
+symbol = "1Eu"
+dimension = 1
+projective = false
+characters = ["i", "-1", "1"]
+numeric = ["+0.0000+1.0000i", "-1.0000+0.0000i", "+1.0000+0.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "2Eu"
+dimension = 1
+projective = false
+characters = ["-i", "-1", "1"]
+numeric = ["+0.0000-1.0000i", "-1.0000+0.0000i", "+1.0000+0.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "1E1/2g"
+dimension = 1
+projective = true
+characters = ["zeta8", "1", "i"]
+numeric = ["+0.7071+0.7071i", "+1.0000+0.0000i", "+0.0000+1.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "2E1/2g"
+dimension = 1
+projective = true
+characters = ["zeta8^7", "1", "-i"]
+numeric = ["+0.7071-0.7071i", "+1.0000+0.0000i", "+0.0000-1.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "1E3/2g"
+dimension = 1
+projective = true
+characters = ["zeta8^3", "1", "-i"]
+numeric = ["-0.7071+0.7071i", "+1.0000+0.0000i", "+0.0000-1.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "2E3/2g"
+dimension = 1
+projective = true
+characters = ["zeta8^5", "1", "i"]
+numeric = ["-0.7071-0.7071i", "+1.0000+0.0000i", "+0.0000+1.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "1E1/2u"
+dimension = 1
+projective = true
+characters = ["zeta8", "-1", "-i"]
+numeric = ["+0.7071+0.7071i", "-1.0000+0.0000i", "+0.0000-1.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "2E1/2u"
+dimension = 1
+projective = true
+characters = ["zeta8^7", "-1", "i"]
+numeric = ["+0.7071-0.7071i", "-1.0000+0.0000i", "+0.0000+1.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "1E3/2u"
+dimension = 1
+projective = true
+characters = ["zeta8^3", "-1", "i"]
+numeric = ["-0.7071+0.7071i", "-1.0000+0.0000i", "+0.0000+1.0000i"]
+bethe = ""
+
+[[irreps]]
+symbol = "2E3/2u"
+dimension = 1
+projective = true
+characters = ["zeta8^5", "-1", "-i"]
+numeric = ["-0.7071-0.7071i", "-1.0000+0.0000i", "+0.0000-1.0000i"]
+bethe = ""
+

@@ -229,10 +229,10 @@ ordering key: Koster's `Γ_i` do not follow this order (`D3h`: `E'` is `Γ6`,
 | `C1` | `A` | `A1/2` |
 | `Cs` | `A' A''` | `1E1/2 2E1/2` |
 | `C2` | `A B` | `1E1/2 2E1/2` |
-| `C3` | `A 1E 2E` | `1E1/2 2E1/2 B3/2` |
+| `C3` | `A 1E 2E` | `B3/2 1E1/2 2E1/2` |
 | `C4` | `A B 1E 2E` | `1E1/2 2E1/2 1E3/2 2E3/2` |
 | `S4` | `A B 1E 2E` | `1E1/2 2E1/2 1E3/2 2E3/2` |
-| `S6` | `Ag 1Eg 2Eg Au 1Eu 2Eu` | `1E1/2g 2E1/2g B3/2g 1E1/2u 2E1/2u B3/2u` |
+| `S6` | `Ag 1Eg 2Eg Au 1Eu 2Eu` | `B3/2g 1E1/2g 2E1/2g B3/2u 1E1/2u 2E1/2u` |
 | `C3h` | `A' 1E' 2E' A'' 1E'' 2E''` | `1E1/2 2E1/2 1E3/2 2E3/2 1E5/2 2E5/2` |
 | `C5` | `A 1E1 2E1 1E2 2E2` | `1E1/2 2E1/2 1E3/2 2E3/2 B5/2` |
 | `D2` | `A B1 B2 B3` | `E1/2` |
