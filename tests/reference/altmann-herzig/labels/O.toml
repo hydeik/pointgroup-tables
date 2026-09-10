@@ -1,38 +1,107 @@
 # Altmann & Herzig, Point-Group Theory Tables (2nd ed.): element labels of O
 # Format: tests/reference/altmann-herzig/labels/README.md
-#
-# Canonical elements of O (order 24), in canonical order:
-#   E C2(1) C2(2) C2(3) C2'(1) C2'(2) C2'(3) C2'(4) C2'(5) C2'(6) C3^1(1) C3^1(2) C3^-1(2) C3^1(3) C3^1(4) C3^-1(1) C3^-1(3) C3^-1(4) C4^1(1) C4^-1(1) C4^1(3) C4^1(2) C4^-1(3) C4^-1(2)
-# Conjugacy classes (canonical):
-#   1x[E]
-#   3x[C2(1), C2(2), C2(3)]
-#   6x[C2'(1), C2'(2), C2'(3), C2'(4), C2'(5), C2'(6)]
-#   8x[C3^1(1), C3^1(2), C3^-1(2), C3^1(3), C3^1(4), C3^-1(1), C3^-1(3), C3^-1(4)]
-#   6x[C4^1(1), C4^-1(1), C4^1(3), C4^1(2), C4^-1(3), C4^-1(2)]
-# The map below must send every book label onto exactly one of these.
+# Drafted by tools/ah_book.py from the parameter table T 71.1 and the subgroup table T 71.0 of the book's PDF;
+# the multiplication table and tilde marks are reproduced from the parameters by quaternion
+# multiplication (book section 3-2) and agree with the printed factor tables (tools/ah_book.py check).
 
 group = "O"
-table = ""          # the book's table number and page, e.g. "T 15.1, p. 123"
-status = "todo"     # todo | partial | done
-notes = ""          # anything that could not be read unambiguously
+table = "T 69, p. 580"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the OCR text of the PDF; verify against the print"
+notes = """
+Poles follow the book's Rule 1 (section 3-2): the poles of a class are the images of one
+another under the group, not a positive-hemisphere rule; e.g. the C2' poles of D6h are the
+C6 rotations of (1 0 0). Improper operations are i times the proper operation with the same
+parameters (marker i implicit). Labels transliterated per README.md.
+"""
+# [map] is derived from these anchors; the checker fixes eps = +1 on them
+anchors = ["E", "C4z+", "C3,1+"]
 
 [book]
-# Every element label of the book's table for this group, in the book's
-# order, transliterated to ASCII (README: C3+, C2'1, sigma_v1, S6-, ~C3+ ...).
-elements = []
-# The book's identification of the operation (axis or plane), where stated,
-# keyed by the book label, e.g. "C2'1" = "C2 about x".
-operations = {}
-# The book's irrep symbol row, in the book's order, as printed (ASCII).
-irreps = []
+elements = ["E", "C2x", "C2y", "C2z", "C3,1+", "C3,2+", "C3,3+", "C3,4+", "C3,1-", "C3,2-", "C3,3-", "C3,4-", "C4x+", "C4y+", "C4z+", "C4x-", "C4y-", "C4z-", "C2'a", "C2'b", "C2'c", "C2'd", "C2'e", "C2'f"]
+master = "Oh"
+irreps = ["A1", "A2", "E", "T1", "T2", "E1/2", "E5/2", "F3/2"]
 
+# phi and the pole n of the proper operation (the rotation part for improper ones)
+[book.parameters]
+"E" = { phi = "0", n = ["0", "0", "0"] }
+"C2x" = { phi = "pi", n = ["1", "0", "0"] }
+"C2y" = { phi = "pi", n = ["0", "1", "0"] }
+"C2z" = { phi = "pi", n = ["0", "0", "1"] }
+"C3,1+" = { phi = "2pi/3", n = ["1/sqrt3", "1/sqrt3", "1/sqrt3"] }
+"C3,2+" = { phi = "2pi/3", n = ["-1/sqrt3", "-1/sqrt3", "1/sqrt3"] }
+"C3,3+" = { phi = "2pi/3", n = ["1/sqrt3", "-1/sqrt3", "-1/sqrt3"] }
+"C3,4+" = { phi = "2pi/3", n = ["-1/sqrt3", "1/sqrt3", "-1/sqrt3"] }
+"C3,1-" = { phi = "2pi/3", n = ["-1/sqrt3", "-1/sqrt3", "-1/sqrt3"] }
+"C3,2-" = { phi = "2pi/3", n = ["1/sqrt3", "1/sqrt3", "-1/sqrt3"] }
+"C3,3-" = { phi = "2pi/3", n = ["-1/sqrt3", "1/sqrt3", "1/sqrt3"] }
+"C3,4-" = { phi = "2pi/3", n = ["1/sqrt3", "-1/sqrt3", "1/sqrt3"] }
+"C4x+" = { phi = "pi/2", n = ["1", "0", "0"] }
+"C4y+" = { phi = "pi/2", n = ["0", "1", "0"] }
+"C4z+" = { phi = "pi/2", n = ["0", "0", "1"] }
+"C4x-" = { phi = "pi/2", n = ["-1", "0", "0"] }
+"C4y-" = { phi = "pi/2", n = ["0", "-1", "0"] }
+"C4z-" = { phi = "pi/2", n = ["0", "0", "-1"] }
+"C2'a" = { phi = "pi", n = ["1/sqrt2", "1/sqrt2", "0"] }
+"C2'b" = { phi = "pi", n = ["-1/sqrt2", "1/sqrt2", "0"] }
+"C2'c" = { phi = "pi", n = ["1/sqrt2", "0", "1/sqrt2"] }
+"C2'd" = { phi = "pi", n = ["0", "-1/sqrt2", "-1/sqrt2"] }
+"C2'e" = { phi = "pi", n = ["1/sqrt2", "0", "-1/sqrt2"] }
+"C2'f" = { phi = "pi", n = ["0", "-1/sqrt2", "1/sqrt2"] }
+
+# book label -> canonical label, derived from the anchors above
 [map]
-# book label -> canonical label. Fill the ones the book's axis statements
-# make certain (E, the principal rotation, the first secondary axis, i,
-# sigma_h); the checker derives the rest from the multiplication table.
+"E" = "E"
+"C2x" = "C2(3)"
+"C2y" = "C2(2)"
+"C2z" = "C2(1)"
+"C3,1+" = "C3^-1(2)"
+"C3,2+" = "C3^1(4)"
+"C3,3+" = "C3^1(1)"
+"C3,4+" = "C3^-1(3)"
+"C3,1-" = "C3^1(2)"
+"C3,2-" = "C3^-1(4)"
+"C3,3-" = "C3^-1(1)"
+"C3,4-" = "C3^1(3)"
+"C4x+" = "C4^1(3)"
+"C4y+" = "C4^-1(2)"
+"C4z+" = "C4^1(1)"
+"C4x-" = "C4^-1(3)"
+"C4y-" = "C4^1(2)"
+"C4z-" = "C4^-1(1)"
+"C2'a" = "C2'(6)"
+"C2'b" = "C2'(5)"
+"C2'c" = "C2'(2)"
+"C2'd" = "C2'(1)"
+"C2'e" = "C2'(4)"
+"C2'f" = "C2'(3)"
 
+# reconstructed from the parameters; '~' marks a product the book prints with a tilde
 [multiplication]
-# Optional (priority groups: C2v, D3, D4, D3h, T, O). One row per book element, in the
-# order of book.elements, each entry a book label with a leading "~" where the
-# book prints a tilde on the product.
-rows = []
+rows = [
+  ["E", "C2x", "C2y", "C2z", "C3,1+", "C3,2+", "C3,3+", "C3,4+", "C3,1-", "C3,2-", "C3,3-", "C3,4-", "C4x+", "C4y+", "C4z+", "C4x-", "C4y-", "C4z-", "C2'a", "C2'b", "C2'c", "C2'd", "C2'e", "C2'f"],
+  ["C2x", "~E", "C2z", "~C2y", "~C3,4+", "C3,3+", "~C3,2+", "C3,1+", "C3,2-", "~C3,1-", "C3,4-", "~C3,3-", "~C4x-", "C2'c", "~C2'b", "C4x+", "C2'e", "C2'a", "~C4z-", "C4z+", "~C4y+", "~C2'f", "~C4y-", "C2'd"],
+  ["C2y", "~C2z", "~E", "C2x", "~C3,2+", "C3,1+", "C3,4+", "~C3,3+", "C3,3-", "~C3,4-", "~C3,1-", "C3,2-", "~C2'f", "~C4y-", "C2'a", "~C2'd", "C4y+", "C2'b", "~C4z+", "~C4z-", "C2'e", "C4x-", "~C2'c", "C4x+"],
+  ["C2z", "C2y", "~C2x", "~E", "~C3,3+", "~C3,4+", "C3,1+", "C3,2+", "C3,4-", "C3,3-", "~C3,2-", "~C3,1-", "~C2'd", "~C2'e", "~C4z-", "C2'f", "C2'c", "C4z+", "C2'b", "~C2'a", "~C4y-", "C4x+", "C4y+", "~C4x-"],
+  ["C3,1+", "~C3,2+", "~C3,3+", "~C3,4+", "~C3,1-", "C3,4-", "C3,2-", "C3,3-", "E", "C2y", "C2z", "C2x", "C2'a", "~C2'd", "C2'c", "C4z+", "C4x+", "C4y+", "~C4y-", "~C2'e", "~C4x-", "C4z-", "~C2'f", "~C2'b"],
+  ["C3,2+", "C3,1+", "C3,4+", "~C3,3+", "C3,3-", "~C3,2-", "C3,4-", "C3,1-", "~C2y", "E", "~C2x", "C2z", "C4z+", "C4x-", "~C2'e", "~C2'a", "C2'f", "C4y-", "C4y+", "~C2'c", "~C2'd", "~C2'b", "C4x+", "~C4z-"],
+  ["C3,3+", "~C3,4+", "C3,1+", "C3,2+", "C3,4-", "C3,1-", "~C3,3-", "C3,2-", "~C2z", "C2x", "E", "~C2y", "~C2'b", "C4x+", "C4y-", "C4z-", "C2'd", "C2'e", "C2'c", "C4y+", "C2'f", "~C4z+", "~C4x-", "~C2'a"],
+  ["C3,4+", "C3,3+", "~C3,2+", "C3,1+", "C3,2-", "C3,3-", "C3,1-", "~C3,4-", "~C2x", "~C2z", "C2y", "E", "C4z-", "~C2'f", "C4y+", "C2'b", "C4x-", "~C2'c", "C2'e", "~C4y-", "C4x+", "~C2'a", "C2'd", "C4z+"],
+  ["C3,1-", "C3,4-", "C3,2-", "C3,3-", "E", "~C2x", "~C2y", "~C2z", "~C3,1+", "C3,3+", "C3,4+", "C3,2+", "C4y-", "C4z-", "C4x-", "~C2'c", "~C2'a", "C2'd", "C4x+", "~C2'f", "C4z+", "~C4y+", "~C2'b", "~C2'e"],
+  ["C3,2-", "~C3,3-", "~C3,1-", "C3,4-", "C2x", "E", "~C2z", "C2y", "C3,4+", "~C3,2+", "C3,1+", "C3,3+", "C2'e", "C2'a", "C4x+", "C4y+", "C4z-", "~C2'f", "~C4x-", "~C2'd", "~C2'b", "~C2'c", "~C4z+", "C4y-"],
+  ["C3,3-", "C3,2-", "~C3,4-", "~C3,1-", "C2y", "C2z", "E", "~C2x", "C3,2+", "C3,4+", "~C3,3+", "C3,1+", "C4y+", "C2'b", "~C2'd", "~C2'e", "C4z+", "C4x-", "~C2'f", "~C4x+", "C2'a", "C4y-", "C4z-", "C2'c"],
+  ["C3,4-", "~C3,1-", "C3,3-", "~C3,2-", "C2z", "~C2y", "C2x", "E", "C3,3+", "C3,1+", "C3,2+", "~C3,4+", "C2'c", "C4z+", "C2'f", "C4y-", "~C2'b", "C4x+", "~C2'd", "C4x-", "~C4z-", "C2'e", "C2'a", "~C4y+"],
+  ["C4x+", "~C4x-", "~C2'd", "C2'f", "C2'c", "C4y-", "C2'e", "C4y+", "C4z-", "C2'a", "C4z+", "~C2'b", "C2x", "C3,1+", "C3,4-", "E", "C3,3+", "C3,2-", "~C3,1-", "C3,3-", "~C3,4+", "~C2z", "~C3,2+", "~C2y"],
+  ["C4y+", "C2'e", "~C4y-", "C2'c", "C2'a", "C4z+", "C4z-", "C2'b", "C4x-", "~C2'f", "~C2'd", "C4x+", "C3,2-", "C2y", "C3,1+", "C3,3-", "E", "C3,4+", "~C3,2+", "~C3,3+", "C2x", "C3,1-", "~C2z", "C3,4-"],
+  ["C4z+", "C2'a", "C2'b", "~C4z-", "~C2'd", "C2'f", "C4x+", "C4x-", "C4y-", "C4y+", "~C2'e", "C2'c", "C3,1+", "C3,3-", "C2z", "C3,2+", "C3,4-", "E", "C2y", "~C2x", "~C3,1-", "C3,3+", "C3,2-", "~C3,4+"],
+  ["C4x-", "C4x+", "~C2'f", "~C2'd", "C4y+", "~C2'e", "C4y-", "~C2'c", "~C2'a", "C4z-", "C2'b", "C4z+", "E", "C3,4+", "C3,3-", "~C2x", "C3,2+", "C3,1-", "C3,2-", "~C3,4-", "C3,1+", "~C2y", "C3,3+", "C2z"],
+  ["C4y-", "C2'c", "C4y+", "~C2'e", "C4z+", "~C2'a", "~C2'b", "C4z-", "C2'd", "C4x+", "C4x-", "C2'f", "C3,4-", "E", "C3,2+", "C3,1-", "~C2y", "C3,3+", "C3,1+", "C3,4+", "C2z", "~C3,3-", "C2x", "~C3,2-"],
+  ["C4z-", "~C2'b", "C2'a", "C4z+", "C4x+", "C4x-", "C2'd", "~C2'f", "~C2'c", "C2'e", "C4y+", "C4y-", "C3,3+", "C3,2-", "E", "C3,4+", "C3,1-", "~C2z", "C2x", "C2y", "C3,4-", "~C3,1+", "~C3,3-", "C3,2+"],
+  ["C2'a", "~C4z+", "~C4z-", "~C2'b", "~C4x-", "C4x+", "~C2'f", "~C2'd", "C4y+", "~C4y-", "C2'c", "C2'e", "~C3,2+", "~C3,1-", "C2x", "C3,1+", "C3,2-", "C2y", "~E", "C2z", "~C3,3-", "C3,4+", "~C3,4-", "C3,3+"],
+  ["C2'b", "C4z-", "~C4z+", "C2'a", "~C2'f", "~C2'd", "C4x-", "~C4x+", "~C2'e", "~C2'c", "~C4y-", "C4y+", "C3,4+", "~C3,4-", "C2y", "~C3,3+", "C3,3-", "~C2x", "~C2z", "~E", "C3,2-", "C3,2+", "C3,1-", "C3,1+"],
+  ["C2'c", "~C4y-", "~C2'e", "~C4y+", "~C4z-", "~C2'b", "C2'a", "C4z+", "C4x+", "~C2'd", "C2'f", "~C4x-", "~C3,1-", "C2z", "~C3,4+", "C3,4-", "C2x", "C3,1+", "~C3,3+", "C3,2+", "~E", "C3,2-", "C2y", "~C3,3-"],
+  ["C2'd", "C2'f", "C4x+", "C4x-", "C4y-", "~C2'c", "~C4y+", "C2'e", "~C4z+", "~C2'b", "C4z-", "~C2'a", "~C2y", "C3,3+", "C3,1-", "~C2z", "~C3,1+", "~C3,3-", "C3,4-", "C3,2-", "C3,2+", "~E", "~C3,4+", "~C2x"],
+  ["C2'e", "~C4y+", "C2'c", "C4y-", "~C2'b", "C4z-", "~C4z+", "C2'a", "~C2'f", "~C4x-", "C4x+", "C2'd", "~C3,3-", "C2x", "C3,3+", "C3,2-", "~C2z", "~C3,2+", "~C3,4+", "C3,1+", "~C2y", "~C3,4-", "~E", "C3,1-"],
+  ["C2'f", "~C2'd", "C4x-", "~C4x+", "~C2'e", "~C4y+", "C2'c", "C4y-", "~C2'b", "C4z+", "~C2'a", "~C4z-", "C2z", "C3,2+", "~C3,2-", "~C2y", "~C3,4+", "C3,4-", "C3,3-", "C3,1-", "~C3,3+", "C2x", "C3,1+", "~E"],
+]

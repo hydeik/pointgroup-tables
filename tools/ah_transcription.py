@@ -246,7 +246,7 @@ def check_file(path):
     # --- multiplication table
     rows = data.get("multiplication", {}).get("rows", [])
     if rows and not rep.errors:
-        check_multiplication(grp, elements, mapping, rows, rep)
+        check_multiplication(grp, elements, mapping, rows, rep, data)
     elif not rows:
         unmapped = [e for e in elements if e not in mapping]
         if unmapped:
@@ -260,7 +260,8 @@ def check_file(path):
     return rep
 
 
-def check_multiplication(grp, elements, mapping, rows, rep):
+def check_multiplication(grp, elements, mapping, rows, rep, data=None):
+    data = data or {}
     n = len(elements)
     pos = {e: i for i, e in enumerate(elements)}
     if len(rows) != n or any(len(r) != n for r in rows):
@@ -338,7 +339,12 @@ def check_multiplication(grp, elements, mapping, rows, rep):
             ]
             for x in range(n)
         ]
-        eps = {pos[b]: 1 for b in mapping}
+        anchors = data.get("anchors") or list(mapping)
+        for b in anchors:
+            if b not in mapping:
+                rep.error(f"anchor {b!r} is not in [map]")
+                return
+        eps = {pos[b]: 1 for b in anchors}
         queue = deque(eps)
         consistent = True
         while queue and consistent:

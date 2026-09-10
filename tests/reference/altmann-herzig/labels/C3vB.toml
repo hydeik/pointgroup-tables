@@ -1,0 +1,54 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): element labels of C3v (setting B)
+# Format: tests/reference/altmann-herzig/labels/README.md
+# Drafted by tools/ah_book.py from the parameter table T 51.1 and the subgroup table T 51.0 of the book's PDF;
+# the multiplication table and tilde marks are reproduced from the parameters by quaternion
+# multiplication (book section 3-2) and agree with the printed factor tables (tools/ah_book.py check).
+
+group = "C3v"
+setting = "B"
+table = "T 51, p. 484"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the OCR text of the PDF; verify against the print"
+notes = """
+Poles follow the book's Rule 1 (section 3-2): the poles of a class are the images of one
+another under the group, not a positive-hemisphere rule; e.g. the C2' poles of D6h are the
+C6 rotations of (1 0 0). Improper operations are i times the proper operation with the same
+parameters (marker i implicit). Labels transliterated per README.md.
+"""
+# [map] is derived from these anchors; the checker fixes eps = +1 on them
+anchors = ["E", "C3+", "sigma_v1"]
+
+[book]
+elements = ["E", "C3+", "C3-", "sigma_v1", "sigma_v2", "sigma_v3"]
+master = "C3v"
+irreps = ["A1", "A2", "E", "E1/2", "1E3/2", "2E3/2"]
+
+# phi and the pole n of the proper operation (the rotation part for improper ones)
+[book.parameters]
+"E" = { phi = "0", n = ["0", "0", "0"] }
+"C3+" = { phi = "2pi/3", n = ["0", "0", "1"] }
+"C3-" = { phi = "2pi/3", n = ["0", "0", "-1"] }
+"sigma_v1" = { phi = "pi", n = ["1", "0", "0"], proper = "sigma_v1" }
+"sigma_v2" = { phi = "pi", n = ["-1/2", "sqrt3/2", "0"], proper = "sigma_v2" }
+"sigma_v3" = { phi = "pi", n = ["-1/2", "-sqrt3/2", "0"], proper = "sigma_v3" }
+
+# book label -> canonical label, derived from the anchors above
+[map]
+"E" = "E"
+"C3+" = "C3^1"
+"C3-" = "C3^-1"
+"sigma_v1" = "sigma_v(1)"
+"sigma_v2" = "sigma_v(3)"
+"sigma_v3" = "sigma_v(2)"
+
+# reconstructed from the parameters; '~' marks a product the book prints with a tilde
+[multiplication]
+rows = [
+  ["E", "C3+", "C3-", "sigma_v1", "sigma_v2", "sigma_v3"],
+  ["C3+", "~C3-", "E", "~sigma_v3", "~sigma_v1", "~sigma_v2"],
+  ["C3-", "E", "~C3+", "~sigma_v2", "~sigma_v3", "~sigma_v1"],
+  ["sigma_v1", "~sigma_v2", "~sigma_v3", "~E", "C3+", "C3-"],
+  ["sigma_v2", "~sigma_v3", "~sigma_v1", "C3-", "~E", "C3+"],
+  ["sigma_v3", "~sigma_v1", "~sigma_v2", "C3+", "C3-", "~E"],
+]

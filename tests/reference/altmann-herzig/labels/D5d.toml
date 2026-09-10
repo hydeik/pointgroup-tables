@@ -1,41 +1,95 @@
 # Altmann & Herzig, Point-Group Theory Tables (2nd ed.): element labels of D5d
 # Format: tests/reference/altmann-herzig/labels/README.md
-#
-# Canonical elements of D5d (order 20), in canonical order:
-#   E C5^1 C5^2 C5^-2 C5^-1 C2'(1) C2'(2) C2'(3) C2'(4) C2'(5) i S10^-3 S10^-1 S10^1 S10^3 sigma_d(1) sigma_d(2) sigma_d(3) sigma_d(4) sigma_d(5)
-# Conjugacy classes (canonical):
-#   1x[E]
-#   2x[C5^1, C5^-1]
-#   2x[C5^2, C5^-2]
-#   5x[C2'(1), C2'(2), C2'(3), C2'(4), C2'(5)]
-#   1x[i]
-#   2x[S10^-3, S10^3]
-#   2x[S10^-1, S10^1]
-#   5x[sigma_d(1), sigma_d(2), sigma_d(3), sigma_d(4), sigma_d(5)]
-# The map below must send every book label onto exactly one of these.
+# Drafted by tools/ah_book.py from the parameter table T 39.1 and the subgroup table T 39.0 of the book's PDF;
+# the multiplication table and tilde marks are reproduced from the parameters by quaternion
+# multiplication (book section 3-2) and agree with the printed factor tables (tools/ah_book.py check).
 
 group = "D5d"
-table = ""          # the book's table number and page, e.g. "T 15.1, p. 123"
-status = "todo"     # todo | partial | done
-notes = ""          # anything that could not be read unambiguously
+table = "T 44, p. 382"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the OCR text of the PDF; verify against the print"
+notes = """
+Poles follow the book's Rule 1 (section 3-2): the poles of a class are the images of one
+another under the group, not a positive-hemisphere rule; e.g. the C2' poles of D6h are the
+C6 rotations of (1 0 0). Improper operations are i times the proper operation with the same
+parameters (marker i implicit). Labels transliterated per README.md.
+"""
+# [map] is derived from these anchors; the checker fixes eps = +1 on them
+anchors = ["E", "C5+", "C2'1", "i"]
 
 [book]
-# Every element label of the book's table for this group, in the book's
-# order, transliterated to ASCII (README: C3+, C2'1, sigma_v1, S6-, ~C3+ ...).
-elements = []
-# The book's identification of the operation (axis or plane), where stated,
-# keyed by the book label, e.g. "C2'1" = "C2 about x".
-operations = {}
-# The book's irrep symbol row, in the book's order, as printed (ASCII).
-irreps = []
+elements = ["E", "C5+", "C5-", "C5^2+", "C5^2-", "C2'1", "C2'2", "C2'3", "C2'4", "C2'5", "i", "S10^3-", "S10^3+", "S10-", "S10+", "sigma_d1", "sigma_d2", "sigma_d3", "sigma_d4", "sigma_d5"]
+master = "D10h"
+irreps = ["A1g", "A2g", "E1g", "E2g", "A1u", "A2u", "E1u", "E2u", "E1/2,g", "E3/2,g", "1E5/2,g", "2E5/2,g", "E1/2,u", "E3/2,u", "1E5/2,u", "2E5/2,u"]
 
+# phi and the pole n of the proper operation (the rotation part for improper ones)
+[book.parameters]
+"E" = { phi = "0", n = ["0", "0", "0"] }
+"C5+" = { phi = "2pi/5", n = ["0", "0", "1"] }
+"C5-" = { phi = "2pi/5", n = ["0", "0", "-1"] }
+"C5^2+" = { phi = "4pi/5", n = ["0", "0", "1"] }
+"C5^2-" = { phi = "4pi/5", n = ["0", "0", "-1"] }
+"C2'1" = { phi = "pi", n = ["1", "0", "0"] }
+"C2'2" = { phi = "pi", n = ["s10", "c10", "0"] }
+"C2'3" = { phi = "pi", n = ["-c5", "s5", "0"] }
+"C2'4" = { phi = "pi", n = ["-c5", "-s5", "0"] }
+"C2'5" = { phi = "pi", n = ["s10", "-c10", "0"] }
+"i" = { phi = "0", n = ["0", "0", "0"], proper = "E" }
+"S10^3-" = { phi = "2pi/5", n = ["0", "0", "1"], proper = "C5+" }
+"S10^3+" = { phi = "2pi/5", n = ["0", "0", "-1"], proper = "C5-" }
+"S10-" = { phi = "4pi/5", n = ["0", "0", "1"], proper = "C5^2+" }
+"S10+" = { phi = "4pi/5", n = ["0", "0", "-1"], proper = "C5^2-" }
+"sigma_d1" = { phi = "pi", n = ["1", "0", "0"], proper = "C2'1" }
+"sigma_d2" = { phi = "pi", n = ["s10", "c10", "0"], proper = "C2'2" }
+"sigma_d3" = { phi = "pi", n = ["-c5", "s5", "0"], proper = "C2'3" }
+"sigma_d4" = { phi = "pi", n = ["-c5", "-s5", "0"], proper = "C2'4" }
+"sigma_d5" = { phi = "pi", n = ["s10", "-c10", "0"], proper = "C2'5" }
+
+# book label -> canonical label, derived from the anchors above
 [map]
-# book label -> canonical label. Fill the ones the book's axis statements
-# make certain (E, the principal rotation, the first secondary axis, i,
-# sigma_h); the checker derives the rest from the multiplication table.
+"E" = "E"
+"C5+" = "C5^1"
+"C5-" = "C5^-1"
+"C5^2+" = "C5^2"
+"C5^2-" = "C5^-2"
+"C2'1" = "C2'(1)"
+"C2'2" = "C2'(3)"
+"C2'3" = "C2'(5)"
+"C2'4" = "C2'(2)"
+"C2'5" = "C2'(4)"
+"i" = "i"
+"S10^3-" = "S10^-3"
+"S10^3+" = "S10^3"
+"S10-" = "S10^-1"
+"S10+" = "S10^1"
+"sigma_d1" = "sigma_d(1)"
+"sigma_d2" = "sigma_d(3)"
+"sigma_d3" = "sigma_d(5)"
+"sigma_d4" = "sigma_d(2)"
+"sigma_d5" = "sigma_d(4)"
 
+# reconstructed from the parameters; '~' marks a product the book prints with a tilde
 [multiplication]
-# Optional (priority groups: C2v, D3, D4, D3h, T, O). One row per book element, in the
-# order of book.elements, each entry a book label with a leading "~" where the
-# book prints a tilde on the product.
-rows = []
+rows = [
+  ["E", "C5+", "C5-", "C5^2+", "C5^2-", "C2'1", "C2'2", "C2'3", "C2'4", "C2'5", "i", "S10^3-", "S10^3+", "S10-", "S10+", "sigma_d1", "sigma_d2", "sigma_d3", "sigma_d4", "sigma_d5"],
+  ["C5+", "C5^2+", "E", "~C5^2-", "C5-", "~C2'4", "~C2'5", "~C2'1", "~C2'2", "~C2'3", "S10^3-", "S10-", "i", "~S10+", "S10^3+", "~sigma_d4", "~sigma_d5", "~sigma_d1", "~sigma_d2", "~sigma_d3"],
+  ["C5-", "E", "C5^2-", "C5+", "~C5^2+", "~C2'3", "~C2'4", "~C2'5", "~C2'1", "~C2'2", "S10^3+", "i", "S10+", "S10^3-", "~S10-", "~sigma_d3", "~sigma_d4", "~sigma_d5", "~sigma_d1", "~sigma_d2"],
+  ["C5^2+", "~C5^2-", "C5+", "~C5-", "E", "C2'2", "C2'3", "C2'4", "C2'5", "C2'1", "S10-", "~S10+", "S10^3-", "~S10^3+", "i", "sigma_d2", "sigma_d3", "sigma_d4", "sigma_d5", "sigma_d1"],
+  ["C5^2-", "C5-", "~C5^2+", "E", "~C5+", "C2'5", "C2'1", "C2'2", "C2'3", "C2'4", "S10+", "S10^3+", "~S10-", "i", "~S10^3-", "sigma_d5", "sigma_d1", "sigma_d2", "sigma_d3", "sigma_d4"],
+  ["C2'1", "~C2'3", "~C2'4", "C2'5", "C2'2", "~E", "~C5^2-", "C5+", "C5-", "~C5^2+", "sigma_d1", "~sigma_d3", "~sigma_d4", "sigma_d5", "sigma_d2", "~i", "~S10+", "S10^3-", "S10^3+", "~S10-"],
+  ["C2'2", "~C2'4", "~C2'5", "C2'1", "C2'3", "~C5^2+", "~E", "~C5^2-", "C5+", "C5-", "sigma_d2", "~sigma_d4", "~sigma_d5", "sigma_d1", "sigma_d3", "~S10-", "~i", "~S10+", "S10^3-", "S10^3+"],
+  ["C2'3", "~C2'5", "~C2'1", "C2'2", "C2'4", "C5-", "~C5^2+", "~E", "~C5^2-", "C5+", "sigma_d3", "~sigma_d5", "~sigma_d1", "sigma_d2", "sigma_d4", "S10^3+", "~S10-", "~i", "~S10+", "S10^3-"],
+  ["C2'4", "~C2'1", "~C2'2", "C2'3", "C2'5", "C5+", "C5-", "~C5^2+", "~E", "~C5^2-", "sigma_d4", "~sigma_d1", "~sigma_d2", "sigma_d3", "sigma_d5", "S10^3-", "S10^3+", "~S10-", "~i", "~S10+"],
+  ["C2'5", "~C2'2", "~C2'3", "C2'4", "C2'1", "~C5^2-", "C5+", "C5-", "~C5^2+", "~E", "sigma_d5", "~sigma_d2", "~sigma_d3", "sigma_d4", "sigma_d1", "~S10+", "S10^3-", "S10^3+", "~S10-", "~i"],
+  ["i", "S10^3-", "S10^3+", "S10-", "S10+", "sigma_d1", "sigma_d2", "sigma_d3", "sigma_d4", "sigma_d5", "E", "C5+", "C5-", "C5^2+", "C5^2-", "C2'1", "C2'2", "C2'3", "C2'4", "C2'5"],
+  ["S10^3-", "S10-", "i", "~S10+", "S10^3+", "~sigma_d4", "~sigma_d5", "~sigma_d1", "~sigma_d2", "~sigma_d3", "C5+", "C5^2+", "E", "~C5^2-", "C5-", "~C2'4", "~C2'5", "~C2'1", "~C2'2", "~C2'3"],
+  ["S10^3+", "i", "S10+", "S10^3-", "~S10-", "~sigma_d3", "~sigma_d4", "~sigma_d5", "~sigma_d1", "~sigma_d2", "C5-", "E", "C5^2-", "C5+", "~C5^2+", "~C2'3", "~C2'4", "~C2'5", "~C2'1", "~C2'2"],
+  ["S10-", "~S10+", "S10^3-", "~S10^3+", "i", "sigma_d2", "sigma_d3", "sigma_d4", "sigma_d5", "sigma_d1", "C5^2+", "~C5^2-", "C5+", "~C5-", "E", "C2'2", "C2'3", "C2'4", "C2'5", "C2'1"],
+  ["S10+", "S10^3+", "~S10-", "i", "~S10^3-", "sigma_d5", "sigma_d1", "sigma_d2", "sigma_d3", "sigma_d4", "C5^2-", "C5-", "~C5^2+", "E", "~C5+", "C2'5", "C2'1", "C2'2", "C2'3", "C2'4"],
+  ["sigma_d1", "~sigma_d3", "~sigma_d4", "sigma_d5", "sigma_d2", "~i", "~S10+", "S10^3-", "S10^3+", "~S10-", "C2'1", "~C2'3", "~C2'4", "C2'5", "C2'2", "~E", "~C5^2-", "C5+", "C5-", "~C5^2+"],
+  ["sigma_d2", "~sigma_d4", "~sigma_d5", "sigma_d1", "sigma_d3", "~S10-", "~i", "~S10+", "S10^3-", "S10^3+", "C2'2", "~C2'4", "~C2'5", "C2'1", "C2'3", "~C5^2+", "~E", "~C5^2-", "C5+", "C5-"],
+  ["sigma_d3", "~sigma_d5", "~sigma_d1", "sigma_d2", "sigma_d4", "S10^3+", "~S10-", "~i", "~S10+", "S10^3-", "C2'3", "~C2'5", "~C2'1", "C2'2", "C2'4", "C5-", "~C5^2+", "~E", "~C5^2-", "C5+"],
+  ["sigma_d4", "~sigma_d1", "~sigma_d2", "sigma_d3", "sigma_d5", "S10^3-", "S10^3+", "~S10-", "~i", "~S10+", "C2'4", "~C2'1", "~C2'2", "C2'3", "C2'5", "C5+", "C5-", "~C5^2+", "~E", "~C5^2-"],
+  ["sigma_d5", "~sigma_d2", "~sigma_d3", "sigma_d4", "sigma_d1", "~S10+", "S10^3-", "S10^3+", "~S10-", "~i", "C2'5", "~C2'2", "~C2'3", "C2'4", "C2'1", "~C5^2-", "C5+", "C5-", "~C5^2+", "~E"],
+]

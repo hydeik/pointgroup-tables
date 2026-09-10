@@ -1,34 +1,38 @@
 # Altmann & Herzig, Point-Group Theory Tables (2nd ed.): element labels of C1
 # Format: tests/reference/altmann-herzig/labels/README.md
-#
-# Canonical elements of C1 (order 1), in canonical order:
-#   E
-# Conjugacy classes (canonical):
-#   1x[E]
-# The map below must send every book label onto exactly one of these.
+# Drafted by tools/ah_book.py from the parameter table T 31.1 and the subgroup table T 31.0 of the book's PDF;
+# the multiplication table and tilde marks are reproduced from the parameters by quaternion
+# multiplication (book section 3-2) and agree with the printed factor tables (tools/ah_book.py check).
 
 group = "C1"
-table = ""          # the book's table number and page, e.g. "T 15.1, p. 123"
-status = "todo"     # todo | partial | done
-notes = ""          # anything that could not be read unambiguously
+table = "T 1, p. 108"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the OCR text of the PDF; verify against the print"
+notes = """
+Poles follow the book's Rule 1 (section 3-2): the poles of a class are the images of one
+another under the group, not a positive-hemisphere rule; e.g. the C2' poles of D6h are the
+C6 rotations of (1 0 0). Improper operations are i times the proper operation with the same
+parameters (marker i implicit). Labels transliterated per README.md.
+"""
+# [map] is derived from these anchors; the checker fixes eps = +1 on them
+anchors = ["E"]
 
 [book]
-# Every element label of the book's table for this group, in the book's
-# order, transliterated to ASCII (README: C3+, C2'1, sigma_v1, S6-, ~C3+ ...).
-elements = []
-# The book's identification of the operation (axis or plane), where stated,
-# keyed by the book label, e.g. "C2'1" = "C2 about x".
-operations = {}
-# The book's irrep symbol row, in the book's order, as printed (ASCII).
-irreps = []
+elements = ["E"]
+master = "D2h"
+irreps = ["A", "A1/2"]
 
+# phi and the pole n of the proper operation (the rotation part for improper ones)
+[book.parameters]
+"E" = { phi = "0", n = ["0", "0", "0"] }
+
+# book label -> canonical label, derived from the anchors above
 [map]
-# book label -> canonical label. Fill the ones the book's axis statements
-# make certain (E, the principal rotation, the first secondary axis, i,
-# sigma_h); the checker derives the rest from the multiplication table.
+"E" = "E"
 
+# reconstructed from the parameters; '~' marks a product the book prints with a tilde
 [multiplication]
-# Optional (priority groups: C2v, D3, D4, D3h, T, O). One row per book element, in the
-# order of book.elements, each entry a book label with a leading "~" where the
-# book prints a tilde on the product.
-rows = []
+rows = [
+  ["E"],
+]
