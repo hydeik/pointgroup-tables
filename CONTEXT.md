@@ -185,10 +185,19 @@ matrices for the polyhedral families) that fixes the basis in which irrep
 matrices are written, as one reference work writes them. Irrep matrices are
 only defined up to unitary equivalence, so a table is meaningless without
 naming its basis convention. A convention declares its coverage and may
-cover only some families (Altmann & Herzig: the polyhedral families); a
-group outside it is an error, never a silent fallback to the canonical
-basis.
+cover only some families; a group outside it is an error, never a silent
+fallback to the canonical basis.
 _Avoid_: phase convention, gauge
+
+**Spin-harmonic rule**:
+The axial rule of a basis convention that writes every two-dimensional
+irrep as a reference work does in a basis of two spherical or spin harmonics
+`|j ±m⟩` (Altmann & Herzig): a closed form in the axis order and the irrep's
+exponent that fixes which partner comes first and the phase of the
+secondary element, its only free parameter being the azimuth of the
+secondary element the label convention anchors.
+_Avoid_: harmonic basis (ambiguous with the canonical basis), Wigner
+convention, book basis
 
 **Canonical basis**:
 The convention-free basis of every irrep, used by default: the principal

@@ -4,11 +4,18 @@
 # corrected misprints of T 74.7b recorded there as [[known_discrepancy]]) and the element
 # maps of tests/reference/altmann-herzig/labels/ (ticket #13). Decided in ticket #18.
 #
-# The axial families are not covered (no [axial] table): the book's axial bases are not a
-# constant transform of the canonical ones, see the ticket.
+# The axial families follow the spin-harmonic rule (docs/spec/basis-conventions.md, ticket
+# #21): the book's T n.6 bases <|j m>, +-|j -m>| in closed form, anchored by the altmann-herzig
+# label convention (alpha = pi/2 for the twisted Cnv, 0 otherwise). Verified against the
+# transcribed axial samples by tools/ah_axial_rule.py; the book covers n <= 10, larger n
+# extrapolates the same formulas.
 
 name = "altmann-herzig"
 source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+
+[axial]
+rule = "spin-harmonic"
+anchors = "altmann-herzig"
 
 [polyhedral.2T]  # T 70.7, p. 592
 conductor = 24

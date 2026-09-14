@@ -13,9 +13,9 @@ and the ``swapped`` lists of the label convention (ticket #14):
 - irreps are keyed by their canonical Mulliken symbol (the ``[canonical]``
   map of the transcription), one-dimensional irreps omitted;
 - the conductor is the transcription's (24 for 2T and 2O, 120 for 2I);
-- no ``[axial]`` table: the convention does not cover the axial families
-  (decided in ticket #18; the book's axial bases are not a constant
-  transform of the canonical ones).
+- the ``[axial]`` table selects the spin-harmonic rule anchored by the
+  ``altmann-herzig`` label convention (ticket #21; the rule itself is
+  ``tools/ah_axial_rule.py``, verified there against the axial samples).
 
     uv run python tools/ah_basis.py check       # verify the convention file against the group
     uv run python tools/ah_basis.py generate    # (re)write the convention file, then verify it
@@ -117,11 +117,18 @@ def render(blocks):
         "# corrected misprints of T 74.7b recorded there as [[known_discrepancy]]) and the element",
         "# maps of tests/reference/altmann-herzig/labels/ (ticket #13). Decided in ticket #18.",
         "#",
-        "# The axial families are not covered (no [axial] table): the book's axial bases are not a",
-        "# constant transform of the canonical ones, see the ticket.",
+        "# The axial families follow the spin-harmonic rule (docs/spec/basis-conventions.md, ticket",
+        "# #21): the book's T n.6 bases <|j m>, +-|j -m>| in closed form, anchored by the altmann-herzig",
+        "# label convention (alpha = pi/2 for the twisted Cnv, 0 otherwise). Verified against the",
+        "# transcribed axial samples by tools/ah_axial_rule.py; the book covers n <= 10, larger n",
+        "# extrapolates the same formulas.",
         "",
         'name = "altmann-herzig"',
         f"source = {toml_str(SOURCE)}",
+        "",
+        "[axial]",
+        'rule = "spin-harmonic"',
+        'anchors = "altmann-herzig"',
     ]
     for group, block in blocks.items():
         cover = COVER[group]

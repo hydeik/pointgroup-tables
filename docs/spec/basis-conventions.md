@@ -202,9 +202,11 @@ name = "altmann-herzig"
 source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed."
 
 [axial]
-rule = "transform"                    # "canonical" or "transform"
-ordinary = [["0", "1"], ["1", "0"]]   # U for every two-dimensional ordinary irrep, every n
-projective = [["1", "0"], ["0", "i"]] # U for every two-dimensional projective irrep, every n
+rule = "spin-harmonic"                # "canonical", "transform" or "spin-harmonic"
+anchors = "altmann-herzig"            # spin-harmonic only: the label convention whose anchoring fixes alpha
+# for rule = "transform" instead:
+# ordinary = [["0", "1"], ["1", "0"]]   # U for every two-dimensional ordinary irrep, every n
+# projective = [["1", "0"], ["0", "i"]] # U for every two-dimensional projective irrep, every n
 
 [polyhedral.2O]
 conductor = 8
@@ -224,10 +226,13 @@ matrices = [ ... ]
   gives two constant unitary `2 × 2` matrices `U`, one for the ordinary and
   one for the projective two-dimensional irreps, applied for every `n` and
   `k` as `D_ref = U† D_can U`. Basis-order reversal, complex conjugation of
-  the `E_k` block and phase changes are all of this form. A rule depending
-  on `n` or `k` is out of the version 1 vocabulary. A convention **without
-  an `[axial]` table** does not cover the axial families: an axial group
-  under it is the uncovered-group error (exit code 4).
+  the `E_k` block and phase changes are all of this form. `spin-harmonic`
+  is the closed form of the [next subsection](#the-spin-harmonic-rule),
+  Altmann & Herzig's harmonic bases, whose one free parameter (the azimuth
+  of the anchored secondary element) comes from the label convention named
+  in `anchors`. Every rule covers every `n`. A convention **without an
+  `[axial]` table** does not cover the axial families: an axial group under
+  it is the uncovered-group error (exit code 4).
 - **Polyhedral data**, keyed by `R†` (`2T`, `2O`, `2I`), shared by every
   group with that rotation group exactly as for the canonical data. A
   convention may give **any generating set** of `R`, named by canonical
@@ -239,6 +244,82 @@ matrices = [ ... ]
 The canonical basis is itself such a file (`name = "canonical"`, no
 `source`, `axial.rule = "canonical"`, polyhedral data from the prototype),
 so one loader serves both layers.
+
+### The spin-harmonic rule
+
+Decided in
+[Altmann & Herzig axial basis convention: explicit data or a rule in n and k](https://github.com/hydeik/pointgroup-tables/issues/21),
+rationale in ADR-0008.
+
+Altmann & Herzig write every two-dimensional irrep of an axial group in a
+basis of two spherical or spin harmonics `⟨|j m⟩, ±|j −m⟩|` (their tables
+T n.6: Condon–Shortley harmonics, function-space operators
+`ġ f(r) = f(g⁻¹ r)`, the SU(2) matrix `exp(−i φ n·σ/2)` of the untilded
+operation) and print the Wigner matrices of the operations in that basis
+(T n.7). Their generator images have a closed form in `n` and `k`, found
+from the kets of T n.6 and verified entry by entry against every transcribed
+axial matrix of the book (`tools/ah_axial_rule.py check`, groups `D3`,
+`C4v`, `C6v`, `D3h`, `D2d`, `D6h`; the kets of `D4h`, `D5h`, `D7h`, `D8h`,
+`D10h` and the `D5` matrices were read against it as well; the systematic
+transcription is the task
+[Transcribe Altmann & Herzig symmetrized bases and remaining axial matrices to verify the spin-harmonic rule](https://github.com/hydeik/pointgroup-tables/issues/22)).
+
+The rule is stated on the rotation group `R = D_N` (or `C_N`) alone, with
+`a = (1, 0)`, `b = (0, 1)`, `N` the order of `a` and `u = ζ_2N` as in the
+[canonical rules](#canonical-basis-axial-families); parities attach exactly
+as there (type II: `D(i·r) = ±D(r)`; type III: the matrices of `R`, so
+`S4^-1` of `D2d` and `S3^-1` of `D3h` receive `D(a)` directly, `N = 6` for
+`D3h` whose `E'` and `E''` are `E_2` and `E_1` of `D_6`, and `sigma_h` of
+`D3h` is `D(a)^3`). Let `m = k` for an ordinary `E_k` and `m = k/2` for
+a projective `E_{k/2}`, the harmonic's `|m|`; the canonical basis has
+`D(a) = diag(u^{2m}, u^{−2m})`.
+
+1. **First partner.** `m₁ = +m` or `−m`, by the chain
+   `D_N ⊃ D_{N/2} ⊃ … ⊃ D_{n₀}`, `n₀` the odd part of `N` (`2` when `N` is
+   a power of two): at the first level `L` (from `n₀` upwards) at which
+   the residues of `+m` and `−m` modulo `L`, taken in `(−L/2, L/2]`,
+   differ, `m₁` is the sign whose residue is positive; if they agree on
+   every level, `m₁ = +m`. Let `m̃` be the residue of `m₁` at the bottom
+   level `n₀`.
+2. **Principal element.** `D(a) = diag(u^{−2m₁}, u^{2m₁})`: for `m₁ = +m`
+   the eigenvalue order is the reverse of the canonical one, for `m₁ = −m`
+   it is the canonical one.
+3. **Secondary element.** `D(b) = e^{−iπ m̃} · [[0, y], [ȳ, 0]]` with
+   `y = e^{−2 i m₁ α}`, where `α` is the azimuth of the pole the reference
+   assigns to the element the label convention anchors to `b`: `0` for
+   every family except `Cnv` with `n ≡ 2 (mod 4)`, where the
+   letter-preserving anchor
+   ([Label conventions](./label-conventions.md#reference-section), the
+   twist, ADR-0007) puts it at the master's direction `M/2`, i.e.
+   `α = π/2` and `y = e^{−iπ m₁}`.
+
+Examples (`u = ζ_12`): `E1` of `D6` has `m₁ = 1`, `m̃ = 1`,
+`D(a) = diag(u^{−2}, u^{2})`, `D(b) = −[[0, 1], [1, 0]]`; `E2` has
+`m₁ = −2` (residue `1` modulo `3`), `D(a) = diag(u^{4}, u^{−4})`, the same
+`D(b)`; `E5/2` has `m₁ = −5/2`, `m̃ = 1/2`, `D(a) = diag(u^{5}, u^{−5})`,
+`D(b) = −i [[0, 1], [1, 0]]`; `E3/2` has `m₁ = 3/2` (a tie at both
+levels), `m̃ = 3/2`, `D(b) = i [[0, 1], [1, 0]]`. In `C6v`, `sigma_v(1)`
+is `(b, −1)` and receives `D(b)` with `α = π/2`: `E1` gets
+`[[0, 1], [1, 0]]`, `E1/2` gets `[[0, −1], [1, 0]]`.
+
+Consequences:
+
+- Every entry is a power of `u` or of `i`, so the **field** is the
+  canonical conductor `lcm(2N, 4)` of the group; the metadata conductor is
+  unchanged by this rule.
+- The rule is defined for **every `n`**. The book tabulates `n ≤ 10`, and
+  the transcriptions verify it there; beyond, the convention extrapolates
+  the same formulas (the label convention keeps canonical indices there,
+  so `α = 0` except for the twist, which is a rule, not data). Whether the
+  metadata should say so is the map's open question on convention coverage.
+- The rule is the only place where a basis convention depends on a label
+  convention. The file names it in `anchors`; the tool applies that
+  convention's anchoring to `b` even when another label convention, or
+  none, is selected for the output labels, so `--basis-convention` alone
+  fixes the matrices.
+- The intertwiner with the canonical basis is a permutation of the two
+  vectors (for `m₁ = +m`) times a diagonal phase; it is computed by the
+  verification, never stored.
 
 ### Value grammar
 
@@ -315,13 +396,16 @@ generator carries the `~` prefix and the book's matrix is kept verbatim)
 and `2I` (`C5^1(1)`, `C3^1(7)`, `C2(4)`, conductor 120), irreps keyed by
 their canonical symbols (`G3/2` for the book's `F3/2`, `G` for its `F`,
 `1E3/2`/`2E3/2` for `1F3/2`/`2F3/2`), the two misprints of T 74.7b
-corrected. It has no `[axial]` table: on the transcribed samples the book's
-axial bases are not a constant transform of the canonical ones (the
-principal element's eigenvalue order and the secondary element's sign vary
-with `k` and with the anchored plane), so the axial coverage is the open
-decision
-[Altmann & Herzig axial basis convention: explicit data or a rule in n and k](https://github.com/hydeik/pointgroup-tables/issues/21).
-Decided in
+corrected, **and the axial families by the spin-harmonic rule**
+(`[axial] rule = "spin-harmonic"`, `anchors = "altmann-herzig"`), so the
+convention covers every point group. The book's axial bases are not a
+constant transform of the canonical ones (the principal element's
+eigenvalue order and the secondary element's sign vary with `k` and with
+the anchored plane), which is why the rule, not `transform`, describes
+them; it was decided in
+[Altmann & Herzig axial basis convention: explicit data or a rule in n and k](https://github.com/hydeik/pointgroup-tables/issues/21)
+and is checked by `tools/ah_axial_rule.py`.
+The polyhedral data was decided in
 [Altmann & Herzig basis-convention data](https://github.com/hydeik/pointgroup-tables/issues/18)
 on the transcription of
 [Transcribe Altmann & Herzig irrep matrices for the polyhedral groups](https://github.com/hydeik/pointgroup-tables/issues/17).
