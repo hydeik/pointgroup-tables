@@ -8,9 +8,9 @@
 # bethe ("Gamma3", with the parity sign in this centrosymmetric group: "Gamma3+" / "Gamma3-").
 
 group = "Oh"
-table = ""          # Koster's table and page for this group, e.g. "Table 33, p. 62"
-status = "todo"     # todo | partial | done
-notes = ""          # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
+table = "Table 87, p. 103"             # Koster's table and page for this group, e.g. "Table 33, p. 62"
+status = "done"                        # todo | partial | done
+notes = ""                             # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
 elements = ["C4^1(1)", "C3^1(1)", "i"]
 
 [[irreps]]
@@ -18,70 +18,70 @@ symbol = "A1g"
 dimension = 1
 projective = false
 characters = ["1", "1", "1"]
-bethe = ""
+bethe = "Gamma1+"
 
 [[irreps]]
 symbol = "A2g"
 dimension = 1
 projective = false
 characters = ["-1", "1", "1"]
-bethe = ""
+bethe = "Gamma2+"
 
 [[irreps]]
 symbol = "Eg"
 dimension = 2
 projective = false
 characters = ["0", "-1", "2"]
-bethe = ""
+bethe = "Gamma3+"
 
 [[irreps]]
 symbol = "T1g"
 dimension = 3
 projective = false
 characters = ["1", "0", "3"]
-bethe = ""
+bethe = "Gamma4+"
 
 [[irreps]]
 symbol = "T2g"
 dimension = 3
 projective = false
 characters = ["-1", "0", "3"]
-bethe = ""
+bethe = "Gamma5+"
 
 [[irreps]]
 symbol = "A1u"
 dimension = 1
 projective = false
 characters = ["1", "1", "-1"]
-bethe = ""
+bethe = "Gamma1-"
 
 [[irreps]]
 symbol = "A2u"
 dimension = 1
 projective = false
 characters = ["-1", "1", "-1"]
-bethe = ""
+bethe = "Gamma2-"
 
 [[irreps]]
 symbol = "Eu"
 dimension = 2
 projective = false
 characters = ["0", "-1", "-2"]
-bethe = ""
+bethe = "Gamma3-"
 
 [[irreps]]
 symbol = "T1u"
 dimension = 3
 projective = false
 characters = ["1", "0", "-3"]
-bethe = ""
+bethe = "Gamma4-"
 
 [[irreps]]
 symbol = "T2u"
 dimension = 3
 projective = false
 characters = ["-1", "0", "-3"]
-bethe = ""
+bethe = "Gamma5-"
 
 [[irreps]]
 symbol = "E1/2g"
@@ -89,7 +89,7 @@ dimension = 2
 projective = true
 characters = ["sqrt2", "1", "2"]
 numeric = ["+1.4142+0.0000i", "+1.0000+0.0000i", "+2.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma6+"
 
 [[irreps]]
 symbol = "E5/2g"
@@ -97,14 +97,14 @@ dimension = 2
 projective = true
 characters = ["-sqrt2", "1", "2"]
 numeric = ["-1.4142+0.0000i", "+1.0000+0.0000i", "+2.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma7+"
 
 [[irreps]]
 symbol = "G3/2g"
 dimension = 4
 projective = true
 characters = ["0", "-1", "4"]
-bethe = ""
+bethe = "Gamma8+"
 
 [[irreps]]
 symbol = "E1/2u"
@@ -112,7 +112,7 @@ dimension = 2
 projective = true
 characters = ["sqrt2", "1", "-2"]
 numeric = ["+1.4142+0.0000i", "+1.0000+0.0000i", "-2.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma6-"
 
 [[irreps]]
 symbol = "E5/2u"
@@ -120,12 +120,11 @@ dimension = 2
 projective = true
 characters = ["-sqrt2", "1", "-2"]
 numeric = ["-1.4142+0.0000i", "+1.0000+0.0000i", "-2.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma7-"
 
 [[irreps]]
 symbol = "G3/2u"
 dimension = 4
 projective = true
 characters = ["0", "-1", "-4"]
-bethe = ""
-
+bethe = "Gamma8-"

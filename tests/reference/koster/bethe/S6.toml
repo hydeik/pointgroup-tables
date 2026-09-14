@@ -8,9 +8,9 @@
 # bethe ("Gamma3", with the parity sign in this centrosymmetric group: "Gamma3+" / "Gamma3-").
 
 group = "S6"
-table = ""          # Koster's table and page for this group, e.g. "Table 33, p. 62"
-status = "todo"     # todo | partial | done
-notes = ""          # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
+table = "Table 47, p. 54" # Koster's table and page for this group, e.g. "Table 33, p. 62"
+status = "done"           # todo | partial | done
+notes = ""                # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
 elements = ["C3^1", "i"]
 
 [[irreps]]
@@ -18,7 +18,7 @@ symbol = "Ag"
 dimension = 1
 projective = false
 characters = ["1", "1"]
-bethe = ""
+bethe = "Gamma1+"
 
 [[irreps]]
 symbol = "1Eg"
@@ -26,7 +26,7 @@ dimension = 1
 projective = false
 characters = ["zeta3", "1"]
 numeric = ["-0.5000+0.8660i", "+1.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma2+"
 
 [[irreps]]
 symbol = "2Eg"
@@ -34,14 +34,14 @@ dimension = 1
 projective = false
 characters = ["zeta3^2", "1"]
 numeric = ["-0.5000-0.8660i", "+1.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma3+"
 
 [[irreps]]
 symbol = "Au"
 dimension = 1
 projective = false
 characters = ["1", "-1"]
-bethe = ""
+bethe = "Gamma1-"
 
 [[irreps]]
 symbol = "1Eu"
@@ -49,7 +49,7 @@ dimension = 1
 projective = false
 characters = ["zeta3", "-1"]
 numeric = ["-0.5000+0.8660i", "-1.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma2-"
 
 [[irreps]]
 symbol = "2Eu"
@@ -57,14 +57,14 @@ dimension = 1
 projective = false
 characters = ["zeta3^2", "-1"]
 numeric = ["-0.5000-0.8660i", "-1.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma3-"
 
 [[irreps]]
 symbol = "B3/2g"
 dimension = 1
 projective = true
 characters = ["-1", "1"]
-bethe = ""
+bethe = "Gamma6+"
 
 [[irreps]]
 symbol = "1E1/2g"
@@ -72,7 +72,7 @@ dimension = 1
 projective = true
 characters = ["-zeta3^2", "1"]
 numeric = ["+0.5000+0.8660i", "+1.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma4+"
 
 [[irreps]]
 symbol = "2E1/2g"
@@ -80,14 +80,14 @@ dimension = 1
 projective = true
 characters = ["-zeta3", "1"]
 numeric = ["+0.5000-0.8660i", "+1.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma5+"
 
 [[irreps]]
 symbol = "B3/2u"
 dimension = 1
 projective = true
 characters = ["-1", "-1"]
-bethe = ""
+bethe = "Gamma6-"
 
 [[irreps]]
 symbol = "1E1/2u"
@@ -95,7 +95,7 @@ dimension = 1
 projective = true
 characters = ["-zeta3^2", "-1"]
 numeric = ["+0.5000+0.8660i", "-1.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma4-"
 
 [[irreps]]
 symbol = "2E1/2u"
@@ -103,5 +103,4 @@ dimension = 1
 projective = true
 characters = ["-zeta3", "-1"]
 numeric = ["+0.5000-0.8660i", "-1.0000+0.0000i"]
-bethe = ""
-
+bethe = "Gamma5-"

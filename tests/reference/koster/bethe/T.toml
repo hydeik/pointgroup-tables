@@ -8,9 +8,9 @@
 # bethe ("Gamma3"; no parity sign in this group).
 
 group = "T"
-table = ""          # Koster's table and page for this group, e.g. "Table 33, p. 62"
-status = "todo"     # todo | partial | done
-notes = ""          # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
+table = "Table 74, p. 79"       # Koster's table and page for this group, e.g. "Table 33, p. 62"
+status = "done"                 # todo | partial | done
+notes = ""                      # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
 elements = ["C3^1(1)", "C2(1)"]
 
 [[irreps]]
@@ -18,7 +18,7 @@ symbol = "A"
 dimension = 1
 projective = false
 characters = ["1", "1"]
-bethe = ""
+bethe = "Gamma1"
 
 [[irreps]]
 symbol = "1E"
@@ -26,7 +26,7 @@ dimension = 1
 projective = false
 characters = ["zeta3", "1"]
 numeric = ["-0.5000+0.8660i", "+1.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma2"
 
 [[irreps]]
 symbol = "2E"
@@ -34,21 +34,21 @@ dimension = 1
 projective = false
 characters = ["zeta3^2", "1"]
 numeric = ["-0.5000-0.8660i", "+1.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma3"
 
 [[irreps]]
 symbol = "T"
 dimension = 3
 projective = false
 characters = ["0", "-1"]
-bethe = ""
+bethe = "Gamma4"
 
 [[irreps]]
 symbol = "E1/2"
 dimension = 2
 projective = true
 characters = ["1", "0"]
-bethe = ""
+bethe = "Gamma5"
 
 [[irreps]]
 symbol = "1E3/2"
@@ -56,7 +56,7 @@ dimension = 2
 projective = true
 characters = ["zeta3", "0"]
 numeric = ["-0.5000+0.8660i", "+0.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma6"
 
 [[irreps]]
 symbol = "2E3/2"
@@ -64,5 +64,4 @@ dimension = 2
 projective = true
 characters = ["zeta3^2", "0"]
 numeric = ["-0.5000-0.8660i", "+0.0000+0.0000i"]
-bethe = ""
-
+bethe = "Gamma7"

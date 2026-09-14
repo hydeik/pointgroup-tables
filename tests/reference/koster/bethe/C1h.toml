@@ -8,9 +8,9 @@
 # bethe ("Gamma3"; no parity sign in this group).
 
 group = "Cs"
-table = ""          # Koster's table and page for this group, e.g. "Table 33, p. 62"
-status = "todo"     # todo | partial | done
-notes = ""          # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
+table = "Table 9, p. 33"               # Koster's table and page for this group, e.g. "Table 33, p. 62"
+status = "done"                        # todo | partial | done
+notes = ""                             # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
 elements = ["sigma_h", "E", "sigma_h"]
 
 [[irreps]]
@@ -18,14 +18,14 @@ symbol = "A'"
 dimension = 1
 projective = false
 characters = ["1", "1", "1"]
-bethe = ""
+bethe = "Gamma1"
 
 [[irreps]]
 symbol = "A''"
 dimension = 1
 projective = false
 characters = ["-1", "1", "-1"]
-bethe = ""
+bethe = "Gamma2"
 
 [[irreps]]
 symbol = "1E1/2"
@@ -33,7 +33,7 @@ dimension = 1
 projective = true
 characters = ["i", "1", "i"]
 numeric = ["+0.0000+1.0000i", "+1.0000+0.0000i", "+0.0000+1.0000i"]
-bethe = ""
+bethe = "Gamma3"
 
 [[irreps]]
 symbol = "2E1/2"
@@ -41,5 +41,4 @@ dimension = 1
 projective = true
 characters = ["-i", "1", "-i"]
 numeric = ["+0.0000-1.0000i", "+1.0000+0.0000i", "+0.0000-1.0000i"]
-bethe = ""
-
+bethe = "Gamma4"

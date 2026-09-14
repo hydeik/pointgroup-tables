@@ -8,9 +8,9 @@
 # bethe ("Gamma3", with the parity sign in this centrosymmetric group: "Gamma3+" / "Gamma3-").
 
 group = "Ci"
-table = ""          # Koster's table and page for this group, e.g. "Table 33, p. 62"
-status = "todo"     # todo | partial | done
-notes = ""          # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
+table = "Table 6, p. 32" # Koster's table and page for this group, e.g. "Table 33, p. 62"
+status = "done"          # todo | partial | done
+notes = ""               # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
 elements = ["E", "i"]
 
 [[irreps]]
@@ -18,26 +18,25 @@ symbol = "Ag"
 dimension = 1
 projective = false
 characters = ["1", "1"]
-bethe = ""
+bethe = "Gamma1+"
 
 [[irreps]]
 symbol = "Au"
 dimension = 1
 projective = false
 characters = ["1", "-1"]
-bethe = ""
+bethe = "Gamma1-"
 
 [[irreps]]
 symbol = "A1/2g"
 dimension = 1
 projective = true
 characters = ["1", "1"]
-bethe = ""
+bethe = "Gamma2+"
 
 [[irreps]]
 symbol = "A1/2u"
 dimension = 1
 projective = true
 characters = ["1", "-1"]
-bethe = ""
-
+bethe = "Gamma2-"

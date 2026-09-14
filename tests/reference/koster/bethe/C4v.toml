@@ -8,9 +8,9 @@
 # bethe ("Gamma3"; no parity sign in this group).
 
 group = "C4v"
-table = ""          # Koster's table and page for this group, e.g. "Table 33, p. 62"
-status = "todo"     # todo | partial | done
-notes = ""          # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
+table = "Table 33, p. 45"         # Koster's table and page for this group, e.g. "Table 33, p. 62"
+status = "done"                   # todo | partial | done
+notes = ""                        # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
 elements = ["C4^1", "sigma_v(1)"]
 
 [[irreps]]
@@ -18,35 +18,35 @@ symbol = "A1"
 dimension = 1
 projective = false
 characters = ["1", "1"]
-bethe = ""
+bethe = "Gamma1"
 
 [[irreps]]
 symbol = "A2"
 dimension = 1
 projective = false
 characters = ["1", "-1"]
-bethe = ""
+bethe = "Gamma2"
 
 [[irreps]]
 symbol = "B1"
 dimension = 1
 projective = false
 characters = ["-1", "1"]
-bethe = ""
+bethe = "Gamma3"
 
 [[irreps]]
 symbol = "B2"
 dimension = 1
 projective = false
 characters = ["-1", "-1"]
-bethe = ""
+bethe = "Gamma4"
 
 [[irreps]]
 symbol = "E"
 dimension = 2
 projective = false
 characters = ["0", "0"]
-bethe = ""
+bethe = "Gamma5"
 
 [[irreps]]
 symbol = "E1/2"
@@ -54,7 +54,7 @@ dimension = 2
 projective = true
 characters = ["sqrt2", "0"]
 numeric = ["+1.4142+0.0000i", "+0.0000+0.0000i"]
-bethe = ""
+bethe = "Gamma6"
 
 [[irreps]]
 symbol = "E3/2"
@@ -62,5 +62,4 @@ dimension = 2
 projective = true
 characters = ["-sqrt2", "0"]
 numeric = ["-1.4142+0.0000i", "+0.0000+0.0000i"]
-bethe = ""
-
+bethe = "Gamma7"

@@ -8,9 +8,9 @@
 # bethe ("Gamma3", with the parity sign in this centrosymmetric group: "Gamma3+" / "Gamma3-").
 
 group = "C2h"
-table = ""          # Koster's table and page for this group, e.g. "Table 33, p. 62"
-status = "todo"     # todo | partial | done
-notes = ""          # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
+table = "Table 15, p. 35"         # Koster's table and page for this group, e.g. "Table 33, p. 62"
+status = "done"                   # todo | partial | done
+notes = ""                        # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
 elements = ["C2", "i", "sigma_h"]
 
 [[irreps]]
@@ -18,28 +18,28 @@ symbol = "Ag"
 dimension = 1
 projective = false
 characters = ["1", "1", "1"]
-bethe = ""
+bethe = "Gamma1+"
 
 [[irreps]]
 symbol = "Bg"
 dimension = 1
 projective = false
 characters = ["-1", "1", "-1"]
-bethe = ""
+bethe = "Gamma2+"
 
 [[irreps]]
 symbol = "Au"
 dimension = 1
 projective = false
 characters = ["1", "-1", "-1"]
-bethe = ""
+bethe = "Gamma1-"
 
 [[irreps]]
 symbol = "Bu"
 dimension = 1
 projective = false
 characters = ["-1", "-1", "1"]
-bethe = ""
+bethe = "Gamma2-"
 
 [[irreps]]
 symbol = "1E1/2g"
@@ -47,7 +47,7 @@ dimension = 1
 projective = true
 characters = ["i", "1", "i"]
 numeric = ["+0.0000+1.0000i", "+1.0000+0.0000i", "+0.0000+1.0000i"]
-bethe = ""
+bethe = "Gamma3+"
 
 [[irreps]]
 symbol = "2E1/2g"
@@ -55,7 +55,7 @@ dimension = 1
 projective = true
 characters = ["-i", "1", "-i"]
 numeric = ["+0.0000-1.0000i", "+1.0000+0.0000i", "+0.0000-1.0000i"]
-bethe = ""
+bethe = "Gamma4+"
 
 [[irreps]]
 symbol = "1E1/2u"
@@ -63,7 +63,7 @@ dimension = 1
 projective = true
 characters = ["i", "-1", "-i"]
 numeric = ["+0.0000+1.0000i", "-1.0000+0.0000i", "+0.0000-1.0000i"]
-bethe = ""
+bethe = "Gamma3-"
 
 [[irreps]]
 symbol = "2E1/2u"
@@ -71,5 +71,4 @@ dimension = 1
 projective = true
 characters = ["-i", "-1", "i"]
 numeric = ["+0.0000-1.0000i", "-1.0000+0.0000i", "+0.0000+1.0000i"]
-bethe = ""
-
+bethe = "Gamma4-"

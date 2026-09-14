@@ -8,9 +8,9 @@
 # bethe ("Gamma3"; no parity sign in this group).
 
 group = "D3h"
-table = ""          # Koster's table and page for this group, e.g. "Table 33, p. 62"
-status = "todo"     # todo | partial | done
-notes = ""          # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
+table = "Table 65, p. 67"                         # Koster's table and page for this group, e.g. "Table 33, p. 62"
+status = "done"                                   # todo | partial | done
+notes = ""                                        # disagreements with Bradley & Cracknell or Bilbao; anything unreadable
 elements = ["S3^-1", "C3^1", "C2'(1)", "sigma_h"]
 
 [[irreps]]
@@ -18,63 +18,72 @@ symbol = "A1'"
 dimension = 1
 projective = false
 characters = ["1", "1", "1", "1"]
-bethe = ""
+bethe = "Gamma1"
 
 [[irreps]]
 symbol = "A2'"
 dimension = 1
 projective = false
 characters = ["1", "1", "-1", "1"]
-bethe = ""
+bethe = "Gamma2"
 
 [[irreps]]
 symbol = "E'"
 dimension = 2
 projective = false
 characters = ["-1", "-1", "0", "2"]
-bethe = ""
+bethe = "Gamma6"
 
 [[irreps]]
 symbol = "A1''"
 dimension = 1
 projective = false
 characters = ["-1", "1", "1", "-1"]
-bethe = ""
+bethe = "Gamma3"
 
 [[irreps]]
 symbol = "A2''"
 dimension = 1
 projective = false
 characters = ["-1", "1", "-1", "-1"]
-bethe = ""
+bethe = "Gamma4"
 
 [[irreps]]
 symbol = "E''"
 dimension = 2
 projective = false
 characters = ["1", "-1", "0", "-2"]
-bethe = ""
+bethe = "Gamma5"
 
 [[irreps]]
 symbol = "E1/2"
 dimension = 2
 projective = true
 characters = ["sqrt3", "1", "0", "0"]
-numeric = ["+1.7321+0.0000i", "+1.0000+0.0000i", "+0.0000+0.0000i", "+0.0000+0.0000i"]
-bethe = ""
+numeric = [
+  "+1.7321+0.0000i",
+  "+1.0000+0.0000i",
+  "+0.0000+0.0000i",
+  "+0.0000+0.0000i",
+]
+bethe = "Gamma7"
 
 [[irreps]]
 symbol = "E3/2"
 dimension = 2
 projective = true
 characters = ["0", "-2", "0", "0"]
-bethe = ""
+bethe = "Gamma9"
 
 [[irreps]]
 symbol = "E5/2"
 dimension = 2
 projective = true
 characters = ["-sqrt3", "1", "0", "0"]
-numeric = ["-1.7321+0.0000i", "+1.0000+0.0000i", "+0.0000+0.0000i", "+0.0000+0.0000i"]
-bethe = ""
-
+numeric = [
+  "-1.7321+0.0000i",
+  "+1.0000+0.0000i",
+  "+0.0000+0.0000i",
+  "+0.0000+0.0000i",
+]
+bethe = "Gamma8"
