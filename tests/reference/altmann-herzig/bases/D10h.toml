@@ -1,0 +1,103 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): symmetrized bases of D10h
+# Format: tests/reference/altmann-herzig/bases/README.md
+# Read from the page image of the PDF (the OCR layer drops the overlines); verify against the print.
+
+group = "D10h"
+table = "T 39.6, p. 351"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"
+notes = ""
+
+# One entry per printed row of a two-dimensional irrep: the first ket <|j m1>, s |j -m1>| of the
+# row; bullet marks the book's ungerade spin harmonics (|j m>* in the print).
+[irreps."E1g"]
+kets = [
+  { j = "2", m1 = "1", s = -1, bullet = false },
+]
+
+[irreps."E2g"]
+kets = [
+  { j = "2", m1 = "2", s = 1, bullet = false },
+]
+
+[irreps."E3g"]
+kets = [
+  { j = "4", m1 = "-3", s = 1, bullet = false },
+]
+
+[irreps."E4g"]
+kets = [
+  { j = "4", m1 = "-4", s = -1, bullet = false },
+]
+
+[irreps."E1u"]
+kets = [
+  { j = "1", m1 = "1", s = 1, bullet = false },
+]
+
+[irreps."E2u"]
+kets = [
+  { j = "3", m1 = "2", s = -1, bullet = false },
+]
+
+[irreps."E3u"]
+kets = [
+  { j = "3", m1 = "-3", s = -1, bullet = false },
+]
+
+[irreps."E4u"]
+kets = [
+  { j = "5", m1 = "-4", s = 1, bullet = false },
+]
+
+[irreps."E1/2,g"]
+kets = [
+  { j = "1/2", m1 = "1/2", s = 1, bullet = false },
+]
+
+[irreps."E3/2,g"]
+kets = [
+  { j = "3/2", m1 = "3/2", s = 1, bullet = false },
+]
+
+[irreps."E5/2,g"]
+kets = [
+  { j = "5/2", m1 = "5/2", s = 1, bullet = false },
+]
+
+[irreps."E7/2,g"]
+kets = [
+  { j = "7/2", m1 = "-7/2", s = 1, bullet = false },
+]
+
+[irreps."E9/2,g"]
+kets = [
+  { j = "9/2", m1 = "-9/2", s = 1, bullet = false },
+]
+
+[irreps."E1/2,u"]
+kets = [
+  { j = "1/2", m1 = "1/2", s = 1, bullet = true },
+]
+
+[irreps."E3/2,u"]
+kets = [
+  { j = "3/2", m1 = "3/2", s = 1, bullet = true },
+]
+
+[irreps."E5/2,u"]
+kets = [
+  { j = "5/2", m1 = "5/2", s = 1, bullet = true },
+]
+
+[irreps."E7/2,u"]
+kets = [
+  { j = "7/2", m1 = "-7/2", s = 1, bullet = true },
+]
+
+[irreps."E9/2,u"]
+kets = [
+  { j = "9/2", m1 = "-9/2", s = 1, bullet = true },
+]
+

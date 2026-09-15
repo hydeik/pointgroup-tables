@@ -1,0 +1,52 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): symmetrized bases of C7v
+# Format: tests/reference/altmann-herzig/bases/README.md
+# Read from the page image of the PDF (the OCR layer drops the overlines); verify against the print.
+
+group = "C7v"
+table = "T 55.6, p. 502"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"
+notes = ""
+
+# One entry per printed row of a two-dimensional irrep: the first ket <|j m1>, s |j -m1>| of the
+# row; bullet marks the book's ungerade spin harmonics (|j m>* in the print).
+[irreps."E1"]
+kets = [
+  { j = "1", m1 = "1", s = 1, bullet = false },
+]
+
+[irreps."E2"]
+kets = [
+  { j = "2", m1 = "2", s = 1, bullet = false },
+]
+
+[irreps."E3"]
+kets = [
+  { j = "3", m1 = "3", s = 1, bullet = false },
+]
+
+[irreps."E1/2"]
+kets = [
+  { j = "1/2", m1 = "1/2", s = 1, bullet = false },
+  { j = "13/2", m1 = "-13/2", s = -1, bullet = false },
+  { j = "1/2", m1 = "1/2", s = -1, bullet = true },
+  { j = "13/2", m1 = "-13/2", s = 1, bullet = true },
+]
+
+[irreps."E3/2"]
+kets = [
+  { j = "3/2", m1 = "3/2", s = 1, bullet = false },
+  { j = "11/2", m1 = "-11/2", s = -1, bullet = false },
+  { j = "3/2", m1 = "3/2", s = -1, bullet = true },
+  { j = "11/2", m1 = "-11/2", s = 1, bullet = true },
+]
+
+[irreps."E5/2"]
+kets = [
+  { j = "5/2", m1 = "5/2", s = 1, bullet = false },
+  { j = "9/2", m1 = "-9/2", s = -1, bullet = false },
+  { j = "5/2", m1 = "5/2", s = -1, bullet = true },
+  { j = "9/2", m1 = "-9/2", s = 1, bullet = true },
+]
+

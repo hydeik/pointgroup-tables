@@ -193,9 +193,11 @@ _Avoid_: phase convention, gauge
 The axial rule of a basis convention that writes every two-dimensional
 irrep as a reference work does in a basis of two spherical or spin harmonics
 `|j ±m⟩` (Altmann & Herzig): a closed form in the axis order and the irrep's
-exponent that fixes which partner comes first and the phase of the
-secondary element, its only free parameter being the azimuth of the
-secondary element the label convention anchors.
+exponent that fixes which partner comes first (by the chain of subgroups
+obtained by dividing the axis order by its smallest prime factor at each
+step) and the phase of the secondary element, its only free parameter being
+the azimuth of the secondary element the label convention anchors. Verified
+against every symmetrized basis the reference prints (`n ≤ 10`).
 _Avoid_: harmonic basis (ambiguous with the canonical basis), Wigner
 convention, book basis
 

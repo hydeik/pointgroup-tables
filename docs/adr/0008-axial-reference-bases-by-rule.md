@@ -46,3 +46,30 @@ that one parameter. See `docs/spec/basis-conventions.md`.
   tool reads the named label convention for `b` even when the user selects
   another for the labels, so `--basis-convention` alone fixes the
   matrices.
+
+## Amendment (ticket #22)
+
+The transcription of every symmetrized basis the book prints
+(`tests/reference/altmann-herzig/bases/`, 28 tables) and of four more
+matrix tables (`D5`, `D8`, `D9`, `D10`) showed the rule as first stated,
+from six sample tables, to be wrong in three places, all corrected in
+`docs/spec/basis-conventions.md` and `tools/ah_axial_rule.py`:
+
+- the chain divides `N` by its **smallest prime factor** at each step
+  (`3, 9` for `n = 9`, `3, 9, 18` for `D9h`), not by two down to the odd
+  part; the odd part alone gave the wrong first partner for `E5/2`,
+  `E13/2` and four ordinary irreps of the `n = 9` groups;
+- the phase of the secondary element is the residue at the **deciding
+  level**, not at the bottom level (`E3` of `D9`, `E3'`, `E3''`, `E9/2` of
+  `D9h`, `E3` of `D6d`);
+- `E_{N/4}` of `D6d` and `D10d` takes the negative partner first, and the
+  ordinary irreps of the odd `Cnv` groups carry the `D_n` matrices of
+  `C2'(k)` although their planes lie at azimuth `π/2` (the book maps
+  `sigma_v(k)` to `C2'(k)` and picks the sign of the second ket to match).
+
+The decision stands: the amended rule reproduces every printed ket and
+matrix for `n ≤ 10` exactly, and the transcription is test data that
+checks it. The cost noted above materialised once (a systematic
+misreading, caught by the transcription task the option anticipated); the
+extrapolation beyond the book keeps two unconfirmed points, named in the
+spec.

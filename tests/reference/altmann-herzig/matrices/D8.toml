@@ -1,0 +1,84 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): matrix representations of D8 (generators)
+# Format: tests/reference/altmann-herzig/matrices/README.md
+# Read from the page image by tools/ah_characters.py; verify against the print.
+
+group = "D8"
+table = "T 28.7, p. 222"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"
+notes = ""
+conductor = 16
+book_symbols = { d = "exp(2 pi i / 16)", e = "exp(2 pi i / 8)" }   # the table's footnote: d = delta, e = epsilon, h = eta, t = theta
+elements = ["C8+", "C2'1"]   # book labels of the generators
+
+[irreps."E1"]
+book_values = [
+  [["e*", "0"], ["0", "e"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+matrices = [
+  [["zeta^14", "0"], ["0", "zeta^2"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+
+[irreps."E2"]
+book_values = [
+  [["-i", "0"], ["0", "i"]],
+  [["0", "1"], ["1", "0"]],
+]
+matrices = [
+  [["zeta^12", "0"], ["0", "zeta^4"]],
+  [["0", "1"], ["1", "0"]],
+]
+
+[irreps."E3"]
+book_values = [
+  [["-e*", "0"], ["0", "-e"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+matrices = [
+  [["zeta^6", "0"], ["0", "zeta^10"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+
+[irreps."E1/2"]
+book_values = [
+  [["d*", "0"], ["0", "d"]],
+  [["0", "-i"], ["-i", "0"]],
+]
+matrices = [
+  [["zeta^15", "0"], ["0", "zeta"]],
+  [["0", "zeta^12"], ["zeta^12", "0"]],
+]
+
+[irreps."E3/2"]
+book_values = [
+  [["id*", "0"], ["0", "-id"]],
+  [["0", "-i"], ["-i", "0"]],
+]
+matrices = [
+  [["zeta^3", "0"], ["0", "zeta^13"]],
+  [["0", "zeta^12"], ["zeta^12", "0"]],
+]
+
+[irreps."E5/2"]
+book_values = [
+  [["-id*", "0"], ["0", "id"]],
+  [["0", "-i"], ["-i", "0"]],
+]
+matrices = [
+  [["zeta^11", "0"], ["0", "zeta^5"]],
+  [["0", "zeta^12"], ["zeta^12", "0"]],
+]
+
+[irreps."E7/2"]
+book_values = [
+  [["-d*", "0"], ["0", "-d"]],
+  [["0", "-i"], ["-i", "0"]],
+]
+matrices = [
+  [["zeta^7", "0"], ["0", "zeta^9"]],
+  [["0", "zeta^12"], ["zeta^12", "0"]],
+]
+

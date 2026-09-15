@@ -1,0 +1,54 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): matrix representations of D5 (generators)
+# Format: tests/reference/altmann-herzig/matrices/README.md
+# Read from the page image by tools/ah_characters.py; verify against the print.
+
+group = "D5"
+table = "T 25.7, p. 204"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"
+notes = ""
+conductor = 20
+book_symbols = { d = "exp(2 pi i / 5)", e = "exp(4 pi i / 5)" }   # the table's footnote: d = delta, e = epsilon, h = eta, t = theta
+elements = ["C5+", "C2'1"]   # book labels of the generators
+
+[irreps."E1"]
+book_values = [
+  [["d*", "0"], ["0", "d"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+matrices = [
+  [["zeta^16", "0"], ["0", "zeta^4"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+
+[irreps."E2"]
+book_values = [
+  [["e*", "0"], ["0", "e"]],
+  [["0", "1"], ["1", "0"]],
+]
+matrices = [
+  [["zeta^12", "0"], ["0", "zeta^8"]],
+  [["0", "1"], ["1", "0"]],
+]
+
+[irreps."E1/2"]
+book_values = [
+  [["-e", "0"], ["0", "-e*"]],
+  [["0", "-i"], ["-i", "0"]],
+]
+matrices = [
+  [["zeta^18", "0"], ["0", "zeta^2"]],
+  [["0", "zeta^15"], ["zeta^15", "0"]],
+]
+
+[irreps."E3/2"]
+book_values = [
+  [["-d", "0"], ["0", "-d*"]],
+  [["0", "i"], ["i", "0"]],
+]
+matrices = [
+  [["zeta^14", "0"], ["0", "zeta^6"]],
+  [["0", "zeta^5"], ["zeta^5", "0"]],
+]
+

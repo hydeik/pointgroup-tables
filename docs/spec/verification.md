@@ -198,7 +198,7 @@ says whether the flag runs the check.
 | `REF-4` | [Double groups](./double-groups.md#verification-data) | `ω(g, h) = −1` exactly where the Altmann & Herzig multiplication table (the `[multiplication]` table of the labels file) marks the product with a tilde, after the convention's `barred` swaps | reference | `C2v`, `D3`, `D4`, `D3h`, `T`, `O`, `Ih` | `reference` | no |
 | `REF-5` | Irrep labels | canonical symbols after the `altmann-herzig` convention equal the book's symbols row by row | reference | groups transcribed | `reference` | no |
 | `REF-6` | Label conventions | the `altmann-herzig` label convention reproduces the transcribed element labels of every group, element by element | reference | groups transcribed | `reference` | no |
-| `REF-7` | Basis conventions | under `--basis-convention altmann-herzig`, the matrices of the transcribed generators equal the book's entry by entry (polyhedral groups from the polyhedral transcription, axial samples from the character-table transcription) | reference | groups transcribed | `reference` | no |
+| `REF-7` | Basis conventions | under `--basis-convention altmann-herzig`, the matrices of the transcribed generators equal the book's entry by entry (polyhedral groups from the polyhedral transcription, the ten axial tables from the matrix transcription), and the Wigner matrices of every ket the book lists in its symmetrized-bases tables (`tests/reference/altmann-herzig/bases/`) equal the spin-harmonic rule's | reference | groups transcribed | `reference` | no |
 | `REF-8` | Irrep labels | the shipped Koster table: each `Γ_i` entry's identifying characters match the computed irrep it is attached to | reference | 32 crystallographic groups | `reference` | no |
 
 ### Mutation tests

@@ -10,19 +10,27 @@ polyhedral tables of
 (`T`, `O`, `I`; `tools/ah_matrices.py`). Their file layouts differ and are
 described in the two sections below.
 
-## Axial samples (ticket #19)
+## Axial tables (tickets #19 and #22)
 
 Generator matrices from the tables T n.7 for `D3`, `C4v`, `D3h`, `D2d`, `D6h`
-and `C6v`: every two-dimensional irrep, ordinary and projective, on the
-book's principal rotation, its first secondary element and (where present)
-`sigma_h` or `i`. Read from the page images; they verify the constant axial
-transform of the `altmann-herzig` basis convention
-(`docs/spec/verification.md`, `REF-7`).
+and `C6v` (ticket #19) and for `D5`, `D8`, `D9`, `D10` (T 25.7, T 28.7,
+T 29.7, T 30.7, the tables that `D5h`, `D8h`, `D10h`, `C5v`, `C8v`, `C10v`
+share; ticket #22): every two-dimensional irrep, ordinary and projective, on
+the book's principal rotation, its first secondary element and (where
+present) `sigma_h` or `i`. Read from the page images; they verify the
+spin-harmonic rule of the `altmann-herzig` basis convention
+(`docs/spec/verification.md`, `REF-7`; `tools/ah_axial_rule.py check`
+compares them with the rule and with the book's own kets in `../bases/`).
 
 ```
 uv run python tools/ah_characters.py generate   # writes these files from the MATRICES dict of the tool
 uv run python tools/ah_characters.py check      # unitarity, D(g)^order = +-1, trace = character table entry
 ```
+
+The trace check reads the transcribed character table of the group; the
+`D_n` tables have none (`D5`, `D8`, `D9`, `D10` are not among the 39
+character files), so their traces are compared with the computed characters
+of the canonical irrep of the same symbol.
 
 ### File layout
 
@@ -31,7 +39,7 @@ group = "C4v"
 table = "T 52.7, p. 490"
 status = "done"
 conductor = 8
-book_epsilon = "exp(2 pi i / 8)"
+book_epsilon = "exp(2 pi i / 8)"      # the table's epsilon (e in book_values)
 elements = ["C4+", "sigma_v1"]        # book labels of the generators, in order
 
 [irreps."E1/2"]                       # the book's irrep label
@@ -43,6 +51,14 @@ matrices = [                          # the same in the spec's value grammar for
   [["zeta^7", "0"], ["0", "zeta"]],
   [["0", "-i"], ["-i", "0"]],
 ]
+```
+
+A table with several roots of unity names them all instead of
+`book_epsilon`, with the tokens used in `book_values`
+(`d` = delta, `e` = epsilon, `h` = eta, `t` = theta of the table's footnote):
+
+```toml
+book_symbols = { d = "exp(2 pi i / 9)", e = "exp(4 pi i / 9)", h = "exp(6 pi i / 9)", t = "exp(8 pi i / 9)" }
 ```
 
 ## Polyhedral groups (ticket #17)

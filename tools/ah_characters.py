@@ -9,7 +9,8 @@ Two sources feed one set of reference files:
 * the **scanned** group pages (25 groups) are read from the page images and
   typed into ``BOOK`` below, in the book's own notation transliterated to
   ASCII (``e`` = epsilon, ``d`` = delta, ``2c5^2`` = 2 cos(2 pi / 5), ``sqrt2``,
-  ``ie*``); the generator matrices of six axial groups (T n.7) into
+  ``ie*``); the generator matrices of ten axial groups (T n.7; six for
+  ticket #19, ``D5``, ``D8``, ``D9``, ``D10`` for ticket #22) into
   ``MATRICES`` the same way.
 
     uv run python tools/ah_characters.py generate [OCR_DIR]   # write tests/reference/altmann-herzig/{characters,matrices}/
@@ -422,8 +423,70 @@ DISCREPANCIES: dict[str, dict[str, Any]] = {
 
 # Generator matrices of T n.7 for the axial samples, read from the page images.
 # elements: book labels of the generators; irreps: book label -> one matrix per element,
-# entries in the token grammar above (the book's overbar is a minus sign).
+# entries in the token grammar above (the book's overbar is a minus sign). The D_n tables
+# (ticket #22) name their roots of unity in `symbols` (d = delta, e = epsilon, h = eta,
+# t = theta of the table's footnote, as exp(2 pi i * num / den)).
 MATRICES: dict[str, dict[str, Any]] = {
+    "D5": tbl(
+        table="T 25.7, p. 204",
+        eps=5,
+        symbols={"d": (1, 5), "e": (2, 5)},
+        elements=["C5+", "C2'1"],
+        irreps={
+            "E1": [[["d*", "0"], ["0", "d"]], [["0", "-1"], ["-1", "0"]]],
+            "E2": [[["e*", "0"], ["0", "e"]], [["0", "1"], ["1", "0"]]],
+            "E1/2": [[["-e", "0"], ["0", "-e*"]], [["0", "-i"], ["-i", "0"]]],
+            "E3/2": [[["-d", "0"], ["0", "-d*"]], [["0", "i"], ["i", "0"]]],
+        },
+    ),
+    "D8": tbl(
+        table="T 28.7, p. 222",
+        eps=8,
+        symbols={"d": (1, 16), "e": (1, 8)},
+        elements=["C8+", "C2'1"],
+        irreps={
+            "E1": [[["e*", "0"], ["0", "e"]], [["0", "-1"], ["-1", "0"]]],
+            "E2": [[["-i", "0"], ["0", "i"]], [["0", "1"], ["1", "0"]]],
+            "E3": [[["-e*", "0"], ["0", "-e"]], [["0", "-1"], ["-1", "0"]]],
+            "E1/2": [[["d*", "0"], ["0", "d"]], [["0", "-i"], ["-i", "0"]]],
+            "E3/2": [[["id*", "0"], ["0", "-id"]], [["0", "-i"], ["-i", "0"]]],
+            "E5/2": [[["-id*", "0"], ["0", "id"]], [["0", "-i"], ["-i", "0"]]],
+            "E7/2": [[["-d*", "0"], ["0", "-d"]], [["0", "-i"], ["-i", "0"]]],
+        },
+    ),
+    "D9": tbl(
+        table="T 29.7, p. 229",
+        eps=9,
+        symbols={"d": (1, 9), "e": (2, 9), "h": (3, 9), "t": (4, 9)},
+        elements=["C9+", "C2'1"],
+        irreps={
+            "E1": [[["d*", "0"], ["0", "d"]], [["0", "-1"], ["-1", "0"]]],
+            "E2": [[["e", "0"], ["0", "e*"]], [["0", "-1"], ["-1", "0"]]],
+            "E3": [[["h*", "0"], ["0", "h"]], [["0", "-1"], ["-1", "0"]]],
+            "E4": [[["t*", "0"], ["0", "t"]], [["0", "-1"], ["-1", "0"]]],
+            "E1/2": [[["-t", "0"], ["0", "-t*"]], [["0", "-i"], ["-i", "0"]]],
+            "E3/2": [[["-h", "0"], ["0", "-h*"]], [["0", "i"], ["i", "0"]]],
+            "E5/2": [[["-e*", "0"], ["0", "-e"]], [["0", "-i"], ["-i", "0"]]],
+            "E7/2": [[["-d", "0"], ["0", "-d*"]], [["0", "-i"], ["-i", "0"]]],
+        },
+    ),
+    "D10": tbl(
+        table="T 30.7, pp. 237-238",
+        eps=5,
+        symbols={"d": (1, 5), "e": (2, 5)},
+        elements=["C10+", "C2'1"],
+        irreps={
+            "E1": [[["-e", "0"], ["0", "-e*"]], [["0", "-1"], ["-1", "0"]]],
+            "E2": [[["d*", "0"], ["0", "d"]], [["0", "1"], ["1", "0"]]],
+            "E3": [[["-d*", "0"], ["0", "-d"]], [["0", "1"], ["1", "0"]]],
+            "E4": [[["e", "0"], ["0", "e*"]], [["0", "-1"], ["-1", "0"]]],
+            "E1/2": [[["-id", "0"], ["0", "id*"]], [["0", "-i"], ["-i", "0"]]],
+            "E3/2": [[["ie*", "0"], ["0", "-ie"]], [["0", "i"], ["i", "0"]]],
+            "E5/2": [[["-i", "0"], ["0", "i"]], [["0", "-i"], ["-i", "0"]]],
+            "E7/2": [[["-ie*", "0"], ["0", "ie"]], [["0", "i"], ["i", "0"]]],
+            "E9/2": [[["id", "0"], ["0", "-id*"]], [["0", "-i"], ["-i", "0"]]],
+        },
+    ),
     "D3": tbl(
         table="T 23.7, p. 197",
         eps=3,
@@ -560,7 +623,21 @@ MATRICES: dict[str, dict[str, Any]] = {
 # Values: book tokens -> exact field elements
 # --------------------------------------------------------------------------
 
-TOKEN_RE = re.compile(r"^(-)?(\d+)?(i)?(e\*|e|d\*|d|sqrt2|sqrt3|c(\d+)(?:\^(\d+))?)?$")
+TOKEN_RE = re.compile(
+    r"^(-)?(\d+)?(i)?(e\*|e|d\*|d|h\*|h|t\*|t|sqrt2|sqrt3|c(\d+)(?:\^(\d+))?)?$"
+)
+
+
+def _symbols(eps, delta, symbols):
+    """letter -> (numerator, denominator): the book's root of unity ``exp(2 pi i * num / den)``.
+
+    ``e`` and ``d`` default to ``exp(2 pi i / eps)`` and ``exp(2 pi i / delta)``;
+    a matrix table with more symbols (``h`` = eta, ``t`` = theta) passes its own map.
+    """
+    out = {"e": (1, eps), "d": (1, delta)}
+    if symbols:
+        out.update(symbols)
+    return out
 
 
 def _int_after(pattern, text):
@@ -569,17 +646,16 @@ def _int_after(pattern, text):
     return int(m.group(1))
 
 
-def token_conductor(tok, eps, delta):
+def token_conductor(tok, eps, delta, symbols=None):
     m = TOKEN_RE.match(tok)
     assert m, tok
     need = 1
     if m.group(3):
         need = math.lcm(need, 4)
     base = m.group(4)
-    if base in ("e", "e*"):
-        need = math.lcm(need, eps)
-    elif base in ("d", "d*"):
-        need = math.lcm(need, delta)
+    syms = _symbols(eps, delta, symbols)
+    if base and base.rstrip("*") in syms:
+        need = math.lcm(need, syms[base.rstrip("*")][1])
     elif base == "sqrt2":
         need = math.lcm(need, 8)
     elif base == "sqrt3":
@@ -589,19 +665,16 @@ def token_conductor(tok, eps, delta):
     return need
 
 
-def token_value(F, tok, eps, delta):
+def token_value(F, tok, eps, delta, symbols=None):
     m = TOKEN_RE.match(tok)
     assert m, tok
     sign, coeff, has_i, base = m.group(1), m.group(2), m.group(3), m.group(4)
     x = F.rational(int(coeff) if coeff else 1)
-    if base in ("e", "e*", "d", "d*"):
-        n = eps if base[0] == "e" else delta
-        z = (
-            cb.lift(cb.field(n), F, cb.field(n).zeta(1))
-            if F.conductor % n == 0
-            else None
-        )
-        assert z is not None, (tok, F.conductor)
+    syms = _symbols(eps, delta, symbols)
+    if base and base.rstrip("*") in syms:
+        num, n = syms[base.rstrip("*")]
+        assert F.conductor % n == 0, (tok, F.conductor)
+        z = F.zeta(F.conductor // n * num)
         x = F.mul(x, F.conj(z) if base.endswith("*") else z)
     elif base == "sqrt2":
         x = F.mul(x, F.sqrt2())
@@ -1002,12 +1075,13 @@ def element_class(label, classes):
 def write_matrices(group, mats):
     symbol = ag.ALIASES.get(group, group)
     eps = mats["eps"]
+    symbols = mats.get("symbols")
     M = 1
     for irrep in mats["irreps"].values():
         for A in irrep:
             for row in A:
                 for tok in row:
-                    M = math.lcm(M, token_conductor(tok, eps, 1))
+                    M = math.lcm(M, token_conductor(tok, eps, 1, symbols))
     F = cb.field(M)
     lines = [
         f"# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): matrix representations of {group} (generators)",
@@ -1021,7 +1095,18 @@ def write_matrices(group, mats):
         'transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"',
         'notes = ""',
         f"conductor = {M}",
-        f'book_epsilon = "exp(2 pi i / {eps})"',
+    ]
+    if symbols:
+        lines.append(
+            "book_symbols = { "
+            + ", ".join(
+                f'{k} = "exp({2 * num} pi i / {den})"' for k, (num, den) in symbols.items()
+            )
+            + " }   # the table's footnote: d = delta, e = epsilon, h = eta, t = theta"
+        )
+    else:
+        lines.append(f'book_epsilon = "exp(2 pi i / {eps})"')
+    lines += [
         f"elements = [{', '.join(toml_str(e) for e in mats['elements'])}]   # book labels of the generators",
         "",
     ]
@@ -1042,7 +1127,8 @@ def write_matrices(group, mats):
             rows = [
                 "["
                 + ", ".join(
-                    toml_str(cb.to_grammar(F, token_value(F, t, eps, 1))) for t in row
+                    toml_str(cb.to_grammar(F, token_value(F, t, eps, 1, symbols)))
+                    for t in row
                 )
                 + "]"
                 for row in A
@@ -1053,22 +1139,65 @@ def write_matrices(group, mats):
     return "\n".join(lines) + "\n"
 
 
+def book_symbols(data):
+    """The `symbols` map of a matrix file (`book_symbols`, or `book_epsilon` alone)."""
+    if "book_symbols" in data:
+        out = {}
+        for k, v in data["book_symbols"].items():
+            m = re.fullmatch(r"exp\((\d+) pi i / (\d+)\)", v)
+            assert m, v
+            out[k] = (int(m.group(1)) // 2, int(m.group(2)))
+        return out
+    return {"e": (1, _int_after(r"/ (\d+)", data["book_epsilon"]))}
+
+
+# book element label -> canonical label, for the D_n tables without a character file
+DN_ELEMENTS = {"C5+": "C5^1", "C8+": "C8^1", "C9+": "C9^1", "C10+": "C10^1", "C2'1": "C2'(1)"}
+
+
 def check_matrices():
-    """Unitarity, D(g)^order = +-1, and trace = the character file's entry, per generator."""
+    """Unitarity, D(g)^order = +-1, and trace = the character table's entry, per generator.
+
+    The trace is compared with the transcribed character table when one
+    exists, otherwise (the D_n tables of ticket #22) with the computed
+    character of the canonical irrep of the same symbol.
+    """
     bad = 0
     for group in MATRICES:
         path = MAT_DIR / f"{ag.ALIASES.get(group, group)}.toml"
         data = tomllib.loads(path.read_text())
-        chars = tomllib.loads((CHAR_DIR / path.name).read_text())
-        F = cb.field(math.lcm(data["conductor"], chars["conductor"]))
-        eps = _int_after(r"/ (\d+)", data["book_epsilon"])
-        ceps = (
-            _int_after(r"/ (\d+)", chars["book_epsilon"])
-            if "book_epsilon" in chars
-            else 1
-        )
-        classes = [c["label"] for c in chars["classes"]]
-        rows = {r["label"]: r for r in chars["irreps"]}
+        symbols = book_symbols(data)
+        char_path = CHAR_DIR / path.name
+        if char_path.exists():
+            chars = tomllib.loads(char_path.read_text())
+            F = cb.field(math.lcm(data["conductor"], chars["conductor"]))
+            ceps = (
+                _int_after(r"/ (\d+)", chars["book_epsilon"])
+                if "book_epsilon" in chars
+                else 1
+            )
+            classes = [c["label"] for c in chars["classes"]]
+            rows = {r["label"]: r for r in chars["irreps"]}
+
+            def expected(label, g):
+                cl = element_class(g, classes)
+                _, order, _ = class_invariants(cl)
+                want = token_value(
+                    F, rows[label]["book_values"][classes.index(cl)], ceps, 1
+                )
+                return order, want, cl
+
+        else:
+            comp = Computed(ag.ALIASES.get(group, group))
+            F = cb.field(math.lcm(data["conductor"], comp.F.conductor))
+            by_symbol = {ir.symbol: ir for ir in comp.irreps}
+
+            def expected(label, g):
+                idx = comp.ctx.labels_list.index(DN_ELEMENTS[g])
+                order = ag.element_order(comp.ctx.G, comp.ctx.G.elements[idx])
+                want = lift_to(comp.F, F, by_symbol[label].chars[idx])
+                return order, want, DN_ELEMENTS[g] + " (computed)"
+
         problems = []
         for label, entry in data["irreps"].items():
             for g, A, Abook in zip(
@@ -1076,12 +1205,11 @@ def check_matrices():
             ):
                 D = [[cb.parse_value(F, x) for x in row] for row in A]
                 assert cb.meq(
-                    D, [[token_value(F, t, eps, 1) for t in row] for row in Abook]
+                    D, [[token_value(F, t, 1, 1, symbols) for t in row] for row in Abook]
                 ), (path.name, label, g)
                 if not cb.is_unitary(F, D):
                     problems.append(f"{label} {g}: not unitary")
-                cl = element_class(g, classes)
-                _, order, _ = class_invariants(cl)
+                order, want, cl = expected(label, g)
                 P = cb.midentity(F, len(D))
                 for _ in range(order):
                     P = cb.mmul(F, P, D)
@@ -1092,9 +1220,6 @@ def check_matrices():
                 )
                 if not cb.meq(P, cb.mscale(F, cb.midentity(F, len(D)), sign)):
                     problems.append(f"{label} {g}: D^{order} is not +-1")
-                want = token_value(
-                    F, rows[label]["book_values"][classes.index(cl)], ceps, 1
-                )
                 if cb.mtrace(F, D) != want:
                     problems.append(
                         f"{label} {g}: trace differs from the character table entry on {cl}"

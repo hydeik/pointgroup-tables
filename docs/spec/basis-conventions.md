@@ -257,12 +257,19 @@ T n.6: Condon–Shortley harmonics, function-space operators
 `ġ f(r) = f(g⁻¹ r)`, the SU(2) matrix `exp(−i φ n·σ/2)` of the untilded
 operation) and print the Wigner matrices of the operations in that basis
 (T n.7). Their generator images have a closed form in `n` and `k`, found
-from the kets of T n.6 and verified entry by entry against every transcribed
-axial matrix of the book (`tools/ah_axial_rule.py check`, groups `D3`,
-`C4v`, `C6v`, `D3h`, `D2d`, `D6h`; the kets of `D4h`, `D5h`, `D7h`, `D8h`,
-`D10h` and the `D5` matrices were read against it as well; the systematic
-transcription is the task
-[Transcribe Altmann & Herzig symmetrized bases and remaining axial matrices to verify the spin-harmonic rule](https://github.com/hydeik/pointgroup-tables/issues/22)).
+from the kets of T n.6 and verified entry by entry, exactly, against every
+symmetrized basis the book prints for a two-dimensional irrep (28 tables,
+327 kets: `D5`, `D8`, `D9`, `D10`, `D2h` ... `D10h`, `D2d`, `D4d`, `D6d`,
+`D8d`, `D10d`, `C2v` ... `C10v` with both settings of `C3v`) and against
+the generator matrices of ten T n.7 tables (`D3`, `D5`, `D8`, `D9`, `D10`,
+`C4v`, `C6v`, `D3h`, `D2d`, `D6h`), by `tools/ah_axial_rule.py check` on
+`tests/reference/altmann-herzig/bases/` and `.../matrices/`
+([Transcribe Altmann & Herzig symmetrized bases and remaining axial matrices to verify the spin-harmonic rule](https://github.com/hydeik/pointgroup-tables/issues/22)).
+That transcription corrected the rule as first stated (from six sample
+tables) in three places, recorded below and in ADR-0008: the chain for
+`n = 9`, the level at which the secondary phase is read, and the first
+partner of `E_{N/4}` together with the secondary element of the ordinary
+irreps of the odd `Cnv` groups.
 
 The rule is stated on the rotation group `R = D_N` (or `C_N`) alone, with
 `a = (1, 0)`, `b = (0, 1)`, `N` the order of `a` and `u = ζ_2N` as in the
@@ -274,33 +281,53 @@ as there (type II: `D(i·r) = ±D(r)`; type III: the matrices of `R`, so
 a projective `E_{k/2}`, the harmonic's `|m|`; the canonical basis has
 `D(a) = diag(u^{2m}, u^{−2m})`.
 
-1. **First partner.** `m₁ = +m` or `−m`, by the chain
-   `D_N ⊃ D_{N/2} ⊃ … ⊃ D_{n₀}`, `n₀` the odd part of `N` (`2` when `N` is
-   a power of two): at the first level `L` (from `n₀` upwards) at which
-   the residues of `+m` and `−m` modulo `L`, taken in `(−L/2, L/2]`,
-   differ, `m₁` is the sign whose residue is positive; if they agree on
-   every level, `m₁ = +m`. Let `m̃` be the residue of `m₁` at the bottom
-   level `n₀`.
-2. **Principal element.** `D(a) = diag(u^{−2m₁}, u^{2m₁})`: for `m₁ = +m`
+1. **Chain.** Divide `N` by its smallest prime factor, the quotient again
+   by its smallest prime factor, and so on down to `1`; the levels are the
+   quotients above `1`, ascending: `2, 4, 8` for `N = 8`, `3, 6, 12` for
+   `N = 12`, `5, 10` for `N = 10`, `3, 9` for `N = 9`, `3, 9, 18` for
+   `N = 18` (the subgroup chain `D_N ⊃ D_{N/p₁} ⊃ D_{N/p₁p₂} ⊃ …`; the
+   bottom level is `2` when `N` is a power of two, else the largest prime
+   factor of `N`).
+2. **First partner.** `m₁ = +m` or `−m`: at the first level `L`
+   (ascending) at which the residues of `+m` and `−m` modulo `L`, taken in
+   `(−L/2, L/2]`, differ (they always differ at `L = N`), `m₁` is the sign
+   whose residue is positive. That level is the *deciding level*; let `m̃`
+   be the residue of `m₁` there. One exception: the ordinary irrep
+   `E_{N/4}`, with `N/4` an odd number greater than one, is decided at
+   `L = N` only and the book takes `m₁ = −m` for it (`D6d`, `D10d`); with
+   `N/4` even, or `N = 4`, it takes `+m` (`D8`, `D8d`, `D2d`).
+3. **Principal element.** `D(a) = diag(u^{−2m₁}, u^{2m₁})`: for `m₁ = +m`
    the eigenvalue order is the reverse of the canonical one, for `m₁ = −m`
    it is the canonical one.
-3. **Secondary element.** `D(b) = e^{−iπ m̃} · [[0, y], [ȳ, 0]]` with
+4. **Secondary element.** `D(b) = e^{−iπ m̃} · [[0, y], [ȳ, 0]]` with
    `y = e^{−2 i m₁ α}`, where `α` is the azimuth of the pole the reference
    assigns to the element the label convention anchors to `b`: `0` for
-   every family except `Cnv` with `n ≡ 2 (mod 4)`, where the
-   letter-preserving anchor
-   ([Label conventions](./label-conventions.md#reference-section), the
-   twist, ADR-0007) puts it at the master's direction `M/2`, i.e.
-   `α = π/2` and `y = e^{−iπ m₁}`.
+   `Dn`, `Dnh`, `Dnd` (the book's `C2'1` lies on `x`) and for `Cnv` with
+   `4 | n`; `π/2` for `Cnv` with `4 ∤ n`, whose `sigma_v1` the book puts in
+   the `yz` plane (T n.1; for `n ≡ 2 (mod 4)` this is the letter-preserving
+   anchor of [Label conventions](./label-conventions.md#reference-section),
+   the twist of ADR-0007, for odd `n` the book's own numbering), so that
+   `y = e^{−iπ m₁}`. For the **ordinary** irreps of `Cnv` with odd `n` the
+   rule nevertheless takes `y = 1`: the book prints for them the `D_n`
+   matrices of `C2'(k)` under `sigma_v(k) ↔ C2'(k)` (T 51.7, 53.7, 55.7,
+   57.7 repeat T 23.7, 25.7, 27.7, 29.7 row by row) and chooses the sign of
+   the second ket so that its harmonics agree; the projective irreps are
+   the SU(2) matrices of the plane's untilded rotation about its true pole.
 
-Examples (`u = ζ_12`): `E1` of `D6` has `m₁ = 1`, `m̃ = 1`,
-`D(a) = diag(u^{−2}, u^{2})`, `D(b) = −[[0, 1], [1, 0]]`; `E2` has
-`m₁ = −2` (residue `1` modulo `3`), `D(a) = diag(u^{4}, u^{−4})`, the same
-`D(b)`; `E5/2` has `m₁ = −5/2`, `m̃ = 1/2`, `D(a) = diag(u^{5}, u^{−5})`,
-`D(b) = −i [[0, 1], [1, 0]]`; `E3/2` has `m₁ = 3/2` (a tie at both
-levels), `m̃ = 3/2`, `D(b) = i [[0, 1], [1, 0]]`. In `C6v`, `sigma_v(1)`
-is `(b, −1)` and receives `D(b)` with `α = π/2`: `E1` gets
-`[[0, 1], [1, 0]]`, `E1/2` gets `[[0, −1], [1, 0]]`.
+Examples (`u = ζ_12`): `E1` of `D6` has `m₁ = 1`, `m̃ = 1` (decided at
+level `3`), `D(a) = diag(u^{−2}, u^{2})`, `D(b) = −[[0, 1], [1, 0]]`; `E2`
+has `m₁ = −2` (residue `1` modulo `3`), `D(a) = diag(u^{4}, u^{−4})`, the
+same `D(b)`; `E5/2` has `m₁ = −5/2`, `m̃ = 1/2`,
+`D(a) = diag(u^{5}, u^{−5})`, `D(b) = −i [[0, 1], [1, 0]]`; `E3/2` has
+`m₁ = 3/2` (a tie at level `3`, decided at `6`), `m̃ = 3/2`,
+`D(b) = i [[0, 1], [1, 0]]`. In `C6v`, `sigma_v(1)` is `(b, −1)` and
+receives `D(b)` with `α = π/2`: `E1` gets `[[0, 1], [1, 0]]`, `E1/2` gets
+`[[0, −1], [1, 0]]`. In `D9` (`u = ζ_18`, chain `3, 9`), `E5/2` has
+`m₁ = −5/2` (residue `1/2` modulo `3`), `E3` has `m₁ = 3` and `m̃ = 3`
+(residue `0` modulo `3`, decided at `9`), `D(b) = −[[0, 1], [1, 0]]`. In
+`C5v`, `E1` has `m₁ = 1` and `D(sigma_v(1)) = −[[0, 1], [1, 0]]` (the `D5`
+matrix of `C2'(1)`), `E1/2` has `D(sigma_v(1)) = [[0, −1], [1, 0]]` (the
+rotation about `y`).
 
 Consequences:
 
@@ -310,8 +337,12 @@ Consequences:
 - The rule is defined for **every `n`**. The book tabulates `n ≤ 10`, and
   the transcriptions verify it there; beyond, the convention extrapolates
   the same formulas (the label convention keeps canonical indices there,
-  so `α = 0` except for the twist, which is a rule, not data). Whether the
-  metadata should say so is the map's open question on convention coverage.
+  so `α` follows the same `4 | n` test, which is a rule, not data). Two
+  points of the extrapolation the book cannot confirm: the sign of
+  `E_{N/4}` for `N = 24, 28, …` (the book shows only `N = 4, 8, 12, 16, 20`)
+  and the chain for an `N` with two distinct odd prime factors (`15`, `21`,
+  …; the book's largest odd part is `9`). Whether the metadata should say
+  so is the map's open question on convention coverage.
 - The rule is the only place where a basis convention depends on a label
   convention. The file names it in `anchors`; the tool applies that
   convention's anchoring to `b` even when another label convention, or

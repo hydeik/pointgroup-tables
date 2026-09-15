@@ -11,8 +11,9 @@ header.
 
 - **Altmann & Herzig**: S. L. Altmann and P. Herzig, *Point-Group Theory
   Tables*, 2nd ed. (Wien: Clarendon/Oxford; reprinted). Element labels,
-  multiplication tables with tilde marks, character tables and irrep
-  matrices, transcribed by hand, table and page cited per file.
+  multiplication tables with tilde marks, character tables, irrep
+  matrices and symmetrized bases, transcribed by hand, table and page
+  cited per file.
 - **Bilbao**: Bilbao Crystallographic Server (`https://www.cryst.ehu.eus`),
   programs *Point Group Tables* (POINT) and *REPRESENTATIONS DPG*. Character
   tables of the 32 crystallographic point groups and of their double groups,

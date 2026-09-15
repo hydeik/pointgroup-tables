@@ -1,0 +1,94 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): matrix representations of D9 (generators)
+# Format: tests/reference/altmann-herzig/matrices/README.md
+# Read from the page image by tools/ah_characters.py; verify against the print.
+
+group = "D9"
+table = "T 29.7, p. 229"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"
+notes = ""
+conductor = 36
+book_symbols = { d = "exp(2 pi i / 9)", e = "exp(4 pi i / 9)", h = "exp(6 pi i / 9)", t = "exp(8 pi i / 9)" }   # the table's footnote: d = delta, e = epsilon, h = eta, t = theta
+elements = ["C9+", "C2'1"]   # book labels of the generators
+
+[irreps."E1"]
+book_values = [
+  [["d*", "0"], ["0", "d"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+matrices = [
+  [["zeta^32", "0"], ["0", "zeta^4"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+
+[irreps."E2"]
+book_values = [
+  [["e", "0"], ["0", "e*"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+matrices = [
+  [["zeta^8", "0"], ["0", "zeta^28"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+
+[irreps."E3"]
+book_values = [
+  [["h*", "0"], ["0", "h"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+matrices = [
+  [["zeta^24", "0"], ["0", "zeta^12"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+
+[irreps."E4"]
+book_values = [
+  [["t*", "0"], ["0", "t"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+matrices = [
+  [["zeta^20", "0"], ["0", "zeta^16"]],
+  [["0", "-1"], ["-1", "0"]],
+]
+
+[irreps."E1/2"]
+book_values = [
+  [["-t", "0"], ["0", "-t*"]],
+  [["0", "-i"], ["-i", "0"]],
+]
+matrices = [
+  [["zeta^34", "0"], ["0", "zeta^2"]],
+  [["0", "zeta^27"], ["zeta^27", "0"]],
+]
+
+[irreps."E3/2"]
+book_values = [
+  [["-h", "0"], ["0", "-h*"]],
+  [["0", "i"], ["i", "0"]],
+]
+matrices = [
+  [["zeta^30", "0"], ["0", "zeta^6"]],
+  [["0", "zeta^9"], ["zeta^9", "0"]],
+]
+
+[irreps."E5/2"]
+book_values = [
+  [["-e*", "0"], ["0", "-e"]],
+  [["0", "-i"], ["-i", "0"]],
+]
+matrices = [
+  [["zeta^10", "0"], ["0", "zeta^26"]],
+  [["0", "zeta^27"], ["zeta^27", "0"]],
+]
+
+[irreps."E7/2"]
+book_values = [
+  [["-d", "0"], ["0", "-d*"]],
+  [["0", "-i"], ["-i", "0"]],
+]
+matrices = [
+  [["zeta^22", "0"], ["0", "zeta^14"]],
+  [["0", "zeta^27"], ["zeta^27", "0"]],
+]
+
