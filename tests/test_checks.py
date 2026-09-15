@@ -212,6 +212,23 @@ def test_mut5_swapped_irrep_symbols_are_caught_by_il2() -> None:
     irreps[4]["component"], irreps[5]["component"] = 2, 1
     irreps[4]["partner"], irreps[5]["partner"] = 5, 4
     assert {"IL-2", "IL-4"} <= failed(document)
+    # the polyhedral rules: T1 / T2 of O by the character on C4^1(1), E1/2 / E7/2
+    # of I by the character on s(C5^1(1))
+    for symbol, first, second in (
+        ("O", "T1", "T2"),
+        ("I", "E1/2", "E7/2"),
+        ("Th", "1Eg", "2Eg"),
+    ):
+        document = corrupted(symbol)
+        irreps = document["characters"]["irreps"]
+        a = next(r for r in irreps if r["symbol"] == first)
+        b = next(r for r in irreps if r["symbol"] == second)
+        for key in ("symbol", "subscript", "component"):
+            a[key], b[key] = b.get(key), a.get(key)
+            for r in (a, b):
+                if r[key] is None:
+                    del r[key]
+        assert "IL-2" in failed(document), symbol
 
 
 def test_il1_catches_a_bad_duplicate_or_inconsistent_symbol() -> None:

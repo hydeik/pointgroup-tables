@@ -355,14 +355,31 @@ def test_characters_document_and_irreps_option(
     assert (code, out) == (2, b"")
 
 
-def test_characters_of_a_polyhedral_group_are_not_available_yet(
+def test_characters_of_a_polyhedral_group(
     capsysbinary: pytest.CaptureFixture[bytes],
 ) -> None:
-    code, out, err = run(capsysbinary, "characters", "Oh")
-    assert (code, out) == (1, b"")
-    assert err.startswith(
-        "pointgroup-tables: error: the irreps of 'Oh' are not available"
-    )
+    code, out, err = run(capsysbinary, "characters", "Oh", "--values", "pretty")
+    assert (code, err) == (0, "")
+    document = json.loads(out)
+    assert document["field"]["conductor"] == 8
+    table = document["characters"]
+    assert [r["symbol"] for r in table["irreps"]][:5] == [
+        "A1g",
+        "A2g",
+        "Eg",
+        "T1g",
+        "T2g",
+    ]
+    assert table["pretty"][10][: len(table["classes"]) // 2] == [
+        "2",
+        "-2",
+        "0",
+        "0",
+        "1",
+        "-1",
+        "sqrt2",
+        "-sqrt2",
+    ]
 
 
 @pytest.mark.parametrize("fmt", ["json", "yaml", "toml"])

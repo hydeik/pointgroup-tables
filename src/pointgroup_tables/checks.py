@@ -18,7 +18,13 @@ from fractions import Fraction
 from typing import Any
 
 from .field import CyclotomicField, Value, cyclotomic_field
-from .irreps import SYMBOL, NamedElements, Symbol, derive_symbol
+from .irreps import (
+    POLYHEDRAL_PRINCIPAL_ORDER,
+    SYMBOL,
+    NamedElements,
+    Symbol,
+    derive_symbol,
+)
 from .seed import SEED
 from .values import ValueSyntaxError, numeric, parse
 
@@ -784,11 +790,28 @@ def _named_from_document(doc: Document) -> NamedElements | None:
     """The named elements of the irrep-labels chapter, located in the element records."""
     group = doc["group"]
     rotation_group = group["rotation_group"]
-    if rotation_group in ("T", "O", "I"):
-        return None
+    items = [record for record in _items(doc) if not record.get("barred")]
+    inversion = next((r["index"] for r in items if r["kind"] == "inversion"), None)
+    if rotation_group in POLYHEDRAL_PRINCIPAL_ORDER:
+        # the polyhedral principal element: the first element of the principal order
+        order = POLYHEDRAL_PRINCIPAL_ORDER[rotation_group]
+        principal = next((r["index"] for r in items if r["order"] == order), None)
+        if principal is None:
+            return None
+        return NamedElements(
+            principal=principal,
+            proper_principal=principal,
+            order=order,
+            proper_order=order,
+            secondary=None,
+            double_prime=None,
+            inversion=inversion,
+            horizontal=None,
+            d2=False,
+            polyhedral=rotation_group,
+        )
     N = int(rotation_group[1:])
     family, n = group["family"], group["n"]
-    items = [record for record in _items(doc) if not record.get("barred")]
     odd_h = family in ("Cnh", "Dnh") and n % 2 == 1
     d2 = family in ("Dn", "Dnh") and n == 2
 
@@ -812,7 +835,7 @@ def _named_from_document(doc: Document) -> NamedElements | None:
         proper_order=n if odd_h else N,
         secondary=labelled("C2'(1)", "sigma_v(1)"),
         double_prime=labelled("C2''(1)") if d2 else None,
-        inversion=next((r["index"] for r in items if r["kind"] == "inversion"), None),
+        inversion=inversion,
         horizontal=labelled("sigma_h") if odd_h else None,
         d2=d2,
     )
@@ -831,13 +854,15 @@ def _row_on_elements(doc: Document, row: list[Value]) -> list[Value]:
 
 def check_il2(doc: Document) -> list[Failure]:
     """The symbol is a function of the character: recomputed from the character table
-    by the rules of the chapter, it is reproduced (axial families)."""
+    by the rules of the chapter, it is reproduced."""
     rows = _character_rows(doc)
     if rows is None:
         return _no_exact("IL-2")
     named = _named_from_document(doc)
     if named is None:
-        return []
+        return [
+            Failure("IL-2", "the named elements are missing from the element records")
+        ]
     F = _field(doc)
     failures = []
     for record, row in zip(_irrep_records(doc), rows, strict=True):

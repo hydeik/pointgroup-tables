@@ -1,4 +1,4 @@
-"""The ``characters`` document of the axial families (docs/spec/irrep-labels.md,
+"""The ``characters`` document of every family (docs/spec/irrep-labels.md,
 docs/spec/conjugacy-classes.md, docs/spec/output-schema.md): ``IL-*``, ``CH-*``,
 ``VL-*``, the symbol rules, ``--irreps``, ``--values`` and the schema."""
 
@@ -21,6 +21,7 @@ from conftest import (
 from test_elements import SAMPLES, SCHEMA
 
 from pointgroup_tables import checks
+from pointgroup_tables.conventions import polyhedral_data
 from pointgroup_tables.document import (
     VALUE_FORMS,
     Request,
@@ -29,12 +30,11 @@ from pointgroup_tables.document import (
     model_document,
     parse_values,
 )
-from pointgroup_tables.errors import PointGroupTablesError, UsageError
+from pointgroup_tables.errors import UsageError
 from pointgroup_tables.field import cyclotomic_field
-from pointgroup_tables.irreps import Symbol
+from pointgroup_tables.irreps import Symbol, named_elements
 from pointgroup_tables.symbols import parse_group
 
-AXIAL_SEED = [symbol for symbol in SEED_GROUPS if symbol not in POLYHEDRAL_GROUPS]
 CHECKS = [
     "IL-1",
     "IL-2",
@@ -51,12 +51,7 @@ CHECKS = [
 
 
 def characters_of(symbol: str) -> dict[str, Any]:
-    document = model(symbol)
-    if "characters" not in document:
-        pytest.skip(
-            f"the character table of {symbol} is not built yet (polyhedral families)"
-        )
-    return document["characters"]
+    return model(symbol)["characters"]
 
 
 def symbols_of(symbol: str) -> tuple[str, str]:
@@ -72,7 +67,6 @@ def symbols_of(symbol: str) -> tuple[str, str]:
 @pytest.mark.parametrize("check_id", CHECKS)
 @pytest.mark.parametrize("symbol", default_and_large())
 def test_irrep_and_character_checks(check_id: str, symbol: str) -> None:
-    characters_of(symbol)
     assert checks.check(model(symbol), [check_id]) == []
 
 
@@ -80,10 +74,7 @@ def _ch6_groups() -> list[Any]:
     """``CH-6`` runs plainly on ``|G-dagger| <= 96`` and under ``slow`` beyond."""
     out: list[Any] = []
     for symbol in DEFAULT_GROUPS + LARGE_GROUPS:
-        spec = parse_group(symbol)
-        if spec.polyhedral:
-            continue
-        order = build_model(spec).order
+        order = build_model(parse_group(symbol)).order
         if 2 * order > 96 or symbol in LARGE_GROUPS:
             out.append(pytest.param(symbol, marks=pytest.mark.slow))
         else:
@@ -97,7 +88,7 @@ def test_ch6_class_algebra_homomorphisms(symbol: str) -> None:
 
 
 @pytest.mark.parametrize("which", ["ordinary", "projective"])
-@pytest.mark.parametrize("symbol", AXIAL_SEED)
+@pytest.mark.parametrize("symbol", SEED_GROUPS)
 def test_checks_hold_on_filtered_documents(symbol: str, which: str) -> None:
     """Row and column orthogonality, the block sums and the class-function property
     hold on the filtered rows with their partial expectations."""
@@ -149,6 +140,13 @@ EXAMPLES = [
     ("D5", "A1 A2 E1 E2", "E1/2 E3/2 1E5/2 2E5/2"),
     ("D6h", "A1g A2g B1g B2g E1g E2g A1u A2u B1u B2u E1u E2u", "E1/2g E3/2g E5/2g E1/2u E3/2u E5/2u"),
     ("D4d", "A1 A2 B1 B2 E1 E2 E3", "E1/2 E3/2 E5/2 E7/2"),
+    ("T", "A 1E 2E T", "E1/2 1E3/2 2E3/2"),
+    ("Th", "Ag 1Eg 2Eg Tg Au 1Eu 2Eu Tu", "E1/2g 1E3/2g 2E3/2g E1/2u 1E3/2u 2E3/2u"),
+    ("O", "A1 A2 E T1 T2", "E1/2 E5/2 G3/2"),
+    ("Td", "A1 A2 E T1 T2", "E1/2 E5/2 G3/2"),
+    ("Oh", "A1g A2g Eg T1g T2g A1u A2u Eu T1u T2u", "E1/2g E5/2g G3/2g E1/2u E5/2u G3/2u"),
+    ("I", "A T1 T2 G H", "E1/2 E7/2 G3/2 I5/2"),
+    ("Ih", "Ag T1g T2g Gg Hg Au T1u T2u Gu Hu", "E1/2g E7/2g G3/2g I5/2g E1/2u E7/2u G3/2u I5/2u"),
 ]  # fmt: skip
 
 
@@ -174,6 +172,15 @@ def test_canonical_symbols_match_the_spec_examples(
         ("D3", "C2'(2)", {"1E3/2": "-i", "2E3/2": "i"}),
         ("C3", "C3^1", {"1E": "zeta", "2E": "zeta^2", "1E1/2": "-zeta^2", "2E1/2": "-zeta", "B3/2": "-1"}),
         ("D3h", "sigma_h", {"A1'": "1", "A1''": "-1", "E'": "2", "E''": "-2"}),
+        # the polyhedral principal element (rules 12-15)
+        ("T", "C3^1(1)", {"1E": "zeta^4", "2E": "zeta^8", "E1/2": "1", "1E3/2": "zeta^4", "2E3/2": "zeta^8"}),
+        ("Th", "C3^1(1)", {"1Eg": "zeta^4", "1Eu": "zeta^4", "2E3/2u": "zeta^8"}),
+        ("O", "C4^1(1)", {"A1": "1", "A2": "-1", "T1": "1", "T2": "-1", "E1/2": "sqrt2", "E5/2": "-sqrt2", "G3/2": "0"}),
+        ("Td", "S4^-1(1)", {"A2": "-1", "T1": "1", "T2": "-1", "E1/2": "sqrt2", "E5/2": "-sqrt2"}),
+        ("Oh", "C4^1(1)", {"T1g": "1", "T2u": "-1", "E1/2u": "sqrt2", "E5/2g": "-sqrt2"}),
+        ("I", "C5^1(1)", {"T1": "(1 + sqrt5)/2", "T2": "(1 - sqrt5)/2", "G": "-1", "H": "0", "E1/2": "(1 + sqrt5)/2", "E7/2": "(1 - sqrt5)/2", "G3/2": "1", "I5/2": "-1"}),
+        ("Ih", "C5^1(1)", {"T1u": "(1 + sqrt5)/2", "T2g": "(1 - sqrt5)/2", "E7/2u": "(1 - sqrt5)/2"}),
+        ("Ih", "i", {"Ag": "1", "Au": "-1", "Hg": "5", "Hu": "-5", "E1/2g": "2", "I5/2u": "-6"}),
     ],
 )  # fmt: skip
 def test_characters_on_named_elements(
@@ -212,7 +219,7 @@ def test_symbol_sort_key_letter_before_subscript() -> None:
         Symbol.parse("F3/2")
 
 
-@pytest.mark.parametrize("symbol", AXIAL_SEED)
+@pytest.mark.parametrize("symbol", SEED_GROUPS)
 def test_irrep_records_are_structured(symbol: str) -> None:
     table = characters_of(symbol)
     for record in table["irreps"]:
@@ -319,6 +326,8 @@ def test_values_option_selects_the_parallel_arrays(text: str) -> None:
             Request("characters", "C3v", irreps="ordinary"),
         ),
         ("D6h_characters.json", Request("characters", "D6h")),
+        ("Oh_characters.json", Request("characters", "Oh")),
+        ("Ih_characters.json", Request("characters", "Ih")),
     ],
 )
 def test_characters_equal_the_prototype_samples(
@@ -339,11 +348,11 @@ def test_characters_equal_the_prototype_samples(
             assert value == pytest.approx(expected_value, abs=1e-15)
 
 
-# ---- the schema (OS-1) and the polyhedral groups ---------------------------------------------
+# ---- the schema (OS-1) on the whole seed set ---------------------------------------------------
 
 
 @pytest.mark.parametrize("which", ["ordinary", "projective", "all"])
-@pytest.mark.parametrize("symbol", AXIAL_SEED)
+@pytest.mark.parametrize("symbol", SEED_GROUPS)
 def test_os1_characters_documents_validate(symbol: str, which: str) -> None:
     validator = jsonschema.Draft202012Validator(SCHEMA)
     for forms in (("exact", "numeric"), ("pretty",), ("exact", "numeric", "pretty")):
@@ -356,18 +365,40 @@ def test_os1_characters_documents_validate(symbol: str, which: str) -> None:
 
 
 @pytest.mark.parametrize("symbol", POLYHEDRAL_GROUPS)
-def test_polyhedral_characters_are_not_available_yet(symbol: str) -> None:
-    assert "characters" not in model(symbol)
-    with pytest.raises(PointGroupTablesError, match="not available"):
-        build_document(Request("characters", symbol))
+def test_polyhedral_principal_element_is_the_one_the_chapter_names(symbol: str) -> None:
+    """Rules 12-15 read the character on ``C3^1(1)``, ``C4^1(1)`` (``S4^-1(1)`` in
+    ``Td``) or ``C5^1(1)``: the first element of that order in canonical order."""
+    computed = build_model(parse_group(symbol))
+    named = named_elements(computed.group)
+    expected = {"T": "C3^1(1)", "O": "C4^1(1)", "I": "C5^1(1)"}[named.polyhedral or ""]
+    if symbol == "Td":
+        expected = "S4^-1(1)"
+    assert computed.labels[named.principal].text == expected
+    assert (named.inversion is not None) == (symbol in ("Th", "Oh", "Ih"))
 
 
-# ---- the field of the closed forms -----------------------------------------------------------
+def test_polyhedral_data_names_the_irreps_it_holds() -> None:
+    """Every irrep of dimension two or more comes from the frozen generator data
+    under the symbol its character gives; the rest are one-dimensional."""
+    for symbol, cover in (("T", "2T"), ("O", "2O"), ("I", "2I")):
+        data = polyhedral_data("canonical", cover)
+        computed = build_model(parse_group(symbol))
+        assert data.conductor == computed.conductor
+        from_data = {
+            irrep.symbol.text for irrep in computed.irreps if irrep.dimension > 1
+        }
+        assert from_data == set(data.irreps)
+        assert all(
+            irrep.dimension == 1
+            for irrep in computed.irreps
+            if irrep.symbol.text not in data.irreps
+        )
 
 
-@pytest.mark.parametrize(
-    "symbol", [s for s in DEFAULT_GROUPS if s not in POLYHEDRAL_GROUPS]
-)
+# ---- the field of the closed forms and the generator data -------------------------------------
+
+
+@pytest.mark.parametrize("symbol", DEFAULT_GROUPS)
 def test_canonical_conductor_is_minimal_for_the_closed_form_matrices(
     symbol: str,
 ) -> None:
@@ -391,7 +422,7 @@ def test_canonical_conductor_is_minimal_for_the_closed_form_matrices(
     assert M % 4 != 2
 
 
-@pytest.mark.parametrize("symbol", AXIAL_SEED)
+@pytest.mark.parametrize("symbol", SEED_GROUPS)
 def test_every_character_lies_in_the_declared_field_and_traces_the_matrices(
     symbol: str,
 ) -> None:

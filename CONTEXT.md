@@ -244,6 +244,17 @@ parity: `C_n` for most families, `S_2n` for `S2n` and `Dnd` with even `n`,
 decide A versus B, the E subscript `k`, and the projective subscript `k/2`.
 _Avoid_: principal axis (a geometric notion), generator (ambiguous)
 
+**Polyhedral principal element**:
+The element of a polyhedral group whose character the symbol rules read:
+the element of the principal order (`3` for `T`, `4` for `O`, `5` for `I`)
+with the smallest canonical index, with its parity: `C3^1(1)` in `T` and
+`Th`, `C4^1(1)` in `O` and `Oh`, `S4^-1(1)` in `Td`, `C5^1(1)` in `I` and
+`Ih`. Its character decides `1E`/`2E` and `1E3/2`/`2E3/2` of `T`, the
+subscripts `1`/`2` of `A` and `T` and `E1/2`/`E5/2` of `O`, and `T1`/`T2`
+and `E1/2`/`E7/2` of `I`; the letter follows the dimension alone.
+_Avoid_: principal axis, generator (the basis data's generator pair is a
+different, though overlapping, choice)
+
 **Secondary element**:
 The element `(0, 1)` of a dihedral rotation group `R = D_N`: `C2'(1)` in the
 `Dn`, `Dnh`, `Dnd` families and `sigma_v(1)` in `Cnv`. The sign of its

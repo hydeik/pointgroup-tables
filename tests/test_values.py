@@ -116,15 +116,7 @@ def _mpmath_value(F: CyclotomicField, pairs: list[list[int]]) -> tuple[float, fl
         return float(total.real), float(total.imag)
 
 
-def _axial_seed() -> list[str]:
-    return [
-        symbol
-        for symbol in SEED_GROUPS
-        if symbol not in ("T", "Td", "Th", "O", "Oh", "I", "Ih")
-    ]
-
-
-@pytest.mark.parametrize("symbol", _axial_seed())
+@pytest.mark.parametrize("symbol", SEED_GROUPS)
 def test_numeric_form_agrees_with_mpmath(symbol: str) -> None:
     document = model(symbol)
     F = cyclotomic_field(document["field"]["conductor"])

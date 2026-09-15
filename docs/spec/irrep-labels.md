@@ -64,7 +64,7 @@ coordinate system.
 | **secondary element** `s` | `(0, 1)` of `R = D_N`, with its parity | `C2'(1)` in `Dn`, `Dnh`, `Dnd`; `sigma_v(1)` in `Cnv` |
 | **inversion** `i` | `(e, −1)`, type II only | |
 | **horizontal reflection** `σh` | `(N/2, −1)` of `R = C_2n` or `((N/2, 0), −1)` of `R = D_2n`, `Cnh`/`Dnh` with odd `n` only | `sigma_h` |
-| **polyhedral principal element** `c` | `O`, `Oh`, `Td`: the order-4 element of `R` with the smallest canonical index, with its parity (`C4^1(1)`, or `S4^-1(1)` in `Td`); `I`, `Ih`: `C5^1(1)`, the positive generator of the first `C5` axis | |
+| **polyhedral principal element** `c` | `T`, `Th`: `C3^1(1)`, the positive generator of the first `C3` axis; `O`, `Oh`, `Td`: the order-4 element of `R` with the smallest canonical index, with its parity (`C4^1(1)`, or `S4^-1(1)` in `Td`); `I`, `Ih`: `C5^1(1)`, the positive generator of the first `C5` axis. In every case the element of the principal order (`3`, `4`, `5`) with the smallest canonical index | |
 
 `N` is the order of `c`, `ζ_N = exp(2πi/N)`, and `d` is the dimension of the
 irrep. For a projective irrep the characters are those of the lifted

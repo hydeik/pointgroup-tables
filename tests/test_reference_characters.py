@@ -20,7 +20,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
-from conftest import POLYHEDRAL_GROUPS, double_model, model
+from conftest import double_model, model
 
 from pointgroup_tables.field import CyclotomicField, Value, cyclotomic_field
 from pointgroup_tables.values import parse
@@ -34,14 +34,14 @@ REALITY_INDICATOR = {1: 1, 0: 0, -1: -1}
 Invariants = tuple[int, int, int]
 
 
-def _axial_files(directory: Path, suffix: str = "") -> list[str]:
+def _files(directory: Path, suffix: str = "") -> list[str]:
+    """The groups transcribed under a directory (``-double`` files by ``suffix``)."""
     if not directory.is_dir():
         return []
     return sorted(
         path.stem.removesuffix(suffix)
         for path in directory.glob(f"*{suffix}.toml")
-        if path.stem.removesuffix(suffix) not in POLYHEDRAL_GROUPS
-        and (suffix or not path.stem.endswith("-double"))
+        if suffix or not path.stem.endswith("-double")
     )
 
 
@@ -64,8 +64,6 @@ class Computed:
 
     def __init__(self, symbol: str, double: bool) -> None:
         document = model(symbol)
-        if "characters" not in document:
-            pytest.skip(f"the character table of {symbol} is not built yet")
         self.F = cyclotomic_field(document["field"]["conductor"])
         table = document["characters"]
         items = document["elements"]["items"]
@@ -248,7 +246,7 @@ def _swap_projective(
 
 
 @pytest.mark.reference
-@pytest.mark.parametrize("symbol", _axial_files(ALTMANN_HERZIG))
+@pytest.mark.parametrize("symbol", _files(ALTMANN_HERZIG))
 def test_ref1_altmann_herzig_character_tables(symbol: str) -> None:
     data = _read_altmann_herzig(symbol)
     comp = Computed(symbol, double=False)
@@ -301,7 +299,7 @@ def _read_bilbao(symbol: str, double: bool) -> dict[str, Any]:
 
 
 @pytest.mark.reference
-@pytest.mark.parametrize("symbol", _axial_files(BILBAO))
+@pytest.mark.parametrize("symbol", _files(BILBAO))
 def test_ref2_bilbao_point_group_tables(symbol: str) -> None:
     data = _read_bilbao(symbol, double=False)
     comp = Computed(symbol, double=False)
@@ -325,7 +323,7 @@ def test_ref2_bilbao_point_group_tables(symbol: str) -> None:
 
 
 @pytest.mark.reference
-@pytest.mark.parametrize("symbol", _axial_files(BILBAO, "-double"))
+@pytest.mark.parametrize("symbol", _files(BILBAO, "-double"))
 def test_ref2_bilbao_double_group_tables(symbol: str) -> None:
     data = _read_bilbao(symbol, double=True)
     comp = Computed(symbol, double=True)
@@ -356,5 +354,6 @@ def test_ref2_bilbao_double_group_tables(symbol: str) -> None:
 def test_reference_files_are_present() -> None:
     if not ALTMANN_HERZIG.is_dir() and not BILBAO.is_dir():
         pytest.skip(f"no transcriptions under {REFERENCE}")
-    assert "D3" in _axial_files(ALTMANN_HERZIG)
-    assert "D3" in _axial_files(BILBAO) and "D3" in _axial_files(BILBAO, "-double")
+    assert {"D3", "I", "Ih"} <= set(_files(ALTMANN_HERZIG))
+    assert {"D3", "Oh"} <= set(_files(BILBAO))
+    assert {"D3", "Oh"} <= set(_files(BILBAO, "-double"))

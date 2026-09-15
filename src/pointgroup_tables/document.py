@@ -157,19 +157,8 @@ class Model:
 
     # ---- irreps ----------------------------------------------------------------
 
-    @property
-    def has_irreps(self) -> bool:
-        """Whether the irreps of this group are built (the axial families; the
-        polyhedral families are the business of a later ticket)."""
-        return not self.group.rotation_group.polyhedral
-
     @cached_property
     def irreps(self) -> list[Irrep]:
-        if not self.has_irreps:
-            raise PointGroupTablesError(
-                f"the irreps of '{self.spec.symbol}' are not available in this build",
-                "the polyhedral character tables are not implemented yet",
-            )
         return build_irreps(
             self.group, self.double, self.field, self.table, self.factor
         )
@@ -302,10 +291,7 @@ class Model:
 
     def available_tables(self) -> tuple[str, ...]:
         """The tables this model can produce, in table order."""
-        tables = ["elements", "cayley", "factor"]
-        if self.has_irreps:
-            tables.append("characters")
-        return tuple(tables)
+        return ("elements", "cayley", "factor", "characters")
 
     def build_table(self, name: str, request: Request) -> dict[str, Any]:
         """One table under the options of a request."""

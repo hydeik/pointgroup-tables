@@ -1,13 +1,16 @@
-"""Irreps of the axial families in the canonical basis, their characters and
-their canonical Mulliken symbols (docs/spec/basis-conventions.md "Canonical
-basis: axial families", docs/spec/irrep-labels.md).
+"""Irreps of every family in the canonical basis, their characters and their
+canonical Mulliken symbols (docs/spec/basis-conventions.md "Canonical basis",
+docs/spec/irrep-labels.md).
 
-An irrep is built from the generator images on the rotation group ``R``
-(``a = (1, 0)``, ``b = (0, 1)``), evaluated at the canonical section for the
-projective irreps, with the parity sign of a type II group attached. Its
-characters are the traces; its symbol is derived from the characters on the
-named elements by the rules of the irrep-labels chapter, so that the same
-function recomputes it from a character table (``IL-2``).
+An irrep is built from the generator images on the binary cover ``R-dagger``
+of the rotation group: the closed forms on ``a = (1, 0)``, ``b = (0, 1)`` for
+the axial families, the frozen generator data of the canonical basis
+convention (``2T``, ``2O``, ``2I``) for the polyhedral families. Every element
+of ``G`` is evaluated at its canonical section, with the parity sign of a
+type II group attached. The characters are the traces; the symbol is derived
+from the characters on the named elements by the rules of the irrep-labels
+chapter, so that the same function recomputes it from a character table
+(``IL-2``).
 """
 
 from __future__ import annotations
@@ -17,8 +20,9 @@ from dataclasses import dataclass, field
 from fractions import Fraction
 from typing import Any
 
-from .abstract import CENTRO, PointGroup
-from .double import DoubleGroup
+from . import conventions
+from .abstract import CENTRO, PointGroup, point_group
+from .double import BinaryRotationGroup, DoubleGroup
 from .field import (
     CyclotomicField,
     Matrix,
@@ -28,10 +32,16 @@ from .field import (
     matrix_neg,
     matrix_trace,
 )
+from .labels import canonical_labels
+from .symbols import parse_group
 
 SYMBOL = re.compile(r"^([12])?([ABETGHI])(\d+|\d*[13579]/2)?(g|u|'|'')?$")
 LETTER_RANK = {letter: rank for rank, letter in enumerate("ABETGHI")}
 SUFFIX_RANK = {None: 0, "g": 0, "u": 1, "'": 0, "''": 1}
+# the polyhedral principal element: the element of R of this order with the
+# smallest canonical index (C3^1(1) of T, C4^1(1) of O or S4^-1(1) of Td,
+# C5^1(1) of I), with its parity (docs/spec/irrep-labels.md, "Named elements")
+POLYHEDRAL_PRINCIPAL_ORDER = {"T": 3, "O": 4, "I": 5}
 
 
 # ---- symbols -------------------------------------------------------------------------
@@ -110,13 +120,14 @@ class NamedElements:
     inversion: int | None
     horizontal: int | None  # sigma_h of Cnh / Dnh with odd n
     d2: bool  # D2 and D2h: rule 6
+    polyhedral: str | None = None  # T, O or I: `principal` is the polyhedral one
 
 
 def named_elements(G: PointGroup) -> NamedElements:
     R = G.rotation_group
     N = R.axis_order
     if N is None:
-        raise ValueError("the named elements of the polyhedral groups are not axial")
+        return _polyhedral_named_elements(G)
     dihedral = R.name.startswith("D")
     family, n = G.spec.family, G.spec.family_n
     odd_h = family in ("Cnh", "Dnh") and n % 2 == 1
@@ -155,6 +166,35 @@ def named_elements(G: PointGroup) -> NamedElements:
     )
 
 
+def _polyhedral_named_elements(G: PointGroup) -> NamedElements:
+    R = G.rotation_group
+    order = POLYHEDRAL_PRINCIPAL_ORDER[R.name]
+    principal = next(
+        index for index, (r, _) in enumerate(G.elements) if R.order_of(r) == order
+    )
+    inversion = (
+        next(
+            index
+            for index, (r, p) in enumerate(G.elements)
+            if r == R.identity and p == -1
+        )
+        if G.type == CENTRO
+        else None
+    )
+    return NamedElements(
+        principal=principal,
+        proper_principal=principal,
+        order=order,
+        proper_order=order,
+        secondary=None,
+        double_prime=None,
+        inversion=inversion,
+        horizontal=None,
+        d2=False,
+        polyhedral=R.name,
+    )
+
+
 # ---- symbol rules ----------------------------------------------------------------------
 
 
@@ -186,7 +226,8 @@ def derive_symbol(
 ) -> Symbol:
     """The canonical Mulliken symbol of an irrep from its characters on the
     elements of ``G`` (``chi[g]``; for a projective irrep the characters of the
-    lifted elements), by the axial rules 1-11 of the irrep-labels chapter."""
+    lifted elements), by the axial rules 1-11 or the polyhedral rules 12-15 of
+    the irrep-labels chapter."""
     one = F.one
     minus_one = F.neg(one)
     d = int(F.as_rational(chi[0]))
@@ -194,6 +235,15 @@ def derive_symbol(
     def is_plus(index: int | None) -> bool:
         assert index is not None
         return chi[index] == F.rational(d)
+
+    if named.polyhedral is not None:
+        letter, subscript, component = _polyhedral_letters(
+            F, named.polyhedral, chi[named.principal], d, projective
+        )
+        suffix = None
+        if named.inversion is not None:
+            suffix = "g" if is_plus(named.inversion) else "u"
+        return Symbol(letter, subscript, suffix, component)
 
     if not projective:
         N0 = named.proper_order
@@ -290,6 +340,80 @@ def derive_symbol(
     return Symbol(letter, subscript, suffix, component)
 
 
+def _polyhedral_letters(
+    F: CyclotomicField, R: str, x: Value, d: int, projective: bool
+) -> tuple[str, int | str | None, int | None]:
+    """``(letter, subscript, component)`` of an irrep of a polyhedral group from its
+    dimension ``d`` and its character ``x`` on the polyhedral principal element
+    (rules 12-15; the letter follows the dimension, ``F`` is never canonical)."""
+    one, minus_one = F.one, F.neg(F.one)
+    letter = {1: "A", 2: "E", 3: "T", 4: "G", 5: "H", 6: "I"}.get(d)
+    if letter is None:
+        raise ValueError(f"a polyhedral irrep of dimension {d}")
+    subscript: int | str | None = None
+    component: int | None = None
+    if R == "T":
+        # rule 12 and rule 15: A, 1E, 2E, T; E1/2, 1E3/2, 2E3/2 by chi(C3^1(1))
+        expected = (2,) if projective else (1, 3)
+        if d not in expected:
+            raise ValueError(f"an irrep of T of dimension {d}")
+        if d != 3:
+            found = _exponent(F, x, 3, range(1, 2))
+            if x == one:
+                subscript = "1/2" if projective else None
+            elif found is not None:
+                if projective:
+                    letter, subscript = "E", "3/2"
+                else:
+                    letter = "E"
+                component = 1 if found[1] > 0 else 2
+            else:
+                raise ValueError("a character of T off 1 and zeta_3^(+-1) on C3^1(1)")
+    elif R == "O":
+        # rule 13 and rule 15: A1, A2, E, T1, T2; E1/2, E5/2, G3/2 by chi(s(c))
+        if projective and d == 2:
+            sqrt2 = F.constant("sqrt2")
+            if x == sqrt2:
+                subscript = "1/2"
+            elif x == F.neg(sqrt2):
+                subscript = "5/2"
+            else:
+                raise ValueError("a projective character of O off +-sqrt2 on s(c)")
+        elif projective and d == 4:
+            subscript = "3/2"
+        elif not projective and d in (1, 3):
+            if x == one:
+                subscript = 1
+            elif x == minus_one:
+                subscript = 2
+            else:
+                raise ValueError("a character of O off +-1 on the principal element")
+        elif projective or d != 2:
+            raise ValueError(f"an irrep of O of dimension {d}")
+    else:
+        # rule 14 and rule 15: A, T1, T2, G, H; E1/2, E7/2, G3/2, I5/2 by chi on C5^1(1)
+        phi = F.constant("phi")
+        if projective and d == 2:
+            if x == phi:
+                subscript = "1/2"
+            elif x == F.sub(one, phi):
+                subscript = "7/2"
+            else:
+                raise ValueError("a projective character of I off phi, 1 - phi on s(c)")
+        elif projective and d in (4, 6):
+            subscript = "3/2" if d == 4 else "5/2"
+        elif not projective and d == 3:
+            if x == phi:
+                subscript = 1
+            elif x == F.sub(one, phi):
+                subscript = 2
+            else:
+                raise ValueError("a character of I off phi, 1 - phi on C5^1(1)")
+        elif projective or d not in (1, 4, 5):
+            raise ValueError(f"an irrep of I of dimension {d}")
+    return letter, subscript, component
+
+
 # ---- irreps ---------------------------------------------------------------------------
 
 
@@ -382,21 +506,15 @@ def _generator_images(
     return images
 
 
-def build_irreps(
-    G: PointGroup,
-    D: DoubleGroup,
-    F: CyclotomicField,
-    table: list[list[int]],
-    factor: list[list[int]],
-) -> list[Irrep]:
-    """Every irrep of an axial group in canonical irrep order, with symbols,
-    partners and Frobenius-Schur indicators."""
+def _axial_matrices(
+    G: PointGroup, D: DoubleGroup, F: CyclotomicField
+) -> list[tuple[str | None, bool, list[Matrix]]]:
+    """``(None, projective, D(g) for g in G)`` of every irrep of an axial ``R-dagger``
+    from the closed forms, ``D(g)`` evaluated at the canonical section."""
     R = G.rotation_group
     N = R.axis_order
-    if N is None:
-        raise ValueError("build_irreps handles the axial families only")
+    assert N is not None
     dihedral = R.name.startswith("D")
-    named = named_elements(G)
     # the lifted rotation part of every element, as a word a^k b^s in R-dagger
     words: list[tuple[int, int]] = []
     for r, _ in G.elements:
@@ -405,10 +523,7 @@ def build_irreps(
     plain_words: list[tuple[int, int]] = [
         (r, 0) if isinstance(r, int) else (r[0], r[1]) for r, _ in G.elements
     ]
-    parities = [p for _, p in G.elements]
-    suffix_signs = [1] if G.type != CENTRO else [1, -1]
-
-    irreps: list[Irrep] = []
+    out: list[tuple[str | None, bool, list[Matrix]]] = []
     for projective, Da, Db in _generator_images(F, N, dihedral):
         d = len(Da)
         identity = matrix_identity(F, d)
@@ -422,6 +537,122 @@ def build_irreps(
             if s and Db is not None:
                 matrix = matrix_mul(F, matrix, Db)
             base.append(matrix)
+        out.append((None, projective, base))
+    return out
+
+
+def _one_dimensional_images(
+    F: CyclotomicField, cover: str
+) -> list[tuple[Value, Value]]:
+    """``(D(q1), D(q2))`` of the one-dimensional irreps of ``2T``, ``2O``, ``2I``, which
+    the basis data leaves to the rule: the characters of ``R / [R, R]`` (``Z_3`` for
+    ``T`` on ``q1 = C3^1(1)``, ``Z_2`` for ``O`` on both generators, trivial for ``I``)."""
+    one, minus_one = F.one, F.neg(F.one)
+    if cover == "2T":
+        return [(one, one), (F.root_of_unity(3, 1), one), (F.root_of_unity(3, -1), one)]
+    if cover == "2O":
+        return [(one, one), (minus_one, minus_one)]
+    return [(one, one)]
+
+
+def _lifted_generators(
+    cover: BinaryRotationGroup, R_name: str, labels: tuple[str, str]
+) -> tuple[Any, Any]:
+    """The generator pair of the basis data: elements of the proper group named by
+    their canonical labels, lifted by the canonical section."""
+    proper = point_group(parse_group(R_name))
+    by_label = {
+        label.text: r
+        for (r, _), label in zip(proper.elements, canonical_labels(proper), strict=True)
+    }
+    q1, q2 = (cover.section(by_label[name]) for name in labels)
+    return q1, q2
+
+
+def _closure(
+    cover: BinaryRotationGroup,
+    F: CyclotomicField,
+    images: list[tuple[Any, Matrix]],
+    name: str,
+) -> dict[Any, Matrix]:
+    """``D(q)`` for every ``q`` of ``R-dagger`` by breadth-first closure from the
+    generator images; every product that reaches an element twice must agree."""
+    d = len(images[0][1])
+    reached: dict[Any, Matrix] = {cover.identity: matrix_identity(F, d)}
+    frontier = [cover.identity]
+    while frontier:
+        following = []
+        for q in frontier:
+            for generator, image in images:
+                p = cover.mul(q, generator)
+                product = matrix_mul(F, reached[q], image)
+                if p in reached:
+                    if reached[p] != product:
+                        raise ValueError(
+                            f"the generator images of {name} are not a homomorphism"
+                        )
+                else:
+                    reached[p] = product
+                    following.append(p)
+        frontier = following
+    if len(reached) != len(cover.elements):
+        raise ValueError(f"the generators of {name} do not generate {cover.name}")
+    return reached
+
+
+def _polyhedral_matrices(
+    G: PointGroup, D: DoubleGroup, F: CyclotomicField
+) -> list[tuple[str | None, bool, list[Matrix]]]:
+    """``(data key, projective, D(g) for g in G)`` of every irrep of ``2T``, ``2O`` or
+    ``2I``: the one-dimensional irreps by rule, the others from the frozen
+    generator data of the canonical basis convention, closed over ``R-dagger``;
+    an irrep is projective when it sends ``ebar`` to ``-1``."""
+    R = G.rotation_group
+    cover = D.cover
+    data = conventions.polyhedral_data(conventions.CANONICAL, cover.name)
+    if data.conductor != F.conductor:
+        raise ValueError(
+            f"the basis data of {cover.name} lies in Q(zeta_{data.conductor}), "
+            f"the document field is Q(zeta_{F.conductor})"
+        )
+    q1, q2 = _lifted_generators(cover, R.name, data.generators)
+    images: list[tuple[str | None, Matrix, Matrix]] = [
+        (None, [[a]], [[b]]) for a, b in _one_dimensional_images(F, cover.name)
+    ]
+    images.extend((key, B1, B2) for key, (B1, B2) in data.irreps.items())
+    out: list[tuple[str | None, bool, list[Matrix]]] = []
+    for key, B1, B2 in images:
+        name = f"{cover.name} irrep {key or 'of dimension 1'}"
+        reached = _closure(cover, F, [(q1, B1), (q2, B2)], name)
+        identity = matrix_identity(F, len(B1))
+        if reached[cover.ebar] == identity:
+            projective = False
+        elif reached[cover.ebar] == matrix_neg(F, identity):
+            projective = True
+        else:
+            raise ValueError(f"{name} does not send ~E to +-1")
+        base = [reached[cover.section(r)] for r, _ in G.elements]
+        out.append((key, projective, base))
+    return out
+
+
+def build_irreps(
+    G: PointGroup,
+    D: DoubleGroup,
+    F: CyclotomicField,
+    table: list[list[int]],
+    factor: list[list[int]],
+) -> list[Irrep]:
+    """Every irrep of ``G`` in canonical irrep order, with symbols, partners and
+    Frobenius-Schur indicators."""
+    named = named_elements(G)
+    parities = [p for _, p in G.elements]
+    suffix_signs = [1] if G.type != CENTRO else [1, -1]
+    matrices_of = (
+        _polyhedral_matrices if G.rotation_group.polyhedral else _axial_matrices
+    )
+    irreps: list[Irrep] = []
+    for key, projective, base in matrices_of(G, D, F):
         for sign in suffix_signs:
             matrices = [
                 matrix if (p == 1 or sign == 1) else matrix_neg(F, matrix)
@@ -429,6 +660,14 @@ def build_irreps(
             ]
             characters = [matrix_trace(F, matrix) for matrix in matrices]
             symbol = derive_symbol(F, named, characters, projective)
+            if key is not None and sign == 1:
+                unsuffixed = Symbol(
+                    symbol.letter, symbol.subscript, None, symbol.component
+                )
+                if unsuffixed.text != key:
+                    raise ValueError(
+                        f"the basis data names an irrep '{key}' whose character gives '{unsuffixed.text}'"
+                    )
             irreps.append(Irrep(symbol, projective, matrices, characters))
 
     irreps.sort(key=lambda irrep: irrep.symbol.sort_key(irrep.projective))
