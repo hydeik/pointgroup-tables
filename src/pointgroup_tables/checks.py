@@ -9,13 +9,18 @@ mutation tests and ``--verify``.
 
 from __future__ import annotations
 
+import math
 import re
 from collections import Counter
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass
+from fractions import Fraction
 from typing import Any
 
+from .field import CyclotomicField, Value, cyclotomic_field
+from .irreps import SYMBOL, NamedElements, Symbol, derive_symbol
 from .seed import SEED
+from .values import ValueSyntaxError, numeric, parse
 
 ELEMENT_LABEL = re.compile(
     r"^~?(E|i|C2|C2\(\d+\)|C2''?\(\d+\)|C\d+\^-?\d+(\(\d+\))?|S\d+\^-?\d+(\(\d+\))?"
@@ -646,6 +651,679 @@ def check_dg6(doc: Document) -> list[Failure]:
     return failures
 
 
+# ---- the character table: shared readers -------------------------------------
+
+
+def _field(doc: Document) -> CyclotomicField:
+    return cyclotomic_field(doc["field"]["conductor"])
+
+
+def _character_rows(doc: Document) -> list[list[Value]] | None:
+    """The exact character table as field values, or ``None`` without an exact form."""
+    table = doc["characters"]
+    if "exact" not in table:
+        return None
+    F = _field(doc)
+    try:
+        return [[F.from_exact(pairs) for pairs in row] for row in table["exact"]]
+    except (ValueError, TypeError):
+        return None  # VL-1 reports the malformed value
+
+
+def _no_exact(check: str) -> list[Failure]:
+    return [
+        Failure(
+            check, "the characters table carries no well-formed exact form to check"
+        )
+    ]
+
+
+def _columns(doc: Document) -> list[dict[str, Any]]:
+    return doc["characters"]["classes"]
+
+
+def _irrep_records(doc: Document) -> list[dict[str, Any]]:
+    return doc["characters"]["irreps"]
+
+
+def _column_group_order(doc: Document) -> int:
+    """The order of the group the columns belong to (``G`` or ``G-dagger``)."""
+    order = doc["group"]["order"]
+    return 2 * order if doc["characters"]["class_group"] == "G_double" else order
+
+
+def _base_size(cls: dict[str, Any]) -> int:
+    """The size of the class of ``G`` a column covers."""
+    if "split" in cls and not cls["split"]:
+        return cls["size"] // 2
+    return cls["size"]
+
+
+def _blocks_present(doc: Document) -> tuple[bool, bool]:
+    """Whether the complete ordinary block and the complete projective block are present."""
+    which = doc.get("irreps", "all")
+    return which in ("all", "ordinary"), which in ("all", "projective")
+
+
+def _double_cayley(doc: Document) -> list[list[int]]:
+    """The Cayley table of ``G-dagger`` in its index space: from the document's own
+    table when it is that of ``G-dagger``, else from the table of ``G`` and the
+    factor system through ``s(g) s(h) = omega(g, h) s(gh)``."""
+    if _is_double(doc):
+        return _cayley(doc)
+    table, omega = _cayley(doc), _factor(doc)
+    N = len(table)
+    out = []
+    for x in range(2 * N):
+        g, bar_x = x % N, x >= N
+        row = []
+        for y in range(2 * N):
+            h, bar_y = y % N, y >= N
+            barred = bar_x != bar_y
+            if omega[g][h] == -1:
+                barred = not barred
+            row.append(table[g][h] + (N if barred else 0))
+        out.append(row)
+    return out
+
+
+# ---- IL: irrep labels ----------------------------------------------------------
+
+
+def _record_symbol(record: dict[str, Any]) -> Symbol:
+    """The symbol the structured fields of a record spell."""
+    return Symbol(
+        record["letter"],
+        record.get("subscript"),
+        record.get("suffix"),
+        record.get("component"),
+    )
+
+
+def check_il1(doc: Document) -> list[Failure]:
+    """Exactly one canonical symbol per irrep, grammar-conformant, pairwise distinct,
+    and spelled by the record's letter, subscript, suffix and component."""
+    failures = []
+    symbols = []
+    for record in _irrep_records(doc):
+        symbol = record["symbol"]
+        symbols.append(symbol)
+        if not SYMBOL.match(symbol):
+            failures.append(
+                Failure("IL-1", f"symbol '{symbol}' does not match the grammar")
+            )
+        elif _record_symbol(record).text != symbol:
+            failures.append(
+                Failure(
+                    "IL-1",
+                    f"the fields of irrep {record['index']} do not spell '{symbol}'",
+                )
+            )
+    for symbol, count in Counter(symbols).items():
+        if count > 1:
+            failures.append(Failure("IL-1", f"symbol '{symbol}' appears {count} times"))
+    return failures
+
+
+def _turn(record: dict[str, Any]) -> Fraction | None:
+    """The turn of the rotation part of a principal-axis element, or ``None``."""
+    kind = record["kind"]
+    if kind in ("identity", "inversion"):
+        return Fraction(0)
+    if record.get("axis_class") not in (None, "principal"):
+        return None
+    if kind == "reflection":
+        return Fraction(1, 2)  # sigma_h = i C2
+    if record["order"] == 2 and kind == "rotation":
+        return Fraction(1, 2)
+    turn = Fraction(record["power"], record["order"])
+    return turn if kind == "rotation" else (turn + Fraction(1, 2)) % 1
+
+
+def _named_from_document(doc: Document) -> NamedElements | None:
+    """The named elements of the irrep-labels chapter, located in the element records."""
+    group = doc["group"]
+    rotation_group = group["rotation_group"]
+    if rotation_group in ("T", "O", "I"):
+        return None
+    N = int(rotation_group[1:])
+    family, n = group["family"], group["n"]
+    items = [record for record in _items(doc) if not record.get("barred")]
+    odd_h = family in ("Cnh", "Dnh") and n % 2 == 1
+    d2 = family in ("Dn", "Dnh") and n == 2
+
+    def principal_with_turn(turn: Fraction) -> int | None:
+        candidates = [record["index"] for record in items if _turn(record) == turn % 1]
+        proper = [g for g in candidates if items[g]["parity"] == 1]
+        chosen = proper or candidates
+        return chosen[0] if chosen else None
+
+    def labelled(*labels: str) -> int | None:
+        return next((r["index"] for r in items if r["label"] in labels), None)
+
+    principal = principal_with_turn(Fraction(1, N))
+    proper_principal = principal_with_turn(Fraction(2, N)) if odd_h else principal
+    if principal is None or proper_principal is None:
+        return None
+    return NamedElements(
+        principal=principal,
+        proper_principal=proper_principal,
+        order=N,
+        proper_order=n if odd_h else N,
+        secondary=labelled("C2'(1)", "sigma_v(1)"),
+        double_prime=labelled("C2''(1)") if d2 else None,
+        inversion=next((r["index"] for r in items if r["kind"] == "inversion"), None),
+        horizontal=labelled("sigma_h") if odd_h else None,
+        d2=d2,
+    )
+
+
+def _row_on_elements(doc: Document, row: list[Value]) -> list[Value]:
+    """A character row spread over the elements of ``G`` (the lifted elements)."""
+    N = doc["group"]["order"]
+    column_of: dict[int, int] = {}
+    for column, cls in enumerate(_columns(doc)):
+        for member in cls["members"]:
+            if member < N:
+                column_of[member] = column
+    return [row[column_of[g]] for g in range(N)]
+
+
+def check_il2(doc: Document) -> list[Failure]:
+    """The symbol is a function of the character: recomputed from the character table
+    by the rules of the chapter, it is reproduced (axial families)."""
+    rows = _character_rows(doc)
+    if rows is None:
+        return _no_exact("IL-2")
+    named = _named_from_document(doc)
+    if named is None:
+        return []
+    F = _field(doc)
+    failures = []
+    for record, row in zip(_irrep_records(doc), rows, strict=True):
+        try:
+            symbol = derive_symbol(
+                F, named, _row_on_elements(doc, row), record["projective"]
+            )
+        except (ValueError, KeyError) as exc:
+            failures.append(
+                Failure(
+                    "IL-2",
+                    f"no symbol follows from the character of irrep {record['index']}: {exc}",
+                )
+            )
+            continue
+        if symbol.text != record["symbol"]:
+            failures.append(
+                Failure(
+                    "IL-2",
+                    f"irrep {record['index']} is named '{record['symbol']}' but its character gives '{symbol.text}'",
+                )
+            )
+    return failures
+
+
+def check_il3(doc: Document) -> list[Failure]:
+    """``dimension = chi(E)``; ``frobenius_schur = (1/|G|) sum omega(g, g) chi(g^2)``;
+    ``partner`` is present exactly when the indicator is ``0``, and names the
+    conjugate irrep when that row is present."""
+    rows = _character_rows(doc)
+    if rows is None:
+        return _no_exact("IL-3")
+    F = _field(doc)
+    table, omega = _base_cayley(doc), _factor(doc)
+    N = len(table)
+    records = _irrep_records(doc)
+    failures = []
+    conjugates = {tuple(F.conjugate(x) for x in row): k for k, row in enumerate(rows)}
+    for k, (record, row) in enumerate(zip(records, rows, strict=True)):
+        chi = _row_on_elements(doc, row)
+        if chi[0] != F.rational(record["dimension"]):
+            failures.append(
+                Failure(
+                    "IL-3",
+                    f"irrep {record['index']} declares dimension {record['dimension']}",
+                )
+            )
+        total = F.total(
+            F.neg(chi[table[g][g]])
+            if record["projective"] and omega[g][g] == -1
+            else chi[table[g][g]]
+            for g in range(N)
+        )
+        indicator = F.scale(total, Fraction(1, N))
+        if indicator != F.rational(record["frobenius_schur"]):
+            failures.append(
+                Failure(
+                    "IL-3",
+                    f"irrep {record['index']} declares frobenius_schur {record['frobenius_schur']}",
+                )
+            )
+        has_partner = "partner" in record
+        if has_partner != (record["frobenius_schur"] == 0):
+            failures.append(
+                Failure(
+                    "IL-3",
+                    f"irrep {record['index']} has a partner iff its indicator is 0",
+                )
+            )
+        if has_partner:
+            partner = conjugates.get(tuple(row))
+            if record["partner"] == record["index"]:
+                failures.append(
+                    Failure("IL-3", f"irrep {record['index']} is its own partner")
+                )
+            elif partner is not None and records[partner]["index"] != record["partner"]:
+                failures.append(
+                    Failure(
+                        "IL-3",
+                        f"the partner of irrep {record['index']} is not its complex conjugate",
+                    )
+                )
+    return failures
+
+
+def check_il4(doc: Document) -> list[Failure]:
+    """The rows follow the canonical irrep order and carry increasing global indices."""
+    records = _irrep_records(doc)
+    failures = []
+    keys = [_record_symbol(r).sort_key(r["projective"]) for r in records]
+    if keys != sorted(keys):
+        failures.append(Failure("IL-4", "the irreps are not in canonical irrep order"))
+    indices = [r["index"] for r in records]
+    if indices != sorted(set(indices)):
+        failures.append(Failure("IL-4", "irrep indices are not strictly increasing"))
+    return failures
+
+
+# ---- CH: characters -----------------------------------------------------------------
+
+
+def check_ch1(doc: Document) -> list[Failure]:
+    """Row orthogonality over the column group: ``sum_C |C| chi_i(C) chi_j(C)* = |group| delta_ij``."""
+    rows = _character_rows(doc)
+    if rows is None:
+        return _no_exact("CH-1")
+    F = _field(doc)
+    sizes = [cls["size"] for cls in _columns(doc)]
+    order = _column_group_order(doc)
+    records = _irrep_records(doc)
+    failures = []
+    conjugated = [[F.conjugate(x) for x in row] for row in rows]
+    for i, row in enumerate(rows):
+        for j in range(i, len(rows)):
+            inner = F.total(
+                F.scale(F.mul(x, y), size)
+                for x, y, size in zip(row, conjugated[j], sizes, strict=True)
+            )
+            expected = F.rational(order if i == j else 0)
+            if inner != expected:
+                failures.append(
+                    Failure(
+                        "CH-1",
+                        f"rows {records[i]['index']} and {records[j]['index']} are not orthogonal",
+                    )
+                )
+    return failures
+
+
+def check_ch2(doc: Document) -> list[Failure]:
+    """Column orthogonality: ``sum_i chi_i(C) chi_i(C')* = |centraliser| delta_CC'`` over the
+    complete set of irreps of the column group. When only one block of irreps is
+    present, its own contribution is checked: the ordinary block contributes
+    ``|Z_G(g)| delta_base``, the projective block ``|Z_G-dagger(C)| delta_CC' - |Z_G(g)| delta_base``."""
+    rows = _character_rows(doc)
+    if rows is None:
+        return _no_exact("CH-2")
+    F = _field(doc)
+    columns = _columns(doc)
+    order = doc["group"]["order"]
+    double = doc["characters"]["class_group"] == "G_double"
+    ordinary, projective = _blocks_present(doc)
+    failures = []
+    conjugated = [[F.conjugate(x) for x in row] for row in rows]
+    for c, cls in enumerate(columns):
+        for c2 in range(c, len(columns)):
+            other = columns[c2]
+            same_base = (
+                cls.get("base_class", c) == other.get("base_class", c2)
+                if double
+                else c == c2
+            )
+            centraliser_g = Fraction(order, _base_size(cls))
+            expected = Fraction(0)
+            if ordinary and same_base:
+                expected += centraliser_g
+            if projective:
+                if c == c2:
+                    expected += Fraction(2 * order if double else order, cls["size"])
+                if same_base:
+                    expected -= centraliser_g
+            if not double and projective and not ordinary:
+                expected = Fraction(
+                    0
+                )  # projective rows over G classes: not a class function
+            inner = F.total(
+                F.mul(row[c], conj[c2])
+                for row, conj in zip(rows, conjugated, strict=True)
+            )
+            if inner != F.rational(expected):
+                failures.append(
+                    Failure(
+                        "CH-2",
+                        f"columns {c} ('{cls['label']}') and {c2} ('{other['label']}') are not orthogonal",
+                    )
+                )
+    return failures
+
+
+def check_ch3(doc: Document) -> list[Failure]:
+    """``sum d^2 = |G|`` over each complete block of irreps; the number of ordinary
+    irreps equals the class count of ``G``."""
+    records = _irrep_records(doc)
+    order = doc["group"]["order"]
+    ordinary, projective = _blocks_present(doc)
+    failures = []
+    for present, flag, name in (
+        (ordinary, False, "ordinary"),
+        (projective, True, "projective"),
+    ):
+        if not present:
+            continue
+        total = sum(r["dimension"] ** 2 for r in records if r["projective"] is flag)
+        if total != order:
+            failures.append(
+                Failure(
+                    "CH-3", f"sum of d^2 over the {name} irreps is {total}, not {order}"
+                )
+            )
+    if ordinary:
+        columns = _columns(doc)
+        if doc["characters"]["class_group"] == "G_double":
+            class_count = len({cls["base_class"] for cls in columns})
+        else:
+            class_count = len(columns)
+        count = sum(1 for r in records if not r["projective"])
+        if count != class_count:
+            failures.append(
+                Failure(
+                    "CH-3", f"{count} ordinary irreps for {class_count} classes of G"
+                )
+            )
+    return failures
+
+
+def check_ch4(doc: Document) -> list[Failure]:
+    """Characters are class functions of ``G-dagger``: on a split pair the barred class
+    repeats an ordinary character and negates a projective one; projective
+    characters vanish on merged classes."""
+    rows = _character_rows(doc)
+    if rows is None:
+        return _no_exact("CH-4")
+    if doc["characters"]["class_group"] != "G_double":
+        return []
+    F = _field(doc)
+    columns = _columns(doc)
+    lifted_of_base = {
+        cls["base_class"]: c
+        for c, cls in enumerate(columns)
+        if not cls.get("barred", False)
+    }
+    failures = []
+    for record, row in zip(_irrep_records(doc), rows, strict=True):
+        for c, cls in enumerate(columns):
+            if not cls["split"]:
+                if record["projective"] and not F.is_zero(row[c]):
+                    failures.append(
+                        Failure(
+                            "CH-4",
+                            f"irrep {record['index']} is non-zero on the merged class '{cls['label']}'",
+                        )
+                    )
+            elif cls["barred"]:
+                lifted = row[lifted_of_base[cls["base_class"]]]
+                expected = F.neg(lifted) if record["projective"] else lifted
+                if row[c] != expected:
+                    failures.append(
+                        Failure(
+                            "CH-4",
+                            f"irrep {record['index']} on '{cls['label']}' is not the signed value of the lifted class",
+                        )
+                    )
+    return failures
+
+
+def check_ch5(doc: Document) -> list[Failure]:
+    """The Frobenius-Schur indicator is ``+-1`` iff the character is real and ``0`` iff
+    it is not; over all irreps of ``G-dagger``, ``sum nu_i d_i`` counts the
+    elements of ``G-dagger`` that square to the identity."""
+    rows = _character_rows(doc)
+    if rows is None:
+        return _no_exact("CH-5")
+    F = _field(doc)
+    records = _irrep_records(doc)
+    failures = []
+    for record, row in zip(records, rows, strict=True):
+        real = all(F.is_real(x) for x in row)
+        if real != (record["frobenius_schur"] != 0):
+            failures.append(
+                Failure(
+                    "CH-5",
+                    f"irrep {record['index']} has indicator {record['frobenius_schur']} but is {'real' if real else 'complex'}",
+                )
+            )
+    ordinary, projective = _blocks_present(doc)
+    if ordinary and projective and "cayley" in doc and "factor" in doc:
+        table, omega = _base_cayley(doc), _factor(doc)
+        involutions = 2 * sum(
+            1 for g in range(len(table)) if table[g][g] == 0 and omega[g][g] == 1
+        )
+        total = sum(r["frobenius_schur"] * r["dimension"] for r in records)
+        if total != involutions:
+            failures.append(
+                Failure(
+                    "CH-5",
+                    f"sum of nu_i d_i is {total}, G-dagger has {involutions} elements squaring to E",
+                )
+            )
+    return failures
+
+
+def check_ch6(doc: Document) -> list[Failure]:
+    """The characters are those of the Burnside class-matrix method: each row gives a
+    homomorphism of the class algebra, ``w_i(C_j) w_i(C_k) = sum_l c_jkl w_i(C_l)``
+    with ``w_i(C) = |C| chi_i(C) / d_i`` and the class multiplication constants
+    ``c_jkl`` read off the Cayley table (of ``G-dagger``, built from the table of
+    ``G`` and the factor system), and distinct rows are distinct homomorphisms."""
+    rows = _character_rows(doc)
+    if rows is None:
+        return _no_exact("CH-6")
+    F = _field(doc)
+    columns = _columns(doc)
+    double = doc["characters"]["class_group"] == "G_double"
+    table = _double_cayley(doc) if double else _base_cayley(doc)
+    members = [list(cls["members"]) for cls in columns]
+    class_of = {g: c for c, cls in enumerate(members) for g in cls}
+    n = len(columns)
+    constants: list[list[dict[int, Fraction]]] = [
+        [{} for _ in range(n)] for _ in range(n)
+    ]
+    for j in range(n):
+        for k in range(j, n):
+            counter: Counter[int] = Counter()
+            for x in members[j]:
+                row_x = table[x]
+                for y in members[k]:
+                    counter[class_of[row_x[y]]] += 1
+            constants[j][k] = {
+                l: Fraction(count, len(members[l])) for l, count in counter.items()
+            }
+    records = _irrep_records(doc)
+    failures = []
+    for record, row in zip(records, rows, strict=True):
+        d = record["dimension"]
+        central = [F.scale(x, Fraction(len(members[c]), d)) for c, x in enumerate(row)]
+        for j in range(n):
+            for k in range(j, n):
+                left = F.mul(central[j], central[k])
+                right = F.total(
+                    F.scale(central[l], c) for l, c in constants[j][k].items()
+                )
+                if left != right:
+                    failures.append(
+                        Failure(
+                            "CH-6",
+                            f"irrep {record['index']} is not a class-algebra homomorphism at classes {j}, {k}",
+                        )
+                    )
+                    break
+            else:
+                continue
+            break
+    if len({tuple(row) for row in rows}) != len(rows):
+        failures.append(Failure("CH-6", "two rows carry the same character"))
+    return failures
+
+
+# ---- VL: values -------------------------------------------------------------------------
+
+
+def _value_tables(doc: Document) -> list[tuple[str, dict[str, Any]]]:
+    """The tables that carry values: ``characters`` and every irrep of ``matrices``."""
+    out = []
+    if "characters" in doc:
+        out.append(("characters", doc["characters"]))
+    if "matrices" in doc:
+        for irrep in doc["matrices"]["irreps"]:
+            out.append((f"matrices irrep {irrep['index']}", irrep))
+    return out
+
+
+def _leaves(value: Any, depth: int) -> Iterable[Any]:
+    """The entries ``depth`` levels down in a nested array."""
+    if depth == 0:
+        yield value
+        return
+    for item in value:
+        yield from _leaves(item, depth - 1)
+
+
+def _value_depth(name: str) -> int:
+    """Nesting of one value inside a table: ``[row][column]`` for characters,
+    ``[element][row][column]`` for a matrix table."""
+    return 2 if name == "characters" else 3
+
+
+def check_vl1(doc: Document) -> list[Failure]:
+    """Every exact value has ``phi(M)`` reduced integer pairs (``q > 0``, ``gcd = 1``)."""
+    degree = doc["field"]["degree"]
+    failures = []
+    for name, table in _value_tables(doc):
+        if "exact" not in table:
+            continue
+        for value in _leaves(table["exact"], _value_depth(name)):
+            if len(value) != degree:
+                failures.append(
+                    Failure(
+                        "VL-1",
+                        f"an exact value of {name} has {len(value)} coefficients, not {degree}",
+                    )
+                )
+                break
+            if any(
+                not isinstance(p, int)
+                or not isinstance(q, int)
+                or q <= 0
+                or math.gcd(p, q) != 1
+                for p, q in value
+            ):
+                failures.append(
+                    Failure("VL-1", f"an exact value of {name} is not reduced")
+                )
+                break
+    return failures
+
+
+def check_vl2(doc: Document) -> list[Failure]:
+    """Every numeric value is the correctly rounded double of its exact value, and every
+    pretty value parses back to it."""
+    F = _field(doc)
+    failures = []
+    for name, table in _value_tables(doc):
+        if "exact" not in table:
+            continue
+        depth = _value_depth(name)
+        exact = list(_leaves(table["exact"], depth))
+        try:
+            [F.from_exact(pairs) for pairs in exact]
+        except (ValueError, TypeError):
+            continue  # VL-1 reports the malformed value
+        if "numeric" in table:
+            for pairs, approx in zip(
+                exact, _leaves(table["numeric"], depth), strict=True
+            ):
+                expected = numeric(F, F.from_exact(pairs))
+                if any(
+                    a != b or math.copysign(1.0, a) != math.copysign(1.0, b)
+                    for a, b in zip(expected, approx, strict=True)
+                ):
+                    failures.append(
+                        Failure(
+                            "VL-2",
+                            f"a numeric value of {name} is {approx}, not {expected}",
+                        )
+                    )
+                    break
+        if "pretty" in table:
+            for pairs, text in zip(exact, _leaves(table["pretty"], depth), strict=True):
+                try:
+                    parsed = parse(F, text)
+                except ValueSyntaxError as exc:
+                    failures.append(
+                        Failure(
+                            "VL-2", f"a pretty value of {name} does not parse: {exc}"
+                        )
+                    )
+                    break
+                if parsed != F.from_exact(pairs):
+                    failures.append(
+                        Failure(
+                            "VL-2",
+                            f"the pretty value '{text}' of {name} is not its exact value",
+                        )
+                    )
+                    break
+    return failures
+
+
+def check_vl3(doc: Document) -> list[Failure]:
+    """The declared conductor is minimal: no maximal proper divisor ``M / p`` of ``M``
+    contains every value of the document (checked on the matrices, which fix the
+    field, and on the characters)."""
+    F = _field(doc)
+    M = F.conductor
+    values: list[Value] = []
+    for name, table in _value_tables(doc):
+        if "exact" in table:
+            values.extend(
+                F.from_exact(pairs)
+                for pairs in _leaves(table["exact"], _value_depth(name))
+            )
+    failures = []
+    for p in range(2, M + 1):
+        if M % p or any(p % q == 0 for q in range(2, p)):
+            continue
+        smaller = cyclotomic_field(M // p)
+        if all(F.descend(x, smaller) is not None for x in values):
+            failures.append(
+                Failure(
+                    "VL-3",
+                    f"every value lies in Q(zeta_{M // p}); the conductor {M} is not minimal",
+                )
+            )
+    return failures
+
+
 # ---- registry ----------------------------------------------------------------
 
 CHECKS: dict[str, tuple[Checker, tuple[str, ...]]] = {
@@ -663,6 +1341,19 @@ CHECKS: dict[str, tuple[Checker, tuple[str, ...]]] = {
     "DG-4": (check_dg4, ("elements", "cayley")),
     "DG-5": (check_dg5, ("elements", "cayley", "factor")),
     "DG-6": (check_dg6, ("elements",)),
+    "IL-1": (check_il1, ("characters",)),
+    "IL-2": (check_il2, ("elements", "characters")),
+    "IL-3": (check_il3, ("elements", "cayley", "factor", "characters")),
+    "IL-4": (check_il4, ("characters",)),
+    "CH-1": (check_ch1, ("characters",)),
+    "CH-2": (check_ch2, ("characters",)),
+    "CH-3": (check_ch3, ("characters",)),
+    "CH-4": (check_ch4, ("characters",)),
+    "CH-5": (check_ch5, ("characters",)),
+    "CH-6": (check_ch6, ("elements", "cayley", "factor", "characters")),
+    "VL-1": (check_vl1, ("characters",)),
+    "VL-2": (check_vl2, ("characters",)),
+    "VL-3": (check_vl3, ("matrices",)),
 }
 
 

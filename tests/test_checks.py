@@ -176,3 +176,126 @@ def test_cl4_catches_a_wrong_base_class_of_the_double_group() -> None:
 def test_clean_double_models_pass_every_applicable_check() -> None:
     for symbol in ("C1", "C3v", "D6h", "Oh", "Ih"):
         assert checks.check(double_model(symbol)) == []
+
+
+# ---- IL-*, CH-* and VL-* --------------------------------------------------------
+
+
+def test_mut4_a_replaced_character_is_caught_by_ch1_and_ch2() -> None:
+    """``MUT-4``: one character replaced by another value of the field."""
+    for symbol in ("C3v", "D6h"):
+        document = corrupted(symbol)
+        table = document["characters"]
+        row, column = next(
+            (k, c)
+            for k, values in enumerate(table["exact"])
+            for c, value in enumerate(values)
+            if value != values[0]
+        )
+        table["exact"][row][column] = table["exact"][row][
+            0
+        ]  # the dimension, another value of the field
+        failures = failed(document)
+        assert {"CH-1", "CH-2"} <= failures, symbol
+
+
+def test_mut5_swapped_irrep_symbols_are_caught_by_il2() -> None:
+    """``MUT-5``: two irrep symbols swapped."""
+    document = corrupted("C3v")
+    irreps = document["characters"]["irreps"]
+    for key in ("symbol", "letter", "subscript"):
+        irreps[0][key], irreps[1][key] = irreps[1].get(key), irreps[0].get(key)
+    assert "IL-2" in failed(document)
+    document = corrupted("D3")
+    irreps = document["characters"]["irreps"]
+    irreps[4]["symbol"], irreps[5]["symbol"] = irreps[5]["symbol"], irreps[4]["symbol"]
+    irreps[4]["component"], irreps[5]["component"] = 2, 1
+    irreps[4]["partner"], irreps[5]["partner"] = 5, 4
+    assert {"IL-2", "IL-4"} <= failed(document)
+
+
+def test_il1_catches_a_bad_duplicate_or_inconsistent_symbol() -> None:
+    document = corrupted("C3v")
+    document["characters"]["irreps"][0]["symbol"] = "F1"
+    assert "IL-1" in failed(document)
+    document = corrupted("C3v")
+    document["characters"]["irreps"][0]["symbol"] = "A2"
+    assert "IL-1" in failed(document)
+    document = corrupted("C3v")
+    document["characters"]["irreps"][0]["letter"] = "B"
+    assert "IL-1" in failed(document)
+
+
+def test_il3_catches_a_wrong_dimension_indicator_or_partner() -> None:
+    document = corrupted("C3v")
+    document["characters"]["irreps"][2]["dimension"] = 1
+    assert "IL-3" in failed(document)
+    document = corrupted("C3v")
+    document["characters"]["irreps"][3]["frobenius_schur"] = 1
+    assert {"IL-3", "CH-5"} <= failed(document)
+    document = corrupted("C3v")
+    document["characters"]["irreps"][4]["partner"] = 4
+    assert "IL-3" in failed(document)
+    document = corrupted("C3v")
+    del document["characters"]["irreps"][4]["partner"]
+    del document["characters"]["irreps"][4]["component"]
+    assert "IL-3" in failed(document)
+
+
+def test_ch3_catches_a_missing_row() -> None:
+    document = corrupted("C3v")
+    table = document["characters"]
+    for key in ("irreps", "exact", "numeric", "pretty"):
+        table[key].pop()
+    assert "CH-3" in failed(document)
+
+
+def test_ch4_and_ch6_catch_a_projective_value_on_a_merged_class() -> None:
+    document = corrupted("D4")
+    table = document["characters"]
+    merged = next(c for c, cls in enumerate(table["classes"]) if not cls["split"])
+    projective = next(k for k, r in enumerate(table["irreps"]) if r["projective"])
+    table["exact"][projective][merged] = table["exact"][0][0]
+    assert {"CH-4", "CH-6"} <= failed(document)
+
+
+def test_ch4_catches_a_barred_class_that_does_not_repeat_the_lifted_one() -> None:
+    document = corrupted("C3v")
+    table = document["characters"]
+    barred = next(
+        c for c, cls in enumerate(table["classes"]) if cls["split"] and cls["barred"]
+    )
+    table["exact"][0][barred] = table["exact"][1][
+        barred
+    ]  # A1 stays 1 on ~E: swap with A2's -> still 1
+    table["exact"][2][barred] = table["exact"][0][
+        0
+    ]  # E on the barred class of E: 1 instead of 2
+    assert "CH-4" in failed(document)
+
+
+def test_vl1_and_vl2_catch_bad_value_forms() -> None:
+    document = corrupted("C3v")
+    document["characters"]["exact"][0][0] = [[2, 2], [0, 1], [0, 1], [0, 1]]
+    assert "VL-1" in failed(document)
+    document = corrupted("C3v")
+    document["characters"]["exact"][0][0] = [[1, 1], [0, 1]]
+    assert "VL-1" in failed(document)
+    document = corrupted("C3v")
+    document["characters"]["numeric"][0][0] = [1.0000000000000002, 0.0]
+    assert "VL-2" in failed(document)
+    document = corrupted("C3v")
+    document["characters"]["numeric"][0][0] = [1.0, -0.0]
+    assert "VL-2" in failed(document)
+    document = corrupted("C3v")
+    document["characters"]["pretty"][0][0] = "2"
+    assert "VL-2" in failed(document)
+    document = corrupted("C3v")
+    document["characters"]["pretty"][0][0] = "sqrt2"
+    assert "VL-2" in failed(document)
+
+
+def test_checks_report_a_characters_table_without_an_exact_form() -> None:
+    document = corrupted("C3v")
+    del document["characters"]["exact"]
+    assert {"IL-2", "CH-1"} <= failed(document)

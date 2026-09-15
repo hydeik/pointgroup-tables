@@ -11,6 +11,8 @@ from . import conventions
 from .document import (
     DEFAULT_VALUES,
     DOUBLE_GROUP_SUBCOMMANDS,
+    IRREPS_CHOICES,
+    IRREPS_SUBCOMMANDS,
     Request,
     build_document,
     parse_values,
@@ -26,6 +28,7 @@ TABLE_SUBCOMMANDS = {
     "elements": "the element list and conjugacy classes of a group",
     "cayley": "the Cayley table of a group",
     "factor": "the factor table of the spin double group of a group",
+    "characters": "the character table of the ordinary and projective irreps of a group",
 }
 LIST_SUBCOMMANDS = {
     "groups": "what the group argument accepts",
@@ -121,6 +124,13 @@ def build_parser() -> Parser:
                 action="store_true",
                 help="emit the table of the spin double group instead",
             )
+        if name in IRREPS_SUBCOMMANDS:
+            sub.add_argument(
+                "--irreps",
+                choices=list(IRREPS_CHOICES),
+                default="all",
+                help="the irreps to include (default: all)",
+            )
     lister = subparsers.add_parser(
         "list",
         help="list the accepted groups or the shipped conventions",
@@ -149,6 +159,7 @@ def _request(namespace: argparse.Namespace) -> Request:
         label_convention=namespace.label_convention,
         basis_convention=namespace.basis_convention,
         double=getattr(namespace, "double_group", False),
+        irreps=getattr(namespace, "irreps", "all"),
     )
 
 

@@ -10,7 +10,7 @@ model can produce, the input of the checkers.
 from __future__ import annotations
 
 from dataclasses import dataclass, field, replace
-from functools import cached_property
+from functools import cache, cached_property
 from importlib import metadata
 from typing import Any
 
@@ -24,10 +24,17 @@ from .classes import (
     inverses,
 )
 from .double import DoubleGroup, double_group
-from .errors import UsageError
-from .field import canonical_conductor, field_metadata
+from .errors import PointGroupTablesError, UsageError
+from .field import (
+    CyclotomicField,
+    canonical_conductor,
+    cyclotomic_field,
+    field_metadata,
+)
+from .irreps import Irrep, build_irreps, select
 from .labels import Label, canonical_labels
 from .symbols import GroupSpec, parse_group
+from .values import numeric, pretty
 
 SCHEMA_VERSION = 1
 GENERATOR_NAME = "pointgroup-tables"
@@ -48,6 +55,9 @@ TABLES_OF_SUBCOMMAND = {
 DOUBLE_GROUP_SUBCOMMANDS = ("elements", "cayley", "all")
 # the tables emitted in the index space of G-dagger under --double-group
 DOUBLE_GROUP_TABLES = ("elements", "cayley")
+# the subcommands that accept --irreps
+IRREPS_SUBCOMMANDS = ("characters", "matrices", "all")
+IRREPS_CHOICES = ("ordinary", "projective", "all")
 
 
 def tool_version() -> str:
@@ -112,6 +122,10 @@ class Model:
     def order(self) -> int:
         return self.group.order
 
+    @property
+    def field(self) -> CyclotomicField:
+        return cyclotomic_field(self.conductor)
+
     # ---- the double group ----------------------------------------------------
 
     @cached_property
@@ -140,6 +154,25 @@ class Model:
     @cached_property
     def factor(self) -> list[list[int]]:
         return self.double.factor_system()
+
+    # ---- irreps ----------------------------------------------------------------
+
+    @property
+    def has_irreps(self) -> bool:
+        """Whether the irreps of this group are built (the axial families; the
+        polyhedral families are the business of a later ticket)."""
+        return not self.group.rotation_group.polyhedral
+
+    @cached_property
+    def irreps(self) -> list[Irrep]:
+        if not self.has_irreps:
+            raise PointGroupTablesError(
+                f"the irreps of '{self.spec.symbol}' are not available in this build",
+                "the polyhedral character tables are not implemented yet",
+            )
+        return build_irreps(
+            self.group, self.double, self.field, self.table, self.factor
+        )
 
     # ---- metadata and records --------------------------------------------------
 
@@ -242,21 +275,57 @@ class Model:
         """``omega(g, h)`` over ``G``, whatever the index space of the other tables."""
         return {"group": "G", "table": [list(row) for row in self.factor]}
 
-    @staticmethod
-    def available_tables() -> tuple[str, ...]:
-        """The tables a model can produce, in table order."""
-        return ("elements", "cayley", "factor")
-
-    def tables(self, double: bool = False) -> dict[str, dict[str, Any]]:
-        """Every table this model can produce, keyed by table name."""
-        return {
-            "elements": self.elements_table(double),
-            "cayley": self.cayley_table(double),
-            "factor": self.factor_table(),
+    def characters_table(self, which: str, forms: tuple[str, ...]) -> dict[str, Any]:
+        """The character table: rows filtered by ``--irreps`` with global indices,
+        columns the classes of ``G`` (``ordinary``) or of ``G-dagger`` (otherwise),
+        one parallel array per requested value form."""
+        irreps = select(self.irreps, which)
+        double = which != "ordinary"
+        classes = self.double_classes if double else self.classes
+        F = self.field
+        rows = [
+            [irrep.character(cls.representative, self.order) for cls in classes]
+            for irrep in irreps
+        ]
+        table: dict[str, Any] = {
+            "class_group": "G_double" if double else "G",
+            "irreps": [irrep.record() for irrep in irreps],
+            "classes": self.class_records(double),
         }
+        if "exact" in forms:
+            table["exact"] = [[F.exact(x) for x in row] for row in rows]
+        if "numeric" in forms:
+            table["numeric"] = [[numeric(F, x) for x in row] for row in rows]
+        if "pretty" in forms:
+            table["pretty"] = [[pretty(F, x) for x in row] for row in rows]
+        return table
+
+    def available_tables(self) -> tuple[str, ...]:
+        """The tables this model can produce, in table order."""
+        tables = ["elements", "cayley", "factor"]
+        if self.has_irreps:
+            tables.append("characters")
+        return tuple(tables)
+
+    def build_table(self, name: str, request: Request) -> dict[str, Any]:
+        """One table under the options of a request."""
+        if name == "elements":
+            return self.elements_table(request.double)
+        if name == "cayley":
+            return self.cayley_table(request.double)
+        if name == "factor":
+            return self.factor_table()
+        if name == "characters":
+            return self.characters_table(request.irreps, request.values)
+        raise PointGroupTablesError(
+            f"the {name} table of '{self.spec.symbol}' is not available in this build"
+        )
 
 
+@cache
 def build_model(spec: GroupSpec) -> Model:
+    """The model of a group, built once per normalised symbol and shared: every
+    table method returns fresh containers, so a document never aliases the model."""
     G = point_group(spec)
     labels = canonical_labels(G)
     table = G.cayley()
@@ -292,11 +361,8 @@ def _assemble(request: Request, tables: tuple[str, ...]) -> dict[str, Any]:
     """The metadata block followed by the named tables, in serialisation order."""
     model = build_model(parse_group(request.group))
     doc = _metadata(model, request, tables)
-    available = model.tables(request.double)
     for name in tables:
-        if name not in available:
-            raise NotImplementedError(f"the {name} table is not available yet")
-        doc[name] = available[name]
+        doc[name] = model.build_table(name, request)
     return doc
 
 
@@ -309,6 +375,11 @@ def build_document(request: Request) -> dict[str, Any]:
             f"--double-group is not accepted by '{request.subcommand}'",
             f"it applies to {', '.join(DOUBLE_GROUP_SUBCOMMANDS)} only",
         )
+    if request.irreps not in IRREPS_CHOICES:
+        raise UsageError(
+            f"invalid --irreps value '{request.irreps}'",
+            f"expected one of {', '.join(IRREPS_CHOICES)}",
+        )
     return _assemble(request, TABLES_OF_SUBCOMMAND[request.subcommand])
 
 
@@ -318,5 +389,9 @@ def model_document(group: str, double: bool = False) -> dict[str, Any]:
     With ``double`` the element list and the Cayley table are those of
     ``G-dagger``; the factor table is always that of ``G``.
     """
-    available = tuple(name for name in TABLE_ORDER if name in Model.available_tables())
-    return _assemble(Request("elements", group, double=double), available)
+    model = build_model(parse_group(group))
+    request = Request("elements", group, values=VALUE_FORMS, double=double)
+    doc = _metadata(model, request, model.available_tables())
+    for name in model.available_tables():
+        doc[name] = model.build_table(name, request)
+    return doc

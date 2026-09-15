@@ -331,3 +331,56 @@ def test_double_group_help_and_usage_error(
     assert err.startswith("usage: pointgroup-tables")
     assert "pointgroup-tables: error: " in err and "'--double-group'" not in err
     assert "--double-group" in err
+
+
+# ---- characters -------------------------------------------------------------------
+
+
+def test_characters_document_and_irreps_option(
+    capsysbinary: pytest.CaptureFixture[bytes],
+) -> None:
+    code, out, err = run(capsysbinary, "characters", "D3", "--irreps", "projective")
+    assert (code, err) == (0, "")
+    document = json.loads(out)
+    assert document["tables"] == ["elements", "characters"]
+    assert document["irreps"] == "projective"
+    assert [r["index"] for r in document["characters"]["irreps"]] == [3, 4, 5]
+    assert document["characters"]["class_group"] == "G_double"
+    code, out, err = run(capsysbinary, "characters", "D3", "--irreps", "spinor")
+    assert (code, out) == (2, b"")
+    assert "--irreps" in err
+    code, out, _ = run(capsysbinary, "characters", "--help")
+    assert code == 0 and b"--irreps" in out and b"--double-group" not in out
+    code, out, err = run(capsysbinary, "characters", "D3", "--double-group")
+    assert (code, out) == (2, b"")
+
+
+def test_characters_of_a_polyhedral_group_are_not_available_yet(
+    capsysbinary: pytest.CaptureFixture[bytes],
+) -> None:
+    code, out, err = run(capsysbinary, "characters", "Oh")
+    assert (code, out) == (1, b"")
+    assert err.startswith(
+        "pointgroup-tables: error: the irreps of 'Oh' are not available"
+    )
+
+
+@pytest.mark.parametrize("fmt", ["json", "yaml", "toml"])
+def test_characters_round_trip_through_every_format(
+    capsysbinary: pytest.CaptureFixture[bytes], fmt: str
+) -> None:
+    code, out, err = run(
+        capsysbinary, "characters", "D3h", "--format", fmt, "--values", "both,pretty"
+    )
+    assert (code, err) == (0, "")
+    reference = json.loads(
+        to_json(
+            json.loads(
+                run(capsysbinary, "characters", "D3h", "--values", "both,pretty")[1]
+            )
+        )
+    )
+    loaded = {"json": json.loads, "yaml": yaml.safe_load, "toml": tomllib.loads}[fmt](
+        out.decode()
+    )
+    assert loaded == reference

@@ -9,7 +9,7 @@ import tomllib
 
 import pytest
 import yaml
-from conftest import SEED_GROUPS
+from conftest import POLYHEDRAL_GROUPS, SEED_GROUPS
 
 from pointgroup_tables.document import Request, build_document
 from pointgroup_tables.formats import EMITTERS, to_json, to_toml, to_yaml
@@ -178,8 +178,9 @@ def test_emitters_are_registered_under_the_format_names() -> None:
 
 @pytest.mark.parametrize("symbol", SEED_GROUPS)
 def test_os_elements_round_trips_through_yaml_and_toml(symbol: str) -> None:
+    subcommand = "elements" if symbol in POLYHEDRAL_GROUPS else "characters"
     document = build_document(
-        Request("elements", symbol, values=("exact", "numeric", "pretty"))
+        Request(subcommand, symbol, values=("exact", "numeric", "pretty"))
     )
     reference = json.loads(to_json(document))
     assert reference == document
