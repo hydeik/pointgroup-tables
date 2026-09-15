@@ -146,6 +146,10 @@ source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed."
 exponent_style = "plusminus"      # C3^1 -> C3+, C3^-1 -> C3-, C8^3 -> C8^3+, S10^-3 -> S10^3-
 barred_format = "~{label}"        # how the reference spells a barred element; "{label}~" for a suffix
 
+[coverage]                        # the reference's range: verified here, extrapolated beyond
+axial_max_n = 10                  # every axial family up to this n
+polyhedral = true                 # all seven polyhedral groups
+
 [secondary]                       # the reference's numbering of the secondary directions of D_Nh
 "6" = { primed = [0, 4, 8], double_primed = [3, 7, 11] }
 
@@ -208,9 +212,11 @@ with the reference without an irrep override
 ([ADR-0007](../adr/0007-abstract-element-identification.md)).
 
 **Coverage.** A group whose master `M` has no `[secondary]` entry receives
-the spelling rules only and keeps the canonical indices; the spec of each
-convention states its range. The `elements` table is unchanged either way;
-nothing in the metadata records it (see the map's fog).
+the spelling rules only and keeps the canonical indices. The convention
+file declares its range in `[coverage]` (`axial_max_n`, `polyhedral`), and
+the document metadata reports `coverage = "reference"` for a group inside
+it and `"extrapolated"` outside ([Output schema](./output-schema.md#metadata)).
+The `elements` table is unchanged either way.
 
 ### Reference section
 
@@ -292,4 +298,5 @@ complete Altmann & Herzig convention for elements. The book's `1E` / `2E`,
 `B1` / `B2` and `T1` / `T2` assignments beyond `C2v` and `C6v` are checked
 by `REF-5` once the character tables are transcribed
 ([Transcribe Altmann & Herzig character tables and sample axial irrep matrices](https://github.com/hydeik/pointgroup-tables/issues/19)).
-Bradley & Cracknell and Bilbao conventions are not yet specified.
+Bradley & Cracknell and Bilbao conventions are later versions
+([Command line](./cli.md#not-in-version-1)).

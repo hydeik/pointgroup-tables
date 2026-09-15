@@ -104,7 +104,8 @@
       "required": ["name"],
       "properties": {
         "name": { "type": "string", "minLength": 1 },
-        "source": { "type": "string" }
+        "source": { "type": "string" },
+        "coverage": { "enum": ["reference", "extrapolated"] }
       }
     },
     "exactValue": {

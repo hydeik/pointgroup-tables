@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: accepted (amended by ADR-0009: the exact arithmetic is the tool's own, not SymPy's)
 ---
 
 # All computation is exact; floating-point values are emitted, never computed with

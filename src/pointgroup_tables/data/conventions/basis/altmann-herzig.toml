@@ -13,6 +13,13 @@
 name = "altmann-herzig"
 source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
 
+# The book's range (docs/spec/output-schema.md, coverage): the axial rule and the
+# polyhedral data are verified against the print up to n = 10; beyond, the rule
+# extrapolates.
+[coverage]
+axial_max_n = 10
+polyhedral = true
+
 [axial]
 rule = "spin-harmonic"
 anchors = "altmann-herzig"

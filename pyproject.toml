@@ -1,12 +1,12 @@
 [project]
 name = "pointgroup-tables"
 version = "0.1.0"
-description = "Add your description here"
+description = "Exact character tables, irrep matrices and double-group tables of the finite point groups"
 readme = "README.md"
 authors = [
     { name = "Hidekazu Ikeno", email = "hide.ikeno@gmail.com" }
 ]
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 dependencies = []
 
 [project.scripts]

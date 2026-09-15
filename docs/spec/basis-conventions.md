@@ -191,15 +191,22 @@ serves all three.
 
 A reference basis convention is one TOML file per reference work, shipped
 with the package, in a namespace separate from the label conventions (the
-same reference gets the same `name` in both). It declares its coverage: a
-rule for the axial families and per-`R†` data for the polyhedral families.
-A group the convention does not cover is an error with exit code 4
+same reference gets the same `name` in both). It declares what it covers
+(a rule for the axial families and per-`R†` data for the polyhedral
+families) and, in `[coverage]`, the range the reference prints, which the
+document metadata reports as `coverage = "reference"` or `"extrapolated"`
+([Output schema](./output-schema.md#metadata)).
+A group the convention does not cover at all is an error with exit code 4
 ([Command line](./cli.md#exit-codes-and-errors)); the tool never falls back
 to the canonical basis silently.
 
 ```toml
 name = "altmann-herzig"
 source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed."
+
+[coverage]                            # the reference's range: verified here, extrapolated beyond
+axial_max_n = 10
+polyhedral = true
 
 [axial]
 rule = "spin-harmonic"                # "canonical", "transform" or "spin-harmonic"
@@ -341,8 +348,9 @@ Consequences:
   points of the extrapolation the book cannot confirm: the sign of
   `E_{N/4}` for `N = 24, 28, …` (the book shows only `N = 4, 8, 12, 16, 20`)
   and the chain for an `N` with two distinct odd prime factors (`15`, `21`,
-  …; the book's largest odd part is `9`). Whether the metadata should say
-  so is the map's open question on convention coverage.
+  …; the book's largest odd part is `9`). The document metadata says so:
+  `coverage = "extrapolated"` for every axial group with `n > 10`
+  ([Output schema](./output-schema.md#metadata)).
 - The rule is the only place where a basis convention depends on a label
   convention. The file names it in `anchors`; the tool applies that
   convention's anchoring to `b` even when another label convention, or

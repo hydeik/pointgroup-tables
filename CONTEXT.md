@@ -201,6 +201,14 @@ against every symmetrized basis the reference prints (`n ≤ 10`).
 _Avoid_: harmonic basis (ambiguous with the canonical basis), Wigner
 convention, book basis
 
+**Coverage**:
+Whether a reference convention's output for a group is verified against the
+reference's printed tables (`reference`) or produced by the convention's
+rules beyond what the reference prints (`extrapolated`). A property of a
+group under one convention, reported in the document, never a silent
+fallback: an uncovered group is an error, an extrapolated one is labelled.
+_Avoid_: supported, validated, in range
+
 **Canonical basis**:
 The convention-free basis of every irrep, used by default: the principal
 element is diagonal with its eigenvalue exponents descending, the remaining

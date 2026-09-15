@@ -54,7 +54,7 @@ prototype). The `C3v` documents are checked in under `prototypes/samples/`.
   "values": ["exact", "numeric"],
   "field": { "kind": "cyclotomic", "conductor": 12, "degree": 4,
              "generator": "exp(2*pi*i/12)", "basis": "power" },
-  "label_convention": { "name": "altmann-herzig", "source": "..." },
+  "label_convention": { "name": "altmann-herzig", "source": "...", "coverage": "reference" },
   "basis_convention": { "name": "canonical" },
   "elements":   { ... },
   "cayley":     { ... },
@@ -79,8 +79,20 @@ wrapper: `tables` tells a reader which top-level keys are tables.
 | `irreps` | the `--irreps` value | when `characters` or `matrices` is present |
 | `values` | the value forms present, in the order `exact`, `numeric`, `pretty` | always |
 | `field` | the document field ([Values](./values.md#the-field-of-a-document)) | always |
-| `label_convention` | `{ name, source }` | when `--label-convention` selected |
-| `basis_convention` | `{ name, source }`; `{ name = "canonical" }` by default | always |
+| `label_convention` | `{ name, source, coverage }` | when `--label-convention` selected |
+| `basis_convention` | `{ name, source, coverage }` for a reference convention; `{ name = "canonical" }` by default | always |
+
+**Coverage.** `coverage` is `"reference"` when every table of the document's
+group that the convention touches (reference labels, or the basis) is
+verified against the reference's printed tables, and `"extrapolated"` when
+the convention's rules are applied beyond what the reference prints. The
+convention file declares its range (`[coverage]` in
+[Label conventions](./label-conventions.md#label-conventions-reference-labels)
+and [Basis conventions](./basis-conventions.md#reference-basis-conventions):
+`axial_max_n`, `polyhedral`), and the tool compares the group with it; for
+`altmann-herzig` every axial group with `n ≤ 10` and every polyhedral group
+is `"reference"`. The canonical labelling and the canonical basis have no
+reference to be verified against, so the key is absent for them.
 
 ## Index spaces
 

@@ -3,7 +3,8 @@
 Decided in wayfinder ticket
 [Serialization of exact cyclotomic values and their numeric approximations](https://github.com/hydeik/pointgroup-tables/issues/6).
 Implements ADR-0002: every number in every table is exact, and floating
-point is only an emitted approximation.
+point is only an emitted approximation. The arithmetic is the tool's own
+([ADR-0009](../adr/0009-no-runtime-dependencies.md)): no SymPy, no mpmath.
 
 ## The field of a document
 
@@ -52,17 +53,29 @@ and a Python consumer rebuilds it as `sum(Fraction(p, q) * zeta**i)`.
 
 A numeric value is always a pair of doubles `[re, im]`, including for real
 values (`[x, 0.0]`). It is obtained by evaluating the exact value with at
-least 30 significant digits (mpmath) and rounding once to double precision,
-so it is the correctly rounded approximation. It is printed with the shortest
-representation that round-trips (Python `repr(float)`, at most 17 significant
-digits); negative zero is printed as `0.0`.
+least 30 significant digits and rounding once to double precision, so it is
+the correctly rounded approximation. The evaluation uses the standard
+library's `decimal` at 40 significant digits: `cos(2πj/M)` and
+`sin(2πj/M)` from their Taylor series (with `π` to the same precision), the
+rational coefficients exactly, the sum in `decimal`, and one final
+conversion of each part to `float` (round half to even). It is printed with
+the shortest representation that round-trips (Python `repr(float)`, at
+most 17 significant digits); negative zero is printed as `0.0`. The test
+suite compares the values with an independent high-precision evaluation
+(mpmath as a development dependency) on every group of the `seed` set.
 
 ## Pretty form (optional)
 
-A pretty value is a simplified SymPy-style string such as `"-1 - zeta"` or
-`"(1 + sqrt(5))/4"`, with `zeta` meaning `ζ_M`. Simplified forms are not
-unique, so the pretty form is for human readers only and must not be used for
-comparison or reconstruction. It is emitted only on request.
+A pretty value is a string in the value grammar of
+[Basis conventions](./basis-conventions.md#value-grammar), such as
+`"-1 - zeta"`, `"zeta^7"`, `"(1 + sqrt5)/4"` or `"-1/2*i*sqrt3"`, with
+`zeta` meaning `ζ_M`; the tool writes the shortest of a rational,
+`r*zeta^k`, `r*sqrtN*zeta^k` and `re + i*im` with `re`, `im` rational
+combinations of `1`, `sqrt2`, `sqrt3`, `sqrt5` and their products, as the
+reference transcriptions do. The grammar parses exactly, but the spelling
+of a value is not unique, so the pretty form is for human readers only and
+must not be used for comparison or reconstruction. It is emitted only on
+request.
 
 ## Layout in tables
 

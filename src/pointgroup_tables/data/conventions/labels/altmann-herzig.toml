@@ -7,6 +7,13 @@ source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien:
 exponent_style = "plusminus"
 barred_format = "~{label}"
 
+# The book's range (docs/spec/output-schema.md, coverage): every axial family up to
+# n = 10 and all seven polyhedral groups are verified against the print; beyond,
+# the rules extrapolate.
+[coverage]
+axial_max_n = 10
+polyhedral = true
+
 # The book's numbering of the secondary directions of the master group D_Nh:
 # poles of C2'1, C2'2, ... and of C2''1, C2''2, ... in units of 180/N degrees.
 [secondary]

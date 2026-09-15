@@ -130,11 +130,55 @@ document carries:
 | `irreps` | the `--irreps` value; present only when the document holds a character or matrix table |
 | `values` | the set of value forms present, as requested by `--values` |
 | `field` | the document field ([Values](./values.md#the-field-of-a-document)), fixed by group and basis convention |
-| `label_convention` | `{ name, source }`; present only when one is selected |
-| `basis_convention` | `{ name, source }`; `{ name = "canonical" }` by default |
+| `label_convention` | `{ name, source, coverage }`; present only when one is selected |
+| `basis_convention` | `{ name, source, coverage }` for a reference convention; `{ name = "canonical" }` by default |
 
 The exact placement of these keys, and the layout of every table, are fixed
 in [Output schema](./output-schema.md).
+
+## Size, dependencies and distribution
+
+Decided in
+[Close the map: which of the remaining fog must be decided before implementation](https://github.com/hydeik/pointgroup-tables/issues/23).
+
+- **No cap on `n`.** Tables grow as `n²` (`all Ih` without matrices is about
+  420 KB, `matrices Ih` 5–6 MB); a document is built whole in memory and
+  written once. Version 1 sets no performance target and offers no
+  streaming output; both can be added later without changing the documents.
+- **No runtime dependencies.** The exact arithmetic (cyclotomic fields,
+  linear algebra, the value grammar) is the tool's own code
+  ([ADR-0009](../adr/0009-no-runtime-dependencies.md)); numeric
+  approximations use the standard library's `decimal`
+  ([Values](./values.md#numeric-form)). SymPy is not required; it may be
+  added as a dependency later if a feature needs it.
+- **Python 3.13 or later**, published on PyPI as `pointgroup-tables`;
+  `uv tool install pointgroup-tables` (or `pipx install`) installs the
+  `pointgroup-tables` command. The package ships the convention data under
+  `pointgroup_tables/data/`; the reference transcriptions under
+  `tests/reference/` are not shipped.
+- **Conventions are versioned with the tool.** A shipped label or basis
+  convention has no version of its own: a change to one (a corrected
+  transcription, a new rule) is a tool release, noted in the release notes,
+  and a document is reproducible from `generator.version` alone. A reader
+  who needs to know whether a group's reference labels or basis were
+  verified against the reference or extrapolated by its rules reads the
+  `coverage` field of the convention metadata
+  ([Output schema](./output-schema.md#metadata)).
+
+## Not in version 1
+
+Later versions may add, without changing the documents of version 1 (a
+new option adds keys, never renames or reorders existing ones):
+
+- selecting individual irreps on the command line, by canonical Mulliken
+  symbol or by index (version 1 has `--irreps ordinary|projective|all`;
+  irrep indices are global, so a consumer can select after the fact);
+- label and basis conventions for Bradley & Cracknell and for the Bilbao
+  Crystallographic Server (the convention framework accepts them; their
+  rules, overrides and matrices are not written, and the facts a Bilbao
+  convention must state are recorded in the map);
+- a Unicode display form of labels (`σ_v`, `′`, superscripts) next to the
+  ASCII canonical label (display is the consumer's concern in version 1).
 
 ## Utility subcommands
 
