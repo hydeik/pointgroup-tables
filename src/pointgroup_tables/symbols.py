@@ -16,31 +16,42 @@ GRAMMAR = re.compile(r"^([A-Za-z]+)(0|[1-9][0-9]*)?([A-Za-z]*)$")
 AXIAL_FAMILIES = ("Cn", "Cnv", "Cnh", "S2n", "Dn", "Dnh", "Dnd")
 POLYHEDRAL_FAMILIES = ("T", "Td", "Th", "O", "Oh", "I", "Ih")
 
-# family key (lower case) -> family name; axial keys take n, polyhedral keys forbid it
-_AXIAL_KEYS = {
-    "c": "Cn",
-    "cv": "Cnv",
-    "ch": "Cnh",
-    "s": "S2n",
-    "d": "Dn",
-    "dh": "Dnh",
-    "dd": "Dnd",
+# family key (the letters around n, canonical spelling) -> family name;
+# axial keys take n, polyhedral keys forbid it
+AXIAL_KEYS = {
+    "C": "Cn",
+    "Cv": "Cnv",
+    "Ch": "Cnh",
+    "S": "S2n",
+    "D": "Dn",
+    "Dh": "Dnh",
+    "Dd": "Dnd",
 }
+_AXIAL_KEYS = {key.lower(): family for key, family in AXIAL_KEYS.items()}
 _POLYHEDRAL_KEYS: dict[str, str] = {
     family.lower(): family for family in POLYHEDRAL_FAMILIES
 }
-# alias key (lower case) -> normalised symbol
-_ALIAS_KEYS = {"cs": "C1h", "ci": "S2", "v": "D2", "vh": "D2h", "vd": "D2d"}
-# degenerate axial symbols that name another group
-_AXIAL_ALIASES = {"C1v": "C1h", "D1": "C2", "D1h": "C2v", "D1d": "C2h"}
-
+# the alias table of docs/spec/abstract-groups.md, in its order
 ALIASES = {
     "Cs": "C1h",
     "Ci": "S2",
+    "C1v": "C1h",
+    "D1": "C2",
+    "D1h": "C2v",
+    "D1d": "C2h",
     "V": "D2",
     "Vh": "D2h",
     "Vd": "D2d",
-    **_AXIAL_ALIASES,
+}
+# the degenerate axial symbols among them (they carry an n) name another group
+_AXIAL_ALIASES = {
+    alias: symbol for alias, symbol in ALIASES.items() if alias[1:2].isdigit()
+}
+# the others (lower case) are matched as family keys without n
+_ALIAS_KEYS = {
+    alias.lower(): symbol
+    for alias, symbol in ALIASES.items()
+    if alias not in _AXIAL_ALIASES
 }
 
 
@@ -56,6 +67,17 @@ class GroupSpec:
     @property
     def polyhedral(self) -> bool:
         return self.n is None
+
+    @property
+    def family_n(self) -> int:
+        """The ``n`` of the family name: the subscript, or half of it for ``S2n``."""
+        assert self.n is not None
+        return self.n // 2 if self.family == "S2n" else self.n
+
+
+def subscript(family: str, n: int) -> int:
+    """The subscript of the symbol of an axial family at its ``n``: ``2n`` for ``S2n``."""
+    return 2 * n if family == "S2n" else n
 
 
 def axial_symbol(family: str, n: int) -> str:

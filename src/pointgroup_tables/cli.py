@@ -17,11 +17,16 @@ from .document import (
 )
 from .errors import PointGroupTablesError, UsageError
 from .formats import EMITTERS
+from .listing import conventions_document, groups_document, shipped_schema
 from .symbols import parse_group
 
 PROG = "pointgroup-tables"
 TABLE_SUBCOMMANDS = {
     "elements": "the element list and conjugacy classes of a group",
+}
+LIST_SUBCOMMANDS = {
+    "groups": "what the group argument accepts",
+    "conventions": "the shipped label and basis conventions",
 }
 
 
@@ -49,14 +54,16 @@ def _values_argument(text: str) -> tuple[str, ...]:
         raise argparse.ArgumentTypeError(exc.message) from None
 
 
-def _add_common_options(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument(
-        "-f",
-        "--format",
-        choices=sorted(EMITTERS),
-        default="json",
-        help="output format (default: json)",
-    )
+def _add_output_options(parser: argparse.ArgumentParser, formats: bool) -> None:
+    """``-f`` (unless ``formats`` is off: ``schema`` is always JSON) and ``-o``."""
+    if formats:
+        parser.add_argument(
+            "-f",
+            "--format",
+            choices=list(EMITTERS),
+            default="json",
+            help="output format (default: json)",
+        )
     parser.add_argument(
         "-o",
         "--output",
@@ -64,6 +71,10 @@ def _add_common_options(parser: argparse.ArgumentParser) -> None:
         default="-",
         help="output file; '-' is standard output",
     )
+
+
+def _add_common_options(parser: argparse.ArgumentParser) -> None:
+    _add_output_options(parser, formats=True)
     parser.add_argument(
         "--values",
         metavar="<set>",
@@ -101,6 +112,23 @@ def build_parser() -> Parser:
             help="a Schoenflies symbol",
         )
         _add_common_options(sub)
+    lister = subparsers.add_parser(
+        "list",
+        help="list the accepted groups or the shipped conventions",
+        description="List what the group argument or the convention options accept.",
+    )
+    listings = lister.add_subparsers(dest="listing", metavar="<what>", required=True)
+    for name, help_text in LIST_SUBCOMMANDS.items():
+        sub = listings.add_parser(
+            name, help=help_text, description=f"List {help_text}."
+        )
+        _add_output_options(sub, formats=True)
+    schema = subparsers.add_parser(
+        "schema",
+        help="the JSON Schema of the table documents",
+        description="Print the JSON Schema of the table documents (always JSON).",
+    )
+    _add_output_options(schema, formats=False)
     return parser
 
 
@@ -130,6 +158,21 @@ def _write(data: bytes, output: str) -> None:
             handle.write(data)
 
 
+def _render(namespace: argparse.Namespace) -> bytes:
+    """The bytes of the invocation's document: nothing is written before this returns."""
+    if namespace.subcommand == "schema":
+        return shipped_schema()
+    if namespace.subcommand == "list":
+        document = (
+            groups_document()
+            if namespace.listing == "groups"
+            else conventions_document()
+        )
+    else:
+        document = build_document(_request(namespace))
+    return EMITTERS[namespace.format](document).encode("ascii")
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     """Run the tool on ``argv`` (default: ``sys.argv[1:]``) and return the exit code."""
     parser = build_parser()
@@ -140,10 +183,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     except PointGroupTablesError as error:  # exit codes 3 and 5 from the group argument
         return _report(error)
     try:
-        document = build_document(_request(namespace))
+        data = _render(namespace)
     except PointGroupTablesError as error:
         return _report(error)
-    data = EMITTERS[namespace.format](document).encode("ascii")
     try:
         _write(data, namespace.output)
     except OSError as exc:

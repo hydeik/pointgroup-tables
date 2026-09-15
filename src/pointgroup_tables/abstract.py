@@ -79,54 +79,112 @@ def _no_flip(r: tuple[int, int]) -> bool:
     return r[1] == 0
 
 
-def _cnh(spec: GroupSpec, n: int) -> PointGroup:
-    if n % 2 == 0:
-        return _centro(spec, rotation.cyclic(n))
-    return _twisted(spec, rotation.cyclic(2 * n), _even_k)
+@dataclass(frozen=True)
+class FamilyRule:
+    """One row of the family table: for ``n`` of the given parity (``any``, ``even``
+    or ``odd``), the group type and the rotation group ``R``, which is cyclic or
+    dihedral of axis order ``n`` or, when ``doubled``, ``2n``. For ``S2n`` the
+    ``n`` is that of the family name, half the subscript."""
+
+    parity: str
+    type: str
+    kind: str  # "cyclic" or "dihedral"
+    doubled: bool = False
+
+    @property
+    def rotation_group(self) -> str:
+        """The name of ``R`` as the family table spells it: ``Cn``, ``C2n``, ``Dn``, ``D2n``."""
+        return f"{'C' if self.kind == 'cyclic' else 'D'}{'2' if self.doubled else ''}n"
+
+    def build(self, n: int) -> rotation.RotationGroup:
+        order = 2 * n if self.doubled else n
+        return (
+            rotation.cyclic(order)
+            if self.kind == "cyclic"
+            else rotation.dihedral(order)
+        )
 
 
-def _s2n(spec: GroupSpec, n: int) -> PointGroup:
-    """``S2n`` with subscript ``n``: ``R = C_{n/2}`` for odd ``n/2``, else ``C_n`` twisted."""
-    if (n // 2) % 2:
-        return _centro(spec, rotation.cyclic(n // 2))
-    return _twisted(spec, rotation.cyclic(n), _even_k)
-
-
-def _dnh(spec: GroupSpec, n: int) -> PointGroup:
-    if n % 2 == 0:
-        return _centro(spec, rotation.dihedral(n))
-    return _twisted(spec, rotation.dihedral(2 * n), _even_k)
-
-
-def _dnd(spec: GroupSpec, n: int) -> PointGroup:
-    if n % 2:
-        return _centro(spec, rotation.dihedral(n))
-    return _twisted(spec, rotation.dihedral(2 * n), _even_k)
+@dataclass(frozen=True)
+class PolyhedralRule:
+    type: str
+    rotation_group: str
 
 
 # the family table of docs/spec/abstract-groups.md
-AXIAL_FAMILY_TABLE: dict[str, Callable[[GroupSpec, int], PointGroup]] = {
-    "Cn": lambda spec, n: _proper(spec, rotation.cyclic(n)),
-    "Cnv": lambda spec, n: _twisted(spec, rotation.dihedral(n), _no_flip),
-    "Cnh": _cnh,
-    "S2n": _s2n,
-    "Dn": lambda spec, n: _proper(spec, rotation.dihedral(n)),
-    "Dnh": _dnh,
-    "Dnd": _dnd,
+AXIAL_FAMILY_TABLE: dict[str, tuple[FamilyRule, ...]] = {
+    "Cn": (FamilyRule("any", PROPER, "cyclic"),),
+    "Cnv": (FamilyRule("any", TWISTED, "dihedral"),),
+    "Cnh": (
+        FamilyRule("even", CENTRO, "cyclic"),
+        FamilyRule("odd", TWISTED, "cyclic", doubled=True),
+    ),
+    "S2n": (
+        FamilyRule("odd", CENTRO, "cyclic"),
+        FamilyRule("even", TWISTED, "cyclic", doubled=True),
+    ),
+    "Dn": (FamilyRule("any", PROPER, "dihedral"),),
+    "Dnh": (
+        FamilyRule("even", CENTRO, "dihedral"),
+        FamilyRule("odd", TWISTED, "dihedral", doubled=True),
+    ),
+    "Dnd": (
+        FamilyRule("odd", CENTRO, "dihedral"),
+        FamilyRule("even", TWISTED, "dihedral", doubled=True),
+    ),
 }
-POLYHEDRAL_FAMILY_TABLE: dict[str, Callable[[GroupSpec], PointGroup]] = {
-    "T": lambda spec: _proper(spec, rotation.polyhedral("T")),
-    "Td": lambda spec: _twisted(spec, rotation.polyhedral("O"), rotation.perm_even),
-    "Th": lambda spec: _centro(spec, rotation.polyhedral("T")),
-    "O": lambda spec: _proper(spec, rotation.polyhedral("O")),
-    "Oh": lambda spec: _centro(spec, rotation.polyhedral("O")),
-    "I": lambda spec: _proper(spec, rotation.polyhedral("I")),
-    "Ih": lambda spec: _centro(spec, rotation.polyhedral("I")),
+POLYHEDRAL_FAMILY_TABLE: dict[str, PolyhedralRule] = {
+    "T": PolyhedralRule(PROPER, "T"),
+    "Td": PolyhedralRule(TWISTED, "O"),
+    "Th": PolyhedralRule(CENTRO, "T"),
+    "O": PolyhedralRule(PROPER, "O"),
+    "Oh": PolyhedralRule(CENTRO, "O"),
+    "I": PolyhedralRule(PROPER, "I"),
+    "Ih": PolyhedralRule(CENTRO, "I"),
 }
+
+
+def family_rule(family: str, n: int) -> FamilyRule:
+    """The row of the family table that applies to ``n`` (the half subscript for ``S2n``)."""
+    parity = "even" if n % 2 == 0 else "odd"
+    for rule in AXIAL_FAMILY_TABLE[family]:
+        if rule.parity in ("any", parity):
+            return rule
+    raise KeyError(family)  # pragma: no cover - every family covers both parities
+
+
+def _build(
+    spec: GroupSpec,
+    group_type: str,
+    R: rotation.RotationGroup,
+    in_h: Callable[[Any], bool],
+) -> PointGroup:
+    """``G`` of the given type over ``R``; ``in_h`` is the index-2 subgroup of a twisted group."""
+    if group_type == PROPER:
+        return _proper(spec, R)
+    if group_type == CENTRO:
+        return _centro(spec, R)
+    return _twisted(spec, R, in_h)
+
+
+def _axial(spec: GroupSpec) -> PointGroup:
+    """Build an axial group from its family rule. A twisted group's ``H`` is
+    ``{k even}`` in a doubled ``R`` and ``{(k, 0)} = Cn`` in ``Dn`` (the ``Cnv`` case)."""
+    n = spec.family_n
+    rule = family_rule(spec.family, n)
+    return _build(spec, rule.type, rule.build(n), _even_k if rule.doubled else _no_flip)
+
+
+def _polyhedral(spec: GroupSpec) -> PointGroup:
+    rule = POLYHEDRAL_FAMILY_TABLE[spec.family]
+    # Td is the only twisted polyhedral group: H = the even permutations = T
+    return _build(
+        spec, rule.type, rotation.polyhedral(rule.rotation_group), rotation.perm_even
+    )
 
 
 def point_group(spec: GroupSpec) -> PointGroup:
     """Build the abstract group of a parsed symbol by the family table."""
     if spec.n is None:
-        return POLYHEDRAL_FAMILY_TABLE[spec.family](spec)
-    return AXIAL_FAMILY_TABLE[spec.family](spec, spec.n)
+        return _polyhedral(spec)
+    return _axial(spec)
