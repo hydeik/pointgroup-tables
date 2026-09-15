@@ -1,0 +1,294 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pointgroup-tables:schema:1",
+  "title": "pointgroup-tables table document",
+  "description": "One document of the pointgroup-tables CLI: the tables for one point group under one set of options. See docs/spec/output-schema.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generator",
+    "group",
+    "tables",
+    "double",
+    "values",
+    "field",
+    "basis_convention",
+    "elements"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "generator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "const": "pointgroup-tables" },
+        "version": { "type": "string" }
+      }
+    },
+    "group": { "$ref": "#/$defs/group" },
+    "tables": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["elements", "cayley", "factor", "characters", "matrices"] }
+    },
+    "double": { "type": "boolean" },
+    "irreps": { "enum": ["ordinary", "projective", "all"] },
+    "values": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["exact", "numeric", "pretty"] }
+    },
+    "field": { "$ref": "#/$defs/field" },
+    "label_convention": { "$ref": "#/$defs/convention" },
+    "basis_convention": { "$ref": "#/$defs/convention" },
+    "elements": { "$ref": "#/$defs/elementsTable" },
+    "cayley": { "$ref": "#/$defs/cayleyTable" },
+    "factor": { "$ref": "#/$defs/factorTable" },
+    "characters": { "$ref": "#/$defs/charactersTable" },
+    "matrices": { "$ref": "#/$defs/matricesTable" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "tables": { "contains": { "const": "cayley" } } } },
+      "then": { "required": ["cayley"] }
+    },
+    {
+      "if": { "properties": { "tables": { "contains": { "const": "factor" } } } },
+      "then": { "required": ["factor"] }
+    },
+    {
+      "if": { "properties": { "tables": { "contains": { "const": "characters" } } } },
+      "then": { "required": ["characters", "irreps"] }
+    },
+    {
+      "if": { "properties": { "tables": { "contains": { "const": "matrices" } } } },
+      "then": { "required": ["matrices", "irreps"] }
+    }
+  ],
+  "$defs": {
+    "index": { "type": "integer", "minimum": 0 },
+    "sign": { "enum": [1, -1] },
+    "group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["symbol", "input_symbol", "family", "order", "type", "rotation_group"],
+      "properties": {
+        "symbol": { "type": "string", "pattern": "^(C[1-9][0-9]*[vh]?|S([2468]|[1-9][0-9]*[02468])|D[1-9][0-9]*[hd]?|T[dh]?|Oh?|Ih?)$" },
+        "input_symbol": { "type": "string" },
+        "family": { "enum": ["Cn", "Cnv", "Cnh", "S2n", "Dn", "Dnh", "Dnd", "T", "Td", "Th", "O", "Oh", "I", "Ih"] },
+        "n": { "type": "integer", "minimum": 1 },
+        "order": { "type": "integer", "minimum": 1 },
+        "type": { "enum": ["proper", "centro", "twisted"] },
+        "rotation_group": { "type": "string", "pattern": "^([CD][1-9][0-9]*|T|O|I)$" }
+      }
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "conductor", "degree", "generator", "basis"],
+      "properties": {
+        "kind": { "const": "cyclotomic" },
+        "conductor": { "type": "integer", "minimum": 1 },
+        "degree": { "type": "integer", "minimum": 1 },
+        "generator": { "type": "string", "pattern": "^exp\\(2\\*pi\\*i/[1-9][0-9]*\\)$" },
+        "basis": { "const": "power" }
+      }
+    },
+    "convention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "source": { "type": "string" },
+        "coverage": { "enum": ["reference", "extrapolated"] }
+      }
+    },
+    "exactValue": {
+      "description": "Coefficient vector over the power basis of the document field: phi(M) pairs [numerator, denominator].",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "array",
+        "prefixItems": [{ "type": "integer" }, { "type": "integer", "minimum": 1 }],
+        "items": false,
+        "minItems": 2
+      }
+    },
+    "numericValue": {
+      "description": "Correctly rounded double-precision approximation [re, im].",
+      "type": "array",
+      "prefixItems": [{ "type": "number" }, { "type": "number" }],
+      "items": false,
+      "minItems": 2
+    },
+    "prettyValue": { "type": "string" },
+    "exactMatrix": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/exactValue" } }
+    },
+    "numericMatrix": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/numericValue" } }
+    },
+    "prettyMatrix": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/prettyValue" } }
+    },
+    "elementLabel": {
+      "type": "string",
+      "pattern": "^~?(E|i|C2|C2\\([1-9][0-9]*\\)|C2''?\\([1-9][0-9]*\\)|C[1-9][0-9]*\\^-?[1-9][0-9]*(\\([1-9][0-9]*\\))?|S[1-9][0-9]*\\^-?[1-9][0-9]*(\\([1-9][0-9]*\\))?|sigma_h(\\([1-9][0-9]*\\))?|sigma_[vd]\\([1-9][0-9]*\\)|sigma\\([1-9][0-9]*\\))$"
+    },
+    "classLabel": {
+      "type": "string",
+      "pattern": "^(\\d*~?(E|i|C2''?|[CS]\\d+(\\^-?\\d+)?|sigma(_[hvd])?))(\\+\\d*~(E|i|C2''?|[CS]\\d+(\\^-?\\d+)?|sigma(_[hvd])?))?$"
+    },
+    "irrepSymbol": {
+      "type": "string",
+      "pattern": "^[12]?[ABETGHI](\\d+|\\d*[13579]/2)?(g|u|'|'')?$"
+    },
+    "elementRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "label", "parity", "kind", "order", "inverse", "class"],
+      "properties": {
+        "index": { "$ref": "#/$defs/index" },
+        "label": { "$ref": "#/$defs/elementLabel" },
+        "reference_label": { "type": "string" },
+        "parity": { "$ref": "#/$defs/sign" },
+        "kind": { "enum": ["identity", "rotation", "inversion", "reflection", "rotoreflection"] },
+        "order": { "type": "integer", "minimum": 1 },
+        "power": { "type": "integer" },
+        "axis_class": { "enum": ["principal", "secondary", "secondary_double_prime", "polyhedral"] },
+        "axis_index": { "type": "integer", "minimum": 1 },
+        "inverse": { "$ref": "#/$defs/index" },
+        "class": { "$ref": "#/$defs/index" },
+        "barred": { "type": "boolean" },
+        "base_index": { "$ref": "#/$defs/index" }
+      },
+      "dependentRequired": { "barred": ["base_index"], "base_index": ["barred"] }
+    },
+    "classRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "label", "size", "representative", "members", "inverse"],
+      "properties": {
+        "index": { "$ref": "#/$defs/index" },
+        "label": { "$ref": "#/$defs/classLabel" },
+        "reference_label": { "type": "string" },
+        "size": { "type": "integer", "minimum": 1 },
+        "representative": { "$ref": "#/$defs/index" },
+        "members": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/index" } },
+        "inverse": { "$ref": "#/$defs/index" },
+        "regular": { "type": "boolean" },
+        "base_class": { "$ref": "#/$defs/index" },
+        "split": { "type": "boolean" },
+        "barred": { "type": "boolean" }
+      },
+      "dependentRequired": { "base_class": ["split"], "split": ["base_class"], "barred": ["split"] }
+    },
+    "irrepRecord": {
+      "type": "object",
+      "required": ["index", "symbol", "dimension", "projective", "letter", "frobenius_schur"],
+      "properties": {
+        "index": { "$ref": "#/$defs/index" },
+        "symbol": { "$ref": "#/$defs/irrepSymbol" },
+        "reference_symbol": { "type": "string" },
+        "bethe": { "type": "string", "pattern": "^Gamma[1-9][0-9]*[+-]?$" },
+        "dimension": { "type": "integer", "minimum": 1 },
+        "projective": { "type": "boolean" },
+        "letter": { "enum": ["A", "B", "E", "T", "G", "H", "I"] },
+        "component": { "enum": [1, 2] },
+        "partner": { "$ref": "#/$defs/index" },
+        "subscript": {
+          "oneOf": [
+            { "type": "integer", "minimum": 1 },
+            { "type": "string", "pattern": "^[0-9]*[13579]/2$" }
+          ]
+        },
+        "suffix": { "enum": ["g", "u", "'", "''"] },
+        "frobenius_schur": { "enum": [1, 0, -1] }
+      },
+      "dependentRequired": { "component": ["partner"], "partner": ["component"] }
+    },
+    "irrepHeader": {
+      "allOf": [{ "$ref": "#/$defs/irrepRecord" }],
+      "unevaluatedProperties": false
+    },
+    "irrepMatrices": {
+      "description": "An irrep record carrying its matrices, one per element of G in canonical order.",
+      "allOf": [{ "$ref": "#/$defs/irrepRecord" }],
+      "properties": {
+        "exact": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/exactMatrix" } },
+        "numeric": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/numericMatrix" } },
+        "pretty": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/prettyMatrix" } }
+      },
+      "unevaluatedProperties": false
+    },
+    "elementsTable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["group", "items", "classes"],
+      "properties": {
+        "group": { "enum": ["G", "G_double"] },
+        "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/elementRecord" } },
+        "classes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/classRecord" } }
+      }
+    },
+    "cayleyTable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["group", "table"],
+      "properties": {
+        "group": { "enum": ["G", "G_double"] },
+        "table": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/index" } }
+        }
+      }
+    },
+    "factorTable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["group", "table"],
+      "properties": {
+        "group": { "const": "G" },
+        "table": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sign" } }
+        }
+      }
+    },
+    "charactersTable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["class_group", "irreps", "classes"],
+      "properties": {
+        "class_group": { "enum": ["G", "G_double"] },
+        "irreps": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/irrepHeader" } },
+        "classes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/classRecord" } },
+        "exact": { "type": "array", "minItems": 1, "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/exactValue" } } },
+        "numeric": { "type": "array", "minItems": 1, "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/numericValue" } } },
+        "pretty": { "type": "array", "minItems": 1, "items": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/prettyValue" } } }
+      },
+      "anyOf": [{ "required": ["exact"] }, { "required": ["numeric"] }, { "required": ["pretty"] }]
+    },
+    "matricesTable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["irreps"],
+      "properties": {
+        "irreps": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/irrepMatrices" } }
+      }
+    }
+  }
+}

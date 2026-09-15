@@ -77,7 +77,7 @@
       "additionalProperties": false,
       "required": ["symbol", "input_symbol", "family", "order", "type", "rotation_group"],
       "properties": {
-        "symbol": { "type": "string", "pattern": "^(C[1-9][0-9]*[vh]?|S(2[0-9]*|[1-9][0-9]*[02468])|D[1-9][0-9]*[hd]?|T[dh]?|Oh?|Ih?)$" },
+        "symbol": { "type": "string", "pattern": "^(C[1-9][0-9]*[vh]?|S([2468]|[1-9][0-9]*[02468])|D[1-9][0-9]*[hd]?|T[dh]?|Oh?|Ih?)$" },
         "input_symbol": { "type": "string" },
         "family": { "enum": ["Cn", "Cnv", "Cnh", "S2n", "Dn", "Dnh", "Dnd", "T", "Td", "Th", "O", "Oh", "I", "Ih"] },
         "n": { "type": "integer", "minimum": 1 },
