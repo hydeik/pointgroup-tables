@@ -84,7 +84,9 @@ def test_seed_table_covers_the_seed_set() -> None:
 def test_checks_refuse_a_document_without_the_needed_table() -> None:
     document = build_document(Request("elements", "C3v"))
     assert "cayley" not in document
-    assert checks.applicable_checks(document) == ["AG-3", "CL-2", "CL-4", "CL-5"]
+    assert checks.applicable_checks(document) == [
+        "AG-3", "CL-2", "CL-4", "CL-5", "DG-6",
+    ]  # fmt: skip
     with pytest.raises(ValueError, match="AG-1 needs the cayley table"):
         checks.check(document, ["AG-1"])
 

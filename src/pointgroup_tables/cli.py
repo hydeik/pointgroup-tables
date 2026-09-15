@@ -10,6 +10,7 @@ from typing import Any, NoReturn
 from . import conventions
 from .document import (
     DEFAULT_VALUES,
+    DOUBLE_GROUP_SUBCOMMANDS,
     Request,
     build_document,
     parse_values,
@@ -23,6 +24,8 @@ from .symbols import parse_group
 PROG = "pointgroup-tables"
 TABLE_SUBCOMMANDS = {
     "elements": "the element list and conjugacy classes of a group",
+    "cayley": "the Cayley table of a group",
+    "factor": "the factor table of the spin double group of a group",
 }
 LIST_SUBCOMMANDS = {
     "groups": "what the group argument accepts",
@@ -112,6 +115,12 @@ def build_parser() -> Parser:
             help="a Schoenflies symbol",
         )
         _add_common_options(sub)
+        if name in DOUBLE_GROUP_SUBCOMMANDS:
+            sub.add_argument(
+                "--double-group",
+                action="store_true",
+                help="emit the table of the spin double group instead",
+            )
     lister = subparsers.add_parser(
         "list",
         help="list the accepted groups or the shipped conventions",
@@ -139,6 +148,7 @@ def _request(namespace: argparse.Namespace) -> Request:
         values=namespace.values,
         label_convention=namespace.label_convention,
         basis_convention=namespace.basis_convention,
+        double=getattr(namespace, "double_group", False),
     )
 
 

@@ -38,6 +38,12 @@ def model(symbol: str) -> dict[str, Any]:
     return model_document(symbol)
 
 
+@functools.cache
+def double_model(symbol: str) -> dict[str, Any]:
+    """The full document model in the index space of ``G-dagger``, built once per session."""
+    return model_document(symbol, double=True)
+
+
 def default_and_large() -> list[Any]:
     """``default`` plainly and ``large`` under the ``slow`` marker."""
     return [

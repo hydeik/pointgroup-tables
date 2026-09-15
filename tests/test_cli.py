@@ -56,7 +56,7 @@ def test_cli1_group_argument_table(
     [
         (["elements", "C3v", "--label-convention", "bilbao"], 4),
         (["elements", "C3v", "--basis-convention", "bilbao"], 4),
-        (["elements", "C3v", "--double-group"], 2),
+        (["factor", "C3v", "--double-group"], 2),
         (["elements", "C3v", "--irreps", "all"], 2),
         (["elements", "C3v", "--values", "float"], 2),
         (["elements", "C3v", "--format", "xml"], 2),
@@ -283,3 +283,51 @@ def test_utility_help(capsysbinary: pytest.CaptureFixture[bytes]) -> None:
     assert code == 0 and b"--format" in out and b"--values" not in out
     code, out, _ = run(capsysbinary, "schema", "--help")
     assert code == 0 and b"--output" in out and b"--format" not in out
+
+
+# ---- cayley, factor and --double-group (ticket #27) --------------------------
+
+
+@pytest.mark.parametrize(
+    ("argv", "tables", "double", "group"),
+    [
+        (["cayley", "D3"], ["elements", "cayley"], False, "G"),
+        (["cayley", "D3", "--double-group"], ["elements", "cayley"], True, "G_double"),
+        (["factor", "D3"], ["elements", "factor"], False, "G"),
+        (["elements", "D3", "--double-group"], ["elements"], True, "G_double"),
+    ],
+)
+def test_cayley_factor_and_double_group_documents(
+    capsysbinary: pytest.CaptureFixture[bytes],
+    argv: list[str],
+    tables: list[str],
+    double: bool,
+    group: str,
+) -> None:
+    code, out, err = run(capsysbinary, *argv)
+    assert (code, err) == (0, "")
+    document = json.loads(out)
+    assert document["tables"] == tables
+    assert document["double"] is double
+    assert document["elements"]["group"] == group
+    order = 12 if double else 6
+    assert len(document["elements"]["items"]) == order
+    if len(tables) == 2:
+        table = document[tables[1]]["table"]
+        expected_group = group if tables[1] == "cayley" else "G"
+        assert document[tables[1]]["group"] == expected_group
+        assert len(table) == (order if tables[1] == "cayley" else 6)
+
+
+def test_double_group_help_and_usage_error(
+    capsysbinary: pytest.CaptureFixture[bytes],
+) -> None:
+    code, out, _ = run(capsysbinary, "cayley", "--help")
+    assert code == 0 and b"--double-group" in out
+    code, out, _ = run(capsysbinary, "factor", "--help")
+    assert code == 0 and b"--double-group" not in out
+    code, out, err = run(capsysbinary, "factor", "D3", "--double-group")
+    assert (code, out) == (2, b"")
+    assert err.startswith("usage: pointgroup-tables")
+    assert "pointgroup-tables: error: " in err and "'--double-group'" not in err
+    assert "--double-group" in err

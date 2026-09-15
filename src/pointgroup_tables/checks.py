@@ -75,6 +75,30 @@ def _classes(doc: Document) -> list[dict[str, Any]]:
     return doc["elements"]["classes"]
 
 
+def _factor(doc: Document) -> list[list[int]]:
+    return doc["factor"]["table"]
+
+
+def _is_double(doc: Document) -> bool:
+    """Whether the element list and the Cayley table are those of ``G-dagger``."""
+    return doc["elements"]["group"] == "G_double"
+
+
+def _base_order(doc: Document) -> int:
+    """``|G|``, whatever the index space of the element list."""
+    items = _items(doc)
+    return len(items) // 2 if _is_double(doc) else len(items)
+
+
+def _base_cayley(doc: Document) -> list[list[int]]:
+    """The Cayley table of ``G``; from a ``G-dagger`` table, the products modulo ``|G|``."""
+    table = _cayley(doc)
+    if not _is_double(doc):
+        return table
+    N = len(table) // 2
+    return [[x % N for x in row[:N]] for row in table[:N]]
+
+
 def _element_orders(table: list[list[int]]) -> list[int]:
     """The order of every element; ``0`` when its powers never return to the identity
     (a corrupted table)."""
@@ -92,44 +116,48 @@ def _element_orders(table: list[list[int]]) -> list[int]:
 # ---- AG: groups ------------------------------------------------------------
 
 
-def check_ag1(doc: Document) -> list[Failure]:
-    """Cayley table of ``G``: closure, identity, inverses, associativity (all triples)."""
-    table = _cayley(doc)
+def _group_axioms(table: list[list[int]], check: str) -> list[Failure]:
+    """Closure, identity, inverses and associativity (all triples) of a Cayley table."""
     n = len(table)
     failures = []
     rows = range(n)
     if any(len(row) != n for row in table):
-        return [Failure("AG-1", "the Cayley table is not square")]
+        return [Failure(check, "the Cayley table is not square")]
     if any(not isinstance(x, int) or x < 0 or x >= n for row in table for x in row):
-        return [Failure("AG-1", "an entry of the Cayley table is not an element index")]
+        return [Failure(check, "an entry of the Cayley table is not an element index")]
     if any(table[0][g] != g or table[g][0] != g for g in rows):
-        failures.append(Failure("AG-1", "element 0 is not the identity"))
+        failures.append(Failure(check, "element 0 is not the identity"))
     for g in rows:
         if 0 not in table[g]:
-            failures.append(Failure("AG-1", f"element {g} has no inverse"))
+            failures.append(Failure(check, f"element {g} has no inverse"))
         else:
             inverse = table[g].index(0)
             if table[inverse][g] != 0:
                 failures.append(
-                    Failure("AG-1", f"the right inverse of {g} is not a left inverse")
+                    Failure(check, f"the right inverse of {g} is not a left inverse")
                 )
     for a in rows:
         row_a = table[a]
         for b in rows:
-            row_ab = table[row_a[b]]
-            row_b = table[b]
-            for c in rows:
-                if row_ab[c] != row_a[row_b[c]]:
-                    failures.append(Failure("AG-1", f"({a} {b}) {c} != {a} ({b} {c})"))
-                    return failures
+            # (ab)c == a(bc) for every c: the row of ab against row_a permuted by row_b
+            if table[row_a[b]] != [row_a[x] for x in table[b]]:
+                failures.append(
+                    Failure(check, f"({a} {b}) c != {a} ({b} c) for some c")
+                )
+                return failures
     return failures
+
+
+def check_ag1(doc: Document) -> list[Failure]:
+    """Cayley table of ``G`` (or of ``G-dagger``): closure, identity, inverses, associativity."""
+    return _group_axioms(_cayley(doc), "AG-1")
 
 
 def check_ag2(doc: Document) -> list[Failure]:
     """``(order, class count, histogram of element orders)`` equals the seed table (seed groups only)."""
     symbol = doc["group"]["symbol"]
     row = SEED.get(symbol)
-    if row is None:
+    if row is None or _is_double(doc):
         return []
     failures = []
     order = len(_items(doc))
@@ -161,7 +189,10 @@ def check_ag2(doc: Document) -> list[Failure]:
 
 def check_ag3(doc: Document) -> list[Failure]:
     """Canonical element order: proper then improper, classes ordered by first member,
-    classes of a polyhedral group contiguous."""
+    classes of a polyhedral group contiguous. A property of ``G``; the order of
+    ``G-dagger`` is checked by ``DG-4``."""
+    if _is_double(doc):
+        return []
     items = _items(doc)
     classes = _classes(doc)
     failures = []
@@ -268,10 +299,15 @@ def _binary_rotation_part(record: dict[str, Any]) -> bool:
 def check_cl3(doc: Document) -> list[Failure]:
     """``regular`` marks exactly the classes that split in the double group.
 
-    Recomputed from the records: the class of ``g`` merges exactly when the
-    rotation part of ``g`` is a binary rotation and some element with a
-    different binary rotation part commutes with ``g``.
+    On ``G`` it is recomputed from the records: the class of ``g`` merges
+    exactly when the rotation part of ``g`` is a binary rotation and some
+    element with a different binary rotation part commutes with ``g``. On
+    ``G-dagger`` the ``split`` and ``barred`` flags are recomputed from the
+    class memberships: a class splits when it does not contain the barred
+    element of its representative.
     """
+    if _is_double(doc):
+        return _check_cl3_double(doc)
     items = _items(doc)
     table = _cayley(doc)
     order = len(items)
@@ -299,11 +335,38 @@ def check_cl3(doc: Document) -> list[Failure]:
     return failures
 
 
+def _check_cl3_double(doc: Document) -> list[Failure]:
+    N = _base_order(doc)
+    failures = []
+    for cls in _classes(doc):
+        rep = cls["representative"]
+        members = set(cls["members"])
+        split = (rep + N) % (2 * N) not in members
+        if cls["split"] is not split:
+            failures.append(
+                Failure(
+                    "CL-3",
+                    f"class {cls['index']} ('{cls['label']}') has split = {cls['split']}",
+                )
+            )
+        elif split and cls.get("barred") is not (rep >= N):
+            failures.append(
+                Failure(
+                    "CL-3",
+                    f"class {cls['index']} ('{cls['label']}') has barred = {cls.get('barred')}",
+                )
+            )
+    return failures
+
+
 def check_cl4(doc: Document) -> list[Failure]:
-    """``inverse`` is an involution on class indices and names the class of the inverses."""
+    """``inverse`` is an involution on class indices and names the class of the inverses;
+    on ``G-dagger``, ``base_class``, ``split`` and ``barred`` agree with the element records."""
     items = _items(doc)
     classes = _classes(doc)
     failures = []
+    if _is_double(doc):
+        failures.extend(_check_cl4_double(doc))
     for cls in classes:
         partner = cls["inverse"]
         if not 0 <= partner < len(classes):
@@ -326,15 +389,261 @@ def check_cl4(doc: Document) -> list[Failure]:
     return failures
 
 
+def _check_cl4_double(doc: Document) -> list[Failure]:
+    """The ``G-dagger`` class records against the ``barred`` / ``base_index`` element fields."""
+    items = _items(doc)
+    classes = _classes(doc)
+    failures = []
+    previous_base = -1
+    covered: dict[int, set[int]] = {}
+    for cls in classes:
+        index = cls["index"]
+        base = cls["base_class"]
+        if base < previous_base:
+            failures.append(
+                Failure("CL-4", f"class {index} is not ordered by base class")
+            )
+        previous_base = base
+        bases = [items[g]["base_index"] for g in cls["members"]]
+        if cls["split"]:
+            if "barred" not in cls:
+                failures.append(
+                    Failure("CL-4", f"split class {index} has no barred flag")
+                )
+            elif items[cls["representative"]]["barred"] is not cls["barred"]:
+                failures.append(
+                    Failure(
+                        "CL-4",
+                        f"the representative of class {index} contradicts barred",
+                    )
+                )
+            if len(set(bases)) != len(bases):
+                failures.append(
+                    Failure("CL-4", f"split class {index} covers a base element twice")
+                )
+        else:
+            if "barred" in cls:
+                failures.append(
+                    Failure("CL-4", f"merged class {index} has a barred flag")
+                )
+            if sorted(Counter(bases).values()) != [2] * (len(bases) // 2):
+                failures.append(
+                    Failure(
+                        "CL-4",
+                        f"merged class {index} does not cover every base element twice",
+                    )
+                )
+        covered.setdefault(base, set()).update(bases)
+        if len(covered[base]) != len(set(bases)):
+            failures.append(
+                Failure(
+                    "CL-4",
+                    f"class {index} does not cover the same base elements as its pair",
+                )
+            )
+    for base in covered:
+        pair = [cls for cls in classes if cls["base_class"] == base]
+        if len(pair) > 2 or (len(pair) == 2 and not all(cls["split"] for cls in pair)):
+            failures.append(
+                Failure("CL-4", f"base class {base} is covered by {len(pair)} classes")
+            )
+        if len(pair) == 2 and [cls.get("barred") for cls in pair] != [False, True]:
+            failures.append(
+                Failure(
+                    "CL-4",
+                    f"the classes over base class {base} are not lifted then barred",
+                )
+            )
+    return failures
+
+
 def check_cl5(doc: Document) -> list[Failure]:
-    """Polyhedral class labels reproduce the listed class structures."""
+    """Polyhedral class labels reproduce the listed class structures (``G`` only)."""
     expected = POLYHEDRAL_CLASSES.get(doc["group"]["symbol"])
-    if expected is None:
+    if expected is None or _is_double(doc):
         return []
     labels = [cls["label"] for cls in _classes(doc)]
     if labels != expected:
         return [Failure("CL-5", f"class labels {labels} differ from {expected}")]
     return []
+
+
+# ---- DG: double group and factor system ------------------------------------
+
+
+def check_dg1(doc: Document) -> list[Failure]:
+    """``omega(E, g) = omega(g, E) = 1`` and every value is ``1`` or ``-1``."""
+    omega = _factor(doc)
+    n = len(omega)
+    if n != _base_order(doc) or any(len(row) != n for row in omega):
+        return [Failure("DG-1", "the factor table is not |G| x |G|")]
+    failures = []
+    if any(x not in (1, -1) or isinstance(x, bool) for row in omega for x in row):
+        failures.append(Failure("DG-1", "a factor is not 1 or -1"))
+    if any(omega[0][g] != 1 or omega[g][0] != 1 for g in range(n)):
+        failures.append(Failure("DG-1", "the factor system is not normalised"))
+    return failures
+
+
+def check_dg2(doc: Document) -> list[Failure]:
+    """The cocycle condition ``omega(g, h) omega(gh, k) = omega(g, hk) omega(h, k)``, all triples."""
+    omega = _factor(doc)
+    table = _base_cayley(doc)
+    n = len(table)
+    if len(omega) != n or any(len(row) != n for row in omega):
+        return [Failure("DG-2", "the factor table does not match the Cayley table")]
+    for g in range(n):
+        omega_g = omega[g]
+        for h in range(n):
+            row_gh = omega[table[g][h]]
+            left = row_gh if omega_g[h] == 1 else [-x for x in row_gh]
+            right = [omega_g[hk] * w for hk, w in zip(table[h], omega[h], strict=True)]
+            if left != right:
+                k = next(k for k in range(n) if left[k] != right[k])
+                return [
+                    Failure("DG-2", f"the cocycle condition fails at ({g}, {h}, {k})")
+                ]
+    return []
+
+
+def check_dg3(doc: Document) -> list[Failure]:
+    """``omega(g, g^-1) = omega(g^-1, g)``."""
+    omega = _factor(doc)
+    table = _base_cayley(doc)
+    failures = []
+    for g, row in enumerate(table):
+        if 0 not in row:
+            continue  # AG-1 reports the missing inverse
+        inverse = row.index(0)
+        if omega[g][inverse] != omega[inverse][g]:
+            failures.append(
+                Failure("DG-3", f"omega({g}, {inverse}) != omega({inverse}, {g})")
+            )
+    return failures
+
+
+def check_dg4(doc: Document) -> list[Failure]:
+    """The Cayley table of ``G-dagger`` satisfies the group axioms; ``|G-dagger| = 2|G|``;
+    ``~E`` is central of order 2 and bars every element; the records carry the
+    ``barred`` / ``base_index`` structure of the double group. ``G-dagger`` documents only."""
+    if not _is_double(doc):
+        return []
+    items = _items(doc)
+    table = _cayley(doc)
+    if len(items) % 2 or len(table) != len(items):
+        return [
+            Failure("DG-4", "the double group does not have an even number of elements")
+        ]
+    N = len(items) // 2
+    failures = _group_axioms(table, "DG-4")
+    if failures:
+        return failures
+    if table[N][N] != 0:
+        failures.append(Failure("DG-4", "~E does not have order 2"))
+    for g in range(2 * N):
+        if table[N][g] != table[g][N]:
+            failures.append(Failure("DG-4", f"~E does not commute with element {g}"))
+        if table[N][g] != (g + N) % (2 * N):
+            failures.append(
+                Failure("DG-4", f"~E times element {g} is not its barred partner")
+            )
+    for record in items:
+        i = record["index"]
+        base = items[i % N]
+        if record.get("base_index") != i % N or record.get("barred") is not (i >= N):
+            failures.append(
+                Failure("DG-4", f"element {i} does not cover element {i % N}")
+            )
+        if i >= N and record["label"] != "~" + base["label"]:
+            failures.append(
+                Failure("DG-4", f"element {i} is not labelled ~{base['label']}")
+            )
+        if record["parity"] != base["parity"]:
+            failures.append(
+                Failure("DG-4", f"element {i} changes the parity of {i % N}")
+            )
+    for g in range(N):
+        for h in range(N):
+            product = table[g][h] % N
+            if table[g + N][h] % N != product or table[g][h + N] % N != product:
+                failures.append(
+                    Failure(
+                        "DG-4", f"the projection is not a homomorphism at ({g}, {h})"
+                    )
+                )
+                return failures
+    return failures
+
+
+def check_dg5(doc: Document) -> list[Failure]:
+    """``omega`` depends on rotation parts only (for a centro group it is the pull-back of
+    ``omega`` of ``G+``); ``omega(C2, C2) = -1`` for every binary rotation part."""
+    items = _items(doc)
+    omega = _factor(doc)
+    table = _base_cayley(doc)
+    N = len(table)
+    failures = []
+    inversion = next((r["index"] for r in items[:N] if r["kind"] == "inversion"), None)
+    if inversion is not None:
+        for g in range(N):
+            gi = table[g][inversion]
+            if omega[g] != omega[gi] or [row[g] for row in omega] != [
+                row[gi] for row in omega
+            ]:
+                failures.append(
+                    Failure(
+                        "DG-5", f"omega distinguishes element {g} from {gi} = {g} i"
+                    )
+                )
+    for record in items[:N]:
+        g = record["index"]
+        if _binary_rotation_part(record) and omega[g][g] != -1:
+            failures.append(
+                Failure("DG-5", f"omega({record['label']}, {record['label']}) != -1")
+            )
+        if record["kind"] in ("identity", "inversion") and omega[g][g] != 1:
+            failures.append(
+                Failure("DG-5", f"omega({record['label']}, {record['label']}) != 1")
+            )
+    return failures
+
+
+def check_dg6(doc: Document) -> list[Failure]:
+    """Class counts of ``G-dagger`` and the number of projective irreps equal the seed table
+    (seed groups only): on ``G`` the regular classes count the projective irreps, on
+    ``G-dagger`` the classes and the split pairs are counted."""
+    symbol = doc["group"]["symbol"]
+    row = SEED.get(symbol)
+    if row is None:
+        return []
+    classes = _classes(doc)
+    failures = []
+    if _is_double(doc):
+        if len(classes) != row.double_class_count:
+            failures.append(
+                Failure(
+                    "DG-6",
+                    f"{len(classes)} classes of {symbol}-dagger differ from the seed table ({row.double_class_count})",
+                )
+            )
+        split = sum(1 for cls in classes if cls["split"])
+        if split != 2 * row.projective_irreps:
+            failures.append(
+                Failure(
+                    "DG-6",
+                    f"{split} split classes of {symbol}-dagger, the seed table has {row.projective_irreps} projective irreps",
+                )
+            )
+    else:
+        regular = sum(1 for cls in classes if cls["regular"])
+        if regular != row.projective_irreps:
+            failures.append(
+                Failure(
+                    "DG-6",
+                    f"{regular} regular classes of {symbol}, the seed table has {row.projective_irreps} projective irreps",
+                )
+            )
+    return failures
 
 
 # ---- registry ----------------------------------------------------------------
@@ -348,6 +657,12 @@ CHECKS: dict[str, tuple[Checker, tuple[str, ...]]] = {
     "CL-3": (check_cl3, ("elements", "cayley")),
     "CL-4": (check_cl4, ("elements",)),
     "CL-5": (check_cl5, ("elements",)),
+    "DG-1": (check_dg1, ("elements", "factor")),
+    "DG-2": (check_dg2, ("cayley", "factor")),
+    "DG-3": (check_dg3, ("cayley", "factor")),
+    "DG-4": (check_dg4, ("elements", "cayley")),
+    "DG-5": (check_dg5, ("elements", "cayley", "factor")),
+    "DG-6": (check_dg6, ("elements",)),
 }
 
 
