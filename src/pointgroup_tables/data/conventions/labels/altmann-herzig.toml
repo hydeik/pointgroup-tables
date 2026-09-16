@@ -394,6 +394,85 @@ projective_parity_separator = ","
 letters = { G = "F" }
 projective_letters = { G = "F", B = "A" }
 
+# The book's symbol where it differs from the spelled canonical one: the members
+# of the complex pairs, the E_k of D4d and D5h, and the F of T and Th, decided
+# by the characters of the transcribed tables (tools/ah_convention.py).
+[irreps.overrides.C3]
+"2E" = "1E"
+"1E" = "2E"
+
+[irreps.overrides.C3h]
+"2E'" = "1E'"
+"1E'" = "2E'"
+"2E''" = "1E''"
+"1E''" = "2E''"
+"2E3/2" = "1E3/2"
+"1E3/2" = "2E3/2"
+
+[irreps.overrides.C4]
+"2E" = "1E"
+"1E" = "2E"
+"2E1/2" = "1E1/2"
+"1E1/2" = "2E1/2"
+
+[irreps.overrides.C4h]
+"2Eg" = "1Eg"
+"1Eg" = "2Eg"
+"2Eu" = "1Eu"
+"1Eu" = "2Eu"
+"2E1/2g" = "1E1/2,g"
+"1E1/2g" = "2E1/2,g"
+"2E1/2u" = "1E1/2,u"
+"1E1/2u" = "2E1/2,u"
+
+[irreps.overrides.C6]
+"2E1" = "1E1"
+"1E1" = "2E1"
+"2E3/2" = "1E3/2"
+"1E3/2" = "2E3/2"
+
+[irreps.overrides.C6h]
+"2E1g" = "1E1g"
+"1E1g" = "2E1g"
+"2E1u" = "1E1u"
+"1E1u" = "2E1u"
+"2E3/2g" = "1E3/2,g"
+"1E3/2g" = "2E3/2,g"
+"2E3/2u" = "1E3/2,u"
+"1E3/2u" = "2E3/2,u"
+
+[irreps.overrides.D4d]
+"E3" = "E1"
+"E1" = "E3"
+
+[irreps.overrides.D5h]
+"E7/2" = "E3/2"
+"E3/2" = "E7/2"
+
+[irreps.overrides.S4]
+"2E" = "1E"
+"1E" = "2E"
+"2E1/2" = "1E1/2"
+"1E1/2" = "2E1/2"
+
+[irreps.overrides.S6]
+"2Eg" = "1Eg"
+"1Eg" = "2Eg"
+"2Eu" = "1Eu"
+"1Eu" = "2Eu"
+
+[irreps.overrides.S8]
+"1E3" = "1E1"
+"2E3" = "2E1"
+"2E2" = "1E2"
+"1E2" = "2E2"
+"2E1" = "1E3"
+"1E1" = "2E3"
+"2E3/2" = "1E3/2"
+"1E3/2" = "2E3/2"
+"2E7/2" = "1E7/2"
+"1E7/2" = "2E7/2"
+
 [irreps.overrides.T]
 "1E3/2" = "1F3/2"
 "2E3/2" = "2F3/2"

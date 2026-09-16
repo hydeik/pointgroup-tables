@@ -85,12 +85,15 @@ def test_every_example_symbol_parses_to_its_family() -> None:
         assert parse_group(entry["example"]).family == entry["family"]
 
 
-def test_conventions_document_lists_canonical_only_until_conventions_ship() -> None:
+def test_conventions_document_lists_the_shipped_conventions() -> None:
     document = conventions_document()
     assert list(document) == ["label_conventions", "basis_conventions"]
     assert document["label_conventions"] == [
         {"name": name, "source": block["source"]}
         for name, block in conventions.LABEL_CONVENTIONS.items()
+    ]
+    assert [entry["name"] for entry in document["label_conventions"]] == [
+        "altmann-herzig"
     ]
     assert document["basis_conventions"][0] == {"name": "canonical"}
     assert all(

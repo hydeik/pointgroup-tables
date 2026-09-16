@@ -5,12 +5,11 @@ The book's tilde marks (the ``[multiplication]`` table of a labels
 transcription) define ``omega_book`` on the book's labels; through the
 ``[map]`` of the transcription they become a factor system on the canonical
 elements. The book's section differs from the canonical one on the elements
-the label convention lists as ``swapped``: with ``eps = -1`` on those and
-``+1`` elsewhere, ``omega_book(g, h) = eps(g) eps(h) eps(gh) omega(g, h)`` on
-every pair. The polyhedral swapped lists are the ``[barred.<group>]`` tables of
-the shipped convention; the axial ones are what the convention derives from
-its ``[secondary]`` direction table (``tools/ah_convention.py check``), listed
-here until the label-convention ticket ships that derivation.
+the label convention swaps: with ``eps = -1`` on those and ``+1`` elsewhere,
+``omega_book(g, h) = eps(g) eps(h) eps(gh) omega(g, h)`` on every pair. The
+swapped elements are read off the double-group element list under the
+convention (the ``[barred.<group>]`` tables for the polyhedral groups, the
+lists derived from the ``[secondary]`` direction table for the axial ones).
 """
 
 from __future__ import annotations
@@ -20,34 +19,10 @@ from pathlib import Path
 
 import pytest
 from conftest import model
+from test_label_convention import swapped_elements
 
 REFERENCE = Path(__file__).resolve().parent / "reference" / "altmann-herzig" / "labels"
-CONVENTION = (
-    Path(__file__).resolve().parent.parent
-    / "src"
-    / "pointgroup_tables"
-    / "data"
-    / "conventions"
-    / "labels"
-    / "altmann-herzig.toml"
-)
 GROUPS = ["C2v", "D3", "D4", "D3h", "T", "O", "Ih"]
-# the axial swapped lists derived from the convention's [secondary] table; the
-# D3 list is also stated in docs/spec/double-groups.md ("Section overrides")
-AXIAL_SWAPPED = {
-    "C2v": ["sigma_d(1)"],
-    "D3": ["C2'(2)", "C2'(3)"],
-    "D4": ["C2''(2)"],
-    "D3h": ["C2'(2)", "C2'(3)", "sigma_v(3)"],
-}
-
-
-def swapped_elements(symbol: str) -> list[str]:
-    """The canonical labels whose Altmann & Herzig lift is our barred element."""
-    if symbol in AXIAL_SWAPPED:
-        return AXIAL_SWAPPED[symbol]
-    barred = tomllib.loads(CONVENTION.read_text()).get("barred", {})
-    return barred.get(symbol, {}).get("swapped", [])
 
 
 def book_factor_system(symbol: str) -> tuple[list[list[int]], list[str]]:

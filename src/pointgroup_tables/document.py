@@ -34,6 +34,7 @@ from .field import (
 )
 from .irreps import Irrep, build_irreps, select
 from .labels import Label, canonical_labels
+from .reference import ReferenceLabelling
 from .symbols import GroupSpec, parse_group
 from .values import numeric, pretty
 
@@ -355,6 +356,9 @@ def _metadata(
     label_convention = None
     if request.label_convention is not None:
         label_convention = conventions.label_convention(request.label_convention)
+        rules = conventions.label_convention_rules(request.label_convention)
+        covered = rules.covers(None if model.spec.polyhedral else model.spec.family_n)
+        label_convention["coverage"] = "reference" if covered else "extrapolated"
     basis_convention = conventions.basis_convention(request.basis_convention)
     doc: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
@@ -373,12 +377,25 @@ def _metadata(
     return doc
 
 
+@cache
+def reference_labelling(spec: GroupSpec, convention: str) -> ReferenceLabelling:
+    """The reference labels of a group under a label convention, built once."""
+    return ReferenceLabelling(
+        build_model(spec), conventions.label_convention_rules(convention)
+    )
+
+
 def _assemble(request: Request, tables: tuple[str, ...]) -> dict[str, Any]:
-    """The metadata block followed by the named tables, in serialisation order."""
-    model = build_model(parse_group(request.group))
+    """The metadata block followed by the named tables, in serialisation order;
+    the reference labels of the selected convention are written next to the
+    canonical ones."""
+    spec = parse_group(request.group)
+    model = build_model(spec)
     doc = _metadata(model, request, tables)
     for name in tables:
         doc[name] = model.build_table(name, request)
+    if request.label_convention is not None:
+        reference_labelling(spec, request.label_convention).apply(doc)
     return doc
 
 
@@ -399,15 +416,21 @@ def build_document(request: Request) -> dict[str, Any]:
     return _assemble(request, TABLES_OF_SUBCOMMAND[request.subcommand])
 
 
-def model_document(group: str, double: bool = False) -> dict[str, Any]:
+def model_document(
+    group: str, double: bool = False, label_convention: str | None = None
+) -> dict[str, Any]:
     """The document holding every table the model can produce: the input of the checkers.
 
     With ``double`` the element list and the Cayley table are those of
-    ``G-dagger``; the factor table is always that of ``G``.
+    ``G-dagger``; the factor table is always that of ``G``. With a
+    ``label_convention`` the document carries the reference labels.
     """
     model = build_model(parse_group(group))
-    request = Request("elements", group, values=VALUE_FORMS, double=double)
-    doc = _metadata(model, request, model.available_tables())
-    for name in model.available_tables():
-        doc[name] = model.build_table(name, request)
-    return doc
+    request = Request(
+        "elements",
+        group,
+        values=VALUE_FORMS,
+        label_convention=label_convention,
+        double=double,
+    )
+    return _assemble(request, model.available_tables())

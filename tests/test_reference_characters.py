@@ -22,6 +22,7 @@ from typing import Any
 import pytest
 from conftest import double_model, model
 
+from pointgroup_tables.document import model_document
 from pointgroup_tables.field import CyclotomicField, Value, cyclotomic_field
 from pointgroup_tables.values import parse
 
@@ -357,3 +358,94 @@ def test_reference_files_are_present() -> None:
     assert {"D3", "I", "Ih"} <= set(_files(ALTMANN_HERZIG))
     assert {"D3", "Oh"} <= set(_files(BILBAO))
     assert {"D3", "Oh"} <= set(_files(BILBAO, "-double"))
+
+
+# ---- REF-3 and REF-5: the labelled comparison with Altmann & Herzig ----------------------------
+
+AH_LABELS = REFERENCE / "altmann-herzig" / "labels"
+AH_CONVENTION = "altmann-herzig"
+# the character transcription spells these class labels differently from the
+# labels transcription (whose README fixes ``sigma_x``) and from the reference
+# class label of the convention (``15sigma`` of ``Ih``, docs/spec/conjugacy-classes.md)
+BOOK_CLASS_SPELLING = {
+    "sigmax": "sigma_x",
+    "sigmay": "sigma_y",
+    "sigmaz": "sigma_z",
+    "15sigma_h": "15sigma",
+}
+
+
+def _labelled(symbol: str) -> dict[str, Any]:
+    return model_document(symbol, label_convention=AH_CONVENTION)
+
+
+@pytest.mark.reference
+@pytest.mark.parametrize("symbol", _files(ALTMANN_HERZIG))
+def test_ref5_reference_irrep_symbols_are_the_books(symbol: str) -> None:
+    data = _read_altmann_herzig(symbol)
+    ours = [
+        record["reference_symbol"]
+        for record in _labelled(symbol)["characters"]["irreps"]
+    ]
+    assert sorted(ours) == sorted(row["label"] for row in data["irreps"])
+
+
+@pytest.mark.reference
+@pytest.mark.parametrize(
+    "path",
+    sorted(AH_LABELS.glob("*.toml")) if AH_LABELS.is_dir() else [],
+    ids=lambda path: path.stem,
+)
+def test_ref5_reference_irrep_symbols_match_the_symbol_row(path: Path) -> None:
+    transcription = tomllib.loads(path.read_text())
+    ours = [
+        record["reference_symbol"]
+        for record in _labelled(transcription["group"])["characters"]["irreps"]
+    ]
+    assert sorted(ours) == sorted(transcription["book"]["irreps"])
+
+
+def _column_of(columns: list[dict[str, Any]], book_label: str) -> int:
+    """The class of ``G-dagger`` the book's column names: the class whose reference
+    label is the book's (the untilded half of a split class) or that merged
+    class's unbarred half."""
+    label = BOOK_CLASS_SPELLING.get(book_label, book_label)
+    matches = [
+        c
+        for c, column in enumerate(columns)
+        if column["reference_label"] == label
+        or column["reference_label"].startswith(label + "+")
+    ]
+    assert len(matches) == 1, (book_label, [c["reference_label"] for c in columns])
+    return matches[0]
+
+
+@pytest.mark.reference
+@pytest.mark.parametrize("symbol", _files(ALTMANN_HERZIG))
+def test_ref3_labelled_comparison_of_the_character_tables(symbol: str) -> None:
+    data = _read_altmann_herzig(symbol)
+    document = _labelled(symbol)
+    table = document["characters"]
+    F_ours = cyclotomic_field(document["field"]["conductor"])
+    F_book = cyclotomic_field(data["conductor"])
+    F = cyclotomic_field(math.lcm(F_book.conductor, F_ours.conductor))
+    book_rows = _book_rows(data, F_book, F)
+    labels = [c["label"] for c in data["classes"]]
+    for entry in data.get("known_discrepancy", []):
+        book_rows = _swap_projective(book_rows, labels, *entry["swap_projective"])
+    columns = [_column_of(table["classes"], label) for label in labels]
+    row_of = {record["reference_symbol"]: k for k, record in enumerate(table["irreps"])}
+    assert len(row_of) == len(table["irreps"]) == len(book_rows)
+    mismatches = []
+    for label, values, projective in book_rows:
+        k = row_of[label]
+        assert table["irreps"][k]["projective"] == projective, label
+        ours = [
+            F_ours.lift(F_ours.from_exact(table["exact"][k][c]), F) for c in columns
+        ]
+        mismatches += [
+            (label, class_label, F.exact(mine), F.exact(theirs))
+            for class_label, mine, theirs in zip(labels, ours, values, strict=True)
+            if mine != theirs
+        ]
+    assert mismatches == [], "(irrep, class, ours, book)"
