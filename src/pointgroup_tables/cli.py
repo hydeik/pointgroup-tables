@@ -29,6 +29,8 @@ TABLE_SUBCOMMANDS = {
     "cayley": "the Cayley table of a group",
     "factor": "the factor table of the spin double group of a group",
     "characters": "the character table of the ordinary and projective irreps of a group",
+    "matrices": "the irrep matrices of a group in the selected basis convention",
+    "all": "the union of the five tables of a group under one metadata block",
 }
 LIST_SUBCOMMANDS = {
     "groups": "what the group argument accepts",

@@ -15,9 +15,18 @@ from collections import Counter
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass
 from fractions import Fraction
+from itertools import pairwise
 from typing import Any
 
-from .field import CyclotomicField, Value, cyclotomic_field
+from .field import (
+    CyclotomicField,
+    Matrix,
+    Value,
+    cyclotomic_field,
+    matrix_identity,
+    matrix_mul,
+    matrix_trace,
+)
 from .irreps import (
     POLYHEDRAL_PRINCIPAL_ORDER,
     SYMBOL,
@@ -1210,6 +1219,346 @@ def check_ch6(doc: Document) -> list[Failure]:
     return failures
 
 
+# ---- MX: irrep matrices ------------------------------------------------------------
+
+# the weights of I5/2 of I-dagger on s(C5), the one irrep whose canonical basis is
+# ordered by weight, not by reduced exponent (docs/spec/basis-conventions.md,
+# "Canonical basis: the principle")
+I52_WEIGHTS = (5, 3, 1, -1, -3, -5)
+
+
+def _matrix_entries(doc: Document) -> list[tuple[dict[str, Any], list[Matrix]]] | None:
+    """``(record, D(g) for g in G)`` per irrep of the matrices table as field values,
+    or ``None`` when an entry is not a well-formed exact value (``MX-7`` reports it)."""
+    F = _field(doc)
+    out = []
+    try:
+        for entry in doc["matrices"]["irreps"]:
+            if "exact" not in entry:
+                return None
+            matrices = [
+                [[F.from_exact(pairs) for pairs in row] for row in matrix]
+                for matrix in entry["exact"]
+            ]
+            out.append((entry, matrices))
+    except (ValueError, TypeError):
+        return None
+    return out
+
+
+def _no_matrices(check: str) -> list[Failure]:
+    return [
+        Failure(check, "the matrices table carries no well-formed exact form to check")
+    ]
+
+
+def _projective_sign(doc: Document, projective: bool) -> Callable[[int, int], int]:
+    """``omega(g, h)`` for a projective irrep, ``1`` for an ordinary one."""
+    if not projective:
+        return lambda g, h: 1
+    omega = _factor(doc)
+    return lambda g, h: omega[g][h]
+
+
+def _generating_set(table: list[list[int]]) -> list[int]:
+    """A generating set of the group by greedy choice, elements of the highest
+    order first (two or three generators for every point group)."""
+    N = len(table)
+    orders = _element_orders(table)
+    generators: list[int] = []
+    reached = {0}
+    for g in sorted(range(1, N), key=lambda g: (-orders[g], g)):
+        if g in reached:
+            continue
+        generators.append(g)
+        frontier = list(reached)
+        while frontier:
+            following = []
+            for x in frontier:
+                for s in generators:
+                    y = table[x][s]
+                    if y not in reached:
+                        reached.add(y)
+                        following.append(y)
+            frontier = following
+    return generators
+
+
+def _mx_matrix_product_check(
+    doc: Document, check: str, pairs: Callable[[int], Iterable[tuple[int, int]]]
+) -> list[Failure]:
+    """``D(g) D(h) = omega(g, h) D(gh)`` over the pairs a function yields for ``|G|``."""
+    entries = _matrix_entries(doc)
+    if entries is None:
+        return _no_matrices(check)
+    F = _field(doc)
+    table = _base_cayley(doc)
+    N = len(table)
+    failures = []
+    for record, matrices in entries:
+        if len(matrices) != N:
+            continue  # MX-7 reports the shape
+        sign = _projective_sign(doc, record["projective"])
+        for g, h in pairs(N):
+            product = matrix_mul(F, matrices[g], matrices[h])
+            expected = matrices[table[g][h]]
+            if sign(g, h) == -1:
+                expected = [[F.neg(x) for x in row] for row in expected]
+            if product != expected:
+                failures.append(
+                    Failure(
+                        check,
+                        f"irrep {record['index']}: D({g}) D({h}) is not omega({g}, {h}) D({table[g][h]})",
+                    )
+                )
+                break
+    return failures
+
+
+def check_mx1(doc: Document) -> list[Failure]:
+    """Homomorphism by closure: ``D(E)`` is the identity and ``D(g) D(s) = omega(g, s)
+    D(gs)`` for every element ``g`` and every generator ``s`` of a generating set, so
+    that the matrices are the closure of the generator images along the words."""
+    entries = _matrix_entries(doc)
+    if entries is None:
+        return _no_matrices("MX-1")
+    F = _field(doc)
+    failures = []
+    for record, matrices in entries:
+        if matrices and matrices[0] != matrix_identity(F, len(matrices[0])):
+            failures.append(
+                Failure("MX-1", f"irrep {record['index']}: D(E) is not the identity")
+            )
+    generators = _generating_set(_base_cayley(doc))
+    failures.extend(
+        _mx_matrix_product_check(
+            doc, "MX-1", lambda N: ((g, s) for g in range(N) for s in generators)
+        )
+    )
+    return failures
+
+
+def check_mx2(doc: Document) -> list[Failure]:
+    """``D(g) D(h) = omega(g, h) D(gh)`` for all pairs and all irreps."""
+    return _mx_matrix_product_check(
+        doc, "MX-2", lambda N: ((g, h) for g in range(N) for h in range(N))
+    )
+
+
+def check_mx3(doc: Document) -> list[Failure]:
+    """Every matrix is unitary under the field's conjugation ``zeta -> zeta^-1``."""
+    entries = _matrix_entries(doc)
+    if entries is None:
+        return _no_matrices("MX-3")
+    F = _field(doc)
+    failures = []
+    for record, matrices in entries:
+        for g, matrix in enumerate(matrices):
+            d = len(matrix)
+            adjoint = [[F.conjugate(matrix[j][i]) for j in range(d)] for i in range(d)]
+            if matrix_mul(F, adjoint, matrix) != matrix_identity(F, d):
+                failures.append(
+                    Failure("MX-3", f"irrep {record['index']}: D({g}) is not unitary")
+                )
+                break
+    return failures
+
+
+def check_mx4(doc: Document) -> list[Failure]:
+    """The trace of every matrix equals the character of the irrep of the same index."""
+    entries = _matrix_entries(doc)
+    if entries is None:
+        return _no_matrices("MX-4")
+    rows = _character_rows(doc)
+    if rows is None:
+        return _no_exact("MX-4")
+    F = _field(doc)
+    by_index = {
+        record["index"]: _row_on_elements(doc, row)
+        for record, row in zip(_irrep_records(doc), rows, strict=True)
+    }
+    failures = []
+    for record, matrices in entries:
+        characters = by_index.get(record["index"])
+        if characters is None:
+            failures.append(
+                Failure(
+                    "MX-4",
+                    f"irrep {record['index']} has matrices but no character row",
+                )
+            )
+            continue
+        for g, (matrix, character) in enumerate(
+            zip(matrices, characters, strict=False)
+        ):
+            if matrix_trace(F, matrix) != character:
+                failures.append(
+                    Failure(
+                        "MX-4",
+                        f"irrep {record['index']}: the trace of D({g}) is not the character",
+                    )
+                )
+                break
+    return failures
+
+
+def _reduced_exponent(F: CyclotomicField, x: Value, period: int) -> int | None:
+    """``e`` in ``(-period/2, period/2]`` with ``x = zeta_period^e``, or ``None``."""
+    for e in range(-((period - 1) // 2), period // 2 + 1):
+        if x == F.root_of_unity(period, e):
+            return e
+    return None
+
+
+def check_mx5(doc: Document) -> list[Failure]:
+    """Canonical basis: ``D(c)`` of the principal element is diagonal, its eigenvalues
+    ``zeta_N^e`` (``zeta_2N^e`` for a projective irrep) listed with the reduced
+    exponents descending; ``I5/2`` of ``I-dagger`` is ordered by weight instead."""
+    if doc["basis_convention"]["name"] != "canonical":
+        return []
+    entries = _matrix_entries(doc)
+    if entries is None:
+        return _no_matrices("MX-5")
+    named = _named_from_document(doc)
+    if named is None:
+        return [Failure("MX-5", "the principal element is not among the elements")]
+    F = _field(doc)
+    c, order = named.principal, named.order
+    failures = []
+    for record, matrices in entries:
+        if c >= len(matrices):
+            continue  # MX-7 reports the shape
+        matrix = matrices[c]
+        d = len(matrix)
+        if d < 2:
+            continue
+        if any(
+            not F.is_zero(matrix[i][j]) for i in range(d) for j in range(d) if i != j
+        ):
+            failures.append(
+                Failure("MX-5", f"irrep {record['index']}: D(c) is not diagonal")
+            )
+            continue
+        period = 2 * order if record["projective"] else order
+        diagonal = [matrix[i][i] for i in range(d)]
+        if record["projective"] and record["letter"] == "I":
+            expected = [F.root_of_unity(period, w) for w in I52_WEIGHTS]
+            if diagonal != expected:
+                failures.append(
+                    Failure(
+                        "MX-5",
+                        f"irrep {record['index']}: the eigenvalues of D(c) are not in weight order",
+                    )
+                )
+            continue
+        exponents = [_reduced_exponent(F, x, period) for x in diagonal]
+        reduced = [e for e in exponents if e is not None]
+        if len(reduced) != len(exponents):
+            failures.append(
+                Failure(
+                    "MX-5",
+                    f"irrep {record['index']}: an eigenvalue of D(c) is not a {period}-th root of unity",
+                )
+            )
+        elif any(a <= b for a, b in pairwise(reduced)):
+            failures.append(
+                Failure(
+                    "MX-5",
+                    f"irrep {record['index']}: the exponents of D(c) are {reduced}, not descending",
+                )
+            )
+    return failures
+
+
+def check_mx7(doc: Document) -> list[Failure]:
+    """Every irrep carries ``|G|`` matrices of shape ``dimension x dimension`` whose
+    entries are well-formed exact values of the declared field."""
+    N = doc["group"]["order"]
+    degree = doc["field"]["degree"]
+    failures = []
+    for entry in doc["matrices"]["irreps"]:
+        name = f"irrep {entry['index']}"
+        d = entry["dimension"]
+        for form in ("exact", "numeric", "pretty"):
+            if form not in entry:
+                continue
+            matrices = entry[form]
+            if len(matrices) != N:
+                failures.append(
+                    Failure(
+                        "MX-7",
+                        f"{name}: the {form} form has {len(matrices)} matrices, not {N}",
+                    )
+                )
+                continue
+            if any(
+                len(matrix) != d or any(len(row) != d for row in matrix)
+                for matrix in matrices
+            ):
+                failures.append(
+                    Failure("MX-7", f"{name}: a {form} matrix is not {d} x {d}")
+                )
+        if "exact" not in entry:
+            continue
+        for value in _leaves(entry["exact"], 3):
+            if (
+                not isinstance(value, list)
+                or len(value) != degree
+                or any(
+                    not isinstance(pair, list)
+                    or len(pair) != 2
+                    or not isinstance(pair[0], int)
+                    or not isinstance(pair[1], int)
+                    or pair[1] <= 0
+                    or math.gcd(pair[0], pair[1]) != 1
+                    for pair in value
+                )
+            ):
+                failures.append(
+                    Failure(
+                        "MX-7",
+                        f"{name}: an entry is not a reduced coefficient vector of degree {degree}",
+                    )
+                )
+                break
+    return failures
+
+
+def check_mx8(doc: Document) -> list[Failure]:
+    """Irreducible and pairwise inequivalent: ``(1/|G|) sum_g |chi(g)|^2 = 1`` for the
+    trace of every irrep, and ``sum_g chi_i(g) chi_j(g)* = 0`` for two irreps of the
+    same kind (an ordinary and a projective irrep are orthogonal over ``G-dagger``
+    by the sign of the barred elements alone)."""
+    entries = _matrix_entries(doc)
+    if entries is None:
+        return _no_matrices("MX-8")
+    F = _field(doc)
+    N = doc["group"]["order"]
+    traces = [
+        (record, [matrix_trace(F, matrix) for matrix in matrices])
+        for record, matrices in entries
+        if len(matrices) == N
+    ]
+    failures = []
+    for i, (record, chi) in enumerate(traces):
+        conjugated = [F.conjugate(x) for x in chi]
+        for j in range(i, len(traces)):
+            other, psi = traces[j]
+            if i != j and other["projective"] != record["projective"]:
+                continue
+            inner = F.total(F.mul(x, y) for x, y in zip(psi, conjugated, strict=True))
+            if inner != F.rational(N if i == j else 0):
+                failures.append(
+                    Failure(
+                        "MX-8",
+                        f"irrep {record['index']} is not irreducible"
+                        if i == j
+                        else f"irreps {record['index']} and {other['index']} are not inequivalent",
+                    )
+                )
+    return failures
+
+
 # ---- VL: values -------------------------------------------------------------------------
 
 
@@ -1283,10 +1632,19 @@ def check_vl2(doc: Document) -> list[Failure]:
             [F.from_exact(pairs) for pairs in exact]
         except (ValueError, TypeError):
             continue  # VL-1 reports the malformed value
+        numeric_leaves = (
+            list(_leaves(table["numeric"], depth)) if "numeric" in table else exact
+        )
+        pretty_leaves = (
+            list(_leaves(table["pretty"], depth)) if "pretty" in table else exact
+        )
+        if len(numeric_leaves) != len(exact) or len(pretty_leaves) != len(exact):
+            failures.append(
+                Failure("VL-2", f"the value forms of {name} differ in shape")
+            )
+            continue
         if "numeric" in table:
-            for pairs, approx in zip(
-                exact, _leaves(table["numeric"], depth), strict=True
-            ):
+            for pairs, approx in zip(exact, numeric_leaves, strict=True):
                 expected = numeric(F, F.from_exact(pairs))
                 if any(
                     a != b or math.copysign(1.0, a) != math.copysign(1.0, b)
@@ -1300,7 +1658,7 @@ def check_vl2(doc: Document) -> list[Failure]:
                     )
                     break
         if "pretty" in table:
-            for pairs, text in zip(exact, _leaves(table["pretty"], depth), strict=True):
+            for pairs, text in zip(exact, pretty_leaves, strict=True):
                 try:
                     parsed = parse(F, text)
                 except ValueSyntaxError as exc:
@@ -1329,11 +1687,15 @@ def check_vl3(doc: Document) -> list[Failure]:
     M = F.conductor
     values: list[Value] = []
     for name, table in _value_tables(doc):
-        if "exact" in table:
+        if "exact" not in table:
+            continue
+        try:
             values.extend(
                 F.from_exact(pairs)
                 for pairs in _leaves(table["exact"], _value_depth(name))
             )
+        except (ValueError, TypeError):
+            continue  # VL-1 and MX-7 report the malformed value
     failures = []
     for p in range(2, M + 1):
         if M % p or any(p % q == 0 for q in range(2, p)):
@@ -1376,6 +1738,13 @@ CHECKS: dict[str, tuple[Checker, tuple[str, ...]]] = {
     "CH-4": (check_ch4, ("characters",)),
     "CH-5": (check_ch5, ("characters",)),
     "CH-6": (check_ch6, ("elements", "cayley", "factor", "characters")),
+    "MX-1": (check_mx1, ("cayley", "factor", "matrices")),
+    "MX-2": (check_mx2, ("cayley", "factor", "matrices")),
+    "MX-3": (check_mx3, ("matrices",)),
+    "MX-4": (check_mx4, ("elements", "characters", "matrices")),
+    "MX-5": (check_mx5, ("elements", "matrices")),
+    "MX-7": (check_mx7, ("matrices",)),
+    "MX-8": (check_mx8, ("matrices",)),
     "VL-1": (check_vl1, ("characters",)),
     "VL-2": (check_vl2, ("characters",)),
     "VL-3": (check_vl3, ("matrices",)),

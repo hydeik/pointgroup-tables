@@ -292,9 +292,36 @@ class Model:
             table["pretty"] = [[pretty(F, x) for x in row] for row in rows]
         return table
 
+    def matrices_table(self, which: str, forms: tuple[str, ...]) -> dict[str, Any]:
+        """The irrep matrix table: one entry per irrep of ``--irreps`` (global
+        indices) carrying the irrep record and, per requested value form, the
+        matrices of every element of ``G`` in canonical order (for a projective
+        irrep, of the lifted elements in the canonical section)."""
+        F = self.field
+        entries = []
+        for irrep in select(self.irreps, which):
+            entry = irrep.record()
+            if "exact" in forms:
+                entry["exact"] = [
+                    [[F.exact(x) for x in row] for row in matrix]
+                    for matrix in irrep.matrices
+                ]
+            if "numeric" in forms:
+                entry["numeric"] = [
+                    [[numeric(F, x) for x in row] for row in matrix]
+                    for matrix in irrep.matrices
+                ]
+            if "pretty" in forms:
+                entry["pretty"] = [
+                    [[pretty(F, x) for x in row] for row in matrix]
+                    for matrix in irrep.matrices
+                ]
+            entries.append(entry)
+        return {"irreps": entries}
+
     def available_tables(self) -> tuple[str, ...]:
         """The tables this model can produce, in table order."""
-        return ("elements", "cayley", "factor", "characters")
+        return TABLE_ORDER
 
     def build_table(self, name: str, request: Request) -> dict[str, Any]:
         """One table under the options of a request."""
@@ -306,9 +333,9 @@ class Model:
             return self.factor_table()
         if name == "characters":
             return self.characters_table(request.irreps, request.values)
-        raise PointGroupTablesError(
-            f"the {name} table of '{self.spec.symbol}' is not available in this build"
-        )
+        if name == "matrices":
+            return self.matrices_table(request.irreps, request.values)
+        raise PointGroupTablesError(f"unknown table '{name}'")
 
 
 @cache

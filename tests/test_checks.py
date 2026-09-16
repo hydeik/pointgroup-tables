@@ -8,14 +8,24 @@ from typing import Any
 from conftest import double_model, model
 
 from pointgroup_tables import checks
+from pointgroup_tables.field import cyclotomic_field
 
 
 def corrupted(symbol: str) -> dict[str, Any]:
     return copy.deepcopy(model(symbol))
 
 
+def applicable(document: dict[str, Any]) -> list[str]:
+    """Every applicable check but the all-pairs ``MX-2`` on the icosahedral groups,
+    which the ``slow`` battery runs (``tests/test_matrices.py``)."""
+    names = checks.applicable_checks(document)
+    if document["group"]["order"] > 48:
+        names.remove("MX-2")
+    return names
+
+
 def failed(document: dict[str, Any]) -> set[str]:
-    return {failure.check for failure in checks.check(document)}
+    return {failure.check for failure in checks.check(document, applicable(document))}
 
 
 def test_ag1_catches_a_replaced_cayley_entry() -> None:
@@ -76,7 +86,8 @@ def test_ag3_catches_a_reordered_parity_block() -> None:
 
 def test_clean_models_pass_every_applicable_check() -> None:
     for symbol in ("C1", "C3v", "D6h", "Oh", "Ih"):
-        assert checks.check(model(symbol)) == []
+        document = model(symbol)
+        assert checks.check(document, applicable(document)) == []
 
 
 # ---- DG-* and the G-dagger side of CL-* -------------------------------------
@@ -175,7 +186,8 @@ def test_cl4_catches_a_wrong_base_class_of_the_double_group() -> None:
 
 def test_clean_double_models_pass_every_applicable_check() -> None:
     for symbol in ("C1", "C3v", "D6h", "Oh", "Ih"):
-        assert checks.check(double_model(symbol)) == []
+        document = double_model(symbol)
+        assert checks.check(document, applicable(document)) == []
 
 
 # ---- IL-*, CH-* and VL-* --------------------------------------------------------
@@ -316,3 +328,66 @@ def test_checks_report_a_characters_table_without_an_exact_form() -> None:
     document = corrupted("C3v")
     del document["characters"]["exact"]
     assert {"IL-2", "CH-1"} <= failed(document)
+
+
+# ---- the matrices table: MUT-2, MUT-3 and the other matrix checkers -----------------
+
+
+def test_mut2_a_flipped_factor_sign_is_caught_by_dg2_and_mx2() -> None:
+    document = corrupted("C3v")
+    document["factor"]["table"][1][2] *= -1
+    assert {"DG-2", "MX-2"} <= failed(document)
+
+
+def test_mut3_a_matrix_multiplied_by_a_phase_is_caught_by_mx1_or_mx2_and_mx4() -> None:
+    document = corrupted("C3v")
+    F = cyclotomic_field(document["field"]["conductor"])
+    entry = document["matrices"]["irreps"][2]  # E
+    entry["exact"][1] = [
+        [F.exact(F.mul(F.zeta(1), F.from_exact(pairs))) for pairs in row]
+        for row in entry["exact"][1]
+    ]
+    names = failed(document)
+    assert names & {"MX-1", "MX-2"} and "MX-4" in names
+
+
+def test_mx3_catches_a_matrix_that_is_not_unitary() -> None:
+    document = corrupted("C3v")
+    entry = document["matrices"]["irreps"][2]
+    entry["exact"][1] = [
+        [[[2 * p, q] for p, q in pairs] for pairs in row] for row in entry["exact"][1]
+    ]
+    assert "MX-3" in failed(document)
+
+
+def test_mx5_catches_a_reordered_basis() -> None:
+    # swapping the two basis vectors of E keeps a unitary homomorphism with the
+    # same traces, and only the eigenvalue order of D(c) tells
+    document = corrupted("C3v")
+    entry = document["matrices"]["irreps"][2]
+    for form in ("exact", "numeric", "pretty"):
+        entry[form] = [
+            [[matrix[1][1], matrix[1][0]], [matrix[0][1], matrix[0][0]]]
+            for matrix in entry[form]
+        ]
+    assert failed(document) == {"MX-5"}
+
+
+def test_mx7_catches_a_missing_matrix_and_a_foreign_entry() -> None:
+    document = corrupted("C3v")
+    document["matrices"]["irreps"][0]["exact"].pop()
+    assert "MX-7" in failed(document)
+    document = corrupted("C3v")
+    document["matrices"]["irreps"][0]["exact"][0][0][0] = [
+        [1, 1],
+        [0, 1],
+    ]  # degree 2, not 4
+    assert "MX-7" in failed(document)
+
+
+def test_mx8_catches_a_duplicated_irrep() -> None:
+    document = corrupted("C3v")
+    entries = document["matrices"]["irreps"]
+    entries[1]["exact"] = copy.deepcopy(entries[0]["exact"])
+    entries[1]["numeric"] = copy.deepcopy(entries[0]["numeric"])
+    assert {"MX-4", "MX-8"} <= failed(document)

@@ -17,7 +17,7 @@ from fractions import Fraction
 from functools import cache
 from itertools import combinations
 
-from .field import CyclotomicField, Value, _solve_rational
+from .field import CyclotomicField, Value, _solve_rational, cyclotomic_field
 
 PRECISION = 40
 # pi to 60 significant digits; the numeric evaluation rounds it to PRECISION
@@ -76,15 +76,22 @@ def numeric(F: CyclotomicField, x: Value) -> list[float]:
 
     A rational value is rounded directly; a value that is exactly real (or
     exactly imaginary) has its other part set to ``0.0`` exactly, so that
-    cancellation in the decimal sum never leaves a spurious residue.
+    cancellation in the decimal sum never leaves a spurious residue. Memoised
+    per conductor and value; a fresh list is returned each time.
     """
+    return list(_numeric(F.conductor, x))
+
+
+@cache
+def _numeric(conductor: int, x: Value) -> tuple[float, float]:
+    F = cyclotomic_field(conductor)
     if F.is_rational(x):
-        return [
+        return (
             _to_double(Decimal(x[0].numerator) / Decimal(x[0].denominator))
             if x[0]
             else 0.0,
             0.0,
-        ]
+        )
     ctx = _context()
     re_total, im_total = Decimal(0), Decimal(0)
     M = F.conductor
@@ -96,7 +103,7 @@ def numeric(F: CyclotomicField, x: Value) -> list[float]:
             im_total = ctx.add(im_total, ctx.multiply(coefficient, sin_j))
     re_value = 0.0 if F.is_imaginary(x) else _to_double(re_total)
     im_value = 0.0 if F.is_real(x) else _to_double(im_total)
-    return [re_value, im_value]
+    return (re_value, im_value)
 
 
 # ---- the value grammar: printer ----------------------------------------------------
@@ -204,7 +211,16 @@ def _coordinates(
 
 def pretty(F: CyclotomicField, x: Value) -> str:
     """The shortest spelling among a rational, ``r*zeta^k``, ``r*sqrtN*zeta^k`` and
-    ``re + i*im`` over the nice basis; the power-basis polynomial otherwise."""
+    ``re + i*im`` over the nice basis; the power-basis polynomial otherwise.
+
+    Memoised per conductor and value: a matrix table repeats a few hundred
+    distinct values tens of thousands of times."""
+    return _pretty(F.conductor, x)
+
+
+@cache
+def _pretty(conductor: int, x: Value) -> str:
+    F = cyclotomic_field(conductor)
     if F.is_rational(x):
         return format_rational(x[0])
     candidates: list[str] = []
