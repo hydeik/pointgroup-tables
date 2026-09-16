@@ -1,9 +1,10 @@
 """Scaffolding for the Koster Bethe-symbol transcription (wayfinder ticket #15).
 
-Two subcommands:
+Three subcommands:
 
     uv run python tools/koster_bethe.py templates            # write missing template files
     uv run python tools/koster_bethe.py check [GROUP ...]    # validate transcribed files
+    uv run python tools/koster_bethe.py generate             # write the shipped Koster table
 
 A template file per crystallographic point group is written to
 tests/reference/koster/bethe/ with one entry per irrep (ordinary and
@@ -20,6 +21,14 @@ Koster is the authority).
 The prototypes under prototypes/ supply the groups and, for the dihedral
 and octahedral families, the irreps; the cyclic and tetrahedral families
 are built here from the labelling rules. Nothing here is production code.
+
+``generate`` writes the shipped Koster table
+(src/pointgroup_tables/data/conventions/bethe/koster.toml, ticket #30) from
+the checked transcriptions: it rebuilds every group with the production
+package, verifies that the transcribed symbols and identifying characters
+are those the package computes, and records the characters in the value
+grammar of the document field so that the package attaches each Bethe
+symbol by characters at run time (docs/spec/verification.md, ``REF-8``).
 """
 
 from __future__ import annotations
@@ -32,12 +41,32 @@ import tomllib
 from fractions import Fraction as Fr
 from pathlib import Path
 
+from pointgroup_tables.document import build_model
+from pointgroup_tables.field import CyclotomicField, Value
+from pointgroup_tables.irreps import build_irreps as production_irreps
+from pointgroup_tables.symbols import parse_group
+from pointgroup_tables.values import parse as parse_value
+from pointgroup_tables.values import pretty as pretty_value
+
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "prototypes"))
 import abstract_group_prototype as ag
 import output_schema_prototype as osp
 
 BETHE_DIR = ROOT / "tests" / "reference" / "koster" / "bethe"
+OUT_FILE = (
+    ROOT
+    / "src"
+    / "pointgroup_tables"
+    / "data"
+    / "conventions"
+    / "bethe"
+    / "koster.toml"
+)
+SOURCE = (
+    "G. F. Koster, J. O. Dimmock, R. G. Wheeler and H. Statz, "
+    "Properties of the Thirty-Two Point Groups (Cambridge, MA: MIT Press, 1963)"
+)
 
 CRYSTALLOGRAPHIC = [
     "C1", "Ci", "C2", "Cs", "C2h", "D2", "C2v", "D2h",
@@ -647,6 +676,149 @@ def run_check(groups):
     return 1 if failed else 0
 
 
+# --------------------------------------------------------------------------
+# The shipped Koster table
+# --------------------------------------------------------------------------
+
+_TRANSCRIBED_ROOT = re.compile(r"^(-)?(?:(\d+)\*)?zeta(\d+)(?:\^(\d+))?$")
+
+
+def transcribed_value(F: CyclotomicField, text: str) -> Value:
+    """A character as the transcription spells it: the template's ``zetaN^k``
+    (a root of unity named by its own order) or a string of the value grammar."""
+    match = _TRANSCRIBED_ROOT.match(text)
+    if match is None:
+        return parse_value(F, text)
+    sign, factor, order, power = match.groups()
+    value = F.root_of_unity(int(order), int(power or 1))
+    if factor:
+        value = F.scale(value, Fr(int(factor)))
+    return F.neg(value) if sign else value
+
+
+class GenerateError(Exception):
+    """A transcription the production package does not reproduce."""
+
+
+def shipped_group(symbol: str) -> tuple[str, dict]:
+    """The shipped entry of one group, verified against the production irreps."""
+    spec = parse_group(symbol)
+    path = BETHE_DIR / f"{spec.symbol}.toml"
+    data = tomllib.loads(path.read_text())
+    if data.get("status") != "done":
+        raise GenerateError(f"{path.name}: status is {data.get('status')!r}, not done")
+    model = build_model(spec)
+    F = model.field
+    by_label = {label.text: k for k, label in enumerate(model.labels)}
+    missing = [name for name in data["elements"] if name not in by_label]
+    if missing:
+        raise GenerateError(f"{path.name}: elements {missing} are not canonical labels")
+    positions = [by_label[name] for name in data["elements"]]
+    # the raw irreps, not ``model.irreps``: that property attaches the very
+    # table this command writes
+    computed = production_irreps(
+        model.group, model.double, F, model.table, model.factor
+    )
+    symbols = [ir.symbol.text for ir in computed]
+    if [row["symbol"] for row in data["irreps"]] != symbols:
+        raise GenerateError(
+            f"{path.name}: irrep symbols or order differ from the package's {symbols}"
+        )
+    rows = []
+    keys = set()
+    for ir, row in zip(computed, data["irreps"], strict=True):
+        values = [ir.characters[k] for k in positions]
+        expected = [transcribed_value(F, text) for text in row["characters"]]
+        if values != expected:
+            raise GenerateError(
+                f"{path.name}: {ir.symbol.text} has characters "
+                f"{[pretty_value(F, v) for v in values]}, the transcription says {row['characters']}"
+            )
+        if ir.projective != row["projective"]:
+            raise GenerateError(
+                f"{path.name}: {ir.symbol.text} projective flag differs"
+            )
+        characters = [pretty_value(F, v) for v in values]
+        key = (ir.projective, tuple(characters))
+        if key in keys:
+            raise GenerateError(
+                f"{path.name}: the identifying elements do not separate {ir.symbol.text}"
+            )
+        keys.add(key)
+        rows.append(
+            {
+                "symbol": ir.symbol.text,
+                "projective": ir.projective,
+                "characters": characters,
+                "bethe": row["bethe"],
+            }
+        )
+    entry = {
+        "table": data["table"],
+        "conductor": F.conductor,
+        "elements": list(data["elements"]),
+        "irreps": rows,
+    }
+    return spec.symbol, entry
+
+
+def emit_shipped(groups: list[tuple[str, dict]]) -> str:
+    lines = [
+        "# The Koster table: Bethe symbols of the irreps of the 32 crystallographic point",
+        '# groups (docs/spec/irrep-labels.md, "Bethe aliases"). Generated by',
+        "# `uv run python tools/koster_bethe.py generate` from the transcriptions under",
+        "# tests/reference/koster/bethe/; do not edit by hand.",
+        "#",
+        "# Each group lists its identifying elements (canonical labels) and, per irrep, the",
+        "# characters on them in the value grammar of the group's canonical field (for a",
+        "# projective irrep, of the lifted elements in the canonical section). The package",
+        "# attaches a Bethe symbol to the computed irrep with those characters (REF-8).",
+        "",
+        f"name = {toml_str(KOSTER_NAME)}",
+        f"source = {toml_str(SOURCE)}",
+        "",
+    ]
+    for symbol, entry in groups:
+        lines += [
+            f"[groups.{symbol}]",
+            f"table = {toml_str(entry['table'])}",
+            f"conductor = {entry['conductor']}",
+            f"elements = {toml_list(entry['elements'])}",
+            "",
+        ]
+        for row in entry["irreps"]:
+            lines += [
+                f"[[groups.{symbol}.irreps]]",
+                f"symbol = {toml_str(row['symbol'])}",
+                f"projective = {'true' if row['projective'] else 'false'}",
+                f"characters = {toml_list(row['characters'])}",
+                f"bethe = {toml_str(row['bethe'])}",
+                "",
+            ]
+    return "\n".join(lines)
+
+
+KOSTER_NAME = "koster"
+
+
+def generate() -> int:
+    """Check every transcription, then write the shipped Koster table."""
+    if run_check([]) != 0:
+        print("not generated: the transcriptions do not pass the checker")
+        return 1
+    groups = []
+    try:
+        for symbol in CRYSTALLOGRAPHIC:
+            groups.append(shipped_group(symbol))
+    except GenerateError as exc:
+        print(f"not generated: {exc}")
+        return 1
+    OUT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    OUT_FILE.write_text(emit_shipped(groups) + "\n")
+    print("wrote", OUT_FILE.relative_to(ROOT), f"({len(groups)} groups)")
+    return 0
+
+
 def main(argv):
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -656,10 +828,15 @@ def main(argv):
     c.add_argument("groups", nargs="*")
     s = sub.add_parser("show", help="print the computed entries of a group")
     s.add_argument("group")
+    sub.add_parser(
+        "generate", help="write the shipped Koster table from the checked files"
+    )
     args = ap.parse_args(argv)
     if args.cmd == "templates":
         write_templates(force=args.force)
         return 0
+    if args.cmd == "generate":
+        return generate()
     if args.cmd == "show":
         print(template(args.group))
         return 0

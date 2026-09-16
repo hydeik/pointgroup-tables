@@ -16,6 +16,7 @@ from typing import Any
 
 from . import conventions
 from .abstract import PointGroup, point_group
+from .bethe import attach_bethe
 from .classes import (
     ConjugacyClass,
     DoubleClass,
@@ -159,9 +160,11 @@ class Model:
 
     @cached_property
     def irreps(self) -> list[Irrep]:
-        return build_irreps(
+        irreps = build_irreps(
             self.group, self.double, self.field, self.table, self.factor
         )
+        attach_bethe(self.spec.symbol, self.labels, self.field, irreps)
+        return irreps
 
     # ---- metadata and records --------------------------------------------------
 

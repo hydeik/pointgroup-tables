@@ -14,9 +14,17 @@ uv run python tools/koster_bethe.py check            # every file
 uv run python tools/koster_bethe.py check D3h Oh     # some groups
 ```
 
-The shipped Koster table under `src/pointgroup_tables/data/conventions/` is
-derived from these files by the implementation; the files themselves are
-test data (`docs/spec/verification.md`, `REF-8`).
+The shipped Koster table, `src/pointgroup_tables/data/conventions/bethe/koster.toml`,
+is written from these files by
+
+```
+uv run python tools/koster_bethe.py generate
+```
+
+which reruns the checker, rebuilds every group with the package and refuses
+to write when a transcribed symbol or character is not the one the package
+computes. The files themselves are test data (`docs/spec/verification.md`,
+`REF-8`), read by `tests/test_reference_bethe.py`.
 
 ## File layout
 

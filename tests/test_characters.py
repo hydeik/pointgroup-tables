@@ -234,7 +234,7 @@ def test_irrep_records_are_structured(symbol: str) -> None:
             assert partner["symbol"] == parsed.partner.text if parsed.partner else False
         assert record["frobenius_schur"] in (1, 0, -1)
         assert list(record) == [key for key in (
-            "index", "symbol", "dimension", "projective", "letter", "component", "partner", "subscript", "suffix", "frobenius_schur",
+            "index", "symbol", "reference_symbol", "bethe", "dimension", "projective", "letter", "component", "partner", "subscript", "suffix", "frobenius_schur",
         ) if key in record]  # fmt: skip
 
 
@@ -339,7 +339,12 @@ def test_characters_equal_the_prototype_samples(
     expected = json.loads(path.read_text())["characters"]
     table = build_document(invocation)["characters"]
     assert table["class_group"] == expected["class_group"]
-    assert table["irreps"] == expected["irreps"]
+    # the prototype predates the Koster table (its samples carry no bethe key)
+    records = [
+        {key: value for key, value in record.items() if key != "bethe"}
+        for record in table["irreps"]
+    ]
+    assert records == expected["irreps"]
     assert table["classes"] == expected["classes"]
     assert table["exact"] == expected["exact"]
     # the prototype rounded with plain complex arithmetic; the numeric forms agree to the noise

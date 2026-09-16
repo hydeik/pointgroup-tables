@@ -274,7 +274,11 @@ ordinary irreps and then the projective irreps of each crystallographic
 point group, with a `±` superscript for the parity under inversion in the
 centrosymmetric groups. No rule generates these numbers for arbitrary `n`,
 so they are a transcribed table, keyed by group symbol and canonical
-Mulliken symbol, shipped with the package and emitted as the `bethe` field
+Mulliken symbol, shipped with the package
+(`src/pointgroup_tables/data/conventions/bethe/koster.toml`, generated from
+the transcription by `tools/koster_bethe.py generate`; each entry carries the
+irrep's characters on the group's identifying elements, by which the tool
+attaches it to the computed irrep) and emitted as the `bethe` field
 (spelled `Gamma4`, `Gamma6-`) for the 32 crystallographic groups and their
 double groups whatever label convention is selected. Groups outside the 32
 (any other `n`, `I`, `Ih`) have no `bethe` field. Bradley & Cracknell
