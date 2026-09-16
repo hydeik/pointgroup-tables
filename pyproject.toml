@@ -30,7 +30,7 @@ dev = [
 ]
 
 [tool.ty.environment]
-extra-paths = ["prototypes", "tools"]
+extra-paths = ["prototypes", "tools", "tests"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

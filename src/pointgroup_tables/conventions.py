@@ -12,7 +12,7 @@ more) are read from the convention's TOML file on first use.
 from __future__ import annotations
 
 import tomllib
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from functools import cache
 from importlib import resources
 from typing import Any
@@ -60,6 +60,33 @@ def basis_convention(name: str) -> dict[str, Any]:
 
 
 @dataclass(frozen=True)
+class IrrepRules:
+    """The ``[irreps]`` table of a label convention (docs/spec/irrep-labels.md,
+    "Reference irrep labels in a label convention")."""
+
+    component_style: str = "prefix"  # "prefix" (1E) or "superscript" (^1E)
+    fraction_style: str = "plain"  # "plain" (E1/2) or "subscript" (E_{1/2})
+    projective_parity_separator: str = ""  # "," gives E1/2,g
+    letters: dict[str, str] = field(default_factory=dict)  # ordinary irreps
+    projective_letters: dict[str, str] = field(default_factory=dict)
+    overrides: dict[str, dict[str, str]] = field(default_factory=dict)  # per group
+
+    @staticmethod
+    def from_table(table: dict[str, Any]) -> IrrepRules:
+        return IrrepRules(
+            component_style=table.get("component_style", "prefix"),
+            fraction_style=table.get("fraction_style", "plain"),
+            projective_parity_separator=table.get("projective_parity_separator", ""),
+            letters=dict(table.get("letters", {})),
+            projective_letters=dict(table.get("projective_letters", {})),
+            overrides={
+                group: dict(entries)
+                for group, entries in table.get("overrides", {}).items()
+            },
+        )
+
+
+@dataclass(frozen=True)
 class LabelConvention:
     """The rule vocabulary of a label convention file (docs/spec/label-conventions.md,
     "Label conventions (reference labels)"), as read from the shipped TOML."""
@@ -76,7 +103,7 @@ class LabelConvention:
     overrides: dict[str, dict[str, str]]  # [overrides.<group>]: canonical -> reference
     swapped: dict[str, frozenset[str]]  # [barred.<group>].swapped
     class_overrides: dict[str, dict[str, str]]  # [classes.overrides.<group>]
-    irreps: dict[str, Any]  # the [irreps] table (spelling rules, letters, overrides)
+    irreps: IrrepRules
 
     def covers(self, family_n: int | None) -> bool:
         """Whether a group (axial by its family ``n``, polyhedral for ``None``) is
@@ -116,7 +143,7 @@ def label_convention_rules(name: str) -> LabelConvention:
             group: dict(table)
             for group, table in data.get("classes", {}).get("overrides", {}).items()
         },
-        irreps=dict(data.get("irreps", {})),
+        irreps=IrrepRules.from_table(data.get("irreps", {})),
     )
 
 

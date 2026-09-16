@@ -214,15 +214,7 @@ def check() -> tuple[dict[str, dict[str, str]], dict[str, list[str]], int]:
     return overrides, barred, failures
 
 
-# The book's spelling of a few class labels in the character transcription differs
-# from the labels transcription (whose README fixes sigma_x) and from the reference
-# class label of the convention (15sigma of Ih, docs/spec/conjugacy-classes.md).
-CLASS_SPELLING = {
-    "sigmax": "sigma_x",
-    "sigmay": "sigma_y",
-    "sigmaz": "sigma_z",
-    "15sigma_h": "15sigma",
-}
+# The [irreps] table of the convention (docs/spec/irrep-labels.md).
 IRREP_RULES = {
     "component_style": "prefix",
     "fraction_style": "plain",
@@ -240,12 +232,16 @@ def irrep_overrides() -> dict[str, dict[str, str]]:
     shipped convention identify the columns; its irrep rules play no part here."""
     import math
 
+    sys.path.insert(0, str(ROOT / "tests"))
+    from altmann_herzig import column_of, corrected_rows
+
+    from pointgroup_tables.conventions import IrrepRules
     from pointgroup_tables.document import build_model, model_document
     from pointgroup_tables.field import cyclotomic_field
     from pointgroup_tables.reference import reference_symbol
     from pointgroup_tables.symbols import parse_group
-    from pointgroup_tables.values import parse
 
+    rules = IrrepRules.from_table(IRREP_RULES)
     out: dict[str, dict[str, str]] = {}
     for path in sorted(CHARACTERS_DIR.glob("*.toml")):
         data = tomllib.load(path.open("rb"))
@@ -256,31 +252,7 @@ def irrep_overrides() -> dict[str, dict[str, str]]:
         F_book = cyclotomic_field(data["conductor"])
         F = cyclotomic_field(math.lcm(F_ours.conductor, F_book.conductor))
         labels = [c["label"] for c in data["classes"]]
-        rows = [
-            (
-                row["label"],
-                [F_book.lift(parse(F_book, t), F) for t in row["characters"]],
-                row["projective"],
-            )
-            for row in data["irreps"]
-        ]
-        for entry in data.get("known_discrepancy", []):
-            a, b = (labels.index(x) for x in entry["swap_projective"])
-            rows = [
-                (label, _swapped(values, a, b) if projective else values, projective)
-                for label, values, projective in rows
-            ]
-        columns = []
-        for label in labels:
-            label = CLASS_SPELLING.get(label, label)
-            matches = [
-                c
-                for c, column in enumerate(table["classes"])
-                if column["reference_label"] == label
-                or column["reference_label"].startswith(label + "+")
-            ]
-            assert len(matches) == 1, (symbol, label)
-            columns.append(matches[0])
+        columns = [column_of(table["classes"], label) for label in labels]
         irreps = build_model(parse_group(symbol)).irreps
         ours = {
             (
@@ -289,23 +261,17 @@ def irrep_overrides() -> dict[str, dict[str, str]]:
                     for c in columns
                 ),
                 record["projective"],
-            ): reference_symbol(irreps[k], IRREP_RULES)
+            ): reference_symbol(irreps[k], rules)
             for k, record in enumerate(table["irreps"])
         }
         canonical = {
-            reference_symbol(irrep, IRREP_RULES): irrep.symbol.text for irrep in irreps
+            reference_symbol(irrep, rules): irrep.symbol.text for irrep in irreps
         }
-        for label, values, projective in rows:
+        for label, values, projective in corrected_rows(data, F_book, F):
             spelled = ours[(tuple(values), projective)]
             if spelled != label:
                 out.setdefault(symbol, {})[canonical[spelled]] = label
     return out
-
-
-def _swapped(values: list, a: int, b: int) -> list:
-    values = list(values)
-    values[a], values[b] = values[b], values[a]
-    return values
 
 
 def toml_list(items) -> str:
@@ -367,13 +333,14 @@ def emit(
                 f"swapped = {toml_list(barred[symbol])}",
                 "",
             ]
+    lines.append("[irreps]")
+    for key, value in IRREP_RULES.items():
+        if isinstance(value, dict):
+            entries = ", ".join(f"{k} = {ab.toml_str(v)}" for k, v in value.items())
+            lines.append(f"{key} = {{ {entries} }}")
+        else:
+            lines.append(f"{key} = {ab.toml_str(value)}")
     lines += [
-        "[irreps]",
-        'component_style = "prefix"',
-        'fraction_style = "plain"',
-        'projective_parity_separator = ","',
-        'letters = { G = "F" }',
-        'projective_letters = { G = "F", B = "A" }',
         "",
         "# The book's symbol where it differs from the spelled canonical one: the members",
         "# of the complex pairs, the E_k of D4d and D5h, and the F of T and Th, decided",

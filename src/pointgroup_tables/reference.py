@@ -13,12 +13,12 @@ index moves.
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from functools import cached_property
 from typing import TYPE_CHECKING, Any
 
-from .conventions import LabelConvention
-from .labels import IDENTITY, INVERSION, REFLECTION, ROTATION, Label
+from .conventions import IrrepRules, LabelConvention
+from .labels import ROTATION, Label, reduced_label, reduced_power, reduced_stem
 
 if TYPE_CHECKING:
     from .document import Model
@@ -53,19 +53,10 @@ def spell_barred(label: str, barred: bool, style: str) -> str:
 def spell_reduced(label: Label, has_inverse: bool, style: str) -> str:
     """The reduced label of a class representative (docs/spec/conjugacy-classes.md)
     spelled by ``exponent_style``; the bar is not part of it."""
-    if label.kind in (IDENTITY, INVERSION):
-        return label.text.lstrip("~")
-    if label.kind == REFLECTION:
-        return "sigma" if label.plane == "" else f"sigma_{label.plane}"
-    if label.order == 2:
-        return f"C2{label.primes}"
-    letter = "C" if label.kind == ROTATION else "S"
-    assert label.power is not None
-    j = abs(label.power)
-    body = f"{letter}{label.order}" if j == 1 else f"{letter}{label.order}^{j}"
-    if has_inverse or style != PLUSMINUS:
-        return body if has_inverse else f"{letter}{label.order}^{label.power}"
-    return body + ("-" if label.power < 0 else "+")
+    j = reduced_power(label, has_inverse)
+    if j is None or has_inverse or style != PLUSMINUS:
+        return reduced_label(replace(label, barred=False), has_inverse)
+    return spell_exponent(f"{reduced_stem(label)}^{j}", style)
 
 
 # ---- axial secondary directions ------------------------------------------------------------
@@ -83,7 +74,7 @@ class Secondary:
     double_primed: tuple[int, ...]
 
     def lookup(self, k: int) -> tuple[str, int, int]:
-        """``(primes, index, pole)`` of the master's secondary axis in direction ``k``."""
+        """``(primes, index, pole)`` of the master's secondary direction ``k``."""
         if self.twist:
             k = (k + self.N // 2) % self.N
         u = k * (self.M // self.N)
@@ -95,7 +86,8 @@ class Secondary:
 
     def swapped(self, k: int) -> bool:
         """Whether the reference's pole of direction ``k`` is the antipode of the
-        pole of our lift (docs/spec/label-conventions.md, "Reference section")."""
+        pole of our lifted element (docs/spec/label-conventions.md, "Reference
+        section"): then the reference's unbarred element is our barred one."""
         ours = (k if 2 * k <= self.N else k - self.N) * (self.M // self.N)
         if self.twist:
             ours += self.M // 2
@@ -167,7 +159,8 @@ class ReferenceLabelling:
 
     @cached_property
     def swapped(self) -> frozenset[int]:
-        """The elements of ``G`` whose reference lift is our barred element."""
+        """The elements of ``G`` whose unbarred element in the reference section
+        is our barred element (the ``swapped`` list of the double-group chapter)."""
         listed = self.rules.swapped.get(self.model.spec.symbol)
         if listed is not None:
             return frozenset(
@@ -260,7 +253,7 @@ class ReferenceLabelling:
     def irrep_symbols(self) -> list[str]:
         """The reference symbol of every irrep, in canonical irrep order."""
         rules = self.rules.irreps
-        override = rules.get("overrides", {}).get(self.model.spec.symbol, {})
+        override = rules.overrides.get(self.model.spec.symbol, {})
         return [
             override.get(irrep.symbol.text, reference_symbol(irrep, rules))
             for irrep in self.model.irreps
@@ -278,51 +271,59 @@ class ReferenceLabelling:
                 double = table["group"] == "G_double"
                 labels = self.double_element_labels if double else self.element_labels
                 table["items"] = [
-                    _with(record, "reference_label", labels[record["index"]])
+                    _insert_after(
+                        record, "label", "reference_label", labels[record["index"]]
+                    )
                     for record in table["items"]
                 ]
             if "classes" in table:
                 double = table.get("class_group", table.get("group")) == "G_double"
                 labels = self.double_class_labels if double else self.class_labels
                 table["classes"] = [
-                    _with(record, "reference_label", labels[record["index"]])
+                    _insert_after(
+                        record, "label", "reference_label", labels[record["index"]]
+                    )
                     for record in table["classes"]
                 ]
             if "irreps" in table:
                 table["irreps"] = [
-                    _with(
-                        record, "reference_symbol", self.irrep_symbols[record["index"]]
+                    _insert_after(
+                        record,
+                        "symbol",
+                        "reference_symbol",
+                        self.irrep_symbols[record["index"]],
                     )
                     for record in table["irreps"]
                 ]
 
 
-def reference_symbol(irrep: Irrep, rules: dict[str, Any]) -> str:
+def reference_symbol(irrep: Irrep, rules: IrrepRules) -> str:
     """The spelling rules of the ``[irreps]`` table applied to a canonical symbol."""
     symbol = irrep.symbol
-    letters = rules.get("projective_letters" if irrep.projective else "letters", {})
+    letters = rules.projective_letters if irrep.projective else rules.letters
     letter = letters.get(symbol.letter, symbol.letter)
     component = ""
     if symbol.component is not None:
-        style = rules.get("component_style", "prefix")
         component = (
-            f"^{symbol.component}" if style == "superscript" else str(symbol.component)
+            f"^{symbol.component}"
+            if rules.component_style == "superscript"
+            else str(symbol.component)
         )
     subscript = ""
     if symbol.subscript is not None:
-        text = str(symbol.subscript)
-        if "/" in text and rules.get("fraction_style", "plain") == "subscript":
-            text = f"_{{{text}}}"
-        subscript = text
+        subscript = str(symbol.subscript)
+        if "/" in subscript and rules.fraction_style == "subscript":
+            subscript = f"_{{{subscript}}}"
     suffix = symbol.suffix or ""
     if irrep.projective and suffix in ("g", "u"):
-        suffix = rules.get("projective_parity_separator", "") + suffix
+        suffix = rules.projective_parity_separator + suffix
     return component + letter + subscript + suffix
 
 
-def _with(record: dict[str, Any], key: str, value: Any) -> dict[str, Any]:
-    """The record with ``key`` inserted after the canonical ``label`` / ``symbol`` key."""
-    anchor = "label" if key == "reference_label" else "symbol"
+def _insert_after(
+    record: dict[str, Any], anchor: str, key: str, value: Any
+) -> dict[str, Any]:
+    """The record with ``key = value`` inserted right after the key ``anchor``."""
     out: dict[str, Any] = {}
     for k, v in record.items():
         out[k] = v

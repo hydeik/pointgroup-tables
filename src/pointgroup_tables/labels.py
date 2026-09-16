@@ -264,18 +264,30 @@ def canonical_labels(G: PointGroup) -> list[Label]:
     return _polyhedral_labels(G) if G.rotation_group.polyhedral else _axial_labels(G)
 
 
+def reduced_stem(label: Label) -> str:
+    """The reduced label without its exponent (docs/spec/conjugacy-classes.md):
+    ``E``, ``i``, ``sigma_v``, ``C2'``, ``C3``, ``S8``; the bar is not part of it."""
+    if label.kind in (IDENTITY, INVERSION):
+        return label._base()
+    if label.kind == REFLECTION:
+        return "sigma" if label.plane == "" else f"sigma_{label.plane}"
+    if label.order == 2:
+        return f"C2{label.primes}"
+    letter = "C" if label.kind == ROTATION else "S"
+    return f"{letter}{label.order}"
+
+
+def reduced_power(label: Label, has_inverse: bool) -> int | None:
+    """The exponent of the reduced label: ``j``, its absolute value when the class
+    contains the inverse, ``None`` when the label carries no exponent."""
+    if label.power is None:
+        return None
+    return abs(label.power) if has_inverse else label.power
+
+
 def reduced_label(label: Label, has_inverse: bool) -> str:
     """The reduced form of a label for a class label (docs/spec/conjugacy-classes.md)."""
     bar = "~" if label.barred else ""
-    if label.kind in (IDENTITY, INVERSION):
-        return bar + label._base()
-    if label.kind == REFLECTION:
-        return bar + ("sigma" if label.plane == "" else f"sigma_{label.plane}")
-    if label.order == 2:
-        return f"{bar}C2{label.primes}"
-    letter = "C" if label.kind == ROTATION else "S"
-    assert label.power is not None
-    j = abs(label.power) if has_inverse else label.power
-    return (
-        f"{bar}{letter}{label.order}" if j == 1 else f"{bar}{letter}{label.order}^{j}"
-    )
+    j = reduced_power(label, has_inverse)
+    exponent = "" if j is None or j == 1 else f"^{j}"
+    return bar + reduced_stem(label) + exponent

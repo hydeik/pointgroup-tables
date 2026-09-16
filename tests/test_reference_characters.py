@@ -20,11 +20,11 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from altmann_herzig import book_rows, column_of, corrected_rows
 from conftest import double_model, model
 
 from pointgroup_tables.document import model_document
 from pointgroup_tables.field import CyclotomicField, Value, cyclotomic_field
-from pointgroup_tables.values import parse
 
 REFERENCE = Path(__file__).resolve().parent / "reference"
 ALTMANN_HERZIG = REFERENCE / "altmann-herzig" / "characters"
@@ -220,32 +220,6 @@ def _read_altmann_herzig(symbol: str) -> dict[str, Any]:
     return tomllib.loads(path.read_text())
 
 
-def _book_rows(
-    data: dict[str, Any], F_book: CyclotomicField, F: CyclotomicField
-) -> list[tuple[str, list[Value], bool]]:
-    return [
-        (
-            row["label"],
-            _lift_all([parse(F_book, text) for text in row["characters"]], F_book, F),
-            row["projective"],
-        )
-        for row in data["irreps"]
-    ]
-
-
-def _swap_projective(
-    rows: list[tuple[str, list[Value], bool]], classes: list[str], a: str, b: str
-) -> list[tuple[str, list[Value], bool]]:
-    ia, ib = classes.index(a), classes.index(b)
-    out = []
-    for label, values, projective in rows:
-        values = list(values)
-        if projective:
-            values[ia], values[ib] = values[ib], values[ia]
-        out.append((label, values, projective))
-    return out
-
-
 @pytest.mark.reference
 @pytest.mark.parametrize("symbol", _files(ALTMANN_HERZIG))
 def test_ref1_altmann_herzig_character_tables(symbol: str) -> None:
@@ -254,24 +228,21 @@ def test_ref1_altmann_herzig_character_tables(symbol: str) -> None:
     F_book = cyclotomic_field(data["conductor"])
     F = cyclotomic_field(math.lcm(F_book.conductor, comp.F.conductor))
     book_classes = [(c["size"], c["order"], c["parity"]) for c in data["classes"]]
-    book_rows = _book_rows(data, F_book, F)
+    rows = book_rows(data, F_book, F)
     comp_rows = [
         (symbol_text, _lift_all(values, comp.F, F), projective)
         for symbol_text, values, projective, _ in comp.rows
     ]
     found = structural_match(
-        book_classes, book_rows, comp.invariants, comp_rows, F, comp.regular
+        book_classes, rows, comp.invariants, comp_rows, F, comp.regular
     )
-    discrepancies = data.get("known_discrepancy", [])
-    if discrepancies:
+    if data.get("known_discrepancy"):
         assert found is None, (
             "the documented discrepancy is not a discrepancy: the printed table matches"
         )
-        labels = [c["label"] for c in data["classes"]]
-        for entry in discrepancies:
-            book_rows = _swap_projective(book_rows, labels, *entry["swap_projective"])
+        rows = corrected_rows(data, F_book, F)
         found = structural_match(
-            book_classes, book_rows, comp.invariants, comp_rows, F, comp.regular
+            book_classes, rows, comp.invariants, comp_rows, F, comp.regular
         )
     assert found is not None, (
         f"no class and irrep bijection reproduces the book's table of {symbol}"
@@ -307,16 +278,14 @@ def test_ref2_bilbao_point_group_tables(symbol: str) -> None:
     F_book = cyclotomic_field(data["conductor"])
     F = cyclotomic_field(math.lcm(F_book.conductor, comp.F.conductor))
     book_classes = [(c["size"], c["order"], c["parity"]) for c in data["classes"]]
-    book_rows = _book_rows(data, F_book, F)
-    assert all(not projective for _, _, projective in book_rows)
+    rows = book_rows(data, F_book, F)
+    assert all(not projective for _, _, projective in rows)
     comp_rows = [
         (s, _lift_all(values, comp.F, F), projective)
         for s, values, projective, _ in comp.rows
         if not projective
     ]
-    found = structural_match(
-        book_classes, book_rows, comp.invariants, comp_rows, F, None
-    )
+    found = structural_match(book_classes, rows, comp.invariants, comp_rows, F, None)
     assert found is not None, (
         f"no class and irrep bijection reproduces the server's table of {symbol}"
     )
@@ -331,14 +300,12 @@ def test_ref2_bilbao_double_group_tables(symbol: str) -> None:
     F_book = cyclotomic_field(data["conductor"])
     F = cyclotomic_field(math.lcm(F_book.conductor, comp.F.conductor))
     book_classes = [(c["size"], c["order"], c["parity"]) for c in data["classes"]]
-    book_rows = _book_rows(data, F_book, F)
+    rows = book_rows(data, F_book, F)
     comp_rows = [
         (s, _lift_all(values, comp.F, F), projective)
         for s, values, projective, _ in comp.rows
     ]
-    found = structural_match(
-        book_classes, book_rows, comp.invariants, comp_rows, F, None
-    )
+    found = structural_match(book_classes, rows, comp.invariants, comp_rows, F, None)
     assert found is not None, (
         f"no class and irrep bijection reproduces the server's double-group table of {symbol}"
     )
@@ -364,15 +331,6 @@ def test_reference_files_are_present() -> None:
 
 AH_LABELS = REFERENCE / "altmann-herzig" / "labels"
 AH_CONVENTION = "altmann-herzig"
-# the character transcription spells these class labels differently from the
-# labels transcription (whose README fixes ``sigma_x``) and from the reference
-# class label of the convention (``15sigma`` of ``Ih``, docs/spec/conjugacy-classes.md)
-BOOK_CLASS_SPELLING = {
-    "sigmax": "sigma_x",
-    "sigmay": "sigma_y",
-    "sigmaz": "sigma_z",
-    "15sigma_h": "15sigma",
-}
 
 
 def _labelled(symbol: str) -> dict[str, Any]:
@@ -382,12 +340,15 @@ def _labelled(symbol: str) -> dict[str, Any]:
 @pytest.mark.reference
 @pytest.mark.parametrize("symbol", _files(ALTMANN_HERZIG))
 def test_ref5_reference_irrep_symbols_are_the_books(symbol: str) -> None:
+    """Every row of the book's table names exactly one of our irreps, of the same
+    kind; that the characters of that row are ours is ``REF-3``."""
     data = _read_altmann_herzig(symbol)
-    ours = [
-        record["reference_symbol"]
+    ours = {
+        record["reference_symbol"]: record["projective"]
         for record in _labelled(symbol)["characters"]["irreps"]
-    ]
-    assert sorted(ours) == sorted(row["label"] for row in data["irreps"])
+    }
+    assert len(ours) == len(data["irreps"])
+    assert {row["label"]: row["projective"] for row in data["irreps"]} == ours
 
 
 @pytest.mark.reference
@@ -405,21 +366,6 @@ def test_ref5_reference_irrep_symbols_match_the_symbol_row(path: Path) -> None:
     assert sorted(ours) == sorted(transcription["book"]["irreps"])
 
 
-def _column_of(columns: list[dict[str, Any]], book_label: str) -> int:
-    """The class of ``G-dagger`` the book's column names: the class whose reference
-    label is the book's (the untilded half of a split class) or that merged
-    class's unbarred half."""
-    label = BOOK_CLASS_SPELLING.get(book_label, book_label)
-    matches = [
-        c
-        for c, column in enumerate(columns)
-        if column["reference_label"] == label
-        or column["reference_label"].startswith(label + "+")
-    ]
-    assert len(matches) == 1, (book_label, [c["reference_label"] for c in columns])
-    return matches[0]
-
-
 @pytest.mark.reference
 @pytest.mark.parametrize("symbol", _files(ALTMANN_HERZIG))
 def test_ref3_labelled_comparison_of_the_character_tables(symbol: str) -> None:
@@ -429,15 +375,13 @@ def test_ref3_labelled_comparison_of_the_character_tables(symbol: str) -> None:
     F_ours = cyclotomic_field(document["field"]["conductor"])
     F_book = cyclotomic_field(data["conductor"])
     F = cyclotomic_field(math.lcm(F_book.conductor, F_ours.conductor))
-    book_rows = _book_rows(data, F_book, F)
+    rows = corrected_rows(data, F_book, F)
     labels = [c["label"] for c in data["classes"]]
-    for entry in data.get("known_discrepancy", []):
-        book_rows = _swap_projective(book_rows, labels, *entry["swap_projective"])
-    columns = [_column_of(table["classes"], label) for label in labels]
+    columns = [column_of(table["classes"], label) for label in labels]
     row_of = {record["reference_symbol"]: k for k, record in enumerate(table["irreps"])}
-    assert len(row_of) == len(table["irreps"]) == len(book_rows)
+    assert len(row_of) == len(table["irreps"]) == len(rows)
     mismatches = []
-    for label, values, projective in book_rows:
+    for label, values, projective in rows:
         k = row_of[label]
         assert table["irreps"][k]["projective"] == projective, label
         ours = [

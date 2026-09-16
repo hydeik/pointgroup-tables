@@ -185,17 +185,26 @@ convention may carry, per group, the set of elements whose lifts are swapped:
 swapped = ["C2'(2)", "C2'(3)"]      # canonical labels of g whose reference lift is our ḡ
 ```
 
-Let `ε(g) = −1` for the listed elements and `+1` otherwise. When such a
-convention is selected, every table is emitted in the reference section:
+Let `ε(g) = −1` for the listed elements and `+1` otherwise. The reference
+section is the labelling `ε` induces:
 
 - the double-group element list swaps the `~` between `g` and `ḡ` for the
-  listed elements;
-- `ω_ref(g, h) = ε(g) ε(h) ε(gh) ω(g, h)`;
-- projective irrep matrices and characters become `ε(g) D(g)` and
-  `ε(g) χ(g)`; ordinary irreps are unchanged.
+  listed elements: the *reference label* of our `s(g)` carries the
+  reference's bar and that of `Ē·s(g)` does not, while the canonical labels,
+  the indices, `barred` and `base_index` stay canonical;
+- `ω_ref(g, h) = ε(g) ε(h) ε(gh) ω(g, h)` is the factor system the
+  reference prints, and the reference's projective matrices and characters
+  are `ε(g) D(g)` and `ε(g) χ(g)`; ordinary irreps are unchanged.
 
 `ω_ref` differs from `ω` by a coboundary, so nothing about the irreps changes
-except these signs. For the axial groups the set of swapped elements is not
+except these signs. Labels are output only
+([Label conventions](./label-conventions.md#two-layers)): the tables the tool
+emits (`cayley`, `factor`, `characters`, `matrices`) stay in the canonical
+section and index space whatever convention is selected, and a consumer who
+needs the reference's signs reads `ε` off the reference labels of the
+double-group element list. The labelled comparison of `REF-3` therefore
+matches the reference's untilded columns to the classes of `G†` through the
+reference class labels. For the axial groups the set of swapped elements is not
 listed but derived from the convention's `[secondary]` direction table: the
 reference's pole of every secondary axis and plane is known from that
 table, and the element is swapped exactly when that pole is the antipode of
