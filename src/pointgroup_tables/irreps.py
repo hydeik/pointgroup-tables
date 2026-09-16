@@ -4,10 +4,11 @@ docs/spec/irrep-labels.md).
 
 An irrep is built from the generator images on the binary cover ``R-dagger``
 of the rotation group: the closed forms on ``a = (1, 0)``, ``b = (0, 1)`` for
-the axial families, the frozen generator data of the canonical basis
-convention (``2T``, ``2O``, ``2I``) for the polyhedral families. Every element
-of ``G`` is evaluated at its canonical section, with the parity sign of a
-type II group attached. The characters are the traces; the symbol is derived
+the axial families (the canonical ones, or those of the selected basis
+convention's axial rule, ``basis.py``), the generator data of the selected
+basis convention (``2T``, ``2O``, ``2I``) for the polyhedral families. Every
+element of ``G`` is evaluated at its canonical section, with the parity sign
+of a type II group attached. The characters are the traces; the symbol is derived
 from the characters on the named elements by the rules of the irrep-labels
 chapter, so that the same function recomputes it from a character table
 (``IL-2``).
@@ -16,12 +17,13 @@ chapter, so that the same function recomputes it from a character table
 from __future__ import annotations
 
 import re
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from fractions import Fraction
 from typing import Any
 
-from . import conventions
-from .abstract import CENTRO, PointGroup, point_group
+from . import basis, conventions
+from .abstract import CENTRO, PointGroup
 from .double import BinaryRotationGroup, DoubleGroup
 from .field import (
     CyclotomicField,
@@ -32,8 +34,6 @@ from .field import (
     matrix_neg,
     matrix_trace,
 )
-from .labels import canonical_labels
-from .symbols import parse_group
 
 SYMBOL = re.compile(r"^([12])?([ABETGHI])(\d+|\d*[13579]/2)?(g|u|'|'')?$")
 LETTER_RANK = {letter: rank for rank, letter in enumerate("ABETGHI")}
@@ -467,15 +467,20 @@ class Irrep:
 
 
 def _generator_images(
-    F: CyclotomicField, N: int, dihedral: bool
+    F: CyclotomicField,
+    N: int,
+    dihedral: bool,
+    two_dimensional: Callable[[int], basis.GeneratorImages],
 ) -> list[tuple[bool, Matrix, Matrix | None]]:
     """``(projective, D(a), D(b))`` of every irrep of ``R`` or ``R-dagger``
-    (``D(b)`` is ``None`` for a cyclic ``R``), from the closed forms."""
+    (``D(b)`` is ``None`` for a cyclic ``R``): the one-dimensional irreps by their
+    characters, the two-dimensional ones by ``two_dimensional(k2)``, ``k2`` the
+    exponent in halves (``2k`` for ``E_k``, ``k`` for ``E_{k/2}``)."""
     one = [[F.one]]
     minus = [[F.neg(F.one)]]
-    i = F.constant("i") if dihedral else None
     images: list[tuple[bool, Matrix, Matrix | None]] = []
     if dihedral:
+        i = F.constant("i")
         images.append((False, one, one))
         images.append((False, one, minus))
         if N % 2 == 0:
@@ -484,16 +489,10 @@ def _generator_images(
         for k in range(1, N):
             if 2 * k >= N:
                 break
-            Da = [[F.root_of_unity(N, k), F.zero], [F.zero, F.root_of_unity(N, -k)]]
-            Db = [[F.zero, F.one], [F.one, F.zero]]
+            Da, Db = two_dimensional(2 * k)
             images.append((False, Da, Db))
-        assert i is not None
         for k in range(1, N, 2):
-            Da = [
-                [F.root_of_unity(2 * N, k), F.zero],
-                [F.zero, F.root_of_unity(2 * N, -k)],
-            ]
-            Db = [[F.zero, i], [i, F.zero]]
+            Da, Db = two_dimensional(k)
             images.append((True, Da, Db))
         if N % 2 == 1:
             images.append((True, minus, [[i]]))
@@ -507,7 +506,7 @@ def _generator_images(
 
 
 def _axial_matrices(
-    G: PointGroup, D: DoubleGroup, F: CyclotomicField
+    G: PointGroup, D: DoubleGroup, F: CyclotomicField, convention: str
 ) -> list[tuple[str | None, bool, list[Matrix]]]:
     """``(None, projective, D(g) for g in G)`` of every irrep of an axial ``R-dagger``
     from the closed forms, ``D(g)`` evaluated at the canonical section."""
@@ -524,7 +523,10 @@ def _axial_matrices(
         (r, 0) if isinstance(r, int) else (r[0], r[1]) for r, _ in G.elements
     ]
     out: list[tuple[str | None, bool, list[Matrix]]] = []
-    for projective, Da, Db in _generator_images(F, N, dihedral):
+    images = _generator_images(
+        F, N, dihedral, lambda k2: basis.axial_images(convention, G, F, k2)
+    )
+    for projective, Da, Db in images:
         d = len(Da)
         identity = matrix_identity(F, d)
         period = 2 * N if projective else N
@@ -555,18 +557,30 @@ def _one_dimensional_images(
     return [(one, one)]
 
 
-def _lifted_generators(
-    cover: BinaryRotationGroup, R_name: str, labels: tuple[str, str]
-) -> tuple[Any, Any]:
-    """The generator pair of the basis data: elements of the proper group named by
-    their canonical labels, lifted by the canonical section."""
-    proper = point_group(parse_group(R_name))
-    by_label = {
-        label.text: r
-        for (r, _), label in zip(proper.elements, canonical_labels(proper), strict=True)
-    }
-    q1, q2 = (cover.section(by_label[name]) for name in labels)
-    return q1, q2
+def _one_dimensional_on(
+    cover: BinaryRotationGroup,
+    F: CyclotomicField,
+    pair: tuple[Any, ...],
+    generators: tuple[Any, ...],
+    a: Value,
+    b: Value,
+) -> tuple[Matrix, ...]:
+    """The images of a generating set in the one-dimensional irrep with the values
+    ``a``, ``b`` on the canonical generator pair ``q1, q2``: the irrep is closed
+    over ``R-dagger`` from the pair and read off at the generators."""
+    q1, q2 = pair
+    values: dict[Any, Value] = {cover.identity: F.one}
+    frontier = [cover.identity]
+    while frontier:
+        following = []
+        for q in frontier:
+            for generator, value in ((q1, a), (q2, b)):
+                p = cover.mul(q, generator)
+                if p not in values:
+                    values[p] = F.mul(values[q], value)
+                    following.append(p)
+        frontier = following
+    return tuple([[values[q]]] for q in generators)
 
 
 def _closure(
@@ -601,30 +615,32 @@ def _closure(
 
 
 def _polyhedral_matrices(
-    G: PointGroup, D: DoubleGroup, F: CyclotomicField
+    G: PointGroup, D: DoubleGroup, F: CyclotomicField, convention: str
 ) -> list[tuple[str | None, bool, list[Matrix]]]:
     """``(data key, projective, D(g) for g in G)`` of every irrep of ``2T``, ``2O`` or
-    ``2I``: the one-dimensional irreps by rule, the others from the frozen
-    generator data of the canonical basis convention, closed over ``R-dagger``;
-    an irrep is projective when it sends ``ebar`` to ``-1``."""
+    ``2I``: the one-dimensional irreps by rule, the others from the generator
+    data of the basis convention, closed over ``R-dagger``; an irrep is
+    projective when it sends ``ebar`` to ``-1``."""
     R = G.rotation_group
     cover = D.cover
-    data = conventions.polyhedral_data(conventions.CANONICAL, cover.name)
+    data = conventions.polyhedral_data(convention, cover.name)
     if data.conductor != F.conductor:
         raise ValueError(
             f"the basis data of {cover.name} lies in Q(zeta_{data.conductor}), "
             f"the document field is Q(zeta_{F.conductor})"
         )
-    q1, q2 = _lifted_generators(cover, R.name, data.generators)
-    images: list[tuple[str | None, Matrix, Matrix]] = [
-        (None, [[a]], [[b]]) for a, b in _one_dimensional_images(F, cover.name)
+    generators, data_irreps = basis.lifted_generators(convention, cover, R.name)
+    pair, _ = basis.lifted_generators(conventions.CANONICAL, cover, R.name)
+    images: list[tuple[str | None, tuple[Matrix, ...]]] = [
+        (None, _one_dimensional_on(cover, F, pair, generators, a, b))
+        for a, b in _one_dimensional_images(F, cover.name)
     ]
-    images.extend((key, B1, B2) for key, (B1, B2) in data.irreps.items())
+    images.extend(data_irreps.items())
     out: list[tuple[str | None, bool, list[Matrix]]] = []
-    for key, B1, B2 in images:
+    for key, matrices in images:
         name = f"{cover.name} irrep {key or 'of dimension 1'}"
-        reached = _closure(cover, F, [(q1, B1), (q2, B2)], name)
-        identity = matrix_identity(F, len(B1))
+        reached = _closure(cover, F, list(zip(generators, matrices, strict=True)), name)
+        identity = matrix_identity(F, len(matrices[0]))
         if reached[cover.ebar] == identity:
             projective = False
         elif reached[cover.ebar] == matrix_neg(F, identity):
@@ -642,9 +658,11 @@ def build_irreps(
     F: CyclotomicField,
     table: list[list[int]],
     factor: list[list[int]],
+    convention: str = conventions.CANONICAL,
 ) -> list[Irrep]:
     """Every irrep of ``G`` in canonical irrep order, with symbols, partners and
-    Frobenius-Schur indicators."""
+    Frobenius-Schur indicators, in the basis of the named convention (``F`` the
+    document field the convention fixes for ``G``)."""
     named = named_elements(G)
     parities = [p for _, p in G.elements]
     suffix_signs = [1] if G.type != CENTRO else [1, -1]
@@ -652,7 +670,7 @@ def build_irreps(
         _polyhedral_matrices if G.rotation_group.polyhedral else _axial_matrices
     )
     irreps: list[Irrep] = []
-    for key, projective, base in matrices_of(G, D, F):
+    for key, projective, base in matrices_of(G, D, F, convention):
         for sign in suffix_signs:
             matrices = [
                 matrix if (p == 1 or sign == 1) else matrix_neg(F, matrix)

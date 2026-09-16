@@ -18,7 +18,7 @@ from functools import cache
 from importlib import resources
 from typing import Any
 
-from .field import CyclotomicField, Value
+from .field import CyclotomicField, Value, cyclotomic_field
 from .irreps import Irrep
 from .labels import Label
 from .values import parse
@@ -54,11 +54,12 @@ def attach_bethe(
     entry = koster_table()["groups"].get(symbol)
     if entry is None:
         return
-    if entry["conductor"] != F.conductor:
+    if F.conductor % entry["conductor"]:
         raise ValueError(
             f"the Koster table of {symbol} lies in Q(zeta_{entry['conductor']}), "
-            f"the document field is Q(zeta_{F.conductor})"
+            f"which does not embed in the document field Q(zeta_{F.conductor})"
         )
+    F_table = cyclotomic_field(entry["conductor"])
     by_label = {label.text: k for k, label in enumerate(labels)}
     try:
         positions = [by_label[name] for name in entry["elements"]]
@@ -76,7 +77,10 @@ def attach_bethe(
             )
         by_key[key] = irrep
     for row in entry["irreps"]:
-        key = (row["projective"], tuple(parse(F, text) for text in row["characters"]))
+        key = (
+            row["projective"],
+            tuple(F_table.lift(parse(F_table, text), F) for text in row["characters"]),
+        )
         irrep = by_key.get(key)
         if irrep is None:
             raise ValueError(

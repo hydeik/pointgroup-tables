@@ -12,7 +12,8 @@ import pytest
 from conftest import double_model, model
 
 from pointgroup_tables import checks
-from pointgroup_tables.field import cyclotomic_field
+from pointgroup_tables.document import model_document
+from pointgroup_tables.field import cyclotomic_field, matrix_mul
 
 MUTATION_GROUPS = (
     "C3v",
@@ -565,6 +566,40 @@ def test_mut7_an_altered_reference_row_is_caught_by_ref1(symbol: str) -> None:
     _, values, _ = book_rows[-1]
     values[1] = F.neg(values[1]) if not F.is_zero(values[1]) else values[0]
     assert not matched()
+
+
+def test_mx6_catches_a_non_unitary_change_of_basis() -> None:
+    """Under a reference basis convention, ``P D(g) P^-1`` with a non-unitary ``P``
+    keeps the homomorphism and the traces but not the unitarity: ``MX-3`` sees
+    the matrices, ``MX-6`` the intertwiner with the canonical basis."""
+    document = copy.deepcopy(model_document("T", basis_convention="altmann-herzig"))
+    F = cyclotomic_field(document["field"]["conductor"])
+    entry = next(e for e in document["matrices"]["irreps"] if e["symbol"] == "E1/2")
+    P = [[F.one, F.one], [F.zero, F.one]]
+    P_inverse = [[F.one, F.neg(F.one)], [F.zero, F.one]]
+    entry["exact"] = [
+        [
+            [F.exact(x) for x in row]
+            for row in matrix_mul(
+                F,
+                matrix_mul(F, P, [[F.from_exact(x) for x in row] for row in D]),
+                P_inverse,
+            )
+        ]
+        for D in entry["exact"]
+    ]
+    del entry["numeric"], entry["pretty"]
+    expect(document, "MX-3", "MX-6", note="T under altmann-herzig")
+
+
+def test_mx6_catches_an_irrep_in_another_irrep_s_basis_data() -> None:
+    """The matrices of ``1E3/2`` of ``T`` handed to ``2E3/2``: the traces disagree
+    (``MX-4``) and no intertwiner with the canonical ``2E3/2`` exists (``MX-6``)."""
+    document = copy.deepcopy(model_document("T", basis_convention="altmann-herzig"))
+    entries = {e["symbol"]: e for e in document["matrices"]["irreps"]}
+    entries["2E3/2"]["exact"] = copy.deepcopy(entries["1E3/2"]["exact"])
+    del entries["2E3/2"]["numeric"], entries["2E3/2"]["pretty"]
+    expect(document, "MX-4", "MX-6")
 
 
 # ---- every check --verify runs is the target of a mutation ------------------------

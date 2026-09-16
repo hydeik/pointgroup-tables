@@ -1,12 +1,14 @@
 """The shipped label and basis conventions (docs/spec/label-conventions.md,
 docs/spec/basis-conventions.md).
 
-Version 1 ships the canonical basis and the Altmann & Herzig label
-convention (the basis convention follows in its own ticket); a name outside
-these tables is exit code 4. The rules of a label convention and the
-polyhedral generator data of a basis convention (the images of the lifted
-generator pair of ``2T``, ``2O``, ``2I`` in every irrep of dimension two or
-more) are read from the convention's TOML file on first use.
+Version 1 ships the canonical basis and the Altmann & Herzig label and basis
+conventions; a name outside these tables is exit code 4. The rules of a label
+convention, the axial rule and coverage of a basis convention and its
+polyhedral generator data (the images of a lifted generating set of ``2T``,
+``2O``, ``2I`` in every irrep of dimension two or more) are read from the
+convention's TOML file on first use. How a basis convention is applied to a
+group (its conductor, the axial generator images, the lifted generators) is
+``basis.py``.
 """
 
 from __future__ import annotations
@@ -15,6 +17,7 @@ import tomllib
 from dataclasses import dataclass, field
 from functools import cache
 from importlib import resources
+from importlib.resources.abc import Traversable
 from typing import Any
 
 from .errors import CONVENTIONS_HINT, UnknownConventionError
@@ -25,19 +28,37 @@ CANONICAL = "canonical"
 DATA = resources.files(__package__) / "data" / "conventions"
 
 
-def _shipped(kind: str) -> dict[str, dict[str, Any]]:
-    """``{ name: { name, source } }`` of the convention files under ``data/conventions/<kind>``."""
-    table: dict[str, dict[str, Any]] = {}
-    for entry in sorted(DATA.joinpath(kind).iterdir(), key=lambda e: e.name):
+def _shipped(kind: str) -> dict[str, Traversable]:
+    """``{ name: file }`` of the convention files under ``data/conventions/<kind>``,
+    the canonical convention first, the others by name."""
+    files: dict[str, Traversable] = {}
+    for entry in DATA.joinpath(kind).iterdir():
         if entry.name.endswith(".toml"):
             head = tomllib.loads(entry.read_text(encoding="utf-8"))
-            table[head["name"]] = {"name": head["name"], "source": head["source"]}
+            files[head["name"]] = entry
+    return {
+        name: files[name]
+        for name in sorted(files, key=lambda name: (name != CANONICAL, name))
+    }
+
+
+def _headers(files: dict[str, Traversable]) -> dict[str, dict[str, Any]]:
+    """``{ name: { name, source } }`` (no ``source`` for the canonical basis)."""
+    table: dict[str, dict[str, Any]] = {}
+    for name, entry in files.items():
+        head = tomllib.loads(entry.read_text(encoding="utf-8"))
+        table[name] = {"name": head["name"]}
+        if "source" in head:
+            table[name]["source"] = head["source"]
     return table
 
 
+# name -> the convention's file
+LABEL_FILES: dict[str, Traversable] = _shipped("labels")
+BASIS_FILES: dict[str, Traversable] = _shipped("basis")
 # name -> metadata block ({ name, source }); reference conventions add coverage per group
-LABEL_CONVENTIONS: dict[str, dict[str, Any]] = _shipped("labels")
-BASIS_CONVENTIONS: dict[str, dict[str, Any]] = {CANONICAL: {"name": CANONICAL}}
+LABEL_CONVENTIONS: dict[str, dict[str, Any]] = _headers(LABEL_FILES)
+BASIS_CONVENTIONS: dict[str, dict[str, Any]] = _headers(BASIS_FILES)
 
 
 def label_convention(name: str) -> dict[str, Any]:
@@ -117,9 +138,7 @@ class LabelConvention:
 def label_convention_rules(name: str) -> LabelConvention:
     """The rules of a shipped label convention, read once from its file."""
     label_convention(name)
-    data = tomllib.loads(
-        DATA.joinpath("labels", f"{name}.toml").read_text(encoding="utf-8")
-    )
+    data = tomllib.loads(LABEL_FILES[name].read_text(encoding="utf-8"))
     coverage = data.get("coverage", {})
     return LabelConvention(
         name=data["name"],
@@ -147,41 +166,107 @@ def label_convention_rules(name: str) -> LabelConvention:
     )
 
 
-# ---- polyhedral generator data ------------------------------------------------------
+# ---- basis conventions -----------------------------------------------------------------
 
 
 @dataclass(frozen=True)
 class PolyhedralData:
     """The ``[polyhedral.<cover>]`` block of a basis convention: the conductor of
-    the matrices, the canonical labels of the lifted generator pair (elements of
-    the proper group ``T``, ``O`` or ``I``, lifted by the canonical section) and,
-    per canonical irrep symbol, the images ``D(q1), D(q2)`` as matrices over
-    ``Q(zeta_conductor)``."""
+    the matrices, the canonical labels of a lifted generating set (elements of
+    the proper group ``T``, ``O`` or ``I``, lifted by the canonical section; a
+    ``~`` prefix selects the barred lift) and, per canonical irrep symbol, the
+    images ``D(q1), D(q2), ...`` as matrices over ``Q(zeta_conductor)``."""
 
     cover: str
     conductor: int
-    generators: tuple[str, str]
-    irreps: dict[str, tuple[Matrix, Matrix]]
+    generators: tuple[str, ...]
+    irreps: dict[str, tuple[Matrix, ...]]
+
+
+@dataclass(frozen=True)
+class BasisConvention:
+    """The rules of a basis convention file (docs/spec/basis-conventions.md,
+    "Reference basis conventions"), as read from the shipped TOML: the axial
+    rule (``None`` for a file without an ``[axial]`` table, which does not cover
+    the axial families), the covers with polyhedral data, and the reference's
+    range for the ``coverage`` metadata."""
+
+    name: str
+    source: str | None
+    axial_rule: str | None  # "canonical", "transform" or "spin-harmonic"
+    anchors: (
+        str | None
+    )  # spin-harmonic: the label convention whose anchoring fixes alpha
+    covers: frozenset[str]  # the R-dagger with a [polyhedral.<cover>] block
+    axial_max_n: int  # [coverage]: every axial family up to this n is verified
+    polyhedral: bool  # [coverage]: whether the polyhedral groups are verified
+
+    @property
+    def reference(self) -> bool:
+        """Whether this is a reference convention (the canonical basis is not)."""
+        return self.name != CANONICAL
+
+    def covers_group(self, family_n: int | None, cover: str | None) -> bool:
+        """Whether the convention realises a group at all (axial by its family
+        ``n`` with ``cover = None``, polyhedral by its ``R-dagger``)."""
+        if cover is None:
+            return self.axial_rule is not None
+        return cover in self.covers
+
+    def verified(self, family_n: int | None) -> bool:
+        """Whether a group (axial by its family ``n``, polyhedral for ``None``) is
+        inside the range the reference prints (``coverage = "reference"``)."""
+        if family_n is None:
+            return self.polyhedral
+        return family_n <= self.axial_max_n
 
 
 def _basis_file(name: str) -> dict[str, Any]:
-    return tomllib.loads(
-        DATA.joinpath("basis", f"{name}.toml").read_text(encoding="utf-8")
+    basis_convention(name)
+    return tomllib.loads(BASIS_FILES[name].read_text(encoding="utf-8"))
+
+
+@cache
+def basis_convention_rules(name: str) -> BasisConvention:
+    """The rules of a shipped basis convention, read once from its file (the
+    polyhedral matrices are parsed separately, per cover, by ``polyhedral_data``)."""
+    data = _basis_file(name)
+    axial = data.get("axial")
+    coverage = data.get("coverage", {})
+    rule = None if axial is None else axial["rule"]
+    if rule not in (None, "canonical", "spin-harmonic"):
+        raise ValueError(f"basis convention '{name}': unsupported axial rule '{rule}'")
+    anchors = None if axial is None else axial.get("anchors")
+    if rule == "spin-harmonic" and anchors not in LABEL_CONVENTIONS:
+        raise ValueError(
+            f"basis convention '{name}': the spin-harmonic rule must anchor to a shipped label convention"
+        )
+    return BasisConvention(
+        name=data["name"],
+        source=data.get("source"),
+        axial_rule=rule,
+        anchors=anchors,
+        covers=frozenset(data.get("polyhedral", {})),
+        axial_max_n=int(coverage.get("axial_max_n", 0)),
+        polyhedral=bool(coverage.get("polyhedral", False)),
     )
 
 
 @cache
 def polyhedral_data(name: str, cover: str) -> PolyhedralData:
     """The polyhedral generator data of a basis convention for ``2T``, ``2O`` or ``2I``."""
-    basis_convention(name)
     block = _basis_file(name)["polyhedral"][cover]
     F = cyclotomic_field(block["conductor"])
-    irreps: dict[str, tuple[Matrix, Matrix]] = {}
+    generators = tuple(block["generators"])
+    irreps: dict[str, tuple[Matrix, ...]] = {}
     for symbol, entry in block["irreps"].items():
-        first, second = entry["matrices"]
-        irreps[symbol] = (
-            [[parse(F, text) for text in row] for row in first],
-            [[parse(F, text) for text in row] for row in second],
+        matrices = entry["matrices"]
+        if len(matrices) != len(generators):
+            raise ValueError(
+                f"basis convention '{name}': {cover} irrep {symbol} has "
+                f"{len(matrices)} matrices for {len(generators)} generators"
+            )
+        irreps[symbol] = tuple(
+            [[parse(F, text) for text in row] for row in matrix] for matrix in matrices
         )
-    generators = block["generators"]
-    return PolyhedralData(cover, F.conductor, (generators[0], generators[1]), irreps)
+    return PolyhedralData(cover, F.conductor, generators, irreps)

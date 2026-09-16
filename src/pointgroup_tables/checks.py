@@ -18,6 +18,7 @@ from fractions import Fraction
 from itertools import pairwise
 from typing import Any
 
+from . import basis
 from .field import (
     CyclotomicField,
     Matrix,
@@ -1543,6 +1544,71 @@ def check_mx5(doc: Document) -> list[Failure]:
     return failures
 
 
+def check_mx6(doc: Document) -> list[Failure]:
+    """Reference basis convention: for every irrep of dimension two or more the
+    intertwiner ``U`` with the canonical realisation of the same symbol exists
+    (``U D_can(g) = D(g) U`` for every ``g``, computed by Schur averaging, never
+    stored) and is unitary up to a positive rational scale; it is unique up to a
+    phase because the irrep is irreducible (``MX-8``)."""
+    if doc["basis_convention"]["name"] == "canonical":
+        return []
+    entries = _matrix_entries(doc)
+    if entries is None:
+        return _no_matrices("MX-6")
+    from .document import build_model  # the canonical realisation, built on demand
+    from .symbols import parse_group
+
+    model = build_model(parse_group(doc["group"]["symbol"]))
+    F, F_can = _field(doc), model.field
+    if F.conductor % F_can.conductor:
+        return [
+            Failure(
+                "MX-6",
+                f"the canonical field Q(zeta_{F_can.conductor}) does not embed in the document field",
+            )
+        ]
+    canonical = {irrep.symbol.text: irrep for irrep in model.irreps}
+    N = model.order
+    failures = []
+    for record, matrices in entries:
+        name = f"irrep {record['index']}"
+        if len(matrices) != N or len(matrices[0]) < 2:
+            continue  # MX-7 reports the shape; one-dimensional irreps have no basis
+        irrep = canonical.get(record["symbol"])
+        if irrep is None:
+            failures.append(
+                Failure("MX-6", f"{name}: no canonical irrep {record['symbol']}")
+            )
+            continue
+        lifted = [
+            [[F_can.lift(x, F) for x in row] for row in matrix]
+            for matrix in irrep.matrices
+        ]
+        U = basis.intertwiner(F, matrices, lifted)
+        if U is None:
+            failures.append(
+                Failure(
+                    "MX-6", f"{name}: no intertwiner with the canonical realisation"
+                )
+            )
+            continue
+        if basis.unitary_scale(F, U) is None:
+            failures.append(
+                Failure("MX-6", f"{name}: the intertwiner is not unitary up to a scale")
+            )
+            continue
+        if any(
+            matrix_mul(F, U, D_can) != matrix_mul(F, D, U)
+            for D, D_can in zip(matrices, lifted, strict=True)
+        ):
+            failures.append(
+                Failure(
+                    "MX-6", f"{name}: the intertwiner does not intertwine every element"
+                )
+            )
+    return failures
+
+
 def check_mx7(doc: Document) -> list[Failure]:
     """Every irrep carries ``|G|`` matrices of shape ``dimension x dimension`` whose
     entries are well-formed exact values of the declared field."""
@@ -1816,6 +1882,7 @@ CHECKS: dict[str, tuple[Checker, tuple[str, ...]]] = {
     "MX-3": (check_mx3, ("matrices",)),
     "MX-4": (check_mx4, ("elements", "characters", "matrices")),
     "MX-5": (check_mx5, ("elements", "matrices")),
+    "MX-6": (check_mx6, ("matrices",)),
     "MX-7": (check_mx7, ("matrices",)),
     "MX-8": (check_mx8, ("matrices",)),
     "VL-1": (check_vl1, ("characters",)),

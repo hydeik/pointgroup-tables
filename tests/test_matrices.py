@@ -72,7 +72,17 @@ def test_mx2_homomorphism_over_all_pairs(symbol: str) -> None:
 
 def test_matrix_checks_apply_to_the_tables_they_need() -> None:
     full = set(checks.applicable_checks(model("C3v")))
-    assert {"MX-1", "MX-2", "MX-3", "MX-4", "MX-5", "MX-7", "MX-8", "VL-3"} <= full
+    assert {
+        "MX-1",
+        "MX-2",
+        "MX-3",
+        "MX-4",
+        "MX-5",
+        "MX-6",
+        "MX-7",
+        "MX-8",
+        "VL-3",
+    } <= full
     alone = build_document(Request("matrices", "C3v"))
     assert set(checks.applicable_checks(alone)) == {
         "AG-3",
@@ -82,6 +92,7 @@ def test_matrix_checks_apply_to_the_tables_they_need() -> None:
         "DG-6",
         "MX-3",
         "MX-5",
+        "MX-6",
         "MX-7",
         "MX-8",
         "VL-3",

@@ -14,7 +14,7 @@ from functools import cache, cached_property
 from importlib import metadata
 from typing import Any
 
-from . import conventions
+from . import basis, conventions
 from .abstract import PointGroup, point_group
 from .bethe import attach_bethe
 from .classes import (
@@ -26,12 +26,7 @@ from .classes import (
 )
 from .double import DoubleGroup, double_group
 from .errors import PointGroupTablesError, UsageError
-from .field import (
-    CyclotomicField,
-    canonical_conductor,
-    cyclotomic_field,
-    field_metadata,
-)
+from .field import CyclotomicField, cyclotomic_field, field_metadata
 from .irreps import Irrep, build_irreps, select
 from .labels import Label, canonical_labels
 from .reference import ReferenceLabelling
@@ -114,7 +109,8 @@ class Model:
     labels: list[Label]
     table: list[list[int]]
     classes: list[ConjugacyClass]
-    conductor: int
+    conductor: int  # the document field: fixed by the group and the basis convention
+    basis_convention: str = conventions.CANONICAL
     inverses: list[int] = field(init=False)
 
     def __post_init__(self) -> None:
@@ -162,7 +158,12 @@ class Model:
     @cached_property
     def irreps(self) -> list[Irrep]:
         irreps = build_irreps(
-            self.group, self.double, self.field, self.table, self.factor
+            self.group,
+            self.double,
+            self.field,
+            self.table,
+            self.factor,
+            self.basis_convention,
         )
         attach_bethe(self.spec.symbol, self.labels, self.field, irreps)
         return irreps
@@ -340,14 +341,19 @@ class Model:
 
 
 @cache
-def build_model(spec: GroupSpec) -> Model:
-    """The model of a group, built once per normalised symbol and shared: every
-    table method returns fresh containers, so a document never aliases the model."""
+def build_model(
+    spec: GroupSpec, basis_convention: str = conventions.CANONICAL
+) -> Model:
+    """The model of a group under a basis convention, built once per normalised
+    symbol and convention and shared: every table method returns fresh
+    containers, so a document never aliases the model. A convention that does
+    not cover the group is the exit-code-4 error, raised here before any output."""
     G = point_group(spec)
+    conductor = basis.document_conductor(basis_convention, G)
     labels = canonical_labels(G)
     table = G.cayley()
     classes = conjugacy_classes(G, table, labels)
-    return Model(spec, G, labels, table, classes, canonical_conductor(G.rotation_group))
+    return Model(spec, G, labels, table, classes, conductor, basis_convention)
 
 
 def _metadata(
@@ -359,7 +365,7 @@ def _metadata(
         rules = conventions.label_convention_rules(request.label_convention)
         covered = rules.covers(None if model.spec.polyhedral else model.spec.family_n)
         label_convention["coverage"] = "reference" if covered else "extrapolated"
-    basis_convention = conventions.basis_convention(request.basis_convention)
+    basis_convention = basis.metadata(request.basis_convention, model.group)
     doc: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
         "generator": {"name": GENERATOR_NAME, "version": tool_version()},
@@ -378,10 +384,14 @@ def _metadata(
 
 
 @cache
-def reference_labelling(spec: GroupSpec, convention: str) -> ReferenceLabelling:
-    """The reference labels of a group under a label convention, built once."""
+def reference_labelling(
+    spec: GroupSpec, convention: str, basis_convention: str = conventions.CANONICAL
+) -> ReferenceLabelling:
+    """The reference labels of a group under a label convention, built once (on
+    the model of the request's basis convention, whose irreps it shares)."""
     return ReferenceLabelling(
-        build_model(spec), conventions.label_convention_rules(convention)
+        build_model(spec, basis_convention),
+        conventions.label_convention_rules(convention),
     )
 
 
@@ -390,12 +400,14 @@ def _assemble(request: Request, tables: tuple[str, ...]) -> dict[str, Any]:
     the reference labels of the selected convention are written next to the
     canonical ones."""
     spec = parse_group(request.group)
-    model = build_model(spec)
+    model = build_model(spec, request.basis_convention)
     doc = _metadata(model, request, tables)
     for name in tables:
         doc[name] = model.build_table(name, request)
     if request.label_convention is not None:
-        reference_labelling(spec, request.label_convention).apply(doc)
+        reference_labelling(
+            spec, request.label_convention, request.basis_convention
+        ).apply(doc)
     return doc
 
 
@@ -417,20 +429,25 @@ def build_document(request: Request) -> dict[str, Any]:
 
 
 def model_document(
-    group: str, double: bool = False, label_convention: str | None = None
+    group: str,
+    double: bool = False,
+    label_convention: str | None = None,
+    basis_convention: str = conventions.CANONICAL,
 ) -> dict[str, Any]:
     """The document holding every table the model can produce: the input of the checkers.
 
     With ``double`` the element list and the Cayley table are those of
     ``G-dagger``; the factor table is always that of ``G``. With a
-    ``label_convention`` the document carries the reference labels.
+    ``label_convention`` the document carries the reference labels; the
+    matrices are in the basis of ``basis_convention``.
     """
-    model = build_model(parse_group(group))
+    model = build_model(parse_group(group), basis_convention)
     request = Request(
         "elements",
         group,
         values=VALUE_FORMS,
         label_convention=label_convention,
+        basis_convention=basis_convention,
         double=double,
     )
     return _assemble(request, model.available_tables())
