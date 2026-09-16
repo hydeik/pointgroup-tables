@@ -294,14 +294,52 @@ def check_cl1(doc: Document) -> list[Failure]:
     return failures
 
 
+def _reduced_label(label: str, has_inverse: bool) -> str:
+    """The reduced form of a canonical element label (conjugacy-classes.md, "Class
+    labels"): the axis index removed, ``^1`` removed, the sign of the exponent
+    removed when the class contains the inverse of the representative."""
+    text = re.sub(r"\(\d+\)$", "", label)
+    match = re.fullmatch(r"(~?[CS]\d+)\^(-?\d+)", text)
+    if match is None:
+        return text
+    stem, exponent = match.groups()
+    if has_inverse:
+        exponent = exponent.lstrip("-")
+    return stem if exponent == "1" else f"{stem}^{exponent}"
+
+
+def _expected_class_label(cls: dict[str, Any], items: list[dict[str, Any]]) -> str:
+    """The class label the grammar assigns: the size (omitted for one element) and
+    the reduced representative; a merged double-group class joins its two halves."""
+    representative = items[cls["representative"]]
+    has_inverse = representative["inverse"] in cls["members"]
+    reduced = _reduced_label(representative["label"], has_inverse)
+    if cls.get("split", True):
+        return (str(cls["size"]) if cls["size"] > 1 else "") + reduced
+    half = cls["size"] // 2
+    prefix = str(half) if half > 1 else ""
+    return f"{prefix}{reduced}+{prefix}~{reduced}"
+
+
 def check_cl2(doc: Document) -> list[Failure]:
-    """Class labels match the grammar and are pairwise distinct."""
+    """Class labels match the grammar (the size and the reduced representative of
+    the class they label) and are pairwise distinct."""
     failures = []
+    items = _items(doc)
     labels = [cls["label"] for cls in _classes(doc)]
-    for label in labels:
+    for cls, label in zip(_classes(doc), labels, strict=True):
         if not CLASS_LABEL.match(label):
             failures.append(
                 Failure("CL-2", f"class label '{label}' does not match the grammar")
+            )
+            continue
+        expected = _expected_class_label(cls, items)
+        if label != expected:
+            failures.append(
+                Failure(
+                    "CL-2",
+                    f"class {cls['index']} is labelled '{label}', its size and representative give '{expected}'",
+                )
             )
     for label, count in Counter(labels).items():
         if count > 1:
@@ -1087,15 +1125,51 @@ def check_ch3(doc: Document) -> list[Failure]:
     return failures
 
 
+def _column_membership(doc: Document) -> list[Failure]:
+    """The columns of the character table partition the elements as the element
+    table does, class of ``G`` by class of ``G``: a value is a class function only
+    relative to that partition. Both tables may sit in either index space."""
+    N = _base_order(doc)
+    elements_double = _is_double(doc)
+    base_members: dict[int, set[int]] = {}
+    for cls in _classes(doc):
+        base = cls["base_class"] if elements_double else cls["index"]
+        base_members.setdefault(base, set()).update(g % N for g in cls["members"])
+    columns_double = doc["characters"]["class_group"] == "G_double"
+    failures = []
+    column_bases = set()
+    for cls in _columns(doc):
+        base = cls["base_class"] if columns_double else cls["index"]
+        column_bases.add(base)
+        members = {g % N for g in cls["members"]}
+        if members != base_members.get(base):
+            failures.append(
+                Failure(
+                    "CH-4",
+                    f"column '{cls['label']}' does not cover class {base} of the element table",
+                )
+            )
+    if column_bases != set(base_members):
+        failures.append(
+            Failure(
+                "CH-4",
+                f"the columns cover {len(column_bases)} classes of G, the element table has {len(base_members)}",
+            )
+        )
+    return failures
+
+
 def check_ch4(doc: Document) -> list[Failure]:
-    """Characters are class functions of ``G-dagger``: on a split pair the barred class
+    """Characters are class functions of ``G-dagger`` relative to the element table's
+    classes: the columns cover those classes; on a split pair the barred class
     repeats an ordinary character and negates a projective one; projective
     characters vanish on merged classes."""
     rows = _character_rows(doc)
     if rows is None:
         return _no_exact("CH-4")
+    failures = _column_membership(doc)
     if doc["characters"]["class_group"] != "G_double":
-        return []
+        return failures
     F = _field(doc)
     columns = _columns(doc)
     lifted_of_base = {
@@ -1103,7 +1177,6 @@ def check_ch4(doc: Document) -> list[Failure]:
         for c, cls in enumerate(columns)
         if not cls.get("barred", False)
     }
-    failures = []
     for record, row in zip(_irrep_records(doc), rows, strict=True):
         for c, cls in enumerate(columns):
             if not cls["split"]:
@@ -1749,6 +1822,15 @@ CHECKS: dict[str, tuple[Checker, tuple[str, ...]]] = {
     "VL-2": (check_vl2, ("characters",)),
     "VL-3": (check_vl3, ("matrices",)),
 }
+
+
+# the checks ``--verify`` runs (the ``--verify`` column of the ledger): every
+# registered check but the test-only ``CH-6`` (Burnside) and ``VL-3`` (minimal
+# conductor); ``AG-2`` and ``DG-6`` pass vacuously outside the seed groups
+VERIFY_EXCLUDED = ("CH-6", "VL-3")
+VERIFY_CHECKS: tuple[str, ...] = tuple(
+    name for name in CHECKS if name not in VERIFY_EXCLUDED
+)
 
 
 def applicable_checks(doc: Document) -> list[str]:

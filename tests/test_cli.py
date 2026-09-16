@@ -401,3 +401,143 @@ def test_characters_round_trip_through_every_format(
         out.decode()
     )
     assert loaded == reference
+
+
+# ---- CLI-3: --verify ---------------------------------------------------------------
+
+TABLE_SUBCOMMANDS = ("elements", "cayley", "factor", "characters", "matrices", "all")
+
+
+@pytest.mark.parametrize("symbol", ["C3v", "Oh"])
+@pytest.mark.parametrize("subcommand", TABLE_SUBCOMMANDS)
+def test_cli3_verify_emits_the_same_bytes_on_a_passing_group(
+    capsysbinary: pytest.CaptureFixture[bytes], symbol: str, subcommand: str
+) -> None:
+    plain = run(capsysbinary, subcommand, symbol)
+    verified = run(capsysbinary, subcommand, symbol, "--verify")
+    assert plain == verified
+    assert plain[0] == 0 and plain[2] == ""
+
+
+@pytest.mark.parametrize(
+    "argv",
+    [
+        ["elements", "C3v", "--double-group"],
+        ["cayley", "D4", "--double-group"],
+        ["all", "C3v", "--double-group"],
+        ["all", "C3v", "--double-group", "--irreps", "ordinary"],
+        ["characters", "D3h", "--irreps", "ordinary"],
+        ["characters", "C6", "--irreps", "projective"],
+        ["matrices", "C4v", "--irreps", "projective"],
+        ["characters", "C3v", "--values", "numeric"],
+        ["matrices", "C3v", "--values", "pretty", "-f", "yaml"],
+        ["all", "D2d", "-f", "toml"],
+    ],
+)
+def test_cli3_verify_passes_under_every_option(
+    capsysbinary: pytest.CaptureFixture[bytes], argv: list[str]
+) -> None:
+    plain = run(capsysbinary, *argv)
+    verified = run(capsysbinary, *argv, "--verify")
+    assert plain == verified
+    assert plain[0] == 0
+
+
+@pytest.mark.parametrize(
+    "argv",
+    [
+        ["list", "groups", "--verify"],
+        ["list", "conventions", "--verify"],
+        ["schema", "--verify"],
+    ],
+)
+def test_cli3_verify_is_a_usage_error_on_the_utility_subcommands(
+    capsysbinary: pytest.CaptureFixture[bytes], argv: list[str]
+) -> None:
+    code, out, err = run(capsysbinary, *argv)
+    assert (code, out) == (2, b"")
+    assert err.startswith("usage: pointgroup-tables")
+    assert "pointgroup-tables: error: unrecognized arguments: --verify" in err
+
+
+def _corrupting(mutate: Any) -> Any:
+    """A replacement for the verification document builder that applies ``mutate``."""
+    from pointgroup_tables import verify as verify_module
+
+    original = verify_module.verification_document
+
+    def build(request: Any) -> dict[str, Any]:
+        document = original(request)
+        mutate(document)
+        return document
+
+    return build
+
+
+def _corrupt(document: dict[str, Any]) -> None:
+    """One Cayley entry replaced and one character replaced by the irrep's dimension."""
+    table = document["cayley"]["table"]
+    table[1][2] = (table[1][2] + 1) % len(table)
+    rows = document["characters"]["exact"]
+    row, column = next(
+        (k, c)
+        for k, values in enumerate(rows)
+        for c, value in enumerate(values)
+        if value != values[0]
+    )
+    rows[row][column] = rows[row][0]
+
+
+@pytest.mark.parametrize("subcommand", ["characters", "all"])
+def test_cli3_verify_reports_every_failing_check_and_writes_nothing(
+    capsysbinary: pytest.CaptureFixture[bytes],
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+    subcommand: str,
+) -> None:
+    from pointgroup_tables import checks, verify
+
+    monkeypatch.setattr(verify, "verification_document", _corrupting(_corrupt))
+    request = verify.Request(subcommand, "c3v")
+    expected = checks.check(
+        verify.verification_document(request), verify.verification_checks(request)
+    )
+    assert expected  # the mutation is caught
+    target = tmp_path / "out.json"
+    code, out, err = run(capsysbinary, subcommand, "c3v", "--verify", "-o", str(target))
+    assert (code, out) == (1, b"")
+    assert not target.exists()
+    lines = err.splitlines()
+    assert lines[0] == (
+        f"pointgroup-tables: error: verification of 'C3v' failed ({len(expected)} checks)"
+    )
+    assert lines[1:] == [f"verify: {failure}" for failure in expected]
+    assert all(line.split(": ")[1] in checks.VERIFY_CHECKS for line in lines[1:])
+    assert {line.split(": ")[1] for line in lines[1:]} >= {"AG-1", "CH-1", "CH-2"}
+
+
+def test_cli3_verify_reports_a_single_failure_in_the_singular(
+    capsysbinary: pytest.CaptureFixture[bytes], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from pointgroup_tables import verify
+
+    def flip_one_label(document: dict[str, Any]) -> None:
+        document["elements"]["classes"][1]["label"] = "2C3x"
+
+    monkeypatch.setattr(verify, "verification_document", _corrupting(flip_one_label))
+    code, out, err = run(capsysbinary, "elements", "C3v", "--verify")
+    assert (code, out) == (1, b"")
+    assert err == (
+        "pointgroup-tables: error: verification of 'C3v' failed (1 check)\n"
+        "verify: CL-2: class label '2C3x' does not match the grammar\n"
+    )
+
+
+@pytest.mark.slow
+def test_verify_proves_a_group_no_book_tabulates(
+    capsysbinary: pytest.CaptureFixture[bytes],
+) -> None:
+    """The reason the flag exists: ``D37h characters`` is verified on the spot."""
+    code, out, err = run(capsysbinary, "characters", "D37h", "--verify")
+    assert (code, err) == (0, "")
+    assert json.loads(out)["group"]["symbol"] == "D37h"

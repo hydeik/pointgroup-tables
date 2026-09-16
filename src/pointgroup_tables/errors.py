@@ -8,10 +8,29 @@ class PointGroupTablesError(Exception):
 
     exit_code = 1
 
-    def __init__(self, message: str, hint: str | None = None) -> None:
+    def __init__(
+        self, message: str, hint: str | None = None, details: tuple[str, ...] = ()
+    ) -> None:
         super().__init__(message)
         self.message = message
         self.hint = hint
+        self.details = details
+
+
+class VerificationError(PointGroupTablesError):
+    """Exit code 1: ``--verify`` found failing checks; ``details`` holds one
+    ``verify: <check>: <message>`` line per failure."""
+
+    exit_code = 1
+
+    def __init__(self, symbol: str, failures: tuple[str, ...]) -> None:
+        count = len(failures)
+        super().__init__(
+            f"verification of '{symbol}' failed ({count} check{'' if count == 1 else 's'})",
+            details=tuple(f"verify: {failure}" for failure in failures),
+        )
+        self.symbol = symbol
+        self.failures = failures
 
 
 class UsageError(PointGroupTablesError):

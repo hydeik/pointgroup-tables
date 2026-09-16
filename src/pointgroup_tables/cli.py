@@ -18,10 +18,11 @@ from .document import (
     parse_values,
     tool_version,
 )
-from .errors import PointGroupTablesError, UsageError
+from .errors import PointGroupTablesError, UsageError, VerificationError
 from .formats import EMITTERS
 from .listing import conventions_document, groups_document, shipped_schema
 from .symbols import parse_group
+from .verify import verify
 
 PROG = "pointgroup-tables"
 TABLE_SUBCOMMANDS = {
@@ -99,6 +100,11 @@ def _add_common_options(parser: argparse.ArgumentParser) -> None:
         default=conventions.CANONICAL,
         help="canonical or a shipped basis convention (default: canonical)",
     )
+    parser.add_argument(
+        "--verify",
+        action="store_true",
+        help="run the self-consistency checks on the document before emitting it",
+    )
 
 
 def build_parser() -> Parser:
@@ -169,6 +175,8 @@ def _report(error: PointGroupTablesError) -> int:
     print(f"{PROG}: error: {error.message}", file=sys.stderr)
     if error.hint:
         print(f"hint: {error.hint}", file=sys.stderr)
+    for line in error.details:
+        print(line, file=sys.stderr)
     return error.exit_code
 
 
@@ -192,7 +200,14 @@ def _render(namespace: argparse.Namespace) -> bytes:
             else conventions_document()
         )
     else:
-        document = build_document(_request(namespace))
+        request = _request(namespace)
+        if namespace.verify:
+            failures = verify(request)
+            if failures:
+                raise VerificationError(
+                    namespace.group.symbol, tuple(str(f) for f in failures)
+                )
+        document = build_document(request)
     return EMITTERS[namespace.format](document).encode("ascii")
 
 
