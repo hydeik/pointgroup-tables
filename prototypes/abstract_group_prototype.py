@@ -245,18 +245,32 @@ def point_group(symbol: str) -> PointGroup:
     if family == "Cv":
         return twisted(symbol, dihedral(n), no_flip)
     if family == "Ch":
-        return centro(symbol, cyclic(n)) if n % 2 == 0 else twisted(symbol, cyclic(2 * n), even_k)
+        return (
+            centro(symbol, cyclic(n))
+            if n % 2 == 0
+            else twisted(symbol, cyclic(2 * n), even_k)
+        )
     if family == "S":
         if n % 2:
             raise ValueError("S_n needs even n (S2n)")
         m = n // 2
-        return centro(symbol, cyclic(m)) if m % 2 else twisted(symbol, cyclic(n), even_k)
+        return (
+            centro(symbol, cyclic(m)) if m % 2 else twisted(symbol, cyclic(n), even_k)
+        )
     if family == "D":
         return proper(symbol, dihedral(n))
     if family == "Dh":
-        return centro(symbol, dihedral(n)) if n % 2 == 0 else twisted(symbol, dihedral(2 * n), even_k)
+        return (
+            centro(symbol, dihedral(n))
+            if n % 2 == 0
+            else twisted(symbol, dihedral(2 * n), even_k)
+        )
     if family == "Dd":
-        return centro(symbol, dihedral(n)) if n % 2 else twisted(symbol, dihedral(2 * n), even_k)
+        return (
+            centro(symbol, dihedral(n))
+            if n % 2
+            else twisted(symbol, dihedral(2 * n), even_k)
+        )
     if family == "T":
         return proper(symbol, polyhedral("T"))
     if family == "Td":
@@ -319,23 +333,61 @@ def invariants(G):
         "order": G.order,
         "proper": sum(1 for _, p in G.elements if p == +1),
         "has_inversion": (G.identity()[0], -1) in G.elements,
-        "abelian": all(G.mul(a, b) == G.mul(b, a) for a in G.elements for b in G.elements),
+        "abelian": all(
+            G.mul(a, b) == G.mul(b, a) for a in G.elements for b in G.elements
+        ),
         "classes": len(conjugacy_classes(G)),
-        "orders": dict(sorted(Counter(element_order(G, g) for g in G.elements).items())),
+        "orders": dict(
+            sorted(Counter(element_order(G, g) for g in G.elements).items())
+        ),
     }
 
 
 # Known (order, number of classes) for verification, from standard tables.
 KNOWN = {
-    "C1": (1, 1), "Cs": (2, 2), "Ci": (2, 2), "C2": (2, 2), "C2v": (4, 4),
-    "C2h": (4, 4), "D2": (4, 4), "D2h": (8, 8), "C3": (3, 3), "C3v": (6, 3),
-    "C3h": (6, 6), "D3": (6, 3), "D3d": (12, 6), "D3h": (12, 6), "S6": (6, 6),
-    "C4": (4, 4), "S4": (4, 4), "C4h": (8, 8), "C4v": (8, 5), "D4": (8, 5),
-    "D2d": (8, 5), "D4h": (16, 10), "C6": (6, 6), "C6h": (12, 12), "C6v": (12, 6),
-    "D6": (12, 6), "D6h": (24, 12), "C5v": (10, 4), "D5d": (20, 8), "D5h": (20, 8),
-    "S8": (8, 8), "D4d": (16, 7), "T": (12, 4), "Td": (24, 5), "Th": (24, 8),
-    "O": (24, 5), "Oh": (48, 10), "I": (60, 5), "Ih": (120, 10), "C7v": (14, 5),
-    "D7h": (28, 10), "D8d": (32, 11), "C8h": (16, 16),
+    "C1": (1, 1),
+    "Cs": (2, 2),
+    "Ci": (2, 2),
+    "C2": (2, 2),
+    "C2v": (4, 4),
+    "C2h": (4, 4),
+    "D2": (4, 4),
+    "D2h": (8, 8),
+    "C3": (3, 3),
+    "C3v": (6, 3),
+    "C3h": (6, 6),
+    "D3": (6, 3),
+    "D3d": (12, 6),
+    "D3h": (12, 6),
+    "S6": (6, 6),
+    "C4": (4, 4),
+    "S4": (4, 4),
+    "C4h": (8, 8),
+    "C4v": (8, 5),
+    "D4": (8, 5),
+    "D2d": (8, 5),
+    "D4h": (16, 10),
+    "C6": (6, 6),
+    "C6h": (12, 12),
+    "C6v": (12, 6),
+    "D6": (12, 6),
+    "D6h": (24, 12),
+    "C5v": (10, 4),
+    "D5d": (20, 8),
+    "D5h": (20, 8),
+    "S8": (8, 8),
+    "D4d": (16, 7),
+    "T": (12, 4),
+    "Td": (24, 5),
+    "Th": (24, 8),
+    "O": (24, 5),
+    "Oh": (48, 10),
+    "I": (60, 5),
+    "Ih": (120, 10),
+    "C7v": (14, 5),
+    "D7h": (28, 10),
+    "D8d": (32, 11),
+    "C8h": (16, 16),
 }
 
 
@@ -374,8 +426,10 @@ def selfcheck():
         ok = (inv["order"], inv["classes"]) == (order, ncls)
         bad += not ok
         flag = "ok " if ok else "BAD"
-        print(f"{flag} {sym:5s} order={inv['order']:4d} classes={inv['classes']:3d} "
-              f"expected=({order},{ncls}) R={G.rotation_group.name} {G.kind}")
+        print(
+            f"{flag} {sym:5s} order={inv['order']:4d} classes={inv['classes']:3d} "
+            f"expected=({order},{ncls}) R={G.rotation_group.name} {G.kind}"
+        )
     print(f"\n{len(KNOWN) - bad}/{len(KNOWN)} groups match (order, #classes).")
 
 
@@ -454,7 +508,11 @@ def axial_labels(G: PointGroup):
             if nprime % 2:
                 labels[g] = f"C2'({kp + 1})"
             else:
-                labels[g] = f"C2'({kp // 2 + 1})" if kp % 2 == 0 else f"C2''({(kp - 1) // 2 + 1})"
+                labels[g] = (
+                    f"C2'({kp // 2 + 1})"
+                    if kp % 2 == 0
+                    else f"C2''({(kp - 1) // 2 + 1})"
+                )
         elif p == -1 and s == 0:
             labels[g] = _srot(turn)
         else:  # vertical plane: i * C2 about direction k (units pi/N)
@@ -462,7 +520,11 @@ def axial_labels(G: PointGroup):
                 if n % 2:
                     labels[g] = f"sigma_v({k + 1})"
                 else:
-                    labels[g] = f"sigma_v({k // 2 + 1})" if k % 2 == 0 else f"sigma_d({(k - 1) // 2 + 1})"
+                    labels[g] = (
+                        f"sigma_v({k // 2 + 1})"
+                        if k % 2 == 0
+                        else f"sigma_d({(k - 1) // 2 + 1})"
+                    )
             elif fam == "Dh":
                 # plane perpendicular to direction k contains direction k + N/2
                 d = (k + N // 2) % N
@@ -470,7 +532,11 @@ def axial_labels(G: PointGroup):
                 if nprime % 2:
                     labels[g] = f"sigma_v({dp + 1})"
                 else:
-                    labels[g] = f"sigma_v({dp // 2 + 1})" if dp % 2 == 0 else f"sigma_d({(dp - 1) // 2 + 1})"
+                    labels[g] = (
+                        f"sigma_v({dp // 2 + 1})"
+                        if dp % 2 == 0
+                        else f"sigma_d({(dp - 1) // 2 + 1})"
+                    )
             elif fam == "Dd":
                 if n % 2:  # centro, R = Dn, N odd: plane contains no axis
                     labels[g] = f"sigma_d({k + 1})"
@@ -514,14 +580,18 @@ def polyhedral_labels(G: PointGroup):
     for r in els[1:]:
         ax = axis_of[r]
         if ax not in axes:
-            same = [a for a in axes if max(order(x) for x in a) == max(order(x) for x in ax)]
+            same = [
+                a for a in axes if max(order(x) for x in a) == max(order(x) for x in ax)
+            ]
             axes[ax] = len(same) + 1
     # positive generator of each axis: smallest canonical index among max-order elements
     gen = {}
     for ax in axes:
         o = max(order(x) for x in ax)
         gen[ax] = min((x for x in ax if order(x) == o), key=els.index)
-    has_c2_on_higher = any(order(r) == 2 and max(order(x) for x in axis_of[r]) > 2 for r in els[1:])
+    has_c2_on_higher = any(
+        order(r) == 2 and max(order(x) for x in axis_of[r]) > 2 for r in els[1:]
+    )
 
     def rot_label(r):
         ax = axis_of[r]
@@ -560,7 +630,11 @@ def polyhedral_labels(G: PointGroup):
 
 
 def canonical_labels(G: PointGroup):
-    return polyhedral_labels(G) if G.rotation_group.name in ("T", "O", "I") else axial_labels(G)
+    return (
+        polyhedral_labels(G)
+        if G.rotation_group.name in ("T", "O", "I")
+        else axial_labels(G)
+    )
 
 
 def show_labels(symbol):
@@ -569,7 +643,10 @@ def show_labels(symbol):
     print(f"== {symbol}  (R = {G.rotation_group.name}, {G.kind})")
     print("   elements:", " ".join(labels[g] for g in G.elements))
     cls = conjugacy_classes(G)
-    print("   classes :", "  ".join(f"{len(c)}x[{', '.join(labels[g] for g in c)}]" for c in cls))
+    print(
+        "   classes :",
+        "  ".join(f"{len(c)}x[{', '.join(labels[g] for g in c)}]" for c in cls),
+    )
     assert len(set(labels.values())) == G.order, "labels not unique"
 
 

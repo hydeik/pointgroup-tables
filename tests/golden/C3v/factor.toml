@@ -1,0 +1,35 @@
+schema_version = 1
+generator = { name = "pointgroup-tables", version = "0.1.0" }
+group = { symbol = "C3v", input_symbol = "C3v", family = "Cnv", n = 3, order = 6, type = "twisted", rotation_group = "D3" }
+tables = ["elements", "factor"]
+double = false
+values = ["exact", "numeric"]
+field = { kind = "cyclotomic", conductor = 12, degree = 4, generator = "exp(2*pi*i/12)", basis = "power" }
+basis_convention = { name = "canonical" }
+
+[elements]
+group = "G"
+items = [
+  { index = 0, label = "E", parity = 1, kind = "identity", order = 1, inverse = 0, class = 0 },
+  { index = 1, label = "C3^1", parity = 1, kind = "rotation", order = 3, power = 1, axis_class = "principal", inverse = 2, class = 1 },
+  { index = 2, label = "C3^-1", parity = 1, kind = "rotation", order = 3, power = -1, axis_class = "principal", inverse = 1, class = 1 },
+  { index = 3, label = "sigma_v(1)", parity = -1, kind = "reflection", order = 2, axis_class = "secondary", axis_index = 1, inverse = 3, class = 2 },
+  { index = 4, label = "sigma_v(2)", parity = -1, kind = "reflection", order = 2, axis_class = "secondary", axis_index = 2, inverse = 4, class = 2 },
+  { index = 5, label = "sigma_v(3)", parity = -1, kind = "reflection", order = 2, axis_class = "secondary", axis_index = 3, inverse = 5, class = 2 }
+]
+classes = [
+  { index = 0, label = "E", size = 1, representative = 0, members = [0], inverse = 0, regular = true },
+  { index = 1, label = "2C3", size = 2, representative = 1, members = [1, 2], inverse = 1, regular = true },
+  { index = 2, label = "3sigma_v", size = 3, representative = 3, members = [3, 4, 5], inverse = 2, regular = true }
+]
+
+[factor]
+group = "G"
+table = [
+  [1, 1, 1, 1, 1, 1],
+  [1, -1, 1, 1, -1, 1],
+  [1, 1, -1, 1, 1, -1],
+  [1, 1, 1, -1, -1, -1],
+  [1, 1, -1, -1, -1, 1],
+  [1, -1, 1, -1, 1, -1]
+]

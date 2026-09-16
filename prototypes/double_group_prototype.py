@@ -27,15 +27,14 @@ Everything is integer arithmetic; see docs/spec/double-groups.md.
 
 from __future__ import annotations
 
-import itertools
 import sys
+from collections.abc import Callable
 from dataclasses import dataclass
 from fractions import Fraction as Fr
 from pathlib import Path
-from typing import Callable
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import abstract_group_prototype as ag  # noqa: E402
+import abstract_group_prototype as ag
 
 # --------------------------------------------------------------------------
 # The quadratic ring Z[alpha] with halves: value = a + b*alpha, alpha^2 = c*alpha + d
@@ -60,7 +59,7 @@ class Ring:
             v = a + b
             return (v > 0) - (v < 0)
         if self.name == "phi":  # a + b phi = ((2a + b) + b sqrt5) / 2
-            a, b, d = 2 * a + b, b, 5
+            a, d = 2 * a + b, 5
         else:
             d = self.d
         if a >= 0 and b >= 0:
@@ -169,19 +168,28 @@ def dicyclic_double(n: int) -> BinaryRotationGroup:
 # abstract_group_prototype.polyhedral (docs/spec/double-groups.md).
 half = Fr(1, 2)
 GENERATORS = {
-    "T": (ONE, [
-        ((const(half), const(half), const(half), const(half)), (1, 2, 0, 3)),
-        ((ZERO, ZERO, ZERO, const(1)), (1, 0, 3, 2)),
-    ]),
-    "O": (SQRT2, [
-        ((const(0, half), ZERO, ZERO, const(0, half)), (1, 2, 3, 0)),
-        ((ZERO, ZERO, const(0, half), const(0, half)), (1, 0, 2, 3)),
-    ]),
-    "I": (PHI, [
-        # (phi, 1/phi, 0, 1)/2 and (1, 1/phi, phi, 0)/2 with 1/phi = phi - 1
-        ((const(0, half), const(-half, half), ZERO, const(half)), (1, 2, 3, 4, 0)),
-        ((const(half), const(-half, half), const(0, half), ZERO), (1, 2, 0, 3, 4)),
-    ]),
+    "T": (
+        ONE,
+        [
+            ((const(half), const(half), const(half), const(half)), (1, 2, 0, 3)),
+            ((ZERO, ZERO, ZERO, const(1)), (1, 0, 3, 2)),
+        ],
+    ),
+    "O": (
+        SQRT2,
+        [
+            ((const(0, half), ZERO, ZERO, const(0, half)), (1, 2, 3, 0)),
+            ((ZERO, ZERO, const(0, half), const(0, half)), (1, 0, 2, 3)),
+        ],
+    ),
+    "I": (
+        PHI,
+        [
+            # (phi, 1/phi, 0, 1)/2 and (1, 1/phi, phi, 0)/2 with 1/phi = phi - 1
+            ((const(0, half), const(-half, half), ZERO, const(half)), (1, 2, 3, 4, 0)),
+            ((const(half), const(-half, half), const(0, half), ZERO), (1, 2, 0, 3, 4)),
+        ],
+    ),
 }
 
 
@@ -201,7 +209,9 @@ def polyhedral_double(kind: str) -> BinaryRotationGroup:
                     elements.append(gq)
                     nxt.append(gq)
                 elif proj[gq] != image:
-                    raise AssertionError(f"generator images of 2{kind} are not a homomorphism")
+                    raise AssertionError(
+                        f"generator images of 2{kind} are not a homomorphism"
+                    )
         frontier = nxt
     expected = {"T": 24, "O": 48, "I": 120}[kind]
     assert len(elements) == expected, (kind, len(elements))
@@ -281,7 +291,9 @@ class DoubleGroup:
                 elif prod == self.bar(lift):
                     omega[(a, b)] = -1
                 else:
-                    raise AssertionError("product of lifts is not a preimage of the product")
+                    raise AssertionError(
+                        "product of lifts is not a preimage of the product"
+                    )
         return omega
 
     def labels(self):
@@ -330,7 +342,10 @@ def check_factor_system(G: ag.PointGroup, omega):
     for g in els:
         for h in els:
             for k in els:
-                assert omega[(g, h)] * omega[(G.mul(g, h), k)] == omega[(g, G.mul(h, k))] * omega[(h, k)]
+                assert (
+                    omega[(g, h)] * omega[(G.mul(g, h), k)]
+                    == omega[(g, G.mul(h, k))] * omega[(h, k)]
+                )
 
 
 def class_count(table):
@@ -347,13 +362,48 @@ def class_count(table):
 
 # (classes of G, classes of G-dagger); Dic_n has n + 3 classes.
 KNOWN = {
-    "C1": (1, 2), "Ci": (2, 4), "C2": (2, 4), "Cs": (2, 4), "C2v": (4, 5), "C2h": (4, 8),
-    "D2": (4, 5), "D2h": (8, 10), "C3": (3, 6), "C3v": (3, 6), "D3": (3, 6), "D3d": (6, 12),
-    "C3h": (6, 12), "D3h": (6, 9), "S6": (6, 12), "C4": (4, 8), "C4v": (5, 7), "D4": (5, 7),
-    "D2d": (5, 7), "C4h": (8, 16), "D4h": (10, 14), "S4": (4, 8), "C6": (6, 12), "C6v": (6, 9),
-    "D6": (6, 9), "C6h": (12, 24), "D6h": (12, 18), "C5": (5, 10), "C5v": (4, 8), "D5h": (8, 13),
-    "D5d": (8, 16), "D8d": (11, 19), "C7v": (5, 10), "D7h": (10, 17), "C8h": (16, 32),
-    "T": (4, 7), "Td": (5, 8), "Th": (8, 14), "O": (5, 8), "Oh": (10, 16), "I": (5, 9), "Ih": (10, 18),
+    "C1": (1, 2),
+    "Ci": (2, 4),
+    "C2": (2, 4),
+    "Cs": (2, 4),
+    "C2v": (4, 5),
+    "C2h": (4, 8),
+    "D2": (4, 5),
+    "D2h": (8, 10),
+    "C3": (3, 6),
+    "C3v": (3, 6),
+    "D3": (3, 6),
+    "D3d": (6, 12),
+    "C3h": (6, 12),
+    "D3h": (6, 9),
+    "S6": (6, 12),
+    "C4": (4, 8),
+    "C4v": (5, 7),
+    "D4": (5, 7),
+    "D2d": (5, 7),
+    "C4h": (8, 16),
+    "D4h": (10, 14),
+    "S4": (4, 8),
+    "C6": (6, 12),
+    "C6v": (6, 9),
+    "D6": (6, 9),
+    "C6h": (12, 24),
+    "D6h": (12, 18),
+    "C5": (5, 10),
+    "C5v": (4, 8),
+    "D5h": (8, 13),
+    "D5d": (8, 16),
+    "D8d": (11, 19),
+    "C7v": (5, 10),
+    "D7h": (10, 17),
+    "C8h": (16, 32),
+    "T": (4, 7),
+    "Td": (5, 8),
+    "Th": (8, 14),
+    "O": (5, 8),
+    "Oh": (10, 16),
+    "I": (5, 9),
+    "Ih": (10, 18),
 }
 
 
@@ -369,9 +419,11 @@ def selfcheck():
         ok = got == (nc, ncd)
         failures += not ok
         neg = sum(v == -1 for v in omega.values())
-        print(f"{symbol:4s} |G|={G.order:3d} {D.cover.name:6s} classes {got[0]:2d}/{got[1]:2d} "
-              f"projective irreps {got[1] - got[0]:2d} omega=-1 on {neg:4d}/{G.order ** 2:5d} "
-              f"{'ok' if ok else 'MISMATCH expected ' + str((nc, ncd))}")
+        print(
+            f"{symbol:4s} |G|={G.order:3d} {D.cover.name:6s} classes {got[0]:2d}/{got[1]:2d} "
+            f"projective irreps {got[1] - got[0]:2d} omega=-1 on {neg:4d}/{G.order**2:5d} "
+            f"{'ok' if ok else 'MISMATCH expected ' + str((nc, ncd))}"
+        )
     print(f"{len(KNOWN) - failures}/{len(KNOWN)} groups match")
     return failures == 0
 

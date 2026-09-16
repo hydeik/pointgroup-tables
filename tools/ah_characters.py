@@ -1100,7 +1100,8 @@ def write_matrices(group, mats):
         lines.append(
             "book_symbols = { "
             + ", ".join(
-                f'{k} = "exp({2 * num} pi i / {den})"' for k, (num, den) in symbols.items()
+                f'{k} = "exp({2 * num} pi i / {den})"'
+                for k, (num, den) in symbols.items()
             )
             + " }   # the table's footnote: d = delta, e = epsilon, h = eta, t = theta"
         )
@@ -1152,7 +1153,13 @@ def book_symbols(data):
 
 
 # book element label -> canonical label, for the D_n tables without a character file
-DN_ELEMENTS = {"C5+": "C5^1", "C8+": "C8^1", "C9+": "C9^1", "C10+": "C10^1", "C2'1": "C2'(1)"}
+DN_ELEMENTS = {
+    "C5+": "C5^1",
+    "C8+": "C8^1",
+    "C9+": "C9^1",
+    "C10+": "C10^1",
+    "C2'1": "C2'(1)",
+}
 
 
 def check_matrices():
@@ -1179,7 +1186,8 @@ def check_matrices():
             classes = [c["label"] for c in chars["classes"]]
             rows = {r["label"]: r for r in chars["irreps"]}
 
-            def expected(label, g):
+            # bound as defaults: the closure is built once per loop iteration
+            def expected(label, g, classes=classes, F=F, rows=rows, ceps=ceps):
                 cl = element_class(g, classes)
                 _, order, _ = class_invariants(cl)
                 want = token_value(
@@ -1192,7 +1200,7 @@ def check_matrices():
             F = cb.field(math.lcm(data["conductor"], comp.F.conductor))
             by_symbol = {ir.symbol: ir for ir in comp.irreps}
 
-            def expected(label, g):
+            def expected(label, g, comp=comp, F=F, by_symbol=by_symbol):
                 idx = comp.ctx.labels_list.index(DN_ELEMENTS[g])
                 order = ag.element_order(comp.ctx.G, comp.ctx.G.elements[idx])
                 want = lift_to(comp.F, F, by_symbol[label].chars[idx])
@@ -1205,7 +1213,8 @@ def check_matrices():
             ):
                 D = [[cb.parse_value(F, x) for x in row] for row in A]
                 assert cb.meq(
-                    D, [[token_value(F, t, 1, 1, symbols) for t in row] for row in Abook]
+                    D,
+                    [[token_value(F, t, 1, 1, symbols) for t in row] for row in Abook],
                 ), (path.name, label, g)
                 if not cb.is_unitary(F, D):
                     problems.append(f"{label} {g}: not unitary")

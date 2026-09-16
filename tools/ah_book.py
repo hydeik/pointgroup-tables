@@ -1032,7 +1032,7 @@ def toml_str(s):
 def generate(out_dir=OUT_DIR):
     out_dir.mkdir(parents=True, exist_ok=True)
     summary = []
-    for name in SUBGROUPS:
+    for name, (master, _) in SUBGROUPS.items():
         symbol = "C3v" if name == "C3vB" else ag.ALIASES.get(name, name)
         book, ops = book_group(name)
         grp = at.Group(symbol)
@@ -1044,7 +1044,6 @@ def generate(out_dir=OUT_DIR):
         ]
         ordinary, projective = (s.split() for s in IRREPS[name].split("|"))
         table, page = BOOK_TABLE[name]
-        master, _ = SUBGROUPS[name]
         lines = [
             f"# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): element labels of {symbol}"
             + (" (setting B)" if name == "C3vB" else ""),
@@ -1125,7 +1124,7 @@ def generate(out_dir=OUT_DIR):
 
 def check(ocr_dir=None):
     for master in MASTERS:
-        ops, full = master_group(master)
+        _ops, full = master_group(master)
         print(f"{master}: {len(full.elements)} elements, group axioms hold")
     for name in SUBGROUPS:
         symbol = "C3v" if name == "C3vB" else ag.ALIASES.get(name, name)

@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main, proto-1]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  UV_LOCKED: "1"
+
+jobs:
+  checks:
+    name: lint, types, default battery
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.13"
+      - run: uv sync
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run ty check
+      - name: pytest (default battery; reference tests skip when their file is absent)
+        run: uv run pytest -q -rs
+
+  slow:
+    name: full suite (slow, reference)
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.13"
+      - run: uv sync
+      - name: pytest (every marker; the large group set under slow)
+        run: uv run pytest -q -m "" -rs
+
+  package:
+    name: wheel and sdist
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.13"
+      - run: uv build
+      - name: the wheel has no runtime dependency and ships only the package
+        run: uv run --no-project python tools/check_wheel.py dist/*.whl
+      - name: the wheel installs the command
+        run: |
+          uv tool install --python 3.13 dist/*.whl
+          pointgroup-tables --version
+          pointgroup-tables characters C3v --verify > /dev/null
+          pointgroup-tables list conventions > /dev/null
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/

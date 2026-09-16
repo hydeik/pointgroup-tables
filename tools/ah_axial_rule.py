@@ -391,7 +391,9 @@ def check_kets():
             count += 1
             where = f"{label} <|{row['j']} {row['m1']}>, {'-' if row['s'] < 0 else ''}|{row['j']} -({row['m1']})>|{'*' if row['bullet'] else ''}"
             if kind == "Dnh_even" and parity != label_parity(label):
-                problems.append(f"{where}: parity of the harmonic is not the label's g/u")
+                problems.append(
+                    f"{where}: parity of the harmonic is not the label's g/u"
+                )
             want_k2 = label_k2(kind, n, label)
             if k2 != want_k2:
                 problems.append(
@@ -426,7 +428,7 @@ def survey():
             m2, mt2 = first_partner(N, k2)
             print(
                 f"{name:6s} {N:3d}  {label:8s} {row['j']:>5s} {row['m1']:>5s} {row['s']:+2d}  {parity:+2d}"
-                f"{'*' if row['bullet'] else ' '} | {str(Fr(m2, 2)):>6s} {str(Fr(mt2, 2)):>4s} | "
+                f"{'*' if row['bullet'] else ' '} | {Fr(m2, 2)!s:>6s} {Fr(mt2, 2)!s:>4s} | "
                 f"{'ok' if cb.meq(Da, Ka) else 'XX'} {'ok' if cb.meq(Db, Kb) else 'XX'}"
             )
 

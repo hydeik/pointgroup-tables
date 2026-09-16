@@ -8,6 +8,24 @@ authors = [
 ]
 requires-python = ">=3.13"
 dependencies = []
+keywords = ["point group", "double group", "character table", "irreducible representation", "group theory", "crystallography", "spectroscopy"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://github.com/hydeik/pointgroup-tables"
+Repository = "https://github.com/hydeik/pointgroup-tables"
+Issues = "https://github.com/hydeik/pointgroup-tables/issues"
 
 [project.scripts]
 pointgroup-tables = "pointgroup_tables:main"
