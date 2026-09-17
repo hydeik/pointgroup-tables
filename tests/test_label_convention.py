@@ -216,9 +216,11 @@ def _irrep_symbols(symbol: str) -> dict[str, str]:
         ("C3", {"1E": "2E", "2E": "1E"}),
         ("S6", {"1Eg": "2Eg", "2Eu": "1Eu"}),
         ("C4", {"1E1/2": "2E1/2", "2E3/2": "2E3/2"}),
-        # the book indexes the E_k of D4d and the E_k/2 of D5h differently
+        # the book indexes the E_k of D4d differently; the E_k/2 of D5h agree once the
+        # interchanged symbols of T 34.4 are corrected (tests/reference/altmann-herzig/
+        # characters/D5h.toml, decided by T 34.6 and T 34.7)
         ("D4d", {"E1": "E3", "E3": "E1", "E2": "E2"}),
-        ("D5h", {"E3/2": "E7/2", "E7/2": "E3/2", "E1/2": "E1/2"}),
+        ("D5h", {"E3/2": "E3/2", "E7/2": "E7/2", "E1/2": "E1/2"}),
         ("T", {"1E3/2": "1F3/2", "2E3/2": "2F3/2", "E1/2": "E1/2", "T": "T"}),
         ("Th", {"1E3/2g": "1F3/2,g", "2E3/2u": "2F3/2,u", "Tg": "Tg"}),
         ("O", {"G3/2": "F3/2", "T2": "T2"}),

@@ -49,8 +49,12 @@ comparison therefore matches projective rows up to one sign per class.
 
 ## Known discrepancy
 
-`D5h.toml` carries a `[[known_discrepancy]]` entry: the projective rows of
-T 34.4 print the `2S5` and `2S5^2` entries interchanged relative to the
-book's own parameter table T 39.1 and to the master table T 39.4 (`D10h`),
-see the `note`. The checker applies the documented correction and reports
-the match separately.
+`D5h.toml` carries two `[[known_discrepancy]]` entries, applied in file
+order: `swap_projective = ["2S5", "2S5^2"]` (the projective rows of T 34.4
+print these two entries interchanged relative to the book's own parameter
+table T 39.1 and to the master table T 39.4 of `D10h`) and
+`swap_labels = ["E3/2", "E7/2"]` (the two rows carry each other's symbol;
+the book's bases T 34.6 and matrices T 34.7 decide), see the `note` of
+each. The checker applies the documented corrections and reports the match
+separately; a `swap_labels` entry does not affect the structural
+comparison.

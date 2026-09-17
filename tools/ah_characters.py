@@ -405,20 +405,37 @@ BOOK.update(
     }
 )
 
-# Documented disagreements between the book's table and its own parameter tables.
+# Documented disagreements between the book's table and its own parameter, basis and
+# matrix tables, applied in order (tests/altmann_herzig.py applies the same entries).
 # swap_projective: two class columns whose projective-row entries the book prints interchanged.
-DISCREPANCIES: dict[str, dict[str, Any]] = {
-    "D5h": tbl(
-        swap_projective=("2S5", "2S5^2"),
-        note=(
-            "The projective rows (E1/2 ... E9/2) of T 34.4 carry the values of the 2S5 and 2S5^2 "
-            "columns interchanged: by the book's own parameters (T 39.1: S5+ has phi = 3pi/5, S5^2+ "
-            "has phi = pi/5) the spin-1/2 character of S5 is 2cos(3pi/10) = 2c10^3, and the master "
-            "table T 39.4 (D10h) prints E1/2,g = 2c10^3 on 2S5 and 2c10 on 2S5^2, whereas T 34.4 prints "
-            "2c10 on 2S5 and 2c10^3 on 2S5^2. The ordinary rows are consistent with the header. "
-            "With the two columns interchanged in the projective rows the table matches the computed one."
+# swap_labels: two irrep symbols the book prints on each other's rows.
+DISCREPANCIES: dict[str, list[dict[str, Any]]] = {
+    "D5h": [
+        tbl(
+            swap_projective=("2S5", "2S5^2"),
+            note=(
+                "The projective rows (E1/2 ... E9/2) of T 34.4 carry the values of the 2S5 and 2S5^2 "
+                "columns interchanged: by the book's own parameters (T 39.1: S5+ has phi = 3pi/5, S5^2+ "
+                "has phi = pi/5) the spin-1/2 character of S5 is 2cos(3pi/10) = 2c10^3, and the master "
+                "table T 39.4 (D10h) prints E1/2,g = 2c10^3 on 2S5 and 2c10 on 2S5^2, whereas T 34.4 prints "
+                "2c10 on 2S5 and 2c10^3 on 2S5^2. The ordinary rows are consistent with the header. "
+                "With the two columns interchanged in the projective rows the table matches the computed one."
+            ),
         ),
-    ),
+        tbl(
+            swap_labels=("E3/2", "E7/2"),
+            note=(
+                "The rows E3/2 and E7/2 of T 34.4 carry each other's symbol. With the 2S5 / 2S5^2 columns "
+                "corrected, the printed E3/2 row has 2c10 on 2S5 and -2c10^3 on 2S5^2 and the printed E7/2 row "
+                "-2c10 on 2S5 and 2c10^3 on 2S5^2, whereas the book's own matrices T 34.7 (p. 265) give the irrep "
+                "it labels E3/2 the matrices S5+ = diag(i delta, -i delta*) and S5^2+ = diag(-i epsilon, i epsilon*) "
+                "(delta = exp(2 pi i/5), epsilon = exp(4 pi i/5)), of traces -2c10 and 2c10^3, and the basis table "
+                "T 34.6 spans that E3/2 by |3/2 3/2>, whose characters are the same; the two irreps differ only by "
+                "the sign on the improper classes (E7/2 = E3/2 x A1''). T 34.6 and T 34.7 agree with the canonical "
+                "symbols, so the symbols E3/2 and E7/2 of T 34.4 are interchanged (ticket #37)."
+            ),
+        ),
+    ],
 }
 
 # Generator matrices of T n.7 for the axial samples, read from the page images.
@@ -1028,13 +1045,12 @@ def write_characters(group, book, typeset):
         lines.append(f'book_epsilon = "exp(2 pi i / {eps})"')
     if book.get("delta"):
         lines.append(f'book_delta = "exp(2 pi i / {delta})"')
-    if group in DISCREPANCIES:
-        d = DISCREPANCIES[group]
+    for d in DISCREPANCIES.get(group, []):
         lines.append("")
         lines.append("[[known_discrepancy]]")
-        lines.append(
-            f"swap_projective = [{toml_str(d['swap_projective'][0])}, {toml_str(d['swap_projective'][1])}]"
-        )
+        for key in ("swap_projective", "swap_labels"):
+            if key in d:
+                lines.append(f"{key} = [{toml_str(d[key][0])}, {toml_str(d[key][1])}]")
         lines.append(f"note = {toml_str(d['note'])}")
     lines.append("")
     for c in classes:
@@ -1287,15 +1303,22 @@ def read_file(path):
 
 
 def apply_discrepancy(book, disc):
-    classes = book["classes"].split()
-    a, b = disc["swap_projective"]
-    ia, ib = classes.index(a), classes.index(b)
-    rows = []
-    for lab, vals, tau in book["rows"]:
-        toks = vals.split()
-        if "/" in lab:
-            toks[ia], toks[ib] = toks[ib], toks[ia]
-        rows.append((lab, " ".join(toks), tau))
+    rows = book["rows"]
+    if "swap_projective" in disc:
+        classes = book["classes"].split()
+        a, b = disc["swap_projective"]
+        ia, ib = classes.index(a), classes.index(b)
+        swapped = []
+        for lab, vals, tau in rows:
+            toks = vals.split()
+            if "/" in lab:
+                toks[ia], toks[ib] = toks[ib], toks[ia]
+            swapped.append((lab, " ".join(toks), tau))
+        rows = swapped
+    if "swap_labels" in disc:
+        a, b = disc["swap_labels"]
+        renamed = {a: b, b: a}
+        rows = [(renamed.get(lab, lab), vals, tau) for lab, vals, tau in rows]
     return {**book, "rows": rows}
 
 

@@ -547,6 +547,8 @@ def test_mut7_an_altered_reference_row_is_caught_by_ref1(symbol: str) -> None:
         for row in data["irreps"]
     ]
     for entry in data.get("known_discrepancy", []):
+        if "swap_projective" not in entry:
+            continue  # a `swap_labels` entry does not change the structural comparison
         a, b = (labels.index(label) for label in entry["swap_projective"])
         for label, values, projective in book_rows:
             if projective:

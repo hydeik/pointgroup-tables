@@ -51,14 +51,28 @@ def swap_projective(
     return out
 
 
+def swap_labels(rows: list[BookRow], a: str, b: str) -> list[BookRow]:
+    """The rows with the symbols ``a`` and ``b`` interchanged (a
+    ``[[known_discrepancy]]`` entry with ``swap_labels``: two rows the book prints
+    under each other's symbol)."""
+    renamed = {a: b, b: a}
+    return [
+        (renamed.get(label, label), values, projective)
+        for label, values, projective in rows
+    ]
+
+
 def corrected_rows(
     data: dict[str, Any], F_book: CyclotomicField, F: CyclotomicField
 ) -> list[BookRow]:
-    """The rows with every documented discrepancy applied."""
+    """The rows with every documented discrepancy applied, in file order."""
     rows = book_rows(data, F_book, F)
     labels = [c["label"] for c in data["classes"]]
     for entry in data.get("known_discrepancy", []):
-        rows = swap_projective(rows, labels, *entry["swap_projective"])
+        if "swap_projective" in entry:
+            rows = swap_projective(rows, labels, *entry["swap_projective"])
+        if "swap_labels" in entry:
+            rows = swap_labels(rows, *entry["swap_labels"])
     return rows
 
 

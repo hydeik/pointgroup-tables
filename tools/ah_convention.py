@@ -343,7 +343,7 @@ def emit(
     lines += [
         "",
         "# The book's symbol where it differs from the spelled canonical one: the members",
-        "# of the complex pairs, the E_k of D4d and D5h, and the F of T and Th, decided",
+        "# of the complex pairs, the E_k of D4d, and the F of T and Th, decided",
         "# by the characters of the transcribed tables (tools/ah_convention.py).",
     ]
     for symbol, table in irreps.items():

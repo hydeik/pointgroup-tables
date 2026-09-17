@@ -337,9 +337,13 @@ corrected and the entry keeps the printed value (the matrix tables); in
 both cases the entry names the affected entries. The structural comparison
 (`REF-1`, `REF-2`) reports a file of the first kind as matching only after
 applying the documented correction, and the resolution of the
-transcription ticket lists every such case. First
-instance: the projective rows of the Altmann & Herzig `D5h` table print the
-`2S5` and `2S5^2` entries interchanged.
+transcription ticket lists every such case. A character-table entry is
+either `swap_projective` (two class columns whose projective entries are
+interchanged) or `swap_labels` (two irrep symbols printed on each other's
+rows), applied in file order. First instances, both in the Altmann &
+Herzig `D5h` table: its projective rows print the `2S5` and `2S5^2`
+entries interchanged, and its `E3/2` and `E7/2` rows carry each other's
+symbol (the book's bases T 34.6 and matrices T 34.7 decide).
 
 A Bilbao file is produced by `fetch.py` from the server's HTML and is then
 authoritative: the tests read the TOML, never the network, and a change in
