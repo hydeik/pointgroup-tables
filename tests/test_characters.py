@@ -5,7 +5,6 @@ docs/spec/conjugacy-classes.md, docs/spec/output-schema.md): ``IL-*``, ``CH-*``,
 from __future__ import annotations
 
 import itertools
-import json
 from typing import Any
 
 import jsonschema
@@ -18,7 +17,7 @@ from conftest import (
     default_and_large,
     model,
 )
-from test_elements import SAMPLES, SCHEMA
+from test_elements import SCHEMA, load_sample
 
 from pointgroup_tables import checks
 from pointgroup_tables.conventions import polyhedral_data
@@ -333,10 +332,7 @@ def test_values_option_selects_the_parallel_arrays(text: str) -> None:
 def test_characters_equal_the_prototype_samples(
     sample: str, invocation: Request
 ) -> None:
-    path = SAMPLES / sample
-    if not path.is_file():
-        pytest.skip(f"the prototype sample {path.name} is not checked in")
-    expected = json.loads(path.read_text())["characters"]
+    expected = load_sample(sample)["characters"]
     table = build_document(invocation)["characters"]
     assert table["class_group"] == expected["class_group"]
     # the prototype predates the Koster table (its samples carry no bethe key)

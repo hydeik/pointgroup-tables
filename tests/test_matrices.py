@@ -15,7 +15,7 @@ import jsonschema
 import pytest
 import yaml
 from conftest import LARGE_GROUPS, SEED_GROUPS, default_and_large, model
-from test_elements import SAMPLES, SCHEMA
+from test_elements import SCHEMA, load_sample
 
 from pointgroup_tables import checks
 from pointgroup_tables.cli import main
@@ -345,10 +345,7 @@ def _assert_like_the_sample(ours: Any, sample: Any, path: str = "") -> None:
 def test_matrices_equal_the_prototype_samples(sample: str, invocation: Request) -> None:
     """The matrices table of the samples (the other tables have their own sample
     tests; the Oh and Ih samples stop before the matrices table)."""
-    path = SAMPLES / sample
-    if not path.is_file():
-        pytest.skip(f"the prototype sample {path.name} is not checked in")
-    expected = json.loads(path.read_text())
+    expected = load_sample(sample)
     document = build_document(invocation)
     assert document["tables"] == expected["tables"]
     _assert_like_the_sample(document["matrices"], expected["matrices"], "matrices")

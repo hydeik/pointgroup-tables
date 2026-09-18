@@ -28,6 +28,16 @@ SCHEMA = json.loads(
 SAMPLES = REPO / "prototypes" / "samples"
 
 
+def load_sample(name: str) -> dict[str, Any]:
+    """A checked-in prototype sample document, or a skip: only the small ``C3v``
+    samples are committed (``prototypes/samples/.gitignore``), the rest are
+    regenerated with ``uv run python prototypes/output_schema_prototype.py samples``."""
+    path = SAMPLES / name
+    if not path.is_file():
+        pytest.skip(f"the prototype sample {path.name} is not checked in")
+    return json.loads(path.read_text())
+
+
 def labels_of(symbol: str) -> list[str]:
     return [record["label"] for record in model(symbol)["elements"]["items"]]
 
@@ -180,7 +190,7 @@ def test_ih_polyhedral_records() -> None:
     ],
 )
 def test_elements_table_equals_the_prototype_sample(symbol: str, sample: str) -> None:
-    expected = json.loads((SAMPLES / sample).read_text())
+    expected = load_sample(sample)
     document = build_document(Request("elements", symbol))
     if symbol in POLYHEDRAL_GROUPS:
         # the prototype read the axis class off the label's spelling; every axis of

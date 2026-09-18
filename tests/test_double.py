@@ -3,7 +3,6 @@
 
 from __future__ import annotations
 
-import json
 from typing import Any
 
 import jsonschema
@@ -16,7 +15,7 @@ from conftest import (
     double_model,
     model,
 )
-from test_elements import SAMPLES, SCHEMA
+from test_elements import SCHEMA, load_sample
 
 from pointgroup_tables import checks
 from pointgroup_tables.abstract import point_group
@@ -91,7 +90,7 @@ def factor_of(symbol: str) -> list[list[int]]:
 
 
 def test_factor_table_of_c3v_equals_the_prototype_sample() -> None:
-    expected = json.loads((SAMPLES / "C3v_factor.json").read_text())
+    expected = load_sample("C3v_factor.json")
     document = build_document(Request("factor", "C3v"))
     assert document["factor"] == expected["factor"]
     assert document["tables"] == ["elements", "factor"]
@@ -105,7 +104,7 @@ def test_factor_table_of_c3v_equals_the_prototype_sample() -> None:
 def test_cayley_and_factor_tables_equal_the_prototype_samples(
     symbol: str, sample: str
 ) -> None:
-    expected = json.loads((SAMPLES / sample).read_text())
+    expected = load_sample(sample)
     document = model(symbol)
     assert document["cayley"] == expected["cayley"]
     if "factor" in expected:
@@ -261,7 +260,7 @@ def test_d3_split_classes_mix_lifted_and_barred_elements() -> None:
 def test_double_elements_table_equals_the_prototype_sample(
     symbol: str, sample: str
 ) -> None:
-    expected = json.loads((SAMPLES / sample).read_text())
+    expected = load_sample(sample)
     document = build_document(Request("elements", symbol, double=True))
     # the prototype read the axis off the label's spelling: every axis of a
     # polyhedral group is a polyhedral axis, and a barred element keeps the axis
