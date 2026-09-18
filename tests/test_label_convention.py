@@ -221,6 +221,15 @@ def _irrep_symbols(symbol: str) -> dict[str, str]:
         # characters/D5h.toml, decided by T 34.6 and T 34.7)
         ("D4d", {"E1": "E3", "E3": "E1", "E2": "E2"}),
         ("D5h", {"E3/2": "E3/2", "E7/2": "E7/2", "E1/2": "E1/2"}),
+        # the E_k of Dnd (n even) by the rotation C_n: k' = k (n + 1) mod 2n, folded
+        # (T 45.4, T 47.4, T 49.4, ticket #36)
+        ("D6d", {"E1": "E5", "E5": "E1", "E2": "E2", "E3": "E3", "E4": "E4"}),
+        ("D8d", {"E1": "E7", "E3": "E5", "E5": "E3", "E7": "E1", "E2": "E2", "E4": "E4"}),
+        ("D10d", {"E1": "E9", "E3": "E7", "E7": "E3", "E9": "E1", "E5": "E5"}),
+        # the complex pairs of the remaining cyclic-type groups, from the print
+        ("C5", {"1E1": "2E1", "2E2": "1E2", "1E1/2": "1E1/2", "1E3/2": "2E3/2", "B5/2": "A5/2"}),
+        ("C8", {"1E1": "2E1", "1E2": "2E2", "1E3": "1E3", "1E1/2": "1E1/2", "1E3/2": "2E3/2", "1E5/2": "1E5/2", "1E7/2": "2E7/2"}),
+        ("S12", {"1E1": "2E5", "1E5": "1E1", "1E4": "2E4", "1E2": "1E2", "1E3/2": "2E3/2"}),
         ("T", {"1E3/2": "1F3/2", "2E3/2": "2F3/2", "E1/2": "E1/2", "T": "T"}),
         ("Th", {"1E3/2g": "1F3/2,g", "2E3/2u": "2F3/2,u", "Tg": "Tg"}),
         ("O", {"G3/2": "F3/2", "T2": "T2"}),

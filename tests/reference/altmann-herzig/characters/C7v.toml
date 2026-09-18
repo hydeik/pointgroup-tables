@@ -1,0 +1,112 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): character table of C7v
+# Format: tests/reference/altmann-herzig/characters/README.md
+# Read from the page image by tools/ah_characters.py; verify against the print.
+
+group = "C7v"
+table = "T 55.4, p. 501"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the page image of the PDF; verify against the print"
+notes = ""
+conductor = 28          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "E"
+size = 1
+order = 1
+parity = 1
+
+[[classes]]
+label = "2C7"
+size = 2
+order = 7
+parity = 1
+
+[[classes]]
+label = "2C7^2"
+size = 2
+order = 7
+parity = 1
+
+[[classes]]
+label = "2C7^3"
+size = 2
+order = 7
+parity = 1
+
+[[classes]]
+label = "7sigma_v"
+size = 7
+order = 2
+parity = -1
+
+[[irreps]]
+label = "A1"
+projective = false
+book_values = ["1", "1", "1", "1", "1"]
+characters = ["1", "1", "1", "1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "A2"
+projective = false
+book_values = ["1", "1", "1", "1", "-1"]
+characters = ["1", "1", "1", "1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "E1"
+projective = false
+book_values = ["2", "2c7^2", "2c7^4", "2c7^6", "0"]
+characters = ["2", "zeta^4 - zeta^10", "-zeta^6 + zeta^8", "-1 - zeta^4 + zeta^6 - zeta^8 + zeta^10", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E2"
+projective = false
+book_values = ["2", "2c7^4", "2c7^6", "2c7^2", "0"]
+characters = ["2", "-zeta^6 + zeta^8", "-1 - zeta^4 + zeta^6 - zeta^8 + zeta^10", "zeta^4 - zeta^10", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E3"
+projective = false
+book_values = ["2", "2c7^6", "2c7^2", "2c7^4", "0"]
+characters = ["2", "-1 - zeta^4 + zeta^6 - zeta^8 + zeta^10", "zeta^4 - zeta^10", "-zeta^6 + zeta^8", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E1/2"
+projective = true
+book_values = ["2", "-2c7^6", "2c7^2", "-2c7^4", "0"]
+characters = ["2", "1 + zeta^4 - zeta^6 + zeta^8 - zeta^10", "zeta^4 - zeta^10", "zeta^6 - zeta^8", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E3/2"
+projective = true
+book_values = ["2", "-2c7^4", "2c7^6", "-2c7^2", "0"]
+characters = ["2", "zeta^6 - zeta^8", "-1 - zeta^4 + zeta^6 - zeta^8 + zeta^10", "-zeta^4 + zeta^10", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E5/2"
+projective = true
+book_values = ["2", "-2c7^2", "2c7^4", "-2c7^6", "0"]
+characters = ["2", "-zeta^4 + zeta^10", "-zeta^6 + zeta^8", "1 + zeta^4 - zeta^6 + zeta^8 - zeta^10", "0"]
+tau = "c"
+
+[[irreps]]
+label = "1E7/2"
+projective = true
+book_values = ["1", "-1", "1", "-1", "i"]
+characters = ["1", "-1", "1", "-1", "zeta^7"]
+tau = "b"
+
+[[irreps]]
+label = "2E7/2"
+projective = true
+book_values = ["1", "-1", "1", "-1", "-i"]
+characters = ["1", "-1", "1", "-1", "zeta^21"]
+tau = "b"
+

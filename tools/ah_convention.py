@@ -343,8 +343,9 @@ def emit(
     lines += [
         "",
         "# The book's symbol where it differs from the spelled canonical one: the members",
-        "# of the complex pairs, the E_k of D4d, and the F of T and Th, decided",
-        "# by the characters of the transcribed tables (tools/ah_convention.py).",
+        "# of the complex pairs, the E_k of Dnd (n even) and S4n, and the F of T and Th,",
+        "# decided by the characters of the transcribed tables, which cover every axial",
+        "# group with n <= 10 (tools/ah_convention.py).",
     ]
     for symbol, table in irreps.items():
         lines.append(f"[irreps.overrides.{symbol}]")

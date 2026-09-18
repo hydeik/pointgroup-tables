@@ -1,0 +1,251 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): character table of D10d
+# Format: tests/reference/altmann-herzig/characters/README.md
+# Parsed from the OCR text of the typeset table by tools/ah_characters.py; verify against the print.
+
+group = "D10d"
+table = "T 49.4, p. 455"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the OCR text of the PDF; verify against the print"
+notes = ""
+conductor = 40          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "E"
+size = 1
+order = 1
+parity = 1
+
+[[classes]]
+label = "2C10"
+size = 2
+order = 10
+parity = 1
+
+[[classes]]
+label = "2C5"
+size = 2
+order = 5
+parity = 1
+
+[[classes]]
+label = "2C10^3"
+size = 2
+order = 10
+parity = 1
+
+[[classes]]
+label = "2C5^2"
+size = 2
+order = 5
+parity = 1
+
+[[classes]]
+label = "C2"
+size = 1
+order = 2
+parity = 1
+
+[[classes]]
+label = "10C2'"
+size = 10
+order = 2
+parity = 1
+
+[[classes]]
+label = "2S20^9"
+size = 2
+order = 20
+parity = -1
+
+[[classes]]
+label = "2S20^7"
+size = 2
+order = 20
+parity = -1
+
+[[classes]]
+label = "2S4"
+size = 2
+order = 4
+parity = -1
+
+[[classes]]
+label = "2S20^3"
+size = 2
+order = 20
+parity = -1
+
+[[classes]]
+label = "2S20"
+size = 2
+order = 20
+parity = -1
+
+[[classes]]
+label = "10sigma_d"
+size = 10
+order = 2
+parity = -1
+
+[[irreps]]
+label = "A1"
+projective = false
+book_values = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
+characters = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "A2"
+projective = false
+book_values = ["1", "1", "1", "1", "1", "1", "-1", "1", "1", "1", "1", "1", "-1"]
+characters = ["1", "1", "1", "1", "1", "1", "-1", "1", "1", "1", "1", "1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "B1"
+projective = false
+book_values = ["1", "1", "1", "1", "1", "1", "1", "-1", "-1", "-1", "-1", "-1", "-1"]
+characters = ["1", "1", "1", "1", "1", "1", "1", "-1", "-1", "-1", "-1", "-1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "B2"
+projective = false
+book_values = ["1", "1", "1", "1", "1", "1", "-1", "-1", "-1", "-1", "-1", "-1", "1"]
+characters = ["1", "1", "1", "1", "1", "1", "-1", "-1", "-1", "-1", "-1", "-1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "E1"
+projective = false
+book_values = ["2", "2c5", "2c5^2", "-2c5^2", "-2c5", "-2", "0", "-2c10", "-2c10^3", "0", "2c10^3", "2c10", "0"]
+characters = ["2", "phi", "-1 + phi", "1 - phi", "-phi", "-2", "0", "-2*zeta^2 + zeta^6 - zeta^10 + zeta^14", "-zeta^6 + zeta^14", "0", "zeta^6 - zeta^14", "2*zeta^2 - zeta^6 + zeta^10 - zeta^14", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E2"
+projective = false
+book_values = ["2", "2c5^2", "-2c5", "-2c5", "2c5^2", "2", "0", "2c5", "-2c5^2", "-2", "-2c5^2", "2c5", "0"]
+characters = ["2", "-1 + phi", "-phi", "-phi", "-1 + phi", "2", "0", "phi", "1 - phi", "-2", "1 - phi", "phi", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E3"
+projective = false
+book_values = ["2", "-2c5^2", "-2c5", "2c5", "2c5^2", "-2", "0", "-2c10^3", "2c10", "0", "-2c10", "2c10^3", "0"]
+characters = ["2", "1 - phi", "-phi", "phi", "-1 + phi", "-2", "0", "-zeta^6 + zeta^14", "2*zeta^2 - zeta^6 + zeta^10 - zeta^14", "0", "-2*zeta^2 + zeta^6 - zeta^10 + zeta^14", "zeta^6 - zeta^14", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E4"
+projective = false
+book_values = ["2", "-2c5", "2c5^2", "2c5^2", "-2c5", "2", "0", "2c5^2", "-2c5", "2", "-2c5", "2c5^2", "0"]
+characters = ["2", "-phi", "-1 + phi", "-1 + phi", "-phi", "2", "0", "-1 + phi", "-phi", "2", "-phi", "-1 + phi", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E5"
+projective = false
+book_values = ["2", "-2", "2", "-2", "2", "-2", "0", "0", "0", "0", "0", "0", "0"]
+characters = ["2", "-2", "2", "-2", "2", "-2", "0", "0", "0", "0", "0", "0", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E6"
+projective = false
+book_values = ["2", "-2c5", "2c5^2", "2c5^2", "-2c5", "2", "0", "-2c5^2", "2c5", "-2", "2c5", "-2c5^2", "0"]
+characters = ["2", "-phi", "-1 + phi", "-1 + phi", "-phi", "2", "0", "1 - phi", "phi", "-2", "phi", "1 - phi", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E7"
+projective = false
+book_values = ["2", "-2c5^2", "-2c5", "2c5", "2c5^2", "-2", "0", "2c10^3", "-2c10", "0", "2c10", "-2c10^3", "0"]
+characters = ["2", "1 - phi", "-phi", "phi", "-1 + phi", "-2", "0", "zeta^6 - zeta^14", "-2*zeta^2 + zeta^6 - zeta^10 + zeta^14", "0", "2*zeta^2 - zeta^6 + zeta^10 - zeta^14", "-zeta^6 + zeta^14", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E8"
+projective = false
+book_values = ["2", "2c5^2", "-2c5", "-2c5", "2c5^2", "2", "0", "-2c5", "2c5^2", "2", "2c5^2", "-2c5", "0"]
+characters = ["2", "-1 + phi", "-phi", "-phi", "-1 + phi", "2", "0", "-phi", "-1 + phi", "2", "-1 + phi", "-phi", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E9"
+projective = false
+book_values = ["2", "2c5", "2c5^2", "-2c5^2", "-2c5", "-2", "0", "2c10", "2c10^3", "0", "-2c10^3", "-2c10", "0"]
+characters = ["2", "phi", "-1 + phi", "1 - phi", "-phi", "-2", "0", "2*zeta^2 - zeta^6 + zeta^10 - zeta^14", "zeta^6 - zeta^14", "0", "-zeta^6 + zeta^14", "-2*zeta^2 + zeta^6 - zeta^10 + zeta^14", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E1/2"
+projective = true
+book_values = ["2", "2c10", "2c5", "2c10^3", "2c5^2", "0", "0", "2c20", "2c20^3", "sqrt2", "2c20^7", "2c20^9", "0"]
+characters = ["2", "2*zeta^2 - zeta^6 + zeta^10 - zeta^14", "phi", "zeta^6 - zeta^14", "-1 + phi", "0", "0", "zeta + zeta^3 - zeta^7 + zeta^11 - zeta^15", "zeta + zeta^3 - zeta^5 + zeta^9 - zeta^13", "sqrt2", "zeta^7 - zeta^13", "zeta^9 - zeta^11", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E3/2"
+projective = true
+book_values = ["2", "2c10^3", "-2c5^2", "-2c10", "-2c5", "0", "0", "2c20^3", "2c20^9", "-sqrt2", "-2c20", "-2c20^7", "0"]
+characters = ["2", "zeta^6 - zeta^14", "1 - phi", "-2*zeta^2 + zeta^6 - zeta^10 + zeta^14", "-phi", "0", "0", "zeta + zeta^3 - zeta^5 + zeta^9 - zeta^13", "zeta^9 - zeta^11", "-sqrt2", "-zeta - zeta^3 + zeta^7 - zeta^11 + zeta^15", "-zeta^7 + zeta^13", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E5/2"
+projective = true
+book_values = ["2", "0", "-2", "0", "2", "0", "0", "sqrt2", "-sqrt2", "-sqrt2", "sqrt2", "sqrt2", "0"]
+characters = ["2", "0", "-2", "0", "2", "0", "0", "sqrt2", "-sqrt2", "-sqrt2", "sqrt2", "sqrt2", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E7/2"
+projective = true
+book_values = ["2", "-2c10^3", "-2c5^2", "2c10", "-2c5", "0", "0", "2c20^7", "-2c20", "sqrt2", "2c20^9", "-2c20^3", "0"]
+characters = ["2", "-zeta^6 + zeta^14", "1 - phi", "2*zeta^2 - zeta^6 + zeta^10 - zeta^14", "-phi", "0", "0", "zeta^7 - zeta^13", "-zeta - zeta^3 + zeta^7 - zeta^11 + zeta^15", "sqrt2", "zeta^9 - zeta^11", "-zeta - zeta^3 + zeta^5 - zeta^9 + zeta^13", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E9/2"
+projective = true
+book_values = ["2", "-2c10", "2c5", "-2c10^3", "2c5^2", "0", "0", "2c20^9", "-2c20^7", "sqrt2", "-2c20^3", "2c20", "0"]
+characters = ["2", "-2*zeta^2 + zeta^6 - zeta^10 + zeta^14", "phi", "-zeta^6 + zeta^14", "-1 + phi", "0", "0", "zeta^9 - zeta^11", "-zeta^7 + zeta^13", "sqrt2", "-zeta - zeta^3 + zeta^5 - zeta^9 + zeta^13", "zeta + zeta^3 - zeta^7 + zeta^11 - zeta^15", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E11/2"
+projective = true
+book_values = ["2", "-2c10", "2c5", "-2c10^3", "2c5^2", "0", "0", "-2c20^9", "2c20^7", "-sqrt2", "2c20^3", "-2c20", "0"]
+characters = ["2", "-2*zeta^2 + zeta^6 - zeta^10 + zeta^14", "phi", "-zeta^6 + zeta^14", "-1 + phi", "0", "0", "-zeta^9 + zeta^11", "zeta^7 - zeta^13", "-sqrt2", "zeta + zeta^3 - zeta^5 + zeta^9 - zeta^13", "-zeta - zeta^3 + zeta^7 - zeta^11 + zeta^15", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E13/2"
+projective = true
+book_values = ["2", "-2c10^3", "-2c5^2", "2c10", "-2c5", "0", "0", "-2c20^7", "2c20", "-sqrt2", "-2c20^9", "2c20^3", "0"]
+characters = ["2", "-zeta^6 + zeta^14", "1 - phi", "2*zeta^2 - zeta^6 + zeta^10 - zeta^14", "-phi", "0", "0", "-zeta^7 + zeta^13", "zeta + zeta^3 - zeta^7 + zeta^11 - zeta^15", "-sqrt2", "-zeta^9 + zeta^11", "zeta + zeta^3 - zeta^5 + zeta^9 - zeta^13", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E15/2"
+projective = true
+book_values = ["2", "0", "-2", "0", "2", "0", "0", "-sqrt2", "sqrt2", "sqrt2", "-sqrt2", "-sqrt2", "0"]
+characters = ["2", "0", "-2", "0", "2", "0", "0", "-sqrt2", "sqrt2", "sqrt2", "-sqrt2", "-sqrt2", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E17/2"
+projective = true
+book_values = ["2", "2c10^3", "-2c5^2", "-2c10", "-2c5", "0", "0", "-2c20^3", "-2c20^9", "sqrt2", "2c20", "2c20^7", "0"]
+characters = ["2", "zeta^6 - zeta^14", "1 - phi", "-2*zeta^2 + zeta^6 - zeta^10 + zeta^14", "-phi", "0", "0", "-zeta - zeta^3 + zeta^5 - zeta^9 + zeta^13", "-zeta^9 + zeta^11", "sqrt2", "zeta + zeta^3 - zeta^7 + zeta^11 - zeta^15", "zeta^7 - zeta^13", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E19/2"
+projective = true
+book_values = ["2", "2c10", "2c5", "2c10^3", "2c5^2", "0", "0", "-2c20", "-2c20^3", "-sqrt2", "-2c20^7", "-2c20^9", "0"]
+characters = ["2", "2*zeta^2 - zeta^6 + zeta^10 - zeta^14", "phi", "zeta^6 - zeta^14", "-1 + phi", "0", "0", "-zeta - zeta^3 + zeta^7 - zeta^11 + zeta^15", "-zeta - zeta^3 + zeta^5 - zeta^9 + zeta^13", "-sqrt2", "-zeta^7 + zeta^13", "-zeta^9 + zeta^11", "0"]
+tau = "c"
+

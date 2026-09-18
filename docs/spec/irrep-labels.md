@@ -320,7 +320,9 @@ ordinary symbol are spelled as the canonical rules do. Whether the book
 assigns `1E` / `2E`, `B1` / `B2` and `T1` / `T2` as the canonical rules do
 is a matter of characters, not spelling: it is checked by `REF-5` against
 the transcribed character tables
-([Transcribe Altmann & Herzig character tables and sample axial irrep matrices](https://github.com/hydeik/pointgroup-tables/issues/19)),
+([Transcribe Altmann & Herzig character tables and sample axial irrep matrices](https://github.com/hydeik/pointgroup-tables/issues/19),
+extended to every axial group with `n ≤ 10` by
+[Reference irrep symbols of the `altmann-herzig` convention beyond the transcribed character tables](https://github.com/hydeik/pointgroup-tables/issues/36)),
 and any disagreement becomes an `[irreps.overrides]` entry. `C2v` and `C6v`
 were settled ahead of that by the element isomorphism of the label
 convention ([Label conventions](./label-conventions.md#the-altmann--herzig-convention)).

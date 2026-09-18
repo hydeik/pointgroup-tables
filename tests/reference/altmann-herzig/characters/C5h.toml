@@ -1,0 +1,214 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): character table of C5h
+# Format: tests/reference/altmann-herzig/characters/README.md
+# Parsed from the OCR text of the typeset table by tools/ah_characters.py; verify against the print.
+
+group = "C5h"
+table = "T 63.4, p. 542"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the OCR text of the PDF; verify against the print"
+notes = ""
+conductor = 20          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+book_epsilon = "exp(2 pi i * 2 / 5)"
+book_delta = "exp(2 pi i / 5)"
+
+[[classes]]
+label = "E"
+size = 1
+order = 1
+parity = 1
+
+[[classes]]
+label = "C5+"
+size = 1
+order = 5
+parity = 1
+
+[[classes]]
+label = "C5^2+"
+size = 1
+order = 5
+parity = 1
+
+[[classes]]
+label = "C5^2-"
+size = 1
+order = 5
+parity = 1
+
+[[classes]]
+label = "C5-"
+size = 1
+order = 5
+parity = 1
+
+[[classes]]
+label = "sigma_h"
+size = 1
+order = 2
+parity = -1
+
+[[classes]]
+label = "S5+"
+size = 1
+order = 10
+parity = -1
+
+[[classes]]
+label = "S5^2+"
+size = 1
+order = 10
+parity = -1
+
+[[classes]]
+label = "S5^2-"
+size = 1
+order = 10
+parity = -1
+
+[[classes]]
+label = "S5-"
+size = 1
+order = 10
+parity = -1
+
+[[irreps]]
+label = "A'"
+projective = false
+book_values = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
+characters = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "1E1'"
+projective = false
+book_values = ["1", "d*", "e*", "e", "d", "1", "d*", "e*", "e", "d"]
+characters = ["1", "zeta^16", "zeta^12", "zeta^8", "zeta^4", "1", "zeta^16", "zeta^12", "zeta^8", "zeta^4"]
+tau = "b"
+
+[[irreps]]
+label = "2E1'"
+projective = false
+book_values = ["1", "d", "e", "e*", "d*", "1", "d", "e", "e*", "d*"]
+characters = ["1", "zeta^4", "zeta^8", "zeta^12", "zeta^16", "1", "zeta^4", "zeta^8", "zeta^12", "zeta^16"]
+tau = "b"
+
+[[irreps]]
+label = "1E2'"
+projective = false
+book_values = ["1", "e*", "d", "d*", "e", "1", "e*", "d", "d*", "e"]
+characters = ["1", "zeta^12", "zeta^4", "zeta^16", "zeta^8", "1", "zeta^12", "zeta^4", "zeta^16", "zeta^8"]
+tau = "b"
+
+[[irreps]]
+label = "2E2'"
+projective = false
+book_values = ["1", "e", "d*", "d", "e*", "1", "e", "d*", "d", "e*"]
+characters = ["1", "zeta^8", "zeta^16", "zeta^4", "zeta^12", "1", "zeta^8", "zeta^16", "zeta^4", "zeta^12"]
+tau = "b"
+
+[[irreps]]
+label = "A''"
+projective = false
+book_values = ["1", "1", "1", "1", "1", "-1", "-1", "-1", "-1", "-1"]
+characters = ["1", "1", "1", "1", "1", "-1", "-1", "-1", "-1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "1E1''"
+projective = false
+book_values = ["1", "d*", "e*", "e", "d", "-1", "-d*", "-e*", "-e", "-d"]
+characters = ["1", "zeta^16", "zeta^12", "zeta^8", "zeta^4", "-1", "zeta^6", "zeta^2", "zeta^18", "zeta^14"]
+tau = "b"
+
+[[irreps]]
+label = "2E1''"
+projective = false
+book_values = ["1", "d", "e", "e*", "d*", "-1", "-d", "-e", "-e*", "-d*"]
+characters = ["1", "zeta^4", "zeta^8", "zeta^12", "zeta^16", "-1", "zeta^14", "zeta^18", "zeta^2", "zeta^6"]
+tau = "b"
+
+[[irreps]]
+label = "1E2''"
+projective = false
+book_values = ["1", "e*", "d", "d*", "e", "-1", "-e*", "-d", "-d*", "-e"]
+characters = ["1", "zeta^12", "zeta^4", "zeta^16", "zeta^8", "-1", "zeta^2", "zeta^14", "zeta^6", "zeta^18"]
+tau = "b"
+
+[[irreps]]
+label = "2E2''"
+projective = false
+book_values = ["1", "e", "d*", "d", "e*", "-1", "-e", "-d*", "-d", "-e*"]
+characters = ["1", "zeta^8", "zeta^16", "zeta^4", "zeta^12", "-1", "zeta^18", "zeta^6", "zeta^14", "zeta^2"]
+tau = "b"
+
+[[irreps]]
+label = "1E1/2"
+projective = true
+book_values = ["1", "-e*", "d", "d*", "-e", "i", "ie*", "-id", "id*", "-ie"]
+characters = ["1", "zeta^2", "zeta^4", "zeta^16", "zeta^18", "zeta^5", "zeta^17", "zeta^19", "zeta", "zeta^3"]
+tau = "b"
+
+[[irreps]]
+label = "2E1/2"
+projective = true
+book_values = ["1", "-e", "d*", "d", "-e*", "-i", "-ie", "id*", "-id", "ie*"]
+characters = ["1", "zeta^18", "zeta^16", "zeta^4", "zeta^2", "zeta^15", "zeta^3", "zeta", "zeta^19", "zeta^17"]
+tau = "b"
+
+[[irreps]]
+label = "1E3/2"
+projective = true
+book_values = ["1", "-d", "e", "e*", "-d*", "i", "id", "-ie", "ie*", "-id*"]
+characters = ["1", "zeta^14", "zeta^8", "zeta^12", "zeta^6", "zeta^5", "zeta^9", "zeta^3", "zeta^17", "zeta^11"]
+tau = "b"
+
+[[irreps]]
+label = "2E3/2"
+projective = true
+book_values = ["1", "-d*", "e*", "e", "-d", "-i", "-id*", "ie*", "-ie", "id"]
+characters = ["1", "zeta^6", "zeta^12", "zeta^8", "zeta^14", "zeta^15", "zeta^11", "zeta^17", "zeta^3", "zeta^9"]
+tau = "b"
+
+[[irreps]]
+label = "1E5/2"
+projective = true
+book_values = ["1", "-1", "1", "1", "-1", "i", "i", "-i", "i", "-i"]
+characters = ["1", "-1", "1", "1", "-1", "zeta^5", "zeta^5", "zeta^15", "zeta^5", "zeta^15"]
+tau = "b"
+
+[[irreps]]
+label = "2E5/2"
+projective = true
+book_values = ["1", "-1", "1", "1", "-1", "-i", "-i", "i", "-i", "i"]
+characters = ["1", "-1", "1", "1", "-1", "zeta^15", "zeta^15", "zeta^5", "zeta^15", "zeta^5"]
+tau = "b"
+
+[[irreps]]
+label = "1E7/2"
+projective = true
+book_values = ["1", "-d*", "e*", "e", "-d", "i", "id*", "-ie*", "ie", "-id"]
+characters = ["1", "zeta^6", "zeta^12", "zeta^8", "zeta^14", "zeta^5", "zeta", "zeta^7", "zeta^13", "zeta^19"]
+tau = "b"
+
+[[irreps]]
+label = "2E7/2"
+projective = true
+book_values = ["1", "-d", "e", "e*", "-d*", "-i", "-id", "ie", "-ie*", "id*"]
+characters = ["1", "zeta^14", "zeta^8", "zeta^12", "zeta^6", "zeta^15", "zeta^19", "zeta^13", "zeta^7", "zeta"]
+tau = "b"
+
+[[irreps]]
+label = "1E9/2"
+projective = true
+book_values = ["1", "-e", "d*", "d", "-e*", "i", "ie", "-id*", "id", "-ie*"]
+characters = ["1", "zeta^18", "zeta^16", "zeta^4", "zeta^2", "zeta^5", "zeta^13", "zeta^11", "zeta^9", "zeta^7"]
+tau = "b"
+
+[[irreps]]
+label = "2E9/2"
+projective = true
+book_values = ["1", "-e*", "d", "d*", "-e", "-i", "-ie*", "id", "-id*", "ie"]
+characters = ["1", "zeta^2", "zeta^4", "zeta^16", "zeta^18", "zeta^15", "zeta^7", "zeta^9", "zeta^11", "zeta^13"]
+tau = "b"
+

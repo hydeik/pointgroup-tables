@@ -1,0 +1,171 @@
+# Altmann & Herzig, Point-Group Theory Tables (2nd ed.): character table of D6d
+# Format: tests/reference/altmann-herzig/characters/README.md
+# Parsed from the OCR text of the typeset table by tools/ah_characters.py; verify against the print.
+
+group = "D6d"
+table = "T 45.4, p. 392"
+status = "done"
+source = "S. L. Altmann and P. Herzig, Point-Group Theory Tables, 2nd ed. (Wien: Clarendon, 2011)"
+transcribed_by = "agent (Claude) from the OCR text of the PDF; verify against the print"
+notes = ""
+conductor = 24          # field of the `characters` values; zeta = exp(2 pi i / conductor)
+
+[[classes]]
+label = "E"
+size = 1
+order = 1
+parity = 1
+
+[[classes]]
+label = "2C6"
+size = 2
+order = 6
+parity = 1
+
+[[classes]]
+label = "2C3"
+size = 2
+order = 3
+parity = 1
+
+[[classes]]
+label = "C2"
+size = 1
+order = 2
+parity = 1
+
+[[classes]]
+label = "6C2'"
+size = 6
+order = 2
+parity = 1
+
+[[classes]]
+label = "2S12^5"
+size = 2
+order = 12
+parity = -1
+
+[[classes]]
+label = "2S4"
+size = 2
+order = 4
+parity = -1
+
+[[classes]]
+label = "2S12"
+size = 2
+order = 12
+parity = -1
+
+[[classes]]
+label = "6sigma_d"
+size = 6
+order = 2
+parity = -1
+
+[[irreps]]
+label = "A1"
+projective = false
+book_values = ["1", "1", "1", "1", "1", "1", "1", "1", "1"]
+characters = ["1", "1", "1", "1", "1", "1", "1", "1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "A2"
+projective = false
+book_values = ["1", "1", "1", "1", "-1", "1", "1", "1", "-1"]
+characters = ["1", "1", "1", "1", "-1", "1", "1", "1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "B1"
+projective = false
+book_values = ["1", "1", "1", "1", "1", "-1", "-1", "-1", "-1"]
+characters = ["1", "1", "1", "1", "1", "-1", "-1", "-1", "-1"]
+tau = "a"
+
+[[irreps]]
+label = "B2"
+projective = false
+book_values = ["1", "1", "1", "1", "-1", "-1", "-1", "-1", "1"]
+characters = ["1", "1", "1", "1", "-1", "-1", "-1", "-1", "1"]
+tau = "a"
+
+[[irreps]]
+label = "E1"
+projective = false
+book_values = ["2", "1", "-1", "-2", "0", "-sqrt3", "0", "sqrt3", "0"]
+characters = ["2", "1", "-1", "-2", "0", "-sqrt3", "0", "sqrt3", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E2"
+projective = false
+book_values = ["2", "-1", "-1", "2", "0", "1", "-2", "1", "0"]
+characters = ["2", "-1", "-1", "2", "0", "1", "-2", "1", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E3"
+projective = false
+book_values = ["2", "-2", "2", "-2", "0", "0", "0", "0", "0"]
+characters = ["2", "-2", "2", "-2", "0", "0", "0", "0", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E4"
+projective = false
+book_values = ["2", "-1", "-1", "2", "0", "-1", "2", "-1", "0"]
+characters = ["2", "-1", "-1", "2", "0", "-1", "2", "-1", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E5"
+projective = false
+book_values = ["2", "1", "-1", "-2", "0", "sqrt3", "0", "-sqrt3", "0"]
+characters = ["2", "1", "-1", "-2", "0", "sqrt3", "0", "-sqrt3", "0"]
+tau = "a"
+
+[[irreps]]
+label = "E1/2"
+projective = true
+book_values = ["2", "sqrt3", "1", "0", "0", "2c12", "sqrt2", "2c12^5", "0"]
+characters = ["2", "sqrt3", "1", "0", "0", "zeta + zeta^3 - zeta^7", "sqrt2", "zeta^5 - zeta^7", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E3/2"
+projective = true
+book_values = ["2", "0", "-2", "0", "0", "sqrt2", "-sqrt2", "-sqrt2", "0"]
+characters = ["2", "0", "-2", "0", "0", "sqrt2", "-sqrt2", "-sqrt2", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E5/2"
+projective = true
+book_values = ["2", "-sqrt3", "1", "0", "0", "2c12^5", "-sqrt2", "2c12", "0"]
+characters = ["2", "-sqrt3", "1", "0", "0", "zeta^5 - zeta^7", "-sqrt2", "zeta + zeta^3 - zeta^7", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E7/2"
+projective = true
+book_values = ["2", "-sqrt3", "1", "0", "0", "-2c12^5", "sqrt2", "-2c12", "0"]
+characters = ["2", "-sqrt3", "1", "0", "0", "-zeta^5 + zeta^7", "sqrt2", "-zeta - zeta^3 + zeta^7", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E9/2"
+projective = true
+book_values = ["2", "0", "-2", "0", "0", "-sqrt2", "sqrt2", "sqrt2", "0"]
+characters = ["2", "0", "-2", "0", "0", "-sqrt2", "sqrt2", "sqrt2", "0"]
+tau = "c"
+
+[[irreps]]
+label = "E11/2"
+projective = true
+book_values = ["2", "sqrt3", "1", "0", "0", "-2c12", "-sqrt2", "-2c12^5", "0"]
+characters = ["2", "sqrt3", "1", "0", "0", "-zeta - zeta^3 + zeta^7", "-sqrt2", "-zeta^5 + zeta^7", "0"]
+tau = "c"
+

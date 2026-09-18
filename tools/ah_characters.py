@@ -4,14 +4,20 @@
 Two sources feed one set of reference files:
 
 * the **typeset** character tables of the master groups and of the groups that
-  own a page of their own (14 groups) are parsed from the OCR text of the
-  PDF (pymupdf ``get_text`` of the table T n.4);
-* the **scanned** group pages (25 groups) are read from the page images and
+  own a page of their own (41 groups; four of them, ``S18``, ``S20``, ``C9h``,
+  ``C10h``, continue on a second page listed in ``CONTINUED``) are parsed
+  from the OCR text of the PDF (pymupdf ``get_text`` of the table T n.4);
+* the **scanned** group pages (32 groups) are read from the page images and
   typed into ``BOOK`` below, in the book's own notation transliterated to
-  ASCII (``e`` = epsilon, ``d`` = delta, ``2c5^2`` = 2 cos(2 pi / 5), ``sqrt2``,
-  ``ie*``); the generator matrices of ten axial groups (T n.7; six for
-  ticket #19, ``D5``, ``D8``, ``D9``, ``D10`` for ticket #22) into
-  ``MATRICES`` the same way.
+  ASCII (``e`` = epsilon, ``d`` = delta, ``h`` = eta, ``t`` = theta, ``2c5^2`` =
+  2 cos(2 pi / 5), ``sqrt2``, ``ie*``); the generator matrices of ten axial
+  groups (T n.7; six for ticket #19, ``D5``, ``D8``, ``D9``, ``D10`` for
+  ticket #22) into ``MATRICES`` the same way.
+
+Ticket #19 transcribed the 39 groups of the crystallographic range plus
+``C5v``, ``D5h``, ``D5d``, ``S8``, ``D4d``; ticket #36 added the remaining 34
+axial groups with ``n <= 10`` so that the label convention's irrep symbols
+are decided by the book for every group in its declared range.
 
     uv run python tools/ah_characters.py generate [OCR_DIR]   # write tests/reference/altmann-herzig/{characters,matrices}/
     uv run python tools/ah_characters.py check                # structural comparison with the computed tables (REF-1)
@@ -27,7 +33,6 @@ is production code.
 
 from __future__ import annotations
 
-import itertools
 import math
 import re
 import sys
@@ -60,7 +65,21 @@ PAGES = {
     "C2h": (60, 544, False), "C3h": (61, 546, False), "C4h": (62, 550, True), "C6h": (64, 558, True),
     "O": (69, 592, False), "T": (70, 602, False), "Oh": (71, 618, True), "Th": (72, 645, True),
     "Td": (73, 649, False), "I": (74, 664, True), "Ih": (75, 677, True),
+    # ticket #36: the remaining axial groups with n <= 10
+    "C5": (5, 128, False), "C7": (7, 134, False), "C8": (8, 138, True), "C9": (9, 141, True),
+    "C10": (10, 145, True), "S10": (16, 165, True), "S12": (17, 169, True), "S14": (18, 174, True),
+    "S16": (19, 179, True), "S18": (20, 186, True), "S20": (21, 194, True), "D5": (25, 215, False),
+    "D7": (27, 225, False), "D8": (28, 232, False), "D9": (29, 240, True), "D10": (30, 248, True),
+    "D7h": (36, 300, True), "D8h": (37, 320, True), "D9h": (38, 332, True), "D10h": (39, 362, True),
+    "D6d": (45, 404, True), "D7d": (46, 419, True), "D8d": (47, 430, True), "D9d": (48, 454, True),
+    "D10d": (49, 467, True), "C7v": (55, 513, False), "C8v": (56, 519, False), "C9v": (57, 523, True),
+    "C10v": (58, 532, True), "C5h": (63, 554, True), "C7h": (65, 563, True), "C8h": (66, 569, True),
+    "C9h": (67, 575, True), "C10h": (68, 583, True),
 }  # fmt: skip
+
+# group -> pdf page of "T n.4 Character table (cont.)": the remaining class columns of a
+# table too wide for one page; the rows repeat their labels.
+CONTINUED = {"S18": 187, "S20": 195, "C9h": 576, "C10h": 584}
 
 # --------------------------------------------------------------------------
 # Hand transcriptions of the scanned pages (read from the page images)
@@ -636,12 +655,130 @@ MATRICES: dict[str, dict[str, Any]] = {
     ),
 }
 
+# Ticket #36: the scanned pages of the remaining axial groups with n <= 10. `symbols` is
+# the footnote of the table, letter -> (numerator, denominator) of exp(2 pi i * num / den).
+BOOK.update(
+    {
+        "C5": tbl(
+            classes="E C5+ C5^2+ C5^2- C5-",
+            symbols={"d": (1, 5), "e": (2, 5)},
+            rows=[
+                ("A", "1 1 1 1 1", "a"),
+                ("1E1", "1 d* e* e d", "b"),
+                ("2E1", "1 d e e* d*", "b"),
+                ("1E2", "1 e* d d* e", "b"),
+                ("2E2", "1 e d* d e*", "b"),
+                ("1E1/2", "1 -e* d d* -e", "b"),
+                ("2E1/2", "1 -e d* d -e*", "b"),
+                ("1E3/2", "1 -d e e* -d*", "b"),
+                ("2E3/2", "1 -d* e* e -d", "b"),
+                ("A5/2", "1 -1 1 1 -1", "a"),
+            ],
+        ),
+        "C7": tbl(
+            classes="E C7+ C7^2+ C7^3+ C7^3- C7^2- C7-",
+            symbols={"d": (1, 7), "e": (2, 7), "h": (3, 7)},
+            rows=[
+                ("A", "1 1 1 1 1 1 1", "a"),
+                ("1E1", "1 d* e* h* h e d", "b"),
+                ("2E1", "1 d e h h* e* d*", "b"),
+                ("1E2", "1 e* h d d* h* e", "b"),
+                ("2E2", "1 e h* d* d h e*", "b"),
+                ("1E3", "1 h* d e* e d* h", "b"),
+                ("2E3", "1 h d* e e* d h*", "b"),
+                ("1E1/2", "1 -h* d -e* -e d* -h", "b"),
+                ("2E1/2", "1 -h d* -e -e* d -h*", "b"),
+                ("1E3/2", "1 -e h* -d* -d h -e*", "b"),
+                ("2E3/2", "1 -e* h -d -d* h* -e", "b"),
+                ("1E5/2", "1 -d* e* -h* -h e -d", "b"),
+                ("2E5/2", "1 -d e -h -h* e* -d*", "b"),
+                ("A7/2", "1 -1 1 -1 -1 1 -1", "a"),
+            ],
+        ),
+        "D5": tbl(
+            classes="E 2C5 2C5^2 5C2'",
+            rows=[
+                ("A1", "1 1 1 1", "a"),
+                ("A2", "1 1 1 -1", "a"),
+                ("E1", "2 2c5^2 2c5^4 0", "a"),
+                ("E2", "2 2c5^4 2c5^2 0", "a"),
+                ("E1/2", "2 -2c5^4 2c5^2 0", "c"),
+                ("E3/2", "2 -2c5^2 2c5^4 0", "c"),
+                ("1E5/2", "1 -1 1 i", "b"),
+                ("2E5/2", "1 -1 1 -i", "b"),
+            ],
+        ),
+        "D7": tbl(
+            classes="E 2C7 2C7^2 2C7^3 7C2'",
+            rows=[
+                ("A1", "1 1 1 1 1", "a"),
+                ("A2", "1 1 1 1 -1", "a"),
+                ("E1", "2 2c7^2 2c7^4 2c7^6 0", "a"),
+                ("E2", "2 2c7^4 2c7^6 2c7^2 0", "a"),
+                ("E3", "2 2c7^6 2c7^2 2c7^4 0", "a"),
+                ("E1/2", "2 -2c7^6 2c7^2 -2c7^4 0", "c"),
+                ("E3/2", "2 -2c7^4 2c7^6 -2c7^2 0", "c"),
+                ("E5/2", "2 -2c7^2 2c7^4 -2c7^6 0", "c"),
+                ("1E7/2", "1 -1 1 -1 i", "b"),
+                ("2E7/2", "1 -1 1 -1 -i", "b"),
+            ],
+        ),
+        "D8": tbl(
+            classes="E 2C8 2C4 2C8^3 C2 4C2' 4C2''",
+            rows=[
+                ("A1", "1 1 1 1 1 1 1", "a"),
+                ("A2", "1 1 1 1 1 -1 -1", "a"),
+                ("B1", "1 -1 1 -1 1 1 -1", "a"),
+                ("B2", "1 -1 1 -1 1 -1 1", "a"),
+                ("E1", "2 sqrt2 0 -sqrt2 -2 0 0", "a"),
+                ("E2", "2 0 -2 0 2 0 0", "a"),
+                ("E3", "2 -sqrt2 0 sqrt2 -2 0 0", "a"),
+                ("E1/2", "2 2c8 sqrt2 2c8^3 0 0 0", "c"),
+                ("E3/2", "2 2c8^3 -sqrt2 -2c8 0 0 0", "c"),
+                ("E5/2", "2 -2c8^3 -sqrt2 2c8 0 0 0", "c"),
+                ("E7/2", "2 -2c8 sqrt2 -2c8^3 0 0 0", "c"),
+            ],
+        ),
+        "C7v": tbl(
+            classes="E 2C7 2C7^2 2C7^3 7sigma_v",
+            rows=[
+                ("A1", "1 1 1 1 1", "a"),
+                ("A2", "1 1 1 1 -1", "a"),
+                ("E1", "2 2c7^2 2c7^4 2c7^6 0", "a"),
+                ("E2", "2 2c7^4 2c7^6 2c7^2 0", "a"),
+                ("E3", "2 2c7^6 2c7^2 2c7^4 0", "a"),
+                ("E1/2", "2 -2c7^6 2c7^2 -2c7^4 0", "c"),
+                ("E3/2", "2 -2c7^4 2c7^6 -2c7^2 0", "c"),
+                ("E5/2", "2 -2c7^2 2c7^4 -2c7^6 0", "c"),
+                ("1E7/2", "1 -1 1 -1 i", "b"),
+                ("2E7/2", "1 -1 1 -1 -i", "b"),
+            ],
+        ),
+        "C8v": tbl(
+            classes="E 2C8 2C4 2C8^3 C2 4sigma_v 4sigma_d",
+            rows=[
+                ("A1", "1 1 1 1 1 1 1", "a"),
+                ("A2", "1 1 1 1 1 -1 -1", "a"),
+                ("B1", "1 -1 1 -1 1 1 -1", "a"),
+                ("B2", "1 -1 1 -1 1 -1 1", "a"),
+                ("E1", "2 sqrt2 0 -sqrt2 -2 0 0", "a"),
+                ("E2", "2 0 -2 0 2 0 0", "a"),
+                ("E3", "2 -sqrt2 0 sqrt2 -2 0 0", "a"),
+                ("E1/2", "2 2c8 sqrt2 2c8^3 0 0 0", "c"),
+                ("E3/2", "2 2c8^3 -sqrt2 -2c8 0 0 0", "c"),
+                ("E5/2", "2 -2c8^3 -sqrt2 2c8 0 0 0", "c"),
+                ("E7/2", "2 -2c8 sqrt2 -2c8^3 0 0 0", "c"),
+            ],
+        ),
+    }
+)
+
 # --------------------------------------------------------------------------
 # Values: book tokens -> exact field elements
 # --------------------------------------------------------------------------
 
 TOKEN_RE = re.compile(
-    r"^(-)?(\d+)?(i)?(e\*|e|d\*|d|h\*|h|t\*|t|sqrt2|sqrt3|c(\d+)(?:\^(\d+))?)?$"
+    r"^(-)?(\d+)?(i)?(e\*|e|d\*|d|h\*|h|t\*|t|z\*|z|sqrt2|sqrt3|c(\d+)(?:\^(\d+))?)?$"
 )
 
 
@@ -649,12 +786,37 @@ def _symbols(eps, delta, symbols):
     """letter -> (numerator, denominator): the book's root of unity ``exp(2 pi i * num / den)``.
 
     ``e`` and ``d`` default to ``exp(2 pi i / eps)`` and ``exp(2 pi i / delta)``;
-    a matrix table with more symbols (``h`` = eta, ``t`` = theta) passes its own map.
+    a table with more symbols (``h`` = eta, ``t`` = theta) or with numerators
+    (``e = exp(4 pi i / 5)``) passes its own map.
     """
     out = {"e": (1, eps), "d": (1, delta)}
     if symbols:
         out.update(symbols)
     return out
+
+
+SYMBOL_NAMES = {"e": "epsilon", "d": "delta", "h": "eta", "t": "theta", "z": "zeta"}
+
+
+def book_symbols_of(book):
+    """The letters of a BOOK table as ``symbols`` (``eps`` / ``delta`` ints folded in)."""
+    out = {}
+    if book.get("eps"):
+        out["e"] = (1, book["eps"])
+    if book.get("delta"):
+        out["d"] = (1, book["delta"])
+    out.update(book.get("symbols") or {})
+    return out
+
+
+def symbol_text(num, den):
+    return f"exp(2 pi i / {den})" if num == 1 else f"exp(2 pi i * {num} / {den})"
+
+
+def parse_symbol_text(text):
+    m = re.fullmatch(r"exp\(2 pi i(?: \* (\d+))? / (\d+)\)", text)
+    assert m, text
+    return (int(m.group(1) or 1), int(m.group(2)))
 
 
 def _int_after(pattern, text):
@@ -740,7 +902,18 @@ def class_invariants(label):
 # Parsing the typeset OCR text
 # --------------------------------------------------------------------------
 
-GREEK = {"ϵ": "e", "δ": "d", "σ": "sigma", "′": "'", "″": "''", "−": "-", "∗": "*"}
+GREEK = {
+    "ϵ": "e",
+    "δ": "d",
+    "η": "h",
+    "θ": "t",
+    "ζ": "z",
+    "σ": "sigma",
+    "′": "'",
+    "″": "''",
+    "−": "-",
+    "∗": "*",
+}
 
 
 def normalise(text):
@@ -752,16 +925,21 @@ def normalise(text):
 def parse_typeset(group, text):
     """Parse the table T n.4 of a typeset page into the BOOK format."""
     text = normalise(text)
+    # the OCR glues a starred value to a following negative one ("θ∗−iϵ" on the S16 and
+    # C8h pages); a star never precedes a minus inside one value
+    text = text.replace("*-", "* -")
     seg = text[text.index("Character table") :]
     seg = seg.split("Cartesian tensors")[0]
     toks = seg.replace("\n", " ").split()
-    # constants
-    eps = delta = None
+    # constants: the footnote "d = exp(2πi/9), e = exp(4πi/9), ..." -> letter -> (num, den)
+    symbols = {}
     for k, t in enumerate(toks):
-        if t == "e" and toks[k + 1] == "=" and toks[k + 2].startswith("exp("):
-            eps = _int_after(r"/(\d+)\)", toks[k + 2])
-        if t == "d" and toks[k + 1] == "=" and toks[k + 2].startswith("exp("):
-            delta = _int_after(r"/(\d+)\)", toks[k + 2])
+        if t in SYMBOL_NAMES and toks[k + 1] == "=" and toks[k + 2].startswith("exp("):
+            m = re.match(r"exp\((\d+)πi/(\d+)\)", toks[k + 2])
+            assert m, toks[k + 2]
+            num, den = int(m.group(1)), int(m.group(2))
+            assert num % 2 == 0, toks[k + 2]
+            symbols[t] = (num // 2, den)
     # header: from the group symbol to "tau"
     start = toks.index(group) + 1 if group in toks else toks.index("E") - 0
     tau = toks.index("τ")
@@ -773,22 +951,53 @@ def parse_typeset(group, text):
     n = len(classes)
     while k + n + 1 < len(body):
         t = body[k]
-        if t in ("e", "d") and k + 1 < len(body) and body[k + 1] == "=":
+        if t in SYMBOL_NAMES and k + 1 < len(body) and body[k + 1] == "=":
             break
         if t.startswith("cm") or t.startswith("c") and t.endswith("m"):
             break
         if t == "T" and re.match(r"^\d+\.\d$", body[k + 1]):
             break
-        label, k = merge_label_tokens(body, k)
-        vals = []
-        while len(vals) < n:
-            v, k = merge_value_tokens(body, k)
-            vals.append(v)
-        tau_v = body[k]
-        assert tau_v in ("a", "b", "c"), (group, label, tau_v, vals)
-        k += 1
+        # "A' 1 ..." is the label A1' followed by its values in D5h but the label A'
+        # followed by the value 1 in C5h: try the merged label first, then the bare
+        # one, and keep the reading whose row ends on a reality mark
+        merged = merge_label_tokens(body, k)
+        candidates = [merged] + ([(body[k], k + 1)] if merged[1] == k + 2 else [])
+        for label, kk in candidates:
+            vals = []
+            try:
+                while len(vals) < n:
+                    v, kk = merge_value_tokens(body, kk)
+                    vals.append(v)
+                tau_v = body[kk]
+            except IndexError:
+                continue
+            if tau_v in ("a", "b", "c"):
+                break
+        else:
+            raise AssertionError((group, body[k : k + n + 3]))
+        k = kk + 1
         rows.append((label, " ".join(vals), tau_v))
-    return tbl(classes=" ".join(classes), eps=eps, delta=delta, rows=rows)
+    return tbl(classes=" ".join(classes), symbols=symbols or None, rows=rows)
+
+
+def merge_continued(first, second):
+    """One table from the two pages of a wide table: the same rows, more columns."""
+    assert [r[0] for r in first["rows"]] == [r[0] for r in second["rows"]], (
+        [r[0] for r in first["rows"]],
+        [r[0] for r in second["rows"]],
+    )
+    assert first.get("symbols") == second.get("symbols")
+    rows = [
+        (lab, f"{vals} {more}", tau)
+        for (lab, vals, tau), (_, more, _) in zip(
+            first["rows"], second["rows"], strict=True
+        )
+    ]
+    return tbl(
+        classes=f"{first['classes']} {second['classes']}",
+        symbols=first.get("symbols"),
+        rows=rows,
+    )
 
 
 def merge_class_tokens(header):
@@ -838,12 +1047,10 @@ def merge_value_tokens(body, k):
         return joined, k + 1
     m = re.match(r"^(-?)(\d*)c(\d+)$", t)
     if m:
+        # "2c3" "10" is 2c10^3 (the superscript comes first in the OCR text); a bare
+        # character never exceeds 4 here, so a following digit >= 5 is a denominator
         nxt = body[k + 1] if k + 1 < len(body) else ""
-        if (
-            nxt.isdigit()
-            and int(nxt) in (5, 8, 10, 12, 16, 20)
-            and int(m.group(3)) <= 4
-        ):
+        if nxt.isdigit() and int(nxt) >= 5 and int(m.group(3)) < int(nxt):
             return f"{m.group(1)}{m.group(2)}c{nxt}^{m.group(3)}", k + 2
         return t, k + 1
     return t.replace("√", "sqrt"), k + 1
@@ -886,23 +1093,17 @@ def lift_to(F, G, x):
 def structural_match(group, book, comp):
     """Find class and irrep bijections; return (report lines, ok)."""
     lines = []
+    symbols = book_symbols_of(book)
     Fb_cond = 1
-    eps, delta = book.get("eps") or 1, book.get("delta") or 1
     classes = book["classes"].split()
     for _, vals, _ in book["rows"]:
         for tok in vals.split():
-            Fb_cond = math.lcm(Fb_cond, token_conductor(tok, eps, delta))
+            Fb_cond = math.lcm(Fb_cond, token_conductor(tok, None, None, symbols))
     M = math.lcm(Fb_cond, comp.F.conductor)
     F = cb.field(M)
+    zero = F.rational(0)
     book_vals = [
-        [
-            lift_to(
-                cb.field(Fb_cond), F, token_value(cb.field(Fb_cond), tok, eps, delta)
-            )
-            if False
-            else token_value(F, tok, eps, delta)
-            for tok in vals.split()
-        ]
+        [token_value(F, tok, None, None, symbols) for tok in vals.split()]
         for _, vals, _ in book["rows"]
     ]
     inv_book = [class_invariants(c) for c in classes]
@@ -918,51 +1119,72 @@ def structural_match(group, book, comp):
             [lift_to(comp.F, F, ir.chars[rep]) for _, _, _, _, rep, _ in comp.classes]
         )
     n = len(classes)
-    regular = [reg for *_, reg in comp.classes]
     # candidate computed classes per book column
     cands = [[j for j in range(n) if inv_comp[j] == inv_book[i]] for i in range(n)]
     order_ = sorted(range(n), key=lambda i: len(cands[i]))
     proj_book = [("/" in lab) for lab, _, _ in book["rows"]]
     proj_comp = [ir.projective for ir in comp.irreps]
+    # the book's rows in the order ordinary first: they fix the class bijection
+    # without any sign, and the projective rows then fix one sign per class
+    row_order = sorted(range(len(book_vals)), key=lambda r: proj_book[r])
 
-    def try_rows(perm, signs):
-        # perm[i] = computed class for book column i; signs per computed class
-        used = set()
-        pairing = []
-        for r, vals in enumerate(book_vals):
-            target = None
-            for s, row in enumerate(comp_rows):
-                if s in used or proj_comp[s] != proj_book[r]:
-                    continue
-                ok = True
-                for i in range(n):
-                    j = perm[i]
-                    v = row[j]
-                    if proj_book[r] and signs[j] < 0:
-                        v = F.neg(v)
-                    if v != vals[i]:
+    def match_rows(perm, pos, used, signs):
+        """Pair the book's rows (from row_order[pos]) with computed irreps under the
+        class bijection perm; a projective row may carry the opposite sign on a
+        class, one sign per class (the book's tilde assignment), fixed by the first
+        nonzero entry met and honoured afterwards. Returns {book row: irrep}."""
+        if pos == len(row_order):
+            return {}, signs
+        r = row_order[pos]
+        vals = book_vals[r]
+        for s_, row in enumerate(comp_rows):
+            if s_ in used or proj_comp[s_] != proj_book[r]:
+                continue
+            new_signs = signs
+            ok = True
+            for i in range(n):
+                j = perm[i]
+                v, b = row[j], vals[i]
+                if not proj_book[r] or b == zero:
+                    if v != b:
                         ok = False
                         break
-                if ok:
-                    target = s
+                    continue
+                if v == b:
+                    want = 1
+                elif v == F.neg(b):
+                    want = -1
+                else:
+                    ok = False
                     break
-            if target is None:
-                return None
-            used.add(target)
-            pairing.append(target)
-        return pairing
+                have = new_signs.get(j)
+                if have is None:
+                    if new_signs is signs:
+                        new_signs = dict(signs)
+                    new_signs[j] = want
+                elif have != want:
+                    ok = False
+                    break
+            if not ok:
+                continue
+            rest = match_rows(perm, pos + 1, used | {s_}, new_signs)
+            if rest is not None:
+                pairing, final_signs = rest
+                pairing[r] = s_
+                return pairing, final_signs
+        return None
 
     def search(pos, perm, used):
         if pos == n:
-            reg_cols = [j for j in range(n) if regular[j]]
-            for bits in itertools.product((1, -1), repeat=len(reg_cols)):
-                signs = [1] * n
-                for j, b in zip(reg_cols, bits):
-                    signs[j] = b
-                pairing = try_rows(perm, signs)
-                if pairing is not None:
-                    return perm[:], signs, pairing
-            return None
+            found = match_rows(perm, 0, frozenset(), {})
+            if found is None:
+                return None
+            pairing, signs = found
+            return (
+                perm[:],
+                [signs.get(j, 1) for j in range(n)],
+                [pairing[r] for r in range(len(book_vals))],
+            )
         i = order_[pos]
         for j in cands[i]:
             if j in used:
@@ -1021,11 +1243,11 @@ def toml_str(s):
 def write_characters(group, book, typeset):
     table, page, _ = PAGES[group]
     symbol = ag.ALIASES.get(group, group)
-    eps, delta = book.get("eps") or 1, book.get("delta") or 1
+    symbols = book_symbols_of(book)
     M = 1
     for _, vals, _ in book["rows"]:
         for tok in vals.split():
-            M = math.lcm(M, token_conductor(tok, eps, delta))
+            M = math.lcm(M, token_conductor(tok, None, None, symbols))
     F = cb.field(M)
     classes = book["classes"].split()
     lines = [
@@ -1041,10 +1263,9 @@ def write_characters(group, book, typeset):
         'notes = ""',
         f"conductor = {M}          # field of the `characters` values; zeta = exp(2 pi i / conductor)",
     ]
-    if book.get("eps"):
-        lines.append(f'book_epsilon = "exp(2 pi i / {eps})"')
-    if book.get("delta"):
-        lines.append(f'book_delta = "exp(2 pi i / {delta})"')
+    for letter, name in SYMBOL_NAMES.items():
+        if letter in symbols:
+            lines.append(f'book_{name} = "{symbol_text(*symbols[letter])}"')
     for d in DISCREPANCIES.get(group, []):
         lines.append("")
         lines.append("[[known_discrepancy]]")
@@ -1065,7 +1286,7 @@ def write_characters(group, book, typeset):
         ]
     for lab, vals, tau in book["rows"]:
         toks = vals.split()
-        exact = [cb.to_grammar(F, token_value(F, t, eps, delta)) for t in toks]
+        exact = [cb.to_grammar(F, token_value(F, t, None, None, symbols)) for t in toks]
         lines += [
             "[[irreps]]",
             f"label = {toml_str(lab)}",
@@ -1081,10 +1302,11 @@ def write_characters(group, book, typeset):
 def element_class(label, classes):
     """The book's class column of a generator: strip the axis index and the sense."""
     root = re.sub(r"[+-]$", "", label)
-    root = re.sub(r"(sigma_[vd]|C\d+'*|S\d+(?:\^\d+)?)\d$", r"\1", root)
-    for c in classes:
-        if re.sub(r"^\d+", "", c) == root:
-            return c
+    # the whole root first ("C10" of C10+), then without an axis index ("C2'" of C2'1)
+    for cand in (root, re.sub(r"(sigma_[vd]|C\d+'*|S\d+(?:\^\d+)?)\d$", r"\1", root)):
+        for c in classes:
+            if re.sub(r"^\d+", "", c) == cand:
+                return c
     raise KeyError((label, classes))
 
 
@@ -1194,20 +1416,24 @@ def check_matrices():
         if char_path.exists():
             chars = tomllib.loads(char_path.read_text())
             F = cb.field(math.lcm(data["conductor"], chars["conductor"]))
-            ceps = (
-                _int_after(r"/ (\d+)", chars["book_epsilon"])
-                if "book_epsilon" in chars
-                else 1
-            )
+            csymbols = {
+                letter: parse_symbol_text(chars[f"book_{name}"])
+                for letter, name in SYMBOL_NAMES.items()
+                if f"book_{name}" in chars
+            }
             classes = [c["label"] for c in chars["classes"]]
             rows = {r["label"]: r for r in chars["irreps"]}
 
             # bound as defaults: the closure is built once per loop iteration
-            def expected(label, g, classes=classes, F=F, rows=rows, ceps=ceps):
+            def expected(label, g, classes=classes, F=F, rows=rows, csymbols=csymbols):
                 cl = element_class(g, classes)
                 _, order, _ = class_invariants(cl)
                 want = token_value(
-                    F, rows[label]["book_values"][classes.index(cl)], ceps, 1
+                    F,
+                    rows[label]["book_values"][classes.index(cl)],
+                    None,
+                    None,
+                    csymbols,
                 )
                 return order, want, cl
 
@@ -1264,7 +1490,11 @@ def load_book(ocr_dir):
             if not ocr_dir:
                 continue
             text = (Path(ocr_dir) / f"p{page:03d}.txt").read_text()
-            out[group] = (parse_typeset(group, text), True)
+            book = parse_typeset(group, text)
+            if group in CONTINUED:
+                more = (Path(ocr_dir) / f"p{CONTINUED[group]:03d}.txt").read_text()
+                book = merge_continued(book, parse_typeset(group, more))
+            out[group] = (book, True)
         elif group in BOOK:
             out[group] = (BOOK[group], False)
     return out
@@ -1289,12 +1519,12 @@ def read_file(path):
     data = tomllib.loads(path.read_text())
     book = tbl(
         classes=" ".join(c["label"] for c in data["classes"]),
-        eps=_int_after(r"/ (\d+)", data["book_epsilon"])
-        if "book_epsilon" in data
-        else None,
-        delta=_int_after(r"/ (\d+)", data["book_delta"])
-        if "book_delta" in data
-        else None,
+        symbols={
+            letter: parse_symbol_text(data[f"book_{name}"])
+            for letter, name in SYMBOL_NAMES.items()
+            if f"book_{name}" in data
+        }
+        or None,
         rows=[
             (r["label"], " ".join(r["book_values"]), r["tau"]) for r in data["irreps"]
         ],
@@ -1334,10 +1564,10 @@ def check(groups):
         # the grammar strings must parse back to the token values
         M = data["conductor"]
         F = cb.field(M)
-        eps, delta = book["eps"] or 1, book["delta"] or 1
+        symbols = book_symbols_of(book)
         for r in data["irreps"]:
             for s, t in zip(r["characters"], r["book_values"]):
-                assert cb.parse_value(F, s) == token_value(F, t, eps, delta), (
+                assert cb.parse_value(F, s) == token_value(F, t, None, None, symbols), (
                     symbol,
                     r["label"],
                     s,
