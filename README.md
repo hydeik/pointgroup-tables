@@ -220,7 +220,7 @@ The normative text is the specification under [`docs/spec/`](docs/spec/)
 classes, irrep labels, label conventions, basis conventions, output schema,
 verification, command line) and the decision records under
 [`docs/adr/`](docs/adr/). The domain vocabulary is fixed in
-[`CONTEXT.md`](CONTEXT.md).
+[`GLOSSARY.md`](GLOSSARY.md).
 
 ## Development
 
