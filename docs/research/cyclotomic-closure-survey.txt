@@ -1,0 +1,404 @@
+# Cyclotomic closure survey (docs/research/scripts/cyclotomic_closure.py)
+
+## C3v  (|G| = 6, field Q(zeta_12))
+Clebsch-Gordan: 27 vectors (first partners) over 21 irrep pairs, 2 distinct squared norms (0.0 s)
+  N = 1/2                      sqrt in Q(zeta_24), not in Q(zeta_12); = |mu|^2, mu = (zeta + zeta^2 - zeta^3)/2  [6x, e.g. E x E > A1]
+  N = 1                        sqrt in Q(zeta_12); = |mu|^2, mu = 1  [21x, e.g. A1 x A1 > A1]
+  => Clebsch-Gordan vectors: real-positive normalisation needs Q(zeta_24); Hermitian-norm factors in Q(zeta_12) found for 2 of 2 values
+
+## D4h  (|G| = 16, field Q(zeta_8))
+Clebsch-Gordan: 142 vectors (first partners) over 105 irrep pairs, 2 distinct squared norms (0.1 s)
+  N = 1/2                      sqrt in Q(zeta_8); = |mu|^2, mu = 1/2*sqrt2  [32x, e.g. Eg x Eg > A1g]
+  N = 1                        sqrt in Q(zeta_8); = |mu|^2, mu = 1  [110x, e.g. A1g x A1g > A1g]
+  => Clebsch-Gordan vectors: real-positive normalisation needs Q(zeta_8); Hermitian-norm factors in Q(zeta_8) found for 2 of 2 values
+
+## D5h  (|G| = 20, field Q(zeta_20))
+Clebsch-Gordan: 150 vectors (first partners) over 91 irrep pairs, 2 distinct squared norms (0.1 s)
+  N = 1/2                      sqrt in Q(zeta_40), not in Q(zeta_20); = |mu|^2, mu = (1 - zeta^2 + zeta^3 + zeta^4 - zeta^6)/2  [28x, e.g. E1' x E1' > A1']
+  N = 1                        sqrt in Q(zeta_20); = |mu|^2, mu = 1  [122x, e.g. A1' x A1' > A1']
+  => Clebsch-Gordan vectors: real-positive normalisation needs Q(zeta_40); Hermitian-norm factors in Q(zeta_20) found for 2 of 2 values
+
+## D6h  (|G| = 24, field Q(zeta_12))
+Clebsch-Gordan: 252 vectors (first partners) over 171 irrep pairs, 2 distinct squared norms (0.2 s)
+  N = 1/2                      sqrt in Q(zeta_24), not in Q(zeta_12); = |mu|^2, mu = (zeta + zeta^2 - zeta^3)/2  [52x, e.g. E1g x E1g > A1g]
+  N = 1                        sqrt in Q(zeta_12); = |mu|^2, mu = 1  [200x, e.g. A1g x A1g > A1g]
+  => Clebsch-Gordan vectors: real-positive normalisation needs Q(zeta_24); Hermitian-norm factors in Q(zeta_12) found for 2 of 2 values
+
+## D7h  (|G| = 28, field Q(zeta_28))
+Clebsch-Gordan: 264 vectors (first partners) over 153 irrep pairs, 2 distinct squared norms (0.6 s)
+  N = 1/2                      sqrt in Q(zeta_56), not in Q(zeta_28); = |mu|^2, mu = (zeta^4 - zeta^11)/2  [40x, e.g. E1' x E1' > A1']
+  N = 1                        sqrt in Q(zeta_28); = |mu|^2, mu = 1  [224x, e.g. A1' x A1' > A1']
+  => Clebsch-Gordan vectors: real-positive normalisation needs Q(zeta_56); Hermitian-norm factors in Q(zeta_28) found for 2 of 2 values
+
+## D8h  (|G| = 32, field Q(zeta_16))
+Clebsch-Gordan: 394 vectors (first partners) over 253 irrep pairs, 2 distinct squared norms (0.6 s)
+  N = 1/2                      sqrt in Q(zeta_16); = |mu|^2, mu = 1/2*sqrt2  [72x, e.g. E1g x E1g > A1g]
+  N = 1                        sqrt in Q(zeta_16); = |mu|^2, mu = 1  [322x, e.g. A1g x A1g > A1g]
+  => Clebsch-Gordan vectors: real-positive normalisation needs Q(zeta_16); Hermitian-norm factors in Q(zeta_16) found for 2 of 2 values
+
+## D9d  (|G| = 36, field Q(zeta_36))
+Clebsch-Gordan: 476 vectors (first partners) over 300 irrep pairs, 2 distinct squared norms (1.3 s)
+  N = 1/2                      sqrt in Q(zeta_72), not in Q(zeta_36); = |mu|^2, mu = (zeta^2 + zeta^5 - zeta^8)/2  [80x, e.g. E1g x E1g > A1g]
+  N = 1                        sqrt in Q(zeta_36); = |mu|^2, mu = 1  [396x, e.g. A1g x A1g > A1g]
+  => Clebsch-Gordan vectors: real-positive normalisation needs Q(zeta_72); Hermitian-norm factors in Q(zeta_36) found for 2 of 2 values
+
+## T  (|G| = 12, field Q(zeta_12))
+Clebsch-Gordan: 44 vectors (first partners) over 28 irrep pairs, 4 distinct squared norms (0.0 s)
+  N = 1/3                      sqrt in Q(zeta_12); = |mu|^2, mu = 1/3*sqrt3  [7x, e.g. T x T > A]
+  N = 1/2                      sqrt in Q(zeta_24), not in Q(zeta_12); = |mu|^2, mu = (zeta + zeta^2 - zeta^3)/2  [9x, e.g. T x T > T #2]
+  N = 2/3                      sqrt in Q(zeta_24), not in Q(zeta_12); = |mu|^2, mu = (2 + zeta - zeta^2 + zeta^3)/3  [6x, e.g. T x T > T]
+  N = 1                        sqrt in Q(zeta_12); = |mu|^2, mu = 1  [22x, e.g. A x A > A]
+  => Clebsch-Gordan vectors: real-positive normalisation needs Q(zeta_24); Hermitian-norm factors in Q(zeta_12) found for 4 of 4 values
+Chain T > C3 (chain field Q(zeta_12)): 12 chain-adapted vectors, 1 distinct squared norms (0.0 s)
+  N = 1                        sqrt in Q(zeta_12); = |mu|^2, mu = 1  [12x, e.g. A > A]
+  => chain-adapted vectors: real-positive normalisation needs Q(zeta_12); Hermitian-norm factors in Q(zeta_12) found for 1 of 1 values
+  products N_i N_k under the non-zero matrix elements <v_i|D(g)|v_k>: 1 distinct
+  N = 1                        sqrt in Q(zeta_12); = |mu|^2, mu = 1  [24x, e.g. A: <A|D|A>]
+  => chain-adapted matrices: real-positive normalisation needs Q(zeta_12); Hermitian-norm factors in Q(zeta_12) found for 1 of 1 values
+Chain T > D2 > C2 (chain field Q(zeta_12)): 12 chain-adapted vectors, 4 distinct squared norms (0.0 s)
+  N = 1/2 - 1/6*sqrt3          NOT cyclotomic (K(sqrt N)/Q non-abelian); no Hermitian-norm factor in K found  [3x, e.g. E1/2 > E1/2 > 2E1/2]
+  N = 1/3                      sqrt in Q(zeta_12); = |mu|^2, mu = 1/3*sqrt3  [3x, e.g. T > B1 > A]
+  N = 1/2 + 1/6*sqrt3          NOT cyclotomic (K(sqrt N)/Q non-abelian); no Hermitian-norm factor in K found  [3x, e.g. E1/2 > E1/2 > 1E1/2]
+  N = 1                        sqrt in Q(zeta_12); = |mu|^2, mu = 1  [3x, e.g. A > A > A]
+  => chain-adapted vectors: real-positive normalisation needs no cyclotomic field; Hermitian-norm factors in Q(zeta_12) found for 2 of 4 values
+  products N_i N_k under the non-zero matrix elements <v_i|D(g)|v_k>: 5 distinct
+  N = 1/3 - 1/6*sqrt3          sqrt in Q(zeta_12); = |mu|^2, mu = 1/2 - 1/6*sqrt3  [3x, e.g. E1/2: <E1/2 > 2E1/2|D|E1/2 > 2E1/2>]
+  N = 1/9                      sqrt in Q(zeta_12); = |mu|^2, mu = 1/3  [9x, e.g. T: <B1 > A|D|B1 > A>]
+  N = 1/6                      sqrt in Q(zeta_24), not in Q(zeta_12); = |mu|^2, mu = 1/4 + 1/12*sqrt3 + 1/4*i - 1/12*i*sqrt3  [6x, e.g. E1/2: <E1/2 > 1E1/2|D|E1/2 > 2E1/2>]
+  N = 1/3 + 1/6*sqrt3          sqrt in Q(zeta_12); = |mu|^2, mu = 1/2 + 1/6*sqrt3  [3x, e.g. E1/2: <E1/2 > 1E1/2|D|E1/2 > 1E1/2>]
+  N = 1                        sqrt in Q(zeta_12); = |mu|^2, mu = 1  [3x, e.g. A: <A > A|D|A > A>]
+  => chain-adapted matrices: real-positive normalisation needs Q(zeta_24); Hermitian-norm factors in Q(zeta_12) found for 5 of 5 values
+
+## Td  (|G| = 24, field Q(zeta_8))
+Clebsch-Gordan: 74 vectors (first partners) over 36 irrep pairs, 8 distinct squared norms (0.1 s)
+  N = 1/6                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = 1/3 + 1/6*i*sqrt2  [2x, e.g. T1 x T2 > E]
+  N = 1/4                      sqrt in Q(zeta_8); = |mu|^2, mu = 1/2  [5x, e.g. E x T2 > T1]
+  N = 1/3                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = (sqrt2 + i)/3  [9x, e.g. T1 x T1 > A1]
+  N = 3/8                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = 1/2 + 1/4*i*sqrt2  [1x, e.g. G3/2 x G3/2 > T1]
+  N = 1/2                      sqrt in Q(zeta_8); = |mu|^2, mu = 1/2*sqrt2  [27x, e.g. E x E > A1]
+  N = 2/3                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = (2 + i*sqrt2)/3  [4x, e.g. T1 x E1/2 > E1/2]
+  N = 3/4                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = (sqrt2 + i)/2  [3x, e.g. E x T1 > T1]
+  N = 1                        sqrt in Q(zeta_8); = |mu|^2, mu = 1  [23x, e.g. A1 x A1 > A1]
+  => Clebsch-Gordan vectors: real-positive normalisation needs Q(zeta_24); Hermitian-norm factors in Q(zeta_8) found for 8 of 8 values
+
+## O  (|G| = 24, field Q(zeta_8))
+Clebsch-Gordan: 74 vectors (first partners) over 36 irrep pairs, 8 distinct squared norms (0.1 s)
+  N = 1/6                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = 1/3 + 1/6*i*sqrt2  [2x, e.g. T1 x T2 > E]
+  N = 1/4                      sqrt in Q(zeta_8); = |mu|^2, mu = 1/2  [5x, e.g. E x T2 > T1]
+  N = 1/3                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = (sqrt2 + i)/3  [9x, e.g. T1 x T1 > A1]
+  N = 3/8                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = 1/2 + 1/4*i*sqrt2  [1x, e.g. G3/2 x G3/2 > T1]
+  N = 1/2                      sqrt in Q(zeta_8); = |mu|^2, mu = 1/2*sqrt2  [27x, e.g. E x E > A1]
+  N = 2/3                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = (2 + i*sqrt2)/3  [4x, e.g. T1 x E1/2 > E1/2]
+  N = 3/4                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = (sqrt2 + i)/2  [3x, e.g. E x T1 > T1]
+  N = 1                        sqrt in Q(zeta_8); = |mu|^2, mu = 1  [23x, e.g. A1 x A1 > A1]
+  => Clebsch-Gordan vectors: real-positive normalisation needs Q(zeta_24); Hermitian-norm factors in Q(zeta_8) found for 8 of 8 values
+Chain O > D4 > C4 (chain field Q(zeta_8)): 18 chain-adapted vectors, 1 distinct squared norms (0.0 s)
+  N = 1                        sqrt in Q(zeta_8); = |mu|^2, mu = 1  [18x, e.g. A1 > A1 > A]
+  => chain-adapted vectors: real-positive normalisation needs Q(zeta_8); Hermitian-norm factors in Q(zeta_8) found for 1 of 1 values
+  products N_i N_k under the non-zero matrix elements <v_i|D(g)|v_k>: 1 distinct
+  N = 1                        sqrt in Q(zeta_8); = |mu|^2, mu = 1  [48x, e.g. A1: <A1 > A|D|A1 > A>]
+  => chain-adapted matrices: real-positive normalisation needs Q(zeta_8); Hermitian-norm factors in Q(zeta_8) found for 1 of 1 values
+Chain O > T > C3 (chain field Q(zeta_24)): 18 chain-adapted vectors, 9 distinct squared norms (0.1 s)
+  N = 1/3 - 1/6*sqrt3          sqrt in Q(zeta_24); = |mu|^2, mu = 1/2 - 1/6*sqrt3  [1x, e.g. T1 > T > 1E]
+  N = 1/4 - 1/12*sqrt3         NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/3 + 1/6*sqrt3 + 1/12*i*sqrt2 + 1/12*i*sqrt2*sqrt3  [2x, e.g. G3/2 > 1E3/2 > 1E1/2]
+  N = 1/2 - 1/6*sqrt3          NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/3*sqrt2 + 1/6*sqrt2*sqrt3 + 1/6*i + 1/6*i*sqrt3  [2x, e.g. E1/2 > E1/2 > 1E1/2]
+  N = 1/3                      sqrt in Q(zeta_24); = |mu|^2, mu = 1/3*sqrt3  [4x, e.g. T1 > T > A]
+  N = 1/4 + 1/12*sqrt3         NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/12*sqrt2 - 1/12*sqrt2*sqrt3 + 1/3*i + 1/6*i*sqrt3  [2x, e.g. G3/2 > 1E3/2 > B3/2]
+  N = 1/2                      sqrt in Q(zeta_24); = |mu|^2, mu = 1/2*sqrt2  [2x, e.g. E > 1E > 1E]
+  N = 1/3 + 1/6*sqrt3          sqrt in Q(zeta_24); = |mu|^2, mu = 1/2 + 1/6*sqrt3  [1x, e.g. T1 > T > 2E]
+  N = 1/2 + 1/6*sqrt3          NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/6 - 1/6*sqrt3 + 1/3*i*sqrt2 + 1/6*i*sqrt2*sqrt3  [2x, e.g. E1/2 > E1/2 > 2E1/2]
+  N = 1                        sqrt in Q(zeta_24); = |mu|^2, mu = 1  [2x, e.g. A1 > A > A]
+  => chain-adapted vectors: real-positive normalisation needs no cyclotomic field; Hermitian-norm factors in Q(zeta_24) found for 9 of 9 values
+  products N_i N_k under the non-zero matrix elements <v_i|D(g)|v_k>: 14 distinct
+  N = 7/36 - 1/9*sqrt3         sqrt in Q(zeta_24); = |mu|^2, mu = 1/3 - 1/6*sqrt3  [1x, e.g. T1: <T > 1E|D|T > 1E>]
+  N = 1/12 - 1/24*sqrt3        sqrt in Q(zeta_24); = |mu|^2, mu = 1/4 - 1/12*sqrt3  [4x, e.g. G3/2: <1E3/2 > 1E1/2|D|1E3/2 > 1E1/2>]
+  N = 1/9 - 1/18*sqrt3         sqrt in Q(zeta_24); = |mu|^2, mu = (-1 + sqrt3)/6  [2x, e.g. T1: <T > A|D|T > 1E>]
+  N = 1/36                     sqrt in Q(zeta_24); = |mu|^2, mu = 1/6  [2x, e.g. T1: <T > 1E|D|T > 2E>]
+  N = 1/24                     sqrt in Q(zeta_24); = |mu|^2, mu = 1/12*sqrt2*sqrt3  [8x, e.g. G3/2: <1E3/2 > B3/2|D|1E3/2 > 1E1/2>]
+  N = 1/3 - 1/6*sqrt3          sqrt in Q(zeta_24); = |mu|^2, mu = 1/2 - 1/6*sqrt3  [2x, e.g. E1/2: <E1/2 > 1E1/2|D|E1/2 > 1E1/2>]
+  N = 1/9                      sqrt in Q(zeta_24); = |mu|^2, mu = 1/3  [10x, e.g. T1: <T > A|D|T > A>]
+  N = 1/12 + 1/24*sqrt3        sqrt in Q(zeta_24); = |mu|^2, mu = 1/4 + 1/12*sqrt3  [4x, e.g. G3/2: <1E3/2 > B3/2|D|1E3/2 > B3/2>]
+  N = 1/6                      sqrt in Q(zeta_24); = |mu|^2, mu = 1/6*sqrt2*sqrt3  [4x, e.g. E1/2: <E1/2 > 1E1/2|D|E1/2 > 2E1/2>]
+  N = 1/9 + 1/18*sqrt3         sqrt in Q(zeta_24); = |mu|^2, mu = (1 + sqrt3)/6  [2x, e.g. T1: <T > A|D|T > 2E>]
+  N = 1/4                      sqrt in Q(zeta_24); = |mu|^2, mu = 1/2  [4x, e.g. E: <1E > 1E|D|1E > 1E>]
+  N = 7/36 + 1/9*sqrt3         sqrt in Q(zeta_24); = |mu|^2, mu = 1/3 + 1/6*sqrt3  [1x, e.g. T1: <T > 2E|D|T > 2E>]
+  N = 1/3 + 1/6*sqrt3          sqrt in Q(zeta_24); = |mu|^2, mu = 1/2 + 1/6*sqrt3  [2x, e.g. E1/2: <E1/2 > 2E1/2|D|E1/2 > 2E1/2>]
+  N = 1                        sqrt in Q(zeta_24); = |mu|^2, mu = 1  [2x, e.g. A1: <A > A|D|A > A>]
+  => chain-adapted matrices: real-positive normalisation needs Q(zeta_24); Hermitian-norm factors in Q(zeta_24) found for 14 of 14 values
+Chain O > D3 > C3 (chain field Q(zeta_24)): 18 chain-adapted vectors, 10 distinct squared norms (0.1 s)
+  N = 1/3 - 1/6*sqrt3          sqrt in Q(zeta_24); = |mu|^2, mu = 1/2 - 1/6*sqrt3  [1x, e.g. T1 > E > 1E]
+  N = 1/4 - 1/12*sqrt3         NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/3 + 1/6*sqrt3 + 1/12*i*sqrt2 + 1/12*i*sqrt2*sqrt3  [1x, e.g. G3/2 > E1/2 > 1E1/2]
+  N = 1/2 - 1/6*sqrt3          NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/3*sqrt2 + 1/6*sqrt2*sqrt3 + 1/6*i + 1/6*i*sqrt3  [2x, e.g. E1/2 > E1/2 > 1E1/2]
+  N = 1/4                      sqrt in Q(zeta_24); = |mu|^2, mu = 1/2  [2x, e.g. G3/2 > 1E3/2 > B3/2]
+  N = 1/3                      sqrt in Q(zeta_24); = |mu|^2, mu = 1/3*sqrt3  [4x, e.g. T1 > A2 > A]
+  N = 1/4 + 1/12*sqrt3         NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/12*sqrt2 - 1/12*sqrt2*sqrt3 + 1/3*i + 1/6*i*sqrt3  [1x, e.g. G3/2 > E1/2 > 2E1/2]
+  N = 1/2                      sqrt in Q(zeta_24); = |mu|^2, mu = 1/2*sqrt2  [2x, e.g. E > E > 1E]
+  N = 1/3 + 1/6*sqrt3          sqrt in Q(zeta_24); = |mu|^2, mu = 1/2 + 1/6*sqrt3  [1x, e.g. T1 > E > 2E]
+  N = 1/2 + 1/6*sqrt3          NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/6 - 1/6*sqrt3 + 1/3*i*sqrt2 + 1/6*i*sqrt2*sqrt3  [2x, e.g. E1/2 > E1/2 > 2E1/2]
+  N = 1                        sqrt in Q(zeta_24); = |mu|^2, mu = 1  [2x, e.g. A1 > A1 > A]
+  => chain-adapted vectors: real-positive normalisation needs no cyclotomic field; Hermitian-norm factors in Q(zeta_24) found for 10 of 10 values
+  products N_i N_k under the non-zero matrix elements <v_i|D(g)|v_k>: 17 distinct
+  N = 7/36 - 1/9*sqrt3         sqrt in Q(zeta_24); = |mu|^2, mu = 1/3 - 1/6*sqrt3  [1x, e.g. T1: <E > 1E|D|E > 1E>]
+  N = 1/12 - 1/24*sqrt3        sqrt in Q(zeta_24); = |mu|^2, mu = 1/4 - 1/12*sqrt3  [1x, e.g. G3/2: <E1/2 > 1E1/2|D|E1/2 > 1E1/2>]
+  N = 1/9 - 1/18*sqrt3         sqrt in Q(zeta_24); = |mu|^2, mu = (-1 + sqrt3)/6  [2x, e.g. T1: <A2 > A|D|E > 1E>]
+  N = 1/16 - 1/48*sqrt3        NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/6 + 1/12*sqrt3 + 1/24*i*sqrt2 + 1/24*i*sqrt2*sqrt3  [4x, e.g. G3/2: <E1/2 > 1E1/2|D|1E3/2 > B3/2>]
+  N = 1/36                     sqrt in Q(zeta_24); = |mu|^2, mu = 1/6  [2x, e.g. T1: <E > 1E|D|E > 2E>]
+  N = 1/24                     sqrt in Q(zeta_24); = |mu|^2, mu = 1/12*sqrt2*sqrt3  [2x, e.g. G3/2: <E1/2 > 1E1/2|D|E1/2 > 2E1/2>]
+  N = 1/3 - 1/6*sqrt3          sqrt in Q(zeta_24); = |mu|^2, mu = 1/2 - 1/6*sqrt3  [2x, e.g. E1/2: <E1/2 > 1E1/2|D|E1/2 > 1E1/2>]
+  N = 1/16                     sqrt in Q(zeta_24); = |mu|^2, mu = 1/4  [4x, e.g. G3/2: <1E3/2 > B3/2|D|1E3/2 > B3/2>]
+  N = 1/16 + 1/48*sqrt3        NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/24*sqrt2 - 1/24*sqrt2*sqrt3 + 1/6*i + 1/12*i*sqrt3  [4x, e.g. G3/2: <E1/2 > 2E1/2|D|1E3/2 > B3/2>]
+  N = 1/9                      sqrt in Q(zeta_24); = |mu|^2, mu = 1/3  [10x, e.g. T1: <A2 > A|D|A2 > A>]
+  N = 1/12 + 1/24*sqrt3        sqrt in Q(zeta_24); = |mu|^2, mu = 1/4 + 1/12*sqrt3  [1x, e.g. G3/2: <E1/2 > 2E1/2|D|E1/2 > 2E1/2>]
+  N = 1/6                      sqrt in Q(zeta_24); = |mu|^2, mu = 1/6*sqrt2*sqrt3  [4x, e.g. E1/2: <E1/2 > 1E1/2|D|E1/2 > 2E1/2>]
+  N = 1/9 + 1/18*sqrt3         sqrt in Q(zeta_24); = |mu|^2, mu = (1 + sqrt3)/6  [2x, e.g. T1: <A2 > A|D|E > 2E>]
+  N = 1/4                      sqrt in Q(zeta_24); = |mu|^2, mu = 1/2  [4x, e.g. E: <E > 1E|D|E > 1E>]
+  N = 7/36 + 1/9*sqrt3         sqrt in Q(zeta_24); = |mu|^2, mu = 1/3 + 1/6*sqrt3  [1x, e.g. T1: <E > 2E|D|E > 2E>]
+  N = 1/3 + 1/6*sqrt3          sqrt in Q(zeta_24); = |mu|^2, mu = 1/2 + 1/6*sqrt3  [2x, e.g. E1/2: <E1/2 > 2E1/2|D|E1/2 > 2E1/2>]
+  N = 1                        sqrt in Q(zeta_24); = |mu|^2, mu = 1  [2x, e.g. A1: <A1 > A|D|A1 > A>]
+  => chain-adapted matrices: real-positive normalisation needs no cyclotomic field; Hermitian-norm factors in Q(zeta_24) found for 17 of 17 values
+Chain O > T > D2 > C2 (chain field Q(zeta_24)): 18 chain-adapted vectors, 2 distinct squared norms (0.2 s)
+  N = 1/2                      sqrt in Q(zeta_24); = |mu|^2, mu = 1/2*sqrt2  [10x, e.g. E > 1E > A > A]
+  N = 1                        sqrt in Q(zeta_24); = |mu|^2, mu = 1  [8x, e.g. A1 > A > A > A]
+  => chain-adapted vectors: real-positive normalisation needs Q(zeta_24); Hermitian-norm factors in Q(zeta_24) found for 2 of 2 values
+  products N_i N_k under the non-zero matrix elements <v_i|D(g)|v_k>: 3 distinct
+  N = 1/4                      sqrt in Q(zeta_24); = |mu|^2, mu = 1/2  [28x, e.g. E: <1E > A > A|D|1E > A > A>]
+  N = 1/2                      sqrt in Q(zeta_24); = |mu|^2, mu = 1/2*sqrt2  [8x, e.g. T1: <T > B1 > A|D|T > B2 > B>]
+  N = 1                        sqrt in Q(zeta_24); = |mu|^2, mu = 1  [12x, e.g. A1: <A > A > A|D|A > A > A>]
+  => chain-adapted matrices: real-positive normalisation needs Q(zeta_24); Hermitian-norm factors in Q(zeta_24) found for 3 of 3 values
+
+## Oh  (|G| = 48, field Q(zeta_8))
+Clebsch-Gordan: 272 vectors (first partners) over 136 irrep pairs, 8 distinct squared norms (0.5 s)
+  N = 1/6                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = 1/3 + 1/6*i*sqrt2  [7x, e.g. T1g x T2g > Eg]
+  N = 1/4                      sqrt in Q(zeta_8); = |mu|^2, mu = 1/2  [16x, e.g. Eg x T2g > T1g]
+  N = 1/3                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = (sqrt2 + i)/3  [34x, e.g. T1g x T1g > A1g]
+  N = 3/8                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = 1/2 + 1/4*i*sqrt2  [3x, e.g. G3/2g x G3/2g > T1g]
+  N = 1/2                      sqrt in Q(zeta_8); = |mu|^2, mu = 1/2*sqrt2  [94x, e.g. Eg x Eg > A1g]
+  N = 2/3                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = (2 + i*sqrt2)/3  [17x, e.g. T1g x E1/2g > E1/2g]
+  N = 3/4                      sqrt in Q(zeta_24), not in Q(zeta_8); = |mu|^2, mu = (sqrt2 + i)/2  [13x, e.g. Eg x T1g > T1g]
+  N = 1                        sqrt in Q(zeta_8); = |mu|^2, mu = 1  [88x, e.g. A1g x A1g > A1g]
+  => Clebsch-Gordan vectors: real-positive normalisation needs Q(zeta_24); Hermitian-norm factors in Q(zeta_8) found for 8 of 8 values
+
+## I  (|G| = 60, field Q(zeta_20))
+Clebsch-Gordan: 133 vectors (first partners) over 45 irrep pairs, 28 distinct squared norms (3.5 s)
+  N = 1/20                     sqrt in Q(zeta_20); = |mu|^2, mu = 1/10*sqrt5  [1x, e.g. G3/2 x I5/2 > T1]
+  N = 1/15                     sqrt in Q(zeta_60), not in Q(zeta_20); = |mu|^2, mu = 1/6 + 1/30*sqrt5 + 1/6*i - 1/30*i*sqrt5  [2x, e.g. T1 x I5/2 > G3/2]
+  N = 1/12                     sqrt in Q(zeta_60), not in Q(zeta_20); = |mu|^2, mu = (1 + sqrt5 - i + i*sqrt5)/12  [1x, e.g. T1 x G > H]
+  N = 1/10                     sqrt in Q(zeta_40), not in Q(zeta_20); = |mu|^2, mu = 1/10 + 1/5*zeta + 1/10*zeta^2 - 1/10*zeta^3 - 1/10*zeta^4 + 1/5*zeta^5 - 1/10*zeta^6  [4x, e.g. T1 x H > T1]
+  N = 1/9                      sqrt in Q(zeta_20); = |mu|^2, mu = 1/3  [2x, e.g. H x H > H #2]
+  N = 2/15                     sqrt in Q(zeta_120), not in Q(zeta_20); = |mu|^2, mu = 1/15*sqrt5 + 1/3*i  [1x, e.g. H x I5/2 > G3/2]
+  N = 1/7                      sqrt in Q(zeta_140), not in Q(zeta_20); = |mu|^2, mu = (3 + sqrt5 - 3*i + i*sqrt5)/14  [1x, e.g. T1 x I5/2 > I5/2 #2]
+  N = 1/6                      sqrt in Q(zeta_120), not in Q(zeta_20); = |mu|^2, mu = (1 + i*sqrt5)/6  [8x, e.g. T1 x G3/2 > E1/2]
+  N = 1/5                      sqrt in Q(zeta_20); = |mu|^2, mu = 1/5*sqrt5  [11x, e.g. T1 x G3/2 > I5/2]
+  N = 2/9                      sqrt in Q(zeta_40), not in Q(zeta_20); = |mu|^2, mu = (1 - zeta^2 + zeta^3 + zeta^4 - zeta^6)/3  [1x, e.g. I5/2 x I5/2 > H #3]
+  N = 1/4                      sqrt in Q(zeta_20); = |mu|^2, mu = 1/2  [6x, e.g. T1 x G > T2]
+  N = 4/15                     sqrt in Q(zeta_60), not in Q(zeta_20); = |mu|^2, mu = 1/3 + 1/15*sqrt5 + 1/3*i - 1/15*i*sqrt5  [3x, e.g. T1 x H > G]
+  N = 2/7                      sqrt in Q(zeta_280), not in Q(zeta_20); = |mu|^2, mu = (sqrt5 + 3*i)/7  [1x, e.g. I5/2 x I5/2 > T1 #2]
+  N = 3/10                     sqrt in Q(zeta_120), not in Q(zeta_20); = |mu|^2, mu = 1/10*sqrt5 + 1/2*i  [9x, e.g. G x H > T2]
+  N = 1/3                      sqrt in Q(zeta_60), not in Q(zeta_20); = |mu|^2, mu = (1 + sqrt5 - i + i*sqrt5)/6  [15x, e.g. T1 x T1 > A]
+  N = 7/20                     sqrt in Q(zeta_140), not in Q(zeta_20); = |mu|^2, mu = 1/4 + 3/20*sqrt5 + 1/4*i - 3/20*i*sqrt5  [1x, e.g. I5/2 x I5/2 > T1]
+  N = 9/25                     sqrt in Q(zeta_20); = |mu|^2, mu = 3/5  [1x, e.g. H x G3/2 > I5/2 #2]
+  N = 2/5                      sqrt in Q(zeta_40), not in Q(zeta_20); = |mu|^2, mu = (1 + 2*zeta + zeta^2 - zeta^3 - zeta^4 + 2*zeta^5 - zeta^6)/5  [10x, e.g. T1 x H > T2]
+  N = 1/2                      sqrt in Q(zeta_40), not in Q(zeta_20); = |mu|^2, mu = (1 - zeta^2 + zeta^3 + zeta^4 - zeta^6)/2  [21x, e.g. T1 x T1 > T1]
+  N = 8/15                     sqrt in Q(zeta_120), not in Q(zeta_20); = |mu|^2, mu = 2/15*sqrt5 + 2/3*i  [2x, e.g. G x I5/2 > G3/2]
+  N = 9/16                     sqrt in Q(zeta_20); = |mu|^2, mu = 3/4  [1x, e.g. G x G3/2 > I5/2 #2]
+  N = 3/5                      sqrt in Q(zeta_60), not in Q(zeta_20); = |mu|^2, mu = 1/2 + 1/10*sqrt5 + 1/2*i - 1/10*i*sqrt5  [2x, e.g. T2 x I5/2 > I5/2]
+  N = 2/3                      sqrt in Q(zeta_120), not in Q(zeta_20); = |mu|^2, mu = (1 + i*sqrt5)/3  [7x, e.g. T1 x T2 > G]
+  N = 7/10                     sqrt in Q(zeta_280), not in Q(zeta_20); = |mu|^2, mu = 1/2 + 3/10*i*sqrt5  [1x, e.g. T1 x I5/2 > I5/2]
+  N = 3/4                      sqrt in Q(zeta_60), not in Q(zeta_20); = |mu|^2, mu = (1 + sqrt5 - i + i*sqrt5)/4  [1x, e.g. E7/2 x G3/2 > T2]
+  N = 4/5                      sqrt in Q(zeta_20); = |mu|^2, mu = 2/5*sqrt5  [2x, e.g. G x G3/2 > I5/2]
+  N = 9/10                     sqrt in Q(zeta_40), not in Q(zeta_20); = |mu|^2, mu = 3/10 + 3/5*zeta + 3/10*zeta^2 - 3/10*zeta^3 - 3/10*zeta^4 + 3/5*zeta^5 - 3/10*zeta^6  [1x, e.g. H x E7/2 > I5/2]
+  N = 1                        sqrt in Q(zeta_20); = |mu|^2, mu = 1  [17x, e.g. A x A > A]
+  => Clebsch-Gordan vectors: real-positive normalisation needs Q(zeta_840); Hermitian-norm factors in Q(zeta_20) found for 28 of 28 values
+Chain I > D5 > C5 (chain field Q(zeta_20)): 30 chain-adapted vectors, 2 distinct squared norms (0.2 s)
+  N = 1/2                      sqrt in Q(zeta_40), not in Q(zeta_20); = |mu|^2, mu = (1 - zeta^2 + zeta^3 + zeta^4 - zeta^6)/2  [2x, e.g. I5/2 > 1E5/2 > B5/2]
+  N = 1                        sqrt in Q(zeta_20); = |mu|^2, mu = 1  [28x, e.g. A > A1 > A]
+  => chain-adapted vectors: real-positive normalisation needs Q(zeta_40); Hermitian-norm factors in Q(zeta_20) found for 2 of 2 values
+  products N_i N_k under the non-zero matrix elements <v_i|D(g)|v_k>: 3 distinct
+  N = 1/4                      sqrt in Q(zeta_20); = |mu|^2, mu = 1/2  [4x, e.g. I5/2: <1E5/2 > B5/2|D|1E5/2 > B5/2>]
+  N = 1/2                      sqrt in Q(zeta_40), not in Q(zeta_20); = |mu|^2, mu = (1 - zeta^2 + zeta^3 + zeta^4 - zeta^6)/2  [16x, e.g. I5/2: <E1/2 > 1E1/2|D|1E5/2 > B5/2>]
+  N = 1                        sqrt in Q(zeta_20); = |mu|^2, mu = 1  [100x, e.g. A: <A1 > A|D|A1 > A>]
+  => chain-adapted matrices: real-positive normalisation needs Q(zeta_40); Hermitian-norm factors in Q(zeta_20) found for 3 of 3 values
+Chain I > T > C3 (chain field Q(zeta_60)): 30 chain-adapted vectors, 27 distinct squared norms (0.9 s)
+  N = 1/3 - 4/15*zeta^2 - 1/15*zeta^4 - 2/15*zeta^8 + 1/15*zeta^10 + 1/5*zeta^12 - 1/15*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 8/15 - 4/15*zeta^2 - 2/15*zeta^4 - 1/15*zeta^6 - 2/15*zeta^8 + 1/15*zeta^10 + 1/5*zeta^12  [1x, e.g. T2 > T > 1E]
+  N = 8/45 - 4/45*zeta^2 - 2/45*zeta^4 - 1/45*zeta^6 - 2/45*zeta^8 + 1/45*zeta^10 + 1/15*zeta^12 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -4/15 + 1/15*zeta + 4/15*zeta^3 + 2/15*zeta^4 + 1/15*zeta^6 - 1/5*zeta^9 + 1/3*zeta^10 - 1/15*zeta^11 - 1/5*zeta^12 - 2/15*zeta^14 + 2/15*zeta^15  [1x, e.g. I5/2 > E1/2 > 1E1/2]
+  N = 2/15 - 1/5*zeta^2 - 1/15*zeta^4 + 1/15*zeta^6 + 1/15*zeta^8 + 2/15*zeta^10 + 1/15*zeta^12 - 1/5*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = -4/15*zeta - 2/5*zeta^3 + 1/3*zeta^5 + 1/3*zeta^7 + 7/15*zeta^9 + 4/15*zeta^11 - 1/3*zeta^13 - 8/15*zeta^15  [1x, e.g. G > T > 2E]
+  N = 7/30 - 1/15*zeta^2 - 2/15*zeta^4 - 1/15*zeta^6 + 1/15*zeta^8 + 1/15*zeta^10 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/6 - 1/5*zeta + 1/15*zeta^2 + 2/15*zeta^3 - 1/5*zeta^4 + 2/15*zeta^5 - 2/15*zeta^6 + 2/15*zeta^7 - 1/15*zeta^8 + 1/15*zeta^9 + 2/15*zeta^10 + 2/15*zeta^11 + 1/5*zeta^12 - 2/15*zeta^14 - 7/30*zeta^15  [1x, e.g. G3/2 > 1E3/2 > B3/2]
+  N = 2/9 - 2/45*zeta^2 - 1/45*zeta^4 - 2/45*zeta^6 - 4/45*zeta^8 - 1/45*zeta^10 + 1/15*zeta^12 + 1/15*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/15 + 2/15*zeta + 1/15*zeta^2 - 4/15*zeta^4 - 1/15*zeta^5 - 2/15*zeta^6 + 1/15*zeta^7 - 1/15*zeta^8 - 1/5*zeta^9 + 2/15*zeta^10 + 2/15*zeta^11 + 1/15*zeta^12 + 1/15*zeta^13 + 4/15*zeta^14  [2x, e.g. I5/2 > 1E3/2 > 1E1/2]
+  N = 1/3 - 1/15*zeta^4 - 2/15*zeta^6 - 2/15*zeta^8 - 1/15*zeta^10 + 1/15*zeta^12 + 1/5*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 8/15 + 2/5*zeta^2 - 4/15*zeta^4 - 7/15*zeta^6 - 8/15*zeta^8 - 1/3*zeta^10 + 1/15*zeta^12 + 2/3*zeta^14  [1x, e.g. H > T > 2E]
+  N = 8/15 - 4/15*zeta^2 - 2/15*zeta^4 - 1/15*zeta^6 - 2/15*zeta^8 + 1/15*zeta^10 + 1/5*zeta^12 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -4/15 + 2/15*zeta^2 + 1/5*zeta^3 + 1/15*zeta^4 + 1/15*zeta^5 + 1/5*zeta^6 - 2/15*zeta^7 + 2/5*zeta^8 - 1/15*zeta^9 + 2/15*zeta^10 - 2/15*zeta^11 - 4/15*zeta^12 - 4/15*zeta^13 - 1/3*zeta^14 + 8/15*zeta^15  [1x, e.g. E7/2 > E1/2 > 2E1/2]
+  N = 2/15 - 2/15*zeta^2 - 2/15*zeta^4 + 1/15*zeta^6 + 4/15*zeta^8 + 1/5*zeta^10 - 1/15*zeta^12 - 4/15*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 4/15 - 2/15*zeta^2 - 1/15*zeta^4 + 2/15*zeta^6 + 4/15*zeta^8 + 1/5*zeta^10 - 1/15*zeta^12 - 1/3*zeta^14  [1x, e.g. T1 > T > 2E]
+  N = (2 - zeta^4 + 2*zeta^8 + zeta^10 - zeta^12 - zeta^14)/15 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/15*zeta + 2/15*zeta^3 + 2/5*zeta^5 - 1/5*zeta^9 - 2/15*zeta^11 + 2/15*zeta^13 - 1/5*zeta^15  [1x, e.g. H > T > 1E]
+  N = 1/4 - 1/30*sqrt5         NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/10*sqrt3*sqrt5 + 1/6*i*sqrt3 - 1/30*i*sqrt3*sqrt5  [1x, e.g. G > T > A]
+  N = 1/3 - 1/15*sqrt5         sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = (4*zeta - zeta^2 - zeta^3 - 2*zeta^4 + zeta^5 + 4*zeta^6 - 2*zeta^7 + 2*zeta^8 + 2*zeta^9 + 4*zeta^10 - zeta^11 - 2*zeta^12 + zeta^13 - zeta^14 - 4*zeta^15)/15  [1x, e.g. T2 > T > A]
+  N = 1/5                      sqrt in Q(zeta_60); = |mu|^2, mu = 1/5*sqrt5  [2x, e.g. H > 1E > 1E]
+  N = 11/30 + 1/15*zeta^2 - 1/15*zeta^4 - 2/15*zeta^6 - 1/15*zeta^8 - 1/15*zeta^10 + 1/5*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/30 + 2/5*zeta - 1/15*zeta^2 - 1/5*zeta^3 - 2/15*zeta^5 + 1/15*zeta^6 - 4/15*zeta^7 - 1/15*zeta^8 - 2/15*zeta^9 - 4/15*zeta^10 - 1/15*zeta^11 - 2/15*zeta^12 + 4/15*zeta^13 + 1/15*zeta^14 + 3/10*zeta^15  [1x, e.g. G3/2 > 2E3/2 > B3/2]
+  N = 1/4                      sqrt in Q(zeta_60); = |mu|^2, mu = 1/2  [1x, e.g. G > A > A]
+  N = 1/9 + 2/45*zeta^2 + 1/45*zeta^4 + 2/45*zeta^6 + 4/45*zeta^8 + 1/45*zeta^10 - 1/15*zeta^12 - 1/15*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 4/15 - 1/15*zeta + 1/3*zeta^2 + 1/15*zeta^3 + 1/5*zeta^4 - 2/15*zeta^5 - 2/15*zeta^6 + 1/15*zeta^7 - 1/5*zeta^8 + 1/5*zeta^9 - 1/5*zeta^10 + 1/15*zeta^11 - 1/15*zeta^13 + 1/15*zeta^14  [2x, e.g. I5/2 > 1E3/2 > B3/2]
+  N = 2/15 - 1/15*zeta^2 + 1/15*zeta^4 + 2/15*zeta^6 + 1/15*zeta^8 + 1/15*zeta^10 - 1/5*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/15 + 1/5*zeta + 1/15*zeta^2 - 1/5*zeta^3 + 2/15*zeta^4 - 1/15*zeta^5 + 1/5*zeta^6 + 2/15*zeta^7 + 1/5*zeta^8 - 2/15*zeta^9 + 1/15*zeta^10 - 1/15*zeta^11 - 2/15*zeta^12 + 4/15*zeta^13 - 4/15*zeta^14 + 1/15*zeta^15  [1x, e.g. G3/2 > 2E3/2 > 2E1/2]
+  N = 7/45 + 4/45*zeta^2 + 2/45*zeta^4 + 1/45*zeta^6 + 2/45*zeta^8 - 1/45*zeta^10 - 1/15*zeta^12 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 2/15 + 2/15*zeta + 1/5*zeta^3 - 1/15*zeta^4 + 1/3*zeta^5 - 1/5*zeta^6 - 1/15*zeta^9 - 2/15*zeta^11 + 4/15*zeta^12 + 1/15*zeta^14 - 1/15*zeta^15  [1x, e.g. I5/2 > E1/2 > 2E1/2]
+  N = 1/5 + 1/15*sqrt5         sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = -4/15 + 2/15*zeta + 1/15*zeta^2 + 1/5*zeta^3 + 2/5*zeta^4 - 1/15*zeta^5 + 4/15*zeta^6 + 2/15*zeta^8 - 1/15*zeta^11 - 2/5*zeta^12 + 1/5*zeta^13 - 1/3*zeta^14 + 2/15*zeta^15  [1x, e.g. H > T > A]
+  N = 3/5 + 2/15*zeta^2 - 1/5*zeta^6 - 4/15*zeta^8 - 1/5*zeta^10 + 1/15*zeta^12 + 2/5*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 11/15 + 2/15*zeta^2 + 1/15*zeta^4 - 2/15*zeta^6 - 4/15*zeta^8 - 1/5*zeta^10 + 1/15*zeta^12 + 1/3*zeta^14  [1x, e.g. T1 > T > 1E]
+  N = 4/15 - 2/15*zeta^2 - 1/15*zeta^4 + 2/15*zeta^6 + 4/15*zeta^8 + 1/5*zeta^10 - 1/15*zeta^12 - 1/3*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -8/15 + 2/15*zeta - 1/3*zeta^2 + 1/5*zeta^3 + 4/15*zeta^4 + 7/15*zeta^6 + 1/3*zeta^7 + 1/3*zeta^8 + 4/15*zeta^9 + 1/3*zeta^10 - 2/15*zeta^11 - 2/5*zeta^12 - 1/3*zeta^13 - 4/15*zeta^14 - 1/15*zeta^15  [1x, e.g. E1/2 > E1/2 > 2E1/2]
+  N = (4 + zeta^2 + 2*zeta^4 + zeta^6 - zeta^8 - zeta^10)/15 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -2/15 + 1/15*zeta + 4/15*zeta^2 + 2/15*zeta^3 + 1/3*zeta^4 - 1/15*zeta^5 + 4/15*zeta^6 - 1/5*zeta^7 + 2/15*zeta^8 - 1/15*zeta^10 + 1/15*zeta^11 - 1/5*zeta^12 - 1/15*zeta^13 - 1/5*zeta^14 + 1/3*zeta^15  [1x, e.g. G3/2 > 1E3/2 > 1E1/2]
+  N = 1/3 + 1/15*sqrt5         sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = 2/15*zeta - 1/5*zeta^2 + 2/15*zeta^3 + 4/15*zeta^4 + 1/5*zeta^5 + 2/15*zeta^6 + 4/15*zeta^7 + 1/15*zeta^8 - 4/15*zeta^9 + 2/15*zeta^10 - 1/5*zeta^11 + 4/15*zeta^12 - 2/15*zeta^13 - 1/5*zeta^14 - 2/15*zeta^15  [1x, e.g. T1 > T > A]
+  N = 1/3 + 1/5*zeta^2 + 2/15*zeta^4 - 1/15*zeta^8 - 2/15*zeta^10 - 1/15*zeta^12 + 2/15*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = -1/15*zeta + 2/5*zeta^3 + 1/3*zeta^5 + 1/3*zeta^7 - 2/15*zeta^9 + 1/15*zeta^11 - 1/3*zeta^13 - 2/15*zeta^15  [1x, e.g. G > T > 1E]
+  N = 11/15 + 2/15*zeta^2 + 1/15*zeta^4 - 2/15*zeta^6 - 4/15*zeta^8 - 1/5*zeta^10 + 1/15*zeta^12 + 1/3*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 4/15 - 1/15*zeta + 1/3*zeta^2 + 2/5*zeta^3 - 7/15*zeta^4 + 1/3*zeta^5 - 1/15*zeta^6 + 1/3*zeta^7 - 1/3*zeta^8 - 2/15*zeta^9 + 1/15*zeta^11 + 1/5*zeta^12 - 1/3*zeta^13 + 7/15*zeta^14 - 2/15*zeta^15  [1x, e.g. E1/2 > E1/2 > 1E1/2]
+  N = 4/15 + 4/15*zeta^2 + 1/5*zeta^4 + 2/15*zeta^6 + 2/15*zeta^8 - 1/15*zeta^10 - 1/5*zeta^12 - 1/15*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 7/15 + 4/15*zeta^2 + 2/15*zeta^4 + 1/15*zeta^6 + 2/15*zeta^8 - 1/15*zeta^10 - 1/5*zeta^12  [1x, e.g. T2 > T > 2E]
+  N = 7/15 + 4/15*zeta^2 + 2/15*zeta^4 + 1/15*zeta^6 + 2/15*zeta^8 - 1/15*zeta^10 - 1/5*zeta^12 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 7/15 - 1/3*zeta + 4/15*zeta^2 - 4/15*zeta^3 + 2/15*zeta^4 + 2/15*zeta^5 + 1/15*zeta^6 + 2/5*zeta^7 + 2/15*zeta^8 + 1/5*zeta^9 - 1/15*zeta^10 + 1/15*zeta^11 - 1/5*zeta^12 + 2/15*zeta^13 - 4/15*zeta^15  [1x, e.g. E7/2 > E1/2 > 1E1/2]
+  N = 1                        sqrt in Q(zeta_60); = |mu|^2, mu = 1  [1x, e.g. A > A > A]
+  => chain-adapted vectors: real-positive normalisation needs no cyclotomic field; Hermitian-norm factors in Q(zeta_60) found for 27 of 27 values
+  products N_i N_k under the non-zero matrix elements <v_i|D(g)|v_k>: 59 distinct
+  N = 7/45 - 2/9*zeta^2 + 1/15*zeta^6 - 4/45*zeta^8 + 1/15*zeta^10 + 7/45*zeta^12 - 2/15*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 1/3 - 4/15*zeta^2 - 1/15*zeta^4 - 2/15*zeta^8 + 1/15*zeta^10 + 1/5*zeta^12 - 1/15*zeta^14  [1x, e.g. T2: <T > 1E|D|T > 1E>]
+  N = 1/27 - 4/135*zeta^2 - 1/135*zeta^4 - 2/135*zeta^8 + 1/135*zeta^10 + 1/45*zeta^12 - 1/135*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 8/45 - 4/45*zeta^2 - 2/45*zeta^4 - 1/45*zeta^6 - 2/45*zeta^8 + 1/45*zeta^10 + 1/15*zeta^12  [1x, e.g. I5/2: <E1/2 > 1E1/2|D|E1/2 > 1E1/2>]
+  N = 2/45 - 1/9*zeta^2 - 1/45*zeta^4 + 2/45*zeta^6 + 1/45*zeta^8 + 1/15*zeta^10 + 2/45*zeta^12 - 1/9*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 2/15 - 1/5*zeta^2 - 1/15*zeta^4 + 1/15*zeta^6 + 1/15*zeta^8 + 2/15*zeta^10 + 1/15*zeta^12 - 1/5*zeta^14  [1x, e.g. G: <T > 2E|D|T > 2E>]
+  N = 2/15 - 2/45*zeta^2 - 2/45*zeta^4 - 2/45*zeta^6 - 2/45*zeta^8 + 2/45*zeta^12 + 2/45*zeta^14 sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = (2*zeta - zeta^2 - 2*zeta^3 - zeta^4 + 2*zeta^6 - zeta^7 + zeta^9 + 2*zeta^10 - zeta^12 + 2*zeta^13 - zeta^14 - 2*zeta^15)/15  [2x, e.g. T2: <T > A|D|T > 1E>]
+  N = 2/45 - 1/45*zeta^2 - 1/135*zeta^4 - 1/135*zeta^6 - 1/45*zeta^8 + 1/45*zeta^12 + 1/135*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 14/45*zeta + 4/45*zeta^3 - 7/45*zeta^5 - 7/45*zeta^7 - 1/9*zeta^9 - 8/45*zeta^11 + 1/9*zeta^13 + 2/9*zeta^15  [4x, e.g. I5/2: <E1/2 > 1E1/2|D|1E3/2 > 1E1/2>]
+  N = 19/300 - 2/75*zeta^2 - 1/15*zeta^4 - 2/75*zeta^6 + 4/75*zeta^8 + 1/25*zeta^10 - 1/75*zeta^12 - 1/75*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 7/30 - 1/15*zeta^2 - 2/15*zeta^4 - 1/15*zeta^6 + 1/15*zeta^8 + 1/15*zeta^10  [1x, e.g. G3/2: <1E3/2 > B3/2|D|1E3/2 > B3/2>]
+  N = 38/675 - 2/135*zeta^2 - 2/225*zeta^4 - 11/675*zeta^6 - 4/135*zeta^8 - 1/135*zeta^10 + 1/45*zeta^12 + 16/675*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 2/9 - 2/45*zeta^2 - 1/45*zeta^4 - 2/45*zeta^6 - 4/45*zeta^8 - 1/45*zeta^10 + 1/15*zeta^12 + 1/15*zeta^14  [4x, e.g. I5/2: <1E3/2 > 1E1/2|D|1E3/2 > 1E1/2>]
+  N = 31/225 + 2/225*zeta^2 - 8/225*zeta^4 - 17/225*zeta^6 - 16/225*zeta^8 - 1/25*zeta^10 + 7/225*zeta^12 + 26/225*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 1/3 - 1/15*zeta^4 - 2/15*zeta^6 - 2/15*zeta^8 - 1/15*zeta^10 + 1/15*zeta^12 + 1/5*zeta^14  [1x, e.g. H: <T > 2E|D|T > 2E>]
+  N = 1/30 - 7/180*zeta^2 - 1/36*zeta^4 + 1/180*zeta^6 + 1/36*zeta^8 + 1/30*zeta^10 + 1/180*zeta^12 - 7/180*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/15*zeta - 1/10*zeta^2 + 1/15*zeta^3 - 1/15*zeta^5 + 1/10*zeta^6 - 2/15*zeta^7 + 1/10*zeta^8 + 1/10*zeta^10 + 1/15*zeta^11 - 1/5*zeta^14 + 1/15*zeta^15  [2x, e.g. G: <T > A|D|T > 2E>]
+  N = 1/30 - 1/90*sqrt5        sqrt in Q(zeta_60); = |mu|^2, mu = 1/6 - 1/30*sqrt5  [2x, e.g. T2: <T > 1E|D|T > 2E>]
+  N = (2 - zeta^2 - zeta^4 + zeta^8 + zeta^10 - zeta^14)/135 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/15*zeta + 1/45*zeta^3 + 4/45*zeta^5 + 1/9*zeta^7 + 1/45*zeta^9 - 1/45*zeta^11 - 7/45*zeta^13  [4x, e.g. I5/2: <E1/2 > 1E1/2|D|1E3/2 > B3/2>]
+  N = 1/54 - 1/270*sqrt5       sqrt in Q(zeta_60); = |mu|^2, mu = -4/45 + 2/45*zeta^2 + 1/45*zeta^4 + 1/15*zeta^6 + 2/15*zeta^8 + 2/45*zeta^10 - 4/45*zeta^12 - 1/9*zeta^14  [2x, e.g. I5/2: <E1/2 > 1E1/2|D|E1/2 > 2E1/2>]
+  N = 1/30 - 1/20*zeta^2 - 1/60*zeta^4 + 1/60*zeta^6 + 1/60*zeta^8 + 1/30*zeta^10 + 1/60*zeta^12 - 1/20*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = -2/15*zeta - 1/5*zeta^3 + 1/6*zeta^5 + 1/6*zeta^7 + 7/30*zeta^9 + 2/15*zeta^11 - 1/6*zeta^13 - 4/15*zeta^15  [2x, e.g. G: <A > A|D|T > 2E>]
+  N = 1/3 - 4/15*zeta^2 - 1/15*zeta^4 - 2/15*zeta^8 + 1/15*zeta^10 + 1/5*zeta^12 - 1/15*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 8/15 - 4/15*zeta^2 - 2/15*zeta^4 - 1/15*zeta^6 - 2/15*zeta^8 + 1/15*zeta^10 + 1/5*zeta^12  [1x, e.g. E7/2: <E1/2 > 2E1/2|D|E1/2 > 2E1/2>]
+  N = 13/450 - 1/150*sqrt5     NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = (-1 + 2*zeta^4 + zeta^6 + zeta^12 - 2*zeta^14)/15  [2x, e.g. H: <T > 1E|D|T > 2E>]
+  N = 1/15 - 7/300*sqrt5       NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/5 - 1/15*zeta^2 + 1/15*zeta^4 + 1/6*zeta^6 + 1/3*zeta^8 + 1/15*zeta^10 - 2/15*zeta^12 - 4/15*zeta^14  [2x, e.g. G3/2: <1E3/2 > B3/2|D|2E3/2 > B3/2>]
+  N = 1/15 - 1/75*zeta^4 - 2/75*zeta^6 - 2/75*zeta^8 - 1/75*zeta^10 + 1/75*zeta^12 + 1/25*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = (-2 + zeta^6 + 2*zeta^8 - zeta^10 - zeta^12 - 2*zeta^14)/15  [4x, e.g. H: <1E > 1E|D|T > 2E>]
+  N = 1/54 + 1/1350*sqrt5      NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/9 + 2/45*zeta^2 + 2/45*zeta^4 + 1/15*zeta^6 + 2/15*zeta^8 + 4/45*zeta^10 - 4/45*zeta^12 - 4/45*zeta^14  [8x, e.g. I5/2: <1E3/2 > B3/2|D|1E3/2 > 1E1/2>]
+  N = 2/75 - 1/30*zeta^2 - 1/50*zeta^4 + 1/75*zeta^6 + 1/30*zeta^8 + 1/30*zeta^10 - 7/150*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 2/15 + 1/15*zeta + 1/15*zeta^2 + 1/6*zeta^3 - 2/15*zeta^4 - 1/15*zeta^5 - 1/15*zeta^6 - 1/10*zeta^7 + 1/15*zeta^8 - 1/30*zeta^10 - 1/30*zeta^11 + 1/30*zeta^12 - 1/30*zeta^13 + 1/10*zeta^14 + 1/30*zeta^15  [2x, e.g. G3/2: <1E3/2 > B3/2|D|2E3/2 > 2E1/2>]
+  N = 1/45                     sqrt in Q(zeta_60); = |mu|^2, mu = 1/15*sqrt5  [2x, e.g. G: <T > 1E|D|T > 2E>]
+  N = (4 + zeta^2 - zeta^6 - zeta^8 - zeta^10 + 2*zeta^14)/135 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -2/15*zeta + 1/45*zeta^3 + 4/45*zeta^5 + 1/9*zeta^7 + 4/45*zeta^9 + 2/45*zeta^11 - 7/45*zeta^13 - 1/5*zeta^15  [4x, e.g. I5/2: <E1/2 > 2E1/2|D|1E3/2 > 1E1/2>]
+  N = 1/15 - 4/45*zeta^2 - 7/45*zeta^4 + 2/9*zeta^8 + 7/45*zeta^10 - 1/15*zeta^12 - 7/45*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 2/15 - 2/15*zeta^2 - 2/15*zeta^4 + 1/15*zeta^6 + 4/15*zeta^8 + 1/5*zeta^10 - 1/15*zeta^12 - 4/15*zeta^14  [1x, e.g. T1: <T > 2E|D|T > 2E>]
+  N = 2/75 - 2/225*zeta^2 - 2/45*zeta^4 - 1/225*zeta^6 + 16/225*zeta^8 + 1/25*zeta^10 - 7/225*zeta^12 - 8/225*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = (2 - zeta^4 + 2*zeta^8 + zeta^10 - zeta^12 - zeta^14)/15  [1x, e.g. H: <T > 1E|D|T > 1E>]
+  N = 2/75 - 2/225*zeta^2 + 2/225*zeta^4 + 2/225*zeta^6 - 2/225*zeta^8 + 2/225*zeta^12 - 2/225*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = (2 + zeta^2 + 2*zeta^3 - zeta^4 - zeta^6 - zeta^10 - zeta^11 + zeta^12 - zeta^13 + 2*zeta^14)/15  [2x, e.g. H: <T > A|D|T > 2E>]
+  N = 4/75 - 1/150*zeta^2 - 1/150*zeta^6 - 1/50*zeta^8 - 1/150*zeta^10 + 1/75*zeta^12 + 1/75*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/30 - 2/15*zeta - 1/15*zeta^2 - 1/30*zeta^3 + 1/10*zeta^4 + 2/15*zeta^5 + 1/6*zeta^7 + 1/30*zeta^9 + 1/30*zeta^10 + 1/30*zeta^11 + 1/30*zeta^12 - 1/10*zeta^13 - 1/5*zeta^15  [2x, e.g. G3/2: <1E3/2 > B3/2|D|1E3/2 > 1E1/2>]
+  N = 49/720 - 1/60*sqrt5      sqrt in Q(zeta_60); = |mu|^2, mu = 1/4 - 1/30*sqrt5  [1x, e.g. G: <T > A|D|T > A>]
+  N = (2 - zeta^4 + 2*zeta^8 + zeta^10 - zeta^12 - zeta^14)/75 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = (zeta + 2*zeta^7 + zeta^9 - 2*zeta^13 - zeta^15)/15  [4x, e.g. H: <1E > 1E|D|T > 1E>]
+  N = 2/15 - 2/45*sqrt5        sqrt in Q(zeta_60); = |mu|^2, mu = 1/3 - 1/15*sqrt5  [1x, e.g. T2: <T > A|D|T > A>]
+  N = 1/25                     sqrt in Q(zeta_60); = |mu|^2, mu = 1/5  [4x, e.g. H: <1E > 1E|D|1E > 1E>]
+  N = 47/300 + 2/75*zeta^2 - 1/25*zeta^4 - 2/25*zeta^6 - 4/75*zeta^8 - 1/25*zeta^10 + 1/75*zeta^12 + 3/25*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 11/30 + 1/15*zeta^2 - 1/15*zeta^4 - 2/15*zeta^6 - 1/15*zeta^8 - 1/15*zeta^10 + 1/5*zeta^14  [1x, e.g. G3/2: <2E3/2 > B3/2|D|2E3/2 > B3/2>]
+  N = 1/16 - 1/120*sqrt5       NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/20*sqrt3*sqrt5 + 1/12*i*sqrt3 - 1/60*i*sqrt3*sqrt5  [2x, e.g. G: <A > A|D|T > A>]
+  N = 1/30 + 1/90*sqrt5        sqrt in Q(zeta_60); = |mu|^2, mu = 1/6 + 1/30*sqrt5  [2x, e.g. T1: <T > 1E|D|T > 2E>]
+  N = (4 + 2*zeta^2 + 4*zeta^4 + 4*zeta^6 + 2*zeta^8 - 2*zeta^12 - 4*zeta^14)/225 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = (-zeta + zeta^2 - 2*zeta^3 - zeta^5 + zeta^9 + 2*zeta^11 + zeta^12 + zeta^13 + zeta^14 - zeta^15)/15  [2x, e.g. H: <T > A|D|T > 1E>]
+  N = 2/75 + 1/150*zeta^2 + 1/150*zeta^4 + 1/75*zeta^6 + 1/50*zeta^8 + 1/150*zeta^10 - 1/75*zeta^12 - 1/50*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/10 - 1/10*zeta - 1/10*zeta^2 - 1/30*zeta^3 + 1/30*zeta^4 - 1/30*zeta^5 + 2/15*zeta^6 + 1/6*zeta^8 + 2/15*zeta^10 - 1/30*zeta^12 + 1/15*zeta^13 - 2/15*zeta^14 + 1/15*zeta^15  [2x, e.g. G3/2: <2E3/2 > B3/2|D|2E3/2 > 2E1/2>]
+  N = 1/16                     sqrt in Q(zeta_60); = |mu|^2, mu = 1/4  [1x, e.g. G: <A > A|D|A > A>]
+  N = 13/675 + 2/135*zeta^2 + 4/675*zeta^4 + 1/75*zeta^6 + 4/135*zeta^8 + 1/135*zeta^10 - 1/45*zeta^12 - 14/675*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 1/9 + 2/45*zeta^2 + 1/45*zeta^4 + 2/45*zeta^6 + 4/45*zeta^8 + 1/45*zeta^10 - 1/15*zeta^12 - 1/15*zeta^14  [4x, e.g. I5/2: <1E3/2 > B3/2|D|1E3/2 > B3/2>]
+  N = 1/25 + 1/75*sqrt5        sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = (2*zeta + zeta^2 + zeta^3 + 2*zeta^4 - zeta^5 - zeta^11 - 2*zeta^12 + zeta^13 - zeta^14 + 2*zeta^15)/15  [4x, e.g. H: <1E > 1E|D|T > A>]
+  N = 1/45 + 1/45*zeta^2 + 2/135*zeta^4 + 2/135*zeta^6 + 1/45*zeta^8 - 1/45*zeta^12 - 2/135*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/45*zeta + 2/45*zeta^3 + 7/45*zeta^5 + 7/45*zeta^7 + 2/45*zeta^9 - 7/45*zeta^11 - 1/9*zeta^13 - 4/45*zeta^15  [4x, e.g. I5/2: <E1/2 > 2E1/2|D|1E3/2 > B3/2>]
+  N = (2 - 2*zeta^2 + 2*zeta^6 + 2*zeta^8 + 2*zeta^10 - 4*zeta^14)/45 sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = (zeta - zeta^2 + 2*zeta^4 + 2*zeta^5 + zeta^6 + 2*zeta^7 - zeta^8 - 2*zeta^9 + zeta^10 - 2*zeta^11 + 2*zeta^12 - zeta^14 - zeta^15)/15  [2x, e.g. T1: <T > A|D|T > 2E>]
+  N = 1/25 - 1/25*zeta^2 + 2/75*zeta^4 + 4/75*zeta^6 + 1/75*zeta^8 + 2/75*zeta^10 + 1/75*zeta^12 - 2/25*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 2/15 - 1/15*zeta^2 + 1/15*zeta^4 + 2/15*zeta^6 + 1/15*zeta^8 + 1/15*zeta^10 - 1/5*zeta^14  [1x, e.g. G3/2: <2E3/2 > 2E1/2|D|2E3/2 > 2E1/2>]
+  N = 7/75 + 1/30*zeta^2 + 1/75*zeta^4 - 1/50*zeta^6 - 1/30*zeta^8 - 1/30*zeta^10 + 4/75*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -2/15 - 1/5*zeta + 1/30*zeta^2 - 1/6*zeta^3 + 1/30*zeta^4 - 1/30*zeta^5 + 1/10*zeta^6 + 1/15*zeta^7 + 1/10*zeta^8 + 2/15*zeta^9 + 1/15*zeta^10 + 1/6*zeta^11 + 1/30*zeta^12 + 1/15*zeta^13 - 1/15*zeta^14 - 1/6*zeta^15  [2x, e.g. G3/2: <1E3/2 > 1E1/2|D|2E3/2 > B3/2>]
+  N = 4/135 + 4/135*zeta^2 + 1/45*zeta^4 + 2/135*zeta^6 + 2/135*zeta^8 - 1/135*zeta^10 - 1/45*zeta^12 - 1/135*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 7/45 + 4/45*zeta^2 + 2/45*zeta^4 + 1/45*zeta^6 + 2/45*zeta^8 - 1/45*zeta^10 - 1/15*zeta^12  [1x, e.g. I5/2: <E1/2 > 2E1/2|D|E1/2 > 2E1/2>]
+  N = 1/6 - 1/30*sqrt5         sqrt in Q(zeta_60); = |mu|^2, mu = -4/15 + 2/15*zeta^2 + 1/15*zeta^4 + 1/5*zeta^6 + 2/5*zeta^8 + 2/15*zeta^10 - 4/15*zeta^12 - 1/3*zeta^14  [2x, e.g. E7/2: <E1/2 > 1E1/2|D|E1/2 > 2E1/2>]
+  N = 17/180 + 7/180*zeta^2 + 1/90*zeta^4 - 1/45*zeta^6 - 1/36*zeta^8 - 1/30*zeta^10 - 1/180*zeta^12 + 1/18*zeta^14 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/5 - 1/5*zeta + 1/10*zeta^2 - 1/15*zeta^3 + 1/10*zeta^4 + 1/15*zeta^5 + 2/15*zeta^7 - 1/10*zeta^8 + 2/15*zeta^9 - 1/10*zeta^10 + 1/15*zeta^11 + 1/10*zeta^14 - 2/15*zeta^15  [2x, e.g. G: <T > A|D|T > 1E>]
+  N = 14/225 + 2/75*sqrt5      sqrt in Q(zeta_60); = |mu|^2, mu = 1/5 + 1/15*sqrt5  [1x, e.g. H: <T > A|D|T > A>]
+  N = 4/9 + 4/45*zeta^2 - 1/15*zeta^4 - 2/9*zeta^6 - 2/9*zeta^8 - 7/45*zeta^10 + 1/15*zeta^12 + 17/45*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 3/5 + 2/15*zeta^2 - 1/5*zeta^6 - 4/15*zeta^8 - 1/5*zeta^10 + 1/15*zeta^12 + 2/5*zeta^14  [1x, e.g. T1: <T > 1E|D|T > 1E>]
+  N = 1/15 + 2/75*sqrt5        sqrt in Q(zeta_60); = |mu|^2, mu = (1 + 4*zeta^2 + 2*zeta^4 - 2*zeta^10 - 2*zeta^12 + 2*zeta^14)/15  [2x, e.g. G3/2: <1E3/2 > 1E1/2|D|2E3/2 > 2E1/2>]
+  N = 1/12 + 1/20*zeta^2 + 1/30*zeta^4 - 1/60*zeta^8 - 1/30*zeta^10 - 1/60*zeta^12 + 1/30*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = -1/30*zeta + 1/5*zeta^3 + 1/6*zeta^5 + 1/6*zeta^7 - 1/15*zeta^9 + 1/30*zeta^11 - 1/6*zeta^13 - 1/15*zeta^15  [2x, e.g. G: <A > A|D|T > 1E>]
+  N = (4 + 2*zeta^2 + 2*zeta^8 - 2*zeta^12)/45 sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = (2*zeta + zeta^3 - zeta^4 + zeta^5 + 2*zeta^6 - zeta^7 + 2*zeta^8 + zeta^9 + 2*zeta^10 - zeta^11 - zeta^12 - zeta^13 - 2*zeta^15)/15  [2x, e.g. T2: <T > A|D|T > 2E>]
+  N = 2/15 - 2/15*zeta^2 - 2/15*zeta^4 + 1/15*zeta^6 + 4/15*zeta^8 + 1/5*zeta^10 - 1/15*zeta^12 - 4/15*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 4/15 - 2/15*zeta^2 - 1/15*zeta^4 + 2/15*zeta^6 + 4/15*zeta^8 + 1/5*zeta^10 - 1/15*zeta^12 - 1/3*zeta^14  [1x, e.g. E1/2: <E1/2 > 2E1/2|D|E1/2 > 2E1/2>]
+  N = 2/15 + 2/45*zeta^2 + 2/45*zeta^4 - 2/45*zeta^8 - 2/45*zeta^10 + 2/45*zeta^14 sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = (zeta - 2*zeta^2 + 2*zeta^3 + 2*zeta^4 + zeta^5 + zeta^6 + 2*zeta^7 + 2*zeta^8 - 2*zeta^9 + zeta^10 - zeta^11 + 2*zeta^12 - 2*zeta^13 - 2*zeta^14 - zeta^15)/15  [2x, e.g. T1: <T > A|D|T > 1E>]
+  N = 2/25 + 1/25*zeta^2 + 1/15*zeta^4 + 1/25*zeta^6 - 1/75*zeta^8 - 2/75*zeta^10 - 1/75*zeta^12 - 1/75*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = (4 + zeta^2 + 2*zeta^4 + zeta^6 - zeta^8 - zeta^10)/15  [1x, e.g. G3/2: <1E3/2 > 1E1/2|D|1E3/2 > 1E1/2>]
+  N = 2/15 + 2/45*sqrt5        sqrt in Q(zeta_60); = |mu|^2, mu = 1/3 + 1/15*sqrt5  [1x, e.g. T1: <T > A|D|T > A>]
+  N = 1/6 + 1/30*sqrt5         sqrt in Q(zeta_60); = |mu|^2, mu = 1/5 + 2/5*zeta^2 + 1/5*zeta^4 - 1/15*zeta^6 - 2/15*zeta^8 - 4/15*zeta^10 - 2/15*zeta^12 + 1/3*zeta^14  [2x, e.g. E1/2: <E1/2 > 1E1/2|D|E1/2 > 2E1/2>]
+  N = 2/15 + 1/9*zeta^2 + 4/45*zeta^4 + 1/45*zeta^6 - 1/45*zeta^8 - 1/15*zeta^10 - 2/45*zeta^12 + 2/45*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 1/3 + 1/5*zeta^2 + 2/15*zeta^4 - 1/15*zeta^8 - 2/15*zeta^10 - 1/15*zeta^12 + 2/15*zeta^14  [1x, e.g. G: <T > 1E|D|T > 1E>]
+  N = 3/5 + 2/15*zeta^2 - 1/5*zeta^6 - 4/15*zeta^8 - 1/5*zeta^10 + 1/15*zeta^12 + 2/5*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 11/15 + 2/15*zeta^2 + 1/15*zeta^4 - 2/15*zeta^6 - 4/15*zeta^8 - 1/5*zeta^10 + 1/15*zeta^12 + 1/3*zeta^14  [1x, e.g. E1/2: <E1/2 > 1E1/2|D|E1/2 > 1E1/2>]
+  N = 2/15 + 2/9*zeta^2 + 2/9*zeta^4 + 7/45*zeta^6 + 4/45*zeta^8 - 1/15*zeta^10 - 7/45*zeta^12 - 4/45*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 4/15 + 4/15*zeta^2 + 1/5*zeta^4 + 2/15*zeta^6 + 2/15*zeta^8 - 1/15*zeta^10 - 1/5*zeta^12 - 1/15*zeta^14  [1x, e.g. T2: <T > 2E|D|T > 2E>]
+  N = 4/15 + 4/15*zeta^2 + 1/5*zeta^4 + 2/15*zeta^6 + 2/15*zeta^8 - 1/15*zeta^10 - 1/5*zeta^12 - 1/15*zeta^14 sqrt in Q(zeta_60); = |mu|^2, mu = 7/15 + 4/15*zeta^2 + 2/15*zeta^4 + 1/15*zeta^6 + 2/15*zeta^8 - 1/15*zeta^10 - 1/5*zeta^12  [1x, e.g. E7/2: <E1/2 > 1E1/2|D|E1/2 > 1E1/2>]
+  N = 1                        sqrt in Q(zeta_60); = |mu|^2, mu = 1  [1x, e.g. A: <A > A|D|A > A>]
+  => chain-adapted matrices: real-positive normalisation needs no cyclotomic field; Hermitian-norm factors in Q(zeta_60) found for 59 of 59 values
+Chain I > T > D2 > C2 (chain field Q(zeta_60)): 30 chain-adapted vectors, 19 distinct squared norms (1.3 s)
+  N = 1/6 - 1/10*zeta - 2/15*zeta^3 + 1/30*zeta^9 + 1/10*zeta^11 - 1/15*zeta^15 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 4/15 + 7/30*zeta + 1/3*zeta^2 + 1/30*zeta^3 + 1/10*zeta^4 - 1/3*zeta^5 - 2/15*zeta^6 - 4/15*zeta^7 - 4/15*zeta^8 - 2/15*zeta^9 - 4/15*zeta^10 - 1/30*zeta^11 - 1/30*zeta^12 + 1/5*zeta^13 + 11/30*zeta^14 + 3/10*zeta^15  [2x, e.g. I5/2 > 1E3/2 > E1/2 > 1E1/2]
+  N = 1/6 - 1/10*zeta - 1/15*zeta^3 - 1/30*zeta^9 + 1/10*zeta^11 - 1/30*zeta^15 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/10 + 1/6*zeta - 1/5*zeta^2 + 1/5*zeta^3 + 1/15*zeta^4 + 1/15*zeta^5 + 1/30*zeta^6 - 2/15*zeta^7 + 1/15*zeta^8 - 1/15*zeta^9 + 2/15*zeta^10 + 1/30*zeta^11 + 1/15*zeta^12 - 4/15*zeta^13 + 1/30*zeta^15  [1x, e.g. I5/2 > E1/2 > E1/2 > 2E1/2]
+  N = 1/4 - 1/10*sqrt5         sqrt in Q(zeta_60); = |mu|^2, mu = 1/5*zeta - 1/5*zeta^3 + 2/5*zeta^9 - 1/5*zeta^11 - 1/10*zeta^15  [1x, e.g. G > T > B3 > B]
+  N = 1/2 - 3/10*zeta - 1/5*zeta^3 - 1/10*zeta^9 + 3/10*zeta^11 - 1/10*zeta^15 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -2/5 + 2/5*zeta + 1/10*zeta^3 + 1/5*zeta^4 + 1/10*zeta^6 + 3/10*zeta^9 - 2/5*zeta^11 - 3/10*zeta^12 - 1/5*zeta^14 + 3/10*zeta^15  [1x, e.g. E7/2 > E1/2 > E1/2 > 1E1/2]
+  N = 1/10                     sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = 1/5*zeta^2 + 1/10*zeta^3 + 1/5*zeta^5 - 1/10*zeta^8 - 1/5*zeta^11 - 1/10*zeta^13 + 1/5*zeta^14  [1x, e.g. H > T > B2 > B]
+  N = 1/4 - 1/20*sqrt5         sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = 2/5 + 1/5*zeta + 1/10*zeta^2 + 1/10*zeta^3 + 1/10*zeta^5 - 1/5*zeta^7 - 1/5*zeta^8 - 1/5*zeta^9 - 2/5*zeta^10 + 1/10*zeta^11 + 1/10*zeta^13 + 3/10*zeta^14 + 1/5*zeta^15  [3x, e.g. T1 > T > B3 > B]
+  N = 1/5                      sqrt in Q(zeta_60); = |mu|^2, mu = 1/5*sqrt5  [2x, e.g. H > 1E > A > A]
+  N = 1/4 - 1/10*zeta^3 + 1/10*zeta^9 - 1/20*zeta^15 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/5 - 1/10*zeta^2 - 1/5*zeta^4 + 1/5*zeta^5 + 1/10*zeta^7 + 1/5*zeta^8 + 1/10*zeta^9 + 2/5*zeta^10 + 1/10*zeta^11 + 1/10*zeta^12 - 3/10*zeta^13 - 1/10*zeta^14  [2x, e.g. G3/2 > 1E3/2 > E1/2 > 1E1/2]
+  N = 1/2 - 1/10*zeta - 2/5*zeta^3 + 3/10*zeta^9 + 1/10*zeta^11 - 1/5*zeta^15 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -3/10 + 3/10*zeta + 7/10*zeta^3 - 1/10*zeta^4 + 1/5*zeta^6 - 2/5*zeta^9 - 3/10*zeta^11 - 1/10*zeta^12 + 1/10*zeta^14 + 3/5*zeta^15  [1x, e.g. E1/2 > E1/2 > E1/2 > 2E1/2]
+  N = 1/4                      sqrt in Q(zeta_60); = |mu|^2, mu = 1/2  [2x, e.g. G > A > A > A]
+  N = 1/4 + 1/10*zeta^3 - 1/10*zeta^9 + 1/20*zeta^15 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/10 - 1/5*zeta + 3/10*zeta^2 - 1/10*zeta^3 - 1/5*zeta^4 - 1/5*zeta^5 + 1/10*zeta^6 + 1/5*zeta^9 - 1/10*zeta^10 + 2/5*zeta^11 - 1/10*zeta^12 + 1/10*zeta^13 + 3/10*zeta^14 - 1/10*zeta^15  [2x, e.g. G3/2 > 1E3/2 > E1/2 > 2E1/2]
+  N = 1/6 + 1/10*zeta + 1/15*zeta^3 + 1/30*zeta^9 - 1/10*zeta^11 + 1/30*zeta^15 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = 1/15 - 1/3*zeta + 2/15*zeta^2 - 1/30*zeta^3 + 1/15*zeta^4 + 4/15*zeta^5 + 1/30*zeta^6 + 7/15*zeta^7 + 1/15*zeta^8 + 7/30*zeta^9 - 1/5*zeta^10 + 2/15*zeta^11 - 1/10*zeta^12 - 2/5*zeta^13 - 11/30*zeta^15  [1x, e.g. I5/2 > E1/2 > E1/2 > 1E1/2]
+  N = 1/6 + 1/10*zeta + 2/15*zeta^3 - 1/30*zeta^9 - 1/10*zeta^11 + 1/15*zeta^15 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/6 + 1/30*zeta - 1/15*zeta^2 - 1/10*zeta^3 + 1/6*zeta^4 + 4/15*zeta^5 + 2/15*zeta^6 + 4/15*zeta^8 + 1/15*zeta^10 + 1/30*zeta^11 - 1/10*zeta^12 + 1/5*zeta^13 - 1/10*zeta^14 - 2/15*zeta^15  [2x, e.g. I5/2 > 1E3/2 > E1/2 > 2E1/2]
+  N = 1/4 + 1/20*sqrt5         sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = 1/5 - 2/5*zeta + 3/10*zeta^2 - 1/5*zeta^3 + 3/10*zeta^5 + 2/5*zeta^7 - 1/10*zeta^8 + 2/5*zeta^9 - 1/5*zeta^10 + 3/10*zeta^11 - 1/5*zeta^13 - 1/10*zeta^14 - 2/5*zeta^15  [3x, e.g. T1 > T > B1 > A]
+  N = 1/4 + 1/10*sqrt5         sqrt in Q(zeta_60); = |mu|^2, mu = 2/5*zeta + 3/5*zeta^3 - 1/5*zeta^9 - 2/5*zeta^11 + 3/10*zeta^15  [1x, e.g. G > T > B1 > A]
+  N = 1/2                      sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = (zeta^3 + zeta^8 - zeta^13)/2  [2x, e.g. T1 > T > B2 > B]
+  N = 1/2 + 1/10*zeta + 2/5*zeta^3 - 3/10*zeta^9 - 1/10*zeta^11 + 1/5*zeta^15 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/10 + 1/10*zeta - 1/10*zeta^3 + 3/10*zeta^4 + 2/5*zeta^6 + 1/5*zeta^9 - 1/10*zeta^11 + 3/10*zeta^12 - 3/10*zeta^14 + 1/5*zeta^15  [1x, e.g. E1/2 > E1/2 > E1/2 > 1E1/2]
+  N = 1/2 + 3/10*zeta + 1/5*zeta^3 + 1/10*zeta^9 - 3/10*zeta^11 + 1/10*zeta^15 NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/5 + 1/5*zeta + 3/10*zeta^3 + 3/5*zeta^4 + 3/10*zeta^6 - 1/10*zeta^9 - 1/5*zeta^11 + 1/10*zeta^12 - 3/5*zeta^14 - 1/10*zeta^15  [1x, e.g. E7/2 > E1/2 > E1/2 > 2E1/2]
+  N = 1                        sqrt in Q(zeta_60); = |mu|^2, mu = 1  [1x, e.g. A > A > A > A]
+  => chain-adapted vectors: real-positive normalisation needs no cyclotomic field; Hermitian-norm factors in Q(zeta_60) found for 19 of 19 values
+  products N_i N_k under the non-zero matrix elements <v_i|D(g)|v_k>: 37 distinct
+  N = 8/225 - 1/30*zeta - 2/45*zeta^3 + 11/900*zeta^4 + 11/900*zeta^6 + 1/90*zeta^9 + 1/30*zeta^11 - 11/900*zeta^14 - 1/45*zeta^15 sqrt in Q(zeta_60); = |mu|^2, mu = 1/6 - 1/10*zeta - 2/15*zeta^3 + 1/30*zeta^9 + 1/10*zeta^11 - 1/15*zeta^15  [4x, e.g. I5/2: <1E3/2 > E1/2 > 1E1/2|D|1E3/2 > E1/2 > 1E1/2>]
+  N = 1/30 - 1/30*zeta - 1/30*zeta^3 + 1/90*zeta^4 + 1/90*zeta^6 + 1/30*zeta^11 - 1/90*zeta^14 - 1/60*zeta^15 sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = 1/10 - 1/30*zeta - 1/30*zeta^2 - 1/15*zeta^3 - 1/30*zeta^5 + 1/30*zeta^7 + 1/30*zeta^9 - 1/10*zeta^10 + 1/6*zeta^11 + 1/30*zeta^13 - 1/15*zeta^14 - 1/30*zeta^15  [4x, e.g. I5/2: <E1/2 > E1/2 > 2E1/2|D|1E3/2 > E1/2 > 1E1/2>]
+  N = 1/45 - 1/90*zeta^3 - 1/90*zeta^4 - 1/90*zeta^6 + 1/90*zeta^9 + 1/90*zeta^14 - 1/180*zeta^15 sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = 1/30 + 1/10*zeta + 1/15*zeta^3 - 1/10*zeta^7 - 1/30*zeta^8 - 1/10*zeta^9 - 1/30*zeta^10 - 1/15*zeta^11 + 1/30*zeta^13 + 1/10*zeta^14 + 1/10*zeta^15  [4x, e.g. I5/2: <E1/2 > E1/2 > 1E1/2|D|1E3/2 > E1/2 > 1E1/2>]
+  N = 1/72 - 11/1800*sqrt5     sqrt in Q(zeta_60); = |mu|^2, mu = 1/30*zeta - 1/15*zeta^3 + 1/10*zeta^9 - 1/30*zeta^11 - 1/30*zeta^15  [8x, e.g. I5/2: <1E3/2 > E1/2 > 1E1/2|D|1E3/2 > E1/2 > 2E1/2>]
+  N = 7/180 - 1/30*zeta - 1/45*zeta^3 + 1/180*zeta^4 + 1/180*zeta^6 - 1/90*zeta^9 + 1/30*zeta^11 - 1/180*zeta^14 - 1/90*zeta^15 sqrt in Q(zeta_60); = |mu|^2, mu = 1/6 - 1/10*zeta - 1/15*zeta^3 - 1/30*zeta^9 + 1/10*zeta^11 - 1/30*zeta^15  [1x, e.g. I5/2: <E1/2 > E1/2 > 2E1/2|D|E1/2 > E1/2 > 2E1/2>]
+  N = 9/80 - 1/20*sqrt5        sqrt in Q(zeta_60); = |mu|^2, mu = 1/4 - 1/10*sqrt5  [1x, e.g. G: <T > B3 > B|D|T > B3 > B>]
+  N = 7/20 - 3/10*zeta - 1/5*zeta^3 + 1/20*zeta^4 + 1/20*zeta^6 - 1/10*zeta^9 + 3/10*zeta^11 - 1/20*zeta^14 - 1/10*zeta^15 sqrt in Q(zeta_60); = |mu|^2, mu = 1/2 - 3/10*zeta - 1/5*zeta^3 - 1/10*zeta^9 + 3/10*zeta^11 - 1/10*zeta^15  [1x, e.g. E7/2: <E1/2 > E1/2 > 1E1/2|D|E1/2 > E1/2 > 1E1/2>]
+  N = 1/16 - 1/40*sqrt5        sqrt in Q(zeta_60); = |mu|^2, mu = 1/10*zeta - 1/10*zeta^3 + 1/5*zeta^9 - 1/10*zeta^11 - 1/20*zeta^15  [4x, e.g. G: <A > A > A|D|T > B3 > B>]
+  N = 1/72 - 1/360*sqrt5       sqrt in Q(zeta_60); = |mu|^2, mu = 1/30*zeta + 2/15*zeta^3 - 1/10*zeta^9 - 1/30*zeta^11 + 1/15*zeta^15  [2x, e.g. I5/2: <E1/2 > E1/2 > 1E1/2|D|E1/2 > E1/2 > 2E1/2>]
+  N = 1/45 + 1/90*zeta^3 - 1/90*zeta^4 - 1/90*zeta^6 - 1/90*zeta^9 + 1/90*zeta^14 + 1/180*zeta^15 sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = -1/30 - 1/10*zeta + 1/15*zeta^2 - 1/30*zeta^3 + 1/15*zeta^5 + 1/10*zeta^7 + 1/10*zeta^9 + 1/30*zeta^10 - 1/15*zeta^13 - 1/30*zeta^14 - 1/10*zeta^15  [4x, e.g. I5/2: <E1/2 > E1/2 > 2E1/2|D|1E3/2 > E1/2 > 2E1/2>]
+  N = 1/100                    sqrt in Q(zeta_60); = |mu|^2, mu = 1/10  [1x, e.g. H: <T > B2 > B|D|T > B2 > B>]
+  N = 1/80                     sqrt in Q(zeta_60); = |mu|^2, mu = 1/20*sqrt5  [2x, e.g. G: <T > B1 > A|D|T > B3 > B>]
+  N = 1/40 - 1/200*sqrt5       sqrt in Q(zeta_60); = |mu|^2, mu = (zeta + zeta^9 - zeta^11)/10  [2x, e.g. H: <T > B1 > A|D|T > B2 > B>]
+  N = (3 - sqrt5)/40           sqrt in Q(zeta_60); = |mu|^2, mu = 1/4 - 1/20*sqrt5  [3x, e.g. T1: <T > B3 > B|D|T > B3 > B>]
+  N = 1/50                     sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = (zeta^3 + zeta^8 - zeta^13)/10  [4x, e.g. H: <1E > A > A|D|T > B2 > B>]
+  N = 1/20 - 1/100*sqrt5       sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = -1/5*zeta + 1/10*zeta^2 - 1/10*zeta^3 + 1/10*zeta^5 + 1/5*zeta^7 + 1/5*zeta^9 + 1/10*zeta^11 - 1/10*zeta^13 - 1/10*zeta^14 - 1/5*zeta^15  [4x, e.g. H: <1E > A > A|D|T > B1 > A>]
+  N = 1/40 + 1/200*sqrt5       sqrt in Q(zeta_60); = |mu|^2, mu = 1/10*zeta + 1/5*zeta^3 - 1/10*zeta^9 - 1/10*zeta^11 + 1/10*zeta^15  [2x, e.g. H: <T > B2 > B|D|T > B3 > B>]
+  N = 1/25                     sqrt in Q(zeta_60); = |mu|^2, mu = 1/5  [4x, e.g. H: <1E > A > A|D|1E > A > A>]
+  N = 2/25 - 1/20*zeta^3 - 1/100*zeta^4 - 1/100*zeta^6 + 1/20*zeta^9 + 1/100*zeta^14 - 1/40*zeta^15 sqrt in Q(zeta_60); = |mu|^2, mu = 1/4 - 1/10*zeta^3 + 1/10*zeta^9 - 1/20*zeta^15  [4x, e.g. G3/2: <1E3/2 > E1/2 > 1E1/2|D|1E3/2 > E1/2 > 1E1/2>]
+  N = 1/20                     sqrt in Q(zeta_60); = |mu|^2, mu = 1/10*sqrt5  [6x, e.g. T1: <T > B1 > A|D|T > B3 > B>]
+  N = 2/5 - 1/10*zeta - 2/5*zeta^3 - 1/20*zeta^4 - 1/20*zeta^6 + 3/10*zeta^9 + 1/10*zeta^11 + 1/20*zeta^14 - 1/5*zeta^15 sqrt in Q(zeta_60); = |mu|^2, mu = 1/2 - 1/10*zeta - 2/5*zeta^3 + 3/10*zeta^9 + 1/10*zeta^11 - 1/5*zeta^15  [1x, e.g. E1/2: <E1/2 > E1/2 > 2E1/2|D|E1/2 > E1/2 > 2E1/2>]
+  N = 1/20 + 1/200*sqrt5       NOT cyclotomic (K(sqrt N)/Q non-abelian); = |mu|^2, mu = -1/20 - 1/10*zeta + 1/10*zeta^4 + 1/10*zeta^5 + 1/5*zeta^7 + 1/10*zeta^9 + 1/10*zeta^11 - 1/10*zeta^12 - 1/5*zeta^13 - 1/10*zeta^14 - 3/20*zeta^15  [8x, e.g. G3/2: <1E3/2 > E1/2 > 1E1/2|D|1E3/2 > E1/2 > 2E1/2>]
+  N = 1/16                     sqrt in Q(zeta_60); = |mu|^2, mu = 1/4  [4x, e.g. G: <A > A > A|D|A > A > A>]
+  N = 1/8 - 1/40*sqrt5         sqrt in Q(zeta_60); = |mu|^2, mu = 1/10*zeta + 2/5*zeta^3 - 3/10*zeta^9 - 1/10*zeta^11 + 1/5*zeta^15  [6x, e.g. T1: <T > B2 > B|D|T > B3 > B>]
+  N = 1/20 + 1/100*sqrt5       sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = 1/5 + 1/10*zeta^2 + 1/10*zeta^5 - 1/10*zeta^8 - 1/5*zeta^10 + 1/10*zeta^11 + 1/10*zeta^14  [4x, e.g. H: <1E > A > A|D|T > B3 > B>]
+  N = 2/25 + 1/20*zeta^3 - 1/100*zeta^4 - 1/100*zeta^6 - 1/20*zeta^9 + 1/100*zeta^14 + 1/40*zeta^15 sqrt in Q(zeta_60); = |mu|^2, mu = 1/4 + 1/10*zeta^3 - 1/10*zeta^9 + 1/20*zeta^15  [4x, e.g. G3/2: <1E3/2 > E1/2 > 2E1/2|D|1E3/2 > E1/2 > 2E1/2>]
+  N = 7/180 + 1/30*zeta + 1/45*zeta^3 + 1/180*zeta^4 + 1/180*zeta^6 + 1/90*zeta^9 - 1/30*zeta^11 - 1/180*zeta^14 + 1/90*zeta^15 sqrt in Q(zeta_60); = |mu|^2, mu = 1/6 + 1/10*zeta + 1/15*zeta^3 + 1/30*zeta^9 - 1/10*zeta^11 + 1/30*zeta^15  [1x, e.g. I5/2: <E1/2 > E1/2 > 1E1/2|D|E1/2 > E1/2 > 1E1/2>]
+  N = 1/30 + 1/30*zeta + 1/30*zeta^3 + 1/90*zeta^4 + 1/90*zeta^6 - 1/30*zeta^11 - 1/90*zeta^14 + 1/60*zeta^15 sqrt in Q(zeta_120), not in Q(zeta_60); = |mu|^2, mu = 1/10 - 1/30*zeta + 1/6*zeta^2 + 1/30*zeta^3 + 1/6*zeta^5 + 1/30*zeta^7 - 1/10*zeta^8 + 1/30*zeta^9 - 1/10*zeta^10 - 1/30*zeta^11 - 1/15*zeta^13 + 2/15*zeta^14 - 1/30*zeta^15  [4x, e.g. I5/2: <E1/2 > E1/2 > 1E1/2|D|1E3/2 > E1/2 > 2E1/2>]
+  N = 8/225 + 1/30*zeta + 2/45*zeta^3 + 11/900*zeta^4 + 11/900*zeta^6 - 1/90*zeta^9 - 1/30*zeta^11 - 11/900*zeta^14 + 1/45*zeta^15 sqrt in Q(zeta_60); = |mu|^2, mu = 1/6 + 1/10*zeta + 2/15*zeta^3 - 1/30*zeta^9 - 1/10*zeta^11 + 1/15*zeta^15  [4x, e.g. I5/2: <1E3/2 > E1/2 > 2E1/2|D|1E3/2 > E1/2 > 2E1/2>]
+  N = 1/16 + 1/40*sqrt5        sqrt in Q(zeta_60); = |mu|^2, mu = 1/5*zeta + 3/10*zeta^3 - 1/10*zeta^9 - 1/5*zeta^11 + 3/20*zeta^15  [4x, e.g. G: <A > A > A|D|T > B1 > A>]
+  N = (3 + sqrt5)/40           sqrt in Q(zeta_60); = |mu|^2, mu = 1/4 + 1/20*sqrt5  [3x, e.g. T1: <T > B1 > A|D|T > B1 > A>]
+  N = 1/8 + 1/40*sqrt5         sqrt in Q(zeta_60); = |mu|^2, mu = 3/10*zeta + 1/5*zeta^3 + 1/10*zeta^9 - 3/10*zeta^11 + 1/10*zeta^15  [6x, e.g. T1: <T > B1 > A|D|T > B2 > B>]
+  N = 9/80 + 1/20*sqrt5        sqrt in Q(zeta_60); = |mu|^2, mu = 1/4 + 1/10*sqrt5  [1x, e.g. G: <T > B1 > A|D|T > B1 > A>]
+  N = 1/4                      sqrt in Q(zeta_60); = |mu|^2, mu = 1/2  [2x, e.g. T1: <T > B2 > B|D|T > B2 > B>]
+  N = 2/5 + 1/10*zeta + 2/5*zeta^3 - 1/20*zeta^4 - 1/20*zeta^6 - 3/10*zeta^9 - 1/10*zeta^11 + 1/20*zeta^14 + 1/5*zeta^15 sqrt in Q(zeta_60); = |mu|^2, mu = 1/2 + 1/10*zeta + 2/5*zeta^3 - 3/10*zeta^9 - 1/10*zeta^11 + 1/5*zeta^15  [1x, e.g. E1/2: <E1/2 > E1/2 > 1E1/2|D|E1/2 > E1/2 > 1E1/2>]
+  N = 7/20 + 3/10*zeta + 1/5*zeta^3 + 1/20*zeta^4 + 1/20*zeta^6 + 1/10*zeta^9 - 3/10*zeta^11 - 1/20*zeta^14 + 1/10*zeta^15 sqrt in Q(zeta_60); = |mu|^2, mu = 1/2 + 3/10*zeta + 1/5*zeta^3 + 1/10*zeta^9 - 3/10*zeta^11 + 1/10*zeta^15  [1x, e.g. E7/2: <E1/2 > E1/2 > 2E1/2|D|E1/2 > E1/2 > 2E1/2>]
+  N = 1                        sqrt in Q(zeta_60); = |mu|^2, mu = 1  [1x, e.g. A: <A > A > A|D|A > A > A>]
+  => chain-adapted matrices: real-positive normalisation needs no cyclotomic field; Hermitian-norm factors in Q(zeta_60) found for 37 of 37 values
+
+## Ih  (|G| = 120, field Q(zeta_20))
+Clebsch-Gordan: 494 vectors (first partners) over 171 irrep pairs, 30 distinct squared norms (18.3 s)
+  N = 1/20                     sqrt in Q(zeta_20); = |mu|^2, mu = 1/10*sqrt5  [5x, e.g. Hg x Gu > T1u]
+  N = 1/15                     sqrt in Q(zeta_60), not in Q(zeta_20); = |mu|^2, mu = 1/6 + 1/30*sqrt5 + 1/6*i - 1/30*i*sqrt5  [8x, e.g. T1g x I5/2g > G3/2g]
+  N = 1/12                     sqrt in Q(zeta_60), not in Q(zeta_20); = |mu|^2, mu = (1 + sqrt5 - i + i*sqrt5)/12  [3x, e.g. T1g x Gg > Hg]
+  N = 1/10                     sqrt in Q(zeta_40), not in Q(zeta_20); = |mu|^2, mu = 1/10 + 1/5*zeta + 1/10*zeta^2 - 1/10*zeta^3 - 1/10*zeta^4 + 1/5*zeta^5 - 1/10*zeta^6  [15x, e.g. T1g x Hg > T1g]
+  N = 1/9                      sqrt in Q(zeta_20); = |mu|^2, mu = 1/3  [6x, e.g. Hg x Hg > Hg #2]
+  N = 2/15                     sqrt in Q(zeta_120), not in Q(zeta_20); = |mu|^2, mu = 1/15*sqrt5 + 1/3*i  [6x, e.g. Hg x T1u > Gu]
+  N = 1/7                      sqrt in Q(zeta_140), not in Q(zeta_20); = |mu|^2, mu = (3 + sqrt5 - 3*i + i*sqrt5)/14  [4x, e.g. T1g x I5/2g > I5/2g #2]
+  N = 1/6                      sqrt in Q(zeta_120), not in Q(zeta_20); = |mu|^2, mu = (1 + i*sqrt5)/6  [30x, e.g. T1g x G3/2g > E1/2g]
+  N = 1/5                      sqrt in Q(zeta_20); = |mu|^2, mu = 1/5*sqrt5  [40x, e.g. T1g x G3/2g > I5/2g]
+  N = 2/9                      sqrt in Q(zeta_40), not in Q(zeta_20); = |mu|^2, mu = (1 - zeta^2 + zeta^3 + zeta^4 - zeta^6)/3  [3x, e.g. I5/2g x I5/2g > Hg #3]
+  N = 1/4                      sqrt in Q(zeta_20); = |mu|^2, mu = 1/2  [20x, e.g. T1g x Gg > T2g]
+  N = 4/15                     sqrt in Q(zeta_60), not in Q(zeta_20); = |mu|^2, mu = 1/3 + 1/15*sqrt5 + 1/3*i - 1/15*i*sqrt5  [10x, e.g. T1g x Hg > Gg]
+  N = 2/7                      sqrt in Q(zeta_280), not in Q(zeta_20); = |mu|^2, mu = (sqrt5 + 3*i)/7  [3x, e.g. I5/2g x I5/2g > T1g #2]
+  N = 3/10                     sqrt in Q(zeta_120), not in Q(zeta_20); = |mu|^2, mu = 1/10*sqrt5 + 1/2*i  [30x, e.g. Gg x Hg > T2g]
+  N = 1/3                      sqrt in Q(zeta_60), not in Q(zeta_20); = |mu|^2, mu = (1 + sqrt5 - i + i*sqrt5)/6  [55x, e.g. T1g x T1g > Ag]
+  N = 7/20                     sqrt in Q(zeta_140), not in Q(zeta_20); = |mu|^2, mu = 1/4 + 3/20*sqrt5 + 1/4*i - 3/20*i*sqrt5  [3x, e.g. I5/2g x I5/2g > T1g]
+  N = 9/25                     sqrt in Q(zeta_20); = |mu|^2, mu = 3/5  [4x, e.g. Hg x G3/2g > I5/2g #2]
+  N = 2/5                      sqrt in Q(zeta_40), not in Q(zeta_20); = |mu|^2, mu = (1 + 2*zeta + zeta^2 - zeta^3 - zeta^4 + 2*zeta^5 - zeta^6)/5  [38x, e.g. T1g x Hg > T2g]
+  N = 5/12                     sqrt in Q(zeta_60), not in Q(zeta_20); = |mu|^2, mu = (5 + sqrt5 + 5*i - i*sqrt5)/12  [2x, e.g. Hg x Gu > Hu]
+  N = 9/20                     sqrt in Q(zeta_20); = |mu|^2, mu = 3/10*sqrt5  [1x, e.g. Hg x Gu > T2u]
+  N = 1/2                      sqrt in Q(zeta_40), not in Q(zeta_20); = |mu|^2, mu = (1 - zeta^2 + zeta^3 + zeta^4 - zeta^6)/2  [74x, e.g. T1g x T1g > T1g]
+  N = 8/15                     sqrt in Q(zeta_120), not in Q(zeta_20); = |mu|^2, mu = 2/15*sqrt5 + 2/3*i  [9x, e.g. Gg x I5/2g > G3/2g]
+  N = 9/16                     sqrt in Q(zeta_20); = |mu|^2, mu = 3/4  [4x, e.g. Gg x G3/2g > I5/2g #2]
+  N = 3/5                      sqrt in Q(zeta_60), not in Q(zeta_20); = |mu|^2, mu = 1/2 + 1/10*sqrt5 + 1/2*i - 1/10*i*sqrt5  [9x, e.g. T2g x I5/2g > I5/2g]
+  N = 2/3                      sqrt in Q(zeta_120), not in Q(zeta_20); = |mu|^2, mu = (1 + i*sqrt5)/3  [27x, e.g. T1g x T2g > Gg]
+  N = 7/10                     sqrt in Q(zeta_280), not in Q(zeta_20); = |mu|^2, mu = 1/2 + 3/10*i*sqrt5  [4x, e.g. T1g x I5/2g > I5/2g]
+  N = 3/4                      sqrt in Q(zeta_60), not in Q(zeta_20); = |mu|^2, mu = (1 + sqrt5 - i + i*sqrt5)/4  [5x, e.g. E7/2g x G3/2g > T2g]
+  N = 4/5                      sqrt in Q(zeta_20); = |mu|^2, mu = 2/5*sqrt5  [8x, e.g. Gg x G3/2g > I5/2g]
+  N = 9/10                     sqrt in Q(zeta_40), not in Q(zeta_20); = |mu|^2, mu = 3/10 + 3/5*zeta + 3/10*zeta^2 - 3/10*zeta^3 - 3/10*zeta^4 + 3/5*zeta^5 - 3/10*zeta^6  [4x, e.g. Hg x E7/2g > I5/2g]
+  N = 1                        sqrt in Q(zeta_20); = |mu|^2, mu = 1  [64x, e.g. Ag x Ag > Ag]
+  => Clebsch-Gordan vectors: real-positive normalisation needs Q(zeta_840); Hermitian-norm factors in Q(zeta_20) found for 30 of 30 values
