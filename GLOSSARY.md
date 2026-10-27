@@ -267,6 +267,55 @@ The other member of a pair of complex-conjugate one-dimensional irreps (the
 carries the positive exponent on the principal element.
 _Avoid_: real E, degenerate pair, physically irreducible representation
 
+### Group chains and coupling
+
+**Group chain**:
+A descending sequence of point groups `G ⊃ H ⊃ …`, each a subgroup of the
+previous one, named by Schoenflies symbols and resolved to concrete
+subgroups of the abstract group by a fixed rule. A chain is an input that
+selects a basis; it never fixes coordinates.
+_Avoid_: subgroup chain, chain of subgroups (when the sequence is meant),
+coupling scheme
+
+**Canonical chain**:
+A group chain in which every restriction from one group to the next is
+multiplicity-free, so that the chain labels of a component are unique. Only
+canonical chains are accepted; a chain with a repeated restriction is an
+error, never resolved by an extra multiplicity label.
+_Avoid_: complete chain, good chain, proper chain
+
+**Chain-adapted basis**:
+The basis of every irrep of `G` in which the irrep matrices of every
+subgroup of the chain are block-diagonal, each component carrying its chain
+labels, with ordering and phases fixed by the tool's own deterministic rule
+(the eigenfunction method computed exactly). A chain-adapted basis is the
+tool's own basis selected by a chain, not a basis convention (which follows
+a reference work).
+_Avoid_: symmetry-adapted basis, subgroup-adapted basis, CSCO basis,
+reduced basis
+
+**Chain label**:
+The sequence of canonical Mulliken symbols, one per group of the chain below
+`G`, that names a component of an irrep in the chain-adapted basis (the
+"quantum numbers of the group chain" of Chen and co-workers).
+_Avoid_: quantum numbers, row label, component index (which is the position
+in the matrix)
+
+**Clebsch–Gordan coefficient**:
+An entry of the unitary matrix that reduces the direct product of two irreps
+of `G` (ordinary or projective, with the product factor system) into irreps
+of `G`, written in the basis of the document. The coefficients depend on the
+basis, so a table is meaningless without the basis the document names.
+_Avoid_: coupling coefficient, vector-coupling coefficient, 3-j symbol,
+Wigner coefficient
+
+**Coupling multiplicity**:
+The number of times an irrep occurs in the direct product of two irreps.
+When it exceeds one, the copies are distinguished by a fixed rule of the
+tool, never left to the consumer.
+_Avoid_: outer multiplicity, repetition index, branching multiplicity (which
+is the restriction to a subgroup)
+
 ### Output
 
 **Document**:

@@ -50,6 +50,10 @@ dev = [
 [tool.ty.environment]
 extra-paths = ["prototypes", "tools", "tests"]
 
+[tool.ty.src]
+# Agent worktrees live under .claude/ and are not part of this tree.
+exclude = [".claude/**"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-m 'not slow'"

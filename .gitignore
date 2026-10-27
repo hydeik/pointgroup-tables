@@ -8,3 +8,9 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Literature
+PDF/
+
+# Agent worktrees
+.claude/worktrees/
