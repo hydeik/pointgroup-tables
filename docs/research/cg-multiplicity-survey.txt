@@ -1,0 +1,794 @@
+# CG multiplicity facts (cg_multiplicity.py)
+Designated component of gamma in cyclotomic_closure._projector_entries: index 0 (weights = conj(D_gamma[g][0][0])), the same as the proposed rule; no change needed.
+
+### Transfer-operator verification
+  transfer relation verified against P_k0 for 29 vectors of T
+  transfer relation verified against P_k0 for 50 vectors of O
+  transfer relation verified against P_k0 for 12 vectors of I
+
+==========================================================================================
+## T  (|G| = 12, K = Q(zeta_12))
+irreps (canonical order): A(1), 1E(1), 2E(1), T(3), E1/2(2p), 1E3/2(2p), 2E3/2(2p)
+
+### 1. Triples with n_gamma > 1 (1 of 43 triples)
+  T x T > T: n = 2  (alpha == beta: True)
+
+### 2. Sym^2 / Alt^2 split for alpha == beta
+  A x A > A: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  1E x 1E > 2E: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  2E x 2E > 1E: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  T x T > A: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  T x T > 1E: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  T x T > 2E: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  T x T > T: n = 2, n_sym = 1, n_alt = 1  -> both
+  E1/2 x E1/2 > A: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E1/2 x E1/2 > T: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  1E3/2 x 1E3/2 > 2E: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  1E3/2 x 1E3/2 > T: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  2E3/2 x 2E3/2 > 1E: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  2E3/2 x 2E3/2 > T: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  summary: 9 triples purely in Sym, 3 purely in Alt, 1 in both
+  every alpha == beta triple with n > 1 is fully separated by the Sym/Alt split (max part multiplicity 1)
+
+### 3. Squared norms under the proposed rule (Sym first, then Alt; designated gamma component 0)
+  44 partner-0 vectors over 28 pairs (0.0 s)
+    N = 1/6                          [sqrt in Q(zeta_24), not in K]       mu in K found    1x  e.g. T x T > T [sym #1]
+    N = 1/3                          [sqrt in K]                          mu in K found    7x  e.g. T x T > A [sym #1] [mult-free]
+    N = 1/2                          [sqrt in Q(zeta_24), not in K]       mu in K found    9x  e.g. T x T > T [alt #2]
+    N = 2/3                          [sqrt in Q(zeta_24), not in K]       mu in K found    5x  e.g. T x E1/2 > E1/2 [mult-free]
+    N = 1                            [sqrt in K]                          mu in K found    22x  e.g. A x A > A [sym #1] [mult-free]
+  => proposed rule: 5 distinct N; sqrt in K for 2; Hermitian factor mu in K found for 5 of 5; closure conductor (all triples) = 24; closure conductor (multiplicity-free triples only) = 24
+  => no conductor divisible by 7
+  norms of the multiplicity > 1 triples under the proposed rule:
+    T x T > T copy 1 sym  e_j = (0, 1): N = 1/6
+    T x T > T copy 2 alt  e_j = (0, 1): N = 1/2
+  original rule of cyclotomic_closure.cg_norms (Gram-Schmidt in product order, no split):
+    N = 1/3                          [sqrt in K]                          mu in K found    7x  e.g. T x T > A [mult-free]
+    N = 1/2                          [sqrt in Q(zeta_24), not in K]       mu in K found    9x  e.g. T x T > T [#2]
+    N = 2/3                          [sqrt in Q(zeta_24), not in K]       mu in K found    6x  e.g. T x T > T [#1]
+    N = 1                            [sqrt in K]                          mu in K found    22x  e.g. A x A > A [mult-free]
+  => original rule: 4 distinct N; sqrt in K for 2; Hermitian factor mu in K found for 4 of 4; closure conductor (all triples) = 24; closure conductor (multiplicity-free triples only) = 24
+  => no conductor divisible by 7
+  N values only under the proposed rule: ['1/6']
+  N values only under the original rule: []
+
+(T done in 0.1 s)
+
+==========================================================================================
+## O  (|G| = 24, K = Q(zeta_8))
+irreps (canonical order): A1(1), A2(1), E(2), T1(3), T2(3), E1/2(2p), E5/2(2p), G3/2(4p)
+
+### 1. Triples with n_gamma > 1 (4 of 70 triples)
+  T1 x G3/2 > G3/2: n = 2  (alpha == beta: False)
+  T2 x G3/2 > G3/2: n = 2  (alpha == beta: False)
+  G3/2 x G3/2 > T1: n = 2  (alpha == beta: True)
+  G3/2 x G3/2 > T2: n = 2  (alpha == beta: True)
+
+### 2. Sym^2 / Alt^2 split for alpha == beta
+  A1 x A1 > A1: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  A2 x A2 > A1: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E x E > A1: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E x E > A2: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E x E > E: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  T1 x T1 > A1: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  T1 x T1 > E: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  T1 x T1 > T1: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  T1 x T1 > T2: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  T2 x T2 > A1: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  T2 x T2 > E: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  T2 x T2 > T1: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  T2 x T2 > T2: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E1/2 x E1/2 > A1: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E1/2 x E1/2 > T1: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E5/2 x E5/2 > A1: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E5/2 x E5/2 > T1: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  G3/2 x G3/2 > A1: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  G3/2 x G3/2 > A2: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  G3/2 x G3/2 > E: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  G3/2 x G3/2 > T1: n = 2, n_sym = 2, n_alt = 0  -> Sym
+  G3/2 x G3/2 > T2: n = 2, n_sym = 1, n_alt = 1  -> both
+  summary: 14 triples purely in Sym, 7 purely in Alt, 1 in both
+  NOT fully separated by the split (a part still has multiplicity >= 2):
+    G3/2 x G3/2 > T1: n = 2, n_sym = 2, n_alt = 0
+
+### 5. Sanity check O: T1 x T1
+  A1: n_sym = 1, n_alt = 0
+  E: n_sym = 1, n_alt = 0
+  T1: n_sym = 0, n_alt = 1
+  T2: n_sym = 1, n_alt = 0
+
+### 3. Squared norms under the proposed rule (Sym first, then Alt; designated gamma component 0)
+  74 partner-0 vectors over 36 pairs (0.1 s)
+    N = 1/6                          [sqrt in Q(zeta_24), not in K]       mu in K found    2x  e.g. T1 x T2 > E [mult-free]
+    N = 1/4                          [sqrt in K]                          mu in K found    7x  e.g. E x T2 > T1 [mult-free]
+    N = 1/3                          [sqrt in Q(zeta_24), not in K]       mu in K found    9x  e.g. T1 x T1 > A1 [sym #1] [mult-free]
+    N = 3/8                          [sqrt in Q(zeta_24), not in K]       mu in K found    1x  e.g. G3/2 x G3/2 > T1 [sym #1]
+    N = 1/2                          [sqrt in K]                          mu in K found    25x  e.g. E x E > A1 [sym #1] [mult-free]
+    N = 2/3                          [sqrt in Q(zeta_24), not in K]       mu in K found    4x  e.g. T1 x E1/2 > E1/2 [mult-free]
+    N = 3/4                          [sqrt in Q(zeta_24), not in K]       mu in K found    3x  e.g. E x T1 > T1 [mult-free]
+    N = 1                            [sqrt in K]                          mu in K found    23x  e.g. A1 x A1 > A1 [sym #1] [mult-free]
+  => proposed rule: 8 distinct N; sqrt in K for 3; Hermitian factor mu in K found for 8 of 8; closure conductor (all triples) = 24; closure conductor (multiplicity-free triples only) = 24
+  => no conductor divisible by 7
+  norms of the multiplicity > 1 triples under the proposed rule:
+    T1 x G3/2 > G3/2 copy 1 -    e_j = (0, 1): N = 1/2
+    T1 x G3/2 > G3/2 copy 2 -    e_j = (1, 0): N = 1/3
+    T2 x G3/2 > G3/2 copy 1 -    e_j = (0, 2): N = 2/3
+    T2 x G3/2 > G3/2 copy 2 -    e_j = (1, 1): N = 3/4
+    G3/2 x G3/2 > T1 copy 1 sym  e_j = (0, 2): N = 3/8
+    G3/2 x G3/2 > T1 copy 2 sym  e_j = (1, 1): N = 1/2
+    G3/2 x G3/2 > T2 copy 1 sym  e_j = (0, 1): N = 1/4
+    G3/2 x G3/2 > T2 copy 2 alt  e_j = (0, 1): N = 1/4
+  original rule of cyclotomic_closure.cg_norms (Gram-Schmidt in product order, no split):
+    N = 1/6                          [sqrt in Q(zeta_24), not in K]       mu in K found    2x  e.g. T1 x T2 > E [mult-free]
+    N = 1/4                          [sqrt in K]                          mu in K found    5x  e.g. E x T2 > T1 [mult-free]
+    N = 1/3                          [sqrt in Q(zeta_24), not in K]       mu in K found    9x  e.g. T1 x T1 > A1 [mult-free]
+    N = 3/8                          [sqrt in Q(zeta_24), not in K]       mu in K found    1x  e.g. G3/2 x G3/2 > T1 [#1]
+    N = 1/2                          [sqrt in K]                          mu in K found    27x  e.g. E x E > A1 [mult-free]
+    N = 2/3                          [sqrt in Q(zeta_24), not in K]       mu in K found    4x  e.g. T1 x E1/2 > E1/2 [mult-free]
+    N = 3/4                          [sqrt in Q(zeta_24), not in K]       mu in K found    3x  e.g. E x T1 > T1 [mult-free]
+    N = 1                            [sqrt in K]                          mu in K found    23x  e.g. A1 x A1 > A1 [mult-free]
+  => original rule: 8 distinct N; sqrt in K for 3; Hermitian factor mu in K found for 8 of 8; closure conductor (all triples) = 24; closure conductor (multiplicity-free triples only) = 24
+  => no conductor divisible by 7
+  N values only under the proposed rule: []
+  N values only under the original rule: []
+
+(O done in 0.2 s)
+
+==========================================================================================
+## I  (|G| = 60, K = Q(zeta_20))
+irreps (canonical order): A(1), T1(3), T2(3), G(4), H(5), E1/2(2p), E7/2(2p), G3/2(4p), I5/2(6p)
+
+### 1. Triples with n_gamma > 1 (17 of 114 triples)
+  T1 x I5/2 > I5/2: n = 2  (alpha == beta: False)
+  T2 x I5/2 > I5/2: n = 2  (alpha == beta: False)
+  G x H > H: n = 2  (alpha == beta: False)
+  G x G3/2 > I5/2: n = 2  (alpha == beta: False)
+  G x I5/2 > G3/2: n = 2  (alpha == beta: False)
+  G x I5/2 > I5/2: n = 2  (alpha == beta: False)
+  H x H > G: n = 2  (alpha == beta: True)
+  H x H > H: n = 2  (alpha == beta: True)
+  H x G3/2 > I5/2: n = 2  (alpha == beta: False)
+  H x I5/2 > G3/2: n = 2  (alpha == beta: False)
+  H x I5/2 > I5/2: n = 3  (alpha == beta: False)
+  G3/2 x I5/2 > G: n = 2  (alpha == beta: False)
+  G3/2 x I5/2 > H: n = 2  (alpha == beta: False)
+  I5/2 x I5/2 > T1: n = 2  (alpha == beta: True)
+  I5/2 x I5/2 > T2: n = 2  (alpha == beta: True)
+  I5/2 x I5/2 > G: n = 2  (alpha == beta: True)
+  I5/2 x I5/2 > H: n = 3  (alpha == beta: True)
+
+### 2. Sym^2 / Alt^2 split for alpha == beta
+  H x H > G: n = 2, n_sym = 1, n_alt = 1  -> both
+  H x H > H: n = 2, n_sym = 2, n_alt = 0  -> Sym
+  I5/2 x I5/2 > T1: n = 2, n_sym = 2, n_alt = 0  -> Sym
+  I5/2 x I5/2 > T2: n = 2, n_sym = 2, n_alt = 0  -> Sym
+  I5/2 x I5/2 > G: n = 2, n_sym = 1, n_alt = 1  -> both
+  I5/2 x I5/2 > H: n = 3, n_sym = 1, n_alt = 2  -> both
+  (n = 1 triples: 17 purely Sym, 11 purely Alt listed in counts below)
+  summary: 17 triples purely in Sym, 11 purely in Alt, 3 in both
+  NOT fully separated by the split (a part still has multiplicity >= 2):
+    H x H > H: n = 2, n_sym = 2, n_alt = 0
+    I5/2 x I5/2 > T1: n = 2, n_sym = 2, n_alt = 0
+    I5/2 x I5/2 > T2: n = 2, n_sym = 2, n_alt = 0
+    I5/2 x I5/2 > H: n = 3, n_sym = 1, n_alt = 2
+
+### 3. Squared norms under the proposed rule (Sym first, then Alt; designated gamma component 0)
+  133 partner-0 vectors over 45 pairs (4.6 s)
+    N = 1/30                         [sqrt in Q(zeta_120), not in K]      mu in K found    1x  e.g. I5/2 x I5/2 > G [sym #1]
+    N = 1/20                         [sqrt in K]                          mu in K found    1x  e.g. G3/2 x I5/2 > T1 [mult-free]
+    N = 1/15                         [sqrt in Q(zeta_60), not in K]       mu in K found    2x  e.g. T1 x I5/2 > G3/2 [mult-free]
+    N = 1/12                         [sqrt in Q(zeta_60), not in K]       mu in K found    1x  e.g. T1 x G > H [mult-free]
+    N = 1/10                         [sqrt in Q(zeta_40), not in K]       mu in K found    4x  e.g. T1 x H > T1 [mult-free]
+    N = 1/9                          [sqrt in K]                          mu in K found    1x  e.g. H x H > H [sym #2]
+    N = 2/15                         [sqrt in Q(zeta_120), not in K]      mu in K found    1x  e.g. H x I5/2 > G3/2 [#1]
+    N = 1/7                          [sqrt in Q(zeta_140), not in K]      mu in K found    1x  e.g. T1 x I5/2 > I5/2 [#2]
+    N = 1/6                          [sqrt in Q(zeta_120), not in K]      mu in K found    10x  e.g. T1 x G3/2 > E1/2 [mult-free]
+    N = 1/5                          [sqrt in K]                          mu in K found    12x  e.g. T1 x G3/2 > I5/2 [mult-free]
+    N = 1/4                          [sqrt in K]                          mu in K found    7x  e.g. T1 x G > T2 [mult-free]
+    N = 4/15                         [sqrt in Q(zeta_60), not in K]       mu in K found    2x  e.g. T1 x H > G [mult-free]
+    N = 2/7                          [sqrt in Q(zeta_280), not in K]      mu in K found    1x  e.g. I5/2 x I5/2 > T1 [sym #2]
+    N = 3/10                         [sqrt in Q(zeta_120), not in K]      mu in K found    9x  e.g. G x H > T2 [mult-free]
+    N = 1/3                          [sqrt in Q(zeta_60), not in K]       mu in K found    16x  e.g. T1 x T1 > A [sym #1] [mult-free]
+    N = 7/20                         [sqrt in Q(zeta_140), not in K]      mu in K found    1x  e.g. I5/2 x I5/2 > T1 [sym #1]
+    N = 9/25                         [sqrt in K]                          mu in K found    1x  e.g. H x G3/2 > I5/2 [#2]
+    N = 2/5                          [sqrt in Q(zeta_40), not in K]       mu in K found    9x  e.g. T1 x H > T2 [mult-free]
+    N = 1/2                          [sqrt in Q(zeta_40), not in K]       mu in K found    19x  e.g. T1 x T1 > T1 [alt #1] [mult-free]
+    N = 8/15                         [sqrt in Q(zeta_120), not in K]      mu in K found    2x  e.g. G x I5/2 > G3/2 [#1]
+    N = 9/16                         [sqrt in K]                          mu in K found    1x  e.g. G x G3/2 > I5/2 [#2]
+    N = 3/5                          [sqrt in Q(zeta_60), not in K]       mu in K found    2x  e.g. T2 x I5/2 > I5/2 [#1]
+    N = 2/3                          [sqrt in Q(zeta_120), not in K]      mu in K found    7x  e.g. T1 x T2 > G [mult-free]
+    N = 7/10                         [sqrt in Q(zeta_280), not in K]      mu in K found    1x  e.g. T1 x I5/2 > I5/2 [#1]
+    N = 3/4                          [sqrt in Q(zeta_60), not in K]       mu in K found    1x  e.g. E7/2 x G3/2 > T2 [mult-free]
+    N = 4/5                          [sqrt in K]                          mu in K found    2x  e.g. G x G3/2 > I5/2 [#1]
+    N = 9/10                         [sqrt in Q(zeta_40), not in K]       mu in K found    1x  e.g. H x E7/2 > I5/2 [mult-free]
+    N = 1                            [sqrt in K]                          mu in K found    17x  e.g. A x A > A [sym #1] [mult-free]
+  => proposed rule: 28 distinct N; sqrt in K for 8; Hermitian factor mu in K found for 28 of 28; closure conductor (all triples) = 840; closure conductor (multiplicity-free triples only) = 120
+  => conductor divisible by 7 arises from: ['I5/2 x I5/2 > T1 [sym #1]', 'I5/2 x I5/2 > T1 [sym #2]', 'T1 x I5/2 > I5/2 [#1]', 'T1 x I5/2 > I5/2 [#2]']
+  norms of the multiplicity > 1 triples under the proposed rule:
+    T1 x I5/2 > I5/2 copy 1 -    e_j = (0, 1): N = 7/10
+    T1 x I5/2 > I5/2 copy 2 -    e_j = (1, 0): N = 1/7
+    T2 x I5/2 > I5/2 copy 1 -    e_j = (0, 2): N = 3/5
+    T2 x I5/2 > I5/2 copy 2 -    e_j = (1, 0): N = 1/3
+    G x H > H copy 1 -    e_j = (0, 2): N = 1/2
+    G x H > H copy 2 -    e_j = (1, 1): N = 1/3
+    G x G3/2 > I5/2 copy 1 -    e_j = (0, 1): N = 4/5
+    G x G3/2 > I5/2 copy 2 -    e_j = (1, 0): N = 9/16
+    G x I5/2 > G3/2 copy 1 -    e_j = (0, 3): N = 8/15
+    G x I5/2 > G3/2 copy 2 -    e_j = (1, 2): N = 1/2
+    G x I5/2 > I5/2 copy 1 -    e_j = (0, 2): N = 3/10
+    G x I5/2 > I5/2 copy 2 -    e_j = (2, 4): N = 1/3
+    H x H > G copy 1 sym  e_j = (0, 2): N = 1/5
+    H x H > G copy 2 alt  e_j = (0, 2): N = 1/5
+    H x H > H copy 1 sym  e_j = (0, 2): N = 3/10
+    H x H > H copy 2 sym  e_j = (1, 1): N = 1/9
+    H x G3/2 > I5/2 copy 1 -    e_j = (0, 1): N = 1/2
+    H x G3/2 > I5/2 copy 2 -    e_j = (1, 0): N = 9/25
+    H x I5/2 > G3/2 copy 1 -    e_j = (0, 3): N = 2/15
+    H x I5/2 > G3/2 copy 2 -    e_j = (1, 2): N = 1/5
+    H x I5/2 > I5/2 copy 1 -    e_j = (0, 2): N = 3/5
+    H x I5/2 > I5/2 copy 2 -    e_j = (1, 1): N = 3/10
+    H x I5/2 > I5/2 copy 3 -    e_j = (2, 0): N = 1/5
+    G3/2 x I5/2 > G copy 1 -    e_j = (0, 2): N = 8/15
+    G3/2 x I5/2 > G copy 2 -    e_j = (1, 1): N = 1/3
+    G3/2 x I5/2 > H copy 1 -    e_j = (0, 2): N = 1/6
+    G3/2 x I5/2 > H copy 2 -    e_j = (1, 1): N = 1/6
+    I5/2 x I5/2 > T1 copy 1 sym  e_j = (0, 4): N = 7/20
+    I5/2 x I5/2 > T1 copy 2 sym  e_j = (1, 3): N = 2/7
+    I5/2 x I5/2 > T2 copy 1 sym  e_j = (0, 3): N = 3/10
+    I5/2 x I5/2 > T2 copy 2 sym  e_j = (1, 2): N = 1/6
+    I5/2 x I5/2 > G copy 1 sym  e_j = (0, 3): N = 1/30
+    I5/2 x I5/2 > G copy 2 alt  e_j = (0, 3): N = 1/6
+    I5/2 x I5/2 > H copy 1 sym  e_j = (0, 3): N = 1/6
+    I5/2 x I5/2 > H copy 2 alt  e_j = (0, 3): N = 1/3
+    I5/2 x I5/2 > H copy 3 alt  e_j = (1, 2): N = 1/4
+  original rule of cyclotomic_closure.cg_norms (Gram-Schmidt in product order, no split):
+    N = 1/20                         [sqrt in K]                          mu in K found    1x  e.g. G3/2 x I5/2 > T1 [mult-free]
+    N = 1/15                         [sqrt in Q(zeta_60), not in K]       mu in K found    2x  e.g. T1 x I5/2 > G3/2 [mult-free]
+    N = 1/12                         [sqrt in Q(zeta_60), not in K]       mu in K found    1x  e.g. T1 x G > H [mult-free]
+    N = 1/10                         [sqrt in Q(zeta_40), not in K]       mu in K found    4x  e.g. T1 x H > T1 [mult-free]
+    N = 1/9                          [sqrt in K]                          mu in K found    2x  e.g. H x H > H [#2]
+    N = 2/15                         [sqrt in Q(zeta_120), not in K]      mu in K found    1x  e.g. H x I5/2 > G3/2 [#1]
+    N = 1/7                          [sqrt in Q(zeta_140), not in K]      mu in K found    1x  e.g. T1 x I5/2 > I5/2 [#2]
+    N = 1/6                          [sqrt in Q(zeta_120), not in K]      mu in K found    8x  e.g. T1 x G3/2 > E1/2 [mult-free]
+    N = 1/5                          [sqrt in K]                          mu in K found    11x  e.g. T1 x G3/2 > I5/2 [mult-free]
+    N = 2/9                          [sqrt in Q(zeta_40), not in K]       mu in K found    1x  e.g. I5/2 x I5/2 > H [#3]
+    N = 1/4                          [sqrt in K]                          mu in K found    6x  e.g. T1 x G > T2 [mult-free]
+    N = 4/15                         [sqrt in Q(zeta_60), not in K]       mu in K found    3x  e.g. T1 x H > G [mult-free]
+    N = 2/7                          [sqrt in Q(zeta_280), not in K]      mu in K found    1x  e.g. I5/2 x I5/2 > T1 [#2]
+    N = 3/10                         [sqrt in Q(zeta_120), not in K]      mu in K found    9x  e.g. G x H > T2 [mult-free]
+    N = 1/3                          [sqrt in Q(zeta_60), not in K]       mu in K found    15x  e.g. T1 x T1 > A [mult-free]
+    N = 7/20                         [sqrt in Q(zeta_140), not in K]      mu in K found    1x  e.g. I5/2 x I5/2 > T1 [#1]
+    N = 9/25                         [sqrt in K]                          mu in K found    1x  e.g. H x G3/2 > I5/2 [#2]
+    N = 2/5                          [sqrt in Q(zeta_40), not in K]       mu in K found    10x  e.g. T1 x H > T2 [mult-free]
+    N = 1/2                          [sqrt in Q(zeta_40), not in K]       mu in K found    21x  e.g. T1 x T1 > T1 [mult-free]
+    N = 8/15                         [sqrt in Q(zeta_120), not in K]      mu in K found    2x  e.g. G x I5/2 > G3/2 [#1]
+    N = 9/16                         [sqrt in K]                          mu in K found    1x  e.g. G x G3/2 > I5/2 [#2]
+    N = 3/5                          [sqrt in Q(zeta_60), not in K]       mu in K found    2x  e.g. T2 x I5/2 > I5/2 [#1]
+    N = 2/3                          [sqrt in Q(zeta_120), not in K]      mu in K found    7x  e.g. T1 x T2 > G [mult-free]
+    N = 7/10                         [sqrt in Q(zeta_280), not in K]      mu in K found    1x  e.g. T1 x I5/2 > I5/2 [#1]
+    N = 3/4                          [sqrt in Q(zeta_60), not in K]       mu in K found    1x  e.g. E7/2 x G3/2 > T2 [mult-free]
+    N = 4/5                          [sqrt in K]                          mu in K found    2x  e.g. G x G3/2 > I5/2 [#1]
+    N = 9/10                         [sqrt in Q(zeta_40), not in K]       mu in K found    1x  e.g. H x E7/2 > I5/2 [mult-free]
+    N = 1                            [sqrt in K]                          mu in K found    17x  e.g. A x A > A [mult-free]
+  => original rule: 28 distinct N; sqrt in K for 8; Hermitian factor mu in K found for 28 of 28; closure conductor (all triples) = 840; closure conductor (multiplicity-free triples only) = 120
+  => conductor divisible by 7 arises from: ['I5/2 x I5/2 > T1 [#1]', 'I5/2 x I5/2 > T1 [#2]', 'T1 x I5/2 > I5/2 [#1]', 'T1 x I5/2 > I5/2 [#2]']
+  N values only under the proposed rule: ['1/30']
+  N values only under the original rule: ['2/9']
+
+(I done in 12.9 s)
+
+==========================================================================================
+## D6h  (|G| = 24, K = Q(zeta_12))
+irreps (canonical order): A1g(1), A2g(1), B1g(1), B2g(1), E1g(2), E2g(2), A1u(1), A2u(1), B1u(1), B2u(1), E1u(2), E2u(2), E1/2g(2p), E3/2g(2p), E5/2g(2p), E1/2u(2p), E3/2u(2p), E5/2u(2p)
+
+### 1. Triples with n_gamma > 1 (0 of 252 triples)
+  (none)
+
+### 2. Sym^2 / Alt^2 split for alpha == beta
+  A1g x A1g > A1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  A2g x A2g > A1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  B1g x B1g > A1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  B2g x B2g > A1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E1g x E1g > A1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E1g x E1g > A2g: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E1g x E1g > E2g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E2g x E2g > A1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E2g x E2g > A2g: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E2g x E2g > E2g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  A1u x A1u > A1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  A2u x A2u > A1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  B1u x B1u > A1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  B2u x B2u > A1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E1u x E1u > A1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E1u x E1u > A2g: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E1u x E1u > E2g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E2u x E2u > A1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E2u x E2u > A2g: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E2u x E2u > E2g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E1/2g x E1/2g > A1g: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E1/2g x E1/2g > A2g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E1/2g x E1/2g > E1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E3/2g x E3/2g > A1g: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E3/2g x E3/2g > A2g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E3/2g x E3/2g > B1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E3/2g x E3/2g > B2g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E5/2g x E5/2g > A1g: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E5/2g x E5/2g > A2g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E5/2g x E5/2g > E1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E1/2u x E1/2u > A1g: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E1/2u x E1/2u > A2g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E1/2u x E1/2u > E1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E3/2u x E3/2u > A1g: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E3/2u x E3/2u > A2g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E3/2u x E3/2u > B1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E3/2u x E3/2u > B2g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E5/2u x E5/2u > A1g: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E5/2u x E5/2u > A2g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E5/2u x E5/2u > E1g: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  summary: 30 triples purely in Sym, 10 purely in Alt, 0 in both
+  (no alpha == beta triple with n > 1)
+
+### 3. Squared norms under the proposed rule (Sym first, then Alt; designated gamma component 0)
+  252 partner-0 vectors over 171 pairs (0.1 s)
+    N = 1/2                          [sqrt in Q(zeta_24), not in K]       mu in K found    52x  e.g. E1g x E1g > A1g [sym #1] [mult-free]
+    N = 1                            [sqrt in K]                          mu in K found    200x  e.g. A1g x A1g > A1g [sym #1] [mult-free]
+  => proposed rule: 2 distinct N; sqrt in K for 1; Hermitian factor mu in K found for 2 of 2; closure conductor (all triples) = 24; closure conductor (multiplicity-free triples only) = 24
+  => no conductor divisible by 7
+  norms of the multiplicity > 1 triples under the proposed rule:
+  original rule of cyclotomic_closure.cg_norms (Gram-Schmidt in product order, no split):
+    N = 1/2                          [sqrt in Q(zeta_24), not in K]       mu in K found    52x  e.g. E1g x E1g > A1g [mult-free]
+    N = 1                            [sqrt in K]                          mu in K found    200x  e.g. A1g x A1g > A1g [mult-free]
+  => original rule: 2 distinct N; sqrt in K for 1; Hermitian factor mu in K found for 2 of 2; closure conductor (all triples) = 24; closure conductor (multiplicity-free triples only) = 24
+  => no conductor divisible by 7
+  N values only under the proposed rule: []
+  N values only under the original rule: []
+
+### 4. Sizes of the full CG unitaries
+  irreps: 18; unordered pairs (alpha <= beta): 171; ordered pairs: 324
+  all pairs: sum (d_a d_b)^2 = 1236; non-zero entries = 468  (39/103 = 0.3786)
+  ordinary x ordinary: pairs = 78; sum (d_a d_b)^2 = 324; non-zero entries = 160  (40/81 = 0.4938)
+  Gram (orthogonality + norm) check passed for 171 of 171 pairs (0.0 s)
+
+(D6h done in 0.5 s)
+
+==========================================================================================
+## C3v  (|G| = 6, K = Q(zeta_12))
+irreps (canonical order): A1(1), A2(1), E(2), E1/2(2p), 1E3/2(1p), 2E3/2(1p)
+
+### 1. Triples with n_gamma > 1 (0 of 27 triples)
+  (none)
+
+### 2. Sym^2 / Alt^2 split for alpha == beta
+  A1 x A1 > A1: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  A2 x A2 > A1: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E x E > A1: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E x E > A2: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E x E > E: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E1/2 x E1/2 > A1: n = 1, n_sym = 0, n_alt = 1  -> Alt
+  E1/2 x E1/2 > A2: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  E1/2 x E1/2 > E: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  1E3/2 x 1E3/2 > A2: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  2E3/2 x 2E3/2 > A2: n = 1, n_sym = 1, n_alt = 0  -> Sym
+  summary: 8 triples purely in Sym, 2 purely in Alt, 0 in both
+  (no alpha == beta triple with n > 1)
+
+### 3. Squared norms under the proposed rule (Sym first, then Alt; designated gamma component 0)
+  27 partner-0 vectors over 21 pairs (0.0 s)
+    N = 1/2                          [sqrt in Q(zeta_24), not in K]       mu in K found    6x  e.g. E x E > A1 [sym #1] [mult-free]
+    N = 1                            [sqrt in K]                          mu in K found    21x  e.g. A1 x A1 > A1 [sym #1] [mult-free]
+  => proposed rule: 2 distinct N; sqrt in K for 1; Hermitian factor mu in K found for 2 of 2; closure conductor (all triples) = 24; closure conductor (multiplicity-free triples only) = 24
+  => no conductor divisible by 7
+  norms of the multiplicity > 1 triples under the proposed rule:
+  original rule of cyclotomic_closure.cg_norms (Gram-Schmidt in product order, no split):
+    N = 1/2                          [sqrt in Q(zeta_24), not in K]       mu in K found    6x  e.g. E x E > A1 [mult-free]
+    N = 1                            [sqrt in K]                          mu in K found    21x  e.g. A1 x A1 > A1 [mult-free]
+  => original rule: 2 distinct N; sqrt in K for 1; Hermitian factor mu in K found for 2 of 2; closure conductor (all triples) = 24; closure conductor (multiplicity-free triples only) = 24
+  => no conductor divisible by 7
+  N values only under the proposed rule: []
+  N values only under the original rule: []
+
+### 4. Sizes of the full CG unitaries
+  irreps: 6; unordered pairs (alpha <= beta): 21; ordered pairs: 36
+  all pairs: sum (d_a d_b)^2 = 90; non-zero entries = 44  (22/45 = 0.4889)
+  ordinary x ordinary: pairs = 6; sum (d_a d_b)^2 = 27; non-zero entries = 13  (13/27 = 0.4815)
+  Gram (orthogonality + norm) check passed for 21 of 21 pairs (0.0 s)
+
+(C3v done in 0.0 s)
+
+==========================================================================================
+## Oh  (|G| = 48, K = Q(zeta_8))
+irreps (canonical order): A1g(1), A2g(1), Eg(2), T1g(3), T2g(3), A1u(1), A2u(1), Eu(2), T1u(3), T2u(3), E1/2g(2p), E5/2g(2p), G3/2g(4p), E1/2u(2p), E5/2u(2p), G3/2u(4p)
+
+### 1. Triples with n_gamma > 1 (14 of 258 triples)
+  T1g x G3/2g > G3/2g: n = 2  (alpha == beta: False)
+  T1g x G3/2u > G3/2u: n = 2  (alpha == beta: False)
+  T2g x G3/2g > G3/2g: n = 2  (alpha == beta: False)
+  T2g x G3/2u > G3/2u: n = 2  (alpha == beta: False)
+  T1u x G3/2g > G3/2u: n = 2  (alpha == beta: False)
+  T1u x G3/2u > G3/2g: n = 2  (alpha == beta: False)
+  T2u x G3/2g > G3/2u: n = 2  (alpha == beta: False)
+  T2u x G3/2u > G3/2g: n = 2  (alpha == beta: False)
+  G3/2g x G3/2g > T1g: n = 2  (alpha == beta: True)
+  G3/2g x G3/2g > T2g: n = 2  (alpha == beta: True)
+  G3/2g x G3/2u > T1u: n = 2  (alpha == beta: False)
+  G3/2g x G3/2u > T2u: n = 2  (alpha == beta: False)
+  G3/2u x G3/2u > T1g: n = 2  (alpha == beta: True)
+  G3/2u x G3/2u > T2g: n = 2  (alpha == beta: True)
+
+### 2. Sym^2 / Alt^2 split for alpha == beta
+  G3/2g x G3/2g > T1g: n = 2, n_sym = 2, n_alt = 0  -> Sym
+  G3/2g x G3/2g > T2g: n = 2, n_sym = 1, n_alt = 1  -> both
+  G3/2u x G3/2u > T1g: n = 2, n_sym = 2, n_alt = 0  -> Sym
+  G3/2u x G3/2u > T2g: n = 2, n_sym = 1, n_alt = 1  -> both
+  (n = 1 triples: 28 purely Sym, 14 purely Alt listed in counts below)
+  summary: 28 triples purely in Sym, 14 purely in Alt, 2 in both
+  NOT fully separated by the split (a part still has multiplicity >= 2):
+    G3/2g x G3/2g > T1g: n = 2, n_sym = 2, n_alt = 0
+    G3/2u x G3/2u > T1g: n = 2, n_sym = 2, n_alt = 0
+
+### 3. Squared norms under the proposed rule (Sym first, then Alt; designated gamma component 0)
+  272 partner-0 vectors over 136 pairs (0.7 s)
+    N = 1/6                          [sqrt in Q(zeta_24), not in K]       mu in K found    7x  e.g. T1g x T2g > Eg [mult-free]
+    N = 1/4                          [sqrt in K]                          mu in K found    20x  e.g. Eg x T2g > T1g [mult-free]
+    N = 1/3                          [sqrt in Q(zeta_24), not in K]       mu in K found    34x  e.g. T1g x T1g > A1g [sym #1] [mult-free]
+    N = 3/8                          [sqrt in Q(zeta_24), not in K]       mu in K found    3x  e.g. G3/2g x G3/2g > T1g [sym #1]
+    N = 1/2                          [sqrt in K]                          mu in K found    90x  e.g. Eg x Eg > A1g [sym #1] [mult-free]
+    N = 2/3                          [sqrt in Q(zeta_24), not in K]       mu in K found    17x  e.g. T1g x E1/2g > E1/2g [mult-free]
+    N = 3/4                          [sqrt in Q(zeta_24), not in K]       mu in K found    13x  e.g. Eg x T1g > T1g [mult-free]
+    N = 1                            [sqrt in K]                          mu in K found    88x  e.g. A1g x A1g > A1g [sym #1] [mult-free]
+  => proposed rule: 8 distinct N; sqrt in K for 3; Hermitian factor mu in K found for 8 of 8; closure conductor (all triples) = 24; closure conductor (multiplicity-free triples only) = 24
+  => no conductor divisible by 7
+  norms of the multiplicity > 1 triples under the proposed rule:
+    T1g x G3/2g > G3/2g copy 1 -    e_j = (0, 1): N = 1/2
+    T1g x G3/2g > G3/2g copy 2 -    e_j = (1, 0): N = 1/3
+    T1g x G3/2u > G3/2u copy 1 -    e_j = (0, 1): N = 1/2
+    T1g x G3/2u > G3/2u copy 2 -    e_j = (1, 0): N = 1/3
+    T2g x G3/2g > G3/2g copy 1 -    e_j = (0, 2): N = 2/3
+    T2g x G3/2g > G3/2g copy 2 -    e_j = (1, 1): N = 3/4
+    T2g x G3/2u > G3/2u copy 1 -    e_j = (0, 2): N = 2/3
+    T2g x G3/2u > G3/2u copy 2 -    e_j = (1, 1): N = 3/4
+    T1u x G3/2g > G3/2u copy 1 -    e_j = (0, 1): N = 1/2
+    T1u x G3/2g > G3/2u copy 2 -    e_j = (1, 0): N = 1/3
+    T1u x G3/2u > G3/2g copy 1 -    e_j = (0, 1): N = 1/2
+    T1u x G3/2u > G3/2g copy 2 -    e_j = (1, 0): N = 1/3
+    T2u x G3/2g > G3/2u copy 1 -    e_j = (0, 2): N = 2/3
+    T2u x G3/2g > G3/2u copy 2 -    e_j = (1, 1): N = 3/4
+    T2u x G3/2u > G3/2g copy 1 -    e_j = (0, 2): N = 2/3
+    T2u x G3/2u > G3/2g copy 2 -    e_j = (1, 1): N = 3/4
+    G3/2g x G3/2g > T1g copy 1 sym  e_j = (0, 2): N = 3/8
+    G3/2g x G3/2g > T1g copy 2 sym  e_j = (1, 1): N = 1/2
+    G3/2g x G3/2g > T2g copy 1 sym  e_j = (0, 1): N = 1/4
+    G3/2g x G3/2g > T2g copy 2 alt  e_j = (0, 1): N = 1/4
+    G3/2g x G3/2u > T1u copy 1 -    e_j = (0, 2): N = 3/8
+    G3/2g x G3/2u > T1u copy 2 -    e_j = (1, 1): N = 1/2
+    G3/2g x G3/2u > T2u copy 1 -    e_j = (0, 1): N = 1/2
+    G3/2g x G3/2u > T2u copy 2 -    e_j = (1, 0): N = 1/2
+    G3/2u x G3/2u > T1g copy 1 sym  e_j = (0, 2): N = 3/8
+    G3/2u x G3/2u > T1g copy 2 sym  e_j = (1, 1): N = 1/2
+    G3/2u x G3/2u > T2g copy 1 sym  e_j = (0, 1): N = 1/4
+    G3/2u x G3/2u > T2g copy 2 alt  e_j = (0, 1): N = 1/4
+  original rule of cyclotomic_closure.cg_norms (Gram-Schmidt in product order, no split):
+    N = 1/6                          [sqrt in Q(zeta_24), not in K]       mu in K found    7x  e.g. T1g x T2g > Eg [mult-free]
+    N = 1/4                          [sqrt in K]                          mu in K found    16x  e.g. Eg x T2g > T1g [mult-free]
+    N = 1/3                          [sqrt in Q(zeta_24), not in K]       mu in K found    34x  e.g. T1g x T1g > A1g [mult-free]
+    N = 3/8                          [sqrt in Q(zeta_24), not in K]       mu in K found    3x  e.g. G3/2g x G3/2g > T1g [#1]
+    N = 1/2                          [sqrt in K]                          mu in K found    94x  e.g. Eg x Eg > A1g [mult-free]
+    N = 2/3                          [sqrt in Q(zeta_24), not in K]       mu in K found    17x  e.g. T1g x E1/2g > E1/2g [mult-free]
+    N = 3/4                          [sqrt in Q(zeta_24), not in K]       mu in K found    13x  e.g. Eg x T1g > T1g [mult-free]
+    N = 1                            [sqrt in K]                          mu in K found    88x  e.g. A1g x A1g > A1g [mult-free]
+  => original rule: 8 distinct N; sqrt in K for 3; Hermitian factor mu in K found for 8 of 8; closure conductor (all triples) = 24; closure conductor (multiplicity-free triples only) = 24
+  => no conductor divisible by 7
+  N values only under the proposed rule: []
+  N values only under the original rule: []
+
+### 4. Sizes of the full CG unitaries
+  irreps: 16; unordered pairs (alpha <= beta): 136; ordered pairs: 256
+  all pairs: sum (d_a d_b)^2 = 5076; non-zero entries = 1310  (655/2538 = 0.2581)
+  ordinary x ordinary: pairs = 55; sum (d_a d_b)^2 = 1332; non-zero entries = 378  (21/74 = 0.2838)
+  Gram (orthogonality + norm) check passed for 136 of 136 pairs (0.1 s)
+
+(Oh done in 1.5 s)
+
+==========================================================================================
+## Ih  (|G| = 120, K = Q(zeta_20))
+irreps (canonical order): Ag(1), T1g(3), T2g(3), Gg(4), Hg(5), Au(1), T1u(3), T2u(3), Gu(4), Hu(5), E1/2g(2p), E7/2g(2p), G3/2g(4p), I5/2g(6p), E1/2u(2p), E7/2u(2p), G3/2u(4p), I5/2u(6p)
+
+### 1. Triples with n_gamma > 1 (62 of 425 triples)
+  T1g x I5/2g > I5/2g: n = 2  (alpha == beta: False)
+  T1g x I5/2u > I5/2u: n = 2  (alpha == beta: False)
+  T2g x I5/2g > I5/2g: n = 2  (alpha == beta: False)
+  T2g x I5/2u > I5/2u: n = 2  (alpha == beta: False)
+  Gg x Hg > Hg: n = 2  (alpha == beta: False)
+  Gg x Hu > Hu: n = 2  (alpha == beta: False)
+  Gg x G3/2g > I5/2g: n = 2  (alpha == beta: False)
+  Gg x I5/2g > G3/2g: n = 2  (alpha == beta: False)
+  Gg x I5/2g > I5/2g: n = 2  (alpha == beta: False)
+  Gg x G3/2u > I5/2u: n = 2  (alpha == beta: False)
+  Gg x I5/2u > G3/2u: n = 2  (alpha == beta: False)
+  Gg x I5/2u > I5/2u: n = 2  (alpha == beta: False)
+  Hg x Hg > Gg: n = 2  (alpha == beta: True)
+  Hg x Hg > Hg: n = 2  (alpha == beta: True)
+  Hg x Gu > Hu: n = 2  (alpha == beta: False)
+  Hg x Hu > Gu: n = 2  (alpha == beta: False)
+  Hg x Hu > Hu: n = 2  (alpha == beta: False)
+  Hg x G3/2g > I5/2g: n = 2  (alpha == beta: False)
+  Hg x I5/2g > G3/2g: n = 2  (alpha == beta: False)
+  Hg x I5/2g > I5/2g: n = 3  (alpha == beta: False)
+  Hg x G3/2u > I5/2u: n = 2  (alpha == beta: False)
+  Hg x I5/2u > G3/2u: n = 2  (alpha == beta: False)
+  Hg x I5/2u > I5/2u: n = 3  (alpha == beta: False)
+  T1u x I5/2g > I5/2u: n = 2  (alpha == beta: False)
+  T1u x I5/2u > I5/2g: n = 2  (alpha == beta: False)
+  T2u x I5/2g > I5/2u: n = 2  (alpha == beta: False)
+  T2u x I5/2u > I5/2g: n = 2  (alpha == beta: False)
+  Gu x Hu > Hg: n = 2  (alpha == beta: False)
+  Gu x G3/2g > I5/2u: n = 2  (alpha == beta: False)
+  Gu x I5/2g > G3/2u: n = 2  (alpha == beta: False)
+  Gu x I5/2g > I5/2u: n = 2  (alpha == beta: False)
+  Gu x G3/2u > I5/2g: n = 2  (alpha == beta: False)
+  Gu x I5/2u > G3/2g: n = 2  (alpha == beta: False)
+  Gu x I5/2u > I5/2g: n = 2  (alpha == beta: False)
+  Hu x Hu > Gg: n = 2  (alpha == beta: True)
+  Hu x Hu > Hg: n = 2  (alpha == beta: True)
+  Hu x G3/2g > I5/2u: n = 2  (alpha == beta: False)
+  Hu x I5/2g > G3/2u: n = 2  (alpha == beta: False)
+  Hu x I5/2g > I5/2u: n = 3  (alpha == beta: False)
+  Hu x G3/2u > I5/2g: n = 2  (alpha == beta: False)
+  Hu x I5/2u > G3/2g: n = 2  (alpha == beta: False)
+  Hu x I5/2u > I5/2g: n = 3  (alpha == beta: False)
+  G3/2g x I5/2g > Gg: n = 2  (alpha == beta: False)
+  G3/2g x I5/2g > Hg: n = 2  (alpha == beta: False)
+  G3/2g x I5/2u > Gu: n = 2  (alpha == beta: False)
+  G3/2g x I5/2u > Hu: n = 2  (alpha == beta: False)
+  I5/2g x I5/2g > T1g: n = 2  (alpha == beta: True)
+  I5/2g x I5/2g > T2g: n = 2  (alpha == beta: True)
+  I5/2g x I5/2g > Gg: n = 2  (alpha == beta: True)
+  I5/2g x I5/2g > Hg: n = 3  (alpha == beta: True)
+  I5/2g x G3/2u > Gu: n = 2  (alpha == beta: False)
+  I5/2g x G3/2u > Hu: n = 2  (alpha == beta: False)
+  I5/2g x I5/2u > T1u: n = 2  (alpha == beta: False)
+  I5/2g x I5/2u > T2u: n = 2  (alpha == beta: False)
+  I5/2g x I5/2u > Gu: n = 2  (alpha == beta: False)
+  I5/2g x I5/2u > Hu: n = 3  (alpha == beta: False)
+  G3/2u x I5/2u > Gg: n = 2  (alpha == beta: False)
+  G3/2u x I5/2u > Hg: n = 2  (alpha == beta: False)
+  I5/2u x I5/2u > T1g: n = 2  (alpha == beta: True)
+  I5/2u x I5/2u > T2g: n = 2  (alpha == beta: True)
+  I5/2u x I5/2u > Gg: n = 2  (alpha == beta: True)
+  I5/2u x I5/2u > Hg: n = 3  (alpha == beta: True)
+
+### 2. Sym^2 / Alt^2 split for alpha == beta
+  Hg x Hg > Gg: n = 2, n_sym = 1, n_alt = 1  -> both
+  Hg x Hg > Hg: n = 2, n_sym = 2, n_alt = 0  -> Sym
+  Hu x Hu > Gg: n = 2, n_sym = 1, n_alt = 1  -> both
+  Hu x Hu > Hg: n = 2, n_sym = 2, n_alt = 0  -> Sym
+  I5/2g x I5/2g > T1g: n = 2, n_sym = 2, n_alt = 0  -> Sym
+  I5/2g x I5/2g > T2g: n = 2, n_sym = 2, n_alt = 0  -> Sym
+  I5/2g x I5/2g > Gg: n = 2, n_sym = 1, n_alt = 1  -> both
+  I5/2g x I5/2g > Hg: n = 3, n_sym = 1, n_alt = 2  -> both
+  I5/2u x I5/2u > T1g: n = 2, n_sym = 2, n_alt = 0  -> Sym
+  I5/2u x I5/2u > T2g: n = 2, n_sym = 2, n_alt = 0  -> Sym
+  I5/2u x I5/2u > Gg: n = 2, n_sym = 1, n_alt = 1  -> both
+  I5/2u x I5/2u > Hg: n = 3, n_sym = 1, n_alt = 2  -> both
+  (n = 1 triples: 34 purely Sym, 22 purely Alt listed in counts below)
+  summary: 34 triples purely in Sym, 22 purely in Alt, 6 in both
+  NOT fully separated by the split (a part still has multiplicity >= 2):
+    Hg x Hg > Hg: n = 2, n_sym = 2, n_alt = 0
+    Hu x Hu > Hg: n = 2, n_sym = 2, n_alt = 0
+    I5/2g x I5/2g > T1g: n = 2, n_sym = 2, n_alt = 0
+    I5/2g x I5/2g > T2g: n = 2, n_sym = 2, n_alt = 0
+    I5/2g x I5/2g > Hg: n = 3, n_sym = 1, n_alt = 2
+    I5/2u x I5/2u > T1g: n = 2, n_sym = 2, n_alt = 0
+    I5/2u x I5/2u > T2g: n = 2, n_sym = 2, n_alt = 0
+    I5/2u x I5/2u > Hg: n = 3, n_sym = 1, n_alt = 2
+
+### 3. Squared norms under the proposed rule (Sym first, then Alt; designated gamma component 0)
+  494 partner-0 vectors over 171 pairs (32.1 s)
+    N = 1/30                         [sqrt in Q(zeta_120), not in K]      mu in K found    2x  e.g. I5/2g x I5/2g > Gg [sym #1]
+    N = 1/20                         [sqrt in K]                          mu in K found    5x  e.g. Hg x Gu > T1u [mult-free]
+    N = 1/15                         [sqrt in Q(zeta_60), not in K]       mu in K found    8x  e.g. T1g x I5/2g > G3/2g [mult-free]
+    N = 1/12                         [sqrt in Q(zeta_60), not in K]       mu in K found    3x  e.g. T1g x Gg > Hg [mult-free]
+    N = 1/10                         [sqrt in Q(zeta_40), not in K]       mu in K found    15x  e.g. T1g x Hg > T1g [mult-free]
+    N = 1/9                          [sqrt in K]                          mu in K found    4x  e.g. Hg x Hg > Hg [sym #2]
+    N = 2/15                         [sqrt in Q(zeta_120), not in K]      mu in K found    6x  e.g. Hg x T1u > Gu [mult-free]
+    N = 1/7                          [sqrt in Q(zeta_140), not in K]      mu in K found    4x  e.g. T1g x I5/2g > I5/2g [#2]
+    N = 1/6                          [sqrt in Q(zeta_120), not in K]      mu in K found    34x  e.g. T1g x G3/2g > E1/2g [mult-free]
+    N = 1/5                          [sqrt in K]                          mu in K found    42x  e.g. T1g x G3/2g > I5/2g [mult-free]
+    N = 2/9                          [sqrt in Q(zeta_40), not in K]       mu in K found    1x  e.g. I5/2g x I5/2u > Hu [#3]
+    N = 1/4                          [sqrt in K]                          mu in K found    22x  e.g. T1g x Gg > T2g [mult-free]
+    N = 4/15                         [sqrt in Q(zeta_60), not in K]       mu in K found    8x  e.g. T1g x Hg > Gg [mult-free]
+    N = 2/7                          [sqrt in Q(zeta_280), not in K]      mu in K found    3x  e.g. I5/2g x I5/2g > T1g [sym #2]
+    N = 3/10                         [sqrt in Q(zeta_120), not in K]      mu in K found    30x  e.g. Gg x Hg > T2g [mult-free]
+    N = 1/3                          [sqrt in Q(zeta_60), not in K]       mu in K found    57x  e.g. T1g x T1g > Ag [sym #1] [mult-free]
+    N = 7/20                         [sqrt in Q(zeta_140), not in K]      mu in K found    3x  e.g. I5/2g x I5/2g > T1g [sym #1]
+    N = 9/25                         [sqrt in K]                          mu in K found    4x  e.g. Hg x G3/2g > I5/2g [#2]
+    N = 2/5                          [sqrt in Q(zeta_40), not in K]       mu in K found    36x  e.g. T1g x Hg > T2g [mult-free]
+    N = 5/12                         [sqrt in Q(zeta_60), not in K]       mu in K found    2x  e.g. Hg x Gu > Hu [#1]
+    N = 9/20                         [sqrt in K]                          mu in K found    1x  e.g. Hg x Gu > T2u [mult-free]
+    N = 1/2                          [sqrt in Q(zeta_40), not in K]       mu in K found    70x  e.g. T1g x T1g > T1g [alt #1] [mult-free]
+    N = 8/15                         [sqrt in Q(zeta_120), not in K]      mu in K found    9x  e.g. Gg x I5/2g > G3/2g [#1]
+    N = 9/16                         [sqrt in K]                          mu in K found    4x  e.g. Gg x G3/2g > I5/2g [#2]
+    N = 3/5                          [sqrt in Q(zeta_60), not in K]       mu in K found    9x  e.g. T2g x I5/2g > I5/2g [#1]
+    N = 2/3                          [sqrt in Q(zeta_120), not in K]      mu in K found    27x  e.g. T1g x T2g > Gg [mult-free]
+    N = 7/10                         [sqrt in Q(zeta_280), not in K]      mu in K found    4x  e.g. T1g x I5/2g > I5/2g [#1]
+    N = 3/4                          [sqrt in Q(zeta_60), not in K]       mu in K found    5x  e.g. E7/2g x G3/2g > T2g [mult-free]
+    N = 4/5                          [sqrt in K]                          mu in K found    8x  e.g. Gg x G3/2g > I5/2g [#1]
+    N = 9/10                         [sqrt in Q(zeta_40), not in K]       mu in K found    4x  e.g. Hg x E7/2g > I5/2g [mult-free]
+    N = 1                            [sqrt in K]                          mu in K found    64x  e.g. Ag x Ag > Ag [sym #1] [mult-free]
+  => proposed rule: 31 distinct N; sqrt in K for 9; Hermitian factor mu in K found for 31 of 31; closure conductor (all triples) = 840; closure conductor (multiplicity-free triples only) = 120
+  => conductor divisible by 7 arises from: ['I5/2g x I5/2g > T1g [sym #1]', 'I5/2g x I5/2g > T1g [sym #2]', 'I5/2g x I5/2u > T1u [#1]', 'I5/2g x I5/2u > T1u [#2]', 'I5/2u x I5/2u > T1g [sym #1]', 'I5/2u x I5/2u > T1g [sym #2]', 'T1g x I5/2g > I5/2g [#1]', 'T1g x I5/2g > I5/2g [#2]', 'T1g x I5/2u > I5/2u [#1]', 'T1g x I5/2u > I5/2u [#2]', 'T1u x I5/2g > I5/2u [#1]', 'T1u x I5/2g > I5/2u [#2]', 'T1u x I5/2u > I5/2g [#1]', 'T1u x I5/2u > I5/2g [#2]']
+  norms of the multiplicity > 1 triples under the proposed rule:
+    T1g x I5/2g > I5/2g copy 1 -    e_j = (0, 1): N = 7/10
+    T1g x I5/2g > I5/2g copy 2 -    e_j = (1, 0): N = 1/7
+    T1g x I5/2u > I5/2u copy 1 -    e_j = (0, 1): N = 7/10
+    T1g x I5/2u > I5/2u copy 2 -    e_j = (1, 0): N = 1/7
+    T2g x I5/2g > I5/2g copy 1 -    e_j = (0, 2): N = 3/5
+    T2g x I5/2g > I5/2g copy 2 -    e_j = (1, 0): N = 1/3
+    T2g x I5/2u > I5/2u copy 1 -    e_j = (0, 2): N = 3/5
+    T2g x I5/2u > I5/2u copy 2 -    e_j = (1, 0): N = 1/3
+    Gg x Hg > Hg copy 1 -    e_j = (0, 2): N = 1/2
+    Gg x Hg > Hg copy 2 -    e_j = (1, 1): N = 1/3
+    Gg x Hu > Hu copy 1 -    e_j = (0, 2): N = 1/2
+    Gg x Hu > Hu copy 2 -    e_j = (1, 1): N = 1/3
+    Gg x G3/2g > I5/2g copy 1 -    e_j = (0, 1): N = 4/5
+    Gg x G3/2g > I5/2g copy 2 -    e_j = (1, 0): N = 9/16
+    Gg x I5/2g > G3/2g copy 1 -    e_j = (0, 3): N = 8/15
+    Gg x I5/2g > G3/2g copy 2 -    e_j = (1, 2): N = 1/2
+    Gg x I5/2g > I5/2g copy 1 -    e_j = (0, 2): N = 3/10
+    Gg x I5/2g > I5/2g copy 2 -    e_j = (2, 4): N = 1/3
+    Gg x G3/2u > I5/2u copy 1 -    e_j = (0, 1): N = 4/5
+    Gg x G3/2u > I5/2u copy 2 -    e_j = (1, 0): N = 9/16
+    Gg x I5/2u > G3/2u copy 1 -    e_j = (0, 3): N = 8/15
+    Gg x I5/2u > G3/2u copy 2 -    e_j = (1, 2): N = 1/2
+    Gg x I5/2u > I5/2u copy 1 -    e_j = (0, 2): N = 3/10
+    Gg x I5/2u > I5/2u copy 2 -    e_j = (2, 4): N = 1/3
+    Hg x Hg > Gg copy 1 sym  e_j = (0, 2): N = 1/5
+    Hg x Hg > Gg copy 2 alt  e_j = (0, 2): N = 1/5
+    Hg x Hg > Hg copy 1 sym  e_j = (0, 2): N = 3/10
+    Hg x Hg > Hg copy 2 sym  e_j = (1, 1): N = 1/9
+    Hg x Gu > Hu copy 1 -    e_j = (1, 1): N = 5/12
+    Hg x Gu > Hu copy 2 -    e_j = (2, 0): N = 2/5
+    Hg x Hu > Gu copy 1 -    e_j = (0, 2): N = 2/5
+    Hg x Hu > Gu copy 2 -    e_j = (1, 1): N = 4/15
+    Hg x Hu > Hu copy 1 -    e_j = (0, 2): N = 3/10
+    Hg x Hu > Hu copy 2 -    e_j = (1, 1): N = 1/9
+    Hg x G3/2g > I5/2g copy 1 -    e_j = (0, 1): N = 1/2
+    Hg x G3/2g > I5/2g copy 2 -    e_j = (1, 0): N = 9/25
+    Hg x I5/2g > G3/2g copy 1 -    e_j = (0, 3): N = 2/15
+    Hg x I5/2g > G3/2g copy 2 -    e_j = (1, 2): N = 1/5
+    Hg x I5/2g > I5/2g copy 1 -    e_j = (0, 2): N = 3/5
+    Hg x I5/2g > I5/2g copy 2 -    e_j = (1, 1): N = 3/10
+    Hg x I5/2g > I5/2g copy 3 -    e_j = (2, 0): N = 1/5
+    Hg x G3/2u > I5/2u copy 1 -    e_j = (0, 1): N = 1/2
+    Hg x G3/2u > I5/2u copy 2 -    e_j = (1, 0): N = 9/25
+    Hg x I5/2u > G3/2u copy 1 -    e_j = (0, 3): N = 2/15
+    Hg x I5/2u > G3/2u copy 2 -    e_j = (1, 2): N = 1/5
+    Hg x I5/2u > I5/2u copy 1 -    e_j = (0, 2): N = 3/5
+    Hg x I5/2u > I5/2u copy 2 -    e_j = (1, 1): N = 3/10
+    Hg x I5/2u > I5/2u copy 3 -    e_j = (2, 0): N = 1/5
+    T1u x I5/2g > I5/2u copy 1 -    e_j = (0, 1): N = 7/10
+    T1u x I5/2g > I5/2u copy 2 -    e_j = (1, 0): N = 1/7
+    T1u x I5/2u > I5/2g copy 1 -    e_j = (0, 1): N = 7/10
+    T1u x I5/2u > I5/2g copy 2 -    e_j = (1, 0): N = 1/7
+    T2u x I5/2g > I5/2u copy 1 -    e_j = (0, 2): N = 3/5
+    T2u x I5/2g > I5/2u copy 2 -    e_j = (1, 0): N = 1/3
+    T2u x I5/2u > I5/2g copy 1 -    e_j = (0, 2): N = 3/5
+    T2u x I5/2u > I5/2g copy 2 -    e_j = (1, 0): N = 1/3
+    Gu x Hu > Hg copy 1 -    e_j = (0, 2): N = 1/2
+    Gu x Hu > Hg copy 2 -    e_j = (1, 1): N = 1/3
+    Gu x G3/2g > I5/2u copy 1 -    e_j = (0, 1): N = 4/5
+    Gu x G3/2g > I5/2u copy 2 -    e_j = (1, 0): N = 9/16
+    Gu x I5/2g > G3/2u copy 1 -    e_j = (0, 3): N = 8/15
+    Gu x I5/2g > G3/2u copy 2 -    e_j = (1, 2): N = 1/2
+    Gu x I5/2g > I5/2u copy 1 -    e_j = (0, 2): N = 3/10
+    Gu x I5/2g > I5/2u copy 2 -    e_j = (2, 4): N = 1/3
+    Gu x G3/2u > I5/2g copy 1 -    e_j = (0, 1): N = 4/5
+    Gu x G3/2u > I5/2g copy 2 -    e_j = (1, 0): N = 9/16
+    Gu x I5/2u > G3/2g copy 1 -    e_j = (0, 3): N = 8/15
+    Gu x I5/2u > G3/2g copy 2 -    e_j = (1, 2): N = 1/2
+    Gu x I5/2u > I5/2g copy 1 -    e_j = (0, 2): N = 3/10
+    Gu x I5/2u > I5/2g copy 2 -    e_j = (2, 4): N = 1/3
+    Hu x Hu > Gg copy 1 sym  e_j = (0, 2): N = 1/5
+    Hu x Hu > Gg copy 2 alt  e_j = (0, 2): N = 1/5
+    Hu x Hu > Hg copy 1 sym  e_j = (0, 2): N = 3/10
+    Hu x Hu > Hg copy 2 sym  e_j = (1, 1): N = 1/9
+    Hu x G3/2g > I5/2u copy 1 -    e_j = (0, 1): N = 1/2
+    Hu x G3/2g > I5/2u copy 2 -    e_j = (1, 0): N = 9/25
+    Hu x I5/2g > G3/2u copy 1 -    e_j = (0, 3): N = 2/15
+    Hu x I5/2g > G3/2u copy 2 -    e_j = (1, 2): N = 1/5
+    Hu x I5/2g > I5/2u copy 1 -    e_j = (0, 2): N = 3/5
+    Hu x I5/2g > I5/2u copy 2 -    e_j = (1, 1): N = 3/10
+    Hu x I5/2g > I5/2u copy 3 -    e_j = (2, 0): N = 1/5
+    Hu x G3/2u > I5/2g copy 1 -    e_j = (0, 1): N = 1/2
+    Hu x G3/2u > I5/2g copy 2 -    e_j = (1, 0): N = 9/25
+    Hu x I5/2u > G3/2g copy 1 -    e_j = (0, 3): N = 2/15
+    Hu x I5/2u > G3/2g copy 2 -    e_j = (1, 2): N = 1/5
+    Hu x I5/2u > I5/2g copy 1 -    e_j = (0, 2): N = 3/5
+    Hu x I5/2u > I5/2g copy 2 -    e_j = (1, 1): N = 3/10
+    Hu x I5/2u > I5/2g copy 3 -    e_j = (2, 0): N = 1/5
+    G3/2g x I5/2g > Gg copy 1 -    e_j = (0, 2): N = 8/15
+    G3/2g x I5/2g > Gg copy 2 -    e_j = (1, 1): N = 1/3
+    G3/2g x I5/2g > Hg copy 1 -    e_j = (0, 2): N = 1/6
+    G3/2g x I5/2g > Hg copy 2 -    e_j = (1, 1): N = 1/6
+    G3/2g x I5/2u > Gu copy 1 -    e_j = (0, 2): N = 8/15
+    G3/2g x I5/2u > Gu copy 2 -    e_j = (1, 1): N = 1/3
+    G3/2g x I5/2u > Hu copy 1 -    e_j = (0, 2): N = 1/6
+    G3/2g x I5/2u > Hu copy 2 -    e_j = (1, 1): N = 1/6
+    I5/2g x I5/2g > T1g copy 1 sym  e_j = (0, 4): N = 7/20
+    I5/2g x I5/2g > T1g copy 2 sym  e_j = (1, 3): N = 2/7
+    I5/2g x I5/2g > T2g copy 1 sym  e_j = (0, 3): N = 3/10
+    I5/2g x I5/2g > T2g copy 2 sym  e_j = (1, 2): N = 1/6
+    I5/2g x I5/2g > Gg copy 1 sym  e_j = (0, 3): N = 1/30
+    I5/2g x I5/2g > Gg copy 2 alt  e_j = (0, 3): N = 1/6
+    I5/2g x I5/2g > Hg copy 1 sym  e_j = (0, 3): N = 1/6
+    I5/2g x I5/2g > Hg copy 2 alt  e_j = (0, 3): N = 1/3
+    I5/2g x I5/2g > Hg copy 3 alt  e_j = (1, 2): N = 1/4
+    I5/2g x G3/2u > Gu copy 1 -    e_j = (0, 2): N = 8/15
+    I5/2g x G3/2u > Gu copy 2 -    e_j = (1, 1): N = 1/2
+    I5/2g x G3/2u > Hu copy 1 -    e_j = (0, 2): N = 5/12
+    I5/2g x G3/2u > Hu copy 2 -    e_j = (1, 1): N = 2/5
+    I5/2g x I5/2u > T1u copy 1 -    e_j = (0, 4): N = 7/20
+    I5/2g x I5/2u > T1u copy 2 -    e_j = (1, 3): N = 2/7
+    I5/2g x I5/2u > T2u copy 1 -    e_j = (0, 3): N = 3/10
+    I5/2g x I5/2u > T2u copy 2 -    e_j = (1, 2): N = 1/6
+    I5/2g x I5/2u > Gu copy 1 -    e_j = (0, 3): N = 1/5
+    I5/2g x I5/2u > Gu copy 2 -    e_j = (2, 1): N = 1/9
+    I5/2g x I5/2u > Hu copy 1 -    e_j = (0, 3): N = 1/2
+    I5/2g x I5/2u > Hu copy 2 -    e_j = (1, 2): N = 1/2
+    I5/2g x I5/2u > Hu copy 3 -    e_j = (2, 1): N = 2/9
+    G3/2u x I5/2u > Gg copy 1 -    e_j = (0, 2): N = 8/15
+    G3/2u x I5/2u > Gg copy 2 -    e_j = (1, 1): N = 1/3
+    G3/2u x I5/2u > Hg copy 1 -    e_j = (0, 2): N = 1/6
+    G3/2u x I5/2u > Hg copy 2 -    e_j = (1, 1): N = 1/6
+    I5/2u x I5/2u > T1g copy 1 sym  e_j = (0, 4): N = 7/20
+    I5/2u x I5/2u > T1g copy 2 sym  e_j = (1, 3): N = 2/7
+    I5/2u x I5/2u > T2g copy 1 sym  e_j = (0, 3): N = 3/10
+    I5/2u x I5/2u > T2g copy 2 sym  e_j = (1, 2): N = 1/6
+    I5/2u x I5/2u > Gg copy 1 sym  e_j = (0, 3): N = 1/30
+    I5/2u x I5/2u > Gg copy 2 alt  e_j = (0, 3): N = 1/6
+    I5/2u x I5/2u > Hg copy 1 sym  e_j = (0, 3): N = 1/6
+    I5/2u x I5/2u > Hg copy 2 alt  e_j = (0, 3): N = 1/3
+    I5/2u x I5/2u > Hg copy 3 alt  e_j = (1, 2): N = 1/4
+  original rule of cyclotomic_closure.cg_norms (Gram-Schmidt in product order, no split):
+    N = 1/20                         [sqrt in K]                          mu in K found    5x  e.g. Hg x Gu > T1u [mult-free]
+    N = 1/15                         [sqrt in Q(zeta_60), not in K]       mu in K found    8x  e.g. T1g x I5/2g > G3/2g [mult-free]
+    N = 1/12                         [sqrt in Q(zeta_60), not in K]       mu in K found    3x  e.g. T1g x Gg > Hg [mult-free]
+    N = 1/10                         [sqrt in Q(zeta_40), not in K]       mu in K found    15x  e.g. T1g x Hg > T1g [mult-free]
+    N = 1/9                          [sqrt in K]                          mu in K found    6x  e.g. Hg x Hg > Hg [#2]
+    N = 2/15                         [sqrt in Q(zeta_120), not in K]      mu in K found    6x  e.g. Hg x T1u > Gu [mult-free]
+    N = 1/7                          [sqrt in Q(zeta_140), not in K]      mu in K found    4x  e.g. T1g x I5/2g > I5/2g [#2]
+    N = 1/6                          [sqrt in Q(zeta_120), not in K]      mu in K found    30x  e.g. T1g x G3/2g > E1/2g [mult-free]
+    N = 1/5                          [sqrt in K]                          mu in K found    40x  e.g. T1g x G3/2g > I5/2g [mult-free]
+    N = 2/9                          [sqrt in Q(zeta_40), not in K]       mu in K found    3x  e.g. I5/2g x I5/2g > Hg [#3]
+    N = 1/4                          [sqrt in K]                          mu in K found    20x  e.g. T1g x Gg > T2g [mult-free]
+    N = 4/15                         [sqrt in Q(zeta_60), not in K]       mu in K found    10x  e.g. T1g x Hg > Gg [mult-free]
+    N = 2/7                          [sqrt in Q(zeta_280), not in K]      mu in K found    3x  e.g. I5/2g x I5/2g > T1g [#2]
+    N = 3/10                         [sqrt in Q(zeta_120), not in K]      mu in K found    30x  e.g. Gg x Hg > T2g [mult-free]
+    N = 1/3                          [sqrt in Q(zeta_60), not in K]       mu in K found    55x  e.g. T1g x T1g > Ag [mult-free]
+    N = 7/20                         [sqrt in Q(zeta_140), not in K]      mu in K found    3x  e.g. I5/2g x I5/2g > T1g [#1]
+    N = 9/25                         [sqrt in K]                          mu in K found    4x  e.g. Hg x G3/2g > I5/2g [#2]
+    N = 2/5                          [sqrt in Q(zeta_40), not in K]       mu in K found    38x  e.g. T1g x Hg > T2g [mult-free]
+    N = 5/12                         [sqrt in Q(zeta_60), not in K]       mu in K found    2x  e.g. Hg x Gu > Hu [#1]
+    N = 9/20                         [sqrt in K]                          mu in K found    1x  e.g. Hg x Gu > T2u [mult-free]
+    N = 1/2                          [sqrt in Q(zeta_40), not in K]       mu in K found    74x  e.g. T1g x T1g > T1g [mult-free]
+    N = 8/15                         [sqrt in Q(zeta_120), not in K]      mu in K found    9x  e.g. Gg x I5/2g > G3/2g [#1]
+    N = 9/16                         [sqrt in K]                          mu in K found    4x  e.g. Gg x G3/2g > I5/2g [#2]
+    N = 3/5                          [sqrt in Q(zeta_60), not in K]       mu in K found    9x  e.g. T2g x I5/2g > I5/2g [#1]
+    N = 2/3                          [sqrt in Q(zeta_120), not in K]      mu in K found    27x  e.g. T1g x T2g > Gg [mult-free]
+    N = 7/10                         [sqrt in Q(zeta_280), not in K]      mu in K found    4x  e.g. T1g x I5/2g > I5/2g [#1]
+    N = 3/4                          [sqrt in Q(zeta_60), not in K]       mu in K found    5x  e.g. E7/2g x G3/2g > T2g [mult-free]
+    N = 4/5                          [sqrt in K]                          mu in K found    8x  e.g. Gg x G3/2g > I5/2g [#1]
+    N = 9/10                         [sqrt in Q(zeta_40), not in K]       mu in K found    4x  e.g. Hg x E7/2g > I5/2g [mult-free]
+    N = 1                            [sqrt in K]                          mu in K found    64x  e.g. Ag x Ag > Ag [mult-free]
+  => original rule: 30 distinct N; sqrt in K for 9; Hermitian factor mu in K found for 30 of 30; closure conductor (all triples) = 840; closure conductor (multiplicity-free triples only) = 120
+  => conductor divisible by 7 arises from: ['I5/2g x I5/2g > T1g [#1]', 'I5/2g x I5/2g > T1g [#2]', 'I5/2g x I5/2u > T1u [#1]', 'I5/2g x I5/2u > T1u [#2]', 'I5/2u x I5/2u > T1g [#1]', 'I5/2u x I5/2u > T1g [#2]', 'T1g x I5/2g > I5/2g [#1]', 'T1g x I5/2g > I5/2g [#2]', 'T1g x I5/2u > I5/2u [#1]', 'T1g x I5/2u > I5/2u [#2]', 'T1u x I5/2g > I5/2u [#1]', 'T1u x I5/2g > I5/2u [#2]', 'T1u x I5/2u > I5/2g [#1]', 'T1u x I5/2u > I5/2g [#2]']
+  N values only under the proposed rule: ['1/30']
+  N values only under the original rule: []
+
+### 4. Sizes of the full CG unitaries
+  irreps: 18; unordered pairs (alpha <= beta): 171; ordered pairs: 324
+  all pairs: sum (d_a d_b)^2 = 31428; non-zero entries = 5798  (2899/15714 = 0.1845)
+  ordinary x ordinary: pairs = 55; sum (d_a d_b)^2 = 8244; non-zero entries = 1558  (779/4122 = 0.1890)
+  Gram (orthogonality + norm) check passed for 137 of 171 pairs (3.5 s)
+
+(Ih done in 56.9 s)
