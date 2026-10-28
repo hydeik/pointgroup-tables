@@ -1,0 +1,2158 @@
+== D2 > C2: L=4; matrices equal 5, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C2: C2 -> C2
+   A: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B3: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+== D3 > C3: L=12; matrices equal 6, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C3: C3^1 -> C3^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   E: labels ['1E', '2E']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E: j=0 N=1 mu=1 (square)
+      designated 2E: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   1E3/2: labels ['B3/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B3/2: j=0 N=1 mu=1 (square)
+   2E3/2: labels ['B3/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B3/2: j=0 N=1 mu=1 (square)
+== D4 > C4: L=8; matrices equal 7, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C4: C4^1 -> C4^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E: labels ['1E', '2E']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E: j=0 N=1 mu=1 (square)
+      designated 2E: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+== D5 > C5: L=20; matrices equal 8, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C5: C5^1 -> C5^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   1E5/2: labels ['B5/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B5/2: j=0 N=1 mu=1 (square)
+   2E5/2: labels ['B5/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B5/2: j=0 N=1 mu=1 (square)
+== D6 > C6: L=12; matrices equal 9, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C6: C6^1 -> C6^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+== D7 > C7: L=28; matrices equal 10, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C7: C7^1 -> C7^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   1E7/2: labels ['B7/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B7/2: j=0 N=1 mu=1 (square)
+   2E7/2: labels ['B7/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B7/2: j=0 N=1 mu=1 (square)
+== D8 > C8: L=16; matrices equal 11, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C8: C8^1 -> C8^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+== D9 > C9: L=36; matrices equal 12, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C9: C9^1 -> C9^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E4: labels ['1E4', '2E4']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4: j=0 N=1 mu=1 (square)
+      designated 2E4: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   1E9/2: labels ['B9/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B9/2: j=0 N=1 mu=1 (square)
+   2E9/2: labels ['B9/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B9/2: j=0 N=1 mu=1 (square)
+== D10 > C10: L=20; matrices equal 13, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C10: C10^1 -> C10^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E4: labels ['1E4', '2E4']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4: j=0 N=1 mu=1 (square)
+      designated 2E4: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   E9/2: labels ['1E9/2', '2E9/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2: j=0 N=1 mu=1 (square)
+      designated 2E9/2: j=1 N=1 mu=1 (square)
+== D11 > C11: L=44; matrices equal 14, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C11: C11^1 -> C11^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E4: labels ['1E4', '2E4']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4: j=0 N=1 mu=1 (square)
+      designated 2E4: j=1 N=1 mu=1 (square)
+   E5: labels ['1E5', '2E5']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5: j=0 N=1 mu=1 (square)
+      designated 2E5: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   E9/2: labels ['1E9/2', '2E9/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2: j=0 N=1 mu=1 (square)
+      designated 2E9/2: j=1 N=1 mu=1 (square)
+   1E11/2: labels ['B11/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B11/2: j=0 N=1 mu=1 (square)
+   2E11/2: labels ['B11/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B11/2: j=0 N=1 mu=1 (square)
+== D12 > C12: L=24; matrices equal 15, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C12: C12^1 -> C12^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E4: labels ['1E4', '2E4']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4: j=0 N=1 mu=1 (square)
+      designated 2E4: j=1 N=1 mu=1 (square)
+   E5: labels ['1E5', '2E5']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5: j=0 N=1 mu=1 (square)
+      designated 2E5: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   E9/2: labels ['1E9/2', '2E9/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2: j=0 N=1 mu=1 (square)
+      designated 2E9/2: j=1 N=1 mu=1 (square)
+   E11/2: labels ['1E11/2', '2E11/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E11/2: j=0 N=1 mu=1 (square)
+      designated 2E11/2: j=1 N=1 mu=1 (square)
+== C2v > C2: L=4; matrices equal 5, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C2: C2 -> C2
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+== C3v > C3: L=12; matrices equal 6, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C3: C3^1 -> C3^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   E: labels ['1E', '2E']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E: j=0 N=1 mu=1 (square)
+      designated 2E: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   1E3/2: labels ['B3/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B3/2: j=0 N=1 mu=1 (square)
+   2E3/2: labels ['B3/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B3/2: j=0 N=1 mu=1 (square)
+== C4v > C4: L=8; matrices equal 7, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C4: C4^1 -> C4^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E: labels ['1E', '2E']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E: j=0 N=1 mu=1 (square)
+      designated 2E: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+== C5v > C5: L=20; matrices equal 8, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C5: C5^1 -> C5^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   1E5/2: labels ['B5/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B5/2: j=0 N=1 mu=1 (square)
+   2E5/2: labels ['B5/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B5/2: j=0 N=1 mu=1 (square)
+== C6v > C6: L=12; matrices equal 9, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C6: C6^1 -> C6^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+== C7v > C7: L=28; matrices equal 10, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C7: C7^1 -> C7^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   1E7/2: labels ['B7/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B7/2: j=0 N=1 mu=1 (square)
+   2E7/2: labels ['B7/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B7/2: j=0 N=1 mu=1 (square)
+== C8v > C8: L=16; matrices equal 11, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C8: C8^1 -> C8^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+== C9v > C9: L=36; matrices equal 12, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C9: C9^1 -> C9^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E4: labels ['1E4', '2E4']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4: j=0 N=1 mu=1 (square)
+      designated 2E4: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   1E9/2: labels ['B9/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B9/2: j=0 N=1 mu=1 (square)
+   2E9/2: labels ['B9/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B9/2: j=0 N=1 mu=1 (square)
+== C10v > C10: L=20; matrices equal 13, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C10: C10^1 -> C10^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E4: labels ['1E4', '2E4']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4: j=0 N=1 mu=1 (square)
+      designated 2E4: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   E9/2: labels ['1E9/2', '2E9/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2: j=0 N=1 mu=1 (square)
+      designated 2E9/2: j=1 N=1 mu=1 (square)
+== C11v > C11: L=44; matrices equal 14, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C11: C11^1 -> C11^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E4: labels ['1E4', '2E4']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4: j=0 N=1 mu=1 (square)
+      designated 2E4: j=1 N=1 mu=1 (square)
+   E5: labels ['1E5', '2E5']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5: j=0 N=1 mu=1 (square)
+      designated 2E5: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   E9/2: labels ['1E9/2', '2E9/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2: j=0 N=1 mu=1 (square)
+      designated 2E9/2: j=1 N=1 mu=1 (square)
+   1E11/2: labels ['B11/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B11/2: j=0 N=1 mu=1 (square)
+   2E11/2: labels ['B11/2']; pi = (0) = id; phases ['1']; matrices equal
+      designated B11/2: j=0 N=1 mu=1 (square)
+== C12v > C12: L=24; matrices equal 15, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C12: C12^1 -> C12^1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E4: labels ['1E4', '2E4']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4: j=0 N=1 mu=1 (square)
+      designated 2E4: j=1 N=1 mu=1 (square)
+   E5: labels ['1E5', '2E5']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5: j=0 N=1 mu=1 (square)
+      designated 2E5: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   E9/2: labels ['1E9/2', '2E9/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2: j=0 N=1 mu=1 (square)
+      designated 2E9/2: j=1 N=1 mu=1 (square)
+   E11/2: labels ['1E11/2', '2E11/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E11/2: j=0 N=1 mu=1 (square)
+      designated 2E11/2: j=1 N=1 mu=1 (square)
+== D2h > C2h: L=4; matrices equal 10, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C2h: C2 -> C2, i -> i
+   Ag: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   B1g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   B2g: labels ['Bg']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bg: j=0 N=1 mu=1 (square)
+   B3g: labels ['Bg']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bg: j=0 N=1 mu=1 (square)
+   Au: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   B1u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   B2u: labels ['Bu']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bu: j=0 N=1 mu=1 (square)
+   B3u: labels ['Bu']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bu: j=0 N=1 mu=1 (square)
+   E1/2g: labels ['1E1/2g', '2E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2g: j=0 N=1 mu=1 (square)
+      designated 2E1/2g: j=1 N=1 mu=1 (square)
+   E1/2u: labels ['1E1/2u', '2E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2u: j=0 N=1 mu=1 (square)
+      designated 2E1/2u: j=1 N=1 mu=1 (square)
+== D3h > C3h: L=12; matrices equal 8, permuted 1, phased 0, mixed 0; N in {1}
+   embedding C3h: C3^1 -> C3^1, S3^-1 -> S3^-1
+   A1': labels ["A'"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A': j=0 N=1 mu=1 (square)
+   A2': labels ["A'"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A': j=0 N=1 mu=1 (square)
+   E': labels ["1E'", "2E'"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E': j=1 N=1 mu=1 (square)
+      designated 2E': j=0 N=1 mu=1 (square)
+   A1'': labels ["A''"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A'': j=0 N=1 mu=1 (square)
+   A2'': labels ["A''"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A'': j=0 N=1 mu=1 (square)
+   E'': labels ["1E''", "2E''"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E'': j=0 N=1 mu=1 (square)
+      designated 2E'': j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+== D4h > C4h: L=8; matrices equal 14, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C4h: C4^1 -> C4^1, i -> i
+   A1g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   A2g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   B1g: labels ['Bg']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bg: j=0 N=1 mu=1 (square)
+   B2g: labels ['Bg']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bg: j=0 N=1 mu=1 (square)
+   Eg: labels ['1Eg', '2Eg']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1Eg: j=0 N=1 mu=1 (square)
+      designated 2Eg: j=1 N=1 mu=1 (square)
+   A1u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   A2u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   B1u: labels ['Bu']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bu: j=0 N=1 mu=1 (square)
+   B2u: labels ['Bu']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bu: j=0 N=1 mu=1 (square)
+   Eu: labels ['1Eu', '2Eu']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1Eu: j=0 N=1 mu=1 (square)
+      designated 2Eu: j=1 N=1 mu=1 (square)
+   E1/2g: labels ['1E1/2g', '2E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2g: j=0 N=1 mu=1 (square)
+      designated 2E1/2g: j=1 N=1 mu=1 (square)
+   E3/2g: labels ['1E3/2g', '2E3/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2g: j=0 N=1 mu=1 (square)
+      designated 2E3/2g: j=1 N=1 mu=1 (square)
+   E1/2u: labels ['1E1/2u', '2E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2u: j=0 N=1 mu=1 (square)
+      designated 2E1/2u: j=1 N=1 mu=1 (square)
+   E3/2u: labels ['1E3/2u', '2E3/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2u: j=0 N=1 mu=1 (square)
+      designated 2E3/2u: j=1 N=1 mu=1 (square)
+== D5h > C5h: L=20; matrices equal 11, permuted 2, phased 0, mixed 0; N in {1}
+   embedding C5h: C5^1 -> C5^1, S5^-2 -> S5^-2
+   A1': labels ["A'"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A': j=0 N=1 mu=1 (square)
+   A2': labels ["A'"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A': j=0 N=1 mu=1 (square)
+   E1': labels ["1E1'", "2E1'"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E1': j=1 N=1 mu=1 (square)
+      designated 2E1': j=0 N=1 mu=1 (square)
+   E2': labels ["1E2'", "2E2'"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2': j=0 N=1 mu=1 (square)
+      designated 2E2': j=1 N=1 mu=1 (square)
+   A1'': labels ["A''"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A'': j=0 N=1 mu=1 (square)
+   A2'': labels ["A''"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A'': j=0 N=1 mu=1 (square)
+   E1'': labels ["1E1''", "2E1''"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1'': j=0 N=1 mu=1 (square)
+      designated 2E1'': j=1 N=1 mu=1 (square)
+   E2'': labels ["1E2''", "2E2''"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E2'': j=1 N=1 mu=1 (square)
+      designated 2E2'': j=0 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   E9/2: labels ['1E9/2', '2E9/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2: j=0 N=1 mu=1 (square)
+      designated 2E9/2: j=1 N=1 mu=1 (square)
+== D6h > C6h: L=12; matrices equal 18, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C6h: C6^1 -> C6^1, i -> i
+   A1g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   A2g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   B1g: labels ['Bg']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bg: j=0 N=1 mu=1 (square)
+   B2g: labels ['Bg']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bg: j=0 N=1 mu=1 (square)
+   E1g: labels ['1E1g', '2E1g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1g: j=0 N=1 mu=1 (square)
+      designated 2E1g: j=1 N=1 mu=1 (square)
+   E2g: labels ['1E2g', '2E2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2g: j=0 N=1 mu=1 (square)
+      designated 2E2g: j=1 N=1 mu=1 (square)
+   A1u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   A2u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   B1u: labels ['Bu']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bu: j=0 N=1 mu=1 (square)
+   B2u: labels ['Bu']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bu: j=0 N=1 mu=1 (square)
+   E1u: labels ['1E1u', '2E1u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1u: j=0 N=1 mu=1 (square)
+      designated 2E1u: j=1 N=1 mu=1 (square)
+   E2u: labels ['1E2u', '2E2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2u: j=0 N=1 mu=1 (square)
+      designated 2E2u: j=1 N=1 mu=1 (square)
+   E1/2g: labels ['1E1/2g', '2E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2g: j=0 N=1 mu=1 (square)
+      designated 2E1/2g: j=1 N=1 mu=1 (square)
+   E3/2g: labels ['1E3/2g', '2E3/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2g: j=0 N=1 mu=1 (square)
+      designated 2E3/2g: j=1 N=1 mu=1 (square)
+   E5/2g: labels ['1E5/2g', '2E5/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2g: j=0 N=1 mu=1 (square)
+      designated 2E5/2g: j=1 N=1 mu=1 (square)
+   E1/2u: labels ['1E1/2u', '2E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2u: j=0 N=1 mu=1 (square)
+      designated 2E1/2u: j=1 N=1 mu=1 (square)
+   E3/2u: labels ['1E3/2u', '2E3/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2u: j=0 N=1 mu=1 (square)
+      designated 2E3/2u: j=1 N=1 mu=1 (square)
+   E5/2u: labels ['1E5/2u', '2E5/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2u: j=0 N=1 mu=1 (square)
+      designated 2E5/2u: j=1 N=1 mu=1 (square)
+== D7h > C7h: L=28; matrices equal 14, permuted 3, phased 0, mixed 0; N in {1}
+   embedding C7h: C7^1 -> C7^1, S7^-3 -> S7^-3
+   A1': labels ["A'"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A': j=0 N=1 mu=1 (square)
+   A2': labels ["A'"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A': j=0 N=1 mu=1 (square)
+   E1': labels ["1E1'", "2E1'"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E1': j=1 N=1 mu=1 (square)
+      designated 2E1': j=0 N=1 mu=1 (square)
+   E2': labels ["1E2'", "2E2'"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2': j=0 N=1 mu=1 (square)
+      designated 2E2': j=1 N=1 mu=1 (square)
+   E3': labels ["1E3'", "2E3'"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E3': j=1 N=1 mu=1 (square)
+      designated 2E3': j=0 N=1 mu=1 (square)
+   A1'': labels ["A''"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A'': j=0 N=1 mu=1 (square)
+   A2'': labels ["A''"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A'': j=0 N=1 mu=1 (square)
+   E1'': labels ["1E1''", "2E1''"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1'': j=0 N=1 mu=1 (square)
+      designated 2E1'': j=1 N=1 mu=1 (square)
+   E2'': labels ["1E2''", "2E2''"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E2'': j=1 N=1 mu=1 (square)
+      designated 2E2'': j=0 N=1 mu=1 (square)
+   E3'': labels ["1E3''", "2E3''"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3'': j=0 N=1 mu=1 (square)
+      designated 2E3'': j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   E9/2: labels ['1E9/2', '2E9/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2: j=0 N=1 mu=1 (square)
+      designated 2E9/2: j=1 N=1 mu=1 (square)
+   E11/2: labels ['1E11/2', '2E11/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E11/2: j=0 N=1 mu=1 (square)
+      designated 2E11/2: j=1 N=1 mu=1 (square)
+   E13/2: labels ['1E13/2', '2E13/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E13/2: j=0 N=1 mu=1 (square)
+      designated 2E13/2: j=1 N=1 mu=1 (square)
+== D8h > C8h: L=16; matrices equal 22, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C8h: C8^1 -> C8^1, i -> i
+   A1g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   A2g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   B1g: labels ['Bg']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bg: j=0 N=1 mu=1 (square)
+   B2g: labels ['Bg']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bg: j=0 N=1 mu=1 (square)
+   E1g: labels ['1E1g', '2E1g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1g: j=0 N=1 mu=1 (square)
+      designated 2E1g: j=1 N=1 mu=1 (square)
+   E2g: labels ['1E2g', '2E2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2g: j=0 N=1 mu=1 (square)
+      designated 2E2g: j=1 N=1 mu=1 (square)
+   E3g: labels ['1E3g', '2E3g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3g: j=0 N=1 mu=1 (square)
+      designated 2E3g: j=1 N=1 mu=1 (square)
+   A1u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   A2u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   B1u: labels ['Bu']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bu: j=0 N=1 mu=1 (square)
+   B2u: labels ['Bu']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bu: j=0 N=1 mu=1 (square)
+   E1u: labels ['1E1u', '2E1u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1u: j=0 N=1 mu=1 (square)
+      designated 2E1u: j=1 N=1 mu=1 (square)
+   E2u: labels ['1E2u', '2E2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2u: j=0 N=1 mu=1 (square)
+      designated 2E2u: j=1 N=1 mu=1 (square)
+   E3u: labels ['1E3u', '2E3u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3u: j=0 N=1 mu=1 (square)
+      designated 2E3u: j=1 N=1 mu=1 (square)
+   E1/2g: labels ['1E1/2g', '2E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2g: j=0 N=1 mu=1 (square)
+      designated 2E1/2g: j=1 N=1 mu=1 (square)
+   E3/2g: labels ['1E3/2g', '2E3/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2g: j=0 N=1 mu=1 (square)
+      designated 2E3/2g: j=1 N=1 mu=1 (square)
+   E5/2g: labels ['1E5/2g', '2E5/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2g: j=0 N=1 mu=1 (square)
+      designated 2E5/2g: j=1 N=1 mu=1 (square)
+   E7/2g: labels ['1E7/2g', '2E7/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2g: j=0 N=1 mu=1 (square)
+      designated 2E7/2g: j=1 N=1 mu=1 (square)
+   E1/2u: labels ['1E1/2u', '2E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2u: j=0 N=1 mu=1 (square)
+      designated 2E1/2u: j=1 N=1 mu=1 (square)
+   E3/2u: labels ['1E3/2u', '2E3/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2u: j=0 N=1 mu=1 (square)
+      designated 2E3/2u: j=1 N=1 mu=1 (square)
+   E5/2u: labels ['1E5/2u', '2E5/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2u: j=0 N=1 mu=1 (square)
+      designated 2E5/2u: j=1 N=1 mu=1 (square)
+   E7/2u: labels ['1E7/2u', '2E7/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2u: j=0 N=1 mu=1 (square)
+      designated 2E7/2u: j=1 N=1 mu=1 (square)
+== D9h > C9h: L=36; matrices equal 17, permuted 4, phased 0, mixed 0; N in {1}
+   embedding C9h: C9^1 -> C9^1, S9^-4 -> S9^-4
+   A1': labels ["A'"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A': j=0 N=1 mu=1 (square)
+   A2': labels ["A'"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A': j=0 N=1 mu=1 (square)
+   E1': labels ["1E1'", "2E1'"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E1': j=1 N=1 mu=1 (square)
+      designated 2E1': j=0 N=1 mu=1 (square)
+   E2': labels ["1E2'", "2E2'"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2': j=0 N=1 mu=1 (square)
+      designated 2E2': j=1 N=1 mu=1 (square)
+   E3': labels ["1E3'", "2E3'"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E3': j=1 N=1 mu=1 (square)
+      designated 2E3': j=0 N=1 mu=1 (square)
+   E4': labels ["1E4'", "2E4'"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4': j=0 N=1 mu=1 (square)
+      designated 2E4': j=1 N=1 mu=1 (square)
+   A1'': labels ["A''"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A'': j=0 N=1 mu=1 (square)
+   A2'': labels ["A''"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A'': j=0 N=1 mu=1 (square)
+   E1'': labels ["1E1''", "2E1''"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1'': j=0 N=1 mu=1 (square)
+      designated 2E1'': j=1 N=1 mu=1 (square)
+   E2'': labels ["1E2''", "2E2''"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E2'': j=1 N=1 mu=1 (square)
+      designated 2E2'': j=0 N=1 mu=1 (square)
+   E3'': labels ["1E3''", "2E3''"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3'': j=0 N=1 mu=1 (square)
+      designated 2E3'': j=1 N=1 mu=1 (square)
+   E4'': labels ["1E4''", "2E4''"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E4'': j=1 N=1 mu=1 (square)
+      designated 2E4'': j=0 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   E9/2: labels ['1E9/2', '2E9/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2: j=0 N=1 mu=1 (square)
+      designated 2E9/2: j=1 N=1 mu=1 (square)
+   E11/2: labels ['1E11/2', '2E11/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E11/2: j=0 N=1 mu=1 (square)
+      designated 2E11/2: j=1 N=1 mu=1 (square)
+   E13/2: labels ['1E13/2', '2E13/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E13/2: j=0 N=1 mu=1 (square)
+      designated 2E13/2: j=1 N=1 mu=1 (square)
+   E15/2: labels ['1E15/2', '2E15/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E15/2: j=0 N=1 mu=1 (square)
+      designated 2E15/2: j=1 N=1 mu=1 (square)
+   E17/2: labels ['1E17/2', '2E17/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E17/2: j=0 N=1 mu=1 (square)
+      designated 2E17/2: j=1 N=1 mu=1 (square)
+== D10h > C10h: L=20; matrices equal 26, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C10h: C10^1 -> C10^1, i -> i
+   A1g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   A2g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   B1g: labels ['Bg']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bg: j=0 N=1 mu=1 (square)
+   B2g: labels ['Bg']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bg: j=0 N=1 mu=1 (square)
+   E1g: labels ['1E1g', '2E1g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1g: j=0 N=1 mu=1 (square)
+      designated 2E1g: j=1 N=1 mu=1 (square)
+   E2g: labels ['1E2g', '2E2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2g: j=0 N=1 mu=1 (square)
+      designated 2E2g: j=1 N=1 mu=1 (square)
+   E3g: labels ['1E3g', '2E3g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3g: j=0 N=1 mu=1 (square)
+      designated 2E3g: j=1 N=1 mu=1 (square)
+   E4g: labels ['1E4g', '2E4g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4g: j=0 N=1 mu=1 (square)
+      designated 2E4g: j=1 N=1 mu=1 (square)
+   A1u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   A2u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   B1u: labels ['Bu']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bu: j=0 N=1 mu=1 (square)
+   B2u: labels ['Bu']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bu: j=0 N=1 mu=1 (square)
+   E1u: labels ['1E1u', '2E1u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1u: j=0 N=1 mu=1 (square)
+      designated 2E1u: j=1 N=1 mu=1 (square)
+   E2u: labels ['1E2u', '2E2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2u: j=0 N=1 mu=1 (square)
+      designated 2E2u: j=1 N=1 mu=1 (square)
+   E3u: labels ['1E3u', '2E3u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3u: j=0 N=1 mu=1 (square)
+      designated 2E3u: j=1 N=1 mu=1 (square)
+   E4u: labels ['1E4u', '2E4u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4u: j=0 N=1 mu=1 (square)
+      designated 2E4u: j=1 N=1 mu=1 (square)
+   E1/2g: labels ['1E1/2g', '2E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2g: j=0 N=1 mu=1 (square)
+      designated 2E1/2g: j=1 N=1 mu=1 (square)
+   E3/2g: labels ['1E3/2g', '2E3/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2g: j=0 N=1 mu=1 (square)
+      designated 2E3/2g: j=1 N=1 mu=1 (square)
+   E5/2g: labels ['1E5/2g', '2E5/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2g: j=0 N=1 mu=1 (square)
+      designated 2E5/2g: j=1 N=1 mu=1 (square)
+   E7/2g: labels ['1E7/2g', '2E7/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2g: j=0 N=1 mu=1 (square)
+      designated 2E7/2g: j=1 N=1 mu=1 (square)
+   E9/2g: labels ['1E9/2g', '2E9/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2g: j=0 N=1 mu=1 (square)
+      designated 2E9/2g: j=1 N=1 mu=1 (square)
+   E1/2u: labels ['1E1/2u', '2E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2u: j=0 N=1 mu=1 (square)
+      designated 2E1/2u: j=1 N=1 mu=1 (square)
+   E3/2u: labels ['1E3/2u', '2E3/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2u: j=0 N=1 mu=1 (square)
+      designated 2E3/2u: j=1 N=1 mu=1 (square)
+   E5/2u: labels ['1E5/2u', '2E5/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2u: j=0 N=1 mu=1 (square)
+      designated 2E5/2u: j=1 N=1 mu=1 (square)
+   E7/2u: labels ['1E7/2u', '2E7/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2u: j=0 N=1 mu=1 (square)
+      designated 2E7/2u: j=1 N=1 mu=1 (square)
+   E9/2u: labels ['1E9/2u', '2E9/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2u: j=0 N=1 mu=1 (square)
+      designated 2E9/2u: j=1 N=1 mu=1 (square)
+== D11h > C11h: L=44; matrices equal 20, permuted 5, phased 0, mixed 0; N in {1}
+   embedding C11h: C11^1 -> C11^1, S11^-5 -> S11^-5
+   A1': labels ["A'"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A': j=0 N=1 mu=1 (square)
+   A2': labels ["A'"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A': j=0 N=1 mu=1 (square)
+   E1': labels ["1E1'", "2E1'"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E1': j=1 N=1 mu=1 (square)
+      designated 2E1': j=0 N=1 mu=1 (square)
+   E2': labels ["1E2'", "2E2'"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2': j=0 N=1 mu=1 (square)
+      designated 2E2': j=1 N=1 mu=1 (square)
+   E3': labels ["1E3'", "2E3'"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E3': j=1 N=1 mu=1 (square)
+      designated 2E3': j=0 N=1 mu=1 (square)
+   E4': labels ["1E4'", "2E4'"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4': j=0 N=1 mu=1 (square)
+      designated 2E4': j=1 N=1 mu=1 (square)
+   E5': labels ["1E5'", "2E5'"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E5': j=1 N=1 mu=1 (square)
+      designated 2E5': j=0 N=1 mu=1 (square)
+   A1'': labels ["A''"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A'': j=0 N=1 mu=1 (square)
+   A2'': labels ["A''"]; pi = (0) = id; phases ['1']; matrices equal
+      designated A'': j=0 N=1 mu=1 (square)
+   E1'': labels ["1E1''", "2E1''"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1'': j=0 N=1 mu=1 (square)
+      designated 2E1'': j=1 N=1 mu=1 (square)
+   E2'': labels ["1E2''", "2E2''"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E2'': j=1 N=1 mu=1 (square)
+      designated 2E2'': j=0 N=1 mu=1 (square)
+   E3'': labels ["1E3''", "2E3''"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3'': j=0 N=1 mu=1 (square)
+      designated 2E3'': j=1 N=1 mu=1 (square)
+   E4'': labels ["1E4''", "2E4''"]; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated 1E4'': j=1 N=1 mu=1 (square)
+      designated 2E4'': j=0 N=1 mu=1 (square)
+   E5'': labels ["1E5''", "2E5''"]; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5'': j=0 N=1 mu=1 (square)
+      designated 2E5'': j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   E9/2: labels ['1E9/2', '2E9/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2: j=0 N=1 mu=1 (square)
+      designated 2E9/2: j=1 N=1 mu=1 (square)
+   E11/2: labels ['1E11/2', '2E11/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E11/2: j=0 N=1 mu=1 (square)
+      designated 2E11/2: j=1 N=1 mu=1 (square)
+   E13/2: labels ['1E13/2', '2E13/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E13/2: j=0 N=1 mu=1 (square)
+      designated 2E13/2: j=1 N=1 mu=1 (square)
+   E15/2: labels ['1E15/2', '2E15/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E15/2: j=0 N=1 mu=1 (square)
+      designated 2E15/2: j=1 N=1 mu=1 (square)
+   E17/2: labels ['1E17/2', '2E17/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E17/2: j=0 N=1 mu=1 (square)
+      designated 2E17/2: j=1 N=1 mu=1 (square)
+   E19/2: labels ['1E19/2', '2E19/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E19/2: j=0 N=1 mu=1 (square)
+      designated 2E19/2: j=1 N=1 mu=1 (square)
+   E21/2: labels ['1E21/2', '2E21/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E21/2: j=0 N=1 mu=1 (square)
+      designated 2E21/2: j=1 N=1 mu=1 (square)
+== D12h > C12h: L=24; matrices equal 30, permuted 0, phased 0, mixed 0; N in {1}
+   embedding C12h: C12^1 -> C12^1, i -> i
+   A1g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   A2g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   B1g: labels ['Bg']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bg: j=0 N=1 mu=1 (square)
+   B2g: labels ['Bg']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bg: j=0 N=1 mu=1 (square)
+   E1g: labels ['1E1g', '2E1g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1g: j=0 N=1 mu=1 (square)
+      designated 2E1g: j=1 N=1 mu=1 (square)
+   E2g: labels ['1E2g', '2E2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2g: j=0 N=1 mu=1 (square)
+      designated 2E2g: j=1 N=1 mu=1 (square)
+   E3g: labels ['1E3g', '2E3g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3g: j=0 N=1 mu=1 (square)
+      designated 2E3g: j=1 N=1 mu=1 (square)
+   E4g: labels ['1E4g', '2E4g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4g: j=0 N=1 mu=1 (square)
+      designated 2E4g: j=1 N=1 mu=1 (square)
+   E5g: labels ['1E5g', '2E5g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5g: j=0 N=1 mu=1 (square)
+      designated 2E5g: j=1 N=1 mu=1 (square)
+   A1u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   A2u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   B1u: labels ['Bu']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bu: j=0 N=1 mu=1 (square)
+   B2u: labels ['Bu']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bu: j=0 N=1 mu=1 (square)
+   E1u: labels ['1E1u', '2E1u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1u: j=0 N=1 mu=1 (square)
+      designated 2E1u: j=1 N=1 mu=1 (square)
+   E2u: labels ['1E2u', '2E2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2u: j=0 N=1 mu=1 (square)
+      designated 2E2u: j=1 N=1 mu=1 (square)
+   E3u: labels ['1E3u', '2E3u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3u: j=0 N=1 mu=1 (square)
+      designated 2E3u: j=1 N=1 mu=1 (square)
+   E4u: labels ['1E4u', '2E4u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4u: j=0 N=1 mu=1 (square)
+      designated 2E4u: j=1 N=1 mu=1 (square)
+   E5u: labels ['1E5u', '2E5u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5u: j=0 N=1 mu=1 (square)
+      designated 2E5u: j=1 N=1 mu=1 (square)
+   E1/2g: labels ['1E1/2g', '2E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2g: j=0 N=1 mu=1 (square)
+      designated 2E1/2g: j=1 N=1 mu=1 (square)
+   E3/2g: labels ['1E3/2g', '2E3/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2g: j=0 N=1 mu=1 (square)
+      designated 2E3/2g: j=1 N=1 mu=1 (square)
+   E5/2g: labels ['1E5/2g', '2E5/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2g: j=0 N=1 mu=1 (square)
+      designated 2E5/2g: j=1 N=1 mu=1 (square)
+   E7/2g: labels ['1E7/2g', '2E7/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2g: j=0 N=1 mu=1 (square)
+      designated 2E7/2g: j=1 N=1 mu=1 (square)
+   E9/2g: labels ['1E9/2g', '2E9/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2g: j=0 N=1 mu=1 (square)
+      designated 2E9/2g: j=1 N=1 mu=1 (square)
+   E11/2g: labels ['1E11/2g', '2E11/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E11/2g: j=0 N=1 mu=1 (square)
+      designated 2E11/2g: j=1 N=1 mu=1 (square)
+   E1/2u: labels ['1E1/2u', '2E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2u: j=0 N=1 mu=1 (square)
+      designated 2E1/2u: j=1 N=1 mu=1 (square)
+   E3/2u: labels ['1E3/2u', '2E3/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2u: j=0 N=1 mu=1 (square)
+      designated 2E3/2u: j=1 N=1 mu=1 (square)
+   E5/2u: labels ['1E5/2u', '2E5/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2u: j=0 N=1 mu=1 (square)
+      designated 2E5/2u: j=1 N=1 mu=1 (square)
+   E7/2u: labels ['1E7/2u', '2E7/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2u: j=0 N=1 mu=1 (square)
+      designated 2E7/2u: j=1 N=1 mu=1 (square)
+   E9/2u: labels ['1E9/2u', '2E9/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2u: j=0 N=1 mu=1 (square)
+      designated 2E9/2u: j=1 N=1 mu=1 (square)
+   E11/2u: labels ['1E11/2u', '2E11/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E11/2u: j=0 N=1 mu=1 (square)
+      designated 2E11/2u: j=1 N=1 mu=1 (square)
+== D2d > S4: L=8; matrices equal 7, permuted 0, phased 0, mixed 0; N in {1}
+   embedding S4: C2 -> C2, S4^-1 -> S4^-1
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E: labels ['1E', '2E']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E: j=0 N=1 mu=1 (square)
+      designated 2E: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+== D3d > S6: L=12; matrices equal 12, permuted 0, phased 0, mixed 0; N in {1}
+   embedding S6: C3^1 -> C3^1, i -> i
+   A1g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   A2g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   Eg: labels ['1Eg', '2Eg']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1Eg: j=0 N=1 mu=1 (square)
+      designated 2Eg: j=1 N=1 mu=1 (square)
+   A1u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   A2u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   Eu: labels ['1Eu', '2Eu']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1Eu: j=0 N=1 mu=1 (square)
+      designated 2Eu: j=1 N=1 mu=1 (square)
+   E1/2g: labels ['1E1/2g', '2E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2g: j=0 N=1 mu=1 (square)
+      designated 2E1/2g: j=1 N=1 mu=1 (square)
+   1E3/2g: labels ['B3/2g']; pi = (0) = id; phases ['1']; matrices equal
+      designated B3/2g: j=0 N=1 mu=1 (square)
+   2E3/2g: labels ['B3/2g']; pi = (0) = id; phases ['1']; matrices equal
+      designated B3/2g: j=0 N=1 mu=1 (square)
+   E1/2u: labels ['1E1/2u', '2E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2u: j=0 N=1 mu=1 (square)
+      designated 2E1/2u: j=1 N=1 mu=1 (square)
+   1E3/2u: labels ['B3/2u']; pi = (0) = id; phases ['1']; matrices equal
+      designated B3/2u: j=0 N=1 mu=1 (square)
+   2E3/2u: labels ['B3/2u']; pi = (0) = id; phases ['1']; matrices equal
+      designated B3/2u: j=0 N=1 mu=1 (square)
+== D4d > S8: L=16; matrices equal 11, permuted 0, phased 0, mixed 0; N in {1}
+   embedding S8: C4^1 -> C4^1, S8^-3 -> S8^-3
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+== D5d > S10: L=20; matrices equal 16, permuted 0, phased 0, mixed 0; N in {1}
+   embedding S10: C5^1 -> C5^1, i -> i
+   A1g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   A2g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   E1g: labels ['1E1g', '2E1g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1g: j=0 N=1 mu=1 (square)
+      designated 2E1g: j=1 N=1 mu=1 (square)
+   E2g: labels ['1E2g', '2E2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2g: j=0 N=1 mu=1 (square)
+      designated 2E2g: j=1 N=1 mu=1 (square)
+   A1u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   A2u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   E1u: labels ['1E1u', '2E1u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1u: j=0 N=1 mu=1 (square)
+      designated 2E1u: j=1 N=1 mu=1 (square)
+   E2u: labels ['1E2u', '2E2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2u: j=0 N=1 mu=1 (square)
+      designated 2E2u: j=1 N=1 mu=1 (square)
+   E1/2g: labels ['1E1/2g', '2E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2g: j=0 N=1 mu=1 (square)
+      designated 2E1/2g: j=1 N=1 mu=1 (square)
+   E3/2g: labels ['1E3/2g', '2E3/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2g: j=0 N=1 mu=1 (square)
+      designated 2E3/2g: j=1 N=1 mu=1 (square)
+   1E5/2g: labels ['B5/2g']; pi = (0) = id; phases ['1']; matrices equal
+      designated B5/2g: j=0 N=1 mu=1 (square)
+   2E5/2g: labels ['B5/2g']; pi = (0) = id; phases ['1']; matrices equal
+      designated B5/2g: j=0 N=1 mu=1 (square)
+   E1/2u: labels ['1E1/2u', '2E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2u: j=0 N=1 mu=1 (square)
+      designated 2E1/2u: j=1 N=1 mu=1 (square)
+   E3/2u: labels ['1E3/2u', '2E3/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2u: j=0 N=1 mu=1 (square)
+      designated 2E3/2u: j=1 N=1 mu=1 (square)
+   1E5/2u: labels ['B5/2u']; pi = (0) = id; phases ['1']; matrices equal
+      designated B5/2u: j=0 N=1 mu=1 (square)
+   2E5/2u: labels ['B5/2u']; pi = (0) = id; phases ['1']; matrices equal
+      designated B5/2u: j=0 N=1 mu=1 (square)
+== D6d > S12: L=24; matrices equal 15, permuted 0, phased 0, mixed 0; N in {1}
+   embedding S12: C6^1 -> C6^1, S12^-5 -> S12^-5
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E4: labels ['1E4', '2E4']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4: j=0 N=1 mu=1 (square)
+      designated 2E4: j=1 N=1 mu=1 (square)
+   E5: labels ['1E5', '2E5']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5: j=0 N=1 mu=1 (square)
+      designated 2E5: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   E9/2: labels ['1E9/2', '2E9/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2: j=0 N=1 mu=1 (square)
+      designated 2E9/2: j=1 N=1 mu=1 (square)
+   E11/2: labels ['1E11/2', '2E11/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E11/2: j=0 N=1 mu=1 (square)
+      designated 2E11/2: j=1 N=1 mu=1 (square)
+== D7d > S14: L=28; matrices equal 20, permuted 0, phased 0, mixed 0; N in {1}
+   embedding S14: C7^1 -> C7^1, i -> i
+   A1g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   A2g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   E1g: labels ['1E1g', '2E1g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1g: j=0 N=1 mu=1 (square)
+      designated 2E1g: j=1 N=1 mu=1 (square)
+   E2g: labels ['1E2g', '2E2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2g: j=0 N=1 mu=1 (square)
+      designated 2E2g: j=1 N=1 mu=1 (square)
+   E3g: labels ['1E3g', '2E3g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3g: j=0 N=1 mu=1 (square)
+      designated 2E3g: j=1 N=1 mu=1 (square)
+   A1u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   A2u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   E1u: labels ['1E1u', '2E1u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1u: j=0 N=1 mu=1 (square)
+      designated 2E1u: j=1 N=1 mu=1 (square)
+   E2u: labels ['1E2u', '2E2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2u: j=0 N=1 mu=1 (square)
+      designated 2E2u: j=1 N=1 mu=1 (square)
+   E3u: labels ['1E3u', '2E3u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3u: j=0 N=1 mu=1 (square)
+      designated 2E3u: j=1 N=1 mu=1 (square)
+   E1/2g: labels ['1E1/2g', '2E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2g: j=0 N=1 mu=1 (square)
+      designated 2E1/2g: j=1 N=1 mu=1 (square)
+   E3/2g: labels ['1E3/2g', '2E3/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2g: j=0 N=1 mu=1 (square)
+      designated 2E3/2g: j=1 N=1 mu=1 (square)
+   E5/2g: labels ['1E5/2g', '2E5/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2g: j=0 N=1 mu=1 (square)
+      designated 2E5/2g: j=1 N=1 mu=1 (square)
+   1E7/2g: labels ['B7/2g']; pi = (0) = id; phases ['1']; matrices equal
+      designated B7/2g: j=0 N=1 mu=1 (square)
+   2E7/2g: labels ['B7/2g']; pi = (0) = id; phases ['1']; matrices equal
+      designated B7/2g: j=0 N=1 mu=1 (square)
+   E1/2u: labels ['1E1/2u', '2E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2u: j=0 N=1 mu=1 (square)
+      designated 2E1/2u: j=1 N=1 mu=1 (square)
+   E3/2u: labels ['1E3/2u', '2E3/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2u: j=0 N=1 mu=1 (square)
+      designated 2E3/2u: j=1 N=1 mu=1 (square)
+   E5/2u: labels ['1E5/2u', '2E5/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2u: j=0 N=1 mu=1 (square)
+      designated 2E5/2u: j=1 N=1 mu=1 (square)
+   1E7/2u: labels ['B7/2u']; pi = (0) = id; phases ['1']; matrices equal
+      designated B7/2u: j=0 N=1 mu=1 (square)
+   2E7/2u: labels ['B7/2u']; pi = (0) = id; phases ['1']; matrices equal
+      designated B7/2u: j=0 N=1 mu=1 (square)
+== D8d > S16: L=32; matrices equal 19, permuted 0, phased 0, mixed 0; N in {1}
+   embedding S16: C8^1 -> C8^1, S16^-7 -> S16^-7
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E4: labels ['1E4', '2E4']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4: j=0 N=1 mu=1 (square)
+      designated 2E4: j=1 N=1 mu=1 (square)
+   E5: labels ['1E5', '2E5']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5: j=0 N=1 mu=1 (square)
+      designated 2E5: j=1 N=1 mu=1 (square)
+   E6: labels ['1E6', '2E6']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E6: j=0 N=1 mu=1 (square)
+      designated 2E6: j=1 N=1 mu=1 (square)
+   E7: labels ['1E7', '2E7']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7: j=0 N=1 mu=1 (square)
+      designated 2E7: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   E9/2: labels ['1E9/2', '2E9/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2: j=0 N=1 mu=1 (square)
+      designated 2E9/2: j=1 N=1 mu=1 (square)
+   E11/2: labels ['1E11/2', '2E11/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E11/2: j=0 N=1 mu=1 (square)
+      designated 2E11/2: j=1 N=1 mu=1 (square)
+   E13/2: labels ['1E13/2', '2E13/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E13/2: j=0 N=1 mu=1 (square)
+      designated 2E13/2: j=1 N=1 mu=1 (square)
+   E15/2: labels ['1E15/2', '2E15/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E15/2: j=0 N=1 mu=1 (square)
+      designated 2E15/2: j=1 N=1 mu=1 (square)
+== D9d > S18: L=36; matrices equal 24, permuted 0, phased 0, mixed 0; N in {1}
+   embedding S18: C9^1 -> C9^1, i -> i
+   A1g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   A2g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   E1g: labels ['1E1g', '2E1g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1g: j=0 N=1 mu=1 (square)
+      designated 2E1g: j=1 N=1 mu=1 (square)
+   E2g: labels ['1E2g', '2E2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2g: j=0 N=1 mu=1 (square)
+      designated 2E2g: j=1 N=1 mu=1 (square)
+   E3g: labels ['1E3g', '2E3g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3g: j=0 N=1 mu=1 (square)
+      designated 2E3g: j=1 N=1 mu=1 (square)
+   E4g: labels ['1E4g', '2E4g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4g: j=0 N=1 mu=1 (square)
+      designated 2E4g: j=1 N=1 mu=1 (square)
+   A1u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   A2u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   E1u: labels ['1E1u', '2E1u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1u: j=0 N=1 mu=1 (square)
+      designated 2E1u: j=1 N=1 mu=1 (square)
+   E2u: labels ['1E2u', '2E2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2u: j=0 N=1 mu=1 (square)
+      designated 2E2u: j=1 N=1 mu=1 (square)
+   E3u: labels ['1E3u', '2E3u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3u: j=0 N=1 mu=1 (square)
+      designated 2E3u: j=1 N=1 mu=1 (square)
+   E4u: labels ['1E4u', '2E4u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4u: j=0 N=1 mu=1 (square)
+      designated 2E4u: j=1 N=1 mu=1 (square)
+   E1/2g: labels ['1E1/2g', '2E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2g: j=0 N=1 mu=1 (square)
+      designated 2E1/2g: j=1 N=1 mu=1 (square)
+   E3/2g: labels ['1E3/2g', '2E3/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2g: j=0 N=1 mu=1 (square)
+      designated 2E3/2g: j=1 N=1 mu=1 (square)
+   E5/2g: labels ['1E5/2g', '2E5/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2g: j=0 N=1 mu=1 (square)
+      designated 2E5/2g: j=1 N=1 mu=1 (square)
+   E7/2g: labels ['1E7/2g', '2E7/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2g: j=0 N=1 mu=1 (square)
+      designated 2E7/2g: j=1 N=1 mu=1 (square)
+   1E9/2g: labels ['B9/2g']; pi = (0) = id; phases ['1']; matrices equal
+      designated B9/2g: j=0 N=1 mu=1 (square)
+   2E9/2g: labels ['B9/2g']; pi = (0) = id; phases ['1']; matrices equal
+      designated B9/2g: j=0 N=1 mu=1 (square)
+   E1/2u: labels ['1E1/2u', '2E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2u: j=0 N=1 mu=1 (square)
+      designated 2E1/2u: j=1 N=1 mu=1 (square)
+   E3/2u: labels ['1E3/2u', '2E3/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2u: j=0 N=1 mu=1 (square)
+      designated 2E3/2u: j=1 N=1 mu=1 (square)
+   E5/2u: labels ['1E5/2u', '2E5/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2u: j=0 N=1 mu=1 (square)
+      designated 2E5/2u: j=1 N=1 mu=1 (square)
+   E7/2u: labels ['1E7/2u', '2E7/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2u: j=0 N=1 mu=1 (square)
+      designated 2E7/2u: j=1 N=1 mu=1 (square)
+   1E9/2u: labels ['B9/2u']; pi = (0) = id; phases ['1']; matrices equal
+      designated B9/2u: j=0 N=1 mu=1 (square)
+   2E9/2u: labels ['B9/2u']; pi = (0) = id; phases ['1']; matrices equal
+      designated B9/2u: j=0 N=1 mu=1 (square)
+== D10d > S20: L=40; matrices equal 23, permuted 0, phased 0, mixed 0; N in {1}
+   embedding S20: C10^1 -> C10^1, S20^-9 -> S20^-9
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E4: labels ['1E4', '2E4']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4: j=0 N=1 mu=1 (square)
+      designated 2E4: j=1 N=1 mu=1 (square)
+   E5: labels ['1E5', '2E5']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5: j=0 N=1 mu=1 (square)
+      designated 2E5: j=1 N=1 mu=1 (square)
+   E6: labels ['1E6', '2E6']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E6: j=0 N=1 mu=1 (square)
+      designated 2E6: j=1 N=1 mu=1 (square)
+   E7: labels ['1E7', '2E7']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7: j=0 N=1 mu=1 (square)
+      designated 2E7: j=1 N=1 mu=1 (square)
+   E8: labels ['1E8', '2E8']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E8: j=0 N=1 mu=1 (square)
+      designated 2E8: j=1 N=1 mu=1 (square)
+   E9: labels ['1E9', '2E9']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9: j=0 N=1 mu=1 (square)
+      designated 2E9: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   E9/2: labels ['1E9/2', '2E9/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2: j=0 N=1 mu=1 (square)
+      designated 2E9/2: j=1 N=1 mu=1 (square)
+   E11/2: labels ['1E11/2', '2E11/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E11/2: j=0 N=1 mu=1 (square)
+      designated 2E11/2: j=1 N=1 mu=1 (square)
+   E13/2: labels ['1E13/2', '2E13/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E13/2: j=0 N=1 mu=1 (square)
+      designated 2E13/2: j=1 N=1 mu=1 (square)
+   E15/2: labels ['1E15/2', '2E15/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E15/2: j=0 N=1 mu=1 (square)
+      designated 2E15/2: j=1 N=1 mu=1 (square)
+   E17/2: labels ['1E17/2', '2E17/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E17/2: j=0 N=1 mu=1 (square)
+      designated 2E17/2: j=1 N=1 mu=1 (square)
+   E19/2: labels ['1E19/2', '2E19/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E19/2: j=0 N=1 mu=1 (square)
+      designated 2E19/2: j=1 N=1 mu=1 (square)
+== D11d > S22: L=44; matrices equal 28, permuted 0, phased 0, mixed 0; N in {1}
+   embedding S22: C11^1 -> C11^1, i -> i
+   A1g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   A2g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   E1g: labels ['1E1g', '2E1g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1g: j=0 N=1 mu=1 (square)
+      designated 2E1g: j=1 N=1 mu=1 (square)
+   E2g: labels ['1E2g', '2E2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2g: j=0 N=1 mu=1 (square)
+      designated 2E2g: j=1 N=1 mu=1 (square)
+   E3g: labels ['1E3g', '2E3g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3g: j=0 N=1 mu=1 (square)
+      designated 2E3g: j=1 N=1 mu=1 (square)
+   E4g: labels ['1E4g', '2E4g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4g: j=0 N=1 mu=1 (square)
+      designated 2E4g: j=1 N=1 mu=1 (square)
+   E5g: labels ['1E5g', '2E5g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5g: j=0 N=1 mu=1 (square)
+      designated 2E5g: j=1 N=1 mu=1 (square)
+   A1u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   A2u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   E1u: labels ['1E1u', '2E1u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1u: j=0 N=1 mu=1 (square)
+      designated 2E1u: j=1 N=1 mu=1 (square)
+   E2u: labels ['1E2u', '2E2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2u: j=0 N=1 mu=1 (square)
+      designated 2E2u: j=1 N=1 mu=1 (square)
+   E3u: labels ['1E3u', '2E3u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3u: j=0 N=1 mu=1 (square)
+      designated 2E3u: j=1 N=1 mu=1 (square)
+   E4u: labels ['1E4u', '2E4u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4u: j=0 N=1 mu=1 (square)
+      designated 2E4u: j=1 N=1 mu=1 (square)
+   E5u: labels ['1E5u', '2E5u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5u: j=0 N=1 mu=1 (square)
+      designated 2E5u: j=1 N=1 mu=1 (square)
+   E1/2g: labels ['1E1/2g', '2E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2g: j=0 N=1 mu=1 (square)
+      designated 2E1/2g: j=1 N=1 mu=1 (square)
+   E3/2g: labels ['1E3/2g', '2E3/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2g: j=0 N=1 mu=1 (square)
+      designated 2E3/2g: j=1 N=1 mu=1 (square)
+   E5/2g: labels ['1E5/2g', '2E5/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2g: j=0 N=1 mu=1 (square)
+      designated 2E5/2g: j=1 N=1 mu=1 (square)
+   E7/2g: labels ['1E7/2g', '2E7/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2g: j=0 N=1 mu=1 (square)
+      designated 2E7/2g: j=1 N=1 mu=1 (square)
+   E9/2g: labels ['1E9/2g', '2E9/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2g: j=0 N=1 mu=1 (square)
+      designated 2E9/2g: j=1 N=1 mu=1 (square)
+   1E11/2g: labels ['B11/2g']; pi = (0) = id; phases ['1']; matrices equal
+      designated B11/2g: j=0 N=1 mu=1 (square)
+   2E11/2g: labels ['B11/2g']; pi = (0) = id; phases ['1']; matrices equal
+      designated B11/2g: j=0 N=1 mu=1 (square)
+   E1/2u: labels ['1E1/2u', '2E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2u: j=0 N=1 mu=1 (square)
+      designated 2E1/2u: j=1 N=1 mu=1 (square)
+   E3/2u: labels ['1E3/2u', '2E3/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2u: j=0 N=1 mu=1 (square)
+      designated 2E3/2u: j=1 N=1 mu=1 (square)
+   E5/2u: labels ['1E5/2u', '2E5/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2u: j=0 N=1 mu=1 (square)
+      designated 2E5/2u: j=1 N=1 mu=1 (square)
+   E7/2u: labels ['1E7/2u', '2E7/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2u: j=0 N=1 mu=1 (square)
+      designated 2E7/2u: j=1 N=1 mu=1 (square)
+   E9/2u: labels ['1E9/2u', '2E9/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2u: j=0 N=1 mu=1 (square)
+      designated 2E9/2u: j=1 N=1 mu=1 (square)
+   1E11/2u: labels ['B11/2u']; pi = (0) = id; phases ['1']; matrices equal
+      designated B11/2u: j=0 N=1 mu=1 (square)
+   2E11/2u: labels ['B11/2u']; pi = (0) = id; phases ['1']; matrices equal
+      designated B11/2u: j=0 N=1 mu=1 (square)
+== D12d > S24: L=48; matrices equal 27, permuted 0, phased 0, mixed 0; N in {1}
+   embedding S24: C12^1 -> C12^1, S24^-11 -> S24^-11
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   B1: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   B2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E1: labels ['1E1', '2E1']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1: j=0 N=1 mu=1 (square)
+      designated 2E1: j=1 N=1 mu=1 (square)
+   E2: labels ['1E2', '2E2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E2: j=0 N=1 mu=1 (square)
+      designated 2E2: j=1 N=1 mu=1 (square)
+   E3: labels ['1E3', '2E3']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3: j=0 N=1 mu=1 (square)
+      designated 2E3: j=1 N=1 mu=1 (square)
+   E4: labels ['1E4', '2E4']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E4: j=0 N=1 mu=1 (square)
+      designated 2E4: j=1 N=1 mu=1 (square)
+   E5: labels ['1E5', '2E5']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5: j=0 N=1 mu=1 (square)
+      designated 2E5: j=1 N=1 mu=1 (square)
+   E6: labels ['1E6', '2E6']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E6: j=0 N=1 mu=1 (square)
+      designated 2E6: j=1 N=1 mu=1 (square)
+   E7: labels ['1E7', '2E7']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7: j=0 N=1 mu=1 (square)
+      designated 2E7: j=1 N=1 mu=1 (square)
+   E8: labels ['1E8', '2E8']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E8: j=0 N=1 mu=1 (square)
+      designated 2E8: j=1 N=1 mu=1 (square)
+   E9: labels ['1E9', '2E9']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9: j=0 N=1 mu=1 (square)
+      designated 2E9: j=1 N=1 mu=1 (square)
+   E10: labels ['1E10', '2E10']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E10: j=0 N=1 mu=1 (square)
+      designated 2E10: j=1 N=1 mu=1 (square)
+   E11: labels ['1E11', '2E11']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E11: j=0 N=1 mu=1 (square)
+      designated 2E11: j=1 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E3/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E5/2', '2E5/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E5/2: j=0 N=1 mu=1 (square)
+      designated 2E5/2: j=1 N=1 mu=1 (square)
+   E7/2: labels ['1E7/2', '2E7/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E7/2: j=0 N=1 mu=1 (square)
+      designated 2E7/2: j=1 N=1 mu=1 (square)
+   E9/2: labels ['1E9/2', '2E9/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E9/2: j=0 N=1 mu=1 (square)
+      designated 2E9/2: j=1 N=1 mu=1 (square)
+   E11/2: labels ['1E11/2', '2E11/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E11/2: j=0 N=1 mu=1 (square)
+      designated 2E11/2: j=1 N=1 mu=1 (square)
+   E13/2: labels ['1E13/2', '2E13/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E13/2: j=0 N=1 mu=1 (square)
+      designated 2E13/2: j=1 N=1 mu=1 (square)
+   E15/2: labels ['1E15/2', '2E15/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E15/2: j=0 N=1 mu=1 (square)
+      designated 2E15/2: j=1 N=1 mu=1 (square)
+   E17/2: labels ['1E17/2', '2E17/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E17/2: j=0 N=1 mu=1 (square)
+      designated 2E17/2: j=1 N=1 mu=1 (square)
+   E19/2: labels ['1E19/2', '2E19/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E19/2: j=0 N=1 mu=1 (square)
+      designated 2E19/2: j=1 N=1 mu=1 (square)
+   E21/2: labels ['1E21/2', '2E21/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E21/2: j=0 N=1 mu=1 (square)
+      designated 2E21/2: j=1 N=1 mu=1 (square)
+   E23/2: labels ['1E23/2', '2E23/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E23/2: j=0 N=1 mu=1 (square)
+      designated 2E23/2: j=1 N=1 mu=1 (square)
+== T > C3: L=12; matrices equal 6, permuted 1, phased 0, mixed 0; N in {1}
+   embedding C3: C3^1 -> C3^1(1)
+   A: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   1E: labels ['1E']; pi = (0) = id; phases ['1']; matrices equal
+      designated 1E: j=0 N=1 mu=1 (square)
+   2E: labels ['2E']; pi = (0) = id; phases ['1']; matrices equal
+      designated 2E: j=0 N=1 mu=1 (square)
+   T: labels ['A', '1E', '2E']; pi = (1, 0, 2); phases ['1', '1', '1']; matrices permuted
+      designated A: j=1 N=1 mu=1 (square)
+      designated 1E: j=0 N=1 mu=1 (square)
+      designated 2E: j=2 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   1E3/2: labels ['B3/2', '1E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated B3/2: j=0 N=1 mu=1 (square)
+      designated 1E1/2: j=1 N=1 mu=1 (square)
+   2E3/2: labels ['B3/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated B3/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+== Th > S6: L=12; matrices equal 12, permuted 2, phased 0, mixed 0; N in {1}
+   embedding S6: C3^1 -> C3^1(1), i -> i
+   Ag: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   1Eg: labels ['1Eg']; pi = (0) = id; phases ['1']; matrices equal
+      designated 1Eg: j=0 N=1 mu=1 (square)
+   2Eg: labels ['2Eg']; pi = (0) = id; phases ['1']; matrices equal
+      designated 2Eg: j=0 N=1 mu=1 (square)
+   Tg: labels ['Ag', '1Eg', '2Eg']; pi = (1, 0, 2); phases ['1', '1', '1']; matrices permuted
+      designated Ag: j=1 N=1 mu=1 (square)
+      designated 1Eg: j=0 N=1 mu=1 (square)
+      designated 2Eg: j=2 N=1 mu=1 (square)
+   Au: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   1Eu: labels ['1Eu']; pi = (0) = id; phases ['1']; matrices equal
+      designated 1Eu: j=0 N=1 mu=1 (square)
+   2Eu: labels ['2Eu']; pi = (0) = id; phases ['1']; matrices equal
+      designated 2Eu: j=0 N=1 mu=1 (square)
+   Tu: labels ['Au', '1Eu', '2Eu']; pi = (1, 0, 2); phases ['1', '1', '1']; matrices permuted
+      designated Au: j=1 N=1 mu=1 (square)
+      designated 1Eu: j=0 N=1 mu=1 (square)
+      designated 2Eu: j=2 N=1 mu=1 (square)
+   E1/2g: labels ['1E1/2g', '2E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2g: j=0 N=1 mu=1 (square)
+      designated 2E1/2g: j=1 N=1 mu=1 (square)
+   1E3/2g: labels ['B3/2g', '1E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated B3/2g: j=0 N=1 mu=1 (square)
+      designated 1E1/2g: j=1 N=1 mu=1 (square)
+   2E3/2g: labels ['B3/2g', '2E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated B3/2g: j=0 N=1 mu=1 (square)
+      designated 2E1/2g: j=1 N=1 mu=1 (square)
+   E1/2u: labels ['1E1/2u', '2E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2u: j=0 N=1 mu=1 (square)
+      designated 2E1/2u: j=1 N=1 mu=1 (square)
+   1E3/2u: labels ['B3/2u', '1E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated B3/2u: j=0 N=1 mu=1 (square)
+      designated 1E1/2u: j=1 N=1 mu=1 (square)
+   2E3/2u: labels ['B3/2u', '2E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated B3/2u: j=0 N=1 mu=1 (square)
+      designated 2E1/2u: j=1 N=1 mu=1 (square)
+== Td > S4: L=8; matrices equal 5, permuted 3, phased 0, mixed 0; N in {1}
+   embedding S4: C2 -> C2(1), S4^-1 -> S4^-1(1)
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E: labels ['A', 'B']; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated A: j=1 N=1 mu=1 (square)
+      designated B: j=0 N=1 mu=1 (square)
+   T1: labels ['A', '1E', '2E']; pi = (1, 0, 2); phases ['1', '1', '1']; matrices permuted
+      designated A: j=1 N=1 mu=1 (square)
+      designated 1E: j=0 N=1 mu=1 (square)
+      designated 2E: j=2 N=1 mu=1 (square)
+   T2: labels ['B', '1E', '2E']; pi = (0, 1, 2) = id; phases ['1', '1', '1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+      designated 1E: j=1 N=1 mu=1 (square)
+      designated 2E: j=2 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   G3/2: labels ['1E1/2', '2E1/2', '1E3/2', '2E3/2']; pi = (1, 2, 0, 3); phases ['1', '1', '1', '1']; matrices permuted
+      designated 1E1/2: j=1 N=1 mu=1 (square)
+      designated 2E1/2: j=2 N=1 mu=1 (square)
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=3 N=1 mu=1 (square)
+== O > C4: L=8; matrices equal 5, permuted 3, phased 0, mixed 0; N in {1}
+   embedding C4: C4^1 -> C4^1(1)
+   A1: labels ['A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A: j=0 N=1 mu=1 (square)
+   A2: labels ['B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+   E: labels ['A', 'B']; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated A: j=1 N=1 mu=1 (square)
+      designated B: j=0 N=1 mu=1 (square)
+   T1: labels ['A', '1E', '2E']; pi = (1, 0, 2); phases ['1', '1', '1']; matrices permuted
+      designated A: j=1 N=1 mu=1 (square)
+      designated 1E: j=0 N=1 mu=1 (square)
+      designated 2E: j=2 N=1 mu=1 (square)
+   T2: labels ['B', '1E', '2E']; pi = (0, 1, 2) = id; phases ['1', '1', '1']; matrices equal
+      designated B: j=0 N=1 mu=1 (square)
+      designated 1E: j=1 N=1 mu=1 (square)
+      designated 2E: j=2 N=1 mu=1 (square)
+   E1/2: labels ['1E1/2', '2E1/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2: j=0 N=1 mu=1 (square)
+      designated 2E1/2: j=1 N=1 mu=1 (square)
+   E5/2: labels ['1E3/2', '2E3/2']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=1 N=1 mu=1 (square)
+   G3/2: labels ['1E1/2', '2E1/2', '1E3/2', '2E3/2']; pi = (1, 2, 0, 3); phases ['1', '1', '1', '1']; matrices permuted
+      designated 1E1/2: j=1 N=1 mu=1 (square)
+      designated 2E1/2: j=2 N=1 mu=1 (square)
+      designated 1E3/2: j=0 N=1 mu=1 (square)
+      designated 2E3/2: j=3 N=1 mu=1 (square)
+== Oh > C4h: L=8; matrices equal 10, permuted 6, phased 0, mixed 0; N in {1}
+   embedding C4h: C4^1 -> C4^1(1), i -> i
+   A1g: labels ['Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated Ag: j=0 N=1 mu=1 (square)
+   A2g: labels ['Bg']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bg: j=0 N=1 mu=1 (square)
+   Eg: labels ['Ag', 'Bg']; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated Ag: j=1 N=1 mu=1 (square)
+      designated Bg: j=0 N=1 mu=1 (square)
+   T1g: labels ['Ag', '1Eg', '2Eg']; pi = (1, 0, 2); phases ['1', '1', '1']; matrices permuted
+      designated Ag: j=1 N=1 mu=1 (square)
+      designated 1Eg: j=0 N=1 mu=1 (square)
+      designated 2Eg: j=2 N=1 mu=1 (square)
+   T2g: labels ['Bg', '1Eg', '2Eg']; pi = (0, 1, 2) = id; phases ['1', '1', '1']; matrices equal
+      designated Bg: j=0 N=1 mu=1 (square)
+      designated 1Eg: j=1 N=1 mu=1 (square)
+      designated 2Eg: j=2 N=1 mu=1 (square)
+   A1u: labels ['Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated Au: j=0 N=1 mu=1 (square)
+   A2u: labels ['Bu']; pi = (0) = id; phases ['1']; matrices equal
+      designated Bu: j=0 N=1 mu=1 (square)
+   Eu: labels ['Au', 'Bu']; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated Au: j=1 N=1 mu=1 (square)
+      designated Bu: j=0 N=1 mu=1 (square)
+   T1u: labels ['Au', '1Eu', '2Eu']; pi = (1, 0, 2); phases ['1', '1', '1']; matrices permuted
+      designated Au: j=1 N=1 mu=1 (square)
+      designated 1Eu: j=0 N=1 mu=1 (square)
+      designated 2Eu: j=2 N=1 mu=1 (square)
+   T2u: labels ['Bu', '1Eu', '2Eu']; pi = (0, 1, 2) = id; phases ['1', '1', '1']; matrices equal
+      designated Bu: j=0 N=1 mu=1 (square)
+      designated 1Eu: j=1 N=1 mu=1 (square)
+      designated 2Eu: j=2 N=1 mu=1 (square)
+   E1/2g: labels ['1E1/2g', '2E1/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2g: j=0 N=1 mu=1 (square)
+      designated 2E1/2g: j=1 N=1 mu=1 (square)
+   E5/2g: labels ['1E3/2g', '2E3/2g']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2g: j=0 N=1 mu=1 (square)
+      designated 2E3/2g: j=1 N=1 mu=1 (square)
+   G3/2g: labels ['1E1/2g', '2E1/2g', '1E3/2g', '2E3/2g']; pi = (1, 2, 0, 3); phases ['1', '1', '1', '1']; matrices permuted
+      designated 1E1/2g: j=1 N=1 mu=1 (square)
+      designated 2E1/2g: j=2 N=1 mu=1 (square)
+      designated 1E3/2g: j=0 N=1 mu=1 (square)
+      designated 2E3/2g: j=3 N=1 mu=1 (square)
+   E1/2u: labels ['1E1/2u', '2E1/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E1/2u: j=0 N=1 mu=1 (square)
+      designated 2E1/2u: j=1 N=1 mu=1 (square)
+   E5/2u: labels ['1E3/2u', '2E3/2u']; pi = (0, 1) = id; phases ['1', '1']; matrices equal
+      designated 1E3/2u: j=0 N=1 mu=1 (square)
+      designated 2E3/2u: j=1 N=1 mu=1 (square)
+   G3/2u: labels ['1E1/2u', '2E1/2u', '1E3/2u', '2E3/2u']; pi = (1, 2, 0, 3); phases ['1', '1', '1', '1']; matrices permuted
+      designated 1E1/2u: j=1 N=1 mu=1 (square)
+      designated 2E1/2u: j=2 N=1 mu=1 (square)
+      designated 1E3/2u: j=0 N=1 mu=1 (square)
+      designated 2E3/2u: j=3 N=1 mu=1 (square)
+== O > D4 > C4: L=8; matrices equal 3, permuted 2, phased 3, mixed 0; N in {1}
+   embedding D4: C4^1 -> C4^1(1), C2'(1) -> C2(2)
+   embedding C4: C4^1 -> C4^1(1)
+   A1: labels ['A1>A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A1>A: j=0 N=1 mu=1 (square)
+   A2: labels ['B1>B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B1>B: j=0 N=1 mu=1 (square)
+   E: labels ['A1>A', 'B1>B']; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated A1>A: j=1 N=1 mu=1 (square)
+      designated B1>B: j=0 N=1 mu=1 (square)
+   T1: labels ['A2>A', 'E>1E', 'E>2E']; pi = (1, 0, 2); phases ['1', '1', '1']; matrices permuted
+      designated A2>A: j=1 N=1 mu=1 (square)
+      designated E>1E: j=0 N=1 mu=1 (square)
+   T2: labels ['B2>B', 'E>1E', 'E>2E']; pi = (0, 1, 2) = id; phases ['1', '1', '1']; matrices equal
+      designated B2>B: j=0 N=1 mu=1 (square)
+      designated E>1E: j=1 N=1 mu=1 (square)
+   E1/2: labels ['E1/2>1E1/2', 'E1/2>2E1/2']; pi = (0, 1) = id; phases ['1', '-i']; matrices phased
+      designated E1/2>1E1/2: j=0 N=1 mu=1 (square)
+   E5/2: labels ['E3/2>1E3/2', 'E3/2>2E3/2']; pi = (0, 1) = id; phases ['1', 'i']; matrices phased
+      designated E3/2>1E3/2: j=0 N=1 mu=1 (square)
+   G3/2: labels ['E1/2>1E1/2', 'E1/2>2E1/2', 'E3/2>1E3/2', 'E3/2>2E3/2']; pi = (1, 2, 0, 3); phases ['1', '-i', '1', 'i']; matrices phased
+      designated E1/2>1E1/2: j=1 N=1 mu=1 (square)
+      designated E3/2>1E3/2: j=0 N=1 mu=1 (square)
+== Oh > D4h > C4h: L=8; matrices equal 6, permuted 4, phased 6, mixed 0; N in {1}
+   embedding D4h: C4^1 -> C4^1(1), C2'(1) -> C2(2), i -> i
+   embedding C4h: C4^1 -> C4^1(1), i -> i
+   A1g: labels ['A1g>Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated A1g>Ag: j=0 N=1 mu=1 (square)
+   A2g: labels ['B1g>Bg']; pi = (0) = id; phases ['1']; matrices equal
+      designated B1g>Bg: j=0 N=1 mu=1 (square)
+   Eg: labels ['A1g>Ag', 'B1g>Bg']; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated A1g>Ag: j=1 N=1 mu=1 (square)
+      designated B1g>Bg: j=0 N=1 mu=1 (square)
+   T1g: labels ['A2g>Ag', 'Eg>1Eg', 'Eg>2Eg']; pi = (1, 0, 2); phases ['1', '1', '1']; matrices permuted
+      designated A2g>Ag: j=1 N=1 mu=1 (square)
+      designated Eg>1Eg: j=0 N=1 mu=1 (square)
+   T2g: labels ['B2g>Bg', 'Eg>1Eg', 'Eg>2Eg']; pi = (0, 1, 2) = id; phases ['1', '1', '1']; matrices equal
+      designated B2g>Bg: j=0 N=1 mu=1 (square)
+      designated Eg>1Eg: j=1 N=1 mu=1 (square)
+   A1u: labels ['A1u>Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated A1u>Au: j=0 N=1 mu=1 (square)
+   A2u: labels ['B1u>Bu']; pi = (0) = id; phases ['1']; matrices equal
+      designated B1u>Bu: j=0 N=1 mu=1 (square)
+   Eu: labels ['A1u>Au', 'B1u>Bu']; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated A1u>Au: j=1 N=1 mu=1 (square)
+      designated B1u>Bu: j=0 N=1 mu=1 (square)
+   T1u: labels ['A2u>Au', 'Eu>1Eu', 'Eu>2Eu']; pi = (1, 0, 2); phases ['1', '1', '1']; matrices permuted
+      designated A2u>Au: j=1 N=1 mu=1 (square)
+      designated Eu>1Eu: j=0 N=1 mu=1 (square)
+   T2u: labels ['B2u>Bu', 'Eu>1Eu', 'Eu>2Eu']; pi = (0, 1, 2) = id; phases ['1', '1', '1']; matrices equal
+      designated B2u>Bu: j=0 N=1 mu=1 (square)
+      designated Eu>1Eu: j=1 N=1 mu=1 (square)
+   E1/2g: labels ['E1/2g>1E1/2g', 'E1/2g>2E1/2g']; pi = (0, 1) = id; phases ['1', '-i']; matrices phased
+      designated E1/2g>1E1/2g: j=0 N=1 mu=1 (square)
+   E5/2g: labels ['E3/2g>1E3/2g', 'E3/2g>2E3/2g']; pi = (0, 1) = id; phases ['1', 'i']; matrices phased
+      designated E3/2g>1E3/2g: j=0 N=1 mu=1 (square)
+   G3/2g: labels ['E1/2g>1E1/2g', 'E1/2g>2E1/2g', 'E3/2g>1E3/2g', 'E3/2g>2E3/2g']; pi = (1, 2, 0, 3); phases ['1', '-i', '1', 'i']; matrices phased
+      designated E1/2g>1E1/2g: j=1 N=1 mu=1 (square)
+      designated E3/2g>1E3/2g: j=0 N=1 mu=1 (square)
+   E1/2u: labels ['E1/2u>1E1/2u', 'E1/2u>2E1/2u']; pi = (0, 1) = id; phases ['1', '-i']; matrices phased
+      designated E1/2u>1E1/2u: j=0 N=1 mu=1 (square)
+   E5/2u: labels ['E3/2u>1E3/2u', 'E3/2u>2E3/2u']; pi = (0, 1) = id; phases ['1', 'i']; matrices phased
+      designated E3/2u>1E3/2u: j=0 N=1 mu=1 (square)
+   G3/2u: labels ['E1/2u>1E1/2u', 'E1/2u>2E1/2u', 'E3/2u>1E3/2u', 'E3/2u>2E3/2u']; pi = (1, 2, 0, 3); phases ['1', '-i', '1', 'i']; matrices phased
+      designated E1/2u>1E1/2u: j=1 N=1 mu=1 (square)
+      designated E3/2u>1E3/2u: j=0 N=1 mu=1 (square)
+== Td > D2d > S4: L=8; matrices equal 3, permuted 2, phased 3, mixed 0; N in {1}
+   embedding D2d: C2 -> C2(1), C2'(1) -> C2(2), S4^-1 -> S4^-1(1)
+   embedding S4: C2 -> C2(1), S4^-1 -> S4^-1(1)
+   A1: labels ['A1>A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A1>A: j=0 N=1 mu=1 (square)
+   A2: labels ['B1>B']; pi = (0) = id; phases ['1']; matrices equal
+      designated B1>B: j=0 N=1 mu=1 (square)
+   E: labels ['A1>A', 'B1>B']; pi = (1, 0); phases ['1', '1']; matrices permuted
+      designated A1>A: j=1 N=1 mu=1 (square)
+      designated B1>B: j=0 N=1 mu=1 (square)
+   T1: labels ['A2>A', 'E>1E', 'E>2E']; pi = (1, 0, 2); phases ['1', '1', '1']; matrices permuted
+      designated A2>A: j=1 N=1 mu=1 (square)
+      designated E>1E: j=0 N=1 mu=1 (square)
+   T2: labels ['B2>B', 'E>1E', 'E>2E']; pi = (0, 1, 2) = id; phases ['1', '1', '1']; matrices equal
+      designated B2>B: j=0 N=1 mu=1 (square)
+      designated E>1E: j=1 N=1 mu=1 (square)
+   E1/2: labels ['E1/2>1E1/2', 'E1/2>2E1/2']; pi = (0, 1) = id; phases ['1', '-i']; matrices phased
+      designated E1/2>1E1/2: j=0 N=1 mu=1 (square)
+   E5/2: labels ['E3/2>1E3/2', 'E3/2>2E3/2']; pi = (0, 1) = id; phases ['1', 'i']; matrices phased
+      designated E3/2>1E3/2: j=0 N=1 mu=1 (square)
+   G3/2: labels ['E1/2>1E1/2', 'E1/2>2E1/2', 'E3/2>1E3/2', 'E3/2>2E3/2']; pi = (1, 2, 0, 3); phases ['1', '-i', '1', 'i']; matrices phased
+      designated E1/2>1E1/2: j=1 N=1 mu=1 (square)
+      designated E3/2>1E3/2: j=0 N=1 mu=1 (square)
+== I > D5 > C5: L=20; matrices equal 1, permuted 0, phased 7, mixed 1; N in {1, 1/2}
+   embedding D5: C5^1 -> C5^1(1), C2'(1) -> C2(7)
+   embedding C5: C5^1 -> C5^1(1)
+   A: labels ['A1>A']; pi = (0) = id; phases ['1']; matrices equal
+      designated A1>A: j=0 N=1 mu=1 (square)
+   T1: labels ['A2>A', 'E1>1E1', 'E1>2E1']; pi = (1, 0, 2); phases ['1', '1', '-zeta^4']; matrices phased
+      designated A2>A: j=1 N=1 mu=1 (square)
+      designated E1>1E1: j=0 N=1 mu=1 (square)
+   T2: labels ['A2>A', 'E2>1E2', 'E2>2E2']; pi = (1, 0, 2); phases ['1', '1', '-zeta^8']; matrices phased
+      designated A2>A: j=1 N=1 mu=1 (square)
+      designated E2>1E2: j=0 N=1 mu=1 (square)
+   G: labels ['E1>1E1', 'E1>2E1', 'E2>1E2', 'E2>2E2']; pi = (1, 2, 0, 3); phases ['1', '-zeta^4', '1', '-zeta^8']; matrices phased
+      designated E1>1E1: j=1 N=1 mu=1 (square)
+      designated E2>1E2: j=0 N=1 mu=1 (square)
+   H: labels ['A1>A', 'E1>1E1', 'E1>2E1', 'E2>1E2', 'E2>2E2']; pi = (2, 1, 3, 0, 4); phases ['1', '1', 'zeta^4', '1', 'zeta^8']; matrices phased
+      designated A1>A: j=2 N=1 mu=1 (square)
+      designated E1>1E1: j=1 N=1 mu=1 (square)
+      designated E2>1E2: j=0 N=1 mu=1 (square)
+   E1/2: labels ['E1/2>1E1/2', 'E1/2>2E1/2']; pi = (0, 1) = id; phases ['1', '-zeta^3']; matrices phased
+      designated E1/2>1E1/2: j=0 N=1 mu=1 (square)
+   E7/2: labels ['E3/2>1E3/2', 'E3/2>2E3/2']; pi = (0, 1) = id; phases ['1', 'zeta']; matrices phased
+      designated E3/2>1E3/2: j=0 N=1 mu=1 (square)
+   G3/2: labels ['E1/2>1E1/2', 'E1/2>2E1/2', 'E3/2>1E3/2', 'E3/2>2E3/2']; pi = (1, 2, 0, 3); phases ['1', '-zeta^7', '1', 'zeta^7']; matrices phased
+      designated E1/2>1E1/2: j=1 N=1 mu=1 (square)
+      designated E3/2>1E3/2: j=0 N=1 mu=1 (square)
+   I5/2: labels ['E1/2>1E1/2', 'E1/2>2E1/2', 'E3/2>1E3/2', 'E3/2>2E3/2', '1E5/2>B5/2', '2E5/2>B5/2']; pi = (2, 3, 1, 4, -, -); phases ['1', 'zeta^3', '1', 'i', 'mixed', 'mixed']; matrices mixed
+      designated E1/2>1E1/2: j=2 N=1 mu=1 (square)
+      designated E3/2>1E3/2: j=1 N=1 mu=1 (square)
+      designated 1E5/2>B5/2: j=0 N=1/2 mu=(1 + i)/2 ((1+i)/2)
+      designated 2E5/2>B5/2: j=0 N=1/2 mu=(1 + i)/2 ((1+i)/2)
+      w_1E5/2>B5/2 = ((1 - i)/2, 0, 0, 0, 0, (-zeta + zeta^6)/2)
+      w_2E5/2>B5/2 = ((1 - i)/2, 0, 0, 0, 0, (zeta - zeta^6)/2)
+== Ih > D5d > S10: L=20; matrices equal 2, permuted 0, phased 14, mixed 2; N in {1, 1/2}
+   embedding D5d: C5^1 -> C5^1(1), C2'(1) -> C2(7), i -> i
+   embedding S10: C5^1 -> C5^1(1), i -> i
+   Ag: labels ['A1g>Ag']; pi = (0) = id; phases ['1']; matrices equal
+      designated A1g>Ag: j=0 N=1 mu=1 (square)
+   T1g: labels ['A2g>Ag', 'E1g>1E1g', 'E1g>2E1g']; pi = (1, 0, 2); phases ['1', '1', '-zeta^4']; matrices phased
+      designated A2g>Ag: j=1 N=1 mu=1 (square)
+      designated E1g>1E1g: j=0 N=1 mu=1 (square)
+   T2g: labels ['A2g>Ag', 'E2g>1E2g', 'E2g>2E2g']; pi = (1, 0, 2); phases ['1', '1', '-zeta^8']; matrices phased
+      designated A2g>Ag: j=1 N=1 mu=1 (square)
+      designated E2g>1E2g: j=0 N=1 mu=1 (square)
+   Gg: labels ['E1g>1E1g', 'E1g>2E1g', 'E2g>1E2g', 'E2g>2E2g']; pi = (1, 2, 0, 3); phases ['1', '-zeta^4', '1', '-zeta^8']; matrices phased
+      designated E1g>1E1g: j=1 N=1 mu=1 (square)
+      designated E2g>1E2g: j=0 N=1 mu=1 (square)
+   Hg: labels ['A1g>Ag', 'E1g>1E1g', 'E1g>2E1g', 'E2g>1E2g', 'E2g>2E2g']; pi = (2, 1, 3, 0, 4); phases ['1', '1', 'zeta^4', '1', 'zeta^8']; matrices phased
+      designated A1g>Ag: j=2 N=1 mu=1 (square)
+      designated E1g>1E1g: j=1 N=1 mu=1 (square)
+      designated E2g>1E2g: j=0 N=1 mu=1 (square)
+   Au: labels ['A1u>Au']; pi = (0) = id; phases ['1']; matrices equal
+      designated A1u>Au: j=0 N=1 mu=1 (square)
+   T1u: labels ['A2u>Au', 'E1u>1E1u', 'E1u>2E1u']; pi = (1, 0, 2); phases ['1', '1', '-zeta^4']; matrices phased
+      designated A2u>Au: j=1 N=1 mu=1 (square)
+      designated E1u>1E1u: j=0 N=1 mu=1 (square)
+   T2u: labels ['A2u>Au', 'E2u>1E2u', 'E2u>2E2u']; pi = (1, 0, 2); phases ['1', '1', '-zeta^8']; matrices phased
+      designated A2u>Au: j=1 N=1 mu=1 (square)
+      designated E2u>1E2u: j=0 N=1 mu=1 (square)
+   Gu: labels ['E1u>1E1u', 'E1u>2E1u', 'E2u>1E2u', 'E2u>2E2u']; pi = (1, 2, 0, 3); phases ['1', '-zeta^4', '1', '-zeta^8']; matrices phased
+      designated E1u>1E1u: j=1 N=1 mu=1 (square)
+      designated E2u>1E2u: j=0 N=1 mu=1 (square)
+   Hu: labels ['A1u>Au', 'E1u>1E1u', 'E1u>2E1u', 'E2u>1E2u', 'E2u>2E2u']; pi = (2, 1, 3, 0, 4); phases ['1', '1', 'zeta^4', '1', 'zeta^8']; matrices phased
+      designated A1u>Au: j=2 N=1 mu=1 (square)
+      designated E1u>1E1u: j=1 N=1 mu=1 (square)
+      designated E2u>1E2u: j=0 N=1 mu=1 (square)
+   E1/2g: labels ['E1/2g>1E1/2g', 'E1/2g>2E1/2g']; pi = (0, 1) = id; phases ['1', '-zeta^3']; matrices phased
+      designated E1/2g>1E1/2g: j=0 N=1 mu=1 (square)
+   E7/2g: labels ['E3/2g>1E3/2g', 'E3/2g>2E3/2g']; pi = (0, 1) = id; phases ['1', 'zeta']; matrices phased
+      designated E3/2g>1E3/2g: j=0 N=1 mu=1 (square)
+   G3/2g: labels ['E1/2g>1E1/2g', 'E1/2g>2E1/2g', 'E3/2g>1E3/2g', 'E3/2g>2E3/2g']; pi = (1, 2, 0, 3); phases ['1', '-zeta^7', '1', 'zeta^7']; matrices phased
+      designated E1/2g>1E1/2g: j=1 N=1 mu=1 (square)
+      designated E3/2g>1E3/2g: j=0 N=1 mu=1 (square)
+   I5/2g: labels ['E1/2g>1E1/2g', 'E1/2g>2E1/2g', 'E3/2g>1E3/2g', 'E3/2g>2E3/2g', '1E5/2g>B5/2g', '2E5/2g>B5/2g']; pi = (2, 3, 1, 4, -, -); phases ['1', 'zeta^3', '1', 'i', 'mixed', 'mixed']; matrices mixed
+      designated E1/2g>1E1/2g: j=2 N=1 mu=1 (square)
+      designated E3/2g>1E3/2g: j=1 N=1 mu=1 (square)
+      designated 1E5/2g>B5/2g: j=0 N=1/2 mu=(1 + i)/2 ((1+i)/2)
+      designated 2E5/2g>B5/2g: j=0 N=1/2 mu=(1 + i)/2 ((1+i)/2)
+      w_1E5/2g>B5/2g = ((1 - i)/2, 0, 0, 0, 0, (-zeta + zeta^6)/2)
+      w_2E5/2g>B5/2g = ((1 - i)/2, 0, 0, 0, 0, (zeta - zeta^6)/2)
+   E1/2u: labels ['E1/2u>1E1/2u', 'E1/2u>2E1/2u']; pi = (0, 1) = id; phases ['1', '-zeta^3']; matrices phased
+      designated E1/2u>1E1/2u: j=0 N=1 mu=1 (square)
+   E7/2u: labels ['E3/2u>1E3/2u', 'E3/2u>2E3/2u']; pi = (0, 1) = id; phases ['1', 'zeta']; matrices phased
+      designated E3/2u>1E3/2u: j=0 N=1 mu=1 (square)
+   G3/2u: labels ['E1/2u>1E1/2u', 'E1/2u>2E1/2u', 'E3/2u>1E3/2u', 'E3/2u>2E3/2u']; pi = (1, 2, 0, 3); phases ['1', '-zeta^7', '1', 'zeta^7']; matrices phased
+      designated E1/2u>1E1/2u: j=1 N=1 mu=1 (square)
+      designated E3/2u>1E3/2u: j=0 N=1 mu=1 (square)
+   I5/2u: labels ['E1/2u>1E1/2u', 'E1/2u>2E1/2u', 'E3/2u>1E3/2u', 'E3/2u>2E3/2u', '1E5/2u>B5/2u', '2E5/2u>B5/2u']; pi = (2, 3, 1, 4, -, -); phases ['1', 'zeta^3', '1', 'i', 'mixed', 'mixed']; matrices mixed
+      designated E1/2u>1E1/2u: j=2 N=1 mu=1 (square)
+      designated E3/2u>1E3/2u: j=1 N=1 mu=1 (square)
+      designated 1E5/2u>B5/2u: j=0 N=1/2 mu=(1 + i)/2 ((1+i)/2)
+      designated 2E5/2u>B5/2u: j=0 N=1/2 mu=(1 + i)/2 ((1+i)/2)
+      w_1E5/2u>B5/2u = ((1 - i)/2, 0, 0, 0, 0, (-zeta + zeta^6)/2)
+      w_2E5/2u>B5/2u = ((1 - i)/2, 0, 0, 0, 0, (zeta - zeta^6)/2)
+
+Summary
+D2 > C2: L=4; matrices equal 5, permuted 0, phased 0, mixed 0; N in {1}
+D3 > C3: L=12; matrices equal 6, permuted 0, phased 0, mixed 0; N in {1}
+D4 > C4: L=8; matrices equal 7, permuted 0, phased 0, mixed 0; N in {1}
+D5 > C5: L=20; matrices equal 8, permuted 0, phased 0, mixed 0; N in {1}
+D6 > C6: L=12; matrices equal 9, permuted 0, phased 0, mixed 0; N in {1}
+D7 > C7: L=28; matrices equal 10, permuted 0, phased 0, mixed 0; N in {1}
+D8 > C8: L=16; matrices equal 11, permuted 0, phased 0, mixed 0; N in {1}
+D9 > C9: L=36; matrices equal 12, permuted 0, phased 0, mixed 0; N in {1}
+D10 > C10: L=20; matrices equal 13, permuted 0, phased 0, mixed 0; N in {1}
+D11 > C11: L=44; matrices equal 14, permuted 0, phased 0, mixed 0; N in {1}
+D12 > C12: L=24; matrices equal 15, permuted 0, phased 0, mixed 0; N in {1}
+C2v > C2: L=4; matrices equal 5, permuted 0, phased 0, mixed 0; N in {1}
+C3v > C3: L=12; matrices equal 6, permuted 0, phased 0, mixed 0; N in {1}
+C4v > C4: L=8; matrices equal 7, permuted 0, phased 0, mixed 0; N in {1}
+C5v > C5: L=20; matrices equal 8, permuted 0, phased 0, mixed 0; N in {1}
+C6v > C6: L=12; matrices equal 9, permuted 0, phased 0, mixed 0; N in {1}
+C7v > C7: L=28; matrices equal 10, permuted 0, phased 0, mixed 0; N in {1}
+C8v > C8: L=16; matrices equal 11, permuted 0, phased 0, mixed 0; N in {1}
+C9v > C9: L=36; matrices equal 12, permuted 0, phased 0, mixed 0; N in {1}
+C10v > C10: L=20; matrices equal 13, permuted 0, phased 0, mixed 0; N in {1}
+C11v > C11: L=44; matrices equal 14, permuted 0, phased 0, mixed 0; N in {1}
+C12v > C12: L=24; matrices equal 15, permuted 0, phased 0, mixed 0; N in {1}
+D2h > C2h: L=4; matrices equal 10, permuted 0, phased 0, mixed 0; N in {1}
+D3h > C3h: L=12; matrices equal 8, permuted 1, phased 0, mixed 0; N in {1}
+D4h > C4h: L=8; matrices equal 14, permuted 0, phased 0, mixed 0; N in {1}
+D5h > C5h: L=20; matrices equal 11, permuted 2, phased 0, mixed 0; N in {1}
+D6h > C6h: L=12; matrices equal 18, permuted 0, phased 0, mixed 0; N in {1}
+D7h > C7h: L=28; matrices equal 14, permuted 3, phased 0, mixed 0; N in {1}
+D8h > C8h: L=16; matrices equal 22, permuted 0, phased 0, mixed 0; N in {1}
+D9h > C9h: L=36; matrices equal 17, permuted 4, phased 0, mixed 0; N in {1}
+D10h > C10h: L=20; matrices equal 26, permuted 0, phased 0, mixed 0; N in {1}
+D11h > C11h: L=44; matrices equal 20, permuted 5, phased 0, mixed 0; N in {1}
+D12h > C12h: L=24; matrices equal 30, permuted 0, phased 0, mixed 0; N in {1}
+D2d > S4: L=8; matrices equal 7, permuted 0, phased 0, mixed 0; N in {1}
+D3d > S6: L=12; matrices equal 12, permuted 0, phased 0, mixed 0; N in {1}
+D4d > S8: L=16; matrices equal 11, permuted 0, phased 0, mixed 0; N in {1}
+D5d > S10: L=20; matrices equal 16, permuted 0, phased 0, mixed 0; N in {1}
+D6d > S12: L=24; matrices equal 15, permuted 0, phased 0, mixed 0; N in {1}
+D7d > S14: L=28; matrices equal 20, permuted 0, phased 0, mixed 0; N in {1}
+D8d > S16: L=32; matrices equal 19, permuted 0, phased 0, mixed 0; N in {1}
+D9d > S18: L=36; matrices equal 24, permuted 0, phased 0, mixed 0; N in {1}
+D10d > S20: L=40; matrices equal 23, permuted 0, phased 0, mixed 0; N in {1}
+D11d > S22: L=44; matrices equal 28, permuted 0, phased 0, mixed 0; N in {1}
+D12d > S24: L=48; matrices equal 27, permuted 0, phased 0, mixed 0; N in {1}
+T > C3: L=12; matrices equal 6, permuted 1, phased 0, mixed 0; N in {1}
+Th > S6: L=12; matrices equal 12, permuted 2, phased 0, mixed 0; N in {1}
+Td > S4: L=8; matrices equal 5, permuted 3, phased 0, mixed 0; N in {1}
+O > C4: L=8; matrices equal 5, permuted 3, phased 0, mixed 0; N in {1}
+Oh > C4h: L=8; matrices equal 10, permuted 6, phased 0, mixed 0; N in {1}
+O > D4 > C4: L=8; matrices equal 3, permuted 2, phased 3, mixed 0; N in {1}
+Oh > D4h > C4h: L=8; matrices equal 6, permuted 4, phased 6, mixed 0; N in {1}
+Td > D2d > S4: L=8; matrices equal 3, permuted 2, phased 3, mixed 0; N in {1}
+I > D5 > C5: L=20; matrices equal 1, permuted 0, phased 7, mixed 1; N in {1, 1/2}
+Ih > D5d > S10: L=20; matrices equal 2, permuted 0, phased 14, mixed 2; N in {1, 1/2}
