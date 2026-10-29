@@ -1,0 +1,8714 @@
+[
+ {
+  "conductor": 24,
+  "N": {
+   "pretty": "1/2 + 1/4*sqrt2",
+   "exact": [
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "(-1 - zeta^3)/2",
+   "exact": [
+    [
+     -1,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    -0.8535533905932737,
+    -0.3535533905932738
+   ]
+  },
+  "printed": false,
+  "where": [
+   "O D3>C2 E1/2",
+   "O D3>C2 E5/2",
+   "Oh C3v>C1h E1/2g",
+   "Oh C3v>C1h E5/2g",
+   "Oh D3>C2 E1/2g",
+   "Oh D3>C2 E1/2u",
+   "Oh D3>C2 E5/2g",
+   "Oh D3>C2 E5/2u",
+   "Oh D3d>C1h E1/2g",
+   "Oh D3d>C1h E5/2g",
+   "Oh D3d>C2 E1/2g",
+   "Oh D3d>C2 E1/2u",
+   "Oh D3d>C2 E5/2g",
+   "Oh D3d>C2 E5/2u",
+   "Oh D3d>C2h E1/2g",
+   "Oh D3d>C2h E1/2u",
+   "Oh D3d>C2h E5/2g",
+   "Oh D3d>C2h E5/2u",
+   "Oh D3d>C3v>C1h E1/2g",
+   "Oh D3d>C3v>C1h E5/2g",
+   "Oh D3d>D3>C2 E1/2g",
+   "Oh D3d>D3>C2 E1/2u",
+   "Oh D3d>D3>C2 E5/2g",
+   "Oh D3d>D3>C2 E5/2u",
+   "Oh O>D3>C2 (sub-chain O D3>C2) E1/2",
+   "Oh O>D3>C2 (sub-chain O D3>C2) E5/2",
+   "Oh O>D3>C2 E1/2g",
+   "Oh O>D3>C2 E1/2u",
+   "Oh O>D3>C2 E5/2g",
+   "Oh O>D3>C2 E5/2u",
+   "Oh Td>C3v>C1h (sub-chain Td C3v>C1h) E1/2",
+   "Oh Td>C3v>C1h (sub-chain Td C3v>C1h) E5/2",
+   "Oh Td>C3v>C1h E1/2g",
+   "Oh Td>C3v>C1h E5/2g",
+   "Td C3v>C1h E1/2",
+   "Td C3v>C1h E5/2"
+  ]
+ },
+ {
+  "conductor": 24,
+  "N": {
+   "pretty": "1/2 + 1/6*sqrt3",
+   "exact": [
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     6
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "1/2 + 1/6*sqrt3 + 1/6*i*sqrt2*sqrt3",
+   "exact": [
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     -1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     -1,
+     6
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "numeric": [
+    0.7886751345948129,
+    0.408248290463863
+   ]
+  },
+  "printed": true,
+  "where": [
+   "I T>D2>C2 (sub-chain T D2>C2) 2E3/2",
+   "Ih I>T>D2>C2 (sub-chain T D2>C2) 2E3/2",
+   "Ih T>D2>C2 (sub-chain T D2>C2) 2E3/2",
+   "Ih Th>C2v>C1h (sub-chain Th C2v>C1h) 1E3/2g",
+   "Ih Th>C2v>C1h (sub-chain Th C2v>C1h) 2E3/2u",
+   "Ih Th>C2v>C1h (sub-chain Th C2v>C1h) E1/2g",
+   "Ih Th>C2v>C2 (sub-chain Th C2v>C2) 2E3/2g",
+   "Ih Th>C2v>C2 (sub-chain Th C2v>C2) 2E3/2u",
+   "Ih Th>D2>C2 (sub-chain Th D2>C2) 2E3/2g",
+   "Ih Th>D2>C2 (sub-chain Th D2>C2) 2E3/2u",
+   "Ih Th>D2h>C1h (sub-chain Th D2h>C1h) 1E3/2u",
+   "Ih Th>D2h>C1h (sub-chain Th D2h>C1h) 2E3/2g",
+   "Ih Th>D2h>C1h (sub-chain Th D2h>C1h) E1/2u",
+   "Ih Th>D2h>C2 (sub-chain Th D2h>C2) 2E3/2g",
+   "Ih Th>D2h>C2 (sub-chain Th D2h>C2) 2E3/2u",
+   "Ih Th>D2h>C2h (sub-chain Th D2h>C2h) 2E3/2g",
+   "Ih Th>D2h>C2h (sub-chain Th D2h>C2h) 2E3/2u",
+   "Ih Th>D2h>C2v>C1h (sub-chain Th D2h>C2v>C1h) 1E3/2g",
+   "Ih Th>D2h>C2v>C1h (sub-chain Th D2h>C2v>C1h) 2E3/2u",
+   "Ih Th>D2h>C2v>C1h (sub-chain Th D2h>C2v>C1h) E1/2g",
+   "Ih Th>D2h>C2v>C2 (sub-chain Th D2h>C2v>C2) 2E3/2g",
+   "Ih Th>D2h>C2v>C2 (sub-chain Th D2h>C2v>C2) 2E3/2u",
+   "Ih Th>D2h>D2>C2 (sub-chain Th D2h>D2>C2) 2E3/2g",
+   "Ih Th>D2h>D2>C2 (sub-chain Th D2h>D2>C2) 2E3/2u",
+   "Ih Th>T>D2>C2 (sub-chain T D2>C2) 2E3/2",
+   "Ih Th>T>D2>C2 (sub-chain Th T>D2>C2) 2E3/2g",
+   "Ih Th>T>D2>C2 (sub-chain Th T>D2>C2) 2E3/2u",
+   "O D3>C3 E5/2",
+   "O T>C3 E5/2",
+   "O T>D2>C2 (sub-chain T D2>C2) 2E3/2",
+   "Oh C3v>C3 E5/2g",
+   "Oh C3v>C3 E5/2u",
+   "Oh D3>C3 E5/2g",
+   "Oh D3>C3 E5/2u",
+   "Oh D3d>C3 E5/2g",
+   "Oh D3d>C3 E5/2u",
+   "Oh D3d>C3v>C3 E5/2g",
+   "Oh D3d>C3v>C3 E5/2u",
+   "Oh D3d>D3>C3 E5/2g",
+   "Oh D3d>D3>C3 E5/2u",
+   "Oh D3d>S6 E5/2g",
+   "Oh D3d>S6 E5/2u",
+   "Oh O>D3>C3 (sub-chain O D3>C3) E5/2",
+   "Oh O>D3>C3 E5/2g",
+   "Oh O>D3>C3 E5/2u",
+   "Oh O>T>C3 (sub-chain O T>C3) E5/2",
+   "Oh O>T>C3 E5/2g",
+   "Oh O>T>C3 E5/2u",
+   "Oh O>T>D2>C2 (sub-chain T D2>C2) 2E3/2",
+   "Oh T>C3 E5/2g",
+   "Oh T>C3 E5/2u",
+   "Oh T>D2>C2 (sub-chain T D2>C2) 2E3/2",
+   "Oh Td>C3v>C3 (sub-chain Td C3v>C3) E5/2",
+   "Oh Td>C3v>C3 E5/2g",
+   "Oh Td>C3v>C3 E5/2u",
+   "Oh Td>T>C3 (sub-chain Td T>C3) E5/2",
+   "Oh Td>T>C3 E5/2g",
+   "Oh Td>T>C3 E5/2u",
+   "Oh Td>T>D2>C2 (sub-chain T D2>C2) 2E3/2",
+   "Oh Th>C2v>C1h (sub-chain Th C2v>C1h) 1E3/2u",
+   "Oh Th>C2v>C1h (sub-chain Th C2v>C1h) 2E3/2g",
+   "Oh Th>C2v>C1h (sub-chain Th C2v>C1h) E1/2u",
+   "Oh Th>C2v>C2 (sub-chain Th C2v>C2) 2E3/2g",
+   "Oh Th>C2v>C2 (sub-chain Th C2v>C2) 2E3/2u",
+   "Oh Th>C3 E5/2g",
+   "Oh Th>C3 E5/2u",
+   "Oh Th>D2>C2 (sub-chain Th D2>C2) 2E3/2g",
+   "Oh Th>D2>C2 (sub-chain Th D2>C2) 2E3/2u",
+   "Oh Th>D2h>C1h (sub-chain Th D2h>C1h) 1E3/2u",
+   "Oh Th>D2h>C1h (sub-chain Th D2h>C1h) 2E3/2g",
+   "Oh Th>D2h>C1h (sub-chain Th D2h>C1h) E1/2u",
+   "Oh Th>D2h>C2 (sub-chain Th D2h>C2) 2E3/2g",
+   "Oh Th>D2h>C2 (sub-chain Th D2h>C2) 2E3/2u",
+   "Oh Th>D2h>C2h (sub-chain Th D2h>C2h) 2E3/2g",
+   "Oh Th>D2h>C2h (sub-chain Th D2h>C2h) 2E3/2u",
+   "Oh Th>D2h>C2v>C1h (sub-chain Th D2h>C2v>C1h) 1E3/2u",
+   "Oh Th>D2h>C2v>C1h (sub-chain Th D2h>C2v>C1h) 2E3/2g",
+   "Oh Th>D2h>C2v>C1h (sub-chain Th D2h>C2v>C1h) E1/2u",
+   "Oh Th>D2h>C2v>C2 (sub-chain Th D2h>C2v>C2) 2E3/2g",
+   "Oh Th>D2h>C2v>C2 (sub-chain Th D2h>C2v>C2) 2E3/2u",
+   "Oh Th>D2h>D2>C2 (sub-chain Th D2h>D2>C2) 2E3/2g",
+   "Oh Th>D2h>D2>C2 (sub-chain Th D2h>D2>C2) 2E3/2u",
+   "Oh Th>S6 E5/2g",
+   "Oh Th>S6 E5/2u",
+   "Oh Th>T>C3 E5/2g",
+   "Oh Th>T>C3 E5/2u",
+   "Oh Th>T>D2>C2 (sub-chain T D2>C2) 2E3/2",
+   "Oh Th>T>D2>C2 (sub-chain Th T>D2>C2) 2E3/2g",
+   "Oh Th>T>D2>C2 (sub-chain Th T>D2>C2) 2E3/2u",
+   "T D2>C2 1E3/2",
+   "T D2>C2 E1/2",
+   "Td C3v>C3 E5/2",
+   "Td T>C3 E5/2",
+   "Td T>D2>C2 (sub-chain T D2>C2) 2E3/2",
+   "Th C2v>C1h 1E3/2g",
+   "Th C2v>C1h 2E3/2u",
+   "Th C2v>C1h E1/2g",
+   "Th C2v>C2 1E3/2g",
+   "Th C2v>C2 1E3/2u",
+   "Th C2v>C2 E1/2g",
+   "Th C2v>C2 E1/2u",
+   "Th D2>C2 1E3/2g",
+   "Th D2>C2 1E3/2u",
+   "Th D2>C2 E1/2g",
+   "Th D2>C2 E1/2u",
+   "Th D2h>C1h 1E3/2g",
+   "Th D2h>C1h 2E3/2u",
+   "Th D2h>C1h E1/2g",
+   "Th D2h>C2 1E3/2g",
+   "Th D2h>C2 1E3/2u",
+   "Th D2h>C2 E1/2g",
+   "Th D2h>C2 E1/2u",
+   "Th D2h>C2h 1E3/2g",
+   "Th D2h>C2h 1E3/2u",
+   "Th D2h>C2h E1/2g",
+   "Th D2h>C2h E1/2u",
+   "Th D2h>C2v>C1h 1E3/2g",
+   "Th D2h>C2v>C1h 2E3/2u",
+   "Th D2h>C2v>C1h E1/2g",
+   "Th D2h>C2v>C2 1E3/2g",
+   "Th D2h>C2v>C2 1E3/2u",
+   "Th D2h>C2v>C2 E1/2g",
+   "Th D2h>C2v>C2 E1/2u",
+   "Th D2h>D2>C2 1E3/2g",
+   "Th D2h>D2>C2 1E3/2u",
+   "Th D2h>D2>C2 E1/2g",
+   "Th D2h>D2>C2 E1/2u",
+   "Th T>D2>C2 (sub-chain T D2>C2) 1E3/2",
+   "Th T>D2>C2 (sub-chain T D2>C2) E1/2",
+   "Th T>D2>C2 1E3/2g",
+   "Th T>D2>C2 1E3/2u",
+   "Th T>D2>C2 E1/2g",
+   "Th T>D2>C2 E1/2u"
+  ]
+ },
+ {
+  "conductor": 24,
+  "N": {
+   "pretty": "1/2 - 1/4*sqrt2",
+   "exact": [
+    [
+     1,
+     2
+    ],
+    [
+     -1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "(-zeta + zeta^5 - zeta^6)/2",
+   "exact": [
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     -1,
+     2
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    -0.3535533905932738,
+    -0.14644660940672624
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Oh C3v>C1h E1/2u",
+   "Oh C3v>C1h E5/2u",
+   "Oh D3d>C1h E1/2u",
+   "Oh D3d>C1h E5/2u",
+   "Oh D3d>C3v>C1h E1/2u",
+   "Oh D3d>C3v>C1h E5/2u",
+   "Oh Td>C3v>C1h E1/2u",
+   "Oh Td>C3v>C1h E5/2u"
+  ]
+ },
+ {
+  "conductor": 24,
+  "N": {
+   "pretty": "1/2 - 1/6*sqrt3",
+   "exact": [
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     3
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "1/2 - 1/6*sqrt3 + 1/6*i*sqrt2*sqrt3",
+   "exact": [
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     -1,
+     3
+    ],
+    [
+     -1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "numeric": [
+    0.2113248654051871,
+    0.408248290463863
+   ]
+  },
+  "printed": true,
+  "where": [
+   "I T>D2>C2 (sub-chain T D2>C2) 1E3/2",
+   "I T>D2>C2 (sub-chain T D2>C2) E1/2",
+   "Ih I>T>D2>C2 (sub-chain T D2>C2) 1E3/2",
+   "Ih I>T>D2>C2 (sub-chain T D2>C2) E1/2",
+   "Ih T>D2>C2 (sub-chain T D2>C2) 1E3/2",
+   "Ih T>D2>C2 (sub-chain T D2>C2) E1/2",
+   "Ih Th>C2v>C1h (sub-chain Th C2v>C1h) 1E3/2u",
+   "Ih Th>C2v>C1h (sub-chain Th C2v>C1h) 2E3/2g",
+   "Ih Th>C2v>C1h (sub-chain Th C2v>C1h) E1/2u",
+   "Ih Th>C2v>C2 (sub-chain Th C2v>C2) 1E3/2g",
+   "Ih Th>C2v>C2 (sub-chain Th C2v>C2) 1E3/2u",
+   "Ih Th>C2v>C2 (sub-chain Th C2v>C2) E1/2g",
+   "Ih Th>C2v>C2 (sub-chain Th C2v>C2) E1/2u",
+   "Ih Th>D2>C2 (sub-chain Th D2>C2) 1E3/2g",
+   "Ih Th>D2>C2 (sub-chain Th D2>C2) 1E3/2u",
+   "Ih Th>D2>C2 (sub-chain Th D2>C2) E1/2g",
+   "Ih Th>D2>C2 (sub-chain Th D2>C2) E1/2u",
+   "Ih Th>D2h>C1h (sub-chain Th D2h>C1h) 1E3/2g",
+   "Ih Th>D2h>C1h (sub-chain Th D2h>C1h) 2E3/2u",
+   "Ih Th>D2h>C1h (sub-chain Th D2h>C1h) E1/2g",
+   "Ih Th>D2h>C2 (sub-chain Th D2h>C2) 1E3/2g",
+   "Ih Th>D2h>C2 (sub-chain Th D2h>C2) 1E3/2u",
+   "Ih Th>D2h>C2 (sub-chain Th D2h>C2) E1/2g",
+   "Ih Th>D2h>C2 (sub-chain Th D2h>C2) E1/2u",
+   "Ih Th>D2h>C2h (sub-chain Th D2h>C2h) 1E3/2g",
+   "Ih Th>D2h>C2h (sub-chain Th D2h>C2h) 1E3/2u",
+   "Ih Th>D2h>C2h (sub-chain Th D2h>C2h) E1/2g",
+   "Ih Th>D2h>C2h (sub-chain Th D2h>C2h) E1/2u",
+   "Ih Th>D2h>C2v>C1h (sub-chain Th D2h>C2v>C1h) 1E3/2u",
+   "Ih Th>D2h>C2v>C1h (sub-chain Th D2h>C2v>C1h) 2E3/2g",
+   "Ih Th>D2h>C2v>C1h (sub-chain Th D2h>C2v>C1h) E1/2u",
+   "Ih Th>D2h>C2v>C2 (sub-chain Th D2h>C2v>C2) 1E3/2g",
+   "Ih Th>D2h>C2v>C2 (sub-chain Th D2h>C2v>C2) 1E3/2u",
+   "Ih Th>D2h>C2v>C2 (sub-chain Th D2h>C2v>C2) E1/2g",
+   "Ih Th>D2h>C2v>C2 (sub-chain Th D2h>C2v>C2) E1/2u",
+   "Ih Th>D2h>D2>C2 (sub-chain Th D2h>D2>C2) 1E3/2g",
+   "Ih Th>D2h>D2>C2 (sub-chain Th D2h>D2>C2) 1E3/2u",
+   "Ih Th>D2h>D2>C2 (sub-chain Th D2h>D2>C2) E1/2g",
+   "Ih Th>D2h>D2>C2 (sub-chain Th D2h>D2>C2) E1/2u",
+   "Ih Th>T>D2>C2 (sub-chain T D2>C2) 1E3/2",
+   "Ih Th>T>D2>C2 (sub-chain T D2>C2) E1/2",
+   "Ih Th>T>D2>C2 (sub-chain Th T>D2>C2) 1E3/2g",
+   "Ih Th>T>D2>C2 (sub-chain Th T>D2>C2) 1E3/2u",
+   "Ih Th>T>D2>C2 (sub-chain Th T>D2>C2) E1/2g",
+   "Ih Th>T>D2>C2 (sub-chain Th T>D2>C2) E1/2u",
+   "O D3>C3 E1/2",
+   "O T>C3 E1/2",
+   "O T>D2>C2 (sub-chain T D2>C2) 1E3/2",
+   "O T>D2>C2 (sub-chain T D2>C2) E1/2",
+   "Oh C3v>C3 E1/2g",
+   "Oh C3v>C3 E1/2u",
+   "Oh D3>C3 E1/2g",
+   "Oh D3>C3 E1/2u",
+   "Oh D3d>C3 E1/2g",
+   "Oh D3d>C3 E1/2u",
+   "Oh D3d>C3v>C3 E1/2g",
+   "Oh D3d>C3v>C3 E1/2u",
+   "Oh D3d>D3>C3 E1/2g",
+   "Oh D3d>D3>C3 E1/2u",
+   "Oh D3d>S6 E1/2g",
+   "Oh D3d>S6 E1/2u",
+   "Oh O>D3>C3 (sub-chain O D3>C3) E1/2",
+   "Oh O>D3>C3 E1/2g",
+   "Oh O>D3>C3 E1/2u",
+   "Oh O>T>C3 (sub-chain O T>C3) E1/2",
+   "Oh O>T>C3 E1/2g",
+   "Oh O>T>C3 E1/2u",
+   "Oh O>T>D2>C2 (sub-chain T D2>C2) 1E3/2",
+   "Oh O>T>D2>C2 (sub-chain T D2>C2) E1/2",
+   "Oh T>C3 E1/2g",
+   "Oh T>C3 E1/2u",
+   "Oh T>D2>C2 (sub-chain T D2>C2) 1E3/2",
+   "Oh T>D2>C2 (sub-chain T D2>C2) E1/2",
+   "Oh Td>C3v>C3 (sub-chain Td C3v>C3) E1/2",
+   "Oh Td>C3v>C3 E1/2g",
+   "Oh Td>C3v>C3 E1/2u",
+   "Oh Td>T>C3 (sub-chain Td T>C3) E1/2",
+   "Oh Td>T>C3 E1/2g",
+   "Oh Td>T>C3 E1/2u",
+   "Oh Td>T>D2>C2 (sub-chain T D2>C2) 1E3/2",
+   "Oh Td>T>D2>C2 (sub-chain T D2>C2) E1/2",
+   "Oh Th>C2v>C1h (sub-chain Th C2v>C1h) 1E3/2g",
+   "Oh Th>C2v>C1h (sub-chain Th C2v>C1h) 2E3/2u",
+   "Oh Th>C2v>C1h (sub-chain Th C2v>C1h) E1/2g",
+   "Oh Th>C2v>C2 (sub-chain Th C2v>C2) 1E3/2g",
+   "Oh Th>C2v>C2 (sub-chain Th C2v>C2) 1E3/2u",
+   "Oh Th>C2v>C2 (sub-chain Th C2v>C2) E1/2g",
+   "Oh Th>C2v>C2 (sub-chain Th C2v>C2) E1/2u",
+   "Oh Th>C3 E1/2g",
+   "Oh Th>C3 E1/2u",
+   "Oh Th>D2>C2 (sub-chain Th D2>C2) 1E3/2g",
+   "Oh Th>D2>C2 (sub-chain Th D2>C2) 1E3/2u",
+   "Oh Th>D2>C2 (sub-chain Th D2>C2) E1/2g",
+   "Oh Th>D2>C2 (sub-chain Th D2>C2) E1/2u",
+   "Oh Th>D2h>C1h (sub-chain Th D2h>C1h) 1E3/2g",
+   "Oh Th>D2h>C1h (sub-chain Th D2h>C1h) 2E3/2u",
+   "Oh Th>D2h>C1h (sub-chain Th D2h>C1h) E1/2g",
+   "Oh Th>D2h>C2 (sub-chain Th D2h>C2) 1E3/2g",
+   "Oh Th>D2h>C2 (sub-chain Th D2h>C2) 1E3/2u",
+   "Oh Th>D2h>C2 (sub-chain Th D2h>C2) E1/2g",
+   "Oh Th>D2h>C2 (sub-chain Th D2h>C2) E1/2u",
+   "Oh Th>D2h>C2h (sub-chain Th D2h>C2h) 1E3/2g",
+   "Oh Th>D2h>C2h (sub-chain Th D2h>C2h) 1E3/2u",
+   "Oh Th>D2h>C2h (sub-chain Th D2h>C2h) E1/2g",
+   "Oh Th>D2h>C2h (sub-chain Th D2h>C2h) E1/2u",
+   "Oh Th>D2h>C2v>C1h (sub-chain Th D2h>C2v>C1h) 1E3/2g",
+   "Oh Th>D2h>C2v>C1h (sub-chain Th D2h>C2v>C1h) 2E3/2u",
+   "Oh Th>D2h>C2v>C1h (sub-chain Th D2h>C2v>C1h) E1/2g",
+   "Oh Th>D2h>C2v>C2 (sub-chain Th D2h>C2v>C2) 1E3/2g",
+   "Oh Th>D2h>C2v>C2 (sub-chain Th D2h>C2v>C2) 1E3/2u",
+   "Oh Th>D2h>C2v>C2 (sub-chain Th D2h>C2v>C2) E1/2g",
+   "Oh Th>D2h>C2v>C2 (sub-chain Th D2h>C2v>C2) E1/2u",
+   "Oh Th>D2h>D2>C2 (sub-chain Th D2h>D2>C2) 1E3/2g",
+   "Oh Th>D2h>D2>C2 (sub-chain Th D2h>D2>C2) 1E3/2u",
+   "Oh Th>D2h>D2>C2 (sub-chain Th D2h>D2>C2) E1/2g",
+   "Oh Th>D2h>D2>C2 (sub-chain Th D2h>D2>C2) E1/2u",
+   "Oh Th>S6 E1/2g",
+   "Oh Th>S6 E1/2u",
+   "Oh Th>T>C3 E1/2g",
+   "Oh Th>T>C3 E1/2u",
+   "Oh Th>T>D2>C2 (sub-chain T D2>C2) 1E3/2",
+   "Oh Th>T>D2>C2 (sub-chain T D2>C2) E1/2",
+   "Oh Th>T>D2>C2 (sub-chain Th T>D2>C2) 1E3/2g",
+   "Oh Th>T>D2>C2 (sub-chain Th T>D2>C2) 1E3/2u",
+   "Oh Th>T>D2>C2 (sub-chain Th T>D2>C2) E1/2g",
+   "Oh Th>T>D2>C2 (sub-chain Th T>D2>C2) E1/2u",
+   "T D2>C2 2E3/2",
+   "Td C3v>C3 E1/2",
+   "Td T>C3 E1/2",
+   "Td T>D2>C2 (sub-chain T D2>C2) 1E3/2",
+   "Td T>D2>C2 (sub-chain T D2>C2) E1/2",
+   "Th C2v>C1h 1E3/2u",
+   "Th C2v>C1h 2E3/2g",
+   "Th C2v>C1h E1/2u",
+   "Th C2v>C2 2E3/2g",
+   "Th C2v>C2 2E3/2u",
+   "Th D2>C2 2E3/2g",
+   "Th D2>C2 2E3/2u",
+   "Th D2h>C1h 1E3/2u",
+   "Th D2h>C1h 2E3/2g",
+   "Th D2h>C1h E1/2u",
+   "Th D2h>C2 2E3/2g",
+   "Th D2h>C2 2E3/2u",
+   "Th D2h>C2h 2E3/2g",
+   "Th D2h>C2h 2E3/2u",
+   "Th D2h>C2v>C1h 1E3/2u",
+   "Th D2h>C2v>C1h 2E3/2g",
+   "Th D2h>C2v>C1h E1/2u",
+   "Th D2h>C2v>C2 2E3/2g",
+   "Th D2h>C2v>C2 2E3/2u",
+   "Th D2h>D2>C2 2E3/2g",
+   "Th D2h>D2>C2 2E3/2u",
+   "Th T>D2>C2 (sub-chain T D2>C2) 2E3/2",
+   "Th T>D2>C2 2E3/2g",
+   "Th T>D2>C2 2E3/2u"
+  ]
+ },
+ {
+  "conductor": 24,
+  "N": {
+   "pretty": "1/4 + 1/12*sqrt3",
+   "exact": [
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     12
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "1/4*sqrt2 + 1/12*sqrt2*sqrt3 + 1/6*i*sqrt3",
+   "exact": [
+    [
+     -1,
+     6
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     -1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     6
+    ]
+   ],
+   "numeric": [
+    0.5576775358252053,
+    0.28867513459481287
+   ]
+  },
+  "printed": true,
+  "where": [
+   "O T>C3 G3/2",
+   "Oh O>T>C3 (sub-chain O T>C3) G3/2",
+   "Oh O>T>C3 G3/2g",
+   "Oh O>T>C3 G3/2u",
+   "Oh T>C3 G3/2g",
+   "Oh T>C3 G3/2u",
+   "Oh Td>T>C3 (sub-chain Td T>C3) G3/2",
+   "Oh Td>T>C3 G3/2g",
+   "Oh Td>T>C3 G3/2u",
+   "Oh Th>C3 G3/2g",
+   "Oh Th>C3 G3/2u",
+   "Oh Th>S6 G3/2g",
+   "Oh Th>S6 G3/2u",
+   "Oh Th>T>C3 G3/2g",
+   "Oh Th>T>C3 G3/2u",
+   "Td T>C3 G3/2"
+  ]
+ },
+ {
+  "conductor": 24,
+  "N": {
+   "pretty": "1/4 + 1/8*sqrt2",
+   "exact": [
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     8
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "(-1 - sqrt2 - i)/4",
+   "exact": [
+    [
+     -1,
+     4
+    ],
+    [
+     -1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     -1,
+     4
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    -0.6035533905932737,
+    -0.25
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Oh C3v>C1h G3/2u",
+   "Oh D3d>C1h G3/2u",
+   "Oh D3d>C3v>C1h G3/2u",
+   "Oh Td>C3v>C1h G3/2u"
+  ]
+ },
+ {
+  "conductor": 24,
+  "N": {
+   "pretty": "1/4 - 1/12*sqrt3",
+   "exact": [
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     12
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "1/4*sqrt2 - 1/12*sqrt2*sqrt3 + 1/6*i*sqrt3",
+   "exact": [
+    [
+     -1,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     -1,
+     3
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "numeric": [
+    0.14942924536134225,
+    0.28867513459481287
+   ]
+  },
+  "printed": true,
+  "where": [
+   "O D3>C3 G3/2",
+   "O T>C3 G3/2",
+   "Oh C3v>C3 G3/2g",
+   "Oh C3v>C3 G3/2u",
+   "Oh D3>C3 G3/2g",
+   "Oh D3>C3 G3/2u",
+   "Oh D3d>C3 G3/2g",
+   "Oh D3d>C3 G3/2u",
+   "Oh D3d>C3v>C3 G3/2g",
+   "Oh D3d>C3v>C3 G3/2u",
+   "Oh D3d>D3>C3 G3/2g",
+   "Oh D3d>D3>C3 G3/2u",
+   "Oh D3d>S6 G3/2g",
+   "Oh D3d>S6 G3/2u",
+   "Oh O>D3>C3 (sub-chain O D3>C3) G3/2",
+   "Oh O>D3>C3 G3/2g",
+   "Oh O>D3>C3 G3/2u",
+   "Oh O>T>C3 (sub-chain O T>C3) G3/2",
+   "Oh T>C3 G3/2g",
+   "Oh T>C3 G3/2u",
+   "Oh Td>C3v>C3 (sub-chain Td C3v>C3) G3/2",
+   "Oh Td>C3v>C3 G3/2g",
+   "Oh Td>C3v>C3 G3/2u",
+   "Oh Td>T>C3 (sub-chain Td T>C3) G3/2",
+   "Oh Th>C3 G3/2g",
+   "Oh Th>C3 G3/2u",
+   "Oh Th>S6 G3/2g",
+   "Oh Th>S6 G3/2u",
+   "Oh Th>T>C3 G3/2g",
+   "Oh Th>T>C3 G3/2u",
+   "Td C3v>C3 G3/2",
+   "Td T>C3 G3/2"
+  ]
+ },
+ {
+  "conductor": 24,
+  "N": {
+   "pretty": "1/4 - 1/8*sqrt2",
+   "exact": [
+    [
+     1,
+     4
+    ],
+    [
+     -1,
+     8
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     8
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "(-1 + i - i*sqrt2)/4",
+   "exact": [
+    [
+     -1,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    -0.25,
+    -0.10355339059327376
+   ]
+  },
+  "printed": false,
+  "where": [
+   "O D3>C2 G3/2",
+   "Oh C3v>C1h G3/2g",
+   "Oh D3>C2 G3/2g",
+   "Oh D3>C2 G3/2u",
+   "Oh D3d>C1h G3/2g",
+   "Oh D3d>C2 G3/2g",
+   "Oh D3d>C2 G3/2u",
+   "Oh D3d>C2h G3/2g",
+   "Oh D3d>C2h G3/2u",
+   "Oh D3d>C3v>C1h G3/2g",
+   "Oh D3d>D3>C2 G3/2g",
+   "Oh D3d>D3>C2 G3/2u",
+   "Oh O>D3>C2 (sub-chain O D3>C2) G3/2",
+   "Oh O>D3>C2 G3/2g",
+   "Oh O>D3>C2 G3/2u",
+   "Oh Td>C3v>C1h (sub-chain Td C3v>C1h) G3/2",
+   "Oh Td>C3v>C1h G3/2g",
+   "Td C3v>C1h G3/2"
+  ]
+ },
+ {
+  "conductor": 60,
+  "N": {
+   "pretty": "1/3 + 1/15*sqrt5",
+   "exact": [
+    [
+     4,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "-7/15 - 4/15*zeta^2 - 2/15*zeta^3 + 1/5*zeta^4 - 4/15*zeta^5 + 4/15*zeta^6 - 2/15*zeta^7 + 8/15*zeta^8 - 1/15*zeta^9 + 2/5*zeta^10 - 2/15*zeta^11 - 2/15*zeta^12 + 2/5*zeta^13 - 1/3*zeta^14 + 1/5*zeta^15",
+   "exact": [
+    [
+     -7,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -4,
+     15
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     -4,
+     15
+    ],
+    [
+     4,
+     15
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     8,
+     15
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     -1,
+     3
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "numeric": [
+    -0.31532067992968627,
+    0.6188516790330294
+   ]
+  },
+  "printed": false,
+  "where": [
+   "I T>C3 T1",
+   "Ih I>T>C3 (sub-chain I T>C3) T1",
+   "Ih I>T>C3 T1g",
+   "Ih I>T>C3 T1u",
+   "Ih T>C3 T1g",
+   "Ih T>C3 T1u",
+   "Ih Th>C3 T1g",
+   "Ih Th>C3 T1u",
+   "Ih Th>S6 T1g",
+   "Ih Th>S6 T1u",
+   "Ih Th>T>C3 T1g",
+   "Ih Th>T>C3 T1u"
+  ]
+ },
+ {
+  "conductor": 60,
+  "N": {
+   "pretty": "1/3 - 1/15*sqrt5",
+   "exact": [
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "1/15 + 1/3*zeta + 2/15*zeta^2 + 1/15*zeta^3 + 1/15*zeta^4 - 8/15*zeta^5 - 2/15*zeta^6 - 4/15*zeta^7 - 4/15*zeta^8 - 2/15*zeta^9 + 2/15*zeta^10 + 1/15*zeta^11 + 1/15*zeta^12 + 2/15*zeta^13 + 1/3*zeta^14 + 2/5*zeta^15",
+   "exact": [
+    [
+     1,
+     15
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     -8,
+     15
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     -4,
+     15
+    ],
+    [
+     -4,
+     15
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "numeric": [
+    -0.19487889755227294,
+    0.38247137163735284
+   ]
+  },
+  "printed": false,
+  "where": [
+   "I T>C3 T2",
+   "Ih I>T>C3 (sub-chain I T>C3) T2",
+   "Ih I>T>C3 T2g",
+   "Ih I>T>C3 T2u",
+   "Ih T>C3 T2g",
+   "Ih T>C3 T2u",
+   "Ih Th>C3 T2g",
+   "Ih Th>C3 T2u",
+   "Ih Th>S6 T2g",
+   "Ih Th>S6 T2u",
+   "Ih Th>T>C3 T2g",
+   "Ih Th>T>C3 T2u"
+  ]
+ },
+ {
+  "conductor": 60,
+  "N": {
+   "pretty": "1/9 + 2/45*zeta^2 + 1/45*zeta^4 + 2/45*zeta^6 + 4/45*zeta^8 + 1/45*zeta^10 - 1/15*zeta^12 - 1/15*zeta^14",
+   "exact": [
+    [
+     1,
+     9
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "4/15 - 1/15*zeta + 1/3*zeta^2 + 1/15*zeta^3 + 1/5*zeta^4 - 2/15*zeta^5 - 2/15*zeta^6 + 1/15*zeta^7 - 1/5*zeta^8 + 1/5*zeta^9 - 1/5*zeta^10 + 1/15*zeta^11 - 1/15*zeta^13 + 1/15*zeta^14",
+   "exact": [
+    [
+     4,
+     15
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    0.5026857586672582,
+    -0.03418152907907897
+   ]
+  },
+  "printed": false,
+  "where": [
+   "I T>C3 I5/2",
+   "Ih I>T>C3 (sub-chain I T>C3) I5/2",
+   "Ih T>C3 I5/2g",
+   "Ih T>C3 I5/2u",
+   "Ih Th>C3 I5/2g",
+   "Ih Th>C3 I5/2u",
+   "Ih Th>S6 I5/2g",
+   "Ih Th>S6 I5/2u",
+   "Ih Th>T>C3 I5/2g",
+   "Ih Th>T>C3 I5/2u"
+  ]
+ },
+ {
+  "conductor": 60,
+  "N": {
+   "pretty": "11/15 + 2/15*zeta^2 + 1/15*zeta^4 - 2/15*zeta^6 - 4/15*zeta^8 - 1/5*zeta^10 + 1/15*zeta^12 + 1/3*zeta^14",
+   "exact": [
+    [
+     11,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -4,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "4/15 - 1/15*zeta + 1/3*zeta^2 + 2/5*zeta^3 - 7/15*zeta^4 + 1/3*zeta^5 - 1/15*zeta^6 + 1/3*zeta^7 - 1/3*zeta^8 - 2/15*zeta^9 + 1/15*zeta^11 + 1/5*zeta^12 - 1/3*zeta^13 + 7/15*zeta^14 - 2/15*zeta^15",
+   "exact": [
+    [
+     4,
+     15
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     -7,
+     15
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     -1,
+     3
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     -1,
+     3
+    ],
+    [
+     7,
+     15
+    ],
+    [
+     -2,
+     15
+    ]
+   ],
+   "numeric": [
+    0.7299517355409246,
+    0.246914359289475
+   ]
+  },
+  "printed": false,
+  "where": [
+   "I T>C3 E1/2",
+   "Ih I>T>C3 (sub-chain I T>C3) E1/2",
+   "Ih I>T>C3 E1/2g",
+   "Ih I>T>C3 E1/2u",
+   "Ih T>C3 E1/2g",
+   "Ih T>C3 E1/2u",
+   "Ih Th>C3 E1/2g",
+   "Ih Th>C3 E1/2u",
+   "Ih Th>S6 E1/2g",
+   "Ih Th>S6 E1/2u",
+   "Ih Th>T>C3 E1/2g",
+   "Ih Th>T>C3 E1/2u"
+  ]
+ },
+ {
+  "conductor": 60,
+  "N": {
+   "pretty": "11/30 + 1/15*zeta^2 - 1/15*zeta^4 - 2/15*zeta^6 - 1/15*zeta^8 - 1/15*zeta^10 + 1/5*zeta^14",
+   "exact": [
+    [
+     11,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "-3/10 - 2/15*zeta - 2/5*zeta^2 - 2/15*zeta^3 - 1/15*zeta^4 + 1/15*zeta^5 - 1/15*zeta^7 + 2/5*zeta^8 + 4/15*zeta^9 + 1/5*zeta^10 + 1/5*zeta^11 + 1/5*zeta^12 - 1/15*zeta^13 - 4/15*zeta^14 - 3/10*zeta^15",
+   "exact": [
+    [
+     -3,
+     10
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     -2,
+     5
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     15
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     -4,
+     15
+    ],
+    [
+     -3,
+     10
+    ]
+   ],
+   "numeric": [
+    -0.3775698194185555,
+    0.25201037144649463
+   ]
+  },
+  "printed": false,
+  "where": [
+   "I T>C3 G3/2",
+   "Ih I>T>C3 (sub-chain I T>C3) G3/2",
+   "Ih T>C3 G3/2g",
+   "Ih T>C3 G3/2u",
+   "Ih Th>C3 G3/2g",
+   "Ih Th>C3 G3/2u",
+   "Ih Th>S6 G3/2g",
+   "Ih Th>S6 G3/2u",
+   "Ih Th>T>C3 G3/2g",
+   "Ih Th>T>C3 G3/2u"
+  ]
+ },
+ {
+  "conductor": 60,
+  "N": {
+   "pretty": "2/9 - 2/45*zeta^2 - 1/45*zeta^4 - 2/45*zeta^6 - 4/45*zeta^8 - 1/45*zeta^10 + 1/15*zeta^12 + 1/15*zeta^14",
+   "exact": [
+    [
+     2,
+     9
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -4,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "1/15 + 2/15*zeta + 1/15*zeta^2 - 4/15*zeta^4 - 1/15*zeta^5 - 2/15*zeta^6 + 1/15*zeta^7 - 1/15*zeta^8 - 1/5*zeta^9 + 2/15*zeta^10 + 2/15*zeta^11 + 1/15*zeta^12 + 1/15*zeta^13 + 4/15*zeta^14",
+   "exact": [
+    [
+     1,
+     15
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -4,
+     15
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     4,
+     15
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    -0.0741250363318898,
+    0.2719879839718448
+   ]
+  },
+  "printed": false,
+  "where": [
+   "I T>C3 I5/2",
+   "Ih I>T>C3 (sub-chain I T>C3) I5/2",
+   "Ih T>C3 I5/2g",
+   "Ih T>C3 I5/2u",
+   "Ih Th>C3 I5/2g",
+   "Ih Th>C3 I5/2u",
+   "Ih Th>S6 I5/2g",
+   "Ih Th>S6 I5/2u",
+   "Ih Th>T>C3 I5/2g",
+   "Ih Th>T>C3 I5/2u"
+  ]
+ },
+ {
+  "conductor": 60,
+  "N": {
+   "pretty": "7/15 + 4/15*zeta^2 + 2/15*zeta^4 + 1/15*zeta^6 + 2/15*zeta^8 - 1/15*zeta^10 - 1/5*zeta^12",
+   "exact": [
+    [
+     7,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "7/15 - 1/3*zeta + 4/15*zeta^2 - 4/15*zeta^3 + 2/15*zeta^4 + 2/15*zeta^5 + 1/15*zeta^6 + 2/5*zeta^7 + 2/15*zeta^8 + 1/5*zeta^9 - 1/15*zeta^10 + 1/15*zeta^11 - 1/5*zeta^12 + 2/15*zeta^13 - 4/15*zeta^15",
+   "exact": [
+    [
+     7,
+     15
+    ],
+    [
+     -1,
+     3
+    ],
+    [
+     4,
+     15
+    ],
+    [
+     -4,
+     15
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -4,
+     15
+    ]
+   ],
+   "numeric": [
+    0.8973272361458831,
+    0.30353099910334314
+   ]
+  },
+  "printed": false,
+  "where": [
+   "I T>C3 E7/2",
+   "Ih I>T>C3 (sub-chain I T>C3) E7/2",
+   "Ih I>T>C3 E7/2g",
+   "Ih I>T>C3 E7/2u",
+   "Ih T>C3 E7/2g",
+   "Ih T>C3 E7/2u",
+   "Ih Th>C3 E7/2g",
+   "Ih Th>C3 E7/2u",
+   "Ih Th>S6 E7/2g",
+   "Ih Th>S6 E7/2u",
+   "Ih Th>T>C3 E7/2g",
+   "Ih Th>T>C3 E7/2u"
+  ]
+ },
+ {
+  "conductor": 60,
+  "N": {
+   "pretty": "7/30 - 1/15*zeta^2 - 2/15*zeta^4 - 1/15*zeta^6 + 1/15*zeta^8 + 1/15*zeta^10",
+   "exact": [
+    [
+     7,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "-1/10 - 1/5*zeta - 1/6*zeta^2 - 1/5*zeta^3 + 2/15*zeta^4 + 1/15*zeta^5 + 2/15*zeta^6 + 11/30*zeta^8 + 2/5*zeta^9 + 1/30*zeta^10 + 3/10*zeta^11 - 1/5*zeta^13 - 7/30*zeta^14 - 1/3*zeta^15",
+   "exact": [
+    [
+     -1,
+     10
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     -1,
+     6
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     11,
+     30
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     -7,
+     30
+    ],
+    [
+     -1,
+     3
+    ]
+   ],
+   "numeric": [
+    0.1884470746449557,
+    0.1865816348288832
+   ]
+  },
+  "printed": false,
+  "where": [
+   "I T>C3 G3/2",
+   "Ih I>T>C3 (sub-chain I T>C3) G3/2",
+   "Ih I>T>C3 G3/2g",
+   "Ih I>T>C3 G3/2u",
+   "Ih T>C3 G3/2g",
+   "Ih T>C3 G3/2u",
+   "Ih Th>C3 G3/2g",
+   "Ih Th>C3 G3/2u",
+   "Ih Th>S6 G3/2g",
+   "Ih Th>S6 G3/2u",
+   "Ih Th>T>C3 G3/2g",
+   "Ih Th>T>C3 G3/2u"
+  ]
+ },
+ {
+  "conductor": 60,
+  "N": {
+   "pretty": "8/45 - 4/45*zeta^2 - 2/45*zeta^4 - 1/45*zeta^6 - 2/45*zeta^8 + 1/45*zeta^10 + 1/15*zeta^12",
+   "exact": [
+    [
+     8,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -4,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     45
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "-4/15 + 1/15*zeta + 4/15*zeta^3 + 2/15*zeta^4 + 1/15*zeta^6 - 1/5*zeta^9 + 1/3*zeta^10 - 1/15*zeta^11 - 1/5*zeta^12 - 2/15*zeta^14 + 2/15*zeta^15",
+   "exact": [
+    [
+     -4,
+     15
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     15
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     2,
+     15
+    ]
+   ],
+   "numeric": [
+    0.1752437040397112,
+    0.05927814784961729
+   ]
+  },
+  "printed": false,
+  "where": [
+   "I T>C3 I5/2",
+   "Ih I>T>C3 (sub-chain I T>C3) I5/2",
+   "Ih I>T>C3 I5/2g",
+   "Ih I>T>C3 I5/2u",
+   "Ih T>C3 I5/2g",
+   "Ih T>C3 I5/2u",
+   "Ih Th>C3 I5/2g",
+   "Ih Th>C3 I5/2u",
+   "Ih Th>S6 I5/2g",
+   "Ih Th>S6 I5/2u",
+   "Ih Th>T>C3 I5/2g",
+   "Ih Th>T>C3 I5/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/2 + 1/10*zeta^2 + 2/5*zeta^6 - 3/10*zeta^18 - 1/10*zeta^22 + 1/5*zeta^30",
+   "exact": [
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "-2/5 + 1/10*zeta^2 - 1/10*zeta^6 + 7/10*zeta^8 + 3/5*zeta^12 + 1/5*zeta^18 - 1/10*zeta^22 - 3/10*zeta^24 - 7/10*zeta^28 - 3/10*zeta^30",
+   "exact": [
+    [
+     -2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -7,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -3,
+     10
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    0.640246918433174,
+    -0.5940954801177933
+   ]
+  },
+  "printed": false,
+  "where": [
+   "I T>D2>C2 E1/2",
+   "Ih I>T>D2>C2 (sub-chain I T>D2>C2) E1/2",
+   "Ih I>T>D2>C2 E1/2g",
+   "Ih I>T>D2>C2 E1/2u",
+   "Ih T>D2>C2 E1/2g",
+   "Ih T>D2>C2 E1/2u",
+   "Ih Th>C2v>C1h E7/2g",
+   "Ih Th>C2v>C2 E1/2g",
+   "Ih Th>C2v>C2 E1/2u",
+   "Ih Th>D2>C2 E1/2g",
+   "Ih Th>D2>C2 E1/2u",
+   "Ih Th>D2h>C1h E1/2g",
+   "Ih Th>D2h>C2 E1/2g",
+   "Ih Th>D2h>C2 E1/2u",
+   "Ih Th>D2h>C2h E1/2g",
+   "Ih Th>D2h>C2h E1/2u",
+   "Ih Th>D2h>C2v>C1h E7/2g",
+   "Ih Th>D2h>C2v>C2 E1/2g",
+   "Ih Th>D2h>C2v>C2 E1/2u",
+   "Ih Th>D2h>D2>C2 E1/2g",
+   "Ih Th>D2h>D2>C2 E1/2u",
+   "Ih Th>T>D2>C2 E1/2g",
+   "Ih Th>T>D2>C2 E1/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/2 + 3/10*zeta^2 + 1/5*zeta^6 + 1/10*zeta^18 - 3/10*zeta^22 + 1/10*zeta^30",
+   "exact": [
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "1/10*zeta + 1/5*zeta^3 + 3/10*zeta^5 + 3/10*zeta^9 + 2/5*zeta^11 - 1/10*zeta^13 - 3/10*zeta^15 - 1/10*zeta^17 - 1/5*zeta^21 - 1/5*zeta^25 - 1/10*zeta^27 + 1/10*zeta^29 - 2/5*zeta^31",
+   "exact": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     5
+    ]
+   ],
+   "numeric": [
+    0.7051325069582756,
+    -0.6543038680970465
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Ih Th>C2v>C1h E1/2g",
+   "Ih Th>D2h>C1h E7/2u",
+   "Ih Th>D2h>C2v>C1h E1/2g"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/2 - 1/10*zeta^2 - 2/5*zeta^6 + 3/10*zeta^18 + 1/10*zeta^22 - 1/5*zeta^30",
+   "exact": [
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "-1/5 + 3/10*zeta^2 + 7/10*zeta^6 + 1/10*zeta^8 - 1/5*zeta^12 - 2/5*zeta^18 - 3/10*zeta^22 + 1/10*zeta^24 - 1/10*zeta^28 + 1/10*zeta^30",
+   "exact": [
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     7,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    0.3569610361773602,
+    -0.3312299240582266
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Ih Th>C2v>C1h E7/2u",
+   "Ih Th>D2h>C1h E1/2u",
+   "Ih Th>D2h>C2v>C1h E7/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/2 - 3/10*zeta^2 - 1/5*zeta^6 - 1/10*zeta^18 + 3/10*zeta^22 - 1/10*zeta^30",
+   "exact": [
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "-3/10*zeta + 2/5*zeta^3 + 1/10*zeta^5 + 1/10*zeta^9 - 1/5*zeta^11 + 3/10*zeta^13 - 1/10*zeta^15 + 3/10*zeta^17 - 2/5*zeta^21 - 2/5*zeta^25 + 3/10*zeta^27 - 3/10*zeta^29 + 1/5*zeta^31",
+   "exact": [
+    [
+     0,
+     1
+    ],
+    [
+     -3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "numeric": [
+    0.2003133683574998,
+    -0.18587401723009225
+   ]
+  },
+  "printed": false,
+  "where": [
+   "I T>D2>C2 E7/2",
+   "Ih I>T>D2>C2 (sub-chain I T>D2>C2) E7/2",
+   "Ih I>T>D2>C2 E7/2g",
+   "Ih I>T>D2>C2 E7/2u",
+   "Ih T>D2>C2 E7/2g",
+   "Ih T>D2>C2 E7/2u",
+   "Ih Th>C2v>C1h E1/2u",
+   "Ih Th>C2v>C2 E7/2g",
+   "Ih Th>C2v>C2 E7/2u",
+   "Ih Th>D2>C2 E7/2g",
+   "Ih Th>D2>C2 E7/2u",
+   "Ih Th>D2h>C1h E7/2g",
+   "Ih Th>D2h>C2 E7/2g",
+   "Ih Th>D2h>C2 E7/2u",
+   "Ih Th>D2h>C2h E7/2g",
+   "Ih Th>D2h>C2h E7/2u",
+   "Ih Th>D2h>C2v>C1h E1/2u",
+   "Ih Th>D2h>C2v>C2 E7/2g",
+   "Ih Th>D2h>C2v>C2 E7/2u",
+   "Ih Th>D2h>D2>C2 E7/2g",
+   "Ih Th>D2h>D2>C2 E7/2u",
+   "Ih Th>T>D2>C2 E7/2g",
+   "Ih Th>T>D2>C2 E7/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/4 + 1/10*zeta^2 + 1/10*zeta^6 - 1/10*zeta^22 + 1/20*zeta^30",
+   "exact": [
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     20
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "-1/10 + 1/10*zeta^3 + 1/5*zeta^5 + 1/10*zeta^6 + 1/5*zeta^8 - 1/10*zeta^9 + 1/10*zeta^11 + 1/5*zeta^12 - 1/10*zeta^15 + 1/5*zeta^18 + 1/10*zeta^21 - 1/5*zeta^25 - 1/10*zeta^27 - 1/5*zeta^28 + 1/10*zeta^30 - 1/10*zeta^31",
+   "exact": [
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     -1,
+     10
+    ]
+   ],
+   "numeric": [
+    0.635504615486089,
+    -0.004249771128043288
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Ih Th>C2v>C1h G3/2u",
+   "Ih Th>D2h>C2v>C1h G3/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/4 + 1/10*zeta^6 - 1/10*zeta^18 + 1/20*zeta^30",
+   "exact": [
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     20
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "3/10 - 1/10*zeta - 1/10*zeta^2 + 1/5*zeta^3 - 1/10*zeta^6 - 1/10*zeta^8 + 3/10*zeta^9 - 1/5*zeta^11 - 1/10*zeta^12 + 1/10*zeta^13 + 1/10*zeta^17 - 1/10*zeta^18 + 1/10*zeta^21 + 1/10*zeta^22 - 1/10*zeta^25 + 1/10*zeta^27 + 1/10*zeta^28 - 1/10*zeta^29 + 1/10*zeta^30 + 1/5*zeta^31",
+   "exact": [
+    [
+     3,
+     10
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "numeric": [
+    0.2828828976935196,
+    0.45420743344069764
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Ih Th>D2h>C1h G3/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/4 + 1/20*sqrt3*sqrt5",
+   "exact": [
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -3,
+     20
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "1/10 - 1/10*zeta^2 + 1/10*zeta^3 - 1/10*zeta^5 + 1/10*zeta^7 - 1/10*zeta^8 + 1/5*zeta^9 - 1/10*zeta^12 + 1/5*zeta^17 - 1/10*zeta^18 + 1/10*zeta^19 + 1/5*zeta^21 + 1/10*zeta^22 + 1/10*zeta^23 + 1/5*zeta^24 - 1/5*zeta^27 + 1/10*zeta^28 - 1/5*zeta^29 + 1/10*zeta^31",
+   "exact": [
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ]
+   ],
+   "numeric": [
+    0.4161537451924863,
+    0.5200627151340865
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Ih Th>C2v>C1h G3/2g",
+   "Ih Th>C2v>C1h G3/2u",
+   "Ih Th>D2h>C2v>C1h G3/2g",
+   "Ih Th>D2h>C2v>C1h G3/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/4 - 1/10*zeta^2 - 1/10*zeta^6 + 1/10*zeta^22 - 1/20*zeta^30",
+   "exact": [
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     20
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "34/505 - 91/1010*zeta - 1/5*zeta^2 + 17/1010*zeta^3 + 63/505*zeta^4 - 34/505*zeta^5 - 19/505*zeta^6 - 24/505*zeta^7 + 29/505*zeta^8 - 69/505*zeta^9 + 9/101*zeta^10 - 63/1010*zeta^11 - 62/505*zeta^12 - 1/1010*zeta^13 + 64/505*zeta^14 - 13/101*zeta^15 - 103/505*zeta^16 + 45/202*zeta^17 + 20/101*zeta^18 + 4/101*zeta^19 + 26/505*zeta^20 + 103/505*zeta^21 + 13/505*zeta^22 + 43/505*zeta^23 - 73/505*zeta^24 + 121/1010*zeta^25 - 68/505*zeta^26 - 13/505*zeta^27 + 1/5*zeta^28 + 57/1010*zeta^29 - 61/1010*zeta^30 - 113/1010*zeta^31",
+   "exact": [
+    [
+     34,
+     505
+    ],
+    [
+     -91,
+     1010
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     17,
+     1010
+    ],
+    [
+     63,
+     505
+    ],
+    [
+     -34,
+     505
+    ],
+    [
+     -19,
+     505
+    ],
+    [
+     -24,
+     505
+    ],
+    [
+     29,
+     505
+    ],
+    [
+     -69,
+     505
+    ],
+    [
+     9,
+     101
+    ],
+    [
+     -63,
+     1010
+    ],
+    [
+     -62,
+     505
+    ],
+    [
+     -1,
+     1010
+    ],
+    [
+     64,
+     505
+    ],
+    [
+     -13,
+     101
+    ],
+    [
+     -103,
+     505
+    ],
+    [
+     45,
+     202
+    ],
+    [
+     20,
+     101
+    ],
+    [
+     4,
+     101
+    ],
+    [
+     26,
+     505
+    ],
+    [
+     103,
+     505
+    ],
+    [
+     13,
+     505
+    ],
+    [
+     43,
+     505
+    ],
+    [
+     -73,
+     505
+    ],
+    [
+     121,
+     1010
+    ],
+    [
+     -68,
+     505
+    ],
+    [
+     -13,
+     505
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     57,
+     1010
+    ],
+    [
+     -61,
+     1010
+    ],
+    [
+     -113,
+     1010
+    ]
+   ],
+   "numeric": [
+    -0.08440134858874711,
+    0.29831566418416267
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Ih Th>C2v>C1h G3/2g",
+   "Ih Th>D2h>C2v>C1h G3/2g"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/4 - 1/10*zeta^6 + 1/10*zeta^18 - 1/20*zeta^30",
+   "exact": [
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     20
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "1/5*zeta^2 + 1/5*zeta^3 - 1/10*zeta^5 - 1/10*zeta^6 + 1/10*zeta^8 - 1/5*zeta^9 + 1/10*zeta^11 + 1/5*zeta^12 + 1/10*zeta^15 + 1/10*zeta^18 + 1/5*zeta^21 - 1/5*zeta^22 - 1/5*zeta^24 + 1/10*zeta^25 - 1/10*zeta^28 - 1/10*zeta^31",
+   "exact": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ]
+   ],
+   "numeric": [
+    0.4613667391438214,
+    -0.02852377274360767
+   ]
+  },
+  "printed": false,
+  "where": [
+   "I T>D2>C2 G3/2",
+   "Ih I>T>D2>C2 (sub-chain I T>D2>C2) G3/2",
+   "Ih I>T>D2>C2 G3/2g",
+   "Ih I>T>D2>C2 G3/2u",
+   "Ih T>D2>C2 G3/2g",
+   "Ih T>D2>C2 G3/2u",
+   "Ih Th>C2v>C2 G3/2g",
+   "Ih Th>C2v>C2 G3/2u",
+   "Ih Th>D2>C2 G3/2g",
+   "Ih Th>D2>C2 G3/2u",
+   "Ih Th>D2h>C1h G3/2g",
+   "Ih Th>D2h>C2 G3/2g",
+   "Ih Th>D2h>C2 G3/2u",
+   "Ih Th>D2h>C2h G3/2g",
+   "Ih Th>D2h>C2h G3/2u",
+   "Ih Th>D2h>C2v>C2 G3/2g",
+   "Ih Th>D2h>C2v>C2 G3/2u",
+   "Ih Th>D2h>D2>C2 G3/2g",
+   "Ih Th>D2h>D2>C2 G3/2u",
+   "Ih Th>T>D2>C2 G3/2g",
+   "Ih Th>T>D2>C2 G3/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/4 - 1/20*sqrt3*sqrt5",
+   "exact": [
+    [
+     1,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     20
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "-1/5*zeta + 1/10*zeta^2 + 1/10*zeta^3 - 1/10*zeta^5 + 1/5*zeta^6 + 1/10*zeta^7 - 1/10*zeta^8 + 1/5*zeta^9 - 2/5*zeta^11 + 1/10*zeta^12 + 2/5*zeta^13 - 1/5*zeta^15 + 1/5*zeta^17 - 1/10*zeta^18 - 1/10*zeta^19 - 1/10*zeta^22 + 1/10*zeta^23 - 1/5*zeta^25 + 1/5*zeta^27 + 1/10*zeta^28 - 2/5*zeta^29 + 1/10*zeta^30 + 3/10*zeta^31",
+   "exact": [
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     5
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     -2,
+     5
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     3,
+     10
+    ]
+   ],
+   "numeric": [
+    0.14831468067390202,
+    0.18534720981505934
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Ih Th>C2v>C1h G3/2g",
+   "Ih Th>C2v>C1h G3/2u",
+   "Ih Th>D2h>C2v>C1h G3/2g",
+   "Ih Th>D2h>C2v>C1h G3/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/6 + 1/10*zeta^2 + 1/15*zeta^6 + 1/30*zeta^18 - 1/10*zeta^22 + 1/30*zeta^30",
+   "exact": [
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "3/10*zeta + 1/15*zeta^3 - 1/30*zeta^5 + 2/15*zeta^7 + 1/30*zeta^9 + 1/15*zeta^11 + 1/10*zeta^13 + 1/30*zeta^15 - 1/10*zeta^17 + 1/15*zeta^19 - 1/5*zeta^21 - 1/5*zeta^23 - 2/15*zeta^25 - 1/10*zeta^27 + 1/30*zeta^29",
+   "exact": [
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    0.4071084427067161,
+    -0.37776251437764324
+   ]
+  },
+  "printed": false,
+  "where": [
+   "I T>D2>C2 I5/2",
+   "Ih I>T>D2>C2 (sub-chain I T>D2>C2) I5/2",
+   "Ih I>T>D2>C2 I5/2g",
+   "Ih I>T>D2>C2 I5/2u",
+   "Ih T>D2>C2 I5/2g",
+   "Ih T>D2>C2 I5/2u",
+   "Ih Th>C2v>C2 I5/2g",
+   "Ih Th>C2v>C2 I5/2u",
+   "Ih Th>D2>C2 I5/2g",
+   "Ih Th>D2>C2 I5/2u",
+   "Ih Th>D2h>C1h I5/2g",
+   "Ih Th>D2h>C2 I5/2g",
+   "Ih Th>D2h>C2 I5/2u",
+   "Ih Th>D2h>C2h I5/2g",
+   "Ih Th>D2h>C2h I5/2u",
+   "Ih Th>D2h>C2v>C2 I5/2g",
+   "Ih Th>D2h>C2v>C2 I5/2u",
+   "Ih Th>D2h>D2>C2 I5/2g",
+   "Ih Th>D2h>D2>C2 I5/2u",
+   "Ih Th>T>D2>C2 I5/2g",
+   "Ih Th>T>D2>C2 I5/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/6 + 1/10*zeta^2 + 2/15*zeta^6 - 1/30*zeta^18 - 1/10*zeta^22 + 1/15*zeta^30",
+   "exact": [
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "2/15 + 1/30*zeta^2 + 1/3*zeta^4 + 1/10*zeta^6 - 1/30*zeta^8 + 1/3*zeta^10 - 1/15*zeta^12 - 2/15*zeta^14 - 2/15*zeta^16 - 1/15*zeta^18 - 2/15*zeta^20 - 1/10*zeta^22 - 1/10*zeta^24 - 1/15*zeta^26 + 1/10*zeta^28 - 1/10*zeta^30",
+   "exact": [
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    0.42278903023096415,
+    -0.3923127853833124
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Ih Th>D2h>C1h I5/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/6 + 1/30*zeta^2 + 2/15*zeta^6 - 1/10*zeta^18 - 1/30*zeta^22 + 1/15*zeta^30",
+   "exact": [
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "1/5 - 1/6*zeta^2 + 1/15*zeta^4 + 1/10*zeta^6 + 1/30*zeta^8 + 1/5*zeta^10 - 1/15*zeta^12 + 4/15*zeta^14 - 2/15*zeta^16 + 2/15*zeta^18 - 4/15*zeta^20 + 1/10*zeta^22 + 1/30*zeta^24 - 7/15*zeta^26 + 1/6*zeta^28 - 7/30*zeta^30",
+   "exact": [
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -4,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -7,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -7,
+     30
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    0.36964673070522136,
+    -0.34300118537034796
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Ih Th>C2v>C1h I5/2u",
+   "Ih Th>D2h>C2v>C1h I5/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/6 + 1/30*zeta^2 - 1/15*zeta^6 + 1/10*zeta^18 - 1/30*zeta^22 - 1/30*zeta^30",
+   "exact": [
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "-1/10*zeta + 1/30*zeta^5 + 4/15*zeta^7 + 7/30*zeta^9 + 1/10*zeta^13 - 1/30*zeta^15 - 1/10*zeta^17 - 1/15*zeta^19 + 1/15*zeta^23 - 1/15*zeta^25 - 1/10*zeta^27 - 11/30*zeta^29 + 1/15*zeta^31",
+   "exact": [
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     7,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -11,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ]
+   ],
+   "numeric": [
+    0.3124081715310977,
+    -0.28988859971820624
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Ih Th>C2v>C1h I5/2u",
+   "Ih Th>D2h>C2v>C1h I5/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/6 - 1/10*zeta^2 - 1/15*zeta^6 - 1/30*zeta^18 + 1/10*zeta^22 - 1/30*zeta^30",
+   "exact": [
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "1/10*zeta + 2/15*zeta^3 + 1/10*zeta^5 + 4/15*zeta^7 - 1/10*zeta^9 - 1/5*zeta^11 + 1/30*zeta^13 - 1/10*zeta^15 - 1/30*zeta^17 - 1/5*zeta^19 - 1/15*zeta^21 - 1/15*zeta^23 + 1/15*zeta^25 - 1/30*zeta^27 + 7/30*zeta^29",
+   "exact": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     7,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    0.11565097714348317,
+    -0.1073144138831509
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Ih Th>D2h>C1h I5/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/6 - 1/10*zeta^2 - 2/15*zeta^6 + 1/30*zeta^18 + 1/10*zeta^22 - 1/15*zeta^30",
+   "exact": [
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "4/15 + 7/30*zeta^2 + 1/3*zeta^4 + 1/30*zeta^6 + 1/10*zeta^8 - 1/3*zeta^10 - 2/15*zeta^12 - 4/15*zeta^14 - 4/15*zeta^16 - 2/15*zeta^18 - 4/15*zeta^20 - 1/30*zeta^22 - 1/30*zeta^24 + 1/5*zeta^26 + 11/30*zeta^28 + 3/10*zeta^30",
+   "exact": [
+    [
+     4,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     7,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     3
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -4,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -4,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -4,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     11,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    0.019022842944494477,
+    -0.017651603915520307
+   ]
+  },
+  "printed": false,
+  "where": [
+   "I T>D2>C2 I5/2",
+   "Ih I>T>D2>C2 (sub-chain I T>D2>C2) I5/2",
+   "Ih T>D2>C2 I5/2g",
+   "Ih T>D2>C2 I5/2u",
+   "Ih Th>C2v>C2 I5/2g",
+   "Ih Th>C2v>C2 I5/2u",
+   "Ih Th>D2>C2 I5/2g",
+   "Ih Th>D2>C2 I5/2u",
+   "Ih Th>D2h>C1h I5/2g",
+   "Ih Th>D2h>C2 I5/2g",
+   "Ih Th>D2h>C2 I5/2u",
+   "Ih Th>D2h>C2h I5/2g",
+   "Ih Th>D2h>C2h I5/2u",
+   "Ih Th>D2h>C2v>C2 I5/2g",
+   "Ih Th>D2h>C2v>C2 I5/2u",
+   "Ih Th>D2h>D2>C2 I5/2g",
+   "Ih Th>D2h>D2>C2 I5/2u",
+   "Ih Th>T>D2>C2 I5/2g",
+   "Ih Th>T>D2>C2 I5/2u"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/6 - 1/30*zeta^2 + 1/15*zeta^6 - 1/10*zeta^18 + 1/30*zeta^22 + 1/30*zeta^30",
+   "exact": [
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "1/30*zeta + 1/3*zeta^3 + 1/10*zeta^5 + 2/15*zeta^7 + 1/30*zeta^9 - 1/30*zeta^13 - 1/10*zeta^15 + 1/30*zeta^17 - 1/5*zeta^19 - 7/15*zeta^23 + 2/15*zeta^25 + 1/30*zeta^27 - 1/10*zeta^29 + 1/5*zeta^31",
+   "exact": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -7,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "numeric": [
+    0.2855058090441003,
+    -0.2649254620632394
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Ih Th>C2v>C1h I5/2g",
+   "Ih Th>D2h>C2v>C1h I5/2g"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/6 - 1/30*zeta^2 - 2/15*zeta^6 + 1/10*zeta^18 + 1/30*zeta^22 - 1/15*zeta^30",
+   "exact": [
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "-1/15 - 1/6*zeta^2 + 1/5*zeta^4 - 1/30*zeta^6 + 1/10*zeta^8 - 1/15*zeta^10 + 2/15*zeta^12 + 2/15*zeta^14 + 4/15*zeta^16 + 1/15*zeta^18 - 2/15*zeta^20 - 1/30*zeta^22 - 7/30*zeta^24 - 1/15*zeta^26 - 1/6*zeta^28 - 1/30*zeta^30",
+   "exact": [
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     4,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -7,
+     30
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     15
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     6
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     30
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    0.20609155032720664,
+    -0.19123568581867642
+   ]
+  },
+  "printed": false,
+  "where": [
+   "Ih Th>C2v>C1h I5/2g",
+   "Ih Th>D2h>C2v>C1h I5/2g"
+  ]
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "1/7",
+   "exact": [
+    [
+     1,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "(2 + i*sqrt3)/7",
+   "exact": [
+    [
+     1,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    0.2857142857142857,
+    0.24743582965269675
+   ]
+  },
+  "printed": true,
+  "where": []
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "2/7",
+   "exact": [
+    [
+     2,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "(2*sqrt2 + i*sqrt2*sqrt3)/7",
+   "exact": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     7
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     7
+    ]
+   ],
+   "numeric": [
+    0.4040610178208843,
+    0.3499271061118826
+   ]
+  },
+  "printed": true,
+  "where": []
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "7/10",
+   "exact": [
+    [
+     7,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "1/5*sqrt2*sqrt5 + 1/10*i*sqrt2*sqrt3*sqrt5",
+   "exact": [
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -3,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -3,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -1,
+     10
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "numeric": [
+    0.6324555320336759,
+    0.5477225575051661
+   ]
+  },
+  "printed": true,
+  "where": []
+ },
+ {
+  "conductor": 120,
+  "N": {
+   "pretty": "7/20",
+   "exact": [
+    [
+     7,
+     20
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ]
+  },
+  "mu": {
+   "pretty": "1/5*sqrt5 + 1/10*i*sqrt3*sqrt5",
+   "exact": [
+    [
+     -1,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     -3,
+     5
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "numeric": [
+    0.4472135954999579,
+    0.3872983346207417
+   ]
+  },
+  "printed": true,
+  "where": []
+ }
+]

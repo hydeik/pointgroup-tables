@@ -1,0 +1,4100 @@
+{
+ "T": {
+  "default": "C3",
+  "chains": [
+   {
+    "chain": "C3",
+    "symbols": [
+     "T",
+     "C3"
+    ],
+    "default": true,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2>C2",
+    "symbols": [
+     "T",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 12
+   }
+  ]
+ },
+ "Td": {
+  "default": "S4",
+  "chains": [
+   {
+    "chain": "S4",
+    "symbols": [
+     "Td",
+     "S4"
+    ],
+    "default": true,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "C3v>C1h",
+    "symbols": [
+     "Td",
+     "C3v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "C3v>C3",
+    "symbols": [
+     "Td",
+     "C3v",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D2d>C1h",
+    "symbols": [
+     "Td",
+     "D2d",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d>C2",
+    "symbols": [
+     "Td",
+     "D2d",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d>S4",
+    "symbols": [
+     "Td",
+     "D2d",
+     "S4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "T>C3",
+    "symbols": [
+     "Td",
+     "T",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D2d>C2v>C1h",
+    "symbols": [
+     "Td",
+     "D2d",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d>C2v>C2",
+    "symbols": [
+     "Td",
+     "D2d",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d>D2>C2",
+    "symbols": [
+     "Td",
+     "D2d",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d>D2>C2",
+    "symbols": [
+     "Td",
+     "D2d",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "T>D2>C2",
+    "symbols": [
+     "Td",
+     "T",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   }
+  ]
+ },
+ "Th": {
+  "default": "S6",
+  "chains": [
+   {
+    "chain": "C3",
+    "symbols": [
+     "Th",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "S6",
+    "symbols": [
+     "Th",
+     "S6"
+    ],
+    "default": true,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2v>C1h",
+    "symbols": [
+     "Th",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2v>C1h",
+    "symbols": [
+     "Th",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2v>C2",
+    "symbols": [
+     "Th",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2>C2",
+    "symbols": [
+     "Th",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C1h",
+    "symbols": [
+     "Th",
+     "D2h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2",
+    "symbols": [
+     "Th",
+     "D2h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2h",
+    "symbols": [
+     "Th",
+     "D2h",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 12
+   },
+   {
+    "chain": "T>C3",
+    "symbols": [
+     "Th",
+     "T",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2v>C1h",
+    "symbols": [
+     "Th",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2v>C1h",
+    "symbols": [
+     "Th",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2v>C2",
+    "symbols": [
+     "Th",
+     "D2h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>D2>C2",
+    "symbols": [
+     "Th",
+     "D2h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 12
+   },
+   {
+    "chain": "T>D2>C2",
+    "symbols": [
+     "Th",
+     "T",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 12
+   }
+  ]
+ },
+ "O": {
+  "default": "C4",
+  "chains": [
+   {
+    "chain": "C4",
+    "symbols": [
+     "O",
+     "C4"
+    ],
+    "default": true,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D3>C2",
+    "symbols": [
+     "O",
+     "D3",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D3>C3",
+    "symbols": [
+     "O",
+     "D3",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D4>C2[C2]",
+    "symbols": [
+     "O",
+     "D4",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4>C2[C2']",
+    "symbols": [
+     "O",
+     "D4",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4>C4",
+    "symbols": [
+     "O",
+     "D4",
+     "C4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "T>C3",
+    "symbols": [
+     "O",
+     "T",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D4>D2>C2",
+    "symbols": [
+     "O",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4>D2>C2",
+    "symbols": [
+     "O",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4>D2[C2']>C2[C2]",
+    "symbols": [
+     "O",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4>D2[C2']>C2[C2']",
+    "symbols": [
+     "O",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "T>D2>C2",
+    "symbols": [
+     "O",
+     "T",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   }
+  ]
+ },
+ "Oh": {
+  "default": "C4h",
+  "chains": [
+   {
+    "chain": "C4",
+    "symbols": [
+     "Oh",
+     "C4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "C4h",
+    "symbols": [
+     "Oh",
+     "C4h"
+    ],
+    "default": true,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "S4",
+    "symbols": [
+     "Oh",
+     "S4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "C3v>C1h",
+    "symbols": [
+     "Oh",
+     "C3v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "C3v>C3",
+    "symbols": [
+     "Oh",
+     "C3v",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "C4v>C1h[sigma_h]",
+    "symbols": [
+     "Oh",
+     "C4v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "C4v>C1h[sigma_d]",
+    "symbols": [
+     "Oh",
+     "C4v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "C4v>C4",
+    "symbols": [
+     "Oh",
+     "C4v",
+     "C4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d[sigma_d]>C1h",
+    "symbols": [
+     "Oh",
+     "D2d",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d[C2']>C1h",
+    "symbols": [
+     "Oh",
+     "D2d",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d[sigma_d]>C2",
+    "symbols": [
+     "Oh",
+     "D2d",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d[C2']>C2",
+    "symbols": [
+     "Oh",
+     "D2d",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d[sigma_d]>S4",
+    "symbols": [
+     "Oh",
+     "D2d",
+     "S4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d[C2']>S4",
+    "symbols": [
+     "Oh",
+     "D2d",
+     "S4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D3>C2",
+    "symbols": [
+     "Oh",
+     "D3",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D3>C3",
+    "symbols": [
+     "Oh",
+     "D3",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D3d>C1h",
+    "symbols": [
+     "Oh",
+     "D3d",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D3d>C2",
+    "symbols": [
+     "Oh",
+     "D3d",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D3d>C2h",
+    "symbols": [
+     "Oh",
+     "D3d",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D3d>C3",
+    "symbols": [
+     "Oh",
+     "D3d",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D3d>S6",
+    "symbols": [
+     "Oh",
+     "D3d",
+     "S6"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D4>C2[C2]",
+    "symbols": [
+     "Oh",
+     "D4",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4>C2[C2']",
+    "symbols": [
+     "Oh",
+     "D4",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4>C4",
+    "symbols": [
+     "Oh",
+     "D4",
+     "C4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C1h[sigma_h]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C1h[sigma_d]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C2[C2]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C2[C2']",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C2h[C2]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C2h[C2']",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C4",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C4h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C4h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>S4",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "S4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "O>C4",
+    "symbols": [
+     "Oh",
+     "O",
+     "C4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "T>C3",
+    "symbols": [
+     "Oh",
+     "T",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Td>S4",
+    "symbols": [
+     "Oh",
+     "Td",
+     "S4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "Th>C3",
+    "symbols": [
+     "Oh",
+     "Th",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Th>S6",
+    "symbols": [
+     "Oh",
+     "Th",
+     "S6"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "C4v>C2v[sigma_h]>C1h",
+    "symbols": [
+     "Oh",
+     "C4v",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "C4v>C2v[sigma_d]>C1h",
+    "symbols": [
+     "Oh",
+     "C4v",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "C4v>C2v[sigma_h]>C2",
+    "symbols": [
+     "Oh",
+     "C4v",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "C4v>C2v[sigma_d]>C2",
+    "symbols": [
+     "Oh",
+     "C4v",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d[sigma_d]>C2v>C1h",
+    "symbols": [
+     "Oh",
+     "D2d",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d[C2']>C2v>C1h",
+    "symbols": [
+     "Oh",
+     "D2d",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d[sigma_d]>C2v>C2",
+    "symbols": [
+     "Oh",
+     "D2d",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d[C2']>C2v>C2",
+    "symbols": [
+     "Oh",
+     "D2d",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d[sigma_d]>D2>C2",
+    "symbols": [
+     "Oh",
+     "D2d",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d[sigma_d]>D2>C2",
+    "symbols": [
+     "Oh",
+     "D2d",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d[C2']>D2>C2[C2]",
+    "symbols": [
+     "Oh",
+     "D2d",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D2d[C2']>D2>C2[C2']",
+    "symbols": [
+     "Oh",
+     "D2d",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D3d>C3v>C1h",
+    "symbols": [
+     "Oh",
+     "D3d",
+     "C3v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D3d>C3v>C3",
+    "symbols": [
+     "Oh",
+     "D3d",
+     "C3v",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D3d>D3>C2",
+    "symbols": [
+     "Oh",
+     "D3d",
+     "D3",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D3d>D3>C3",
+    "symbols": [
+     "Oh",
+     "D3d",
+     "D3",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D4>D2>C2",
+    "symbols": [
+     "Oh",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4>D2>C2",
+    "symbols": [
+     "Oh",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4>D2[C2']>C2[C2]",
+    "symbols": [
+     "Oh",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4>D2[C2']>C2[C2']",
+    "symbols": [
+     "Oh",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C2v>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C2v>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C2v>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C2v>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C2v[C2']>C1h[sigma_h]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C2v[C2']>C1h[sigma_d]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C2v>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C2v>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C2v>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C2v[C2']>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C4v>C1h[sigma_h]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C4v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C4v>C1h[sigma_d]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C4v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C4v>C4",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C4v",
+     "C4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2[C2']>C2[C2]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2[C2']>C2[C2']",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2d[sigma_d]>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2d",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2d[C2']>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2d",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2d[sigma_d]>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2d",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2d[C2']>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2d",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2d[sigma_d]>S4",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2d",
+     "S4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2d[C2']>S4",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2d",
+     "S4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h[C2']>C1h[sigma_h]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h[C2']>C1h[sigma_d]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h[C2']>C2[C2]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h[C2']>C2[C2']",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h>C2h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h>C2h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h[C2']>C2h[C2]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h[C2']>C2h[C2']",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D4>C2[C2]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D4",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D4>C2[C2']",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D4",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D4>C4",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D4",
+     "C4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "O>D3>C2",
+    "symbols": [
+     "Oh",
+     "O",
+     "D3",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "O>D3>C3",
+    "symbols": [
+     "Oh",
+     "O",
+     "D3",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "O>D4>C2[C2]",
+    "symbols": [
+     "Oh",
+     "O",
+     "D4",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "O>D4>C2[C2']",
+    "symbols": [
+     "Oh",
+     "O",
+     "D4",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "O>D4>C4",
+    "symbols": [
+     "Oh",
+     "O",
+     "D4",
+     "C4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "O>T>C3",
+    "symbols": [
+     "Oh",
+     "O",
+     "T",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "T>D2>C2",
+    "symbols": [
+     "Oh",
+     "T",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Td>C3v>C1h",
+    "symbols": [
+     "Oh",
+     "Td",
+     "C3v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Td>C3v>C3",
+    "symbols": [
+     "Oh",
+     "Td",
+     "C3v",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Td>D2d>C1h",
+    "symbols": [
+     "Oh",
+     "Td",
+     "D2d",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "Td>D2d>C2",
+    "symbols": [
+     "Oh",
+     "Td",
+     "D2d",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "Td>D2d>S4",
+    "symbols": [
+     "Oh",
+     "Td",
+     "D2d",
+     "S4"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "Td>T>C3",
+    "symbols": [
+     "Oh",
+     "Td",
+     "T",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Th>C2v>C1h",
+    "symbols": [
+     "Oh",
+     "Th",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Th>C2v>C2",
+    "symbols": [
+     "Oh",
+     "Th",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Th>D2>C2",
+    "symbols": [
+     "Oh",
+     "Th",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Th>D2h>C1h",
+    "symbols": [
+     "Oh",
+     "Th",
+     "D2h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Th>D2h>C2",
+    "symbols": [
+     "Oh",
+     "Th",
+     "D2h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Th>D2h>C2h",
+    "symbols": [
+     "Oh",
+     "Th",
+     "D2h",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Th>T>C3",
+    "symbols": [
+     "Oh",
+     "Th",
+     "T",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "D4h>C4v>C2v[sigma_h]>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C4v",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C4v>C2v[sigma_d]>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C4v",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C4v>C2v[sigma_h]>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C4v",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>C4v>C2v[sigma_d]>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "C4v",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2d[sigma_d]>C2v>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2d",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2d[C2']>C2v>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2d",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2d[sigma_d]>C2v>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2d",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2d[C2']>C2v>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2d",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2d[sigma_d]>D2>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2d",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2d[sigma_d]>D2>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2d",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2d[C2']>D2>C2[C2]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2d",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2d[C2']>D2>C2[C2']",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2d",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h>C2v>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h>C2v>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h>C2v>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h[C2']>C2v[C2]>C1h",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h[C2']>C2v[C2']>C1h[sigma_h]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h[C2']>C2v[C2']>C1h[sigma_d]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h>C2v>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h>C2v>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h[C2']>C2v[C2]>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h[C2']>C2v[C2']>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h>D2>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h>D2>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h[C2']>D2>C2[C2]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D2h[C2']>D2>C2[C2']",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D2h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D4>D2>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D4>D2>C2",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D4>D2[C2']>C2[C2]",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "D4h>D4>D2[C2']>C2[C2']",
+    "symbols": [
+     "Oh",
+     "D4h",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "O>D4>D2>C2",
+    "symbols": [
+     "Oh",
+     "O",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "O>D4>D2>C2",
+    "symbols": [
+     "Oh",
+     "O",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "O>D4>D2[C2']>C2[C2]",
+    "symbols": [
+     "Oh",
+     "O",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "O>D4>D2[C2']>C2[C2']",
+    "symbols": [
+     "Oh",
+     "O",
+     "D4",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "O>T>D2>C2",
+    "symbols": [
+     "Oh",
+     "O",
+     "T",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Td>D2d>C2v>C1h",
+    "symbols": [
+     "Oh",
+     "Td",
+     "D2d",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "Td>D2d>C2v>C2",
+    "symbols": [
+     "Oh",
+     "Td",
+     "D2d",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "Td>D2d>D2>C2",
+    "symbols": [
+     "Oh",
+     "Td",
+     "D2d",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "Td>D2d>D2>C2",
+    "symbols": [
+     "Oh",
+     "Td",
+     "D2d",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 8,
+    "chain_field": 8
+   },
+   {
+    "chain": "Td>T>D2>C2",
+    "symbols": [
+     "Oh",
+     "Td",
+     "T",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Th>D2h>C2v>C1h",
+    "symbols": [
+     "Oh",
+     "Th",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Th>D2h>C2v>C2",
+    "symbols": [
+     "Oh",
+     "Th",
+     "D2h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Th>D2h>D2>C2",
+    "symbols": [
+     "Oh",
+     "Th",
+     "D2h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   },
+   {
+    "chain": "Th>T>D2>C2",
+    "symbols": [
+     "Oh",
+     "Th",
+     "T",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 24,
+    "chain_field": 24
+   }
+  ]
+ },
+ "I": {
+  "default": "D5>C5",
+  "chains": [
+   {
+    "chain": "D5>C2",
+    "symbols": [
+     "I",
+     "D5",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "D5>C5",
+    "symbols": [
+     "I",
+     "D5",
+     "C5"
+    ],
+    "default": true,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "T>C3",
+    "symbols": [
+     "I",
+     "T",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 60,
+    "chain_field": 60
+   },
+   {
+    "chain": "T>D2>C2",
+    "symbols": [
+     "I",
+     "T",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   }
+  ]
+ },
+ "D6h": {
+  "default": "C6h",
+  "chains": [
+   {
+    "chain": "C1h[sigma_d]",
+    "symbols": [
+     "D6h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C1h[sigma_v]",
+    "symbols": [
+     "D6h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2[C2']",
+    "symbols": [
+     "D6h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2[C2'']",
+    "symbols": [
+     "D6h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2h[C2']",
+    "symbols": [
+     "D6h",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2h[C2'']",
+    "symbols": [
+     "D6h",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C3h",
+    "symbols": [
+     "D6h",
+     "C3h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C6",
+    "symbols": [
+     "D6h",
+     "C6"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C6h",
+    "symbols": [
+     "D6h",
+     "C6h"
+    ],
+    "default": true,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2v[C2]>C1h[sigma_d]",
+    "symbols": [
+     "D6h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2v[C2]>C1h[sigma_v]",
+    "symbols": [
+     "D6h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2v[C2']>C1h[sigma_h]",
+    "symbols": [
+     "D6h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2v[C2']>C1h[sigma_v]",
+    "symbols": [
+     "D6h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2v[C2'']>C1h[sigma_h]",
+    "symbols": [
+     "D6h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2v[C2'']>C1h[sigma_d]",
+    "symbols": [
+     "D6h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2v[C2]>C2",
+    "symbols": [
+     "D6h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2v[C2']>C2",
+    "symbols": [
+     "D6h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C2v[C2'']>C2",
+    "symbols": [
+     "D6h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C3v[sigma_d]>C1h",
+    "symbols": [
+     "D6h",
+     "C3v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C3v[sigma_v]>C1h",
+    "symbols": [
+     "D6h",
+     "C3v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C3v[sigma_d]>C3",
+    "symbols": [
+     "D6h",
+     "C3v",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C3v[sigma_v]>C3",
+    "symbols": [
+     "D6h",
+     "C3v",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C6v>C1h[sigma_d]",
+    "symbols": [
+     "D6h",
+     "C6v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C6v>C1h[sigma_v]",
+    "symbols": [
+     "D6h",
+     "C6v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C6v>C6",
+    "symbols": [
+     "D6h",
+     "C6v",
+     "C6"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2>C2[C2]",
+    "symbols": [
+     "D6h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2>C2[C2']",
+    "symbols": [
+     "D6h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2>C2[C2'']",
+    "symbols": [
+     "D6h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C1h[sigma_h]",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C1h[sigma_d]",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C1h[sigma_v]",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2[C2]",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2[C2']",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2[C2'']",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2h[C2]",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2h[C2']",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2h[C2'']",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3[C2']>C2",
+    "symbols": [
+     "D6h",
+     "D3",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3[C2'']>C2",
+    "symbols": [
+     "D6h",
+     "D3",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3[C2']>C3",
+    "symbols": [
+     "D6h",
+     "D3",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3[C2'']>C3",
+    "symbols": [
+     "D6h",
+     "D3",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2']>C1h",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2'']>C1h",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2']>C2",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2'']>C2",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2']>C2h",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2'']>C2h",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2']>C3",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2'']>C3",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2']>S6",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "S6"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2'']>S6",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "S6"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2']>C1h",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2'']>C1h",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2']>C2",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2'']>C2",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2']>C3h",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C3h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2'']>C3h",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C3h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D6>C2[C2']",
+    "symbols": [
+     "D6h",
+     "D6",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D6>C2[C2'']",
+    "symbols": [
+     "D6h",
+     "D6",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D6>C6",
+    "symbols": [
+     "D6h",
+     "D6",
+     "C6"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C6v>C2v>C1h[sigma_d]",
+    "symbols": [
+     "D6h",
+     "C6v",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C6v>C2v>C1h[sigma_v]",
+    "symbols": [
+     "D6h",
+     "C6v",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C6v>C2v>C2",
+    "symbols": [
+     "D6h",
+     "C6v",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C6v>C3v[sigma_d]>C1h",
+    "symbols": [
+     "D6h",
+     "C6v",
+     "C3v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C6v>C3v[sigma_v]>C1h",
+    "symbols": [
+     "D6h",
+     "C6v",
+     "C3v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C6v>C3v[sigma_d]>C3",
+    "symbols": [
+     "D6h",
+     "C6v",
+     "C3v",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "C6v>C3v[sigma_v]>C3",
+    "symbols": [
+     "D6h",
+     "C6v",
+     "C3v",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2v[C2]>C1h[sigma_d]",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2v[C2]>C1h[sigma_v]",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2v[C2']>C1h[sigma_h]",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2v[C2']>C1h[sigma_v]",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2v[C2'']>C1h[sigma_h]",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2v[C2'']>C1h[sigma_d]",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2v[C2]>C2",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2v[C2']>C2",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>C2v[C2'']>C2",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>D2>C2[C2]",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>D2>C2[C2']",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D2h>D2>C2[C2'']",
+    "symbols": [
+     "D6h",
+     "D2h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2']>C3v>C1h",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "C3v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2'']>C3v>C1h",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "C3v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2']>C3v>C3",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "C3v",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2'']>C3v>C3",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "C3v",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2']>D3>C2",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "D3",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2'']>D3>C2",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "D3",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2']>D3>C3",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "D3",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3d[C2'']>D3>C3",
+    "symbols": [
+     "D6h",
+     "D3d",
+     "D3",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2']>C2v>C1h[sigma_h]",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2']>C2v>C1h[sigma_v]",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2'']>C2v>C1h[sigma_h]",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2'']>C2v>C1h[sigma_d]",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2']>C2v>C2",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2'']>C2v>C2",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2']>C3v>C1h",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C3v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2'']>C3v>C1h",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C3v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2']>C3v>C3",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C3v",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2'']>C3v>C3",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "C3v",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2']>D3>C2",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "D3",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2'']>D3>C2",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "D3",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2']>D3>C3",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "D3",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D3h[C2'']>D3>C3",
+    "symbols": [
+     "D6h",
+     "D3h",
+     "D3",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D6>D2>C2[C2]",
+    "symbols": [
+     "D6h",
+     "D6",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D6>D2>C2[C2']",
+    "symbols": [
+     "D6h",
+     "D6",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D6>D2>C2[C2'']",
+    "symbols": [
+     "D6h",
+     "D6",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D6>D3[C2']>C2",
+    "symbols": [
+     "D6h",
+     "D6",
+     "D3",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D6>D3[C2'']>C2",
+    "symbols": [
+     "D6h",
+     "D6",
+     "D3",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D6>D3[C2']>C3",
+    "symbols": [
+     "D6h",
+     "D6",
+     "D3",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   },
+   {
+    "chain": "D6>D3[C2'']>C3",
+    "symbols": [
+     "D6h",
+     "D6",
+     "D3",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 12,
+    "chain_field": 12
+   }
+  ]
+ },
+ "Ih": {
+  "default": "D5d>S10",
+  "chains": [
+   {
+    "chain": "C5v>C1h",
+    "symbols": [
+     "Ih",
+     "C5v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "C5v>C5",
+    "symbols": [
+     "Ih",
+     "C5v",
+     "C5"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "D5>C2",
+    "symbols": [
+     "Ih",
+     "D5",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "D5>C5",
+    "symbols": [
+     "Ih",
+     "D5",
+     "C5"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "D5d>C1h",
+    "symbols": [
+     "Ih",
+     "D5d",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "D5d>C2",
+    "symbols": [
+     "Ih",
+     "D5d",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "D5d>C2h",
+    "symbols": [
+     "Ih",
+     "D5d",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "D5d>C5",
+    "symbols": [
+     "Ih",
+     "D5d",
+     "C5"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "D5d>S10",
+    "symbols": [
+     "Ih",
+     "D5d",
+     "S10"
+    ],
+    "default": true,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "T>C3",
+    "symbols": [
+     "Ih",
+     "T",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 60,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>C3",
+    "symbols": [
+     "Ih",
+     "Th",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 60,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>S6",
+    "symbols": [
+     "Ih",
+     "Th",
+     "S6"
+    ],
+    "default": false,
+    "conductor": 60,
+    "chain_field": 60
+   },
+   {
+    "chain": "D5d>C5v>C1h",
+    "symbols": [
+     "Ih",
+     "D5d",
+     "C5v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "D5d>C5v>C5",
+    "symbols": [
+     "Ih",
+     "D5d",
+     "C5v",
+     "C5"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "D5d>D5>C2",
+    "symbols": [
+     "Ih",
+     "D5d",
+     "D5",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "D5d>D5>C5",
+    "symbols": [
+     "Ih",
+     "D5d",
+     "D5",
+     "C5"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "I>D5>C2",
+    "symbols": [
+     "Ih",
+     "I",
+     "D5",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "I>D5>C5",
+    "symbols": [
+     "Ih",
+     "I",
+     "D5",
+     "C5"
+    ],
+    "default": false,
+    "conductor": 20,
+    "chain_field": 20
+   },
+   {
+    "chain": "I>T>C3",
+    "symbols": [
+     "Ih",
+     "I",
+     "T",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 60,
+    "chain_field": 60
+   },
+   {
+    "chain": "T>D2>C2",
+    "symbols": [
+     "Ih",
+     "T",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>C2v>C1h",
+    "symbols": [
+     "Ih",
+     "Th",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>C2v>C1h",
+    "symbols": [
+     "Ih",
+     "Th",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>C2v>C2",
+    "symbols": [
+     "Ih",
+     "Th",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>D2>C2",
+    "symbols": [
+     "Ih",
+     "Th",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>D2h>C1h",
+    "symbols": [
+     "Ih",
+     "Th",
+     "D2h",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>D2h>C2",
+    "symbols": [
+     "Ih",
+     "Th",
+     "D2h",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>D2h>C2h",
+    "symbols": [
+     "Ih",
+     "Th",
+     "D2h",
+     "C2h"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>T>C3",
+    "symbols": [
+     "Ih",
+     "Th",
+     "T",
+     "C3"
+    ],
+    "default": false,
+    "conductor": 60,
+    "chain_field": 60
+   },
+   {
+    "chain": "I>T>D2>C2",
+    "symbols": [
+     "Ih",
+     "I",
+     "T",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>D2h>C2v>C1h",
+    "symbols": [
+     "Ih",
+     "Th",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>D2h>C2v>C1h",
+    "symbols": [
+     "Ih",
+     "Th",
+     "D2h",
+     "C2v",
+     "C1h"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>D2h>C2v>C2",
+    "symbols": [
+     "Ih",
+     "Th",
+     "D2h",
+     "C2v",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>D2h>D2>C2",
+    "symbols": [
+     "Ih",
+     "Th",
+     "D2h",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   },
+   {
+    "chain": "Th>T>D2>C2",
+    "symbols": [
+     "Ih",
+     "Th",
+     "T",
+     "D2",
+     "C2"
+    ],
+    "default": false,
+    "conductor": 120,
+    "chain_field": 60
+   }
+  ]
+ }
+}
