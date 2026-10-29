@@ -18,11 +18,42 @@ Every value in a document is an element of one cyclotomic field `Q(ζ_M)`,
 
 `M` (the **conductor**) is fixed per group and basis convention: it is the
 smallest `M` such that every entry of every irrep matrix of that group, in
-that basis convention, lies in `Q(ζ_M)`. It does not depend on which
+that basis convention, lies in `Q(ζ_M)`. It does not depend on which table
 subcommand produced the document, so a given value always has the same
 encoding whether it appears in `characters`, `matrices` or `all`. Values
 computed internally in a smaller field `Q(ζ_m)` are embedded at the output
-boundary through `ζ_m = ζ_M^{M/m}`.
+boundary through `ζ_m = ζ_M^{M/m}`. Minimality is a property of the
+**unfiltered** document (`--irreps all`, both kinds of irrep): a filtered
+document may fit in a smaller field and still declares the same `M`, so
+that the field never depends on a filter (`VL-3` of
+[Verification](./verification.md)).
+
+### Chain and coupling documents
+
+Version 2 adds two cases, both fixed by the group and the options alone
+and declared in the same `field` record without new keys:
+
+- A document produced with `--chain` declares the **chain conductor**
+  `M_chain` of its group and chain class
+  ([Group chains](./group-chains.md#the-conductor-of-a-chain-document)):
+  the smallest multiple of the chain field `lcm(M_G, M_{H_i})` in which
+  every chain-adapted matrix of the group can be written, which is the
+  version-1 `M_G` for every chain of the axial families (so the
+  default-chain document of an axial group has the version-1 field and
+  values) and a per-chain value for the polyhedral groups (`8` for
+  `O ⊃ C4`, `12` for `T ⊃ C3`, `24` for `T ⊃ D2 ⊃ C2`, `20` for
+  `I ⊃ D5 ⊃ C5`, `60` for `I ⊃ T ⊃ C3`, …; `list chains` prints it). The
+  values of the chain-adapted matrices and of the `subgroup_chain` table
+  are elements of this field through the canonical norm factor of
+  [Exact computation](./group-chains.md#exact-computation): no square
+  root outside the field is ever taken.
+- A `cg` document declares `lcm(M_basis, 8)` for the axial families and
+  `lcm(M_basis, 24)` for the polyhedral groups, `M_basis` being the
+  conductor a `matrices` document with the same options declares
+  (`M_G`, the convention's, or `M_chain`)
+  ([Clebsch–Gordan coefficients](./clebsch-gordan.md#the-field-of-a-cg-document));
+  `cg` is the one subcommand whose field differs from that of the other
+  tables of the same group and options.
 
 `degree` is `φ(M)`; the basis is the power basis `1, ζ, ζ², ..., ζ^{φ(M)−1}`.
 
@@ -72,10 +103,15 @@ A pretty value is a string in the value grammar of
 `zeta` meaning `ζ_M`; the tool writes the shortest of a rational,
 `r*zeta^k`, `r*sqrtN*zeta^k` and `re + i*im` with `re`, `im` rational
 combinations of `1`, `sqrt2`, `sqrt3`, `sqrt5` and their products, as the
-reference transcriptions do. The grammar parses exactly, but the spelling
-of a value is not unique, so the pretty form is for human readers only and
-must not be used for comparison or reconstruction. It is emitted only on
-request.
+reference transcriptions do. When none of these spellings exists (the
+chain-adapted matrices of `I ⊃ T ⊃ C3` and their norm factors are elements
+of degree eight of `Q(ζ_60)⁺` whose real parts involve `cos(2π/15)`), the
+pretty form is the polynomial in `zeta` over the power basis,
+`p_0 + p_1*zeta + p_2*zeta^2 + …`, with the rational coefficients of the
+exact form; no further symbol is introduced. The grammar parses exactly,
+but the spelling of a value is not unique, so the pretty form is for human
+readers only and must not be used for comparison or reconstruction. It is
+emitted only on request.
 
 ## Layout in tables
 

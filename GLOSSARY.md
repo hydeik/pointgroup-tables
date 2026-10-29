@@ -279,10 +279,51 @@ coupling scheme
 
 **Canonical chain**:
 A group chain in which every restriction from one group to the next is
-multiplicity-free, so that the chain labels of a component are unique. Only
-canonical chains are accepted; a chain with a repeated restriction is an
-error, never resolved by an extra multiplicity label.
+multiplicity-free for both ordinary and projective irreps, so that the
+chain labels of a component are unique. Only canonical chains are
+accepted; a chain with a repeated restriction is an error, never resolved
+by an extra multiplicity label.
 _Avoid_: complete chain, good chain, proper chain
+
+**Step**:
+One group of a chain below the top group `G`, resolved to one concrete
+subgroup of the previous group by the embedding rule.
+_Avoid_: level, link, member
+
+**Terminal**:
+The last group of a chain. An accepted chain ends at a group of the cyclic
+shape (`Cn`, `Cnh`, `S2n`), whose double group is abelian, so that the
+chain labels name every component.
+_Avoid_: bottom group, leaf, end of the chain
+
+**Class anchor**:
+An optional class label of `G` attached to a step's symbol (`C2[C2']`,
+`C1h[sigma_h]`) requiring the resolved subgroup to contain an element of
+that class; the only way a user steers the embedding rule.
+_Avoid_: qualifier, generator, selector
+
+**Embedding rule**:
+The fixed rule that resolves a step's symbol to one subgroup and one
+identification of its elements: among the admissible isomorphisms of the
+symbol's group into the previous group (preserving parity, label
+invariants and lifts), those meeting the class anchors and keeping the
+chain canonical, the one with the lexicographically smallest image in
+canonical indices, the images of the elements of highest order compared
+first.
+_Avoid_: subgroup selection, orientation rule, conjugate choice
+
+**Canonical spelling**:
+The spelling of a chain that carries a class anchor exactly where the bare
+symbol would admit more than one subgroup class, so that it reproduces the
+chain independently of the unanchored defaults.
+_Avoid_: normalised chain, fully qualified chain
+
+**Default chain**:
+The one chain of every group that `--chain default` selects: the shortest
+canonical descent to the largest cyclic-shape subgroup containing the
+principal element (`Dn ⊃ Cn`, `Dnh ⊃ Cnh`, `O ⊃ C4`, `I ⊃ D5 ⊃ C5`). It is
+never applied unless asked for; the canonical basis stays the default.
+_Avoid_: standard chain, natural chain, preferred chain
 
 **Chain-adapted basis**:
 The basis of every irrep of `G` in which the irrep matrices of every
@@ -301,6 +342,48 @@ The sequence of canonical Mulliken symbols, one per group of the chain below
 _Avoid_: quantum numbers, row label, component index (which is the position
 in the matrix)
 
+**Label space**:
+The subspace of an irrep that one chain label selects, the common range of
+the isotypic projectors of the chain's steps; one-dimensional for every
+label of an accepted chain.
+_Avoid_: eigenspace (unqualified), weight space, sector
+
+**Block**:
+The components of an irrep that share the first chain label, on which the
+restriction to the first step acts as that step's own chain-adapted
+matrices.
+_Avoid_: subduction block, sub-block, irreducible part
+
+**Exponent order**:
+The order of the labels of a cyclic-shape step in a chain-adapted basis:
+by the exponent of each label's eigenvalue at that step's own principal
+element, descending, the way version 1 orders the canonical components of
+an irrep. A step of the dihedral or polyhedral shape keeps its canonical
+irrep order; across steps the chain labels are compared step by step.
+_Avoid_: lexicographic order (the comparison across steps, not within
+one), irrep order (for a cyclic step), eigenvalue order
+
+**Norm-factor phase rule**:
+The one primitive that fixes a phase: the quantity a rule designates is set
+equal to the conjugate of the canonical norm factor of its squared modulus,
+which is the real positive square root whenever that root lies in the
+document field.
+_Avoid_: phase convention (unqualified), real-positive rule, Condon–Shortley
+convention
+
+**Canonical norm factor**:
+The element `μ` of the document field with `μ · conj(μ) = N` that the
+arithmetic rule assigns to a totally positive `N`; the real positive square
+root when the field contains it.
+_Avoid_: normalisation constant, square root of the norm
+
+**Designated component**:
+The canonical component of the first vector of a block to which the
+norm-factor phase rule is applied between blocks: the first non-vanishing
+one fixed by the principal element of the group, or the first
+non-vanishing one of all when none is fixed.
+_Avoid_: reference component, pivot, leading coefficient
+
 **Clebsch–Gordan coefficient**:
 An entry of the unitary matrix that reduces the direct product of two irreps
 of `G` (ordinary or projective, with the product factor system) into irreps
@@ -309,12 +392,131 @@ basis, so a table is meaningless without the basis the document names.
 _Avoid_: coupling coefficient, vector-coupling coefficient, 3-j symbol,
 Wigner coefficient
 
+**Irrep pair**:
+Two irreps of `G` whose direct product is coupled, written `(α, β)` with
+`α ≤ β` in the canonical irrep order. A `cg` document prints every such
+unordered pair once; the reversed pair follows from the exchange relation.
+_Avoid_: ordered pair, product pair, coupling (which names the operation)
+
+**Product basis**:
+The basis `|α i⟩|β j⟩` of the direct product of two irreps, ordered with
+the first factor's component outer and the second's inner (row-major); the
+row order of every coupling matrix.
+_Avoid_: uncoupled basis, tensor basis, Kronecker basis
+
+**Coupling matrix**:
+The unitary matrix of one irrep pair whose rows are the product basis and
+whose columns are the coupled vectors, ordered by constituent, coupled copy
+and component; the object a `cg` document prints per pair.
+_Avoid_: CG matrix, transformation matrix, reduction matrix
+
+**Constituent**:
+An irrep that occurs, with a positive coupling multiplicity, in the direct
+product of two irreps. A `cg` document lists the constituents of every
+pair and no irrep that does not occur.
+_Avoid_: component (which is a basis vector of an irrep), term, product
+irrep
+
+**Isotypic projector**:
+The orthogonal projector onto all coupled copies of one constituent in a
+direct product, written in the product basis. It does not depend on the
+phases of the coupled vectors or on how the copies are mixed, so it is the
+quantity two Clebsch–Gordan tables of the same pair must agree on exactly,
+whatever their conventions.
+_Avoid_: projection operator (unqualified), multiplicity space, isotypic
+component (which is the subspace, not the projector)
+
+**Monomial intertwiner**:
+A unitary matrix relating two realisations of one irrep that is a
+permutation matrix times a diagonal matrix of phases. Two chain-adapted
+bases of the same chain are related by one, the permutation being the map
+between their chain labels; it is the form in which a reference table of
+chain-adapted matrices is compared with the tool's.
+_Avoid_: phase matrix (which omits the permutation), relabelling,
+basis change (unqualified)
+
 **Coupling multiplicity**:
 The number of times an irrep occurs in the direct product of two irreps.
 When it exceeds one, the copies are distinguished by a fixed rule of the
 tool, never left to the consumer.
 _Avoid_: outer multiplicity, repetition index, branching multiplicity (which
 is the restriction to a subgroup)
+
+**Coupled copy**:
+One of the `n` orthonormal sets of coupled vectors of an irrep that occurs
+`n` times in a direct product, numbered by a fixed rule of the tool
+(symmetric copies before antisymmetric ones when the two factors are the
+same irrep, then the order of their trial product states).
+_Avoid_: multiplicity index, repetition, occurrence
+
+**Trial product state**:
+The product basis vector from which a coupled copy is projected: the first
+one, in the product order of the document's basis, that the projector of
+the copy does not annihilate. It is also the first product state whose
+coefficient in the designated component of the copy is non-zero.
+_Avoid_: seed vector, starting vector, intrinsic quantum number (Chen's
+label for the same choice)
+
+**Designated coefficient**:
+The coefficient of the trial product state in the first component of a
+coupled copy; the one coefficient the phase rule fixes, every other
+coefficient of the copy following from the irrep matrices. It is real and
+positive whenever the field of the document contains the square root of
+its squared modulus.
+_Avoid_: leading coefficient, normalisation constant, phase convention
+
+**Exchange sign**:
+The sign `+1` or `−1` by which a coupled copy of the product of an irrep
+with itself changes when the two factors are exchanged; the symmetric
+copies carry `+1`. Defined only when the two factors are the same irrep.
+_Avoid_: permutation symmetry, symmetry type, parity (which names
+improper elements)
+
+**Squared norm**:
+The totally positive number `N = x · conj(x)` of the quantity a phase rule
+designates: the diagonal entry of the projector that produces a
+chain-adapted or coupled vector, and the only source of new numbers beyond
+the irrep matrices.
+_Avoid_: norm (unqualified, which may mean the square root), normalisation
+constant
+
+**Hermitian norm**:
+A number of the form `μ · conj(μ)` for some `μ` of the document field; a
+squared norm is one exactly when a phase puts the vector into the field.
+_Avoid_: norm from the field, relative norm (unqualified)
+
+**Chain field**:
+The smallest cyclotomic field holding the irrep matrices of the group and
+the characters of every step of a chain, the field in which the projectors
+of a chain live.
+_Avoid_: subgroup field, projector field
+
+**Chain conductor**:
+The conductor a document produced with `--chain` declares: the smallest
+enlargement of the chain field in which every chain-adapted matrix of the
+group can be written, fixed by the group and the chain class alone.
+_Avoid_: chain field (which may be smaller), enlarged conductor
+
+**Coset decomposition**:
+The partition of one group of a chain into the left cosets of the next
+step, each coset named by the member with the smallest canonical index; the
+data from which symmetry-adapted functions are built by the consumer.
+_Avoid_: right cosets, transversal, coset representatives (which are only
+the first members)
+
+**Double coset**:
+A union of left cosets of a step that is closed under multiplication by the
+step on both sides; the double cosets of one step are the generator set of
+the double-induced technique of the eigenfunction method.
+_Avoid_: double-coset class, orbit
+
+**Branching rule**:
+For one step of a chain, which irreps of the step occur in the restriction
+of each irrep of the previous group, ordinary irreps to ordinary and
+projective to projective; along an accepted chain no irrep occurs twice.
+Also called subduction.
+_Avoid_: correlation table, compatibility relation, decomposition
+(unqualified)
 
 ### Output
 
@@ -336,6 +538,19 @@ The structured object emitted for one element, one conjugacy class or one
 irrep (index, label or symbol, and the decomposed fields a consumer would
 otherwise parse from the label). Tables refer to records by index only.
 _Avoid_: entry, row (for a record), header (for an irrep record)
+
+**Subgroup record**:
+The record emitted for one step of a chain: the step's group, its embedding
+into the top group, its coset and double-coset decompositions, its irreps
+and the branching rule of the step. Positional: a step is never referred to
+by an index.
+_Avoid_: step record, chain entry
+
+**Component record**:
+The record emitted for one component of an irrep in a chain-adapted basis:
+its position and its chain label, as irrep indices of the steps and as
+symbols. Absent without a chain.
+_Avoid_: label record, basis-vector record
 
 ### Verification
 
@@ -384,6 +599,13 @@ _Avoid_: snapshot, fixture
 A test that corrupts one entry of a document model on purpose and requires
 the named checks to fail; the proof that the checks detect what they claim.
 _Avoid_: negative test, fault injection
+
+**Test oracle**:
+A closed form from the literature implemented inside the test suite to
+produce the expected values of a check for an arbitrary axis order; a
+source of reference values that is code rather than a transcription, and
+never part of the shipped tool.
+_Avoid_: reference implementation, model answer, golden formula
 
 ### Number representation
 

@@ -22,8 +22,8 @@ subcommand:
 
 | Kind | Subcommands | Positional argument |
 | ---- | ----------- | ------------------- |
-| table | `elements`, `cayley`, `factor`, `characters`, `matrices`, `all` | exactly one group |
-| utility | `list groups`, `list conventions`, `schema` | none |
+| table | `elements`, `cayley`, `factor`, `characters`, `matrices`, `all`, `cg` (version 2) | exactly one group |
+| utility | `list groups`, `list conventions`, `list chains`, `schema` | none, except `list chains`: exactly one group |
 
 One invocation of a table subcommand produces exactly one **document** for
 exactly one group. Several groups are handled by several invocations; the
@@ -68,12 +68,21 @@ fixed by [Abstract groups](./abstract-groups.md#exposed-structure).
 | `characters` | character table | ordinary and projective irreps, filtered by `--irreps` |
 | `matrices` | irrep matrix table | in the selected basis convention, filtered by `--irreps` |
 | `all` | the union of the five | `--double-group` acts on the element list and Cayley table only |
+| `cg` | Clebsch–Gordan table of every irrep pair the `--irreps` selection names | version 2; in the basis the document names; never part of `all` ([Clebsch–Gordan coefficients](./clebsch-gordan.md#the-cg-subcommand)) |
 
 `all` is exactly the union of the other five documents' tables under the
 same options, with one shared metadata block; it adds nothing and reorders
 nothing. Every single-table document also embeds the element list its
 indices refer to ([Output schema](./output-schema.md#principles)), so
 `tables` always begins with `"elements"`.
+
+`cg` (version 2) is a table subcommand outside `all`: `all` stays the
+five-table union of version 1, and a `cg` document declares a different
+field from the other tables of the same group and options, so adding it
+would change the values of every other table
+([Clebsch–Gordan coefficients](./clebsch-gordan.md#the-cg-subcommand)).
+Its document is `elements` (and `subgroup_chain` under `--chain`) plus the
+`cg` table; it never embeds `matrices`.
 
 ## Options
 
@@ -87,6 +96,7 @@ metadata, even where they do not change the table):
 | `--values <set>` | comma-separated subset of `exact`, `numeric`, `both`, `pretty` ([Values](./values.md)) | `both` |
 | `--label-convention <name>` | a shipped label convention | none (canonical labels only) |
 | `--basis-convention <name>` | `canonical` or a shipped basis convention | `canonical` |
+| `--chain <chain>` | a group chain below the group, `"D4>C4"`, or `default` ([Group chains](./group-chains.md#the---chain-option)); version 2 | none (no chain, the canonical basis) |
 | `--verify` | flag: run the self-consistency checks of [Verification](./verification.md#where-checks-run) on the document before emitting it | off |
 
 The output format is never inferred from the file name: `-o table.yaml`
@@ -98,12 +108,28 @@ code `1` without writing a document. It runs only self-consistency checks,
 never a reference comparison, and is a usage error on the utility
 subcommands. Its cost grows as `|G†|²` and reaches minutes for large `n`.
 
+`--chain` (version 2) selects a canonical group chain of the group; its
+grammar, the subgroup each symbol picks and the default chain of every
+group are fixed in [Group chains](./group-chains.md). It is accepted with
+`--basis-convention canonical` only (any other basis convention is a usage
+error, exit `2`), it is a usage error on the utility subcommands, and it
+adds to the document the `chain` metadata key, the `subgroup_chain` table and the
+chain labels of the `matrices` components, in the chain-adapted basis;
+without it a version-2 document is byte-identical to the version-1
+document. Write the value in double quotes: `>` and `[` are shell
+metacharacters.
+
 Specific to some subcommands (a usage error elsewhere):
 
 | Option | Subcommands | Values | Default |
 | ------ | ----------- | ------ | ------- |
 | `--double-group` | `elements`, `cayley`, `all` | flag | off |
-| `--irreps` | `characters`, `matrices`, `all` | `ordinary`, `projective`, `all` | `all` |
+| `--irreps` | `characters`, `matrices`, `all`, `cg` | `ordinary`, `projective`, `all` | `all` |
+
+On `cg` the value selects irrep **pairs** by their factors: `ordinary` the
+pairs of two ordinary irreps, `projective` the pairs with at least one
+projective factor, `all` every pair; `--double-group` is a usage error on
+`cg`, as on `characters` and `matrices`.
 
 `--irreps` is the only irrep filter of version 1. Irrep names are output
 only ([Irrep labels](./irrep-labels.md)), so no option selects an irrep by
@@ -125,13 +151,14 @@ document carries:
 | `schema_version` | integer, `1` for this specification |
 | `generator` | `{ name = "pointgroup-tables", version = <tool version> }` |
 | `group` | `symbol`, `input_symbol`, `family`, `n` (absent for polyhedral groups), `order`, `type`, `rotation_group` ([Abstract groups](./abstract-groups.md#exposed-structure)) |
-| `tables` | the names of the tables the document holds, in the order above (`["elements"]`, `["elements", "characters"]`, `["elements", "cayley", "factor", "characters", "matrices"]`, ...) |
+| `tables` | the names of the tables the document holds, in the order above (`["elements"]`, `["elements", "characters"]`, `["elements", "cayley", "factor", "characters", "matrices"]`, `["elements", "cg"]`, ...) |
 | `double` | `true` when `--double-group` applied, else `false` |
-| `irreps` | the `--irreps` value; present only when the document holds a character or matrix table |
+| `irreps` | the `--irreps` value; present only when the document holds a character, matrix or `cg` table |
 | `values` | the set of value forms present, as requested by `--values` |
 | `field` | the document field ([Values](./values.md#the-field-of-a-document)), fixed by group and basis convention |
 | `label_convention` | `{ name, source, coverage }`; present only when one is selected |
 | `basis_convention` | `{ name, source, coverage }` for a reference convention; `{ name = "canonical" }` by default |
+| `chain` | `{ input, canonical, symbols }` ([Group chains](./group-chains.md#metadata)); present only with `--chain` |
 
 The exact placement of these keys, and the layout of every table, are fixed
 in [Output schema](./output-schema.md).
@@ -196,11 +223,16 @@ array of `{ name, source }`. `canonical` appears among the basis
 conventions; the canonical labelling is not a label convention and is not
 listed.
 
+`list chains <group>` lists every chain `--chain` accepts for one group,
+each in its canonical spelling with the group's default chain marked
+([Group chains](./group-chains.md#list-chains)). The group argument follows
+the grammar and exit codes of the table subcommands.
+
 `schema` writes the JSON Schema of the table documents (the `schema.json`
 shipped with the output-schema chapter) to standard output or `-o`. It is
 always JSON; `--format` is not accepted.
 
-Both `list` subcommands accept `-f` and `-o`; nothing else.
+The `list` subcommands accept `-f` and `-o`; nothing else.
 
 ## Exit codes and errors
 
@@ -212,6 +244,7 @@ Both `list` subcommands accept `-f` and `-o`; nothing else.
 | `3` | unknown group | the argument matches the grammar but its family key names no group: `Xh`, `Cnd`, `Dnv`, `T5`, `Cs3`, a bare `C` |
 | `4` | unknown convention | a `--label-convention` or `--basis-convention` name that is not shipped; also any error the basis-convention chapter defines for a convention that does not cover the requested group |
 | `5` | unsupported `n` | the family key is known and takes `n`, but `n` is out of range: `C0`, `D0h`, `S3` (`S2n` takes even subscripts only) |
+| `6` | invalid chain | a `--chain` value whose symbols are groups but that is no accepted chain of the group: a step that is not a subgroup, a chain that is not canonical, a terminal above the cyclic shape, an anchor no subgroup meets ([Group chains](./group-chains.md#errors)) |
 
 Errors are written to standard error, never to the document stream, and
 nothing is written to `-o` on failure. The first line is
@@ -253,6 +286,11 @@ pointgroup-tables characters c3v --format yaml --values exact
 pointgroup-tables matrices D6h --basis-convention altmann-herzig -o d6h.json
 pointgroup-tables elements Oh --double-group --label-convention altmann-herzig
 pointgroup-tables all Ih --irreps projective --values numeric,pretty
+pointgroup-tables matrices O --chain "D4>C4"
+pointgroup-tables characters D6 --chain "D3[C2'']>C3" --format yaml
+pointgroup-tables cg Oh --irreps ordinary --values exact
+pointgroup-tables cg O --chain "D4>C4" -o o-cg.json
+pointgroup-tables list chains Ih
 pointgroup-tables list groups
 pointgroup-tables schema -o schema.json
 ```
@@ -276,3 +314,12 @@ An implementation must pass:
   `list` and `schema` it gives `2`; on a document with an injected failing
   check it gives `1`, an empty document stream, and one `verify:` line per
   failing check ([Verification](./verification.md), `CLI-3`).
+- `--chain`: the grammar table, the default-chain table and the embedding
+  examples of [Group chains](./group-chains.md#verification); `--chain`
+  with a non-`canonical` `--basis-convention` and on a utility subcommand
+  gives `2`; a version-2 invocation without `--chain` reproduces the
+  version-1 golden documents byte for byte;
+- `cg`: the group-argument table above with `cg` in place of the
+  subcommand; `cg --double-group` gives `2`; `all` of the same options is
+  unchanged by the existence of `cg`; the document checks of
+  [Clebsch–Gordan coefficients](./clebsch-gordan.md#document-checks).

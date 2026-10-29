@@ -45,3 +45,9 @@ printed pages. See `docs/spec/verification.md`.
   tests that need them fall back to the `reference` marker's skip. The
   decision to publish is hard to reverse in the history, which is why it
   is recorded here.
+- Version 2 (ticket #48, 2026-10-28) extends the decision unchanged to the
+  journal papers of Chen, Fan, Ping and co-workers
+  (`tests/reference/chen-fan-ping/`): multiplication tables, irrep
+  matrices and Clebsch–Gordan coefficients are mathematical facts, the
+  files hold the entries the tests need in the project's format, and each
+  cites paper, table and page.

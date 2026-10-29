@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:pointgroup-tables:schema:1",
   "title": "pointgroup-tables table document",
-  "description": "One document of the pointgroup-tables CLI: the tables for one point group under one set of options. See docs/spec/output-schema.md.",
+  "description": "One document of the pointgroup-tables CLI: the tables for one point group under one set of options. See docs/spec/output-schema.md. The keys chain, subgroup_chain and the components of a matrices entry or a cg irrep record are present only under --chain (version 2); the cg table is the one table of the cg document (version 2).",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -32,7 +32,7 @@
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": { "enum": ["elements", "cayley", "factor", "characters", "matrices"] }
+      "items": { "enum": ["elements", "subgroup_chain", "cayley", "factor", "characters", "matrices", "cg"] }
     },
     "double": { "type": "boolean" },
     "irreps": { "enum": ["ordinary", "projective", "all"] },
@@ -45,13 +45,24 @@
     "field": { "$ref": "#/$defs/field" },
     "label_convention": { "$ref": "#/$defs/convention" },
     "basis_convention": { "$ref": "#/$defs/convention" },
+    "chain": { "$ref": "#/$defs/chain" },
     "elements": { "$ref": "#/$defs/elementsTable" },
+    "subgroup_chain": { "$ref": "#/$defs/subgroupChainTable" },
     "cayley": { "$ref": "#/$defs/cayleyTable" },
     "factor": { "$ref": "#/$defs/factorTable" },
     "characters": { "$ref": "#/$defs/charactersTable" },
-    "matrices": { "$ref": "#/$defs/matricesTable" }
+    "matrices": { "$ref": "#/$defs/matricesTable" },
+    "cg": { "$ref": "#/$defs/cgTable" }
+  },
+  "dependentRequired": {
+    "chain": ["subgroup_chain"],
+    "subgroup_chain": ["chain"]
   },
   "allOf": [
+    {
+      "if": { "properties": { "tables": { "contains": { "const": "subgroup_chain" } } } },
+      "then": { "required": ["subgroup_chain", "chain"] }
+    },
     {
       "if": { "properties": { "tables": { "contains": { "const": "cayley" } } } },
       "then": { "required": ["cayley"] }
@@ -67,18 +78,60 @@
     {
       "if": { "properties": { "tables": { "contains": { "const": "matrices" } } } },
       "then": { "required": ["matrices", "irreps"] }
+    },
+    {
+      "if": { "properties": { "tables": { "contains": { "const": "cg" } } } },
+      "then": { "required": ["cg", "irreps"] }
+    },
+    {
+      "if": { "required": ["cg"] },
+      "then": {
+        "properties": { "tables": { "not": { "contains": { "enum": ["cayley", "factor", "characters", "matrices"] } } } },
+        "not": { "required": ["double"], "properties": { "double": { "const": true } } }
+      }
+    },
+    {
+      "if": { "required": ["chain"] },
+      "then": {
+        "properties": {
+          "tables": { "contains": { "const": "subgroup_chain" } },
+          "matrices": { "properties": { "irreps": { "items": { "required": ["components"] } } } },
+          "cg": { "properties": { "irreps": { "items": { "required": ["components"] } } } }
+        }
+      },
+      "else": {
+        "properties": {
+          "matrices": { "properties": { "irreps": { "items": { "not": { "required": ["components"] } } } } },
+          "cg": { "properties": { "irreps": { "items": { "not": { "required": ["components"] } } } } }
+        }
+      }
     }
   ],
   "$defs": {
     "index": { "type": "integer", "minimum": 0 },
     "sign": { "enum": [1, -1] },
+    "groupSymbol": { "type": "string", "pattern": "^(C[1-9][0-9]*[vh]?|S([2468]|[1-9][0-9]*[02468])|D[1-9][0-9]*[hd]?|T[dh]?|Oh?|Ih?)$" },
     "group": {
       "type": "object",
       "additionalProperties": false,
       "required": ["symbol", "input_symbol", "family", "order", "type", "rotation_group"],
       "properties": {
-        "symbol": { "type": "string", "pattern": "^(C[1-9][0-9]*[vh]?|S([2468]|[1-9][0-9]*[02468])|D[1-9][0-9]*[hd]?|T[dh]?|Oh?|Ih?)$" },
+        "symbol": { "$ref": "#/$defs/groupSymbol" },
         "input_symbol": { "type": "string" },
+        "family": { "enum": ["Cn", "Cnv", "Cnh", "S2n", "Dn", "Dnh", "Dnd", "T", "Td", "Th", "O", "Oh", "I", "Ih"] },
+        "n": { "type": "integer", "minimum": 1 },
+        "order": { "type": "integer", "minimum": 1 },
+        "type": { "enum": ["proper", "centro", "twisted"] },
+        "rotation_group": { "type": "string", "pattern": "^([CD][1-9][0-9]*|T|O|I)$" }
+      }
+    },
+    "subgroupGroup": {
+      "description": "The group record of a step of the chain: the group record without input_symbol.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["symbol", "family", "order", "type", "rotation_group"],
+      "properties": {
+        "symbol": { "$ref": "#/$defs/groupSymbol" },
         "family": { "enum": ["Cn", "Cnv", "Cnh", "S2n", "Dn", "Dnh", "Dnd", "T", "Td", "Th", "O", "Oh", "I", "Ih"] },
         "n": { "type": "integer", "minimum": 1 },
         "order": { "type": "integer", "minimum": 1 },
@@ -106,6 +159,17 @@
         "name": { "type": "string", "minLength": 1 },
         "source": { "type": "string" },
         "coverage": { "enum": ["reference", "extrapolated"] }
+      }
+    },
+    "chain": {
+      "description": "The chain metadata of a --chain document: the option value as typed, the canonical spelling of the resolved chain (empty for the empty chain) and the normalised symbols, G first. See docs/spec/group-chains.md#metadata.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input", "canonical", "symbols"],
+      "properties": {
+        "input": { "type": "string", "minLength": 1 },
+        "canonical": { "type": "string" },
+        "symbols": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/groupSymbol" } }
       }
     },
     "exactValue": {
@@ -222,15 +286,70 @@
       "allOf": [{ "$ref": "#/$defs/irrepRecord" }],
       "unevaluatedProperties": false
     },
+    "componentRecord": {
+      "description": "One component of an irrep in a chain-adapted basis: its position and its chain label, as irrep indices into the subgroup records' irreps (labels[j] indexes subgroup_chain.items[j].irreps) and as the canonical symbols of those irreps. Both arrays have one entry per step, none under the empty chain.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "labels", "symbols"],
+      "properties": {
+        "index": { "$ref": "#/$defs/index" },
+        "labels": { "type": "array", "items": { "$ref": "#/$defs/index" } },
+        "symbols": { "type": "array", "items": { "$ref": "#/$defs/irrepSymbol" } }
+      }
+    },
     "irrepMatrices": {
-      "description": "An irrep record carrying its matrices, one per element of G in canonical order.",
+      "description": "An irrep record carrying its matrices, one per element of G in canonical order, and under --chain the component records of the chain-adapted basis.",
       "allOf": [{ "$ref": "#/$defs/irrepRecord" }],
       "properties": {
+        "components": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/componentRecord" } },
         "exact": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/exactMatrix" } },
         "numeric": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/numericMatrix" } },
         "pretty": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/prettyMatrix" } }
       },
       "unevaluatedProperties": false
+    },
+    "doubleCosetRecord": {
+      "description": "One double coset H g H of a step: its representative (smallest G index), its size, and the ascending indices into the cosets array of the left cosets it is the union of.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["representative", "size", "cosets"],
+      "properties": {
+        "representative": { "$ref": "#/$defs/index" },
+        "size": { "type": "integer", "minimum": 1 },
+        "cosets": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/index" } }
+      }
+    },
+    "subgroupRecord": {
+      "description": "One step of the chain: its abstract group, its embedding (G-double indices of the images of the lifted preimages of its canonical element list), the left cosets and double cosets of the step in the previous group (G element indices), its full irrep list and the branching rule from the previous group's irreps.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["group", "embedding", "cosets", "double_cosets", "irreps", "branching"],
+      "properties": {
+        "group": { "$ref": "#/$defs/subgroupGroup" },
+        "embedding": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/index" } },
+        "cosets": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/index" } }
+        },
+        "double_cosets": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/doubleCosetRecord" } },
+        "irreps": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/irrepHeader" } },
+        "branching": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/index" } }
+        }
+      }
+    },
+    "subgroupChainTable": {
+      "description": "The resolved chain of a --chain document: the full irrep list of G and one subgroup record per step in chain order (none for the empty chain). Depends on the group and the chain only.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["irreps", "items"],
+      "properties": {
+        "irreps": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/irrepHeader" } },
+        "items": { "type": "array", "items": { "$ref": "#/$defs/subgroupRecord" } }
+      }
     },
     "elementsTable": {
       "type": "object",
@@ -288,6 +407,64 @@
       "required": ["irreps"],
       "properties": {
         "irreps": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/irrepMatrices" } }
+      }
+    },
+    "irrepWithComponents": {
+      "description": "An irrep record of the cg table: the irrep record, and under --chain the component records of the chain-adapted basis.",
+      "allOf": [{ "$ref": "#/$defs/irrepRecord" }],
+      "properties": {
+        "components": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/componentRecord" } }
+      },
+      "unevaluatedProperties": false
+    },
+    "constituentRecord": {
+      "description": "One irrep gamma with coupling multiplicity n > 0 in the direct product of a pair: its global index, n, and [first, count] of its columns in the coupling matrix (count = n * dimension of gamma).",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["irrep", "multiplicity", "columns"],
+      "properties": {
+        "irrep": { "$ref": "#/$defs/index" },
+        "multiplicity": { "type": "integer", "minimum": 1 },
+        "columns": { "type": "array", "minItems": 2, "maxItems": 2, "prefixItems": [{ "$ref": "#/$defs/index" }, { "type": "integer", "minimum": 1 }] }
+      }
+    },
+    "columnRecord": {
+      "description": "One column of a coupling matrix: its position, the constituent irrep, the coupled copy, the component, and for a pair of equal factors the exchange sign of the copy.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "irrep", "copy", "component"],
+      "properties": {
+        "index": { "$ref": "#/$defs/index" },
+        "irrep": { "$ref": "#/$defs/index" },
+        "copy": { "$ref": "#/$defs/index" },
+        "component": { "$ref": "#/$defs/index" },
+        "exchange": { "$ref": "#/$defs/sign" }
+      }
+    },
+    "pairRecord": {
+      "description": "The Clebsch-Gordan coefficients of one unordered pair of irreps (alpha <= beta, global indices): the coupling matrix of order dimension = d_alpha * d_beta, rows the product basis in row-major order, columns described by the column records, in each requested value form.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["irreps", "dimension", "constituents", "columns"],
+      "properties": {
+        "irreps": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/index" } },
+        "dimension": { "type": "integer", "minimum": 1 },
+        "constituents": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/constituentRecord" } },
+        "columns": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/columnRecord" } },
+        "exact": { "$ref": "#/$defs/exactMatrix" },
+        "numeric": { "$ref": "#/$defs/numericMatrix" },
+        "pretty": { "$ref": "#/$defs/prettyMatrix" }
+      },
+      "anyOf": [{ "required": ["exact"] }, { "required": ["numeric"] }, { "required": ["pretty"] }]
+    },
+    "cgTable": {
+      "description": "The Clebsch-Gordan table of a cg document: the full irrep list of G (never filtered by --irreps) and one pair record per unordered pair of the --irreps selection, in lexicographic order of the two indices.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["irreps", "pairs"],
+      "properties": {
+        "irreps": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/irrepWithComponents" } },
+        "pairs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/pairRecord" } }
       }
     }
   }

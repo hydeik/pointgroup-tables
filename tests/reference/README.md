@@ -28,6 +28,17 @@ header.
 - **Koster**: G. F. Koster, J. O. Dimmock, R. G. Wheeler and H. Statz,
   *Properties of the Thirty-Two Point Groups* (MIT Press, 1963). Bethe
   symbols `Γ_i` with identifying characters.
+- **Chen–Fan–Ping** (`chen-fan-ping/`, version 2): the papers of J.-Q.
+  Chen, P.-D. Fan, J.-L. Ping and co-workers on the eigenfunction method
+  (J. Math. Phys. 39 (1998) 467, 5502, 5519; 41 (2000) 8196; Int. J.
+  Quantum Chem. 74 (1999) 7; 75 (1999) 67; 76 (2000) 585; 83 (2001) 259;
+  91 (2003) 541; Acta Cryst. A55 (1999) 871, 1049; Comput. Phys. Commun.
+  120 (1999) 71), cited by the keys of `docs/research/eigenfunction-method.md`.
+  Multiplication tables with tildes and element labels of `T†`, `O†`,
+  `D6†`, Euler angles of `I†`, chain-adapted irrep matrices and
+  Clebsch–Gordan tables, transcribed from the page images, paper, table
+  and page cited per file. Layout in
+  `docs/spec/verification.md` ("The Chen–Fan–Ping transcriptions").
 
 ## Licensing
 
