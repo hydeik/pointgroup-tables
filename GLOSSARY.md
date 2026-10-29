@@ -297,9 +297,10 @@ chain labels name every component.
 _Avoid_: bottom group, leaf, end of the chain
 
 **Class anchor**:
-An optional class label of `G` attached to a step's symbol (`C2[C2']`,
-`C1h[sigma_h]`) requiring the resolved subgroup to contain an element of
-that class; the only way a user steers the embedding rule.
+An optional list of class labels of `G` attached to a step's symbol
+(`C2[C2']`, `C1h[sigma_h]`, `C2v[C2,sigma_h]`), requiring the resolved
+subgroup to contain an element of every listed class; the only way a user
+steers the embedding rule.
 _Avoid_: qualifier, generator, selector
 
 **Embedding rule**:
@@ -313,10 +314,34 @@ first.
 _Avoid_: subgroup selection, orientation rule, conjugate choice
 
 **Canonical spelling**:
-The spelling of a chain that carries a class anchor exactly where the bare
-symbol would admit more than one subgroup class, so that it reproduces the
-chain independently of the unanchored defaults.
+The spelling of a chain that carries a class anchor exactly where another
+accepted chain class with the same symbols has a different class-label
+signature at that step, the anchor being the shortest list of class labels
+that excludes those classes, so that it reproduces the chain independently
+of the unanchored defaults. A canonical spelling names one chain class
+unless that class has twins.
 _Avoid_: normalised chain, fully qualified chain
+
+**Class-label signature**:
+The set of class labels of `G` whose classes a subgroup meets; the
+information a class anchor can see about a subgroup. Two subgroups with the
+same signature cannot be told apart by anchors.
+_Avoid_: class content, class fingerprint
+
+**Chain class**:
+A set of chains of `G` conjugate to one another under `G`, that is, equal up
+to a simultaneous conjugation of every step. The unit the subgroup
+catalogue counts; conjugate chains give bases related by one irrep matrix,
+so a chain class is what a chain spelling can at most name.
+_Avoid_: chain orbit, equivalence class of chains
+
+**Twin chain classes**:
+Chain classes of `G` that are not conjugate but have the same class-label
+signature at every step, so that they share one canonical spelling. The
+embedding rule reaches exactly one of them (the *reached* twin); the others
+are not accepted, since no chain spelling can name them. The twins found
+agree on every ordinary irrep and differ on the projective irreps only.
+_Avoid_: ambiguous chains, shadow chains, duplicate classes
 
 **Default chain**:
 The one chain of every group that `--chain default` selects: the shortest

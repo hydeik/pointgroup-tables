@@ -315,17 +315,20 @@ version 1 selects a single irrep.
   with the matrices of the canonical section, and no index of the table
   refers to an element of `G†`. The `elements` table of a `cg` document is
   always that of `G` and `double` is always `false`.
-- `--verify` runs the self-consistency checks `CG-1` … `CG-7` and the
-  [document checks](#document-checks) on the document before emitting it;
-  `CG-8` is a reference comparison and never runs under `--verify`.
+- `--verify` runs the self-consistency checks `CG-1` … `CG-7` on every
+  pair of the document, and the `MX-*` checks on the irrep matrices it
+  recomputes for the document's basis, before emitting it; the
+  [document checks](#document-checks) `OS-9` … `OS-11` are test-suite
+  checks and `CG-8` is a reference comparison, so neither runs under
+  `--verify` ([Verification](./verification.md#where-checks-run)).
 - `cg` is **not part of `all`**, for two reasons: `all` is frozen as the
   union of the five version-1 tables, so that a version-1 `all` document is
   reproduced byte for byte; and a `cg` document declares a different field
   from the other tables of the same group and options
   ([The field of a `cg` document](#the-field-of-a-cg-document)), so adding
   the table would change the `field` record and the exact values of every
-  other table of the document. Opt-in inclusion (`all --with cg`) is fog of
-  the map, decided only if a consumer asks.
+  other table of the document. Opt-in inclusion (`all --with cg`) is not in
+  version 2 ([Command line](./cli.md#not-in-version-2)).
 
 ### The document
 
@@ -539,7 +542,10 @@ exchange sign is this tool's own.
 
 An implementation must pass, for every pair `(α, β)` of every group of the
 `default` and `large` sets, ordinary and projective, in every basis the
-document can name:
+document can name (the test suite runs `CG-1` … `CG-7` in the canonical
+basis, under `--chain default` and under every shipped reference basis
+convention on the groups it covers; the ledger's group sets name the
+groups, this sentence the bases):
 
 - **CG-1 unitarity**: `U† U = 1` exactly;
 - **CG-2 reduction**: `(D_α(g) ⊗ D_β(g)) U = U (⊕_{γ,r} D_γ(g))` for every

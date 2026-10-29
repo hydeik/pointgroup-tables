@@ -36,13 +36,38 @@ rest in canonical order" was not taken: it can choose another conjugate
 and orientation of `T` in `I`, and the descending order needs no notion
 beyond the element orders.
 
+**Amended by ticket #59 (2026-10-29).** Class anchors are class labels of
+`G`, so they see a subgroup only through its **class-label signature**, the
+set of classes of `G` it meets. The prototype of ticket #50 found accepted
+chain classes that are not conjugate yet have the same signature at every
+step (**twin chain classes**: `O ⊃ D4 ⊃ D2 ⊃ C2` through the `C2` on the
+`D4` axis or a perpendicular one, `Th ⊃ C2v ⊃ C1h` through either plane,
+their `Td`, `Oh`, `Ih` counterparts), so the claim below that every subgroup
+class admitting a canonical chain is reachable is false: the twins share one
+canonical spelling, the order rule resolves it to one of them, and no
+`--chain` value names the other. We keep the design: `list chains` holds
+one entry per canonical spelling (the reached chain), the unreached twin is
+not accepted, and the chapter lists the twins. A finer anchor (a class label
+of the step above, `C2[D2:C2']`, or an element label) was rejected: it adds
+a second anchor scope to the grammar, the resolution rule and the spelling
+rule for a difference that touches the projective irreps only (every twin
+pair agrees on the label spaces of every ordinary irrep; the reached twin
+quantises the spinor components along the chain's own axis or first plane),
+and no paper's chain is among the unreached twins. Rejecting the shared
+spelling was rejected too: it would drop `O ⊃ D4 ⊃ D2 ⊃ C2` itself. The
+canonical spelling rule was sharpened at the same time: the anchor is the
+shortest list of reps excluding every class of a different signature, and a
+class whose signature is contained in every competitor's (the normal `D2` of
+`O` under `D4`) stays bare, the order rule reaching it.
+
 ## Considered Options
 
 - **Symbol plus class anchor, lexicographic rule** (chosen). Every chain
   of the literature is typed as the paper writes it (`"C3"`, `"D4>C4"`,
   `"D5>C5"`, `"C2"` for Chen's real `Dn ⊃ C2x` basis), the anchors reuse
   the class labels every document already prints, and every subgroup
-  class that admits a canonical chain is reachable. The cost: the rule is
+  class that admits a canonical chain is reachable (amended by ticket
+  #59: every class with a distinct class-label signature). The cost: the rule is
   the definition, so the picked conjugate and orientation are a consequence
   of the canonical element order rather than a stated geometric choice;
   `list chains` and the `chain` table make the result explicit.

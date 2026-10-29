@@ -70,7 +70,8 @@ prove that document. `--verify` is off by default; its cost is roughly
   `--verify` recomputes for the document's basis.
 
 It never runs a reference comparison (reference data is test data, not
-shipped), nor the output-schema, CLI, golden or mutation checks. Two
+shipped), nor the output-schema checks other than the chain checks `OS-7`
+and `OS-8` above, nor the CLI, golden or mutation checks. Two
 version-2 checks need an object the document does not serialise and are
 therefore test-suite checks on the implementation's own objects, never run
 by `--verify`: the basis matrices of a chain-adapted basis (`CB-1`, `CB-3`:
@@ -180,9 +181,9 @@ says whether the flag runs the check.
 | `VL-1` | [Values](./values.md) | every exact value lies in the declared field and its coefficient vector has length `φ(M)` | self | `default`, `large` | | yes |
 | `VL-2` | Values | every numeric value is the correctly rounded double of its exact value | self | `default` | | yes |
 | `VL-3` | Values | the declared conductor is minimal: no proper divisor `M'` of `M` contains every value of the unfiltered document (`--irreps all`) | self | `default`, `large` | `slow` for `large` | no |
-| `VL-4` | [Group chains](./group-chains.md#exact-computation) | every squared norm of every chain label of every irrep of every chain class of `list chains`, and of every Clebsch–Gordan pair, of the seven polyhedral groups is a square of the declared field, equals `1/2` with factor `(1 + i)/2`, or has a shipped norm-factor entry; every entry satisfies `μ · conj(μ) = N` exactly | self | `large` | `slow` | no |
+| `VL-4` | [Group chains](./group-chains.md#exact-computation) | every squared norm of every chain label of every irrep of every chain class of `list chains`, and of every Clebsch–Gordan pair, of the seven polyhedral groups is a square of the declared field, equals `1/2` with factor `(1 + i)/2`, or has a shipped norm-factor entry; every entry satisfies `μ · conj(μ) = N` exactly; every printed row of the norm-factor table of the chapter is reproduced by the shipped data | self | `large` | `slow` | no |
 | `VL-5` | Group chains | the declared conductor of a `--chain` document equals the chain conductor of its chain class (`M_G` for the axial families at `n ≤ 12`; the chapter's table for the polyhedral groups) and `list chains` prints it as `conductor`; `VL-3` holds for the unfiltered `matrices` document of every chain class | self | `default` (axial, `T`, `O`), `large` (every class) | | no |
-| `VL-6` | Group chains | the exact real square root in `Q(ζ_M)⁺` returns the root for `2` in `Q(ζ_8)`, `3` in `Q(ζ_12)`, `(2 + √3)/6` in `Q(ζ_12)`, `5` in `Q(ζ_5)`, proves non-squareness for `2` in `Q(ζ_12)`, `7` in `Q(ζ_120)`, `(3 ± √3)/6` in `Q(ζ_24)`, and agrees with an independent high-precision evaluation (`mpmath`, a test dependency only) on random squares of `Q(ζ_24)`, `Q(ζ_60)`, `Q(ζ_120)` with coefficient denominators up to `10⁶` | self, `mpmath` | `default` | | no |
+| `VL-6` | Group chains | the exact real square root in `Q(ζ_M)⁺` returns the root for `2` in `Q(ζ_8)`, `3` in `Q(ζ_12)`, `(2 + √3)/6` in `Q(ζ_12)`, `5` in `Q(ζ_5)` and `7/20 · 20/7 = 1` in every field of the conductor table of the chapter, proves non-squareness for `2` in `Q(ζ_12)`, `7` in `Q(ζ_120)`, `(3 ± √3)/6` in `Q(ζ_24)`, and agrees with an independent high-precision evaluation (`mpmath`, a test dependency only) on random squares of `Q(ζ_24)`, `Q(ζ_60)`, `Q(ζ_120)` with coefficient denominators up to `10⁶` | self, `mpmath` | `default` | | no |
 
 ### Irrep matrices
 
@@ -197,6 +198,12 @@ says whether the flag runs the check.
 | `MX-7` | Basis conventions | every entry lies in the declared field | self | `default`, `large` | | yes |
 | `MX-8` | Basis conventions | irreps are pairwise inequivalent and irreducible: `(1/\|G\|) Σ_g \|χ(g)\|² = 1` | self | `default`, `large` | | yes |
 
+Under `--chain`, `MX-1` to `MX-4`, `MX-7` and `MX-8` run unchanged on the
+chain-adapted matrices, in the test suite for every chain of `list chains`
+of every group of the `default` set (the group set of `CB-1`) and under
+`--verify` on the document's chain; `MX-5` does not run and `OS-8` takes
+its place ([Where checks run](#where-checks-run)).
+
 ### Group chains and chain-adapted bases
 
 Decided in ticket
@@ -206,10 +213,10 @@ its canonical spelling.
 
 | ID | Chapter | Check | Oracle | Groups | Marker | `--verify` |
 | -- | ------- | ----- | ------ | ------ | ------ | ---------- |
-| `GC-1` | [Group chains](./group-chains.md#verification) | the chain grammar table of `(string, group, exit code)`, including `--chain` with a `--basis-convention` other than `canonical` → `2` | self | as listed (`O`, `T`, `I`, `D6h`, `D3h`) | | no |
+| `GC-1` | [Group chains](./group-chains.md#verification) | the chain grammar table of `(string, group, exit code)`, including `--chain` with a `--basis-convention` other than `canonical` → `2` and `--chain` on a utility subcommand → `2` | self | as listed (`O`, `T`, `I`, `D6h`, `D3h`) | | no |
 | `GC-2` | Group chains | `--chain default` resolves to the default-chain table, group by group for the polyhedral groups and for the axial families at `n = 1 … 12` (the empty chain for the cyclic shape) | self | `default` | | no |
 | `GC-3` | Group chains | the embedding examples: the resolved subgroup of `"C2"` on `D6` is generated by `C2'(1)`, of `"C1h"` on `C6v` by `sigma_v(1)`, of `"D4>C2"` on `O` by `C2(2)`, of `"D3[C2'']>C3"` on `D6` by `C3^1` and `C2''(1)`; the resolved `D4` of `O` contains `C4^1(1)` and the resolved `C3v` of `Td` contains `C3^1(1)` | self | as listed | | no |
-| `GC-4` | Group chains | `list chains` agrees with the subgroup catalogue of ticket #41 (chain classes, canonicity for both kinds recomputed from the characters, terminal rule, `default` flag, `conductor`) for the seven polyhedral groups and the axial families at `n ≤ 12`; `list chains O` holds `"C4"` first with `default = true` | self | polyhedral groups, `sweep` | | no |
+| `GC-4` | Group chains | `list chains` agrees with the subgroup catalogue of ticket #41 (canonicity for both kinds recomputed from the characters, terminal rule, `default` flag, `conductor`) **modulo the twin chain classes**: one entry per canonical spelling, the catalogue's chain classes collapsing exactly by the chapter's table of [twin chain classes](./group-chains.md#embedding-which-subgroup-a-symbol-picks) (none in the axial families at `n ≤ 12`); every canonical spelling resolves to the class it was derived from or to its reached twin, and every spelling of the table resolves to the reached twin named there; `list chains O` holds `"C4"` first with `default = true` | self | polyhedral groups, `sweep` | | no |
 | `GC-5` | Group chains | the metadata of every `--chain` document holds `chain = { input, canonical, symbols }`, and `--chain` with the canonical spelling of a document's chain reproduces its `symbols`, `subgroup_chain` table and matrices byte for byte | self | `seed`, every chain | | no |
 | `CB-1` | [Group chains](./group-chains.md#properties) | intertwiner: for every irrep the basis matrix `U` (columns the chain-adapted vectors in canonical components) is unitary and `D' = U† D U` with the canonical `D` (same characters); the label spaces have rank exactly `1` and their ranks sum to the dimension | self | `default`, every chain; `large` | `slow` for `large` | no |
 | `CB-2` | Group chains | sub-chain block equality: for every step-1 label `σ`, the block of `D'_Γ(φ_1(h))`, `h ∈ H_1,lib†`, equals `D'_σ(h)` of `H_1,lib` under the pulled-back chain entry by entry (`matrices O --chain "D4>C4"` contains the `E` blocks of `matrices D4 --chain C4`) | self | `default`, every chain of two or more steps; `large` | `slow` for `large` | yes |
@@ -249,11 +256,11 @@ that chapter is the reference row `REF-11` below.
 | `OS-9` | [Clebsch–Gordan coefficients](./clebsch-gordan.md#document-checks) | `cg` document shape: validates against `schema.json`; `tables` is `["elements", "cg"]` or `["elements", "subgroup_chain", "cg"]`; `double = false`; `irreps` present; `field.conductor` is the `M_cg` of the chapter's table; `cg.irreps` is the full irrep list of `G`, equal to the unfiltered `characters.irreps` of the same options, with `components` under `--chain` and absent otherwise | schema, self | `seed`, every `--irreps` and `--values`, with and without `--chain default` | | no |
 | `OS-10` | Clebsch–Gordan coefficients | `cg` pairs and columns: `pairs` holds exactly the pairs `α ≤ β` of the selection in lexicographic order, the pair sets of `ordinary` and `projective` are disjoint with union `all`; per pair `dimension = d_α d_β`, every form a `dimension × dimension` matrix, `columns` has `dimension` records with `index` equal to position ordered by `irrep` (canonical order), `copy`, `component`; `constituents` lists exactly the `γ` with `n_γ > 0` with `columns = [first, n_γ d_γ]` contiguous and in order; `exchange` present in every column record exactly when `α = β` | self | `seed`, every `--irreps` and `--values`, with and without `--chain default` | | no |
 | `OS-11` | Clebsch–Gordan coefficients, Command line | `cg --double-group` gives `2`; the `all` document of the same options is unchanged (`tables`, `field`, bytes) by the existence of `cg` | self | `seed` | | no |
-| `CLI-1` | Command line | the group-argument table of `(exit code, symbol)` | self | as listed | | no |
+| `CLI-1` | Command line | the group-argument table of `(exit code, symbol)`, for the version-1 table subcommands and for `cg` | self | as listed | | no |
 | `CLI-2` | Command line | unknown convention gives `4`; option on the wrong subcommand gives `2`; on failure the document stream is empty and no file is created | self | | | no |
 | `CLI-3` | Command line | `--verify` on a passing group emits the same bytes as without it; on `list`/`schema` gives `2`; on a failing check gives `1`, no document, one `verify:` line per failing check | self, mutation | `C3v`, `Oh` | | no |
 | `GOLD-1` | this chapter | golden documents: every table subcommand (`cg` included) × `json`, `yaml`, `toml` for `C3v`, `D6h`, `Oh`, `Ih` with default options equals the checked-in file byte for byte | golden | those four | | no |
-| `GOLD-2` | this chapter, [Group chains](./group-chains.md#verification-of-the-table) | chain golden documents: every table subcommand (`cg` included) × `json`, `yaml`, `toml` for `C3v`, `D6h`, `Oh`, `Ih` under `--chain default`, plus `matrices O --chain "D4>C4"`, `matrices D6 --chain "D3[C2'']>C3"`, `cg T --chain C3` and `cg O --chain C4` (the chains of the papers' CG tables) in the three formats, equal the checked-in files byte for byte | golden | those six | | no |
+| `GOLD-2` | this chapter, [Group chains](./group-chains.md#verification-of-the-table) | chain golden documents: every table subcommand (`cg` included) × `json`, `yaml`, `toml` for `C3v`, `D6h`, `Oh`, `Ih` under `--chain default`, plus `matrices O --chain "D4>C4"`, `matrices D6 --chain "D3[C2'']>C3"`, `cg T --chain C3` and `cg O --chain C4` (the chains of the papers' CG tables) in the three formats, equal the checked-in files byte for byte | golden | those seven | | no |
 
 ### Reference comparison
 
@@ -423,6 +430,12 @@ Bradley & Cracknell is not transcribed; it appears only in the notes of the
 Koster table where its `Γ_i` numbering disagrees, and as the element labels
 of the Chen–Fan–Ping papers, whose own multiplication tables fix the map
 to the canonical labels (`REF-9`).
+
+The secondary references for Clebsch–Gordan coefficients (the coupling
+tables of Koster, Dimmock, Wheeler & Statz, those of Altmann & Herzig where
+the book prints them, Butler's tables) are not compared in version 2: each
+needs a basis transformation onto the tool's basis that the specification
+does not state ([Command line](./cli.md#not-in-version-2)).
 
 ## Reference data
 

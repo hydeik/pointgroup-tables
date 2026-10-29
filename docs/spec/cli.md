@@ -207,6 +207,33 @@ new option adds keys, never renames or reorders existing ones):
 - a Unicode display form of labels (`σ_v`, `′`, superscripts) next to the
   ASCII canonical label (display is the consumer's concern in version 1).
 
+## Not in version 2
+
+Decided when the version-2 map closed
+([Close the map](https://github.com/hydeik/pointgroup-tables/issues/51)).
+Later versions may add, without changing the documents of version 2 (a
+new option adds keys, never renames or reorders existing ones):
+
+- opt-in inclusion of the `subgroup_chain` or `cg` table in `all`
+  (`all --with …`): `all` stays the frozen union of the five version-1
+  tables, and a `cg` document declares a different field from the other
+  tables of the same group ([Clebsch–Gordan
+  coefficients](./clebsch-gordan.md#the-field-of-a-cg-document)); decided
+  only if a consumer asks;
+- reference symbols for the chain labels: a label convention renames the
+  irreps of `G` only; the irrep records of the subgroup records of
+  `subgroup_chain` carry canonical symbols and no `reference_symbol`,
+  because a convention's `coverage` is recorded once per document and
+  cannot speak for a subgroup outside the convention's range
+  ([Group chains](./group-chains.md#the-subgroup_chain-table)); revisit
+  with the secondary references if a consumer asks;
+- comparison of the Clebsch–Gordan coefficients with secondary references
+  (the coupling tables of Koster, Dimmock, Wheeler & Statz, those of
+  Altmann & Herzig where the book prints them, Butler's tables): each needs
+  a basis transformation onto the tool's basis that version 2 does not
+  state; the primary references are the papers of Chen, Fan, Ping and
+  co-workers ([Verification](./verification.md#references-and-what-they-check)).
+
 ## Utility subcommands
 
 `list groups` describes what the group argument accepts, in `--format`:

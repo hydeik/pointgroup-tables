@@ -14,7 +14,9 @@ default chain of every group, and the chain-adapted basis a chain selects**
 [The chain-adapted basis: the exact eigenfunction method, component order and the phase rule](https://github.com/hydeik/pointgroup-tables/issues/43);
 the embedding order rule and the designated component were amended on the
 prototype's findings in
-[Embedding order rule: whole-sequence or highest-order-first, and the designated component of T ⊃ D2 ⊃ C2](https://github.com/hydeik/pointgroup-tables/issues/58)).
+[Embedding order rule: whole-sequence or highest-order-first, and the designated component of T ⊃ D2 ⊃ C2](https://github.com/hydeik/pointgroup-tables/issues/58),
+and the canonical spelling and the twin chain classes were settled in
+[Chain classes that class anchors cannot separate: omit them from list chains, or a finer anchor](https://github.com/hydeik/pointgroup-tables/issues/59)).
 The `subgroup_chain` table and the chain labels of `matrices` are fixed in
 [The `subgroup_chain` table and the chain labels](#the-subgroup_chain-table-and-the-chain-labels)
 (decided in
@@ -233,15 +235,71 @@ order and axis index) and the descending-order comparison:
   and `--chain "D2[C2']>C2"` (the `D2'` of the literature, `⟨C2, C2'⟩`) is
   canonical for ordinary irreps only, so both are rejected.
 
-**Fully qualified spelling.** The **canonical spelling** of a chain is the
-spelling in which a step carries a class anchor exactly when the symbol
-alone, at that position, admits more than one subgroup class after the
-canonicity filter, and the anchor is the shortest list of reps (in
-canonical class order) that singles out the resolved class. Conjugates
-within one class are never distinguished, so the canonical spelling names
-a chain class, and the order rule names its representative. `list chains`
-prints canonical spellings and the `chain` metadata records one, so that a
-chain can be reproduced independently of the unanchored defaults.
+**Fully qualified spelling.** The **class-label signature** of a subgroup
+of `G` is the set of class labels of `G` whose classes it meets: everything
+a class anchor can see. The **canonical spelling** of an accepted chain is
+the spelling in which a step carries a class anchor exactly when another
+accepted chain class with the same symbols, and the same signatures at the
+steps before, has a different signature at that step, and the anchor is the
+**shortest list of reps that excludes every such class**: the fewest reps,
+and among lists of that length the first in canonical class order
+(`C2v[C2,sigma_h]` under `D4h` in `Oh`, where neither `C2` nor `sigma_h`
+alone excludes the `C2v` on a `C2'` axis or the one on `sigma_d` planes).
+When no list excludes them all, because the step's signature is contained
+in every competitor's, the step stays **bare** and the order rule reaches it:
+under `D4` in `O` the normal `D2` meets only the class `C2` and the `D2'`
+meets `C2` and `C2'`, so the chains are spelled `"D4>D2>C2"` and
+`"D4>D2[C2']>C2[C2]"`. Conjugates within one class are never
+distinguished, and the order rule names the representative; a spelling
+names one chain class except for the twins below. `list chains` prints
+canonical spellings and the `chain` metadata records one, so that a chain
+can be reproduced independently of the unanchored defaults; every canonical
+spelling resolves to the class it was derived from (ledger row `GC-4`).
+
+**Twin chain classes.** A canonical spelling does not always name one
+chain class. Two chain classes that are not conjugate in `G` can have the
+same class-label signature at every step, **twin chain classes**: the
+elements that would tell them apart lie in one class of `G`, and no element
+of `G` that normalises the steps above swaps them (the three `C2` of the
+normal `D2` of `O` are one class, but the `D4` above fixes the one on its
+axis). Class anchors are class labels of `G` ([ADR-0010](../adr/0010-chain-embedding-by-rule.md)),
+so no `--chain` value separates twins: the embedding rule resolves the
+shared spelling to one of them, the **reached** twin, and the others are
+**not accepted** by `--chain`. `list chains` holds one entry per canonical
+spelling, the reached chain, and the `embedding` of the `subgroup_chain`
+table shows which subgroup it holds. Decided in ticket
+[#59](https://github.com/hydeik/pointgroup-tables/issues/59) against a finer
+anchor (a class label of the step above, or an element label) and against
+rejecting the shared spelling, because twins differ **only on the
+projective irreps**: in every twin pair found, the step at which the twins
+differ lies under a group whose ordinary irreps are all one-dimensional
+(`D2`, `C2v`, `D2h`) or shares a reflection with the reached subgroup, so
+the label spaces of every ordinary irrep coincide (the ordinary blocks are
+the same vectors, up to the labels of that step), while the projective label
+spaces differ (the `E1/2` of `D2†` is split by the eigenvalue of the `C2` on
+the chain's axis in the reached twin and by that of a perpendicular `C2` in
+the other). The reached twin is the one through the element of smaller
+canonical index: the half turn on the chain's own axis, the first plane.
+The twins of the seven polyhedral groups, computed by the prototype of
+ticket #50 (`prototypes/chain_prototype_summary.md`, section "Twin chain
+classes"); the axial families at `n ≤ 12` have none:
+
+| Group | Spelling | Step | Reached | Unreached |
+| ----- | -------- | ---- | ------- | --------- |
+| `O` | `D4>D2>C2` | 3 `C2` | `C2(1)`, on the `C4` axis of the `D4` | `C2(2)`, perpendicular to it |
+| `Td` | `D2d>D2>C2` | 3 `C2` | `C2(1)`, on the `S4` axis of the `D2d` | `C2(2)` |
+| `Th` | `C2v>C1h`, `D2h>C2v>C1h` | last `C1h` | `sigma_h(2)`, the first plane of the `C2v` | `sigma_h(3)` |
+| `Oh` | `D4>D2>C2`, `D2d[sigma_d]>D2>C2`, `D4h>D2>C2`, `D4h>D2h>C2`, `D4h>D4>D2>C2`, `D4h>D2h>D2>C2`, `D4h>D2d[sigma_d]>D2>C2`, `O>D4>D2>C2`, `Td>D2d>D2>C2` | last `C2` | `C2(1)`, on the axis of the chain | `C2(2)` |
+| `Oh` | `D4h>D2h>C1h` | 3 `C1h` | `sigma_h(1)`, perpendicular to the `D4h` axis | `sigma_h(2)` |
+| `Oh` | `D4h>D2h>C2h` | 3 `C2h` | `{C2(1), i, sigma_h(1)}` | `{C2(2), i, sigma_h(2)}` |
+| `Oh` | `D4h>C2v[C2,sigma_h]>C1h`, `D4h>D2h>C2v>C1h` | the `C2v` | `{C2(1), sigma_h(2), sigma_h(3)}`, about the `D4h` axis | `{C2(2), sigma_h(1), sigma_h(3)}`, about a perpendicular `C4` axis, with either of its planes as the `C1h` (two unreached classes) |
+| `Oh` | `D4h>C2v[C2,sigma_h]>C2`, `D4h>D2h>C2v>C2` | the `C2v` | `{C2(1), sigma_h(2), sigma_h(3)}` | `{C2(2), sigma_h(1), sigma_h(3)}` |
+| `Ih` | `Th>C2v>C1h`, `Th>D2h>C2v>C1h` | last `C1h` | `sigma(11)`, the first plane of the `C2v` | `sigma(14)` |
+
+Twenty-one spellings cover forty-four chain classes, twenty-three of them
+unreached (`Oh`: 15 spellings, 32 classes; `list chains Oh` holds 143 of
+the 160 accepted classes); every other accepted chain class of these groups
+has its own spelling.
 
 ## Default chains
 
@@ -477,7 +535,7 @@ are the checks `CB-1` to `CB-5` of the
 (`CB-1` intertwiner and ranks, `CB-2` block equality with the sub-chain
 realisation, `CB-3` the phase rule, `CB-4` chains through the principal
 element, `CB-5` centro and twisted inheritance; `OS-8` the block
-structure). `--verify` runs `CB-2` and `OS-8` on a `--chain` document and
+structure). `--verify` runs `CB-2`, `OS-7` and `OS-8` on a `--chain` document and
 skips `MX-5`; `CB-1` and `CB-3` need the basis matrices, which the
 document does not carry, and run in the test suite only:
 
@@ -1093,11 +1151,15 @@ subcommands):
 ```
 
 `group` is the group record of [Output schema](./output-schema.md#metadata);
-`chain` is the canonical spelling; the array holds **every chain class
-accepted by `--chain`** (canonical for both kinds, cyclic-shape terminal,
-one entry per chain class, redundant steps below the cyclic shape
-excluded), sorted by number of steps and then by canonical spelling in
-ASCII order; `conductor` is the chain conductor of the class
+`chain` is the canonical spelling; the array holds **every canonical
+spelling accepted by `--chain`** (canonical for both kinds, cyclic-shape
+terminal, one entry per canonical spelling, redundant steps below the cyclic
+shape excluded), each entry being the chain the embedding rule resolves the
+spelling to (the reached twin where the spelling has
+[twin chain classes](#embedding-which-subgroup-a-symbol-picks); an unreached
+twin has no entry, as no `--chain` value names it), sorted by number of
+steps and then by canonical spelling in ASCII order; `conductor` is the
+chain conductor of that chain
 ([The conductor of a `--chain` document](#the-conductor-of-a-chain-document)).
 The group argument follows the grammar and exit codes of the
 table subcommands (`2`, `3`, `5`). The document is not covered by
@@ -1140,10 +1202,14 @@ and `MUT-8` to `MUT-10` of the
   `"C1h"` on `C6v` by `sigma_v(1)`, of `"D4>C2"` on `O` by `C2(2)`, of
   `"D3[C2'']>C3"` on `D6` by `C3^1` and `C2''(1)`; the resolved `D4` of `O`
   contains `C4^1(1)` and the resolved `C3v` of `Td` contains `C3^1(1)`;
-- `list chains` agrees with the catalogue of ticket #41 (chain classes,
-  canonicity for both kinds, terminal rule) for the seven polyhedral groups
-  and the axial families at `n ≤ 12`; `list chains O` holds `"C4"` first
-  with `default = true`;
+- `list chains` agrees with the catalogue of ticket #41 (canonicity for
+  both kinds, terminal rule) for the seven polyhedral groups and the axial
+  families at `n ≤ 12`, one entry per canonical spelling, the catalogue's
+  chain classes collapsing exactly by the table of twin chain classes (none
+  in the axial families); every canonical spelling resolves to the class it
+  was derived from or to its reached twin, and the spellings of the twin
+  table resolve to the reached twin named there; `list chains O` holds
+  `"C4"` first with `default = true`;
 - the metadata of every `--chain` document holds `input`, `canonical` and
   `symbols` as above, and `--chain` with the canonical spelling of a
   document's chain reproduces that document's `symbols`, `subgroup_chain`
@@ -1156,8 +1222,8 @@ and `MUT-8` to `MUT-10` of the
   blocks equal to the sub-chain realisation (`matrices O --chain "D4>C4"`
   contains the `E` blocks of `matrices D4 --chain C4`); `matrices D6
   --chain C6` and `matrices D6h --chain C6h` equal the canonical tables
-  entry by entry; `matrices O --chain C4` equals the canonical table up to
-  the component permutation; `matrices Oh --chain "D4h>C4h"` equals
+  entry by entry; `matrices O --chain C4` equals the canonical table
+  entry by entry with the chain labels added (`CB-4`); `matrices Oh --chain "D4h>C4h"` equals
   `matrices O --chain "D4>C4"` with parity signs; every designated
   component equals the conjugate of the canonical norm factor of its
   squared modulus, and is real positive wherever the real square root lies

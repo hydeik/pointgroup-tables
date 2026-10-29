@@ -21,9 +21,11 @@ Nothing here is production code.
 from __future__ import annotations
 
 import math
+import re
 from dataclasses import dataclass, field
 from fractions import Fraction
 from functools import cache
+from itertools import combinations
 from typing import Any
 
 from chain_prototype_exact import (
@@ -424,28 +426,124 @@ def class_reps_of(model: Model, S: Subgroup) -> list[str]:
     return out
 
 
+def signature(model: Model, S: Subgroup) -> tuple[str, ...]:
+    """The class-label signature of a subgroup: the reduced class labels of ``G``
+    whose classes it meets (``E`` excluded), in class order."""
+    return tuple(r for r in class_reps_of(model, S) if r != "E")
+
+
 def spelling(model: Model, chain: ChainClass, siblings: list[ChainClass]) -> str:
-    """A canonical spelling: anchors where the bare symbols admit another class."""
+    """The canonical spelling of the chapter ("Fully qualified spelling", ticket #59):
+    at step ``i`` an anchor exactly when another accepted class with the same symbols
+    and the same signatures before step ``i`` has a different signature at step ``i``;
+    the anchor is the shortest list of reps (canonical class order, then
+    lexicographic in that order) that excludes every such class; when no list does
+    (the signature is contained in every competitor's) the step stays bare and the
+    order rule reaches it."""
+    sigs = [signature(model, S) for S in chain.subgroups]
     parts = []
     for i, symbol in enumerate(chain.symbols[1:]):
-        reps = [class_reps_of(model, S) for S in chain.subgroups]
-        others = [
-            s
+        others = {
+            signature(model, s.subgroups[i])
             for s in siblings
-            if s is not chain
-            and s.symbols[: i + 2] == chain.symbols[: i + 2]
-            and [class_reps_of(model, S) for S in s.subgroups[:i]] == reps[:i]
-            and class_reps_of(model, s.subgroups[i]) != reps[i]
-        ]
+            if s.symbols[: i + 2] == chain.symbols[: i + 2]
+            and [signature(model, S) for S in s.subgroups[:i]] == sigs[:i]
+            and signature(model, s.subgroups[i]) != sigs[i]
+        }
         anchor = ""
         if others:
-            theirs = [set(class_reps_of(model, s.subgroups[i])) for s in others]
-            for rep in reps[i]:
-                if all(rep not in t for t in theirs):
-                    anchor = f"[{rep}]"
+            found: tuple[str, ...] | None = None
+            for size in range(1, len(sigs[i]) + 1):
+                for combo in combinations(sigs[i], size):
+                    if all(any(r not in o for r in combo) for o in others):
+                        found = combo
+                        break
+                if found:
                     break
+            if found:
+                anchor = "[" + ",".join(found) + "]"
         parts.append(symbol + anchor)
     return ">".join(parts)
+
+
+def parse_spelling(text: str) -> list[tuple[str, list[str]]]:
+    """``"D4>C2[C2']"`` -> ``[("D4", []), ("C2", ["C2'"])]``."""
+    steps = []
+    for part in text.split(">"):
+        m = re.fullmatch(r"([^\[]+)(?:\[(.*)\])?", part)
+        if m is None:
+            raise ChainError(f"malformed chain {text!r}")
+        steps.append((m.group(1), m.group(2).split(",") if m.group(2) else []))
+    return steps
+
+
+def same_chain(model: Model, c: ChainClass, chosen: list[Subgroup]) -> bool:
+    """Whether ``chosen`` (subgroups of ``G``, step by step) lies in the chain class ``c``."""
+    return any(
+        all(
+            conjugate(model.table, model.inverses, c.subgroups[j], g) == chosen[j]
+            for j in range(len(c.subgroups))
+        )
+        for g in range(model.order)
+    )
+
+
+@dataclass
+class TwinSet:
+    """Accepted chain classes sharing one canonical spelling (twin chain classes,
+    ticket #59): the embedding rule reaches exactly one of them."""
+
+    spelling: str
+    classes: list[ChainClass]
+    reached: int  # index into ``classes``
+
+
+@cache
+def twin_sets(symbol: str) -> list[TwinSet]:
+    model = build_model(parse_group(symbol))
+    chains = accepted_chains(symbol)
+    by: dict[str, list[ChainClass]] = {}
+    for c in chains:
+        by.setdefault(spelling(model, c, chains), []).append(c)
+    out = []
+    for text, cs in by.items():
+        if len(cs) > 1:
+            resolved = resolve_text(symbol, text)
+            chosen = [frozenset(st.members) for st in resolved.steps]
+            reached = next(k for k, c in enumerate(cs) if same_chain(model, c, chosen))
+            out.append(TwinSet(text, cs, reached))
+    return out
+
+
+@cache
+def reachable_chains(symbol: str) -> list[tuple[str, ChainClass]]:
+    """What ``list chains`` holds: one entry per canonical spelling, with the chain
+    class the embedding rule resolves the spelling to; sorted by number of steps and
+    then by spelling in ASCII order."""
+    model = build_model(parse_group(symbol))
+    chains = accepted_chains(symbol)
+    unreachable = {
+        id(c)
+        for t in twin_sets(symbol)
+        for k, c in enumerate(t.classes)
+        if k != t.reached
+    }
+    out = [(spelling(model, c, chains), c) for c in chains if id(c) not in unreachable]
+    out.sort(key=lambda tc: (len(tc[1].symbols), tc[0]))
+    return out
+
+
+def differing_step(model: Model, a: ChainClass, b: ChainClass) -> int:
+    """The first step (1-based) at which ``b`` differs from ``a`` up to simultaneous
+    conjugation in ``G`` (``len + 1`` when they are the same class)."""
+    best = 0
+    for g in range(model.order):
+        conj = [conjugate(model.table, model.inverses, S, g) for S in b.subgroups]
+        d = 0
+        while d < len(conj) and conj[d] == a.subgroups[d]:
+            d += 1
+        best = max(best, d)
+    return best + 1
 
 
 # ---- resolved chains ------------------------------------------------------------------
@@ -505,26 +603,28 @@ def resolve(symbol: str, chain: ChainClass, text: str) -> ResolvedChain:
 
 
 def resolve_text(symbol: str, text: str) -> ResolvedChain:
-    """Resolve a chain given by its spelling (``"D4>C4"``, ``"default"``)."""
+    """Resolve a chain given by a spelling (``"D4>C4"``, ``"D4>D2[C2']>C2"``,
+    ``"default"``) as the chapter does: over every accepted class whose symbols
+    match and whose signatures meet the anchors step by step, the lexicographically
+    smallest image sequence (twin chain classes share a spelling; one is reached)."""
     model = build_model(parse_group(symbol))
     chains = accepted_chains(symbol)
     if text == "default":
         text = default_chain(symbol)
-    for chain in chains:
-        if spelling(model, chain, chains) == text:
-            return resolve(symbol, chain, text)
-    # a bare spelling admitting several classes: the order rule decides (step by step,
-    # the smallest image sequence), as for an unanchored symbol
+    steps = parse_spelling(text)
     candidates = [
-        resolve(symbol, c, spelling(model, c, chains))
+        resolve(symbol, c, text)
         for c in chains
-        if ">".join(c.symbols[1:]) == text
+        if c.symbols[1:] == [s for s, _ in steps]
+        and all(
+            all(r in signature(model, c.subgroups[i]) for r in reps)
+            for i, (_, reps) in enumerate(steps)
+        )
     ]
     if candidates:
-        best = min(
+        return min(
             candidates, key=lambda rc: [image_key(s.lib, s.phi) for s in rc.steps]
         )
-        return best
     raise ChainError(f"no accepted chain '{text}' for {symbol}")
 
 
@@ -854,6 +954,31 @@ def chain_conductor(
 _BASIS_CACHE: dict[tuple[Any, ...], ChainBasis] = {}
 
 
+def label_space_agreement(a: ResolvedChain, b: ResolvedChain) -> dict[str, list[str]]:
+    """Per kind, the irreps of ``G`` whose rank-one label spaces coincide as sets
+    of lines under the two chains (``same_ordinary``, ``same_projective``) and
+    those whose do not (``different_*``); twin chain classes agree on every
+    ordinary irrep and differ on every projective one (ticket #59)."""
+    G = a.G
+    out: dict[str, list[str]] = {
+        "same_ordinary": [],
+        "different_ordinary": [],
+        "same_projective": [],
+        "different_projective": [],
+    }
+    for gamma in G.irreps:
+        lines = []
+        for chain in (a, b):
+            F = cyclotomic_field(chain.chain_field)
+            lifted = [lift_matrix(G.field, F, D) for D in gamma.matrices]
+            spaces = _label_spaces(F, chain, gamma, lifted)
+            lines.append(frozenset(tuple(tuple(row) for row in P) for _, P in spaces))
+        kind = "projective" if gamma.projective else "ordinary"
+        key = ("same_" if lines[0] == lines[1] else "different_") + kind
+        out[key].append(gamma.symbol.text)
+    return out
+
+
 def chain_basis(
     chain: ResolvedChain, table: NormFactorTable, M_doc: int | None = None
 ) -> ChainBasis:
@@ -1152,6 +1277,7 @@ __all__ = [
     "MissingNormFactor",
     "ResolvedChain",
     "Step",
+    "TwinSet",
     "accepted_chains",
     "chain_basis",
     "chain_conductor",
@@ -1160,11 +1286,18 @@ __all__ = [
     "check_basis",
     "components_of",
     "default_chain",
+    "differing_step",
     "field_record",
+    "label_space_agreement",
+    "parse_spelling",
     "pulled_back",
+    "reachable_chains",
     "real_sqrt",
     "resolve",
     "resolve_text",
+    "same_chain",
+    "signature",
     "spelling",
     "subgroup_chain_table",
+    "twin_sets",
 ]

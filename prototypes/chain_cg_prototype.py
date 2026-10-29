@@ -23,6 +23,11 @@ matrices) and ``chain_prototype_papers`` (the printed values of the papers):
         #58 (suffixes _sequence / _first) for comparison only.
     uv run python3 prototypes/chain_cg_prototype.py summary
         rewrites prototypes/chain_prototype_summary.md from the frozen files
+    uv run python3 prototypes/chain_cg_prototype.py twins [GROUP ...] [--rewrite]
+        the twin chain classes (ticket #59: accepted classes sharing one canonical
+        spelling, of which the embedding rule reaches one); --rewrite brings the
+        frozen data to that rule without recomputing a basis (rows respelled, the
+        unreached twins dropped, norm-factor uses recomputed for the chains touched)
     uv run python3 prototypes/chain_cg_prototype.py matrices GROUP CHAIN
         a sample ``matrices --chain`` document (JSON) in prototypes/samples/
     uv run python3 prototypes/chain_cg_prototype.py cg GROUP [--chain CHAIN] [--irreps all|ordinary|projective] [--no-document]
@@ -126,41 +131,94 @@ def seeded_table(generated: bool = True) -> NormFactorTable:
 # ---- chains ------------------------------------------------------------------------------
 
 
+def _record_usage(
+    symbol: str,
+    text: str,
+    resolved: cb.ResolvedChain,
+    table: NormFactorTable,
+    usage: dict[tuple[int, Any], set[str]],
+) -> tuple[int, list[Any]]:
+    """The conductor of a reachable chain and the norm-factor entries it and its
+    sub-chains use (``usage``: ``(M, N) -> {"G text [sub-chain] irrep"}``)."""
+    M, norms = cb.chain_conductor(resolved, table)
+    FL = cyclotomic_field(resolved.chain_field)
+    for irrep, label, N in norms:
+        NM = FL.lift(N, cyclotomic_field(M))
+        if real_sqrt(cyclotomic_field(M), NM) is None:
+            usage.setdefault((M, NM), set()).add(f"{symbol} {text} {irrep}")
+    for sub in _sub_chains(resolved):
+        Ms, sub_norms = cb.chain_conductor(sub, table)
+        FLs = cyclotomic_field(sub.chain_field)
+        for irrep, label, N in sub_norms:
+            NM = FLs.lift(N, cyclotomic_field(Ms))
+            if real_sqrt(cyclotomic_field(Ms), NM) is None:
+                usage.setdefault((Ms, NM), set()).add(
+                    f"{symbol} {text} (sub-chain {sub.G.spec.symbol} {sub.text}) {irrep}"
+                )
+    return M, norms
+
+
+def _subgroup_text(model: Any, S: frozenset[int]) -> str:
+    return "{" + ", ".join(model.labels[i].text for i in sorted(S) if i != 0) + "}"
+
+
+def twin_rows(symbol: str) -> list[dict[str, Any]]:
+    """The twin chain classes of a group (ticket #59): per shared spelling the
+    reached class, the unreached ones (the step at which each differs and its
+    subgroup there) and the label-space agreement with the reached class."""
+    model = build_model(parse_group(symbol))
+    rows = []
+    for twins in cb.twin_sets(symbol):
+        reached = twins.classes[twins.reached]
+        reached_resolved = cb.resolve(symbol, reached, twins.spelling)
+        unreached = []
+        for k, c in enumerate(twins.classes):
+            if k == twins.reached:
+                continue
+            step = cb.differing_step(model, reached, c)
+            other = cb.resolve(symbol, c, twins.spelling)
+            unreached.append(
+                {
+                    "step": step,
+                    "symbol": c.symbols[step],
+                    "subgroup": _subgroup_text(model, other.steps[step - 1].members),
+                    "reached_subgroup": _subgroup_text(
+                        model, reached_resolved.steps[step - 1].members
+                    ),
+                    "label_spaces": cb.label_space_agreement(reached_resolved, other),
+                }
+            )
+        rows.append(
+            {
+                "chain": twins.spelling,
+                "classes": len(twins.classes),
+                "symbols": reached.symbols,
+                "unreached": unreached,
+            }
+        )
+    return rows
+
+
 def run_chains(
     groups: list[str], table: NormFactorTable, out: list[str]
 ) -> dict[str, Any]:
     conductors: dict[str, Any] = {}
     usage: dict[tuple[int, Any], set[str]] = {}
     for symbol in groups:
-        model = build_model(parse_group(symbol))
-        chains = cb.accepted_chains(symbol)
+        chains = cb.reachable_chains(symbol)
         default = cb.default_chain(symbol)
         rows = []
         out.append(
-            f"\n## list chains {symbol}: {len(chains)} chain classes, default {default!r}"
+            f"\n## list chains {symbol}: {len(chains)} spellings of {len(cb.accepted_chains(symbol))} chain classes, default {default!r}"
         )
-        for chain in chains:
-            text = cb.spelling(model, chain, chains)
+        for text, chain in chains:
             started = time.perf_counter()
             resolved = cb.resolve(symbol, chain, text)
-            M, norms = cb.chain_conductor(resolved, table)
+            M, norms = _record_usage(symbol, text, resolved, table, usage)
             basis = cb.chain_basis(resolved, table)
             failures = cb.check_basis(basis)
             FL = cyclotomic_field(resolved.chain_field)
             distinct = sorted({pretty(FL, N) for _, _, N in norms})
-            for irrep, label, N in norms:
-                NM = FL.lift(N, cyclotomic_field(M))
-                if real_sqrt(cyclotomic_field(M), NM) is None:
-                    usage.setdefault((M, NM), set()).add(f"{symbol} {text} {irrep}")
-            for sub in _sub_chains(resolved):
-                Ms, sub_norms = cb.chain_conductor(sub, table)
-                FLs = cyclotomic_field(sub.chain_field)
-                for irrep, label, N in sub_norms:
-                    NM = FLs.lift(N, cyclotomic_field(Ms))
-                    if real_sqrt(cyclotomic_field(Ms), NM) is None:
-                        usage.setdefault((Ms, NM), set()).add(
-                            f"{symbol} {text} (sub-chain {sub.G.spec.symbol} {sub.text}) {irrep}"
-                        )
             rows.append(
                 {
                     "chain": text,
@@ -174,7 +232,18 @@ def run_chains(
             out.append(
                 f"  {text:22s} L={resolved.chain_field:3d} M_chain={M:3d}  norms={distinct}  checks={status}  [{time.perf_counter() - started:.1f}s]"
             )
-        conductors[symbol] = {"default": default, "chains": rows}
+        conductors[symbol] = {
+            "default": default,
+            "chains": rows,
+            "twins": twin_rows(symbol),
+        }
+    entries = _entries(table, usage)
+    return {"conductors": conductors, "norm_factors": entries}
+
+
+def _entries(
+    table: NormFactorTable, usage: dict[tuple[int, Any], set[str]]
+) -> list[dict[str, Any]]:
     entries = []
     for (M, N), mu in sorted(table.items(), key=lambda kv: (kv[0][0], kv[0][1])):
         F = cyclotomic_field(M)
@@ -196,7 +265,91 @@ def run_chains(
                 "where": where,
             }
         )
-    return {"conductors": conductors, "norm_factors": entries}
+    return entries
+
+
+def run_twins(
+    groups: list[str], table: NormFactorTable, out: list[str], rewrite: bool
+) -> None:
+    """List the twin chain classes of the groups; with ``rewrite``, bring the frozen
+    data to the rule of ticket #59 without recomputing any basis: rows respelled by
+    the chapter's spelling rule, the unreached twins' rows dropped, the twins
+    recorded, and the ``where`` lists of the norm-factor entries recomputed for
+    every chain whose spelling changed or has twins (the entries only an unreached
+    twin used are dropped unless printed)."""
+    conductors_path, norm_factors_path, _ = data_paths("")
+    conductors = json.loads(conductors_path.read_text())
+    entries = json.loads(norm_factors_path.read_text())
+    usage: dict[tuple[int, Any], set[str]] = {}
+    dirty_prefixes: list[str] = []
+    for symbol in groups:
+        twins = twin_rows(symbol)
+        out.append(
+            f"\n## {symbol}: {len(cb.accepted_chains(symbol))} chain classes, {len(cb.reachable_chains(symbol))} spellings, {len(twins)} shared"
+        )
+        for row in twins:
+            for u in row["unreached"]:
+                ls = u["label_spaces"]
+                out.append(
+                    f"  {row['chain']:28s} step {u['step']} {u['symbol']}: reached {u['reached_subgroup']}, unreached {u['subgroup']}; "
+                    f"same lines: ordinary {len(ls['same_ordinary'])}/{len(ls['same_ordinary']) + len(ls['different_ordinary'])}, "
+                    f"projective {len(ls['same_projective'])}/{len(ls['same_projective']) + len(ls['different_projective'])}"
+                )
+        if not rewrite or symbol not in conductors:
+            continue
+        record = conductors[symbol]
+        old_rows = record["chains"]
+        classes = cb.accepted_chains(symbol)
+        if len(old_rows) != len(classes):
+            raise ValueError(
+                f"{symbol}: {len(old_rows)} rows for {len(classes)} classes"
+            )
+        reachable = {id(c): text for text, c in cb.reachable_chains(symbol)}
+        twin_texts = {row["chain"] for row in twins}
+        new_rows = []
+        for old, c in zip(old_rows, classes, strict=True):
+            if old["symbols"] != c.symbols:
+                raise ValueError(f"{symbol}: row order differs from the class order")
+            text = reachable.get(id(c))
+            if text is None:
+                dirty_prefixes.append(f"{symbol} {old['chain']} ")
+                continue
+            if text != old["chain"] or text in twin_texts:
+                dirty_prefixes.append(f"{symbol} {old['chain']} ")
+                started = time.perf_counter()
+                M, _ = _record_usage(
+                    symbol, text, cb.resolve(symbol, c, text), table, usage
+                )
+                if M != old["conductor"]:
+                    raise ValueError(
+                        f"{symbol} {text}: conductor {M} != {old['conductor']}"
+                    )
+                out.append(
+                    f"  recomputed uses of {text} [{time.perf_counter() - started:.1f}s]"
+                )
+            new_rows.append({**old, "chain": text})
+        new_rows.sort(key=lambda r: (len(r["symbols"]), r["chain"]))
+        record["chains"] = new_rows
+        record["twins"] = twins
+    if not rewrite:
+        return
+    index: dict[tuple[int, str], dict[str, Any]] = {}
+    for e in entries:
+        e["where"] = [
+            w for w in e["where"] if not any(w.startswith(p) for p in dirty_prefixes)
+        ]
+        index[(e["conductor"], json.dumps(e["N"]["exact"]))] = e
+    for (M, N), where in usage.items():
+        F = cyclotomic_field(M)
+        key = (M, json.dumps(F.exact(N)))
+        if key not in index:
+            continue  # N = 1/2 (factor (1 + i)/2) needs no entry, as in run_chains
+        index[key]["where"] = sorted(set(index[key]["where"]) | where)
+    kept = [e for e in entries if e["where"] or e["printed"]]
+    out.append(
+        f"\nrewrote the frozen data: {sum(len(r['chains']) for r in conductors.values())} spellings, {len(kept)} entries ({len(entries) - len(kept)} dropped as used only by unreached twins)"
+    )
+    write_data({"conductors": conductors, "norm_factors": kept}, "")
 
 
 def data_paths(suffix: str) -> tuple[Path, Path, Path]:
@@ -233,24 +386,55 @@ def write_summary(suffix: str) -> Path:
         "",
         "## Chain classes and conductors per group",
         "",
-        "| Group | Classes | Default | `M_chain` × classes |",
-        "| ----- | ------: | ------- | ------------------- |",
+        "`Spellings` counts the entries of `list chains` (one per canonical",
+        "spelling, the reached chain); `Classes` the accepted chain classes, which",
+        "exceed the spellings by the unreached twin chain classes (ticket #59).",
+        "",
+        "| Group | Spellings | Classes | Default | `M_chain` × spellings |",
+        "| ----- | --------: | ------: | ------- | --------------------- |",
     ]
     printed_count = sum(1 for e in entries if e["printed"])
     total_classes = 0
+    total_spellings = 0
+    twin_lines = []
     for group, record in conductors.items():
         rows = record["chains"]
-        total_classes += len(rows)
+        twins = record.get("twins", [])
+        unreached = sum(len(t["unreached"]) for t in twins)
+        total_spellings += len(rows)
+        total_classes += len(rows) + unreached
         counts: dict[int, int] = {}
         for row in rows:
             counts[row["conductor"]] = counts.get(row["conductor"], 0) + 1
         distribution = ", ".join(f"{M} × {n}" for M, n in sorted(counts.items()))
         lines.append(
-            f"| `{group}` | {len(rows)} | `{record['default']}` | {distribution} |"
+            f"| `{group}` | {len(rows)} | {len(rows) + unreached} | `{record['default']}` | {distribution} |"
         )
+        for t in twins:
+            for u in t["unreached"]:
+                ls = u["label_spaces"]
+                agreement = (
+                    f"ordinary {len(ls['same_ordinary'])}/{len(ls['same_ordinary']) + len(ls['different_ordinary'])}, "
+                    f"projective {len(ls['same_projective'])}/{len(ls['same_projective']) + len(ls['different_projective'])}"
+                )
+                twin_lines.append(
+                    f"| `{group}` | `{t['chain']}` | {u['step']} `{u['symbol']}` | `{u['reached_subgroup']}` | `{u['subgroup']}` | {agreement} |"
+                )
     lines += [
         "",
-        f"{total_classes} chain classes in {len(conductors)} groups.",
+        f"{total_spellings} spellings ({total_classes} chain classes) in {len(conductors)} groups.",
+        "",
+        "## Twin chain classes",
+        "",
+        "Accepted chain classes that share one canonical spelling (ticket #59): the",
+        "embedding rule reaches the first, `--chain` cannot name the other. `Step`",
+        "is the step at which the unreached class differs, with the subgroup each",
+        "class holds there; `same lines` counts the irreps whose label spaces",
+        "coincide under the two chains.",
+        "",
+        "| Group | Spelling | Step | Reached | Unreached | Same lines |",
+        "| ----- | -------- | ---- | ------- | --------- | ---------- |",
+        *twin_lines,
         "",
         "## Norm-factor entries",
         "",
@@ -572,6 +756,11 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("compare")
     sub.add_parser("all")
     sub.add_parser("summary")
+    p = sub.add_parser("twins")
+    p.add_argument("groups", nargs="*")
+    p.add_argument(
+        "--rewrite", action="store_true", help="bring the frozen data to the rule"
+    )
     p = sub.add_parser("merge")
     p.add_argument("suffix")
     args = parser.parse_args(argv)
@@ -593,6 +782,8 @@ def main(argv: list[str] | None = None) -> int:
         )
     elif args.command == "summary":
         out.append(f"summary written to {write_summary('').relative_to(ROOT)}")
+    elif args.command == "twins":
+        run_twins(args.groups or POLYHEDRAL + ["D6h"], table, out, args.rewrite)
     elif args.command == "merge":
         out.append(merge_data("_" + args.suffix))
     elif args.command == "matrices":
